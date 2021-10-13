@@ -14,15 +14,16 @@ module.exports = {
 				lessLoaderOptions: {
 					lessOptions: {
 						modifyVars: {
-							'@primary-color': '#A37BF6',
-							'@success-color': '#52c41a',
-							'@error-color': '#DC0000',
-							'@highlight-color': '#DC0000',
-							'@text-color': '#212121',
-							'@text-color-secondary': '#707070',
-							'@border-color-base': '#c7c7c7',
+							'@primary-color': '#F68521',
+							'@success-color': '#329C00',
+							'@error-color': '#FF5A67',
+							'@highlight-color': '#FF5A67',
+							'@text-color': '#121212',
+							'@text-color-secondary': '#121212B2',
+							'@border-color-base': '#6D6D6D',
 							'@border-radius-base': '1rem',
 						},
+						
 						javascriptEnabled: true,
 					},
 				},
