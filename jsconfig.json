@@ -5,10 +5,9 @@
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
 		"paths": {
-			"@Components/*": ["./src/Components/*"],
+			"@Components/*": ["./src/Component/*"],
 			"@Layouts/*": ["./src/Layouts/*"],
-			"@App/*": ["./src/*"],
-			// "@Images/*": ["./src/Assets/Image/*"]
+			"@App/*": ["./src/*"]
 		}
 	},
 	"include": ["./src/*"],
