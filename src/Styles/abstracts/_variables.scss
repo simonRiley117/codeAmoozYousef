@@ -1,0 +1,65 @@
+// Colors
+$color-text: #212121;
+$color-primary: #a37bf6;
+$color-primary-light: #B18FF7;
+$color-error: #c70000;
+$color-success: #52c41a;
+$color-text-light: #707070;
+
+$color-disable:#A6A6A6;
+
+$color-border: #947efd;
+$color-border-light: #c7c7c7;
+$color-divider: #cccccc;
+$color-divider-light: #E7E7E7;
+$color-border-tab: #d4d4d4;
+
+$color-bg-light: #f5f5f5;
+$color-bg-chat: #f8f8f8;
+$color-bg-dark: #232323;
+$color-bg: #e4e4e4;
+$color-bg-icon: #4a4a4a;
+$color-bg-input: #f0f0f0;
+$color-bg-message: #E7D6FB;
+
+
+
+$color-text-secondary: #b7b7b7;
+
+$color-white: #fff;
+
+$color-gradient: linear-gradient(
+	75deg,
+	rgba(191, 119, 234, 1) 0%,
+	rgba(148, 126, 253, 1) 50%
+);
+
+$box-shadow-item: 0 1 6px
+	rgba(
+		$color: #000,
+		$alpha: 0.16,
+	);
+
+// Fonts
+
+$font-primary: 'vazir';
+$font-primary-medium: 'vazir-medium';
+$font-primary-bold: 'vazir-bold';
+
+$fonts: (
+	regular: $font-primary,
+	medium: $font-primary-medium,
+	bold: $font-primary-bold,
+	extra: $font-primary-bold,
+	black: $font-primary-bold,
+);
+
+$br-item: 2rem;
+$br-box: 3rem;
+
+// RESPONSIVE BREAKPOINTS
+$bp-xl: 75em; // 1200px
+$bp-lg: 62em; // 992px
+$bp-md: 48em; // 768px;
+$bp-sm: 36em; // 576px;
+$bp-xs: 30em; // 480px;

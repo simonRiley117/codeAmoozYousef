@@ -1,0 +1,67 @@
+/**
+* * Rest style
+*/
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	@include respond(sm-laptop) {
+		font-size: 50%;
+	}
+}
+
+body {
+	font-family: $font-primary, $font-primary-bold, $font-primary-medium,
+		'sans-serif';
+	color: $color-text;
+	direction: rtl;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}

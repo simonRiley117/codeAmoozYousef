@@ -1,0 +1,86 @@
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media only screen and (max-width: 30em) {
+			@content;
+		} //480px
+	}
+	@if $breakpoint == tablet {
+		@media only screen and (max-width: 48em) {
+			@content;
+		} //768px
+	}
+	@if $breakpoint == big-tablet {
+		@media only screen and (max-width: 62em) {
+			@content;
+		} //992px
+	}
+	@if $breakpoint == sm-laptop {
+		@media only screen and (max-width: 75em) {
+			@content;
+		} //1200px
+	}
+	@if $breakpoint == laptop {
+		@media only screen and (max-width: 91em) {
+			@content;
+		} //1450px
+	}
+	@if $breakpoint == big-desktop {
+		@media only screen and (min-width: 91em) {
+			@content;
+		} //1450
+	}
+}
+
+@mixin place-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+@mixin display-flex($justify: '', $align: center) {
+	display: flex;
+	align-items: $align;
+	@if $justify != '' {
+		justify-content: $justify;
+	}
+}
+
+@mixin font($size: 1.6rem, $color: $color-text, $family: regular) {
+	font-size: $size;
+	color: $color;
+	font-family: map-get($map: $fonts, $key: $family);
+}
+@mixin set-font($size: 1.6rem, $family: regular, $color: $color-text) {
+	font-size: $size;
+	color: $color;
+	font-family: map-get($map: $fonts, $key: $family);
+}
+
+@mixin display-grid($gap: 5rem, $min: 49rem) {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+	gap: $gap;
+}
+
+@mixin d-flex-column($justify: '', $align: center) {
+	display: flex;
+	align-items: $align;
+	flex-direction: column;
+	@if $justify != '' {
+		justify-content: $justify;
+	}
+}
