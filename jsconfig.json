@@ -7,9 +7,10 @@
 		"paths": {
 			"@Components/*": ["./src/Components/*"],
 			"@Layouts/*": ["./src/Layouts/*"],
-			"@App/*": ["./src/*"]
+			"@App/*": ["./src/*"],
+			"@Assets/*": ["./src/Assets/Images/*"]
 		}
 	},
 	"include": ["./src/*"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules","Assets"]
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import back from '@App/Assets/img/footer/Group 846.png';
-import neshan from '@App/Assets/img/footer/Group.png';
-import enamad from '@App/Assets/img/footer/Group (1).png';
-import logo from '@App/Assets/img/logo/Group.png';
+import back from '@Assets/Pic/Group 846.png';
+import neshan from '@Assets/Pic/Group.png';
+import enamad from '@Assets/Pic/Group (1).png';
+import logo from '@Assets/Logo/Group.png';
 
 const Footer = () => {
 	return (

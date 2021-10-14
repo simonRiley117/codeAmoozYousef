@@ -1,10 +1,10 @@
 import React from 'react';
 
-const index = () => {
+const Home = () => {
       return (
         <div className=''>
             home
     </div>
     );
 };
-export default index;
+export default Home;
