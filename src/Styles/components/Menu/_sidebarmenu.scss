@@ -1,0 +1,32 @@
+.sidebarMenu {
+	background: $color-blue--dark;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	height: 90vh;
+	border-top-left-radius: 123px;
+	color: #ffffff;
+	font-size: 14px;
+	transition: all 0.4s;
+	.selected {
+		color: $color-primary;
+	}
+	&__ul {
+		margin: 95px 20px 50px 0;
+	}
+	&__li {
+		cursor: pointer;
+		margin: 20.5px 0;
+		img {
+			width: 32px;
+		}
+	}
+	a {
+		color: #ffffff;
+	}
+	p {
+		padding-right: 16px;
+		transition: all 0.4s;
+		white-space: nowrap;
+	}
+}

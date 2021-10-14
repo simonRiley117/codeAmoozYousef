@@ -1,0 +1,97 @@
+.container-lg {
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+	padding-right: 5rem;
+	padding-left: 5rem;
+	height: inherit;
+	max-width: 1920px;
+
+	@include respond(big-desktop) {
+		// max-width: 1800px;
+	}
+	@include respond(phone) {
+		padding-right: 1.5rem;
+		padding-left: 1.5rem;
+	}
+}
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+	padding-right: 3rem;
+	padding-left: 3rem;
+
+	@include respond(big-desktop) {
+		max-width: 1300px;
+	}
+	@include respond(laptop) {
+		max-width: 1140px;
+	}
+	@include respond(phone) {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+}
+
+.d-flex {
+	@include display-flex;
+}
+.d-flex-col {
+	@include d-flex-column;
+}
+
+.d-flex-align {
+	display: flex;
+	align-items: center;
+}
+
+.d-flex-space {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.b-radius {
+	&-3 {
+		border-radius: 3rem;
+	}
+
+	&-2 {
+		border-radius: 2rem;
+	}
+	&-1 {
+		border-radius: 1rem;
+	}
+}
+
+.custom-scrollbars {
+	scrollbar-color: $color-disable transparent;
+	scrollbar-width: thin;
+	// overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: $color-disable;
+		border-radius: 4px;
+	}
+}
+
+.full-width {
+	width: 100%;
+}
+
+.avatar {
+	width: 4.4rem;
+	height: 4.4rem;
+	border-radius: 2rem;
+	flex: 0 0 auto;
+}

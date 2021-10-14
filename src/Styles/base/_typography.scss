@@ -1,0 +1,42 @@
+.title {
+	color: $color-text;
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+.subtitle {
+	color: $color-text;
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+.success {
+	color: $color-success;
+}
+.error {
+	color: $color-error;
+}
+.text-primary {
+	color: $color-primary;
+}
+
+.text {
+	color: $color-text-light;
+	font-size: 1.6rem;
+
+	&-item {
+		color: $color-text-light;
+		font-size: 1.6rem;
+		// position: relative;
+		@include display-flex;
+		&::before {
+			content: '';
+			position: relative;
+			width: 1rem;
+			height: 1rem;
+			border-radius: 50%;
+			background-color: $color-blue;
+            margin-left: 1rem;
+		}
+	}
+}

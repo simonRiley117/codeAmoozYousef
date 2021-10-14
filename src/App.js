@@ -1,10 +1,16 @@
-import DefaultFormBox from "@Components/Share/DefaultFormBox";
-import "./App.less";
+import { Button, ConfigProvider } from 'antd';
+import React from 'react';
+import Router from './Router/Router';
+import './App.less';
+import './Styles/main.scss';
 
 const App = () => {
-  return (
-    <div>
-    </div>
-  );
+	return (
+		<>
+			<ConfigProvider direction='rtl'>
+				<Router />
+			</ConfigProvider>
+		</>
+	);
 };
 export default App;

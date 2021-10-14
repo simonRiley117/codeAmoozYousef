@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function DefaultFormBox(props) {
-  //   const [labels, setLabels] = useState(labels);
   const [idselect, setIdselect] = useState(0);
   const handleClick = (index) => {
     setIdselect(index);

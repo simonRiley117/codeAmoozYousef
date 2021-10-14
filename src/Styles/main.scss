@@ -1,19 +1,30 @@
+// -------------------- tailwindcss --------------------
 @import "~tailwindcss/tailwind.css";
 
+// -------------------- react-slick --------------------
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-//---------------
-@import "./Index.scss";
-@import "./mixins.scss";
-//--------------------------abstract---------------
-@import "./abstract/_var";
-@import "./abstract/_mixin";
+// -------------------- fonts --------------------
+@import "./base/font";
 
-//---------------------------share---------------
-@import "./component/share/input";
-@import "./component/share/menu";
-@import "./component/share/sidebarmenu";
-@import "./component/share/textarea";
-@import "./component/share/Footer";
-@import "./component/share/DefaultFormBox";
+// -------------------- abstracts --------------------
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+@import "./abstracts/functions";
+@import "./abstracts/animations";
+
+// -------------------- base --------------------
+@import "./base/base";
+@import "./base/typography";
+@import "./base/utilities";
+
+// -------------------- components --------------------
+//--------------share---------------
+@import "./components/Inputs/input";
+@import "./components/Menu/menu";
+@import "./components/Menu/sidebarmenu";
+@import "./components/Inputs/textarea";
+@import "./components/Footer/Footer";
+@import "./components/DefaultFormBox/DefaultFormBox"; 
+// -------------------- layout --------------------
