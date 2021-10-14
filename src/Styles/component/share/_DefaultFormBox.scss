@@ -1,0 +1,42 @@
+.DefaultFormBox {
+    margin: 0rem auto;
+    &__content {
+        // background-color: $color-gray;
+        & > *:not(:first-child) {
+            border-bottom-right-radius: 2.5rem;
+        }
+        & > *:not(:last-child) {
+            border-bottom-left-radius: 2.5rem;
+        }
+    }
+    &__labelBox {
+        text-align: center;
+        height: 6rem;
+        &-white {
+            background-color: $color-white;
+            border-bottom: none;
+            box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.15);
+            color: $color-orange;
+        }
+        &-gray {
+            background-color: $color-gray;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+        }
+    }
+    &__body {
+        margin-top: -0.75rem;
+        position: relative;
+        z-index: 100;
+        background-color: $color-white;
+        box-shadow: 0 -4px 0 #fff, 0 1px 6px rgba(0, 0, 0, 0.35);
+        height: 118.55rem;
+    }
+}
+.boxshadow__right {
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.35), 0 5px 5px -5px rgba(0, 0, 0, 0.35),
+        5px 0 5px -5px rgba(0, 0, 0, 0.35);
+}
+.boxshadow__left {
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.35), 0 5px 5px -5px rgba(0, 0, 0, 0.35),
+        -5px 0 5px -5px rgba(0, 0, 0, 0.35);
+}

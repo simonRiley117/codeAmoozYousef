@@ -1,4 +1,4 @@
-import Footer from "@Components/Share/Footer";
+import DefaultFormBox from "@Components/Share/DefaultFormBox";
 import "./App.less";
 
 const App = () => {
