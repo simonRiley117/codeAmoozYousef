@@ -22,3 +22,18 @@
 // -------------------- components --------------------
 
 // -------------------- layout --------------------
+
+
+//---------------
+@import "./Index.scss";
+@import "./mixins.scss";
+//--------------------------abstract---------------
+@import "./abstract/_var";
+@import "./abstract/_mixin";
+
+//---------------------------share---------------
+@import "./component/share/input";
+@import "./component/share/menu";
+@import "./component/share/sidebarmenu";
+@import "./component/share/textarea";
+@import './component/share/Footer';
