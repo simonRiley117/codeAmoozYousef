@@ -19,21 +19,15 @@
 @import './base/typography';
 @import './base/utilities';
 
+
 // -------------------- components --------------------
+//--------------share---------------
+@import './components/Inputs/input';
+@import './components/Menu/menu';
+@import './components/Menu/sidebarmenu';
+@import './components/Inputs/textarea';
+@import './components/Footer/Footer';
+
+
 
 // -------------------- layout --------------------
-
-
-//---------------
-@import "./Index.scss";
-@import "./mixins.scss";
-//--------------------------abstract---------------
-@import "./abstract/_var";
-@import "./abstract/_mixin";
-
-//---------------------------share---------------
-@import "./component/share/input";
-@import "./component/share/menu";
-@import "./component/share/sidebarmenu";
-@import "./component/share/textarea";
-@import './component/share/Footer';

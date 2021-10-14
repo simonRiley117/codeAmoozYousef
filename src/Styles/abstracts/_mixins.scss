@@ -14,15 +14,34 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 */
 @mixin respond($breakpoint) {
+	@if $breakpoint == smallest-phone {
+		@media only screen and (max-width: 25em) {
+			//400px
+			@content;
+		}
+	}
 	@if $breakpoint == phone {
 		@media only screen and (max-width: 30em) {
 			@content;
 		} //480px
 	}
+	@if $breakpoint == big-phone {
+		@media only screen and (max-width: 43.75em) {
+			//700px
+			@content;
+		}
+	}
+
 	@if $breakpoint == tablet {
 		@media only screen and (max-width: 48em) {
 			@content;
 		} //768px
+	}
+	@if $breakpoint == tab-port {
+		@media only screen and (max-width: 56.25em) {
+			//900
+			@content;
+		}
 	}
 	@if $breakpoint == big-tablet {
 		@media only screen and (max-width: 62em) {
@@ -46,11 +65,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	}
 }
 
-@mixin place-center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 @mixin display-flex($justify: '', $align: center) {
 	display: flex;
 	align-items: $align;
@@ -58,12 +72,27 @@ ORDER: Base + typography > general layout + grid > page layout > components
 		justify-content: $justify;
 	}
 }
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 @mixin font($size: 1.6rem, $color: $color-text, $family: regular) {
 	font-size: $size;
 	color: $color;
 	font-family: map-get($map: $fonts, $key: $family);
 }
+
+@mixin d-flex-column($justify: '', $align: center) {
+	display: flex;
+	align-items: $align;
+	flex-direction: column;
+	@if $justify != '' {
+		justify-content: $justify;
+	}
+}
+
 @mixin set-font($size: 1.6rem, $family: regular, $color: $color-text) {
 	font-size: $size;
 	color: $color;
@@ -74,13 +103,4 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
 	gap: $gap;
-}
-
-@mixin d-flex-column($justify: '', $align: center) {
-	display: flex;
-	align-items: $align;
-	flex-direction: column;
-	@if $justify != '' {
-		justify-content: $justify;
-	}
 }

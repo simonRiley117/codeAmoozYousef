@@ -8,7 +8,7 @@ const App = () => {
 	return (
 		<>
 			<ConfigProvider direction='rtl'>
-				<Footer />
+				<Footer />			
 			</ConfigProvider>
 		</>
 	);

@@ -1,44 +1,36 @@
 // Colors
-$color-text: #212121;
-$color-primary: #a37bf6;
-$color-primary-light: #B18FF7;
-$color-error: #c70000;
-$color-success: #52c41a;
-$color-text-light: #707070;
 
-$color-disable:#A6A6A6;
-
-$color-border: #947efd;
-$color-border-light: #c7c7c7;
-$color-divider: #cccccc;
-$color-divider-light: #E7E7E7;
-$color-border-tab: #d4d4d4;
-
-$color-bg-light: #f5f5f5;
-$color-bg-chat: #f8f8f8;
-$color-bg-dark: #232323;
-$color-bg: #e4e4e4;
-$color-bg-icon: #4a4a4a;
-$color-bg-input: #f0f0f0;
-$color-bg-message: #E7D6FB;
-
-
-
-$color-text-secondary: #b7b7b7;
-
+// ------------ Primary ------------
+$color-primary: #f68521;
 $color-white: #fff;
+$color-white-light: rgba(243, 243, 243, 0.7);
 
-$color-gradient: linear-gradient(
-	75deg,
-	rgba(191, 119, 234, 1) 0%,
-	rgba(148, 126, 253, 1) 50%
+// ------------ Background ------------
+$color-blue: #022f47;
+$color-blue--dark: #012f47;
+$color-blue--light: #042f47;
+
+$color-green: #47bea7;
+$color-green-dark: #46bea7;
+
+$color-section: #1a6577;
+
+// ------------ black ------------ 
+$color-black-light: #010101;
+$color-black: #000;
+
+// ------------ Text ------------
+$color-text: #121212;
+$color-text-light: rgba(
+	$color: $color-text,
+	$alpha: 0.7,
 );
-
-$box-shadow-item: 0 1 6px
-	rgba(
-		$color: #000,
-		$alpha: 0.16,
-	);
+$color-disable: rgba(
+	$color: $color-text,
+	$alpha: 0.5, 
+); 
+$color-success: #329c00;
+$color-error: #FF5A67;
 
 // Fonts
 

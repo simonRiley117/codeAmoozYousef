@@ -25,10 +25,10 @@
 	@include respond(big-desktop) {
 		max-width: 1300px;
 	}
-	@include respond(laptop) { 
+	@include respond(laptop) {
 		max-width: 1140px;
 	}
-	@include respond(phone) {                   
+	@include respond(phone) {
 		padding-right: 2rem;
 		padding-left: 2rem;
 	}
@@ -41,8 +41,16 @@
 	@include d-flex-column;
 }
 
+.d-flex-align {
+	display: flex;
+	align-items: center;
+}
 
-
+.d-flex-space {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
 
 .b-radius {
 	&-3 {

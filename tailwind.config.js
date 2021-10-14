@@ -5,7 +5,7 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		fontFamily: {
-			sans: ['Vazir', 'sans-serif'],
+			// sans: ['Vazir', 'sans-serif'],
 		},
 
 		extend: {},
