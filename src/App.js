@@ -4,7 +4,6 @@ import "./App.less";
 const App = () => {
   return (
     <div>
-      <Footer />
     </div>
   );
 };
