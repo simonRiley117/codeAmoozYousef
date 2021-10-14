@@ -1,0 +1,84 @@
+.Footer {
+    &__box {
+        overflow: hidden;
+        height: 39rem;
+        max-height: 39rem;
+    }
+    margin-top: 5rem;
+    &__bluBack {
+        height: 47rem;
+    }
+    &__content {
+        right: 8.688rem;
+        top: 6.205rem;
+    }
+    &__AboutUsBox {
+        width: 34.5rem;
+        height: 28.3rem;
+
+        background: $color-white-light;
+        border-radius: 14.15rem;
+
+        &-title {
+            color: $color-blue;
+            margin: 0 auto 2rem auto;
+        }
+        &-text {
+            color: $color-black-light;
+        }
+    }
+    &__logo {
+        left: 3rem;
+        img {
+            width: 6rem;
+            height: auto;
+        }
+    }
+    &__SambolsBox {
+        & > *:last-child {
+            margin-right: -0.3rem;
+        }
+        & > * {
+            height: 8.312rem;
+            width: auto;
+        }
+    }
+    &__accessBox {
+        margin: 0 7.922rem 0 7.292rem;
+    }
+    &__contenttxt {
+        color: $color-white;
+        margin-left: 7.922rem;
+    }
+    &__accessTitle {
+        color: $color-white;
+    }
+    &__accessList {
+        color: $color-white;
+        & > * {
+            margin-bottom: 1.5rem;
+            position: relative;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 0.588rem;
+                height: 0.588rem;
+                border-radius: 50%;
+                background-color: $color-orange;
+                right: -1.808rem;
+                top: 0.75rem;
+            }
+        }
+        & > *:first-child {
+            margin-top: 1rem;
+        }
+    }
+    &__GreenLine {
+        bottom: 2.5rem;
+        width: 65%;
+        height: 0.15rem;
+        background-color: $color-green;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
