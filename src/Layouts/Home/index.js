@@ -1,10 +1,22 @@
 import React from 'react';
+import Button from '@Components/Shared/Buttons/Button';
+import { ReactComponent as ArrowLeftIcon } from '@Assets/Icons/arrow-left.svg';
 
 const Home = () => {
-      return (
-        <div className=''>
-            home
-    </div>
-    );
+	return (
+		<div
+			className=''
+			style={{
+				height: '50vh',
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+			}}
+		>
+			<Button type='text' icon={<ArrowLeftIcon />} success>
+				مان تبث / دورو
+			</Button>
+		</div>
+	);
 };
 export default Home;

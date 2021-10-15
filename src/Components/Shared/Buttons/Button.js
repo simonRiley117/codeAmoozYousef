@@ -1,13 +1,37 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button as ButtonBase } from 'antd';
+import classNames from 'classnames';
 
-const Button = ({ type, color, classes }) => {
-	return <div className=''></div>;
+const Button = ({ type, classes, large, success, children, ...rest }) => {
+	return (
+		<ButtonBase
+			type={type}
+			className={classNames(`button button__${type}`, [classes], {
+				large: large,
+				success: success,
+			})}
+			{...rest}
+		>
+			{children}
+		</ButtonBase>
+	);
+};
+
+Button.defaultProps = {
+	type: 'default',
+	large: false,
+	success: false,
 };
 
 Button.propTypes = {
+	children: PropTypes.node.isRequired,
 	classes: PropTypes.string,
-	color: PropTypes.string,
-	type: PropTypes.string,
+	large: PropTypes.bool,
+	success: PropTypes.bool,
+	type: PropTypes.oneOfType(
+		[PropTypes.oneOf(['primary', 'default', 'text', 'gradient'])],
+		PropTypes.string.isRequired
+	),
 };
 export default Button;

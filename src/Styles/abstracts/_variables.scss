@@ -35,11 +35,25 @@ $color-disable: rgba(
 $color-success: #329c00;
 $color-error: #ff5a67;
 
+$color-gradient: linear-gradient(
+	140deg,
+	rgba(239, 128, 25, 1) 30%,
+	rgba(249, 168, 37, 1) 67%
+);
+
+$shadow-button: drop-shadow(
+	0 4px 6px
+		rgba(
+			$color: #000,
+			$alpha: 0.2,
+		)
+);
+
 // Fonts
 
-$font-primary: "vazir";
-$font-primary-medium: "vazir-medium";
-$font-primary-bold: "vazir-bold";
+$font-primary: 'vazir';
+$font-primary-medium: 'vazir-medium';
+$font-primary-bold: 'vazir-bold';
 
 $fonts: (
 	regular: $font-primary,
