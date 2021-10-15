@@ -13,7 +13,7 @@ const Home = () => {
 				justifyContent: 'center',
 			}}
 		>
-			<Button type='text' icon={<ArrowLeftIcon />} success>
+			<Button type='primary' icon={<ArrowLeftIcon />} large disabled>
 				مان تبث / دورو
 			</Button>
 		</div>

@@ -3,7 +3,15 @@ import React from 'react';
 import { Button as ButtonBase } from 'antd';
 import classNames from 'classnames';
 
-const Button = ({ type, classes, large, success, children, ...rest }) => {
+const Button = ({
+	type,
+	classes,
+	large,
+	success,
+	disabled,
+	children,
+	...rest
+}) => {
 	return (
 		<ButtonBase
 			type={type}
@@ -22,6 +30,7 @@ Button.defaultProps = {
 	type: 'default',
 	large: false,
 	success: false,
+	disabled: false,
 };
 
 Button.propTypes = {
@@ -29,6 +38,7 @@ Button.propTypes = {
 	classes: PropTypes.string,
 	large: PropTypes.bool,
 	success: PropTypes.bool,
+	disabled: PropTypes.bool,
 	type: PropTypes.oneOfType(
 		[PropTypes.oneOf(['primary', 'default', 'text', 'gradient'])],
 		PropTypes.string.isRequired
