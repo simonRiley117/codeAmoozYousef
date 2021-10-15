@@ -15,6 +15,7 @@ html {
 	@include respond(sm-laptop) {
 		font-size: 50%;
 	}
+	overflow-x: hidden;
 }
 
 body {

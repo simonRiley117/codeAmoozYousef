@@ -24,6 +24,7 @@ $color-gray: #e5e5e5;
 
 // ------------ Text ------------
 $color-text: #121212;
+$color-text-gray:#12121280;
 $color-text-light: rgba(
 	$color: $color-text,
 	$alpha: 0.7,
@@ -58,3 +59,6 @@ $bp-lg: 62em; // 992px
 $bp-md: 48em; // 768px;
 $bp-sm: 36em; // 576px;
 $bp-xs: 30em; // 480px;
+
+//box shadow
+$box-shadow :  0 2px 8px 2px rgba(0,0,0,0.15);
