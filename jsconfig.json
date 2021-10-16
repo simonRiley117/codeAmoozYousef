@@ -11,6 +11,11 @@
 			"@Assets/*": ["./src/Assets/Images/*"]
 		}
 	},
-	"include": ["./src/*"],
-	"exclude": ["node_modules","Assets"]
+	"include": [
+		"./src/*",
+		"./src/Assets/**/*.png",
+		"./src/Assets/**/*.jpg",
+		"./src/Assets/**/*.svg"
+	],
+	"exclude": ["node_modules", "Assets"]
 }

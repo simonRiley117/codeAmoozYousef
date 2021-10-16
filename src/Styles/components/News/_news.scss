@@ -11,6 +11,16 @@
     @include display-grid(2rem, 40rem);
     max-width: 80%;
     margin:0 auto;
+
+    //media queries
+    @include respond(phone) {
+      max-width: 95%;
+    }
+  };
+  &-button {
+    align-self: flex-end;
+    margin-left: 0;
+    margin-right: auto;
   };
 };
 //card
@@ -28,22 +38,50 @@
 };
 
 //single title
-.title {
+.Title {
   margin: 10rem auto 5rem auto;
   max-width: 80%;
   display: grid;
   grid-template-columns: 80% 20%;
   grid-gap: 3rem;
+  //media queries
+
+  // lowering the outer space
+  @include respond(big-phone) {
+    max-width: 95%;
+  }
+  // stacking contents
+  @include respond(phone) {
+    grid-template-columns: 100%;
+  }
+  // moving headings
+  &-heading {
+    @include respond(phone) {
+       margin-right: 2rem;
+    }
+  }
   &-heads {
-    padding: 0.6rem;
+    padding: 1rem;
     margin-bottom: 0.3rem;
     color: rgba($color-text-gray, 0.5);
     border-bottom: 1px solid rgba($color-text-gray, 0.5);
     font-size: 1.6rem;
+    @include respond(phone) {
+      text-align: center;
+    }
   };
   &-title {
     font-size: 2.5rem;
   };
+  &-paging {
+    width: max-content;
+    margin: 3rem  auto 0 auto;
+  };
+  &-cards {
+    @include respond(phone) {
+      padding: 0 6rem;
+    }
+  }
 };
 
 .orange {
