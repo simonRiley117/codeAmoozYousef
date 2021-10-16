@@ -1,40 +1,43 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { Button as ButtonBase } from 'antd';
 import classNames from 'classnames';
+import { Link as LinkBase } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Button = ({
+const Link = ({
 	type,
 	classes,
 	large,
 	success,
 	disabled,
 	children,
+	icon,
 	...rest
 }) => {
 	return (
-		<ButtonBase
-			type={type}
-			className={classNames(`button button__${type}`, [classes], {
+		<LinkBase
+			className={classNames(`link link__${type}`, [classes], {
 				large: large,
 				success: success,
 				disabled: disabled,
+
 			})}
 			{...rest}
 		>
-			{children}
-		</ButtonBase>
+			{!!icon && icon}
+			<span>{children}</span>
+		</LinkBase>
 	);
 };
+export default Link;
 
-Button.defaultProps = {
+Link.defaultProps = {
 	type: 'default',
 	large: false,
 	success: false,
 	disabled: false,
 };
 
-Button.propTypes = {
+Link.propTypes = {
 	children: PropTypes.node.isRequired,
 	classes: PropTypes.string,
 	large: PropTypes.bool,
@@ -45,4 +48,3 @@ Button.propTypes = {
 		PropTypes.string.isRequired
 	),
 };
-export default Button;

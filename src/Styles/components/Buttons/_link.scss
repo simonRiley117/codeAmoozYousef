@@ -1,36 +1,10 @@
-.button {
-	border-radius: 6rem;
-	height: 40px;
-	min-width: 12rem;
-	padding: 4px 20px;
-	@include display-flex;
-	flex-direction: row-reverse;
-	column-gap: 1.5rem;
-	font-size: 16px;
-	font-weight: 500;
-	& svg {
-		max-width: 20px;
-		max-height: 20px;
-	}
-
-	&.disabled {
-		user-select: none;
-		cursor: not-allowed;
-		color: $color-gray-dark;
-		background-color: $color-gray;
-		border-color: $color-gray;
-		filter: none;
-		box-shadow: none;
-	}
-
-	&.large {
-		height: 50px;
-		font-size: 2rem;
-		& svg {
-			max-width: 24px;
-			max-height: 24px;
-		}
-	}
+.link {
+	@extend .button;
+	white-space: nowrap;
+	text-align: center;
+	user-select: none;
+	touch-action: manipulation;
+	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
 	&__default {
 		border: 2px solid $color-primary;
@@ -41,10 +15,26 @@
 			color: $color-white;
 			filter: $shadow-button;
 		}
+		&:active {
+			animation: shadow-drop-center 800ms ease;
+			color: $color-primary;
+		}
 	}
 
 	&__primary {
 		filter: $shadow-button;
+		background-color: $color-primary;
+		color: $color-white;
+
+		&:hover,
+		&:focus {
+			color: $color-white;
+			background-color: $color-primary-light;
+		}
+
+		&:active {
+			background-color: $color-primary-dark;
+		}
 	}
 
 	&__gradient {
@@ -65,6 +55,9 @@
 			color: $color-white;
 			filter: $shadow-button;
 		}
+		&:active {
+			animation: shadow-drop-center 800ms ease;
+		}
 	}
 
 	&__text {
@@ -75,13 +68,12 @@
 		overflow: hidden;
 		font-size: 14px;
 		&.disabled {
-			
 			color: $color-gray-dark;
 			background-color: transparent;
 			border-color: transparent;
-			&::after {
-				content: none;
-			}
+            &::after{
+                content: none;
+            }
 			&:hover,
 			&:active,
 			&:focus {
@@ -109,43 +101,6 @@
 		&:active,
 		&:focus {
 			color: $color-primary;
-			background-color: transparent;
-
-			&::after {
-				opacity: 0.15;
-			}
-		}
-	}
-	&__icon {
-		@include display-flex(center);
-		border: 0;
-		overflow: hidden;
-		width: 40px;
-		height: 40px;
-		padding: 8px;
-		border-radius: 50%;
-		position: relative;
-
-		& svg {
-			max-width: 22px;
-			max-height: 22px;
-		}
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 0;
-			background-color: currentColor;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			transition: all 350ms cubic-bezier(0.645, 0.045, 0.355, 1);
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			color: currentColor;
 			background-color: transparent;
 
 			&::after {
