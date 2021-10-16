@@ -95,3 +95,19 @@
 	border-radius: 2rem;
 	flex: 0 0 auto;
 }
+.ant-breadcrumb,
+.ant-breadcrumb > span:last-child,
+.ant-breadcrumb-separator {
+	color: $color-black-light-1;
+}
+.green-circle {
+	width: 2.6rem;
+	height: 2.6rem;
+	background-color: $color-green-dark;
+	border-radius: 50%;
+	color: $color-blue;
+	font-size: 1.6rem;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}

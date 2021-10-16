@@ -5,10 +5,18 @@
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
 		"paths": {
-			"@Components/*": ["./src/Components/*"],
-			"@Layouts/*": ["./src/Layouts/*"],
-			"@App/*": ["./src/*"],
-			"@Assets/*": ["./src/Assets/Images/*"]
+			"@Components/*": [
+				"./src/Components/*"
+			],
+			"@Layouts/*": [
+				"./src/Layouts/*"
+			],
+			"@App/*": [
+				"./src/*"
+			],
+			"@Assets/*": [
+				"./src/Assets/Images/*"
+			]
 		}
 	},
 	"include": [
@@ -17,5 +25,8 @@
 		"./src/Assets/**/*.jpg",
 		"./src/Assets/**/*.svg"
 	],
-	"exclude": ["node_modules", "Assets"]
+	"exclude": [
+		"node_modules",
+		"Assets"
+	]
 }

@@ -1,0 +1,15 @@
+.Master {
+    &__title {
+        color: $color-text;
+        margin: 4.3rem auto 0 auto;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    &__formBox {
+        margin-top: 1.7rem;
+        margin-bottom: 7.745rem;
+    }
+    &__form{
+        min-height: 100.55rem;
+    }
+}
