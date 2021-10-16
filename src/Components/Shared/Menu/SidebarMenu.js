@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import homeIcon from "../../assets/img/sidebarmenu/home.svg";
-import profileIcon from "../../assets/img/sidebarmenu/user.svg";
-import resumeIcon from "../../assets/img/sidebarmenu/resume.svg";
-import courseIcon from "../../assets/img/sidebarmenu/course.svg";
-import walletIcon from "../../assets/img/sidebarmenu/wallet.svg";
-import messageIcon from "../../assets/img/sidebarmenu/message.svg";
-import settingIcon from "../../assets/img/sidebarmenu/setting.svg";
-import closeIcon from "../../assets/img/sidebarmenu/close.svg";
-import exiteIcon from "../../assets/img/sidebarmenu/quite.svg";
-import activehomeIcon from "../../assets/img/sidebarmenu - active/home.svg";
-import activeprofileIcon from "../../assets/img/sidebarmenu - active/user.svg";
-import activeresumeIcon from "../../assets/img/sidebarmenu - active/resume.svg";
-import activecourseIcon from "../../assets/img/sidebarmenu - active/course.svg";
-import activewalletIcon from "../../assets/img/sidebarmenu - active/wallet.svg";
-import activemessageIcon from "../../assets/img/sidebarmenu - active/message.svg";
-import activesettingIcon from "../../assets/img/sidebarmenu - active/setting.svg";
+import homeIcon from "@App/assets/img/sidebarmenu/home.svg";
+import profileIcon from "@App/assets/img/sidebarmenu/user.svg";
+import resumeIcon from "@App/assets/img/sidebarmenu/resume.svg";
+import courseIcon from "@App/assets/img/sidebarmenu/course.svg";
+import walletIcon from "@App/assets/img/sidebarmenu/wallet.svg";
+import messageIcon from "@App/assets/img/sidebarmenu/message.svg";
+import settingIcon from "@App/assets/img/sidebarmenu/setting.svg";
+import closeIcon from "@App/assets/img/sidebarmenu/close.svg";
+import exiteIcon from "@App/assets/img/sidebarmenu/quite.svg";
+import activehomeIcon from "@App/assets/img/sidebarmenu - active/home.svg";
+import activeprofileIcon from "@App/assets/img/sidebarmenu - active/user.svg";
+import activeresumeIcon from "@App/assets/img/sidebarmenu - active/resume.svg";
+import activecourseIcon from "@App/assets/img/sidebarmenu - active/course.svg";
+import activewalletIcon from "@App/assets/img/sidebarmenu - active/wallet.svg";
+import activemessageIcon from "@App/assets/img/sidebarmenu - active/message.svg";
+import activesettingIcon from "@App/assets/img/sidebarmenu - active/setting.svg";
 
 import { NavLink, useLocation } from "react-router-dom";
 

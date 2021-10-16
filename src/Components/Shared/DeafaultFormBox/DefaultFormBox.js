@@ -4,6 +4,7 @@ function DefaultFormBox(props) {
   const [idselect, setIdselect] = useState(0);
   const handleClick = (index) => {
     setIdselect(index);
+    props.setId(index);
   };
   return (
     <div className="DefaultFormBox w-4/5">
@@ -27,7 +28,11 @@ function DefaultFormBox(props) {
           </div>
         ))}
       </div>
-      <div className="DefaultFormBox__body w-full rounded-3xl"></div>
+      <div
+        className={`DefaultFormBox__body w-full rounded-3xl ${props.height}`}
+      >
+        {props.children}
+      </div>
     </div>
   );
 }
