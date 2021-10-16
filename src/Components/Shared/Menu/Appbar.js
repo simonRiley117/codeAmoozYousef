@@ -1,8 +1,8 @@
 import React from "react";
-import CardIcon from "@App/assets/Images/Icons/card Icon.svg";
-import profile from "@App/assets/Images/Pic/profile.png";
-import Codeamoozlogo from "@App/assets/Images/Logo/codeamoozLogo.svg";
-import logo from "@App/assets/Images/Logo/logo.svg";
+import CardIcon from "@Assets/Icons/card Icon.svg";
+import profile from "@Assets/Pic/profile.png";
+import Codeamoozlogo from "@Assets/Logo/codeamoozLogo.svg";
+import logo from "@Assets/Logo/logo.svg";
 
 const Appbar = () => {
   const menuItem = [
