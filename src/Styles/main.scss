@@ -31,7 +31,7 @@
 @import './components/Buttons/button';
 @import './components/Buttons/link';
 @import './components/BreadCrump/BreadCrump';
-@import './components/News/news';
+@import './components/Title/title';
 
 @import './components/Pagination/pagination';
 //-------------master------------
@@ -40,4 +40,5 @@
 // -------------------- layout --------------------
 //-----------------Coworker-----------
 @import './Layouts/CoWorkers/Master';
+@import './Layouts/News/news';
 @import './Layouts/Home/home';

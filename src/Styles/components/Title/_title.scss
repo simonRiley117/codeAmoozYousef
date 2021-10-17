@@ -1,0 +1,30 @@
+.title {
+	@include d-flex-column;
+	text-align: center;
+	position: relative;
+	padding: 1rem;
+
+	&::after {
+		content: '';
+		width: 16rem;
+		height: 1rem;
+		border-radius: 1rem;
+		background-color: $color-success-light;
+		margin-top: 1rem;
+		position: relative;
+		right: -6rem;
+		@include respond(phone) {
+			width: 11rem;
+			height: 0.5rem;
+		right: -4rem;
+
+		}
+	}
+
+	& h2 {
+		@include set-font(3rem, bold, $color-blue);
+		@include respond(phone) {
+			font-size: 16px;
+		}
+	}
+}

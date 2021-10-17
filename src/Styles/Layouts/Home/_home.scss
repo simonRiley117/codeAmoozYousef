@@ -55,8 +55,7 @@
 			}
 
 			& p {
-				font-size: 2.2rem;
-				font-weight: bold;
+				@include set-font(2.2rem, bold, $color-blue);
 				margin: 1.5rem 0;
 				@include respond(tablet) {
 					font-size: 14px;
@@ -117,11 +116,11 @@
 				color: $color-white;
 				padding: 1.2rem 1rem;
 				text-indent: 1rem;
-				border: .5rem solid rgba($color: #e0f3fa, $alpha: 0.64);
+				border: 0.5rem solid rgba($color: #e0f3fa, $alpha: 0.64);
 				border-radius: 3rem !important;
 				&:hover,
 				&:focus {
-					border-right-width: .5rem !important;
+					border-right-width: 0.5rem !important;
 				}
 				&::placeholder {
 					@include set-font(16px, bold, $color-white);
