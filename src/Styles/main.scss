@@ -22,13 +22,7 @@
 // -------------------- components --------------------
 //--------------share---------------
 
-@import "./components/Inputs/input";
-@import "./components/Menu/menu";
-@import "./components/Menu/sidebarmenu";
-@import "./components/Inputs/textarea";
-@import "./components/Footer/Footer";
-@import "./components/DefaultFormBox/DefaultFormBox";
-@import "./components/News/news";
+
 @import './components/Inputs/input';
 @import './components/Menu/menu';
 @import './components/Menu/sidebarmenu';
@@ -36,8 +30,10 @@
 @import './components/Footer/Footer';
 @import './components/DefaultFormBox/DefaultFormBox';
 @import './components/Buttons/button';
-@import "./components/Buttons/button";
+@import "./components/Buttons/link";
 @import "./components/BreadCrump/BreadCrump";
+@import "./components/News/news";
+
 
 //-------------master------------
 @import "./components/Master/WorkWithUs";
@@ -45,3 +41,4 @@
 // -------------------- layout --------------------
 //-----------------Coworker-----------
 @import "./Layouts/CoWorkers/Master";
+@import "./Layouts/Home/home";

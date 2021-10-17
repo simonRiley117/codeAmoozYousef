@@ -1,9 +1,11 @@
 import React from 'react';
-import Link from '@Components/Shared/Buttons/Link';
-import Button from '@Components/Shared/Buttons/Button';
-import { ReactComponent as ArrowLeftIcon } from '@Assets/Icons/arrow-left.svg';
+import Header from './Header';
 
 const Home = () => {
-	return <div className=''>Home</div>;
+	return (
+		<div className=''>
+			<Header />
+		</div>
+	);
 };
 export default Home;

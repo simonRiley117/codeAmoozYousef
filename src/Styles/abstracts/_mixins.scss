@@ -93,10 +93,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	}
 }
 
-@mixin set-font($size: 1.6rem, $family: regular, $color: $color-text) {
+@mixin set-font($size: 1.6rem, $weight: normal, $color: $color-text) {
 	font-size: $size;
 	color: $color;
-	font-family: map-get($map: $fonts, $key: $family);
+	font-weight: $weight;
 }
 
 @mixin display-grid($gap: 5rem, $min: 49rem) {
