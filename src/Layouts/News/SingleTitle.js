@@ -2,6 +2,7 @@ import React from 'react';
 import {cardData} from "./cardData";
 import Cardxx from "./Cardxx";
 import {Link,useParams} from "react-router-dom";
+import AntParagraph from "../../Components/Shared/AntParagraph";
 //images
 import datebook from '../../Assets/Images/Pic/Frame 87.png'
 import eye from '../../Assets/Images/Pic/Frame 88.png'
@@ -32,21 +33,21 @@ const SingleTitle = () => {
                             {api.seen}
                         </p>
                     </div>
-                    <p className="Title-paragraph mr-bt-av subtitle">
+                    <AntParagraph classes="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
-                    </p>
-                    <p className="Title-paragraph mr-bt-av subtitle">
+                    </AntParagraph>
+                    <AntParagraph classes="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
-                    </p>
+                    </AntParagraph>
                     <p className=" mr-bt-md Title-title title">
                         {api.title}
                     </p>
-                    <p className="Title-paragraph mr-bt-av subtitle">
+                    <AntParagraph classes="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
-                    </p>
-                    <p className="Title-paragraph mr-bt-av subtitle">
+                    </AntParagraph>
+                    <AntParagraph classes="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
-                    </p>
+                    </AntParagraph>
                 </Cardxx>
             </div>
             <div className="Title-column text-color">
