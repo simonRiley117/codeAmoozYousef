@@ -3,8 +3,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import Layout from "@Components/Shared/Layout/Layout";
 // ----------------- Pages -----------------
-import News from "@Components/Shared/News";
-import SingleTitle from "@Components/Shared/News/SingleTitle";
+import News from "@Layouts/News";
+import SingleTitle from "@Layouts/News/SingleTitle";
 import Home from "../Layouts/Home";
 import CoWorkers from "../Layouts/Home";
 import CoWorkersRouter from "./CoWorkersRouter";

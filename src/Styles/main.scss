@@ -1,27 +1,26 @@
 // -------------------- tailwindcss --------------------
-@import "~tailwindcss/tailwind.css";
+@import '~tailwindcss/tailwind.css';
 
 // -------------------- react-slick --------------------
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 
 // -------------------- fonts --------------------
-@import "./base/font";
+@import './base/font';
 
 // -------------------- abstracts --------------------
-@import "./abstracts/variables";
-@import "./abstracts/mixins";
-@import "./abstracts/functions";
-@import "./abstracts/animations";
+@import './abstracts/variables';
+@import './abstracts/mixins';
+@import './abstracts/functions';
+@import './abstracts/animations';
 
 // -------------------- base --------------------
-@import "./base/base";
-@import "./base/typography";
-@import "./base/utilities";
+@import './base/base';
+@import './base/typography';
+@import './base/utilities';
 
 // -------------------- components --------------------
 //--------------share---------------
-
 
 @import './components/Inputs/input';
 @import './components/Menu/menu';
@@ -30,15 +29,15 @@
 @import './components/Footer/Footer';
 @import './components/DefaultFormBox/DefaultFormBox';
 @import './components/Buttons/button';
-@import "./components/Buttons/link";
-@import "./components/BreadCrump/BreadCrump";
-@import "./components/News/news";
+@import './components/Buttons/link';
+@import './components/BreadCrump/BreadCrump';
+@import './components/News/news';
 
-
+@import './components/Pagination/pagination';
 //-------------master------------
-@import "./components/Master/WorkWithUs";
+@import './components/Master/WorkWithUs';
 
 // -------------------- layout --------------------
 //-----------------Coworker-----------
-@import "./Layouts/CoWorkers/Master";
-@import "./Layouts/Home/home";
+@import './Layouts/CoWorkers/Master';
+@import './Layouts/Home/home';

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Cardxx = ({img, children,borderRadius}) => {
     return (
         <div className="card">
-            <img style={{borderRadius}} src={img} alt="news image" className="card-img"/>
+            <img style={{borderRadius}} src={img} alt="news" className="card-img"/>
             <div className="card-content">
                 {children}
             </div>
