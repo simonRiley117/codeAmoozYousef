@@ -1,10 +1,10 @@
 import React from 'react';
-import {cardData} from "./cardData";
-import Cardxx from "./Cardxx";
+import {cardData} from "@Components/Layouts/News/cardData";
+import Cardxx from "@Components/Layouts/News/Cardxx";
 import {Link,useParams} from "react-router-dom";
 //images
-import datebook from '../../Assets/Images/Pic/Frame 87.png'
-import eye from '../../Assets/Images/Pic/Frame 88.png'
+import datebook from '@Assets/Pic/Frame 87.png'
+import eye from '@Assets/Pic/Frame 88.png'
 
 const SingleTitle = () => {
     const params = useParams();
