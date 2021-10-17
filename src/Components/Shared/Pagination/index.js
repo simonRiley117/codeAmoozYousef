@@ -52,7 +52,7 @@ const Pagination = props => {
                 onClick={onPrevious}
             >
                 <Button type="primary">
-                    صفحه بعدی
+                    صفحه قبلی
                 </Button>
             </li>
             {paginationRange.map(pageNumber => {
@@ -78,7 +78,7 @@ const Pagination = props => {
                 onClick={onNext}
             >
                 <Button type="primary">
-                    صفحه قبلی
+                    صفحه بعدی
                 </Button>
             </li>
         </ul>

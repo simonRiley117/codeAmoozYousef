@@ -22,11 +22,9 @@
 	padding-right: 3rem;
 	padding-left: 3rem;
 
-	@include respond(big-desktop) {
-		max-width: 1300px;
-	}
+	max-width: 1650px;
 	@include respond(laptop) {
-		max-width: 1140px;
+		max-width: 1240px;
 	}
 	@include respond(phone) {
 		padding-right: 2rem;
@@ -97,11 +95,21 @@
 }
 
 //margin bottom
-.mr-bt-sm {margin-bottom: 2rem}
-.mr-bt-md {margin-bottom: 3rem}
-.mr-bt-av {margin-bottom: 4rem}
-.mr-bt-bg {margin-bottom: 6rem}
-.mr-bt-hg {margin-bottom: 8rem}
+.mr-bt-sm {
+	margin-bottom: 2rem;
+}
+.mr-bt-md {
+	margin-bottom: 3rem;
+}
+.mr-bt-av {
+	margin-bottom: 4rem;
+}
+.mr-bt-bg {
+	margin-bottom: 6rem;
+}
+.mr-bt-hg {
+	margin-bottom: 8rem;
+}
 .ant-breadcrumb,
 .ant-breadcrumb > span:last-child,
 .ant-breadcrumb-separator {

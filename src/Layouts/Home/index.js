@@ -1,9 +1,13 @@
 import React from 'react';
-import Link from '@Components/Shared/Buttons/Link';
-import Button from '@Components/Shared/Buttons/Button';
-import { ReactComponent as ArrowLeftIcon } from '@Assets/Icons/arrow-left.svg';
+import Header from './Header';
+import Title from '@Components/Shared/Title';
 
 const Home = () => {
-	return <div className=''>Home</div>;
+	return (
+		<div className=''>
+			<Header />
+			<Title>ویژگی های کدآموز</Title>
+		</div>
+	);
 };
 export default Home;
