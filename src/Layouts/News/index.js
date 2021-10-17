@@ -1,6 +1,6 @@
 import React,{useMemo,useState} from 'react'
-import Cardxx from "./Cardxx";
-import {cardData} from "./cardData";
+import Cardxx from "../../Components/Layouts/News/Cardxx";
+import {cardData} from "../../Components/Layouts/News/cardData";
 import Link from "../../Components/Shared/Buttons/Link";
 import Pagination from "../../Components/Shared/Pagination";
 
@@ -29,7 +29,17 @@ const News = () => {
                            <p className="card-paragraph mr-bt-sm subtitle">
                                {card.text}
                            </p>
-                              <Link classes="news-button" to={`/news/${card.id}`} >  بیشتر بخوانید...</Link>
+                              <Link
+								  classes="news-button"
+								  to={{
+								  	pathname:'/news/singleTitle',
+									state : {
+								  		id : card.id,
+									}
+								  }}
+							  >
+								  بیشتر بخوانید...
+                              </Link>
                         </Cardxx>
                     );
                 })}

@@ -1,15 +1,18 @@
-import React from 'react';
-import {cardData} from "./cardData";
-import Cardxx from "./Cardxx";
-import {Link,useParams} from "react-router-dom";
+import React,{useState,useEffect} from 'react';
+import {cardData} from "@Components/Layouts/News/cardData";
+import Cardxx from "@Components/Layouts/News/Cardxx";
+import {Link,useLocation} from "react-router-dom";
 import AntParagraph from "../../Components/Shared/AntParagraph";
 //images
-import datebook from '../../Assets/Images/Pic/Frame 87.png'
-import eye from '../../Assets/Images/Pic/Frame 88.png'
+import datebook from '@Assets/Pic/Frame 87.png'
+import eye from '@Assets/Pic/Frame 88.png'
 
 const SingleTitle = () => {
-    const params = useParams();
-    const id = params.id - 1;
+    const [id , setId] = useState('1');
+    const location = useLocation();
+    useEffect(() => {
+        setId(location.state.id - 1)
+    },[location]);
     //we should be requesting for api but we don't gave any api so
     const api = cardData[id];
     const limitedApi = cardData.slice(0,3);
@@ -57,7 +60,16 @@ const SingleTitle = () => {
              <div className="Title-heads__container mr-bt-md">{cardData.map(card => {
                     return (
                         <p key={card.id} className="Title-heads subtitle">
-                           <Link to={`/news/${card.id}`}>{card.header}</Link>
+                           <Link
+                               to={{
+                                   pathname:'/news/singleTitle',
+                                   state : {
+                                       id : card.id,
+                                   }
+                               }}
+                           >
+                               {card.header}
+                           </Link>
                         </p>
                     );
                 })}
@@ -69,7 +81,14 @@ const SingleTitle = () => {
                  {limitedApi.map(card => {
                      return (
                  <div key={card.id} className="mr-bt-sm">
-                     <Link to={`/news/${card.id}`}>
+                     <Link
+                         to={{
+                             pathname:'/news/singleTitle',
+                             state : {
+                                 id : card.id,
+                             }
+                         }}
+                     >
                        <Cardxx borderRadius="15px 15px 0 0" img={card.img}>
                          <p className="orange subtitle">
                              {card.header}

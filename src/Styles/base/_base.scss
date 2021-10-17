@@ -19,8 +19,7 @@ html {
 }
 
 body {
-	font-family: $font-primary, $font-primary-bold, $font-primary-medium,
-		'sans-serif';
+	font-family: 'Vazir', 'sans-serif';
 	color: $color-text;
 	direction: rtl;
 }
@@ -65,4 +64,9 @@ nav,
 section {
 	margin: 0;
 	padding: 0;
+}
+
+img,
+video {
+	max-width: none;
 }
