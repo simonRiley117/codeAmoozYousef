@@ -1,10 +1,14 @@
 import React from 'react';
 import {cardData} from "./cardData";
 import Cardxx from "./Cardxx";
-import {Link} from "react-router-dom";
+import {Link,useParams} from "react-router-dom";
+//images
+import datebook from '../../Assets/Images/Pic/Frame 87.png'
+import eye from '../../Assets/Images/Pic/Frame 88.png'
 
-const SingleTitle = ({match}) => {
-    const id = match.params.id - 1;
+const SingleTitle = () => {
+    const params = useParams();
+    const id = params.id - 1;
     //we should be requesting for api but we don't gave any api so
     const api = cardData[id];
     const limitedApi = cardData.slice(0,3);
@@ -15,6 +19,19 @@ const SingleTitle = ({match}) => {
                     {api.header}
                 </h3>
                 <Cardxx borderRadius="15px 15px 0 0" img={api.img}>
+                    <div className="Title-details d-flex">
+                        <img className="Title-date" src={datebook} alt="date" />
+                        <p className=" light">
+                            {api.time}
+                        </p>
+                        <p className="margin-left light">
+                            {api.date}
+                        </p>
+                        <img className="Title-seen" src={eye} alt="eye" />
+                        <p className=" light">
+                            {api.seen}
+                        </p>
+                    </div>
                     <p className="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
                     </p>
@@ -65,5 +82,6 @@ const SingleTitle = ({match}) => {
         </div>
     );
 };
+
 
 export default SingleTitle;

@@ -21,6 +21,7 @@
     align-self: flex-end;
     margin-left: 0;
     margin-right: auto;
+    width: max-content;
   };
 };
 //card
@@ -35,6 +36,9 @@
   &-heading {
     color: $color-primary;
   };
+  &-paragraph {
+    font-weight: normal;
+  }
 };
 
 //single title
@@ -44,6 +48,17 @@
   display: grid;
   grid-template-columns: 80% 20%;
   grid-gap: 3rem;
+  &-paragraph {
+    line-height: 1.8;
+    font-weight: normal;
+  }
+  &-details {
+    background-color: rgba($color-gray-dark, 0.5);
+    border-radius: 0 100px 100px 0;
+    padding: 1rem;
+    width: 35%;
+    transform: translate(-192.2%,-200%);
+  }
   //media queries
 
   // lowering the outer space
@@ -73,6 +88,13 @@
   &-title {
     font-size: 2.5rem;
   };
+  &-date {
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+  &-seen {
+    margin-left: 1rem;
+  }
   &-paging {
     width: max-content;
     margin: 3rem  auto 0 auto;
@@ -89,3 +111,5 @@
 };
 
 .text-color {color: $color-text-light;}
+.light {font-weight: normal; margin-left: 1rem; font-size: 1.6rem}
+.margin-left {margin-left: 3rem}
