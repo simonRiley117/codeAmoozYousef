@@ -1,23 +1,22 @@
 import React from "react";
-import coworckerLogo from "@Assets/Pic/Group.png";
+import ProduceRulesLogo from "@Assets/Pic/masterrule.png";
 
-function WorkWithUs() {
+function ProduceRules() {
   return (
     <div className="WorkWithUs text-center">
       <div className="WorkWithUs__logoBox ">
         <div className="WorkWithUs__logoBack rounded-full"></div>
-        <img src={coworckerLogo} alt={coworckerLogo} />
+        <img src={ProduceRulesLogo} alt={ProduceRulesLogo} />
       </div>
-      <div className="WorkWithUs__content">
+      <div className="ProduceRules__content">
         {info.map((index, id) => (
           <div className="flex flex-col items-start justify-center">
-            <div className="flex flex-row items-center justify-start WorkWithUs__titlebox">
+            <div className="flex flex-row items-start justify-start WorkWithUs__titlebox">
               <div className="green-circle">{id + 1}</div>
-              <p className="WorkWithUs__title font-bold">{index.title}</p>
+              <p className="ProduceRules__title leading-loose items-start text-right">
+                {index.txt}
+              </p>
             </div>
-            <p className="WorkWithUs__txt text-right leading-loose">
-              {index.txt}
-            </p>
           </div>
         ))}
       </div>
@@ -25,7 +24,7 @@ function WorkWithUs() {
   );
 }
 
-export default WorkWithUs;
+export default ProduceRules;
 
 const info = [
   {

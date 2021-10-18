@@ -3,16 +3,21 @@
 	height: 40px;
 	min-width: 12rem;
 	padding: 4px 20px;
-	@include display-flex;
-	flex-direction: row-reverse;
-	column-gap: 1.5rem;
+
 	font-size: 16px;
 	font-weight: 600;
 	& svg {
 		max-width: 20px;
 		max-height: 20px;
 	}
-
+	&__flex {
+		@include display-flex;
+		flex-direction: row-reverse;
+		column-gap: 1.5rem;
+	}
+	&__inline {
+		display: inline-block;
+	}
 	&.disabled {
 		user-select: none;
 		cursor: not-allowed;
@@ -93,7 +98,7 @@
 			}
 		}
 		&::after {
-			content: '';
+			content: "";
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -133,7 +138,7 @@
 			max-height: 22px;
 		}
 		&::after {
-			content: '';
+			content: "";
 			position: absolute;
 			left: 0;
 			top: 0;

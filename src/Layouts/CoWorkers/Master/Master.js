@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
 import WorkWithUs from "@Components/Master/WorkWithUs";
+import CoursStandards from "@Components/Master/CoursStandards";
+import ProduceRules from "@Components/Master/ProduceRules";
+import MasterSignUp from "@Components/Master/MasterSignUp";
 
 function Master() {
   const [id, setId] = useState(0);
@@ -17,6 +20,9 @@ function Master() {
           height="Master__form"
         >
           {id === 0 && <WorkWithUs />}
+          {id === 1 && <CoursStandards />}
+          {id === 2 && <ProduceRules />}
+          {id === 3 && <MasterSignUp />}
         </DefaultFormBox>
       </div>
     </div>
