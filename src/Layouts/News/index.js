@@ -32,7 +32,7 @@ const News = () => {
                               <Link
 								  classes="news-button"
 								  to={{
-								  	pathname:'/news/singleTitle',
+								  	pathname:'/news/NewsDetails',
 									state : {
 								  		id : card.id,
 									}

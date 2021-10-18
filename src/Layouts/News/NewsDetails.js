@@ -3,11 +3,12 @@ import {cardData} from "@Components/Layouts/News/cardData";
 import Cardxx from "@Components/Layouts/News/Cardxx";
 import {Link,useLocation} from "react-router-dom";
 import AntParagraph from "../../Components/Shared/AntParagraph";
+import Detailsxx from "../../Components/Layouts/News/Detailsxx";
 //images
 import datebook from '@Assets/Pic/Frame 87.png'
 import eye from '@Assets/Pic/Frame 88.png'
 
-const SingleTitle = () => {
+const NewsDetails = () => {
     const [id , setId] = useState('1');
     const location = useLocation();
     useEffect(() => {
@@ -16,26 +17,27 @@ const SingleTitle = () => {
     //we should be requesting for api but we don't gave any api so
     const api = cardData[id];
     const limitedApi = cardData.slice(0,3);
+    //information of the news
+    const info = <div className="Title-details d-flex">
+        <img className="Title-date" src={datebook} alt="date" />
+        <p className=" light">
+            {api.time}
+        </p>
+        <p className="margin-left light">
+            {api.date}
+        </p>
+        <img className="Title-seen" src={eye} alt="eye" />
+        <p className=" light">
+            {api.seen}
+        </p>
+    </div>
     return (
         <div className="Title">
             <div className="Title-column text-color">
                 <h3 className="Title-heading mr-bt-md text-color title">
                     {api.header}
                 </h3>
-                <Cardxx borderRadius="15px 15px 0 0" img={api.img}>
-                    <div className="Title-details d-flex">
-                        <img className="Title-date" src={datebook} alt="date" />
-                        <p className=" light">
-                            {api.time}
-                        </p>
-                        <p className="margin-left light">
-                            {api.date}
-                        </p>
-                        <img className="Title-seen" src={eye} alt="eye" />
-                        <p className=" light">
-                            {api.seen}
-                        </p>
-                    </div>
+                <Detailsxx borderRadius="15px 15px 0 0" img={api.img} info={info}>
                     <AntParagraph classes="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
                     </AntParagraph>
@@ -51,7 +53,7 @@ const SingleTitle = () => {
                     <AntParagraph classes="Title-paragraph mr-bt-av subtitle">
                         {api.paragraph}
                     </AntParagraph>
-                </Cardxx>
+                </Detailsxx>
             </div>
             <div className="Title-column text-color">
                 <h3 className="Title-heading text-color title">
@@ -62,7 +64,7 @@ const SingleTitle = () => {
                         <p key={card.id} className="Title-heads subtitle">
                            <Link
                                to={{
-                                   pathname:'/news/singleTitle',
+                                   pathname:'/news/NewsDetails',
                                    state : {
                                        id : card.id,
                                    }
@@ -83,7 +85,7 @@ const SingleTitle = () => {
                  <div key={card.id} className="mr-bt-sm">
                      <Link
                          to={{
-                             pathname:'/news/singleTitle',
+                             pathname:'/news/NewsDetails',
                              state : {
                                  id : card.id,
                              }
@@ -104,4 +106,4 @@ const SingleTitle = () => {
 };
 
 
-export default SingleTitle;
+export default NewsDetails;

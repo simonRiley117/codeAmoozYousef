@@ -4,9 +4,9 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Layout from "@Components/Shared/Layout/Layout";
 // ----------------- Pages -----------------
 import News from "@Layouts/News";
-import SingleTitle from "@Layouts/News/SingleTitle";
 import Home from "../Layouts/Home";
 import CoWorkersRouter from "./CoWorkersRouter";
+import NewsDetails from "../Layouts/News/NewsDetails";
 
 const Router = () => {
   return (
@@ -17,7 +17,7 @@ const Router = () => {
             <CoWorkersRouter />
           </Route>
           <Route exact path='/news' component={News} />
-          <Route exact path='/news/singleTitle' component={SingleTitle}/>
+          <Route exact path='/news/NewsDetails' component={NewsDetails}/>
       </Layout>
 
       <Route path="*">{() => <Redirect to="/" />}</Route>

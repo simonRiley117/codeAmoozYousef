@@ -57,8 +57,7 @@
     background-color: rgba($color-gray-dark, 0.5);
     border-radius: 0 100px 100px 0;
     padding: 1rem;
-    width: 35%;
-    transform: translate(-192.2%,-200%);
+    width: 100%;
   }
   //media queries
 
@@ -106,6 +105,29 @@
     }
   }
 };
+
+//details
+.details {
+  @include d-flex-column('','');
+  background-color: white;
+  border-radius: 15px;
+  box-shadow:$box-shadow;
+  &-container {
+    position: relative;
+  }
+  &-img {
+    //position: absolute;
+    //top: 0;
+    //left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &-info {
+    position: absolute;
+    bottom: 2rem;
+    left: 2px;
+  }
+}
 
 .orange {
   color: $color-primary;
