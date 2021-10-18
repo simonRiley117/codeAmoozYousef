@@ -9,7 +9,7 @@ import { ReactComponent as EditorIcon } from '@Assets/Icons/home-editor.svg';
 import { ReactComponent as GrandIcon } from '@Assets/Icons/home-grand.svg';
 import { ReactComponent as ManitorIcon } from '@Assets/Icons/home-manitor.svg';
 
-const index = () => {
+const Properties = () => {
 	return (
 		<section className='home__property'>
 			<div className='container'>
@@ -35,4 +35,4 @@ const index = () => {
 		</section>
 	);
 };
-export default index;
+export default Properties;
