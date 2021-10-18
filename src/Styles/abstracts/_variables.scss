@@ -13,9 +13,13 @@ $color-blue-dark: #012f47;
 $color-blue-light: #042f47;
 
 $color-green: #47bea7;
+$color-green-opacity: rgba(71, 190, 166, 0.6);
 $color-green-dark: #46bea7;
+$color-phosphor: #b4d236;
+$color-phosphor-opacity: rgba(179, 210, 54, 0.6);
 
 $color-section: #1a6577;
+$color-section-opacity: rgba(26, 100, 119, 0.6);
 
 // ------------ black ------------
 $color-black-light: #010101;
@@ -56,6 +60,14 @@ $shadow-button: drop-shadow(
 		rgba(
 			$color: #000,
 			$alpha: 0.2,
+		)
+);
+$shadow-button-1: 0px 4px 6px rgba(13, 48, 107, 0.5);
+$shadow-backgroud: drop-shadow(
+	0px 4px 30px
+		rgba(
+			$color: #000,
+			$alpha: 0.25,
 		)
 );
 

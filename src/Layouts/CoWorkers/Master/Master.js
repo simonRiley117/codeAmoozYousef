@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
-import WorkWithUs from "@Components/Master/WorkWithUs";
-import CoursStandards from "@Components/Master/CoursStandards";
-import ProduceRules from "@Components/Master/ProduceRules";
-import MasterSignUp from "@Components/Master/MasterSignUp";
+import WorkWithUs from "@Components/Layouts/Master/WorkWithUs";
+import CoursStandards from "@Components/Layouts/Master/CoursStandards";
+import ProduceRules from "@Components/Layouts/Master/ProduceRules";
+import MasterSignUp from "@Components/Layouts/Master/MasterSignUp";
 
 function Master() {
   const [id, setId] = useState(0);
   return (
-    <div className="Master">
+    <div className="Master container">
       <BreadCrump item={menu} />
       <p className="Master__title text-center	">اساتید</p>
       <div className="Master__formBox">
