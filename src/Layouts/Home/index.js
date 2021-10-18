@@ -1,13 +1,13 @@
-import React from "react";
-import Header from "./Header";
-import Title from "@Components/Shared/Title";
+import React from 'react';
+import Header from './Header';
+import Properties from './Properties';
 
 const Home = () => {
-  return (
-    <div className="">
-      <Header />
-      <Title>ویژگی های کدآموز</Title>
-    </div>
-  );
+	return (
+		<div className=''>
+			<Header />
+			<Properties />
+		</div>
+	);
 };
 export default Home;

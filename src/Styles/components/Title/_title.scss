@@ -1,4 +1,4 @@
-.title {
+.title__box {
 	@include d-flex-column;
 	text-align: center;
 	position: relative;
@@ -16,8 +16,7 @@
 		@include respond(phone) {
 			width: 11rem;
 			height: 0.5rem;
-		right: -4rem;
-
+			right: -4rem;
 		}
 	}
 

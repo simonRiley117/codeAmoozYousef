@@ -10,7 +10,6 @@ const Button = ({
 	success,
 	disabled,
 	children,
-	ico,
 	...rest
 }) => {
 	return (
@@ -21,6 +20,7 @@ const Button = ({
 				success: success,
 				disabled: disabled,
 			})}
+			
 			{...rest}
 		>
 			{children}
