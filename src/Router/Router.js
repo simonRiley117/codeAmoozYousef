@@ -7,6 +7,7 @@ import News from "@Layouts/News";
 import Home from "../Layouts/Home";
 import CoWorkersRouter from "./CoWorkersRouter";
 import NewsDetails from "../Layouts/News/NewsDetails";
+import Faq from "../Layouts/Faq";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
           </Route>
           <Route exact path='/news' component={News} />
           <Route exact path='/news/NewsDetails' component={NewsDetails}/>
+          <Route exact path='/faq' component={Faq}/>
       </Layout>
 
       <Route path="*">{() => <Redirect to="/" />}</Route>

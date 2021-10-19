@@ -1,0 +1,25 @@
+.faq {
+  max-width: 80%;
+  margin:10rem auto 3rem auto;
+
+  // accordion
+  &-accordion {
+    @include d-flex-column('','flex-start');
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    &__paragraph {
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+    &__heading {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+    }
+    &__content {
+      padding: 1.3rem;
+      padding-top: 0;
+    }
+  }
+}
