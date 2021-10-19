@@ -305,8 +305,7 @@
 					padding-right: 3.5rem;
 					@include respond(big-phone) {
 						align-self: flex-end;
-					padding-right: 2rem;
-
+						padding-right: 2rem;
 					}
 				}
 				&::after {
@@ -340,7 +339,7 @@
 				width: 100%;
 				filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.24));
 				@include respond(big-phone) {
-					max-width: 30rem;
+					max-width: 32rem;
 				}
 
 				& p {
@@ -358,15 +357,130 @@
 				background-color: $color-blue;
 				@include display-flex(center);
 				margin: 1rem;
-				padding: 10px;
-				@include respond(big-phone) {
-					width: 50px;
-				height: 50px;
-				}
+				padding: 15px;
 
 				& svg {
 					width: 100%;
 					height: 100%;
+				}
+			}
+		}
+	}
+
+	&__offers {
+		@extend %space-section;
+		overflow-x: hidden;
+
+		& .container {
+			@include respond(laptop) {
+				max-width: 100%;
+				padding: 0;
+			}
+		}
+
+		&--content {
+			@include d-flex-column;
+			flex-wrap: nowrap;
+			margin: 8rem 0;
+			@include respond(tablet) {
+				margin: 4rem 0;
+			}
+		}
+
+		&--item {
+			position: relative;
+			height: 30rem;
+			width: 100%;
+
+			@include display-flex(flex-end);
+			background-color: $color-section;
+			border-radius: 20rem;
+			width: 86rem;
+			height: 30rem;
+			padding: 2rem 7rem 0;
+			@include respond(laptop) {
+				width: 72rem;
+			}
+			@include respond(tablet) {
+				height: 20rem;
+				width: auto;
+				padding: 1rem 2rem 0;
+			}
+			@include respond(phone) {
+				height: 16.6rem;
+			}
+
+			&:nth-child(1) {
+				align-self: flex-start;
+				right: -15.5rem;
+				@include respond(laptop) {
+					right: 0;
+					border-radius: 20rem 0 0 20rem;
+				}
+			}
+			&:nth-child(2) {
+				align-self: flex-end;
+				left: -15.5rem;
+				@include respond(laptop) {
+					left: 0;
+					border-radius: 0 20rem 20rem 0;
+					margin-top: 2rem;
+				}
+
+				& .home__offers--item-content {
+					flex-direction: row-reverse;
+					margin-left: auto;
+				}
+			}
+
+			&-content {
+				@include display-flex(space-between);
+				max-width: 78%;
+				height: 100%;
+				width: 100%;
+				max-width: 80%;
+				@include respond(laptop) {
+					max-width: 100%;
+				}
+			}
+			&-image {
+				align-self: flex-end;
+				& img {
+					width: 100%;
+					height: 100%;
+					max-width: 24rem;
+					max-height: 28rem;
+					@include respond(tablet) {
+						max-width: 18rem;
+						max-height: 18rem;
+					}
+					@include respond(phone) {
+						max-width: 12rem;
+						max-height: 14rem;
+					}
+				}
+			}
+
+			&-info {
+				@include d-flex-column;
+
+				& h2 {
+					@include set-font(2rem, bold, $color-white);
+					margin-bottom: 4rem;
+					@include respond(tablet) {
+						font-size: 14px;
+						margin-bottom: 3rem;
+					}
+					@include respond(phone) {
+						font-size: 12px;
+					}
+				}
+
+				& .link {
+					min-width: 22rem;
+					@include respond(tablet) {
+						min-width: 18rem;
+					}
 				}
 			}
 		}

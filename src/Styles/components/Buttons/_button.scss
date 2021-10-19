@@ -3,7 +3,7 @@
 	height: 40px;
 	min-width: 12rem;
 	padding: 4px 20px;
-	@include display-flex;
+	@include display-flex(center);
 	flex-direction: row-reverse;
 	column-gap: 1.5rem;
 	font-size: 16px;
