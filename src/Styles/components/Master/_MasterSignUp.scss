@@ -1,0 +1,10 @@
+.MasterSignUp {
+    &__formBox {
+        width: 75%;
+        margin: 0 auto;
+    }
+    &__gridBox {
+        column-gap: 15rem;
+        row-gap: 5rem;
+    }
+}

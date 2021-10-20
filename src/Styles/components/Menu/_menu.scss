@@ -1,38 +1,38 @@
-.Menu__sec{
+.Menu__sec {
     color: #ffffff;
     font-size: 14px;
     position: fixed;
+    z-index: 10;
     width: 100vw;
     top: 0;
     li.Menu__li {
         padding: 0 23px;
         cursor: pointer;
     }
-    .logo{
-     margin-left: 10px;
+    .logo {
+        margin-left: 10px;
     }
     .menu_logo {
         padding-right: 163px;
     }
-    .Menu__nav{
-      background-color: $color-blue--dark;
-      width: 71vw;
-      padding: 8px 0;
-      padding-left: 123px;
-      border-bottom-right-radius: 85px;
+    .Menu__nav {
+        background-color: $color-blue-dark;
+        width: 71vw;
+        padding: 8px 0;
+        padding-left: 123px;
+        border-bottom-right-radius: 85px;
     }
-    .Menu__ul{
-
+    .Menu__ul {
     }
     p.profile__name {
         margin-left: 16px;
     }
     .profile__image {
-       img{
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        overflow: hidden;
-       }
+        img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
     }
 }

@@ -7,7 +7,6 @@ module.exports = {
 		fontFamily: {
 			// sans: ['Vazir', 'sans-serif'],
 		},
-
 		extend: {},
 	},
 	variants: {

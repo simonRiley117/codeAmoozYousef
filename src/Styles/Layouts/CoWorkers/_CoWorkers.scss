@@ -1,0 +1,42 @@
+.CoWorkers {
+    &__titleBox {
+        margin-top: 3.4rem;
+    }
+    &__contentBox {
+        margin: 4.7rem auto 2rem auto;
+        column-gap: 3.88rem;
+    }
+    &__box {
+        padding: 4.2rem 3.3rem 7.19rem 3.3rem;
+        border-radius: 20rem;
+        filter: $shadow-backgroud;
+        min-height: 56.5rem;
+        &-2 {
+            background-color: $color-green-opacity;
+        }
+        &-1 {
+            background-color: $color-section-opacity;
+        }
+        &-0 {
+            background-color: $color-phosphor-opacity;
+        }
+    }
+    &__titr {
+        color: $color-blue;
+        font-size: 2rem;
+    }
+    &__icons {
+        width: 26.703rem;
+        height: auto;
+    }
+    &__txt {
+        color: $color-black-light;
+        font-size: 1.7rem;
+        // height: 15rem;
+    }
+
+    &__btn {
+        box-shadow: $shadow-button-1;
+        margin-top: 1rem;
+    }
+}

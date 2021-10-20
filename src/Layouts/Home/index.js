@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from './Header';
-import Title from '@Components/Shared/Title';
+import Properties from './Properties';
+import Work from './Work';
 
 const Home = () => {
 	return (
 		<div className=''>
 			<Header />
-			<Title>ویژگی های کدآموز</Title>
+			<Properties />
+			<Work />
 		</div>
 	);
 };

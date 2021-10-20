@@ -1,10 +1,10 @@
-import React,{useMemo,useState} from 'react'
+import React, { useMemo, useState } from "react";
 import Cardxx from "../../Components/Layouts/News/Cardxx";
-import {cardData} from "../../Components/Layouts/News/cardData";
+import { cardData } from "../../Components/Layouts/News/cardData";
 import Link from "../../Components/Shared/Buttons/Link";
 import Pagination from "../../Components/Shared/Pagination";
 
-let PageSize = 10
+let PageSize = 10;
 const News = () => {
     //pagination props preparation
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,23 +23,23 @@ const News = () => {
                 {currentTableData.map(card => {
                     return (
                         <Cardxx key={card.id} borderRadius="15px" img={card.img}>
-                           <h3 className="card-heading mr-bt-sm title">
-                               {card.header}
-                           </h3>
-                           <p className="card-paragraph mr-bt-sm subtitle">
-                               {card.text}
-                           </p>
-                              <Link
-								  classes="news-button"
-								  to={{
-								  	pathname:'/news/NewsDetails',
-									state : {
-								  		id : card.id,
-									}
-								  }}
-							  >
-								  بیشتر بخوانید...
-                              </Link>
+                            <h3 className="card-heading mr-bt-sm title">
+                                {card.header}
+                            </h3>
+                            <p className="card-paragraph mr-bt-sm subtitle">
+                                {card.text}
+                            </p>
+                            <Link
+                                classes="news-button"
+                                to={{
+                                    pathname: '/news/NewsDetails',
+                                    state: {
+                                        id: card.id,
+                                    }
+                                }}
+                            >
+                                بیشتر بخوانید...
+                            </Link>
                         </Cardxx>
                     );
                 })}
@@ -58,4 +58,4 @@ const News = () => {
     );
 };
 
-export default News
+export default News;

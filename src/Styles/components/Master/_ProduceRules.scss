@@ -1,0 +1,14 @@
+.ProduceRules {
+    &__content {
+        margin-top: 4rem;
+        & > * {
+            margin-bottom: 1.85rem;
+        }
+    }
+    &__title {
+        margin-right: 1.9rem;
+        color: $color-text-black-light-2;
+        width: 90%;
+        font-size: 1.6rem;
+    }
+}

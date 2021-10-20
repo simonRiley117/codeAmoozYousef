@@ -26,7 +26,6 @@ const Button = ({
 		</ButtonBase>
 	);
 };
-
 Button.defaultProps = {
 	type: 'default',
 	large: false,
@@ -38,6 +37,7 @@ Button.propTypes = {
 	children: PropTypes.node.isRequired,
 	classes: PropTypes.string,
 	large: PropTypes.bool,
+	ico: PropTypes.bool,
 	success: PropTypes.bool,
 	disabled: PropTypes.bool,
 	type: PropTypes.oneOfType(

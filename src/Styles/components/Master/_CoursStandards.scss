@@ -1,0 +1,23 @@
+.CoursStandards {
+    &__titrBox {
+        margin: 5rem 0 0rem 0;
+    }
+    &__titr {
+        color: $color-text-blue;
+        font-size: 2rem;
+        margin-bottom: 1.6rem;
+    }
+    &__titrs {
+        color: $color-text-blue;
+        font-size: 2rem;
+        margin-right: 1.9rem;
+    }
+    &__text {
+        color: $color-text-light;
+        font-size: 1.6rem;
+        padding-bottom: 2.5rem;
+        border-right: 1px solid $color-primary;
+        padding-right: 1.9rem;
+        margin-right: 1.3rem;
+    }
+}

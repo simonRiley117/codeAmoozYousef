@@ -6,8 +6,8 @@ const Faq = () => {
     const [activeId,setActiveId] = useState(null)
     return (
         <div className="faq">
-            <h2 className="faq-heading">
-
+            <h2 className="faq-heading title__box">
+                 سوالات متداول
             </h2>
             {
                 faqData.map(faq => {

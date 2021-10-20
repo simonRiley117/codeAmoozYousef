@@ -9,26 +9,34 @@ $color-white-light: rgba(243, 243, 243, 0.7);
 
 // ------------ Background ------------
 $color-blue: #022f47;
-$color-blue--dark: #012f47;
-$color-blue--light: #042f47;
+$color-blue-dark: #012f47;
+$color-blue-light: #042f47;
 
 $color-green: #47bea7;
+$color-green-opacity: rgba(71, 190, 166, 0.6);
 $color-green-dark: #46bea7;
+$color-phosphor: #b4d236;
+$color-phosphor-opacity: rgba(179, 210, 54, 0.6);
 
 $color-section: #1a6577;
+$color-section-opacity: rgba(26, 100, 119, 0.6);
 
 // ------------ black ------------
 $color-black-light: #010101;
-$color-black-light-1: rgba(18, 18, 18, 0.8);;
+$color-black-light-1: rgba(18, 18, 18, 0.8);
 $color-black: #000;
+$color-text-black-light-2: rgba(18, 18, 18, 0.7);
 
 //------------------gray----------------
 $color-gray: #e5e5e5;
+$color-gray-light: #ededed;
 $color-gray-dark: #bbbbbb;
+$color-dark-gray: rgba(0, 0, 0, 0.2);
 
 // ------------ Text ------------
 $color-text: #121212;
-$color-text-gray:#12121280;
+$color-text-gray: #12121280;
+$color-text-blue: #002171;
 $color-text-light: rgba(
 	$color: $color-text,
 	$alpha: 0.7,
@@ -38,7 +46,7 @@ $color-disable: rgba(
 	$alpha: 0.5,
 );
 $color-success: #329c00;
-$color-success-light: #B5D335;
+$color-success-light: #b5d335;
 $color-error: #ff5a67;
 
 $color-gradient: linear-gradient(
@@ -52,6 +60,14 @@ $shadow-button: drop-shadow(
 		rgba(
 			$color: #000,
 			$alpha: 0.2,
+		)
+);
+$shadow-button-1: 0px 4px 6px rgba(13, 48, 107, 0.5);
+$shadow-backgroud: drop-shadow(
+	0px 4px 30px
+		rgba(
+			$color: #000,
+			$alpha: 0.25,
 		)
 );
 
@@ -80,4 +96,4 @@ $bp-sm: 36em; // 576px;
 $bp-xs: 30em; // 480px;
 
 //box shadow
-$box-shadow :  0 2px 8px 2px rgba(0,0,0,0.15);
+$box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.15);

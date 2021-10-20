@@ -1,6 +1,11 @@
 .faq {
   max-width: 80%;
   margin:10rem auto 3rem auto;
+  &-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
 
   // accordion
   &-accordion {

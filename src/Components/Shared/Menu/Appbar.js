@@ -3,11 +3,12 @@ import CardIcon from "@Assets/Icons/card Icon.svg";
 import profile from "@Assets/Pic/profile.png";
 import Codeamoozlogo from "@Assets/Logo/codeamoozLogo.svg";
 import logo from "@Assets/Logo/logo.svg";
+import { NavLink } from "react-router-dom";
 
 const Appbar = () => {
   const menuItem = [
     {
-      url: "",
+      url: "/",
       text: "صفحه ی اصلی",
       id: 1,
     },
@@ -32,7 +33,7 @@ const Appbar = () => {
       id: 5,
     },
     {
-      url: "",
+      url: "/coWorkers",
       text: "همکاری و اساتید",
       id: 6,
     },
@@ -47,7 +48,17 @@ const Appbar = () => {
         <nav className="Menu__nav d-flex-space">
           <ul className="Menu__ul d-flex-space list">
             {menuItem.map((i) => (
-              <li className="Menu__li">{i.text}</li>
+              <li className="Menu__li">
+                <NavLink
+                  exact
+                  to={i.url}
+                  activeStyle={{
+                    color: "#f68521",
+                  }}
+                >
+                  {i.text}{" "}
+                </NavLink>
+              </li>
             ))}
           </ul>
           <img src={CardIcon} alt="card" />
