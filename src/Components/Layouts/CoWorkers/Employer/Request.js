@@ -5,6 +5,7 @@ import InputTextArea from "@Components/Shared/Inputs/Textarea";
 import CheckBox from "@Components/Shared/Inputs/CheckBox";
 import Button from "@Components/Shared/Buttons/Button";
 import UploadProfile from "@Components/Shared/Inputs/UploadProfile";
+import PopUp from "@Components/Shared/PopUp/PopUp";
 
 function Request() {
   const {
@@ -51,8 +52,7 @@ function Request() {
               control={control}
               errors={errors}
             />
-           <div>
-             </div>
+            <div></div>
             <Input
               label="شماره تماس:"
               register={{

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Deatil() {
+  useEffect(() => {}, []);
   return (
     <div className="Deatil">
       <p className="Deatil__txt leading-loose">
