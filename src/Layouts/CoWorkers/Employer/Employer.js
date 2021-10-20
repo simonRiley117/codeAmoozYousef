@@ -8,7 +8,7 @@ function Employer() {
   const [id, setId] = useState(0);
 
   return (
-    <div>
+    <div className="Master container">
       <BreadCrump item={menu} />
       <p className="Master__title text-center"> تیم کارفرما</p>
       <div className="Master__formBox">
