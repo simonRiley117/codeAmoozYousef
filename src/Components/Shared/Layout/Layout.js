@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Appbar />
-      <main>{children}</main>
+      <main id="target" reference="target">
+        {children}
+      </main>
       {/* <Footer /> */}
     </>
   );

@@ -19,7 +19,7 @@ const CheckBox = ({
 }) => {
   const error = errors[name];
   return (
-    <div className="input">
+    <div className="input input__CheckboxBase">
       <Controller
         name={name}
         control={control}
@@ -27,11 +27,11 @@ const CheckBox = ({
         render={({ field }) => (
           <CheckboxBase {...field}>
             {" "}
-            <div className="flex items-center">
-              {label}{" "}
+            <div className="flex items-center ">
               <a href={`/${href}`} className="input__Link">
                 {message}
               </a>
+              {label}{" "}
             </div>
           </CheckboxBase>
         )}

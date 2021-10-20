@@ -1,0 +1,18 @@
+.PopUp {
+    background-color: $color-ppoup-backgroud;
+    position: absolute;
+    left: 12.2rem;
+    top: 10.2rem;
+    border-radius: 1.5rem;
+    font-size: 1.6rem;
+    padding: 1.5rem 1.3rem;
+    animation: plce 1s;
+}
+@keyframes plce {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 12.2rem;
+    }
+}

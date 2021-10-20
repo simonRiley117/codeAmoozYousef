@@ -33,6 +33,7 @@
 @import "./components/Buttons/link";
 @import "./components/BreadCrump/BreadCrump";
 @import "./components/Title/title";
+@import "./components/PopUp/PopUp";
 
 @import "./components/Pagination/pagination";
 //-------------master------------
@@ -40,6 +41,8 @@
 @import "./components/Master/CoursStandards";
 @import "./components/Master/ProduceRules";
 @import "./components/Master/MasterSignUp";
+//----------------TechnicalTeam-----------
+@import "./components/TechnicalTeam/Deatil";
 
 // -------------------- layout --------------------
 //-----------------Coworker-----------
@@ -49,7 +52,8 @@
 @import './Layouts/Faq/.faq';
 
 @import "./Layouts/CoWorkers/Master";
+@import "./Layouts/CoWorkers/CoWorkers";
+@import "./Layouts/CoWorkers/Technicalteam";
 @import "./Layouts/News/news";
 @import "./Layouts/Contact-us/contact";
 @import "./Layouts/Home/home";
-@import "./Layouts/CoWorkers/CoWorkers";

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
-import WorkWithUs from "@Components/Layouts/Master/WorkWithUs";
-import CoursStandards from "@Components/Layouts/Master/CoursStandards";
-import ProduceRules from "@Components/Layouts/Master/ProduceRules";
-import MasterSignUp from "@Components/Layouts/Master/MasterSignUp";
+import WorkWithUs from "@Components/Layouts/CoWorkers/Master/WorkWithUs";
+import CoursStandards from "@Components/Layouts/CoWorkers/Master/CoursStandards";
+import ProduceRules from "@Components/Layouts/CoWorkers/Master/ProduceRules";
+import MasterSignUp from "@Components/Layouts/CoWorkers/Master/MasterSignUp";
 
 function Master() {
   const [id, setId] = useState(0);
