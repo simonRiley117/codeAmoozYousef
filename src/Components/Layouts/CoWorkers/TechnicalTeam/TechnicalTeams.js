@@ -10,6 +10,8 @@ function TechnicalTeams() {
   const location = useLocation();
   const [titles, setTitles] = useState("");
   const [menu, setMenu] = useState([]);
+  const [id, setId] = useState(0);
+
   useEffect(() => {
     setTitles(location.state.title);
     setMenu([
@@ -31,7 +33,6 @@ function TechnicalTeams() {
       },
     ]);
   }, [location]);
-  const [id, setId] = useState(0);
 
   return (
     <div className="TechnicalTeams">

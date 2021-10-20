@@ -4,6 +4,7 @@ import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
 import CoWorkers from "@Layouts/CoWorkers";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
+import Employer from "@Layouts/CoWorkers/Employer/Employer";
 
 const CoWorkersRouter = () => {
   let { path, url } = useRouteMatch();
@@ -22,6 +23,9 @@ const CoWorkersRouter = () => {
         </Route>
         <Route exact path={`${path}/technicalteam/:name`}>
           <TechnicalTeams />
+        </Route>
+        <Route exact path={`${path}/employer`}>
+          <Employer />
         </Route>
       </Switch>
     </div>
