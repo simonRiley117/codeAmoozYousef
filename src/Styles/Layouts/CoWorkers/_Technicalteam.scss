@@ -1,0 +1,29 @@
+.Technicalteam {
+    &__content {
+        margin-top: 2.4rem;
+    }
+    &__Box {
+        background-color: $color-white;
+        box-shadow: $shadow-backgroud1;
+        border-radius: 1.5rem;
+        padding: 1.2rem 2.7rem;
+        margin-bottom: 1.7rem;
+        & > *:last-child {
+            color: $color-text-gray-dark;
+            font-size: 1.8rem;
+        }
+    }
+    &__txt {
+        width: 70%;
+        & > *:first-child {
+            color: $color-primary;
+            font-size: 1.6rem;
+
+            // margin-right: 10.9rem;
+        }
+        & > *:last-child {
+            color: $color-text-light-1;
+            font-size: 1.8rem;
+        }
+    }
+}

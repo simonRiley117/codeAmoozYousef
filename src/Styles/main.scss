@@ -40,10 +40,12 @@
 @import "./components/Master/CoursStandards";
 @import "./components/Master/ProduceRules";
 @import "./components/Master/MasterSignUp";
+//----------------TechnicalTeam-----------
+@import "./components/TechnicalTeam/Deatil";
 
 // -------------------- layout --------------------
-//-----------------Coworker-----------
 @import "./Layouts/CoWorkers/Master";
+@import "./Layouts/CoWorkers/CoWorkers";
+@import "./Layouts/CoWorkers/Technicalteam";
 @import "./Layouts/News/news";
 @import "./Layouts/Home/home";
-@import "./Layouts/CoWorkers/CoWorkers";

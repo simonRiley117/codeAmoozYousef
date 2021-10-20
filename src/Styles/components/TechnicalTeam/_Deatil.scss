@@ -1,0 +1,37 @@
+.Deatil {
+    padding: 5rem 5.7rem 3.95rem 3rem;
+    &__txt {
+        font-size: 1.6rem;
+        color: $color-text-light;
+    }
+    &__listBox {
+        margin-top: 5.5rem;
+    }
+    &__title {
+        color: $color-blue;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    &__list {
+        font-size: 1.6rem;
+        color: $color-text-light;
+        list-style: none;
+        & > * {
+            margin-bottom: 1rem;
+        }
+    }
+    &__item {
+        position: relative;
+        padding-right: 2.6rem;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: $color-blue;
+            right: 0rem;
+            top: 0.8rem;
+        }
+    }
+}
