@@ -1,10 +1,12 @@
 import React from "react";
-import mastersignup from "@Assets/Pic/mastersignup.png";
 import { useForm } from "react-hook-form";
 import Input from "@Components/Shared/Inputs/Input";
+import InputTextArea from "@Components/Shared/Inputs/Textarea";
+import CheckBox from "@Components/Shared/Inputs/CheckBox";
+import Button from "@Components/Shared/Buttons/Button";
 import UploadProfile from "@Components/Shared/Inputs/UploadProfile";
 
-function MasterSignUp() {
+function Request() {
   const {
     handleSubmit,
     control,
@@ -12,11 +14,7 @@ function MasterSignUp() {
   } = useForm();
   const onSubmit = (data) => {};
   return (
-    <div className="WorkWithUs text-center">
-      <div className="WorkWithUs__logoBox ">
-        <div className="WorkWithUs__logoBack rounded-full"></div>
-        <img src={mastersignup} alt={mastersignup} />
-      </div>
+    <div className="Deatil">
       <div className="ProduceRules__content">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -85,10 +83,40 @@ function MasterSignUp() {
             />
             <UploadProfile />
           </div>
+          <div className="MasterSignUp__textarea">
+            <InputTextArea
+              rows={4}
+              label="شرح مختصری از شما:"
+              register={{
+                required: true,
+              }}
+              message="شرح را وارد کنید"
+              name="txt"
+              control={control}
+              errors={errors}
+            />
+          </div>
+          <div className="flex items-start text-right MasterSignUp__ruleBox">
+            <CheckBox
+              label="سایت را قبول دارم"
+              message="قوانین و مقررات"
+              name="rule"
+              control={control}
+              errors={errors}
+              register={{
+                required: false,
+              }}
+            />
+          </div>
+          <div className="text-center flex items-center justify-center MasterSignUp__btnBox ">
+            <Button type="primary" classes="MasterSignUp__btn">
+              ارسال
+            </Button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
 
-export default MasterSignUp;
+export default Request;

@@ -64,7 +64,7 @@ const info = [
     title: "تیم فنی",
     icon: coworkerTeam,
     txt: "اگه در زمینه های برنامه نویسی و یا شاخه های گرافیک فعالیت دارید می تونید با ما همکاری کنید.",
-    rout: "/coWorkers/team",
+    rout: "/coWorkers/technicalteam",
   },
   {
     title: "اساتید",

@@ -148,3 +148,15 @@ input.ant-input.ant-input-rtl.input__field {
     box-shadow: 0 0 0 100px #fff inset;
   }
 }
+.ant-checkbox-inner {
+  border-radius: 0.5rem;
+  border-color: $color-dark-gray;
+}
+.input__Link {
+  margin-left: 0.5rem;
+  color: $color-primary;
+  font-size: 1.6rem;
+}
+.input__CheckboxBase {
+  font-size: 1.6rem;
+}
