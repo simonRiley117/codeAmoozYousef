@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import Title from '@Components/Shared/Title';
 import Link from '@Components/Shared/Buttons/Link';
@@ -7,14 +7,20 @@ import image1 from '@Assets/Pic/image 1.png';
 import image2 from '@Assets/Pic/image 2.png';
 import image3 from '@Assets/Pic/image 3.png';
 
-// Import Swiper styles
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+
+import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 const data = [
 	{
 		description:
 			'تمرین آنلاین و ارزشیابی هوشمند تمرین آنلاین و ارزشیابی هوشمند تمرین آنلاین و ارزشیابی هوشمند تمرین آنلاین و ارزشیابی هوشمند ',
-			
-			image: image1,
+
+		image: image1,
 		title: 'تیتر خبری شماره ۱',
 	},
 	{
@@ -44,40 +50,38 @@ const data = [
 ];
 
 const News = () => {
-	const [imageIndex, setImageIndex] = useState(0);
-	console.log("Slider", Slider)
-
-	const settings = {
-		// className: 'center',
-		infinite: true,
-		slidesToShow: 3,
-		speed: 500,
-		// rtl:true,
-		slidesToScroll: 1,
-		dots: true,
-		arrows: false,
-		centerPadding: '0',
-		swipeToSlide: true,
-		focusOnSelect: true,
-		beforeChange: (current, next) => {
-			console.log('current,next', current, next);
-			setImageIndex(next);
-		},
-		afterChange: (index) => {
-			console.log('index', index);
-		},
-	};
 	const renderNewsItem = () =>
 		data.map((info, key) => (
-			<NewsItem key={key} {...info} active={key === imageIndex} />
+			<SwiperSlide key={key}>
+				{(sliderProps) => <NewsItem {...info} {...sliderProps} />}
+			</SwiperSlide>
 		));
+
 	return (
 		<section className='home__news'>
 			<div className='container'>
 				<Title>جدیدترین اخبار</Title>
 				<div className='home__news--content'>
 					<div className='home__news--slider'>
-						<Slider {...settings}>{renderNewsItem()}</Slider>
+						<Swiper
+							effect={'coverflow'}
+							grabCursor
+							loop
+							slidesPerView={3}
+							slideToClickedSlide
+							coverflowEffect={{
+								rotate: 0,
+								stretch: 1,
+								depth: 100,
+								modifier: 1,
+								slideShadows: false,
+							}}
+							pagination={{
+								clickable: true,
+							}}
+						>
+							{renderNewsItem()}
+						</Swiper>
 					</div>
 					<div className='home__news--action'>
 						<Link to='/' type='primary'>

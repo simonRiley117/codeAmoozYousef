@@ -47,14 +47,11 @@
 
 // -------------------- layout --------------------
 //-----------------Coworker-----------
-@import './Layouts/CoWorkers/Master';
 @import './Layouts/News/news';
 @import './Layouts/Home/home';
-@import './Layouts/Faq/.faq';
+@import './Layouts/Faq/faq';
 
-@import "./Layouts/CoWorkers/Master";
+@import './Layouts/CoWorkers/Master';
 @import "./Layouts/CoWorkers/CoWorkers";
 @import "./Layouts/CoWorkers/Technicalteam";
-@import "./Layouts/News/news";
 @import "./Layouts/Contact-us/contact";
-@import "./Layouts/Home/home";
