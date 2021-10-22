@@ -1,0 +1,20 @@
+.courses {
+  padding-bottom: 3rem;
+   & .search {
+     background-color: #EF801933;
+     color: #233E6DB2;
+     border: 2px solid #233E6DB2;
+     border-radius: 100px;
+     &-img {
+       position: absolute;
+       left: 2rem;
+       top: 50%;
+       transform: translateY(-50%);
+     }
+     &-container {
+       position: relative;
+       margin-top: 3rem;
+       margin-bottom: 3rem;
+     }
+   }
+}
