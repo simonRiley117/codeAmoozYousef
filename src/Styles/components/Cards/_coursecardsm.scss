@@ -1,0 +1,135 @@
+.card-sm {
+  z-index: 10;
+  position: relative;
+  max-height: 418px;
+  width: 300px;
+  background: #fff;
+  box-shadow: 0px 2px 25px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+
+  &-img {
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      120deg,
+      rgba(#45bda6, 1) 0%,
+      rgba(#45bda6, 1) 20%,
+      rgba(#b4d236, 1) 20%,
+      rgba(#b4d236, 1) 100%
+    );
+
+    &-title {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      padding-top: 2rem;
+      align-items: center;
+      margin-left: -5.5rem;
+
+      h4 {
+        font-size: 4rem;
+        color: #fff;
+        margin-left: 0.5rem;
+      }
+    }
+
+    &-pic {
+      display: flex;
+      padding-top: 1.5rem;
+      padding-right: 1rem;
+      padding-bottom: 2rem;
+      align-items: center;
+      font-size: 1.6rem;
+
+      h4 {
+        background: #45bda6;
+        padding: 1rem 4rem;
+        margin-right: -5rem;
+        border-radius: 1rem;
+        position: relative;
+        z-index: 9;
+      }
+
+      img {
+        position: relative;
+        z-index: 11;
+      }
+    }
+
+    &-hover {
+      display: none;
+      position: absolute;
+      z-index: 15;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 2s cubic-bezier(0.39, 0.58, 0.57, 1);
+
+      button {
+        position: absolute;
+
+        background: $color-primary;
+
+        border: none;
+        outline: none;
+        font-size: 1.8rem;
+        padding: 00.5rem 3rem;
+        cursor: pointer;
+
+        &:first-child {
+          top: 4rem;
+          border-top-left-radius: 1rem;
+          border-bottom-left-radius: 1rem;
+        }
+
+        &:last-child {
+          top: 12rem;
+          left: 0;
+          border-bottom-right-radius: 1rem;
+          border-top-right-radius: 1rem;
+        }
+      }
+    }
+
+    &:hover .card-sm-img-hover {
+      display: inline-block;
+    }
+
+    &-off-hide {
+      display: none;
+    }
+    &-off-show {
+      position: absolute;
+      font-size: 1.3rem;
+
+      background: $color-primary;
+
+      padding: 1rem 1.5rem;
+      border-bottom-left-radius: 1rem;
+    }
+  }
+
+  &-content {
+    padding: 2rem 1rem;
+
+    h5 {
+      font-size: 2.5rem;
+      color: $color-primary;
+    }
+    &-time {
+      display: block;
+      font-size: 2rem;
+      padding-bottom: 1.2rem;
+    }
+
+    &-price {
+      display: block;
+      color: #329c00;
+      font-size: 1.5rem;
+      padding-bottom: 1.2rem;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import CoWorkersRouter from "./CoWorkersRouter";
 import NewsDetails from "../Layouts/News/NewsDetails";
 import Faq from "../Layouts/Faq";
 import Contact from "../Layouts/Contact us";
+import Courses from "../Layouts/Courses";
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
           <Route exact path='/news/NewsDetails' component={NewsDetails}/>
           <Route exact path='/faq' component={Faq}/>
           <Route exact path='/contact-us' component={Contact}/>
+          <Route exact path='/courses' component={Courses}/>
       </Layout>
       <Route path="*">{() => <Redirect to="/" />}</Route>
     </Switch>
