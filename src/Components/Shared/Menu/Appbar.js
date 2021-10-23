@@ -13,22 +13,22 @@ const Appbar = () => {
       id: 1,
     },
     {
-      url: "",
+      url: "/courses",
       text: " دوره ها ",
       id: 2,
     },
     {
-      url: "",
+      url: "/",
       text: "درباره ی ما ",
       id: 3,
     },
     {
-      url: "",
+      url: "/contact-us",
       text: "ارتباط با ما",
       id: 4,
     },
     {
-      url: "",
+      url: "/faq",
       text: " سوالات متدوال",
       id: 5,
     },
