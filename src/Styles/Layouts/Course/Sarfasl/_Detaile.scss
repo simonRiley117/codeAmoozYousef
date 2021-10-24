@@ -10,5 +10,9 @@
             font-size: 1.6rem;
         }
     }
-  
+    &__txt {
+        color: $color-text-light;
+        font-size: 1.6rem;
+        margin-top: 4rem;
+    }
 }

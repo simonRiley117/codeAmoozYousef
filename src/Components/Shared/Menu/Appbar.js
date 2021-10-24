@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router';
-
 import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import RegisterBox from './RegisterBox';
 import classNames from 'classnames';

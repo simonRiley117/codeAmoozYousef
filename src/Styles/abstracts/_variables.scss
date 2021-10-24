@@ -3,7 +3,7 @@
 // ------------ Primary ------------
 $color-primary: #f68521;
 $color-primary-light: #ffa44a;
-$color-primary-light-1: #FFC700;
+$color-primary-light-1: #ffc700;
 $color-primary-dark: #cf6311;
 $color-primary-dark-1: #ff9900;
 $color-primary-dark-2: #ef8019;
@@ -34,12 +34,16 @@ $color-text-black-light-2: rgba(18, 18, 18, 0.7);
 $color-gray: #e5e5e5;
 $color-gray-light: #ededed;
 $color-gray-dark: #bbbbbb;
+$color-grey-dark-1: #707070;
 $color-dark-gray: rgba(0, 0, 0, 0.2);
 //-----------------------yellow-------------
 $color-yellow: #ffe661;
+$color-yellow-dark: #fcca46;
 
 //--------------red-------------
 $color-red: #f14242;
+//------------green---------
+$color-green: #0dca78;
 // ------------ Text ------------
 $color-text: #121212;
 $color-text-gray: #12121280;
@@ -92,7 +96,7 @@ $shadow-backgroud-light-white: rgba(
 	$alpha: 0.5,
 );
 $color-ppoup-backgroud: rgba(246, 133, 33, 0.5);
-
+$color-editor-back: #272822;
 // Fonts
 
 $font-primary: "vazir";
