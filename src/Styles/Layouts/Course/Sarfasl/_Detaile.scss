@@ -1,0 +1,14 @@
+.Detaile {
+    padding-top: 2rem;
+    &__hederBox {
+        color: $color-blue;
+        & > *:first-child {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        & > *:last-child {
+            font-size: 1.6rem;
+        }
+    }
+  
+}

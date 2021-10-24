@@ -1,52 +1,53 @@
 // -------------------- tailwindcss --------------------
-@import '~tailwindcss/tailwind.css';
+@import "~tailwindcss/tailwind.css";
 
 // -------------------- react-slick --------------------
-@import '~slick-carousel/slick/slick.css';
-@import '~slick-carousel/slick/slick-theme.css';
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 // -------------------- fonts --------------------
-@import './base/font';
+@import "./base/font";
 
 // -------------------- abstracts --------------------
-@import './abstracts/variables';
-@import './abstracts/mixins';
-@import './abstracts/functions';
-@import './abstracts/animations';
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+@import "./abstracts/functions";
+@import "./abstracts/animations";
 
 // -------------------- base --------------------
-@import './base/base';
-@import './base/typography';
-@import './base/utilities';
+@import "./base/base";
+@import "./base/typography";
+@import "./base/utilities";
 
 // -------------------- components --------------------
 //--------------share---------------
 
-@import "./components/Menu/menu";
 @import "./components/Discount/SideBarDiscount";
-@import './components/Inputs/input';
-@import './components/Inputs/ProfileInput';
-@import './components/Menu/appbar';
-@import './components/Menu/sidebarmenu';
-@import './components/Inputs/textarea';
-@import './components/Footer/Footer';
-@import './components/DefaultFormBox/DefaultFormBox';
-@import './components/Buttons/button';
-@import './components/Buttons/link';
-@import './components/BreadCrump/BreadCrump';
-@import './components/Title/title';
-@import './components/PopUp/PopUp';
-@import './components/Cards/coursecardbg';
-@import './components/Cards/coursecardsm';
+@import "./components/Discount/HeaderDiscount";
+@import "./components/Inputs/input";
+@import "./components/Inputs/ProfileInput";
+@import "./components/Menu/appbar";
+@import "./components/Menu/sidebarmenu";
+@import "./components/Inputs/textarea";
+@import "./components/Footer/Footer";
+@import "./components/DefaultFormBox/DefaultFormBox";
+@import "./components/Buttons/button";
+@import "./components/Buttons/link";
+@import "./components/BreadCrump/BreadCrump";
+@import "./components/Title/title";
+@import "./components/PopUp/PopUp";
+@import "./components/Cards/coursecardbg";
+@import "./components/Cards/coursecardsm";
+@import "./components/VideoPlayer/VideoPlayer";
 
-@import './components/Pagination/pagination';
+@import "./components/Pagination/pagination";
 //-------------master------------
-@import './components/Master/WorkWithUs';
-@import './components/Master/CoursStandards';
-@import './components/Master/ProduceRules';
-@import './components/Master/MasterSignUp';
+@import "./components/Master/WorkWithUs";
+@import "./components/Master/CoursStandards";
+@import "./components/Master/ProduceRules";
+@import "./components/Master/MasterSignUp";
 //----------------TechnicalTeam-----------
-@import './components/TechnicalTeam/Deatil';
+@import "./components/TechnicalTeam/Deatil";
 
 // -------------------- layout --------------------
 //-----------------Coworker-----------
@@ -55,9 +56,10 @@
 @import "./Layouts/Faq/faq";
 
 @import "./Layouts/Course/Course";
-@import './Layouts/CoWorkers/Master';
-@import './Layouts/CoWorkers/CoWorkers';
-@import './Layouts/CoWorkers/Technicalteam';
-@import './Layouts/Contact-us/contact';
-@import './Layouts/Home/home';
-@import './Layouts/Courses/courses';
+@import "./Layouts/CoWorkers/Master";
+@import "./Layouts/CoWorkers/CoWorkers";
+@import "./Layouts/CoWorkers/Technicalteam";
+@import "./Layouts/Contact-us/contact";
+@import "./Layouts/Home/home";
+@import "./Layouts/Courses/courses";
+@import "./Layouts/Course/Sarfasl/Detaile";
