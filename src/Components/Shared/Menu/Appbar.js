@@ -83,7 +83,7 @@ const Appbar = () => {
 					</nav>
 					<div className='Menu_actions'>
 						<IconBtn icon={<ShoppingCartIcon />} />
-						<RegisterBox />
+						<RegisterBox /> 
 					</div>
 				</div>
 			</div>
