@@ -1,0 +1,24 @@
+.Sarfasl {
+    &__sample {
+        background-color: $color-blue;
+        border-radius: 4rem;
+        padding-right: 2.9rem;
+        padding: 0.2rem 2.9rem 0.2rem 0.2rem;
+        margin: 3rem 0;
+        & > *:first-child {
+            color: $color-white;
+            font-size: 1.6rem;
+        }
+    }
+    &__sampleLinkBox {
+        background-color: $color-white;
+        border-radius: 4rem;
+        width: 85%;
+        height: 100%;
+        padding: 1rem 0;
+        a {
+            color: $color-primary;
+            font-size: 1.6rem;
+        }
+    }
+}

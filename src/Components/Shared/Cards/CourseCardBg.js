@@ -2,21 +2,32 @@ import React, { useState } from "react";
 import courseLogo from "@Assets/Icons/HTML.svg";
 import teacherPic from "@Assets/Icons/cardProfile.png";
 import { Rate, Statistic } from "antd";
+import { Link } from "react-router-dom";
 
 const CourseCardBg = () => {
   const [isOff, setIsOff] = useState(false);
   return (
     <div className="card-bg">
       <div className="card-bg-title">
-        <img src={courseLogo} />
+        <img src={courseLogo} alt={courseLogo} />
         <h4>python</h4>
       </div>
       <div className="card-bg-info">
-        <h5 className="card-bg-info-title">دوره آنلاین برنامه نویسی HTML</h5>
+        <h5 className="card-bg-info-title cursor-pointer	">
+          {" "}
+          <Link
+            to={{
+              pathname: "/course",
+              state: { name: "دوره آنلاین برنامه نویسی HTM" },
+            }}
+          >
+            دوره آنلاین برنامه نویسی HTML{" "}
+          </Link>
+        </h5>
         <div className="card-bg-info-content">
-          <img src={teacherPic} />
+          <img src={teacherPic} alt={teacherPic} />
           <div>
-            <h4>علیرضا میرزایی فرد</h4>
+            <h4> علیرضا میرزایی فرد </h4>
             <span className="card-bg-content-time">07:13:00</span>
             <Statistic
               value={50000}

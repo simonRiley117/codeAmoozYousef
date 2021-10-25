@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import courseLogo from "@Assets/Icons/HTML.svg";
 import teacherPic from "@Assets/Icons/cardProfile.png";
 import { Rate, Statistic } from "antd";
+import { Link } from "react-router-dom";
 
 const Coursecardsm = () => {
   const [isOff, setIsOff] = useState(false);
@@ -28,7 +29,17 @@ const Coursecardsm = () => {
           </div>
         </div>
         <div className="card-sm-content">
-          <h5>دوره آنلاین برنامه نویسی HTML</h5>
+          <h5 className="cursor-pointer	">
+            {" "}
+            <Link
+              to={{
+                pathname: "/course",
+                state: { name: "دوره آنلاین برنامه نویسی HTM" },
+              }}
+            >
+              دوره آنلاین برنامه نویسی HTML{" "}
+            </Link>
+          </h5>
           <span className="card-sm-content-time">07:13:00</span>
           <Statistic
             value={50000}
