@@ -46,12 +46,11 @@ const menuItem = [
 const Appbar = () => {
 	const { pathname } = useLocation();
 	const dark = pathname === '/';
-	const { visible, sticky } = UseScrollAppbar();
+	const {  sticky } = UseScrollAppbar();
 
 	return (
 		<div
 			className={classNames('Menu__sec', {
-				visible: visible,
 				sticky: sticky,
 			})}
 		>

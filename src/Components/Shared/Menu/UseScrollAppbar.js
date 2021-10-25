@@ -10,9 +10,9 @@ const UseScrollAppbar = () => {
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
     setSticky(currentScrollPos > 40);
-    const isVisible = prevScrollPos >= currentScrollPos;
+    // const isVisible = prevScrollPos >= currentScrollPos;
 
-    setVisible(isVisible);
+    // setVisible(isVisible);
 
     setPrevScrollPos(currentScrollPos);
   };

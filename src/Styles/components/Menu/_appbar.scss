@@ -3,7 +3,7 @@
 	font-size: 14px;
 	position: fixed;
 	width: 100vw;
-	top: -8rem;
+	top: 0;
 	z-index: 1010;
 	transition: background-color 200ms ease, top 300ms linear;
 
@@ -13,6 +13,8 @@
 	&.sticky {
 		background-color: $color-white;
 		filter: $shadow-backgroud;
+		top: 0;
+		animation: appbar-visible 400ms ease-in;
 	}
 	&-dark {
 		background-color: transparent;

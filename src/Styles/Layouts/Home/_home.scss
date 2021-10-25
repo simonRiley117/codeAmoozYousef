@@ -526,6 +526,18 @@
 					left: 10rem;
 				}
 			}
+			& .swiper-slide {
+				transform: scale(0);
+			}
+			& .swiper-slide-next {
+				opacity: 1;
+			}
+			& .swiper-slide-active {
+				opacity: 1;
+			}
+			& .swiper-slide-prev {
+				opacity: 1;
+			}
 			& .swiper-pagination {
 				transform: translateX(-7%);
 				@include respond(tab-port) {
@@ -576,9 +588,7 @@
 			transition: all 400ms;
 			z-index: 2;
 			position: relative;
-			transform: scale(0.1);
-			visibility: hidden;
-			opacity: 0;
+
 			@include respond(big-phone) {
 				width: 45rem;
 				height: 22.5rem;
