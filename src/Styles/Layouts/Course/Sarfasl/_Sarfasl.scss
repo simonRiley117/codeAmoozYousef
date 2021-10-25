@@ -1,4 +1,8 @@
 .Sarfasl {
+    &__form {
+        height: auto;
+        padding-bottom: 2rem;
+    }
     &__sample {
         background-color: $color-blue;
         border-radius: 4rem;
@@ -19,6 +23,34 @@
         a {
             color: $color-primary;
             font-size: 1.6rem;
+        }
+    }
+    &__Accordionbox {
+        margin-top: 4rem;
+        & > *:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+    &__Accordionnumber {
+        color: $color-primary;
+        border-radius: 50%;
+        border: 1px solid $color-primary;
+        padding: 0.2rem 0.5rem;
+        font-size: 1rem;
+    }
+    &__Accordiontxtbox {
+        & > *:last-child {
+            margin-right: 1rem;
+        }
+    }
+    &__AccordionTimeBox {
+        img {
+            width: 2.4rem;
+            height: auto;
+        }
+        p {
+            font-size: 1.6rem;
+            margin-left: 2.8rem;
         }
     }
 }

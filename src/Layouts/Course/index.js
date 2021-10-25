@@ -39,7 +39,7 @@ function Index() {
               labels={labels}
               className="w-1/2"
               setId={setId}
-              height="Master__form"
+              height="Sarfasl__form"
             >
               {id === 0 && <About />}
               {id === 1 && <Sarfasl />}
