@@ -3,7 +3,7 @@
 	font-size: 14px;
 	position: fixed;
 	width: 100vw;
-	top: -80px;
+	top: -8rem;
 	z-index: 1010;
 	transition: background-color 200ms ease, top 300ms linear;
 
@@ -20,6 +20,12 @@
 	li.Menu__li {
 		padding: 0 2.5rem;
 		cursor: pointer;
+		@include respond(laptop) {
+			padding: 0 1.8rem;
+		}
+		@include respond(sm-laptop) {
+			padding: 0 1.2rem;
+		}
 
 		& a {
 			@include set-font(14px, 600, $color-white);
@@ -35,6 +41,9 @@
 	.menu_logo {
 		// padding: 0 1rem;
 		flex: 1 0 20%;
+		@include respond(big-tablet) {
+			order: 2;
+		}
 
 		& .logo {
 			width: 5.8rem;
@@ -69,6 +78,11 @@
 		position: relative;
 		// overflow: hidden;
 
+		@include respond(big-tablet) {
+			order: 1;
+			display: none;
+		}
+
 		&::before {
 			content: '';
 			position: absolute;
@@ -85,9 +99,13 @@
 		@include display-flex;
 		column-gap: 3rem;
 		width: 100%;
+		height: 8rem;
 	}
 	& .Menu_actions {
 		@include display-flex;
+		@include respond(big-tablet) {
+			order: 3;
+		}
 
 		& > .ant-btn {
 			color: $color-white;

@@ -81,11 +81,11 @@ const Appbar = () => {
 								</li>
 							))}
 						</ul>
-						<div className='Menu_actions'>
-							<IconBtn icon={<ShoppingCartIcon />} />
-							<RegisterBox />
-						</div>
 					</nav>
+					<div className='Menu_actions'>
+						<IconBtn icon={<ShoppingCartIcon />} />
+						<RegisterBox />
+					</div>
 				</div>
 			</div>
 		</div>
