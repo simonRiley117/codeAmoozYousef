@@ -28,12 +28,12 @@ const menuItem = [
 		id: 3,
 	},
 	{
-		url: 'contact-us',
+		url: '/contact-us',
 		text: 'ارتباط با ما',
 		id: 4,
 	},
 	{
-		url: 'faq',
+		url: '/faq',
 		text: ' سوالات متدوال',
 		id: 5,
 	},
