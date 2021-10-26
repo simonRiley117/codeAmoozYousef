@@ -6,6 +6,8 @@ import HeaderDiscount from "@Components/Shared/Discount/HeaderDiscount";
 import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
 import Sarfasl from "@Components/Layouts/Course/Sarfasl";
 import About from "@Components/Layouts/Course/About";
+import Comment from "@Components/Layouts/Course/Comment/Comment";
+import AskAndAnswer from "@Components/Layouts/Course/Comment/AskAndAnswer";
 
 function Index() {
   const location = useLocation();
@@ -27,6 +29,7 @@ function Index() {
   }, [location]);
   const [menu, setMenu] = useState([]);
   const [id, setId] = useState(0);
+  const [idcomm, setIdcomm] = useState(0);
   return (
     <div className="container">
       <BreadCrump item={menu} />
@@ -39,11 +42,22 @@ function Index() {
               labels={labels}
               className="w-1/2"
               setId={setId}
-              height="Master__form"
+              height="Sarfasl__form"
             >
               {id === 0 && <About />}
               {id === 1 && <Sarfasl />}
             </DefaultFormBox>
+            <div className="Sarfasl__commentBox">
+              <DefaultFormBox
+                labels={labelscomment}
+                className="w-1/2"
+                setId={setIdcomm}
+                height="Sarfasl__commentpart"
+              >
+                {idcomm === 0 && <Comment />}
+                {idcomm === 1 && <AskAndAnswer />}
+              </DefaultFormBox>
+            </div>
           </div>
           <div className="fixed">{/* <SideBarDiscount /> */}</div>
         </div>
@@ -54,3 +68,4 @@ function Index() {
 
 export default Index;
 const labels = ["درباره این دوره", "سرفصل ها"];
+const labelscomment = ["نظرات", "پرسش و پاسخ"];

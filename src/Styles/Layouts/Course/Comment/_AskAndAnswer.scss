@@ -1,0 +1,35 @@
+.AskAndAnswer {
+    height: 100%;
+    &__input {
+        width: 100%;
+        svg {
+            fill: none;
+            width: 17px;
+        }
+        .ant-input {
+            &::placeholder {
+                color: $color-text-black-light-2;
+            }
+        }
+    }
+    &__form {
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+    }
+    &__emogibox {
+        bottom: 0.5rem;
+        left: 3rem;
+        z-index: 20;
+    }
+    .emoji-mart {
+        bottom: 3rem;
+        left: 0rem;
+        position: absolute;
+        z-index: 30;
+    }
+    // &__emogibox:hover ~ aside.emoji-picker-react {
+    //     display: inline-block;
+    //     opacity: 1;
+    // }
+}
