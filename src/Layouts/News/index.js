@@ -15,7 +15,7 @@ const News = () => {
     return cardData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
   return (
-    <div className="news">
+    <div className="news container">
       <h2 className="news-heading ">اخبار</h2>
       <div className="news-grid">
         {currentTableData.map((card) => {

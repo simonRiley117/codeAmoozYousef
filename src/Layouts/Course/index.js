@@ -40,7 +40,7 @@ function Index() {
           <div>
             <DefaultFormBox
               labels={labels}
-              className="w-1/2"
+              className="w-1/2" 
               setId={setId}
               height="Sarfasl__form"
             >
