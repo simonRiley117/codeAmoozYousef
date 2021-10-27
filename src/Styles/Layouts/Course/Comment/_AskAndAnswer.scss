@@ -3,6 +3,9 @@
     padding-top: 8rem;
     &__input {
         width: 100%;
+        padding-left: 6rem !important;
+        padding-right: 5rem !important;
+        font-size: 1.4rem !important;
         svg {
             fill: none;
             width: 17px;
@@ -19,6 +22,7 @@
         z-index: 10;
     }
     &__emogibox {
+        // bottom: -3.5rem;
         bottom: 0.5rem;
         left: 3rem;
         z-index: 20;
@@ -65,6 +69,7 @@
         }
         p {
             font-size: 1.6rem;
+            word-break: break-word;
         }
     }
     &__askBox::after {
@@ -97,6 +102,7 @@
         }
         p {
             font-size: 1.6rem;
+            word-break: break-word;
         }
     }
     &__answare::after {
@@ -124,7 +130,11 @@
             & > *:last-child {
                 margin-left: 3rem;
             }
-            
         }
+    }
+    &__sendBtn {
+        bottom: 0.8rem;
+        z-index: 20;
+        right: 1rem;
     }
 }

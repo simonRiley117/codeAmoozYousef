@@ -22,6 +22,7 @@ function AskAndAnswer() {
     },
   ]);
   const [input, setInput] = useState("");
+  const [error, setError] = useState(false);
   const [date, setDate] = useState(new Date());
 
   const {
@@ -30,8 +31,13 @@ function AskAndAnswer() {
     formState: { errors },
   } = formBox();
   const onSubmit = (e) => {
-    setData([...data, { txt: input, date: date }]);
-    setInput("");
+    if (input === "") {
+      // setError(true);
+    } else {
+      setData([...data, { txt: input, date: date }]);
+      setInput("");
+      // setError(false);
+    }
   };
   console.log(`object`, data);
 
@@ -107,7 +113,7 @@ function AskAndAnswer() {
         className="AskAndAnswer__form absolute"
       >
         <div className="input text-right ">
-          <InputBase
+          {/* <InputBase.TextArea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             type="text"
@@ -115,13 +121,34 @@ function AskAndAnswer() {
             id="input"
             placeholder="پیام خود را بنویسید..."
             className={classNames("input__field", "AskAndAnswer__input")}
+            autoSize={{ minRows: 1, maxRows: 3 }}
             prefix={
               <Arroe
-                onClick={handleSubmit(onSubmit)}
+                onClick={input !== "" && handleSubmit(onSubmit)}
                 className="cursor-pointer	"
               />
             }
-          />
+          /> */}
+          <InputBase.Group style={{ bottom: "0" }}>
+            <div className="flex justify-end items-center">
+              <InputBase.TextArea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                type="text"
+                name="txt"
+                id="input"
+                placeholder="پیام خود را بنویسید..."
+                className={classNames("input__field", "AskAndAnswer__input")}
+                autoSize={{ minRows: 1, maxRows: 2 }}
+              />
+            </div>
+            <div>
+              <Arroe
+                onClick={input !== "" && handleSubmit(onSubmit)}
+                className="cursor-pointer	AskAndAnswer__sendBtn absolute"
+              />
+            </div>
+          </InputBase.Group>
         </div>
       </form>
       <div className="absolute AskAndAnswer__emogibox">
