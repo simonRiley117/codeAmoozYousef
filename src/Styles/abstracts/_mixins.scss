@@ -101,6 +101,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin display-grid($gap: 5rem, $min: 49rem) {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
 	gap: $gap;
 }
