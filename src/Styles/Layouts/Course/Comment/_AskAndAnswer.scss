@@ -90,6 +90,7 @@
         width: 80%;
         margin-top: 4.9rem;
         margin-left: 3.5rem;
+        text-align: right;
         span {
             color: $color-text-blue;
             font-size: 1.4rem;
@@ -108,5 +109,22 @@
         background-color: $color-primary;
         border-radius: 0.4rem;
         clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    &__TimeBox {
+        color: $color-text-black-light-3;
+        font-size: 1.4rem;
+        opacity: 0.8;
+        margin-top: 0.6rem;
+        &-ask {
+            & > *:last-child {
+                margin-right: 3rem;
+            }
+        }
+        &-answer {
+            & > *:last-child {
+                margin-left: 3rem;
+            }
+            
+        }
     }
 }
