@@ -56,6 +56,11 @@ const Appbar = () => {
 
 	const handleToggleMenu = () => {
 		setOpenMenu((prev) => !prev);
+
+		const html = document.querySelector('html');
+		!isOpenMenu
+			? (html.style.overflow = 'hidden')
+			: (html.style.overflow = 'auto');
 	};
 
 	return (

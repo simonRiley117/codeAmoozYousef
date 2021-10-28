@@ -156,7 +156,6 @@
 			}
 			@include respond(smallest-phone) {
 				margin-right: 1rem;
-
 			}
 
 			&.hidden {
@@ -234,6 +233,10 @@
 
 		&--wrapper {
 			@include display-flex;
+			flex: 1 0 80%;
+			@include respond(big-tablet) {
+				flex: 1 0 auto;
+			}
 		}
 	}
 	& .Menu-wrapper {
