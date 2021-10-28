@@ -21,6 +21,7 @@
     "framer-motion": "^4.1.17",
     "jalali-moment": "^3.3.10",
     "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.1",
     "postcss": "7",
     "react": "^17.0.2",
