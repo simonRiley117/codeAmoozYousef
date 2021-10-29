@@ -3,11 +3,14 @@ import { useHistory, useLocation } from "react-router-dom";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import SideBarDiscount from "@Components/Shared/Discount/SideBarDiscount";
 import HeaderDiscount from "@Components/Shared/Discount/HeaderDiscount";
-import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
 import Sarfasl from "@Components/Layouts/Course/Sarfasl";
 import About from "@Components/Layouts/Course/About";
 import Comment from "@Components/Layouts/Course/Comment/Comment";
 import AskAndAnswer from "@Components/Layouts/Course/Comment/AskAndAnswer";
+import TabBox from "@Components/Shared/Tabs/TabBox";
+import { Tabs } from "antd";
+
+const { TabPane } = Tabs;
 
 function Index() {
   const location = useLocation();
@@ -28,8 +31,6 @@ function Index() {
     ]);
   }, [location]);
   const [menu, setMenu] = useState([]);
-  const [id, setId] = useState(0);
-  const [idcomm, setIdcomm] = useState(0);
   return (
     <div className="container">
       <BreadCrump item={menu} />
@@ -38,26 +39,22 @@ function Index() {
         <div className="grid Course__container">
           <div></div>
           <div>
-            <DefaultFormBox
-              labels={labels}
-              className="w-1/2" 
-              setId={setId}
-              height="Sarfasl__form"
-            >
-              {id === 0 && <About />}
-              {id === 1 && <Sarfasl />}
-            </DefaultFormBox>
-            <div className="Sarfasl__commentBox">
-              <DefaultFormBox
-                labels={labelscomment}
-                className="w-1/2"
-                setId={setIdcomm}
-                height="Sarfasl__commentpart"
-              >
-                {idcomm === 0 && <Comment />}
-                {idcomm === 1 && <AskAndAnswer />}
-              </DefaultFormBox>
-            </div>
+            <TabBox className="Sarfasl__form" key="1">
+              <TabPane tab="درباره این دوره" key="1">
+                <About />
+              </TabPane>
+              <TabPane tab="سرفصل ها" key="2">
+                <Sarfasl />
+              </TabPane>
+            </TabBox>
+            <TabBox className="Sarfasl__commentpart" key="2">
+              <TabPane tab="نظرات" key="1">
+                <Comment />
+              </TabPane>
+              <TabPane tab="پرسش و پاسخ" key="2">
+                <AskAndAnswer />
+              </TabPane>
+            </TabBox>
           </div>
           <div className="fixed">{/* <SideBarDiscount /> */}</div>
         </div>
@@ -67,5 +64,4 @@ function Index() {
 }
 
 export default Index;
-const labels = ["درباره این دوره", "سرفصل ها"];
-const labelscomment = ["نظرات", "پرسش و پاسخ"];
+

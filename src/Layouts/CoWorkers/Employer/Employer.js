@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
-import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
 import Deatil from "@Components/Layouts/CoWorkers/Employer/Deatil";
 import Request from "@Components/Layouts/CoWorkers/Employer/Request";
+import TabBox from "@Components/Shared/Tabs/TabBox";
+import { Tabs } from "antd";
+
+const { TabPane } = Tabs;
 
 function Employer() {
   const [id, setId] = useState(0);
@@ -12,14 +15,14 @@ function Employer() {
       <BreadCrump item={menu} />
       <p className="Master__title text-center"> تیم کارفرما</p>
       <div className="Master__formBox">
-        <DefaultFormBox
-          labels={labels}
-          className="w-1/2"
-          setId={setId}
-          height="Master__form"
-        >
-          {id === 0 ? <Deatil /> : <Request />}
-        </DefaultFormBox>
+        <TabBox className="Master__form" key="1">
+          <TabPane tab="جزئیات" key="1" >
+            <Deatil />
+          </TabPane>
+          <TabPane tab="ارسال درخواست" key="2">
+            <Request />
+          </TabPane>
+        </TabBox>
       </div>
     </div>
   );
@@ -40,4 +43,3 @@ const menu = [
     rout: "coWorkers/employer",
   },
 ];
-const labels = ["جزئیات", "ارسال درخواست"];

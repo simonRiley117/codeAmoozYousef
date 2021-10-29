@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
-import DefaultFormBox from "@Components/Shared/DeafaultFormBox/DefaultFormBox";
 import Deatil from "./Deatil";
 import Request from "./Request";
+import TabBox from "@Components/Shared/Tabs/TabBox";
+import { Tabs } from "antd";
+
+const { TabPane } = Tabs;
 
 function TechnicalTeams() {
   const { name } = useParams();
@@ -39,18 +42,17 @@ function TechnicalTeams() {
       {menu.length !== 0 && <BreadCrump item={menu} />}
       <p className="Master__title text-center">{titles}</p>
       <div className="Master__formBox">
-        <DefaultFormBox
-          labels={labels}
-          className="w-1/2"
-          setId={setId}
-          height="Master__form"
-        >
-          {id === 0 ? <Deatil /> : <Request />}
-        </DefaultFormBox>
+        <TabBox className="Master__form" key="1">
+          <TabPane tab="جزئیات" key="1">
+            <Deatil />
+          </TabPane>
+          <TabPane tab="ارسال درخواست" key="2">
+            <Request />
+          </TabPane>
+        </TabBox>
       </div>
     </div>
   );
 }
 
 export default TechnicalTeams;
-const labels = ["جزئیات", "ارسال درخواست"];
