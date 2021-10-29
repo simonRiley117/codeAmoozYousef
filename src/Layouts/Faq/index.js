@@ -5,7 +5,7 @@ import {faqData} from "../../Components/Layouts/Faq/FaqData";
 const Faq = () => {
     const [activeId,setActiveId] = useState(null)
     return (
-        <div className="faq">
+        <div className="faq container">
             <h2 className="faq-heading title__box">
                  سوالات متداول
             </h2>

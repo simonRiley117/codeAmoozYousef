@@ -1,14 +1,16 @@
 import React,{useMemo,useState} from 'react';
-import {A11y,Autoplay} from "swiper";
-import CourseCardBg from "../../Components/Shared/Cards/CourseCardBg";
+import  SwiperCore,{A11y,Autoplay,Navigation,EffectFlip} from "swiper";
+import CourseCardBg from "@Components/Shared/Cards/CourseCardBg";
 import Searchxx from "./Searchxx";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 // images
-import Coursecardsm from "../../Components/Shared/Cards/CourseCardSm";
+import Coursecardsm from "@Components/Shared/Cards/CourseCardSm";
 import Filtersxx from "./Filtersxx";
-import Pagination from "../../Components/Shared/Pagination";
-import {cardData} from "../../Components/Layouts/News/cardData";
+import Pagination from "@Components/Shared/Pagination";
+
+
+SwiperCore.use([Navigation,EffectFlip]);
 
 const Courses = () => {
     // just some testing array to be able to map on cards
@@ -38,7 +40,8 @@ const Courses = () => {
     return (
        <div className="courses px-40 mt-60">
            <Swiper
-               module={[A11y,Autoplay]}
+               effect='fade'
+               navigation
                spaceBetween={50}
                slidesPerView={1}
            >
@@ -57,6 +60,7 @@ const Courses = () => {
                پرطرفدار ترین دوره ها
            </h3>
            <Swiper
+               navigation
                module={[A11y,Autoplay]}
                spaceBetween={50}
                slidesPerView={4}

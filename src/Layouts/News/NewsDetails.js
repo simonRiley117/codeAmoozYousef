@@ -32,7 +32,7 @@ const NewsDetails = () => {
         </p>
     </div>
     return (
-        <div className="Title">
+        <div className="Title container">
             <div className="Title-column text-color">
                 <h3 className="Title-heading mr-bt-md text-color title">
                     {api.header}

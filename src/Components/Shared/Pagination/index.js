@@ -51,7 +51,7 @@ const Pagination = props => {
                 })}
                 onClick={onPrevious}
             >
-                <Button type="primary">
+                <Button classes="paging-button" type="primary">
                     صفحه قبلی
                 </Button>
             </li>
@@ -77,7 +77,7 @@ const Pagination = props => {
                 })}
                 onClick={onNext}
             >
-                <Button type="primary">
+                <Button classes='paging-button' type="primary">
                     صفحه بعدی
                 </Button>
             </li>

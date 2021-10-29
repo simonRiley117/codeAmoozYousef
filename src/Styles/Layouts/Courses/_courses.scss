@@ -88,3 +88,17 @@
     }
   }
 }
+//swiper configs
+.swiper-button-next {
+  transform: translateX(-4rem);
+  color: black;
+  background-color: black;
+  z-index: 10000000000000000000000;
+}
+
+//paging configs
+.paging-button {
+  background-color: #E5E5E5;
+  color: $color-text;
+  border: none;
+}
