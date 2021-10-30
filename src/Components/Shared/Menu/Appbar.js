@@ -59,8 +59,8 @@ const Appbar = () => {
 
 		const html = document.querySelector('html');
 		!isOpenMenu
-			? (html.style.overflow = 'hidden')
-			: (html.style.overflow = 'auto');
+			? (html.style.overflowY = 'hidden')
+			: (html.style.overflowY = 'auto');
 	};
 
 	return (
