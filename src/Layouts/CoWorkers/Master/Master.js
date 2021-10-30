@@ -16,12 +16,11 @@ function Master() {
       <BreadCrump item={menu} />
       <p className="Master__title text-center	">اساتید</p>
       <div className="Master__formBox">
-        <TabBox className="Master__form" key="1">
+        <Tabs className="TabBox" type='card'>
           <TabPane
             tab="همکاری با ما"
             key="1"
-            style={{ borderRadius: "1.5rem" }}
-          >
+          > 
             <WorkWithUs />
           </TabPane>
           <TabPane tab="استاندارد های دوره" key="2">
@@ -33,7 +32,7 @@ function Master() {
           <TabPane tab="ثبت نام" key="4">
             <MasterSignUp />
           </TabPane>
-        </TabBox>
+        </Tabs>
       </div>
     </div>
   );
