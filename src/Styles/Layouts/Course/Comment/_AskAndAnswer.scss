@@ -1,6 +1,7 @@
 .AskAndAnswer {
     height: 100%;
     padding-top: 8rem;
+
     &__input {
         width: 100%;
         padding-left: 6rem !important;
@@ -49,6 +50,30 @@
         height: 90%;
         overflow-y: auto;
         overflow-x: hidden;
+        &::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: #858383;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #bfc1cf;
+            border-radius: 20px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #bfc1cf;
+            border-radius: 20px;
+        }
     }
     &__contentBox {
         & > * {

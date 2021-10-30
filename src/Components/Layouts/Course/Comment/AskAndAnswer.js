@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { ReactComponent as Arroe } from "@Assets/Icons/Frame 28.svg";
-import Input from "@Components/Shared/Inputs/Input";
 import { useForm as formBox } from "react-hook-form";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 import Smiley from "@Assets/Pic/Smiley.png";
 import { Input as InputBase } from "antd";
-import { Controller } from "react-hook-form";
 import classNames from "classnames";
 import moment from "moment";
 
 function AskAndAnswer() {
-  const [chosenEmoji, setChosenEmoji] = useState(null);
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
   const [answer, setAnswer] = useState([
@@ -22,7 +19,6 @@ function AskAndAnswer() {
     },
   ]);
   const [input, setInput] = useState("");
-  const [error, setError] = useState(false);
   const [date, setDate] = useState(new Date());
 
   const {
@@ -39,7 +35,6 @@ function AskAndAnswer() {
       // setError(false);
     }
   };
-  console.log(`object`, data);
 
   const addEmoji = (e) => {
     let sym = e.unified.split("-");
@@ -113,22 +108,6 @@ function AskAndAnswer() {
         className="AskAndAnswer__form absolute"
       >
         <div className="input text-right ">
-          {/* <InputBase.TextArea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            type="text"
-            name="txt"
-            id="input"
-            placeholder="پیام خود را بنویسید..."
-            className={classNames("input__field", "AskAndAnswer__input")}
-            autoSize={{ minRows: 1, maxRows: 3 }}
-            prefix={
-              <Arroe
-                onClick={input !== "" && handleSubmit(onSubmit)}
-                className="cursor-pointer	"
-              />
-            }
-          /> */}
           <InputBase.Group style={{ bottom: "0" }}>
             <div className="flex justify-end items-center">
               <InputBase.TextArea

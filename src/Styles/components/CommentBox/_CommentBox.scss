@@ -1,0 +1,46 @@
+.CommentBox {
+    .ant-comment-content-author {
+        display: block;
+    }
+    .ant-comment-rtl .ant-comment-content-author > a,
+    .ant-comment-rtl .ant-comment-content-author > span {
+        display: block;
+    }
+    .ant-comment-content-author-name {
+        a {
+            color: $color-black;
+            font-size: 1.8rem;
+        }
+    }
+    .ant-comment-content-author-name > *:hover {
+        a {
+            color: $color-black;
+            font-size: 1.8rem;
+        }
+    }
+    .ant-comment-content-author-time {
+        color: $color-black;
+        font-size: 1.2rem;
+        margin-top: 0.8rem;
+    }
+    .ant-comment-content-detail {
+        color: $color-text-black-light-2;
+        font-size: 1.4rem;
+    }
+    .ant-comment-avatar img {
+        width: 5.4rem;
+        height: 5.4rem;
+        border-radius: 50%;
+    }
+    .ant-comment-inner {
+        border-bottom: 1px solid rgba(18, 18, 18, 0.3);
+    }
+    &__draft {
+        p {
+            font-size: 1.4rem;
+            color: $color-error;
+            margin-right: 1rem;
+            margin-bottom: 0;
+        }
+    }
+}
