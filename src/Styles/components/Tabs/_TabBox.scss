@@ -70,6 +70,14 @@
 		width: 100%;
 		margin-bottom: 0;
 
+		&::before {
+			content: none;
+		}
+
+		& .ant-tabs-nav-operations {
+			display: none;
+		}
+
 		& .ant-tabs-nav-list {
 			width: 100%;
 		}
@@ -136,12 +144,17 @@
 				border-color: #fff;
 			}
 		}
+		& .ant-tabs-tab-btn {
+			white-space: break-spaces;
+            text-align: center;
+		}
 	}
 	& .ant-tabs-nav-wrap {
 		padding: 1rem 4px 0;
 	}
 	& .ant-tabs-content-holder {
 		padding: 0 4px 4px;
+		margin-top: -1px;
 	}
 	& .ant-tabs-content {
 		background-color: $color-gray;
