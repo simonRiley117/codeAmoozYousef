@@ -1,63 +1,4 @@
 .TabBox {
-	// background-color: $color-gray;
-	// margin: 3rem auto;
-	// .ant-tabs-tab {
-	//     background-color: $color-gray;
-	//     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-	//     width: 50%;
-	//     text-align: center;
-	//     justify-content: center;
-	//     font-size: 1.8rem;
-	//     // border-radius: 1.5rem;
-	// }
-	// .ant-tabs-nav-wrap {
-	//     background-color: rgba(0, 0, 0, 0.06);
-	//     background-size: 50%;
-	// }
-	// .ant-tabs-top > .ant-tabs-nav,
-	// .ant-tabs-bottom > .ant-tabs-nav,
-	// .ant-tabs-top > div > .ant-tabs-nav,
-	// .ant-tabs-bottom > div > .ant-tabs-nav {
-	//     margin: 0;
-	// }
-	// .ant-tabs-rtl .ant-tabs-nav .ant-tabs-tab {
-	//     margin: 0;
-	// }
-	// .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
-	// .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
-	//     display: inline-block;
-	// }
-	// .ant-tabs {
-	//     border-radius: 1.5rem;
-	//     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-	// }
-	// .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
-	// .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
-	//     // & > *:not(:first-child) {
-	//     //     border-bottom-right-radius: 1.5rem;
-	//     // }
-	//     // & > *:not(:last-child) {
-	//     //     border-bottom-left-radius: 1.5rem;
-	//     // }
-	// }
-	// .ant-tabs-tab-active {
-	//     background-color: $color-white;
-	//     font-size: 2rem;
-	//     border-top-left-radius: 1.5rem;
-	//     border-top-right-radius: 1.5rem;
-
-	// }
-	// .ant-tabs-ink-bar {
-	//     // display: none;
-	//     // opacity: 0;
-	//     background: none;
-	// }
-	// .ant-tabs-content {
-	//     height: 100%;
-	//     padding: 0 3rem 3.25rem 3.2rem;
-	//     border-top-left-radius: 1.5rem;
-	// }
-
 	&.ant-tabs-card {
 		& .ant-tabs-nav {
 			& .ant-tabs-tab {
@@ -80,6 +21,9 @@
 
 		& .ant-tabs-nav-list {
 			width: 100%;
+			& > div:nth-last-child(2)::after {
+				content: none;
+			}
 		}
 		& .ant-tabs-tab {
 			width: 100%;
@@ -146,7 +90,15 @@
 		}
 		& .ant-tabs-tab-btn {
 			white-space: break-spaces;
-            text-align: center;
+			text-align: center;
+		}
+	}
+	& .ant-tabs-tab {
+		&:last-child {
+			background-color: rgb(219, 44, 44);
+			&::after {
+				content: none !important;
+			}
 		}
 	}
 	& .ant-tabs-nav-wrap {
@@ -174,6 +126,9 @@
 			border-radius: 1.5rem;
 		}
 		&:nth-child(4) {
+			border-radius: 0 1.5rem 1.5rem 1.5rem;
+		}
+		&:last-child {
 			border-radius: 0 1.5rem 1.5rem 1.5rem;
 		}
 	}
