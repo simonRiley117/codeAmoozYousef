@@ -5,6 +5,8 @@ import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import RegisterBox from './RegisterBox';
 import classNames from 'classnames';
 import UseScrollAppbar from './UseScrollAppbar';
+import Button from '../Buttons/Button';
+import SignIn from '@Components/Layouts/Register/SignIn';
 
 // Assets
 import logo from '@Assets/Logo/logo.svg';
@@ -46,10 +48,11 @@ const menuItem = [
 ];
 
 //  is delete
-const isLogin = true;
+const isLogin = false;
 
 const Appbar = () => {
 	const [isOpenMenu, setOpenMenu] = useState(false);
+	const [isModalVisible, setModalVisible] = useState(false);
 	const { pathname } = useLocation();
 	const dark = pathname === '/';
 	const { sticky } = UseScrollAppbar();
@@ -57,80 +60,103 @@ const Appbar = () => {
 	const handleToggleMenu = () => {
 		setOpenMenu((prev) => !prev);
 
-		const html = document.querySelector('html');
+		const body = document.body;
 		!isOpenMenu
-			? (html.style.overflowY = 'hidden')
-			: (html.style.overflowY = 'auto');
+			? (body.classList.add('scrolling-effect'))
+			: (body.classList.remove('scrolling-effect'));
+	};
+
+	const handleModalVisible = () => {
+		setModalVisible((prev) => !prev);
+
+		
 	};
 
 	return (
-		<div
-			className={classNames('Menu__sec', {
-				sticky: sticky,
-			})}
-		>
-			<div className='container'>
-				<div className='Menu-wrapper'>
-					<div
-						className={classNames('menu_logo d-flex-align ', {
-							dark: dark && !sticky,
-							activeMenu: isOpenMenu,
-						})}
-					>
-						<div className='logo'>
-							<img src={logo} alt='logo' />
-						</div>
-						{/* <img src={Codeamoozlogo} alt='codeamooz' /> */}
-						<div className='logo-text'>
-							<LogoTextIcon />
-						</div>
-					</div>
-					<div className='Menu__nav--wrapper'>
-						<IconBtn
-							classes={classNames('Menu__nav--btn', {
-								open: isOpenMenu,
+		<>
+			<div
+				className={classNames('Menu__sec', {
+					sticky: sticky,
+				})}
+			>
+				<div className='container'>
+					<div className='Menu-wrapper'>
+						<div
+							className={classNames('menu_logo d-flex-align ', {
 								dark: dark && !sticky,
-							})}
-							icon={
-								<>
-									<span></span>
-									<span></span>
-									<span></span>
-								</>
-							}
-							onClick={handleToggleMenu}
-						/>
-						{isLogin && (
-							<div className='d-flex-align Menu__nav--profile'>
-								<p className='profile__name'>alireza_mzf</p>
-								<div className='profile__image'>
-									<img src={profile} alt='profile' />
-								</div>
-							</div>
-						)}
-						<nav
-							className={classNames('Menu__nav d-flex-space', {
-								active: isOpenMenu,
+								activeMenu: isOpenMenu,
 							})}
 						>
-							<ul className='Menu__ul  list'>
-								{menuItem.map((item) => (
-									<li key={item.id} className='Menu__li'>
-										<NavLink exact to={item.url}>
-											{item.text}
-										</NavLink>
-									</li>
-								))}
-							</ul>
-							<div className='Menu_actions'>
-								<IconBtn icon={<ShoppingCartIcon />} />
-								<RegisterBox />
+							<div className='logo'>
+								<img src={logo} alt='logo' />
 							</div>
-						</nav>
+							{/* <img src={Codeamoozlogo} alt='codeamooz' /> */}
+							<div className='logo-text'>
+								<LogoTextIcon />
+							</div>
+						</div>
+						<div className='Menu__nav--wrapper'>
+							<IconBtn
+								classes={classNames('Menu__nav--btn', {
+									open: isOpenMenu,
+									dark: dark && !sticky,
+								})}
+								icon={
+									<>
+										<span></span>
+										<span></span>
+										<span></span>
+									</>
+								}
+								onClick={handleToggleMenu}
+							/>
+							{isLogin && (
+								<div className='d-flex-align Menu__nav--profile'>
+									<p className='profile__name'>alireza_mzf</p>
+									<div className='profile__image'>
+										<img src={profile} alt='profile' />
+									</div>
+								</div>
+							)}
+							<nav
+								className={classNames('Menu__nav d-flex-space', {
+									active: isOpenMenu,
+								})}
+							>
+								<ul className='Menu__ul  list'>
+									{menuItem.map((item) => (
+										<li key={item.id} className='Menu__li'>
+											<NavLink exact to={item.url}>
+												{item.text}
+											</NavLink>
+										</li>
+									))}
+								</ul>
+								<div className='Menu_actions'>
+									<IconBtn icon={<ShoppingCartIcon />} />
+									{isLogin ? (
+										<div className='d-flex-align Menu_actions--profile'>
+											<p className='profile__name'>alireza_mzf</p>
+											<div className='profile__image'>
+												<img src={profile} alt='profile' />
+											</div>
+										</div>
+									) : (
+										<Button
+											type='primary'
+											onClick={handleModalVisible}
+										>
+											ورود / ثبت نام
+										</Button>
+									)}
+								</div>
+							</nav>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			<SignIn visible={isModalVisible} onCancel={handleModalVisible} />
+		</>
 	);
 };
 

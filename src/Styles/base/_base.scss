@@ -15,14 +15,17 @@ html {
 	@include respond(sm-laptop) {
 		font-size: 50%;
 	}
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 body {
 	font-family: 'Vazir', 'sans-serif';
 	color: $color-text;
+	overflow: auto;
+}
+
+#root {
 	direction: rtl;
-	height: auto;
 }
 
 body,
@@ -70,4 +73,15 @@ section {
 img,
 video {
 	max-width: none;
+}
+
+.scrolling-effect {
+	width: 100%;
+	overflow: hidden;
+}
+.ant-scrolling-effect {
+	width: calc(100% - 1.7rem) !important;
+	@include respond(big-tablet) {
+		width: 100% !important;
+	}
 }
