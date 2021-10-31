@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import Input from '@Components/Shared/Inputs/Input';
+import Password from '@Components/Shared/Inputs/Password';
 
 import { ReactComponent as UserIcon } from '@Assets/Icons/user.svg';
 import { ReactComponent as LockIcon } from '@Assets/Icons/lock.svg';
@@ -31,7 +32,7 @@ const SignInForm = () => {
 					errors={errors}
 					prefix={<UserIcon />}
 				/>
-				<Input
+				<Password
 					label='رمز عبور'
 					register={{
 						required: true,

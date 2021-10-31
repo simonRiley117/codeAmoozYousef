@@ -37,7 +37,7 @@
 		}
 
 		&--wrapper {
-			padding: 0 3rem 2rem;
+			padding: 0 3rem 4rem;
 			@include d-flex-column;
 			& .button__text {
 				color: $color-blue-dark;
@@ -55,10 +55,11 @@
 			& .input__field {
 				border: 0;
 				background-color: rgba($color: #fff, $alpha: 0.5);
-				padding-right: 1.5rem;
+				padding: 0 1.5rem;
 			}
 			& .ant-input {
 				background-color: transparent;
+				padding-right: 1rem;
 			}
 
 			& .ant-checkbox-inner {
