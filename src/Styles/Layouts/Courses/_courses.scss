@@ -1,22 +1,31 @@
 .courses {
   padding-bottom: 3rem;
-   & .search {
-     background-color: #EF801933;
-     color: #233E6DB2;
-     border: 2px solid #233E6DB2;
-     border-radius: 100px;
-     &-img {
-       position: absolute;
-       left: 2rem;
-       top: 50%;
-       transform: translateY(-50%);
-     }
-     &-container {
-       position: relative;
-       margin-top: 3rem;
-       margin-bottom: 3rem;
-     }
-   }
+  & .search {
+    background-color: #ef801933;
+    color: #233e6db2;
+    border: 2px solid #233e6db2;
+    border-radius: 100px;
+    &-img {
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &-container {
+      position: relative;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    .ant-input {
+      &::placeholder,
+      &:focus {
+        background-color: transparent;
+      }
+    }
+  }
+  .ant-input-affix-wrapper.ant-input-affix-wrapper-rtl > input.ant-input {
+    background-color: transparent;
+  }
   &-filters {
     margin-top: 4rem;
     &__box {
@@ -86,5 +95,20 @@
         }
       }
     }
+  }
+  &__searchTitle {
+    font-size: 1.8rem;
+    color: $color-black;
+    margin-top: 4rem;
+  }
+  &__imgBox {
+    text-align: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  &__img {
+    width: 43rem;
+    height: 38rem;
+    margin: 0 auto;
   }
 }
