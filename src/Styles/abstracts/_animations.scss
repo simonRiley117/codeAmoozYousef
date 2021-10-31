@@ -14,3 +14,11 @@
 		top: 0;
 	}
 }
+@keyframes sidebar-visible {
+	0% {
+		top: -2rem;
+	}
+	100% {
+		top: 0;
+	}
+}
