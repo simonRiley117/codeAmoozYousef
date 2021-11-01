@@ -13,7 +13,7 @@ import { ReactComponent as GithubIcon } from '@Assets/Icons/github.svg';
 import SignUpForm from './SignUpForm';
 import { Divider } from 'antd';
 
-const SignUp = ({ onCancel }) => {
+const SignUp = ({ onCancel, handleActive }) => {
 	return (
 		<div className='register__form signUp'>
 			<IconBtn title='بستن' icon={<ExitIcon />} onClick={onCancel} />
@@ -38,6 +38,13 @@ const SignUp = ({ onCancel }) => {
 				<Divider>یا</Divider>
 
 				<SignUpForm />
+				<Button
+					type='text'
+					onClick={handleActive}
+					classes='register__form--other'
+				>
+					قبلا ثبت نام کردم
+				</Button>
 			</div>
 		</div>
 	);

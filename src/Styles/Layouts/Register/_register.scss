@@ -2,6 +2,13 @@
 	&__modal {
 		min-width: 94.6rem;
 		// max-height: 60rem;
+		@include respond(tablet) {
+			min-width: 0;
+			// top: 3rem;
+			@media only screen and (max-height: 62.5em) {
+				top: 10rem;
+			}
+		}
 		padding-bottom: 0;
 		& .ant-modal-content {
 			border-radius: 1.5rem;
@@ -11,7 +18,6 @@
 			border-radius: 1.5rem;
 			position: relative;
 			overflow: hidden;
-			min-height: 55rem;
 		}
 	}
 	&__layout {
@@ -22,7 +28,7 @@
 		border-radius: 1.5rem;
 		position: relative;
 		overflow: hidden;
-		min-height: 59rem;
+		min-height: 590px;
 		background-color: $color-gray;
 
 		&.active {
@@ -61,6 +67,9 @@
 		height: 100%;
 		transition: all 0.6s ease-in-out;
 		width: 50%;
+		@include respond(tablet) {
+			width: 100%;
+		}
 		&.signUp {
 			left: 0;
 			opacity: 0;
@@ -70,6 +79,10 @@
 			& > .button__icon {
 				left: 4px;
 				right: auto;
+				@include respond(tablet) {
+					left: auto;
+					right: 4px;
+				}
 			}
 			& h2 {
 				font-size: 2.2rem;
@@ -83,6 +96,7 @@
 			padding: 9rem 4rem;
 			transform: translateX(100%);
 			background-color: $color-gray;
+
 			z-index: 20;
 			&.active {
 				transform: translateX(0);
@@ -127,19 +141,29 @@
 		&--wrapper {
 			@include d-flex-column(center);
 			height: 100%;
+			padding: 1.5rem 6rem;
+			@include respond(sm-laptop) {
+				padding: 1.5rem 5rem;
+			}
+			@include respond(tablet) {
+				max-width: 90%;
+				margin: 0 auto;
+			}
+			@include respond(phone) {
+				max-width: 100%;
+				padding: 1.5rem 3rem;
+			}
 			& .button__text {
 				color: $color-blue-dark;
 				height: 32px;
 				margin-bottom: 2rem;
+				@include respond(tablet) {
+					margin-bottom: 0;
+					align-self: flex-start;
+				}
 			}
 			& form {
 				width: 100%;
-			}
-			&.signUp {
-				padding: 1.5rem 6rem;
-			}
-			&.signIn {
-				padding: 4rem 6rem;
 			}
 
 			& .ant-divider {
@@ -221,6 +245,8 @@
 			& .social {
 				padding: 1rem;
 				min-width: 0;
+				width: 40px;
+				height: 40px;
 			}
 
 			& .link {
@@ -241,6 +267,13 @@
 				}
 			}
 		}
+		&--other {
+			display: none;
+			@include respond(tablet) {
+				display: flex;
+				align-self: flex-start;
+			}
+		}
 	}
 	&__overlay {
 		position: absolute;
@@ -251,6 +284,9 @@
 		overflow: hidden;
 		transition: transform 0.6s ease-in-out;
 		z-index: 100;
+		@include respond(tablet) {
+			display: none;
+		}
 		&--content {
 			position: relative;
 			right: -100%;

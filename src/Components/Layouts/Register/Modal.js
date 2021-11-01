@@ -6,8 +6,8 @@ const Modal = ({ children, ...rest }) => {
 		<ModalBase
 			footer={null}
 			closable={false}
-			centered
 			className='register__modal'
+			centered
             zIndex={1100}
 			{...rest}
 		>

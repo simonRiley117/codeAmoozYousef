@@ -14,7 +14,7 @@ import { ReactComponent as LinkedInIcon } from '@Assets/Icons/linkedin.svg';
 import { ReactComponent as GithubIcon } from '@Assets/Icons/github.svg';
 import { Divider } from 'antd';
 
-const SignIn = ({ onCancel, handleForgetPassword }) => {
+const SignIn = ({ onCancel, handleForgetPassword, handleActive }) => {
 	return (
 		<>
 			<div className='register__form signIn'>
@@ -37,10 +37,13 @@ const SignIn = ({ onCancel, handleForgetPassword }) => {
 							<GithubIcon />
 						</Link>
 					</div>
-					<Divider >یا</Divider>
+					<Divider>یا</Divider>
 					<SignInForm />
 					<Button type='text' onClick={handleForgetPassword}>
 						رمز عبور رو فراموش کردم
+					</Button>
+					<Button type='text' onClick={handleActive} classes='register__form--other'>
+						هنوز ثبت نام نکردم
 					</Button>
 				</div>
 			</div>

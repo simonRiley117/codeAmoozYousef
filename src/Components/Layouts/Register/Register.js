@@ -33,9 +33,10 @@ const Register = ({ onCancel, visible, ...rest }) => {
 					active: isActive,
 				})}
 			>
-				<SignUp onCancel={onCancel} />
+				<SignUp onCancel={onCancel} handleActive={handleActive} />
 				<SignIn
 					onCancel={onCancel}
+					handleActive={handleActive}
 					handleForgetPassword={handleForgetPassword}
 				/>
 				<ForgetPassword
