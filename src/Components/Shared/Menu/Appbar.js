@@ -6,7 +6,7 @@ import RegisterBox from './RegisterBox';
 import classNames from 'classnames';
 import UseScrollAppbar from './UseScrollAppbar';
 import Button from '../Buttons/Button';
-import SignIn from '@Components/Layouts/Register/SignIn';
+import Register from '@Components/Layouts/Register/Register';
 
 // Assets
 import logo from '@Assets/Logo/logo.svg';
@@ -155,7 +155,7 @@ const Appbar = () => {
 					</div>
 				</div>
 			</div>
-			<SignIn visible={isModalVisible} onCancel={handleModalVisible} />
+			<Register visible={isModalVisible} onCancel={handleModalVisible} />
 		</>
 	);
 };
