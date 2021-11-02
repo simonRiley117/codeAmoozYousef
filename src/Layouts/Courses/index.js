@@ -16,18 +16,18 @@ SwiperCore.use([Navigation,EffectFlip]);
 const Courses = () => {
   // just some testing array to be able to map on cards
   const cards = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-    { id: 10 },
-    { id: 11 },
-    { id: 12 },
-    { id: 13 },
+    { id: 1, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 2, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 3, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 5, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 6, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 7, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 8, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 9, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 10, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 11, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 12, name: "دوره آنلاین برنامه نویسی HTML" },
+    { id: 13, name: "دوره آنلاین برنامه نویسی HTML" },
   ];
   // pagination config
   const PageSize = 11;

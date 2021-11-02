@@ -11,6 +11,7 @@ import Faq from "../Layouts/Faq";
 import Contact from "../Layouts/Contact us";
 import Courses from "../Layouts/Courses";
 import Course from "../Layouts/Course";
+import AboutUs from "../Layouts/About us";
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route exact path="/news/NewsDetails" component={NewsDetails} />
         <Route exact path="/faq" component={Faq} />
         <Route exact path="/contact-us" component={Contact} />
+        <Route exact path="/about-me" component={AboutUs} />
         <Route exact path="/courses" component={Courses} />
         <Route exact path="/course" component={Course} />
       </Layout>

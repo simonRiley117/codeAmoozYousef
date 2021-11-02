@@ -1,0 +1,77 @@
+.TeacherInfo {
+    background-color: transparent;
+    &__form {
+        box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+        background-color: $color-white;
+        width: 95%;
+        padding: 0.8rem 2rem 3rem 1.7rem;
+        margin-top: 1rem;
+        border-radius: 1.5rem;
+    }
+
+    &__imgBox {
+        border-radius: 50%;
+        border: 4px solid $color-green-dark;
+        width: 10rem;
+        height: 10rem;
+        margin: 0 auto;
+        img {
+            width: 9rem;
+            height: 9rem;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+    }
+    &__name {
+        color: $color-text;
+        font-size: 1.6rem;
+        margin-top: 1rem;
+    }
+    &__description {
+        color: $color-text-black-light-2;
+        font-size: 1.4rem;
+        width: 90%;
+        margin: 1rem auto;
+    }
+    &__socialBox {
+        width: 80%;
+        margin: 2rem auto;
+        & > * {
+            align-self: center;
+            justify-self: center;
+        }
+    }
+    &__tags {
+        margin-top: 1.9rem;
+        & > * {
+            margin-bottom: 1rem;
+        }
+        .ant-tag {
+            background-color: rgba(229, 229, 229, 0.8);
+            border-radius: 3.7rem;
+            border: none;
+            font-size: 1.4rem;
+            padding: 0.5rem 0.9rem;
+        }
+    }
+    &.sticky {
+        background-color: transparent;
+        top: 10rem;
+        right: 3rem;
+        animation: sidebar-visible 300ms ease-in;
+        position: fixed;
+        width: 15.3%;
+        // & .Menu__nav--profile > .profile__name {
+        //     color: $color-black-light;
+        // }
+        & > * {
+            width: 100%;
+        }
+    }
+    &.stickydisable {
+        position: absolute;
+        width: 95%;
+        margin-right: 0;
+        right: 0;
+    }
+}

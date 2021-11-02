@@ -49,19 +49,13 @@
 
 	.menu_logo {
 		// padding: 0 1rem;
-		flex: 1 0 20%;
 		z-index: 1051;
 
 		@include respond(big-tablet) {
 			order: 3;
 			justify-content: flex-end;
 		}
-		@include respond(sm-laptop) {
-			flex: 1 0 18%;
-		}
-		@include respond(smallest-phone) {
-			flex: 0 0 auto;
-		}
+		
 
 		& .logo {
 			width: 5.8rem;
@@ -233,10 +227,8 @@
 
 		&--wrapper {
 			@include display-flex;
-			flex: 1 0 80%;
-			@include respond(big-tablet) {
-				flex: 1 0 auto;
-			}
+			width: 100%;
+			
 		}
 	}
 	& .Menu-wrapper {

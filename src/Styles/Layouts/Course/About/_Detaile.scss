@@ -1,0 +1,16 @@
+.AboutDetaile {
+    img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+    &__hederBox{
+        color: $color-text;
+        font-size: 1.8rem;
+    }
+    &__txt{
+        color: $color-text-light;
+        font-size: 1.6rem;
+        margin-top: 1rem;
+    }
+}

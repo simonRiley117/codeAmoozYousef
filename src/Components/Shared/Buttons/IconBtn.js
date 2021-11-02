@@ -16,7 +16,6 @@ const IconBtn = ({ title, classes, ...rest }) => {
 
 IconBtn.propTypes = {
 	classes: PropTypes.string,
-
 	title: PropTypes.string,
 };
 export default IconBtn;

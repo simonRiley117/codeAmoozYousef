@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert } from "antd";
+import { message, Button } from "antd";
 
 function PopUp(props) {
   const [show, setShow] = useState(true);
@@ -8,10 +8,20 @@ function PopUp(props) {
       setShow(!show);
     }, 5000);
   }, []);
+  const info = () => {
+    message.info(props.message);
+  };
   return (
     <div>
       {show && (
         <div className={`PopUp ${props.className}`}>{props.children}</div>
+        // <Button
+        //   type="primary"
+        //   onClick={info}
+        //   className={`PopUp ${props.className}`}
+        // >
+        //   Display normal message
+        // </Button>
       )}
     </div>
   );

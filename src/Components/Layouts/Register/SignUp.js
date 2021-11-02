@@ -1,0 +1,52 @@
+import React from 'react';
+import SignInForm from './SignInForm';
+import Button from '@Components/Shared/Buttons/Button';
+import IconBtn from '@Components/Shared/Buttons/IconBtn';
+import Link from '@Components/Shared/Buttons/Link';
+
+// Assets
+import loginPic from '@Assets/Pic/login.png';
+import GoogleLogoPic from '@Assets/Pic/google_logo.png';
+import { ReactComponent as ExitIcon } from '@Assets/Icons/Exit.svg';
+import { ReactComponent as LinkedInIcon } from '@Assets/Icons/linkedin.svg';
+import { ReactComponent as GithubIcon } from '@Assets/Icons/github.svg';
+import SignUpForm from './SignUpForm';
+import { Divider } from 'antd';
+
+const SignUp = ({ onCancel, handleActive }) => {
+	return (
+		<div className='register__form signUp'>
+			<IconBtn title='بستن' icon={<ExitIcon />} onClick={onCancel} />
+
+			<div className='register__form--wrapper signUp'>
+				<h2>ثبت نام</h2>
+				<div className='register__form--actions mt-6'>
+					<Link
+						id='google'
+						type='primary'
+						icon={<img src={GoogleLogoPic} alt='google' />}
+					>
+						ثبت نام با اکانت گوگل
+					</Link>
+					<Link type='primary' classes='social'>
+						<LinkedInIcon />
+					</Link>
+					<Link type='primary' classes='social'>
+						<GithubIcon />
+					</Link>
+				</div>
+				<Divider>یا</Divider>
+
+				<SignUpForm />
+				<Button
+					type='text'
+					onClick={handleActive}
+					classes='register__form--other'
+				>
+					قبلا ثبت نام کردم
+				</Button>
+			</div>
+		</div>
+	);
+};
+export default SignUp;
