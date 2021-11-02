@@ -1,0 +1,302 @@
+.Menu__sec {
+	color: #ffffff;
+	font-size: 14px;
+	position: fixed;
+	width: 100vw;
+	top: 0;
+	z-index: 1010;
+	transition: background-color 200ms ease, top 300ms linear;
+
+	&.visible {
+		top: 0;
+	}
+	&.sticky {
+		background-color: $color-white;
+		filter: $shadow-backgroud;
+		top: 0;
+		animation: appbar-visible 400ms ease-in;
+
+		& .Menu__nav--profile > .profile__name {
+			color: $color-black-light;
+		}
+	}
+	&.activeMenu {
+		background-color: $color-blue;
+	}
+	&-dark {
+		background-color: transparent;
+	}
+	li.Menu__li {
+		padding: 0 2.5rem;
+		cursor: pointer;
+		@include respond(laptop) {
+			padding: 0 1.8rem;
+		}
+		@include respond(sm-laptop) {
+			padding: 0 1.2rem;
+		}
+
+		& a {
+			@include set-font(14px, 600, $color-white);
+			&:hover {
+				color: $color-primary-light;
+			}
+			&.active {
+				color: $color-primary-light;
+			}
+		}
+	}
+
+	.menu_logo {
+		// padding: 0 1rem;
+		flex: 1 0 20%;
+		z-index: 1051;
+
+		@include respond(big-tablet) {
+			order: 3;
+			justify-content: flex-end;
+		}
+		@include respond(sm-laptop) {
+			flex: 1 0 18%;
+		}
+		@include respond(smallest-phone) {
+			flex: 0 0 auto;
+		}
+
+		& .logo {
+			width: 5.8rem;
+			height: 5.8rem;
+			border-radius: 50%;
+			padding: 1rem;
+			@include display-flex(center);
+			margin-left: 1.5rem;
+			@include respond(big-tablet) {
+				width: 5rem;
+				height: 5rem;
+				margin-left: 1rem;
+			}
+
+			& img {
+				width: 100%;
+				height: 100%;
+				margin-left: -2px;
+			}
+		}
+		& .logo-text {
+			& svg {
+				width: 100%;
+				transition: all 300ms;
+			}
+			@include respond(big-tablet) {
+				max-width: 10rem;
+			}
+		}
+		&.dark,
+		&.activeMenu {
+			& .logo {
+				background-color: $color-white;
+			}
+			& svg > path {
+				fill: #ffffff;
+				stroke: #ffffff;
+			}
+		}
+	}
+	.Menu__nav {
+		padding: 8px 3rem;
+		min-height: 8rem;
+		padding-left: 0;
+		width: 100%;
+
+		position: relative;
+		// overflow: hidden;
+		transition: all 400ms ease-in-out;
+
+		@include respond(big-tablet) {
+			order: 1;
+			position: fixed;
+			right: -100vw;
+			top: 0;
+			padding-top: 10rem;
+			width: 100vw;
+			height: 100vh;
+			background-color: $color-blue;
+			align-items: flex-start;
+			flex-direction: column-reverse;
+			justify-content: flex-end;
+
+			&::before {
+				content: none !important;
+			}
+		}
+
+		&.active {
+			display: flex;
+			right: 0;
+		}
+		&::before {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100vw;
+			height: 100%;
+			z-index: -1;
+			background-color: $color-blue-dark;
+			border-bottom-right-radius: 85px;
+		}
+
+		&--profile {
+			flex-direction: row-reverse;
+			margin-right: 2rem;
+			display: none;
+
+			@include respond(big-tablet) {
+				display: flex;
+			}
+			@include respond(smallest-phone) {
+				margin-right: 1rem;
+			}
+
+			&.hidden {
+				display: none;
+			}
+
+			& .profile__image {
+				margin-left: 1rem;
+				& img {
+					width: 4rem;
+					height: 4rem;
+				}
+			}
+		}
+
+		& .Menu__ul {
+			width: 100%;
+			@include display-flex;
+			@include respond(big-tablet) {
+				flex-direction: column;
+				align-items: flex-start;
+				& .Menu__li {
+					&:not(:last-child) {
+						margin-bottom: 2.5rem;
+					}
+				}
+			}
+		}
+
+		&--btn {
+			flex-direction: column;
+			display: none;
+			z-index: 1051;
+			@include respond(big-tablet) {
+				display: flex;
+			}
+			&:focus,
+			&:active {
+				&::after {
+					opacity: 0;
+				}
+			}
+			& span {
+				background-color: $color-black;
+				width: 2.6rem;
+				height: 2px;
+				border-radius: 6px;
+				transition: all 200ms;
+
+				&:nth-child(2) {
+					margin: 4px 0;
+				}
+			}
+			&.open {
+				& > span {
+					background-color: #fff;
+					&:nth-child(2) {
+						transform: translateX(2rem);
+						opacity: 0;
+					}
+					&:nth-child(1) {
+						transform: rotate(-45deg) translate(-4px, 4px);
+					}
+					&:nth-child(3) {
+						transform: rotate(45deg) translate(-4px, -4px);
+					}
+				}
+			}
+			&.dark {
+				& > span {
+					background-color: $color-white;
+				}
+			}
+		}
+
+		&--wrapper {
+			@include display-flex;
+			flex: 1 0 80%;
+			@include respond(big-tablet) {
+				flex: 1 0 auto;
+			}
+		}
+	}
+	& .Menu-wrapper {
+		@include display-flex;
+		column-gap: 3rem;
+		width: 100%;
+		height: 8rem;
+		@include respond(big-tablet) {
+			justify-content: space-between;
+		}
+		@include respond(smallest-phone) {
+			column-gap: 0;
+		}
+	}
+	& .Menu_actions {
+		@include display-flex;
+		@include respond(big-tablet) {
+			order: 1;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			width: 100%;
+			padding-left: 2rem;
+			margin-bottom: 3rem;
+			&--profile {
+				flex-direction: row-reverse;
+				margin-right: 2rem;
+				& .profile__image {
+					margin-left: 1rem;
+
+					& img {
+						width: 40px;
+						height: 40px;
+					}
+				}
+			}
+			& .link {
+				height: 28px;
+				font-size: 12px;
+			}
+		}
+
+		& > .ant-btn {
+			color: $color-white;
+			margin-left: 1.5rem;
+		}
+	}
+
+	p.profile__name {
+		margin-left: 16px;
+		color: #ccd5da;
+		@include respond(tablet) {
+			font-size: 12px;
+		}
+	}
+	.profile__image {
+		img {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+	}
+}

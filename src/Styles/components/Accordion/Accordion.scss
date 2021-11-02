@@ -1,0 +1,45 @@
+.Accordion {
+  margin: 20px 0;
+
+  .ant-collapse {
+    border-color: $color-dark-gray;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  .ant-collapse-content {
+    border-color: #ffffff;
+  }
+  .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header {
+    padding-right: 2.2rem;
+    color: $color-blue;
+    font-size: 1.8rem;
+  }
+  .ant-collapse > .ant-collapse-item {
+    border-color: $color-dark-gray;
+  }
+  .ant-collapse-content > .ant-collapse-content-box {
+    // padding: 16px 0;
+    padding-right: 2.2rem;
+    color: $color-text;
+    font-size: 1.6rem;
+    cursor: pointer;
+    & > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+  .ant-collapse-rtl.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-extra {
+    top: 7px;
+    position: relative;
+    .arrow__color {
+      color: $color-blue;
+    }
+  }
+  .ant-collapse-item.ant-collapse-item-active {
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+  }
+}
+.ant-collapse-item.ant-collapse-item-active {
+  .arrow__color {
+    transform: rotate(180deg);
+  }
+}

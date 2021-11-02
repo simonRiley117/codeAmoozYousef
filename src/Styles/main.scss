@@ -5,7 +5,7 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-
+@import "~swiper/swiper-bundle.css";
 // -------------------- fonts --------------------
 @import "./base/font";
 
@@ -23,9 +23,11 @@
 // -------------------- components --------------------
 //--------------share---------------
 
+@import "./components/Discount/SideBarDiscount";
+@import "./components/Discount/HeaderDiscount";
 @import "./components/Inputs/input";
 @import "./components/Inputs/ProfileInput";
-@import "./components/Menu/menu";
+@import "./components/Menu/appbar";
 @import "./components/Menu/sidebarmenu";
 @import "./components/Inputs/textarea";
 @import "./components/Footer/Footer";
@@ -34,11 +36,13 @@
 @import "./components/Buttons/link";
 @import "./components/BreadCrump/BreadCrump";
 @import "./components/Title/title";
-@import "./components/PopUp/PopUp"; 
+@import "./components/PopUp/PopUp";
 @import "./components/Cards/coursecardbg";
 @import "./components/Cards/coursecardsm";
-
+@import "./components/VideoPlayer/VideoPlayer";
+@import "./components/Codeeditor/Codeeditor";
 @import "./components/Pagination/pagination";
+@import "./components/Accordion/Accordion.scss";
 //-------------master------------
 @import "./components/Master/WorkWithUs";
 @import "./components/Master/CoursStandards";
@@ -49,13 +53,16 @@
 
 // -------------------- layout --------------------
 //-----------------Coworker-----------
-@import './Layouts/News/news';
-@import './Layouts/Home/home';
-@import './Layouts/Faq/faq';
+@import "./Layouts/News/news";
+@import "./Layouts/Home/home";
+@import "./Layouts/Faq/faq";
 
-@import './Layouts/CoWorkers/Master';
+@import "./Layouts/Course/Course";
+@import "./Layouts/CoWorkers/Master";
 @import "./Layouts/CoWorkers/CoWorkers";
 @import "./Layouts/CoWorkers/Technicalteam";
 @import "./Layouts/Contact-us/contact";
-@import "./Layouts/Home/home";
 @import "./Layouts/Courses/courses";
+@import "./Layouts/Course/Sarfasl/Detaile";
+@import "./Layouts/Course/Sarfasl/Sarfasl";
+@import "./Layouts/Course/Comment/AskAndAnswer";

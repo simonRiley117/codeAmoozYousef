@@ -1,0 +1,10 @@
+.Course {
+    margin-top: 2rem;
+    &__container {
+        grid-template-columns: 0.7fr 2.5fr 1fr;
+        margin-top: 2.7rem;
+        & > *:last-child {
+            position: relative;
+        }
+    }
+}

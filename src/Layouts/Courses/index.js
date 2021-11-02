@@ -2,8 +2,8 @@ import React,{useMemo,useState} from 'react';
 import  SwiperCore,{A11y,Autoplay,Navigation,EffectFlip} from "swiper";
 import CourseCardBg from "@Components/Shared/Cards/CourseCardBg";
 import Searchxx from "./Searchxx";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 // images
 import Coursecardsm from "@Components/Shared/Cards/CourseCardSm";
 import Filtersxx from "./Filtersxx";
@@ -12,25 +12,26 @@ import Pagination from "@Components/Shared/Pagination";
 
 SwiperCore.use([Navigation,EffectFlip]);
 
+
 const Courses = () => {
-    // just some testing array to be able to map on cards
-    const cards = [
-        {id:1},
-        {id:2},
-        {id:3},
-        {id:5},
-        {id:6},
-        {id:7},
-        {id:8},
-        {id:9},
-        {id:10},
-        {id:11},
-        {id:12},
-        {id:13},
-    ];
-    // pagination config
-    const PageSize=11;
-    const [currentPage, setCurrentPage] = useState(1);
+  // just some testing array to be able to map on cards
+  const cards = [
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 5 },
+    { id: 6 },
+    { id: 7 },
+    { id: 8 },
+    { id: 9 },
+    { id: 10 },
+    { id: 11 },
+    { id: 12 },
+    { id: 13 },
+  ];
+  // pagination config
+  const PageSize = 11;
+  const [currentPage, setCurrentPage] = useState(1);
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;

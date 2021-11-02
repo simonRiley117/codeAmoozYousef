@@ -3,7 +3,10 @@
 // ------------ Primary ------------
 $color-primary: #f68521;
 $color-primary-light: #ffa44a;
+$color-primary-light-1: #ffc700;
 $color-primary-dark: #cf6311;
+$color-primary-dark-1: #ff9900;
+$color-primary-dark-2: #ef8019;
 $color-white: #fff;
 $color-white-light: rgba(243, 243, 243, 0.7);
 
@@ -26,21 +29,27 @@ $color-black-light: #010101;
 $color-black-light-1: rgba(18, 18, 18, 0.8);
 $color-black: #000;
 $color-text-black-light-2: rgba(18, 18, 18, 0.7);
+$color-text-black-light-3: rgba(18, 18, 18, 0.79);
 
 //------------------gray----------------
 $color-gray: #e5e5e5;
 $color-gray-light: #ededed;
 $color-gray-dark: #bbbbbb;
+$color-grey-dark-1: #707070;
 $color-dark-gray: rgba(0, 0, 0, 0.2);
+//-----------------------yellow-------------
+$color-yellow: #ffe661;
+$color-yellow-dark: #fcca46;
 
+//--------------red-------------
+$color-red: #f14242;
+//------------green---------
+$color-green-light: #0dca78;
 // ------------ Text ------------
 $color-text: #121212;
 $color-text-gray: #12121280;
 $color-text-blue: #002171;
-$color-text-light: rgba(
-	$color: $color-text,
-	$alpha: 0.7,
-);
+$color-text-light: #595959;
 $color-text-light-1: rgba(
 	$color: $color-text,
 	$alpha: 0.6,
@@ -49,15 +58,21 @@ $color-text-gray-dark: rgba(
 	$color: $color-text,
 	$alpha: 0.8,
 );
-$color-disable: rgba(
-	$color: $color-text,
-	$alpha: 0.5,
-);
+$color-disable: #888888;
 $color-success: #329c00;
 $color-success-light: #b5d335;
 $color-error: #ff5a67;
 
-$color-gradient: linear-gradient(140deg, rgba(239, 128, 25, 1) 30%, rgba(249, 168, 37, 1) 67%);
+$color-gradient: linear-gradient(
+	140deg,
+	rgba(239, 128, 25, 1) 30%,
+	rgba(249, 168, 37, 1) 67%
+);
+$color-gradient-discount: linear-gradient(
+	180deg,
+	#20c086 -12.08%,
+	rgba(32, 192, 134, 0) 117.94%
+);
 
 $shadow-button: drop-shadow(
 	0 4px 6px
@@ -79,12 +94,17 @@ $shadow-backgroud1: 0px 2px 8px 2px
 		$color: #000,
 		$alpha: 0.15,
 	);
+$shadow-backgroud-light-white: rgba(
+	$color: $color-white,
+	$alpha: 0.5,
+);
 $color-ppoup-backgroud: rgba(246, 133, 33, 0.5);
+$color-editor-back: #272822;
 // Fonts
 
-$font-primary: "vazir";
-$font-primary-medium: "vazir-medium";
-$font-primary-bold: "vazir-bold";
+$font-primary: 'vazir';
+$font-primary-medium: 'vazir-medium';
+$font-primary-bold: 'vazir-bold';
 
 $fonts: (
 	regular: $font-primary,

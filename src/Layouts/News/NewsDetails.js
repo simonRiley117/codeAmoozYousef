@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { cardData } from "@Components/Layouts/News/cardData";
-import Cardxx from "@Components/Layouts/News/Cardxx";
-import { Link, useLocation } from "react-router-dom";
-import AntParagraph from "../../Components/Shared/AntParagraph";
-import Detailsxx from "../../Components/Layouts/News/Detailsxx";
+import React, { useState, useEffect } from 'react';
+import { cardData } from '@Components/Layouts/News/cardData';
+import Cardxx from '@Components/Layouts/News/Cardxx';
+import { Link, useLocation } from 'react-router-dom';
+import AntParagraph from '../../Components/Shared/AntParagraph';
+import Detailsxx from '../../Components/Layouts/News/Detailsxx';
 //images
-import datebook from "@Assets/Pic/Frame 87.png";
-import eye from "@Assets/Pic/Frame 88.png";
+import datebook from '@Assets/Pic/Frame 87.png';
+import eye from '@Assets/Pic/Frame 88.png';
 
 const NewsDetails = () => {
     const [id, setId] = useState('1');

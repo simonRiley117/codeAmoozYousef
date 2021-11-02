@@ -8,7 +8,6 @@ import image2 from '@Assets/Pic/image 2.png';
 import image3 from '@Assets/Pic/image 3.png';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
 
 import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
 
@@ -53,7 +52,7 @@ const News = () => {
 	const renderNewsItem = () =>
 		data.map((info, key) => (
 			<SwiperSlide key={key}>
-				{(sliderProps) => <NewsItem {...info} {...sliderProps} />}
+				<NewsItem {...info} />
 			</SwiperSlide>
 		));
 
@@ -64,17 +63,18 @@ const News = () => {
 				<div className='home__news--content'>
 					<div className='home__news--slider'>
 						<Swiper
-							effect={'coverflow'}
+							effect='coverflow'
 							grabCursor
 							loop
 							slidesPerView={3}
 							slideToClickedSlide
 							coverflowEffect={{
 								rotate: 0,
-								stretch: 1,
-								depth: 100,
-								modifier: 1,
+								stretch: 40,
+								depth: 400,
+								modifier: 3,
 								slideShadows: false,
+								scale: 1,
 							}}
 							pagination={{
 								clickable: true,

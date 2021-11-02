@@ -1,0 +1,140 @@
+.AskAndAnswer {
+    height: 100%;
+    padding-top: 8rem;
+    &__input {
+        width: 100%;
+        padding-left: 6rem !important;
+        padding-right: 5rem !important;
+        font-size: 1.4rem !important;
+        svg {
+            fill: none;
+            width: 17px;
+        }
+        .ant-input {
+            &::placeholder {
+                color: $color-text-black-light-2;
+            }
+        }
+    }
+    &__form {
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+    }
+    &__emogibox {
+        // bottom: -3.5rem;
+        bottom: 0.5rem;
+        left: 3rem;
+        z-index: 20;
+    }
+    .emoji-mart {
+        bottom: 3rem;
+        left: 0rem;
+        position: absolute;
+        z-index: 30;
+    }
+    &__emptyBox {
+        color: $color-text-black-light-2;
+        width: 100%;
+        font-size: 1.6rem;
+        margin: 0 auto;
+        top: 40%;
+        transform: translateY(-50%);
+        margin: 0 auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    &__content {
+        height: 90%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    &__contentBox {
+        & > * {
+            margin-bottom: 4.9rem;
+        }
+    }
+    &__askBox {
+        background-color: $color-gray;
+        position: relative;
+        padding: 2rem;
+        color: $color-text-black-light-2;
+        border-radius: 1.5rem 1.5rem 0px 1.5rem;
+        width: 80%;
+        margin-right: 3.5rem;
+        span {
+            color: $color-text-blue;
+            font-size: 1.4rem;
+        }
+        p {
+            font-size: 1.6rem;
+            word-break: break-word;
+        }
+    }
+    &__askBox::after {
+        content: "";
+        position: absolute;
+        height: 2.5rem;
+        width: 2.5rem;
+        bottom: 0;
+        left: 99.5%;
+        background-color: $color-gray;
+        border-radius: 0.4rem;
+        clip-path: polygon(100% 100%, 0 100%, 0 0);
+    }
+    &__answareBox {
+        direction: ltr;
+    }
+    &__answare {
+        background-color: $color-primary;
+        position: relative;
+        padding: 2rem;
+        color: $color-text-black-light-2;
+        border-radius: 1.5rem 1.5rem 1.5rem 0;
+        width: 80%;
+        margin-top: 4.9rem;
+        margin-left: 3.5rem;
+        text-align: right;
+        span {
+            color: $color-text-blue;
+            font-size: 1.4rem;
+        }
+        p {
+            font-size: 1.6rem;
+            word-break: break-word;
+        }
+    }
+    &__answare::after {
+        content: "";
+        position: absolute;
+        height: 2.5rem;
+        width: 2.5rem;
+        bottom: 0;
+        right: 99.5%;
+        background-color: $color-primary;
+        border-radius: 0.4rem;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    &__TimeBox {
+        color: $color-text-black-light-3;
+        font-size: 1.4rem;
+        opacity: 0.8;
+        margin-top: 0.6rem;
+        &-ask {
+            & > *:last-child {
+                margin-right: 3rem;
+            }
+        }
+        &-answer {
+            & > *:last-child {
+                margin-left: 3rem;
+            }
+        }
+    }
+    &__sendBtn {
+        bottom: 0.8rem;
+        z-index: 20;
+        right: 1rem;
+    }
+}
