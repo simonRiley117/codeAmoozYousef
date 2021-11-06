@@ -7,13 +7,13 @@ import News from './News';
 
 const Home = () => {
 	return (
-		<div className=''>
+		<>
 			<Header />
 			<Properties />
 			<Work />
 			<Offers />
 			<News />
-		</div>
+		</>
 	);
 };
 export default Home;
