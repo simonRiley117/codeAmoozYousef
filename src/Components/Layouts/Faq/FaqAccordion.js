@@ -34,7 +34,7 @@ const FaqAccordion = ({heading, children, id, setActiveId,activeId}) => {
                     initial={{height : 0}}
                     animate={{height: "max-content"}}
                     exit={{height:0}}
-                    transition={{duration:0.2}}
+                    transition={{duration:0.4}}
                     className="faq-accordion__content"
                 >
                     {children}

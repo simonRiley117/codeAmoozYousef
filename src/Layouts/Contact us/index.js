@@ -15,7 +15,7 @@ const Contact = () => {
     } = useForm();
     const onSubmit = (data) => {};
     return (
-        <div className="contact">
+        <div className="contact container">
             <div className="w-4/5 mx-auto my-20 bg-gray-200 h-50 rounded-full mt-40">
                 <h2 className="contact-heading title__box ">
                      ارتباط با ما
