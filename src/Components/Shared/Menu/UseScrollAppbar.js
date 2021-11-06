@@ -1,29 +1,23 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const UseScrollAppbar = () => {
-  // new:
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  // new:
-  const [visible, setVisible] = useState(true);
-  const [sticky, setSticky] = useState(false);
+	const [sticky, setSticky] = useState(false);
+  console.log("UseScrollAppbar ~ sticky", sticky)
 
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setSticky(currentScrollPos > 40);
-    // const isVisible = prevScrollPos >= currentScrollPos;
+	const handleScroll = useCallback(() => {
+		setSticky(document.body.page)
+	}, []);
 
-    // setVisible(isVisible);
+	
 
-    setPrevScrollPos(currentScrollPos);
-  };
+	// new useEffect:
+	useEffect(() => {
+		document.body.addEventListener('scroll', handleScroll);
+    return () => {
+      document.body.removeEventListener("scroll", handleScroll);
+    };
+	}, [handleScroll]);
 
-  // new useEffect:
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible, handleScroll]);
-
-  return { visible, sticky };
+	return { sticky };
 };
 export default UseScrollAppbar;
