@@ -30,8 +30,10 @@ function Index() {
         rout: "/course",
       },
     ]);
+    setId(location.state.id);
   }, [location]);
   const [menu, setMenu] = useState([]);
+  const [id, setId] = useState();
   return (
     <div className="container">
       <BreadCrump item={menu} />

@@ -12,6 +12,7 @@ import Contact from "../Layouts/Contact us";
 import Courses from "../Layouts/Courses";
 import Course from "../Layouts/Course";
 import AboutUs from "../Layouts/About us";
+import Example from "../Layouts/Example";
 
 const Router = () => {
   return (
@@ -27,7 +28,14 @@ const Router = () => {
         <Route exact path="/contact-us" component={Contact} />
         <Route exact path="/about-me" component={AboutUs} />
         <Route exact path="/courses" component={Courses} />
-        <Route exact path="/course" component={Course} />
+        <Route
+          exact
+          path="/course"
+          render={(routeProps) => (
+            <Course key={routeProps.history.location.state.id} />
+          )}
+        />
+        <Route exact path="/example" component={Example} />
       </Layout>
       <Route path="*">{() => <Redirect to="/" />}</Route>
     </Switch>

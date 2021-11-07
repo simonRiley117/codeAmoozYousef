@@ -18,7 +18,7 @@ const CourseCardBg = () => {
           <Link
             to={{
               pathname: "/course",
-              state: { name: "دوره آنلاین برنامه نویسی HTM" },
+              state: { name: "دوره آنلاین برنامه نویسی HTM", id: "1" },
             }}
           >
             دوره آنلاین برنامه نویسی HTML{" "}

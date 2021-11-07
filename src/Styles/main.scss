@@ -45,6 +45,7 @@
 @import "./components/Accordion/Accordion.scss";
 @import "./components/Tabs/TabBox";
 @import "./components/CommentBox/CommentBox";
+@import "./components/CodeeditorWithRun/CodeeditorWithRun";
 //-------------master------------
 @import "./components/Master/WorkWithUs";
 @import "./components/Master/CoursStandards";
@@ -74,3 +75,5 @@
 @import "./Layouts/Course/Comment/Comment";
 @import "./Layouts/Register/register";
 @import "./Layouts/Course/Teacher/TeacherInfo";
+@import "./Layouts/Example/Example";
+@import "./Layouts/Example/ExampleDetail";

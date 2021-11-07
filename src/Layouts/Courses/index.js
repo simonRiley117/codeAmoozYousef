@@ -65,7 +65,7 @@ const Courses = () => {
           <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={4}>
             {cards.map((card, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide style={{ marginBottom: "5.399rem" }}>
                   <Coursecardsm key={card.id} />
                 </SwiperSlide>
               );

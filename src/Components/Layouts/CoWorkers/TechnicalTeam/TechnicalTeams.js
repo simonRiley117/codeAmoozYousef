@@ -14,7 +14,6 @@ function TechnicalTeams() {
 	const [titles, setTitles] = useState('');
 	const [menu, setMenu] = useState([]);
 	const [id, setId] = useState(0);
-
 	useEffect(() => {
 		setTitles(location.state.title);
 		setMenu([
