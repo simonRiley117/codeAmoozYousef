@@ -2,20 +2,18 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const UseScrollAppbar = () => {
 	const [sticky, setSticky] = useState(false);
-  console.log("UseScrollAppbar ~ sticky", sticky)
+	console.log('UseScrollAppbar ~ sticky', sticky);
 
 	const handleScroll = useCallback(() => {
-		setSticky(document.body.page)
+		setSticky(window.scrollY > 40);
 	}, []);
-
-	
 
 	// new useEffect:
 	useEffect(() => {
-		document.body.addEventListener('scroll', handleScroll);
-    return () => {
-      document.body.removeEventListener("scroll", handleScroll);
-    };
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	}, [handleScroll]);
 
 	return { sticky };

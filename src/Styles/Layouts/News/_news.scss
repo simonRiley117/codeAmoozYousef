@@ -10,7 +10,13 @@
 		width: max-content;
 	}
 	&-grid {
-		@include display-grid(3.5rem 3rem, 40rem);
+		// @include display-grid(3.5rem 3rem, 32rem);
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+		gap: 3.5rem 3rem;
+		@include respond(phone) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&-button {
 		align-self: flex-end;
@@ -25,8 +31,15 @@
 	background-color: white;
 	border-radius: 15px;
 	box-shadow: $box-shadow;
+	@include respond(phone) {
+		width: 100%;
+		max-width: calc(100vw - 4rem);
+	}
 	&-content {
 		padding: 2.5rem 4.5rem;
+		@include respond(phone) {
+			padding: 2rem;
+		}
 
 		& p {
 			font-size: 1.6rem;
@@ -34,7 +47,7 @@
 			line-height: 1.8;
 			margin-bottom: 1.5rem;
 		}
-		& h4{
+		& h4 {
 			font-size: 1.8rem;
 			font-weight: 700;
 			margin-bottom: 1.5rem;
