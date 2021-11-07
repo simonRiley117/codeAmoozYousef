@@ -34,8 +34,10 @@ const Courses = () => {
   const [search, setSearch] = useState();
   const [text, setText] = useRecoilState(searchItem);
   useEffect(() => {
+    setSearch();
     cards.map((index, id) => text === index.name && setSearch(text));
-  }, [text]);
+    console.log(`object`, search);
+  }, [, text]);
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
@@ -73,10 +75,16 @@ const Courses = () => {
         </>
       )}
       {text !== "" ? (
-        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
-          {currentTableData.map((card) => {
-            return text === card.name ? <Coursecardsm key={card.id} /> : null;
-          })}
+        <div>
+          <p className="Courses__searchTitle font-bold	">
+            {" "}
+            نتیجه جستجو شما برای "{text}":
+          </p>
+          <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+            {currentTableData.map((card) => {
+              return text === card.name ? <Coursecardsm key={card.id} /> : null;
+            })}
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-4 gap-x-6 gap-y-8">
@@ -88,10 +96,6 @@ const Courses = () => {
       {/*  */}
       {search === undefined && text !== "" ? (
         <div>
-          <p className="Courses__searchTitle font-bold	">
-            {" "}
-            نتیجه جستجو شما برای "{text}":
-          </p>
           <div className="Courses__imgBox flex justify-center items-center">
             <img src={searchic} alt={searchic} className="Courses__img" />
           </div>

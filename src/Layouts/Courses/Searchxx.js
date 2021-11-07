@@ -17,7 +17,6 @@ const Searchxx = ({ children }) => {
     setText(data.search);
     reset();
   };
-  console.log(`object`, text);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="search-container">

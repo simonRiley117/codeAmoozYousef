@@ -6,6 +6,7 @@
     font-size: 2rem;
     border: 2px solid #233e6db2;
     border-radius: 100px;
+    font-weight: bold;
     &-img {
       position: absolute;
       left: 2rem;
@@ -21,6 +22,7 @@
       color: rgba(35, 62, 109, 0.7);
       font-size: 2rem;
       background-color: transparent;
+      font-weight: bold;
     }
     .ant-input-affix-wrapper.ant-input-affix-wrapper-rtl > input.ant-input {
       background-color: #ef801933;
@@ -37,9 +39,10 @@
     }
     input {
       background-color: transparent;
-      padding: 1.2rem;
+      // padding: 1.2rem;
       color: rgba(35, 62, 109, 0.7);
       font-size: 2rem;
+      font-weight: bold;
       &:focus {
         background-color: #ef801933;
       }
@@ -125,21 +128,22 @@
       }
     }
   }
-  &__searchTitle {
-    font-size: 1.8rem;
-    color: $color-black;
-    margin-top: 4rem;
-  }
-  &__imgBox {
-    text-align: center;
-    width: 100%;
-    margin-top: 2rem;
-  }
-  &__img {
-    width: 43rem;
-    height: 38rem;
-    margin: 0 auto;
-  }
+}
+.Courses__searchTitle {
+  font-size: 1.8rem;
+  color: $color-black;
+  margin-top: 4rem;
+  margin-bottom: 2.4rem;
+}
+.Courses__img {
+  width: 43rem;
+  height: 38rem;
+  margin: 0 auto;
+}
+.Courses__imgBox {
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
 }
 //swiper configs
 .swiper-button-next {
