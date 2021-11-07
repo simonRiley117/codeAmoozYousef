@@ -16,7 +16,6 @@ const Searchxx = ({ children }) => {
     reset();
   };
   const [text, setText] = useRecoilState(searchItem);
-console.log(`text`, text)
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="search-container">
       <Input
