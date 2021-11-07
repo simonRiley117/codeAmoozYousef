@@ -8,6 +8,7 @@ import About from "@Components/Layouts/Course/About";
 import Comment from "@Components/Layouts/Course/Comment/Comment";
 import AskAndAnswer from "@Components/Layouts/Course/Comment/AskAndAnswer";
 import TeacherInfo from "@Components/Layouts/Course/Teacher/TeacherInfo";
+import CourseTable from "@Components/Layouts/Course/Course/CourseTable";
 import { Tabs } from "antd";
 
 const { TabPane } = Tabs;
@@ -66,7 +67,9 @@ function Index() {
               </Tabs>
             </div>
           </div>
-          <div className="fixed">{/* <SideBarDiscount /> */}</div>
+          <div className="relative">
+            <CourseTable />
+          </div>
         </div>
       </div>
     </div>
