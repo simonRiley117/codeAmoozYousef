@@ -15,6 +15,7 @@ import AboutUs from "./Layouts/About us";
 import News from "./Layouts/News";
 import Layout from "@Components/Shared/Layout/Layout";
 import { UserDataProvider } from "./Context/userContext";
+import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 
 const UnAuthenticated = () => {
   console.log("asasd");
@@ -33,7 +34,11 @@ const UnAuthenticated = () => {
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
-
+            <Route
+              exact
+              path="/account-confirm-email/:confirmedkey"
+              component={EmailVerify}
+            />
             {/* <Route path="*">{() => <Redirect to={{ pathname: "/" }} />}</Route> */}
           </Layout>
         </Switch>
