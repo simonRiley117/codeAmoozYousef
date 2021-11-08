@@ -1,5 +1,5 @@
 import React from "react";
-import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
+import BreadCrump from "@Components/Shared/BreadCrump/Breadcrump";
 import Title from "@Components/Shared/Title";
 import master from "@Assets/Pic/master.png";
 import coworkerTeam from "@Assets/Pic/coworkerTeam.png";

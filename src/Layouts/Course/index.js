@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
+import BreadCrump from "@Components/Shared/BreadCrump/Breadcrump";
 import SideBarDiscount from "@Components/Shared/Discount/SideBarDiscount";
 import HeaderDiscount from "@Components/Shared/Discount/HeaderDiscount";
 import Sarfasl from "@Components/Layouts/Course/Sarfasl";

@@ -1,3 +1,11 @@
-.BreadCrump {
-    margin-top: 13rem;
+.breadcrumbs {
+	margin: 4rem 0;
+
+	.ant-breadcrumb {
+		display: flex;
+		span {
+			display: flex;
+			align-items: center;
+		}
+	}
 }

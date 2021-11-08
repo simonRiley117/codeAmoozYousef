@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
+import BreadCrump from "@Components/Shared/BreadCrump/Breadcrump";
 import { useParams, useLocation } from "react-router-dom";
 import ExampleDetail from "@Components/Layouts/Example/ExampleDetail";
 

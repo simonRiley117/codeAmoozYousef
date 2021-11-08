@@ -1,5 +1,5 @@
 import React from "react";
-import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
+import BreadCrump from "@Components/Shared/BreadCrump/Breadcrump";
 import { Link } from "react-router-dom";
 
 function index() {

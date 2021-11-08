@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import Cardxx from '../../Components/Layouts/News/Cardxx';
-import { cardData } from '../../Components/Layouts/News/cardData';
-import Link from '../../Components/Shared/Buttons/Link';
-import Pagination from '../../Components/Shared/Pagination';
+import NewsItemContainer from '@Components/Layouts/News/NewsItemContainer';
+import { cardData } from '@Components/Layouts/News/cardData';
+import Link from '@Components/Shared/Buttons/Link';
+import Pagination from '@Components/Shared/Pagination';
+import Breadcrump from '@Components/Shared/BreadCrump/Breadcrump';
 
 let PageSize = 10;
 const News = () => {
@@ -16,21 +17,26 @@ const News = () => {
 	}, [currentPage]);
 	return (
 		<div className='news container'>
+			<Breadcrump />
 			<h2 className='news-heading '>اخبار</h2>
 			<div className='news-grid'>
 				{currentTableData.map((card) => {
 					return (
-						<Cardxx key={card.id} borderRadius='15px' img={card.img}>
+						<NewsItemContainer
+							key={card.id}
+							borderRadius='15px'
+							img={card.img}
+						>
 							<h3 className='card-heading mr-bt-sm title'>
 								{card.header}
 							</h3>
 							<p className='card-paragraph mr-bt-sm subtitle'>
 								{card.text}
-							</p> 
+							</p>
 							<Link
 								classes='news-button'
 								to={{
-									pathname: '/news/NewsDetails',
+									pathname: '/news/news-info',
 									state: {
 										id: card.id,
 									},
@@ -38,7 +44,7 @@ const News = () => {
 							>
 								بیشتر بخوانید...
 							</Link>
-						</Cardxx>
+						</NewsItemContainer>
 					);
 				})}
 			</div>

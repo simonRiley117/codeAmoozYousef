@@ -1,12 +1,10 @@
 //news
 .news {
-	margin-top: 10rem;
 	padding-bottom: 3rem;
 	&-heading {
-		font-size: 2.7rem;
+		font-size: 2rem;
 		font-weight: 700;
-		display: block;
-		margin: 0 auto 2rem;
+		margin: 0 auto 3.5rem;
 		width: max-content;
 	}
 	&-grid {
@@ -75,20 +73,22 @@
 
 //single title
 .Title {
-	margin-bottom: 5rem;
+	margin-bottom: 3rem;
 	display: grid;
 	grid-template-columns: 4fr 1fr;
 	gap: 3rem;
 	width: 100%;
-	&-paragraph {
-		line-height: 1.8;
-		font-weight: normal;
-	}
+
 	&-details {
 		background-color: rgba($color-gray-dark, 0.5);
 		border-radius: 0 100px 100px 0;
 		padding: 1rem;
-		width: 100%;
+		color: $color-text;
+		padding: 0.8rem 2rem;
+		& img,
+		& span {
+			margin-left: 1rem;
+		}
 	}
 	//media queries
 
@@ -98,7 +98,10 @@
 	}
 	// moving headings
 	&-heading {
-		margin: 10rem 4rem 2.5rem 0;
+		// margin: 10rem 4rem 2.5rem 0;
+		margin-right: 4rem;
+		margin-bottom: 2.5rem;
+		@include set-font(2rem, bold);
 
 		@include respond(phone) {
 			margin-right: 2rem;
@@ -123,13 +126,7 @@
 	&-title {
 		font-size: 2.5rem;
 	}
-	&-date {
-		margin-left: 1rem;
-		margin-right: 2rem;
-	}
-	&-seen {
-		margin-left: 1rem;
-	}
+
 	&-paging {
 		width: max-content;
 		margin: 3rem auto;
@@ -137,6 +134,11 @@
 	&-cards {
 		@include respond(phone) {
 			padding: 0 6rem;
+		}
+	}
+	&-linked {
+		& .card-content {
+			padding: 2.5rem;
 		}
 	}
 }
