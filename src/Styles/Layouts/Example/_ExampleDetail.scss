@@ -1,0 +1,59 @@
+.ExampleDetail {
+    &__txtBox {
+        padding-right: 2rem;
+        padding-left: 2.3rem;
+    }
+    &__title {
+        color: $color-black-light-1;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    &__txt {
+        color: $color-text-black-light-2;
+        font-size: 1.6rem;
+        line-height: 2.9rem;
+        width: 90%;
+        margin-bottom: 5rem;
+    }
+    &__sampleTitleBox {
+        height: 12.6rem;
+        justify-content: space-between;
+        // & > *:first-child {
+        //     margin-bottom: 7.1rem;
+        // }
+    }
+    &__sampleTitle {
+        color: $color-black-light-1;
+        font-size: 1.6rem;
+    }
+    &__sampledataBox {
+        height: 15.6rem;
+        justify-content: space-between;
+        img {
+            height: 2.3rem;
+            width: auto;
+        }
+    }
+    &__sampledata {
+        background-color: $color-gray-light-1;
+        border-radius: 1.5rem;
+        padding: 1.5rem 2.1rem;
+        color: $color-black-light-1;
+        font-size: 1.6rem;
+    }
+    &__downloadBox {
+        margin-top: 3.918rem;
+        img {
+            width: 3.764rem;
+            height: auto;
+            padding: 0.5rem;
+            background-color: $color-gray-light-1;
+            border-radius: 50%;
+        }
+        p {
+            color: $color-primary;
+            font-size: 1.6rem;
+            margin-right: 1.5rem;
+        }
+    }
+}

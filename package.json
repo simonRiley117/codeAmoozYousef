@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@emotion/react": "^11.5.0",
+    "@n8tb1t/use-scroll-position": "^2.0.3",
     "@tailwindcss/postcss7-compat": "^2.2.16",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

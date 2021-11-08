@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 
 const UseScrollTeacherTable = () => {
   // new:
@@ -18,7 +19,9 @@ const UseScrollTeacherTable = () => {
 
     setPrevScrollPos(currentScrollPos);
   };
-
+  useScrollPosition(({ prevPos, currPos }) => {
+    setSticky(currPos.y > 298);
+  });
   // new useEffect:
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
