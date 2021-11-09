@@ -12,6 +12,8 @@ import { Checkbox } from "antd";
 import Button from "@Components/Shared/Buttons/Button";
 import useFetch from "../../../Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
+import { useLocation } from "react-router-dom";
+import { TEAChER_URL } from "@App/constants";
 
 const SignInForm = () => {
   const { authDispatch } = useAuth();
@@ -21,6 +23,7 @@ const SignInForm = () => {
     formState: { errors },
   } = useForm();
   const [postData, setPostData] = useState();
+  const { pathname, search } = useLocation();
 
   const loginRequest = useFetch({
     url: `auth/login`,
@@ -36,6 +39,9 @@ const SignInForm = () => {
         token: res.access_token,
         refresh: res.refresh_token,
       });
+      if (search == "?redirectTeacher") {
+        window.location.href = TEAChER_URL + `/callback/${res.access_token}`;
+      }
       // history.push("/panel");
     },
   });

@@ -17,7 +17,7 @@ import Contact from "./Layouts/Contact us";
 import Courses from "./Layouts/Courses";
 import Course from "./Layouts/Course";
 import AboutUs from "./Layouts/About us";
-  import Example from "./Layouts/Example";
+import Example from "./Layouts/Example";
 import { UserDataProvider } from "./Context/userContext";
 import Home from "./Layouts/Home";
 
@@ -29,7 +29,7 @@ const Authenticated = () => {
       <UserDataProvider>
         <Switch>
           <Layout>
-            <Route exact path="/" component={Home} />
+            <Route  path="/:redirectToTeacher?" component={Home} />
             <Route path="/coWorkers">
               <CoWorkersRouter />
             </Route>

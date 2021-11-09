@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router";
+import { useParams } from "react-router-dom";
+
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import classNames from "classnames";
 import UseScrollAppbar from "./UseScrollAppbar";
@@ -11,9 +13,9 @@ import Register from "@Components/Layouts/Register/Register";
 import logo from "@Assets/Logo/logo.svg";
 import { ReactComponent as ShoppingCartIcon } from "@Assets/Icons/shopping-cart.svg";
 import { ReactComponent as LogoTextIcon } from "@Assets/Logo/codeamooz-text.svg";
-import profile from "@Assets/Pic/profile.png";
 import { useAuth } from "@App/Context/authContext";
 import { useUserData } from "@App/Context/userContext";
+import { useEffect } from "react";
 
 const menuItem = [
   {
@@ -52,10 +54,12 @@ const Appbar = () => {
   const [isOpenMenu, setOpenMenu] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const { userData } = useUserData();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const dark = pathname === "/";
   const { sticky } = UseScrollAppbar();
   const { token } = useAuth();
+  const { redirectToTeacher } = useParams();
+
   const handleToggleMenu = () => {
     setOpenMenu((prev) => !prev);
 
@@ -68,6 +72,12 @@ const Appbar = () => {
   const handleModalVisible = () => {
     setModalVisible((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (search == "?redirectTeacher") {
+      handleModalVisible();
+    }
+  }, []);
 
   return (
     <>

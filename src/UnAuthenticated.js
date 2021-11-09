@@ -18,13 +18,12 @@ import { UserDataProvider } from "./Context/userContext";
 import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 
 const UnAuthenticated = () => {
-  console.log("asasd");
   return (
     <>
       <UserDataProvider>
         <Switch>
           <Layout>
-            <Route exact path="/" component={Home} />
+            <Route path="/" component={Home} />
             <Route path="/coWorkers">
               <CoWorkersRouter />
             </Route>
