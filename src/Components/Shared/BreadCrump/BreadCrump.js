@@ -6,7 +6,7 @@ import { Breadcrumb as BreadcrumbBase } from 'antd';
 import { ReactComponent as SeparatorIcon } from '@Assets/Icons/SeparatorIcon.svg';
 const { Item } = BreadcrumbBase;
 
-const Breadcrump = ({ title }) => {
+const BreadCrump = ({ title }) => {
 	const routes = [
 		{ path: '/', breadcrumb: 'صفحه اصلی' },
 		{ path: '/news', breadcrumb: 'اخبار' },
@@ -36,12 +36,12 @@ const Breadcrump = ({ title }) => {
 	);
 };
 
-Breadcrump.defaultProps = {
+BreadCrump.defaultProps = {
 	title: '',
 };
 
-Breadcrump.propTypes = {
+BreadCrump.propTypes = {
 	title: PropTypes.string,
 };
 
-export default Breadcrump;
+export default BreadCrump;

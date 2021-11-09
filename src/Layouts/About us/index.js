@@ -1,5 +1,5 @@
 import React from 'react';
-import BreadCrump from "../../Components/Shared/BreadCrump/Breadcrump";
+import BreadCrump from "../../Components/Shared/BreadCrump/BreadCrump";
 //images
 import img1 from '../../Assets/Images/Pic/human-friendly-office 1.png'
 import img2 from '../../Assets/Images/Pic/Perfect-Fit-scaled 1.png'

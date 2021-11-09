@@ -3,7 +3,7 @@ import NewsItemContainer from '@Components/Layouts/News/NewsItemContainer';
 import { cardData } from '@Components/Layouts/News/cardData';
 import Link from '@Components/Shared/Buttons/Link';
 import Pagination from '@Components/Shared/Pagination';
-import Breadcrump from '@Components/Shared/BreadCrump/Breadcrump';
+import BreadCrump from '@Components/Shared/BreadCrump/BreadCrump';
 
 let PageSize = 10;
 const News = () => {
@@ -17,7 +17,7 @@ const News = () => {
 	}, [currentPage]);
 	return (
 		<div className='news container'>
-			<Breadcrump />
+			<BreadCrump />
 			<h2 className='news-heading '>اخبار</h2>
 			<div className='news-grid'>
 				{currentTableData.map((card) => {

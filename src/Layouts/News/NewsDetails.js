@@ -7,7 +7,7 @@ import NewsDetailsBox from '../../Components/Layouts/News/NewsDetailsBox';
 //images
 import datebook from '@Assets/Pic/Frame 87.png';
 import eye from '@Assets/Pic/Frame 88.png';
-import Breadcrump from '@Components/Shared/BreadCrump/Breadcrump';
+import BreadCrump from '@Components/Shared/BreadCrump/BreadCrump';
 
 const NewsDetails = () => {
 	const [id, setId] = useState('1');
@@ -34,7 +34,7 @@ const NewsDetails = () => {
 	);
 	return (
 		<div className='container'>
-			<Breadcrump title={api.header} />
+			<BreadCrump title={api.header} />
 			<h3 className='Title-heading'>{api.header}</h3>
 			<div className='Title'>
 				<div className='Title-column text-color'>

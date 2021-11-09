@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BreadCrump from "@Components/Shared/BreadCrump/Breadcrump";
+import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import WorkWithUs from "@Components/Layouts/CoWorkers/Master/WorkWithUs";
 import CoursStandards from "@Components/Layouts/CoWorkers/Master/CoursStandards";
 import ProduceRules from "@Components/Layouts/CoWorkers/Master/ProduceRules";
