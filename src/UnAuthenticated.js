@@ -35,7 +35,7 @@ const UnAuthenticated = () => {
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
             <Route
-              exact
+              exact 
               path="/account-confirm-email/:confirmedkey"
               component={EmailVerify}
             />
