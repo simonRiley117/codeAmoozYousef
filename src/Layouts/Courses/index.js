@@ -44,87 +44,93 @@ const Courses = () => {
 		return cards.slice(firstPageIndex, lastPageIndex);
 	}, [currentPage]);
 	return (
-		<div className='courses px-40 mt-60'>
-			{text === '' ? (
-				<Swiper
-					module={[A11y, Autoplay]}
-					spaceBetween={50}
-					slidesPerView={1}
-				>
-					{cards.map((card, index) => {
-						return (
-							<SwiperSlide key={card.id}>
-								<CourseCardBg />
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
-			) : null}
-
-			<Searchxx />
-			<CourseCardBg />
-
-			{text === '' && (
-				<>
-					{' '}
-					<h3 className='text-4xl font-bold mb-12'>
-						پرطرفدار ترین دوره ها
-					</h3>
+		<div className='container'>
+			<div className='courses'>
+				{text === '' ? (
 					<Swiper
 						module={[A11y, Autoplay]}
 						spaceBetween={50}
-						slidesPerView={4}
+						slidesPerView={1}
 					>
 						{cards.map((card, index) => {
 							return (
-								<SwiperSlide style={{ marginBottom: '5.399rem' }}>
-									<Coursecardsm key={card.id} />
+								<SwiperSlide key={card.id}>
+									<CourseCardBg />
 								</SwiperSlide>
 							);
 						})}
 					</Swiper>
-					<Filtersxx />
-				</>
-			)}
-			{text !== '' ? (
-				<div>
-					<p className='Courses__searchTitle font-bold	'>
+				) : null}
+
+				<Searchxx />
+				<CourseCardBg />
+
+				{text === '' && (
+					<>
 						{' '}
-						نتیجه جستجو شما برای "{text}":
-					</p>
+						<h3 className='text-4xl font-bold mb-12'>
+							پرطرفدار ترین دوره ها
+						</h3>
+						<Swiper
+							module={[A11y, Autoplay]}
+							spaceBetween={50}
+							slidesPerView={4}
+						>
+							{cards.map((card, index) => {
+								return (
+									<SwiperSlide style={{ marginBottom: '5.399rem' }}>
+										<Coursecardsm key={card.id} />
+									</SwiperSlide>
+								);
+							})}
+						</Swiper>
+						<Filtersxx />
+					</>
+				)}
+				{text !== '' ? (
+					<div>
+						<p className='Courses__searchTitle font-bold	'>
+							{' '}
+							نتیجه جستجو شما برای "{text}":
+						</p>
+						<div className='grid grid-cols-4 gap-x-6 gap-y-8'>
+							{currentTableData.map((card) => {
+								return text === card.name ? (
+									<Coursecardsm key={card.id} />
+								) : null;
+							})}
+						</div>
+					</div>
+				) : (
 					<div className='grid grid-cols-4 gap-x-6 gap-y-8'>
 						{currentTableData.map((card) => {
-							return text === card.name ? (
-								<Coursecardsm key={card.id} />
-							) : null;
+							return <Coursecardsm key={card.id} />;
 						})}
 					</div>
-				</div>
-			) : (
-				<div className='grid grid-cols-4 gap-x-6 gap-y-8'>
-					{currentTableData.map((card) => {
-						return <Coursecardsm key={card.id} />;
-					})}
-				</div>
-			)}
-			{/*  */}
-			{search === undefined && text !== '' ? (
-				<div>
-					<div className='Courses__imgBox flex justify-center items-center'>
-						<img src={searchic} alt={searchic} className='Courses__img' />
+				)}
+				{/*  */}
+				{search === undefined && text !== '' ? (
+					<div>
+						<div className='Courses__imgBox flex justify-center items-center'>
+							<img
+								src={searchic}
+								alt={searchic}
+								className='Courses__img'
+							/>
+						</div>
 					</div>
-				</div>
-			) : (
-				<div className='Title-paging'>
-					<Pagination
-						className='pagination-bar'
-						currentPage={currentPage}
-						totalCount={cards.length}
-						pageSize={PageSize}
-						onPageChange={(page) => setCurrentPage(page)}
-					/>
-				</div>
-			)}
+				) : (
+					<div className='Title-paging'>
+						<Pagination
+							className='pagination-bar'
+							currentPage={currentPage}
+							totalCount={cards.length}
+							pageSize={PageSize}
+							onPageChange={(page) => setCurrentPage(page)}
+						/>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };
