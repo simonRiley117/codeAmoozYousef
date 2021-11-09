@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import { authReducer } from "../reducers/AuthReducer";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -8,7 +9,8 @@ const AuthProvider = (props) => {
   const [token, authDispatch] = useReducer(
     authReducer,
 
-    localStorage.getItem("token")
+    // localStorage.getItem("token")
+    Cookies.get("token")
   );
 
   return (

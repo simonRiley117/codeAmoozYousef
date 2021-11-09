@@ -18,7 +18,6 @@ import { UserDataProvider } from "./Context/userContext";
 import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 
 const UnAuthenticated = () => {
-  console.log("asasd");
   return (
     <>
       <UserDataProvider>
