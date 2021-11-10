@@ -1,21 +1,21 @@
 {
-	"compilerOptions": {
-		"target": "ES6",
-		"module": "CommonJS",
-		"allowSyntheticDefaultImports": true,
-		"baseUrl": "./",
-		"paths": {
-			"@Components/*": ["./src/Components/*"],
-			"@Layouts/*": ["./src/Layouts/*"],
-			"@App/*": ["./src/*"],
-			"@Assets/*": ["./src/Assets/Images/*"]
-		}
-	},
-	"include": [
-		"./src/*",
-		"./src/Assets/**/*.png",
-		"./src/Assets/**/*.jpg",
-		"./src/Assets/**/*.svg"
-	],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@Components/*": ["./src/Components/*"],
+      "@Layouts/*": ["./src/Layouts/*"],
+      "@App/*": ["./src/*"],
+      "@Assets/*": ["./src/Assets/Images/*"]
+    }
+  },
+  "include": [
+    "./src/*",
+    "./src/Assets/**/*.png",
+    "./src/Assets/**/*.jpg",
+    "./src/Assets/**/*.svg"
+  ],
+  "exclude": ["node_modules"]
 }

@@ -12,6 +12,7 @@ import Contact from "../Layouts/Contact us";
 import Courses from "../Layouts/Courses";
 import Course from "../Layouts/Course";
 import AboutUs from "../Layouts/About us";
+import Resume from "../Layouts/resume/Resume";
 
 const Router = () => {
   return (
@@ -28,6 +29,7 @@ const Router = () => {
         <Route exact path="/about-me" component={AboutUs} />
         <Route exact path="/courses" component={Courses} />
         <Route exact path="/course" component={Course} />
+        <Route exact path="/resume" component={Resume} />
       </Layout>
       <Route path="*">{() => <Redirect to="/" />}</Route>
     </Switch>
