@@ -1,10 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "../../Components/Shared/Inputs/Input";
-import magnifier from "../../Assets/Images/Icons/fe_search.png";
+import Magnifier from "@Assets/Icons/fe_search.svg";
+import { ReactComponent as UserIcon } from "@Assets/Icons/fe_search.svg";
 import { searchItem } from "@App/Recoil/StateRecoil";
 import { useRecoilState } from "recoil";
 const Searchxx = ({ children }) => {
+  const [text, setText] = useRecoilState(searchItem);
   const {
     handleSubmit,
     control,
@@ -15,8 +17,7 @@ const Searchxx = ({ children }) => {
     setText(data.search);
     reset();
   };
-  const [text, setText] = useRecoilState(searchItem);
-console.log(`text`, text)
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="search-container">
       <Input
@@ -26,13 +27,19 @@ console.log(`text`, text)
         errors={errors}
         classes="search"
         placeholder="میخوای چی یاد بگیری"
+        suffix={
+          <UserIcon
+            onClick={handleSubmit(onSubmit)}
+            className="cursor-pointer"
+          />
+        }
       />
-      <img
-        src={magnifier}
+      {/* <img
+        src={Magnifier}
         alt="magnifier"
         className="search-img cursor-pointer"
-        onClick={handleSubmit(onSubmit)}
-      />
+        
+      /> */}
     </form>
   );
 };

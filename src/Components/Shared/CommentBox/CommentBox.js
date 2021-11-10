@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 import { Comment as Comments } from "antd";
 import { Tooltip, Avatar } from "antd";
-import "antd/dist/antd.css";
 
 function CommentBox({ children, name, img, txt, pub }) {
   return (

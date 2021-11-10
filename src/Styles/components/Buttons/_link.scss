@@ -17,7 +17,7 @@
 		}
 		&:active {
 			animation: shadow-drop-center 800ms ease;
-			color: $color-primary;
+			color: $color-white;
 		}
 	}
 
@@ -71,9 +71,9 @@
 			color: $color-gray-dark;
 			background-color: transparent;
 			border-color: transparent;
-            &::after{
-                content: none;
-            }
+			&::after {
+				content: none;
+			}
 			&:hover,
 			&:active,
 			&:focus {
