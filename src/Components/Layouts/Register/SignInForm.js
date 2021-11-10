@@ -34,13 +34,14 @@ const SignInForm = () => {
     argFunc: (res) => {
       // setLoading(false);
 
-      authDispatch({
-        type: "LOGIN",
-        token: res.access_token,
-        refresh: res.refresh_token,
-      });
       if (search == "?redirectTeacher") {
         window.location.href = TEAChER_URL + `/callback/${res.access_token}`;
+      } else {
+        authDispatch({
+          type: "LOGIN",
+          token: res.access_token,
+          refresh: res.refresh_token,
+        });
       }
       // history.push("/panel");
     },
