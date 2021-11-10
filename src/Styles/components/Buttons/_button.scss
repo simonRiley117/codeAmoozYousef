@@ -1,17 +1,17 @@
 .button {
 	border-radius: 6rem;
-	height: 40px;
+	height: 4rem;
 	min-width: 12rem;
-	padding: 4px 20px;
+	padding: 4px 2rem;
 	@include display-flex(center);
 	flex-direction: row-reverse;
 	column-gap: 1.5rem;
-	font-size: 16px;
+	font-size: 1.6rem;
 	font-weight: 600;
 
 	& svg {
-		max-width: 20px;
-		max-height: 20px;
+		max-width: 2rem;
+		max-height: 2rem;
 	}
 
 	// &__inline {

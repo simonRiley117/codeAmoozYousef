@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Detaile from "./Detaile";
 import { Link } from "react-router-dom";
 import Codeeditor from "@Components/Shared/Codeeditor";
 import Accordion from "@Components/Shared/Accordion/Accordion";
 import clock from "@Assets/Pic/clock.png";
+import { useHistory, useLocation } from "react-router-dom";
 
-function index() {
+function Index() {
+  const location = useLocation();
+  const [id, setId] = useState();
+  useEffect(() => {
+    setId(location.state.id);
+  }, [location]);
   return (
     <div className="Sarfasl">
       <Detaile />
       <div className="Sarfasl__sample flex items-center	justify-between">
         <p>مثال1</p>
         <div className="Sarfasl__sampleLinkBox flex items-center	justify-center">
-          <Link to="">https://testui.codeamooz.com/example/4/5</Link>
+          <Link
+            to={{
+              pathname: "/example",
+              state: {
+                title: " phyton دوره برنامه نویسی",
+                id: id,
+              },
+            }}
+          >
+            https://testui.codeamooz.com/example/4/5
+          </Link>
         </div>
       </div>
       <Codeeditor lan={"c_cpp"} value={'printf("hello, %s", name)'} />
@@ -38,7 +54,7 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
 
 const cor = [
   {

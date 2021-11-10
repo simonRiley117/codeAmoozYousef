@@ -1,0 +1,32 @@
+.price {
+	& .ant-statistic-content {
+		font-family: 'Vazir', 'sans-serif';
+		@include set-font(2.2rem, 600);
+	}
+
+	&.isSuccess {
+		& .ant-statistic-content {
+			color: $color-success;
+			text-shadow: 0 2px 4px rgba($color: $color-success, $alpha: 0.3);
+		}
+	}
+
+	&.discount .ant-statistic-content-value {
+		position: relative;
+		&::after {
+			content: '';
+			width: 100%;
+			height: 2px;
+			background-color: $color-error;
+			border-radius: 1px;
+            position: absolute;
+            top: 50%;
+left: 0;
+		}
+	}
+
+	& .ant-statistic-content-suffix {
+		margin-right: 1rem;
+		@include set-font(1.8rem, 500);
+	}
+}

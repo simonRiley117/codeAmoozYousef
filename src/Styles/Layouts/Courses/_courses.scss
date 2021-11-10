@@ -2,9 +2,11 @@
   padding-bottom: 3rem;
   & .search {
     background-color: #ef801933;
-    color: #233e6db2;
+    color: rgba(35, 62, 109, 0.7);
+    font-size: 2rem;
     border: 2px solid #233e6db2;
     border-radius: 100px;
+    font-weight: bold;
     &-img {
       position: absolute;
       left: 2rem;
@@ -16,16 +18,46 @@
       margin-top: 3rem;
       margin-bottom: 3rem;
     }
+    &::placeholder {
+      color: rgba(35, 62, 109, 0.7);
+      font-size: 2rem;
+      background-color: transparent;
+      font-weight: bold;
+    }
+    .ant-input-affix-wrapper.ant-input-affix-wrapper-rtl > input.ant-input {
+      background-color: #ef801933;
+    }
+
     .ant-input {
       &::placeholder,
       &:focus {
         background-color: transparent;
       }
     }
+    .ant-input-affix-wrapper > input.ant-input {
+      background-color: transparent;
+    }
+    input {
+      background-color: transparent;
+      // padding: 1.2rem;
+      color: rgba(35, 62, 109, 0.7);
+      font-size: 2rem;
+      font-weight: bold;
+      &:focus {
+        background-color: #ef801933;
+      }
+      &::placeholder {
+        color: rgba(35, 62, 109, 0.7);
+        font-size: 2rem;
+      }
+      &::selection {
+        background-color: transparent;
+      }
+    }
   }
-  .ant-input-affix-wrapper.ant-input-affix-wrapper-rtl > input.ant-input {
-    background-color: transparent;
-  }
+  // .ant-input-affix-wrapper.ant-input-affix-wrapper-rtl > input.ant-input {
+  //   background-color: transparent;
+  // }
   &-filters {
     margin-top: 4rem;
     &__box {
@@ -96,21 +128,22 @@
       }
     }
   }
-  &__searchTitle {
-    font-size: 1.8rem;
-    color: $color-black;
-    margin-top: 4rem;
-  }
-  &__imgBox {
-    text-align: center;
-    width: 100%;
-    margin-top: 2rem;
-  }
-  &__img {
-    width: 43rem;
-    height: 38rem;
-    margin: 0 auto;
-  }
+}
+.Courses__searchTitle {
+  font-size: 1.8rem;
+  color: $color-black;
+  margin-top: 4rem;
+  margin-bottom: 2.4rem;
+}
+.Courses__img {
+  width: 43rem;
+  height: 38rem;
+  margin: 0 auto;
+}
+.Courses__imgBox {
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
 }
 //swiper configs
 .swiper-button-next {
@@ -122,7 +155,7 @@
 
 //paging configs
 .paging-button {
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
   color: $color-text;
   border: none;
 }

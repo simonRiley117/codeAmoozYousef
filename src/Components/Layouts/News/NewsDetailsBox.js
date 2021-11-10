@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //this component works for every cards in project
-const Detailsxx = ({img, children,borderRadius,info}) => {
+const NewsDetailsBox = ({img, children,borderRadius,info}) => {
     return (
         <div className="details">
             <div className="details-container">
@@ -16,15 +16,15 @@ const Detailsxx = ({img, children,borderRadius,info}) => {
         </div>
     );
 };
-Detailsxx.defaultProps = {
+NewsDetailsBox.defaultProps = {
     borderRadius: "15px",
 };
 
-Detailsxx.propTypes = {
+NewsDetailsBox.propTypes = {
     borderRadius: PropTypes.string,
     img : PropTypes.string,
     children : PropTypes.node.isRequired,
     info: PropTypes.node,
 };
 
-export default Detailsxx;
+export default NewsDetailsBox;
