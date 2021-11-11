@@ -19,7 +19,7 @@ import { useEffect } from "react";
 
 const menuItem = [
   {
-    url: "/",
+    url: "/dashboard",
     text: "صفحه ی اصلی",
     id: 1,
   },
