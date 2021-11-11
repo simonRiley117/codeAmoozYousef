@@ -30,7 +30,28 @@
 			left: 48%;
 		}
 		@include respond(phone) {
-			left: 41%;
+			left: 44%;
+		}
+		@include respond(smallest-phone) {
+			left: 40%;
+		}
+	}
+
+	&-discount {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 12rem;
+		height: 5rem;
+		background-color: $color-primary;
+		@include display-flex(center);
+		border-bottom-left-radius: 3.5rem;
+		@include set-font(1.6rem, 300);
+		column-gap: 4px;
+		@include respond(big-phone) {
+			width: 10rem;
+			height: 4rem;
+			font-size: 12px;
 		}
 	}
 
@@ -44,7 +65,12 @@
 			position: absolute;
 			height: 100%;
 			align-items: flex-start;
-			right: 5%;
+			right: 15%;
+		}
+		@include respond(big-phone) {
+
+			right: 10%;
+
 		}
 
 		& img {
@@ -57,18 +83,23 @@
 				@include respond(big-phone) {
 					max-width: 14rem;
 				}
+				@include respond(phone) {
+					max-width: 12rem;
+				}
 			}
 		}
 
 		&-logo {
 			margin-bottom: 1.5rem;
 			max-width: 10.5rem;
+
 			@include respond(tablet) {
-				max-width: 8rem;
-			}
-			@include respond(big-phone) {
 				max-width: 6rem;
 				margin-top: -1rem;
+			}
+			@include respond(phone) {
+				max-width: 5rem;
+				margin-top: 1.5rem;
 			}
 		}
 	}
@@ -81,14 +112,17 @@
 			flex-grow: 0;
 			padding-left: 0;
 		}
-		@include respond(phone) {
-			padding-right: 4rem;
+		@include respond(smallest-phone) {
+			// margin-right: 2rem;
 		}
 	}
 	&-content {
 		width: 100%;
 		height: 100%;
 		@include d-flex-column;
+		@include respond(phone) {
+			justify-content: space-between;
+		}
 		& .rate {
 			@include respond(laptop) {
 				margin-right: 20%;
@@ -98,7 +132,10 @@
 			}
 			@include respond(tablet) {
 				margin-right: auto;
-				padding-left: 3rem;
+				padding-left: 4rem;
+			}
+			@include respond(smallest-phone) {
+				padding-left: 1rem;
 			}
 		}
 	}
@@ -117,8 +154,9 @@
 			padding-left: 4rem;
 		}
 		@include respond(phone) {
-			max-width: 80%;
-			margin-left: auto;
+			max-width: 65%;
+			// margin-left: auto;
+
 			font-size: 16px;
 		}
 	}
@@ -131,19 +169,34 @@
 		margin: 2rem 0;
 		width: 100%;
 		@include respond(phone) {
-			padding: 2rem 2rem 2rem 4rem;
+			// padding: 2rem 2rem 2rem 4rem;
+			margin: 1rem 0;
+			padding: 2rem 3rem 2rem 4rem;
+		}
+		@include respond(smallest-phone) {
+			padding: 1rem 2.5rem;
 		}
 
 		// margin-right: -12rem;
 		& img {
-			width: 100%;
 			height: 100%;
 			min-width: 16rem;
 			max-height: 10rem;
 			object-fit: cover;
+			@include respond(phone) {
+				min-width: 12rem;
+				max-height: 8rem;
+			}
+			@include respond(smallest-phone) {
+				max-width: 9.5rem;
+				max-height: 7rem;
+			}
 		}
 		& .card-profile {
 			margin-left: 3.5rem;
+			@include respond(smallest-phone) {
+				margin-left: 2rem;
+			}
 		}
 	}
 	&-details {
@@ -162,13 +215,20 @@
 				height: 100%;
 				top: 0;
 			}
+			@include respond(phone) {
+				transform: rotate(30deg);
+			}
+			@include respond(smallest-phone) {
+				right: -2rem;
+			}
 		}
 		& > h4 {
 			@include set-font(2.4rem, 600);
 			margin-bottom: 1rem;
 			margin-right: -1.5rem;
 			@include respond(phone) {
-				font-size: 2rem;
+				font-size: 14px;
+				margin-bottom: 4px;
 			}
 		}
 
@@ -186,14 +246,23 @@
 			@include respond(tablet) {
 				margin-bottom: 0;
 			}
+			@include respond(phone) {
+				font-size: 12px;
+				margin-bottom: 0;
+				& svg {
+					max-width: 2rem;
+				}
+			}
 		}
 
 		&-price {
 			@extend .d-flex;
 			@include set-font(1.8rem, 600);
 			margin-right: 2.2rem;
+			line-height: 1.6;
 			& svg {
 				max-width: 2.7rem;
+				height: auto;
 				margin-left: 1rem;
 				color: $color-black;
 			}
@@ -205,7 +274,10 @@
 			}
 
 			@include respond(phone) {
-				font-size: 14px;
+				font-size: 12px;
+				& svg {
+					max-width: 2.3rem;
+				}
 			}
 		}
 	}
@@ -215,4 +287,7 @@
 	overflow: hidden;
 	border-radius: 0 10rem 10rem 1rem;
 	clip-path: polygon(5rem 0, 100% 0, 100% 100%, 0% 100%);
+	@include respond(phone) {
+		clip-path: polygon(4.2rem 0, 100% 0, 100% 100%, 0% 100%);
+	}
 }
