@@ -29,8 +29,12 @@ const Authenticated = () => {
       <UserDataProvider>
         <Switch>
           <Layout>
-            <Route exact path="/:redirectToTeacher?" component={Home} />
-            <Route path="/coWorkers">
+            <Route
+              exact
+              path="/dashboard/:redirectToTeacher?"
+              component={Home}
+            />
+            <Route exact path="/coWorkers">
               <CoWorkersRouter />
             </Route>
             <Route exact path="/news" component={News} />
