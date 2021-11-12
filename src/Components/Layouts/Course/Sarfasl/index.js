@@ -3,7 +3,7 @@ import Detaile from "./Detaile";
 import { Link } from "react-router-dom";
 import Codeeditor from "@Components/Shared/Codeeditor";
 import Accordion from "@Components/Shared/Accordion/Accordion";
-import clock from "@Assets/Pic/clock.png";
+import clock from "@Assets/Icons/clock.svg";
 import { useHistory, useLocation } from "react-router-dom";
 
 function Index() {

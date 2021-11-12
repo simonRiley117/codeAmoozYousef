@@ -16,13 +16,11 @@ $color-blue-dark: #012f47;
 $color-blue-light: #042f47;
 //------------blue----------
 $color-blue-1: #002977;
-
 $color-green: #47bea7;
 $color-green-opacity: rgba(71, 190, 166, 0.6);
 $color-green-dark: #46bea7;
 $color-phosphor: #b4d236;
 $color-phosphor-opacity: rgba(179, 210, 54, 0.6);
-
 $color-section: #1a6577;
 $color-section-opacity: rgba(26, 100, 119, 0.6);
 
@@ -69,7 +67,7 @@ $color-error: #ff5a67;
 
 $color-gradient: linear-gradient(140deg, rgba(239, 128, 25, 1) 30%, rgba(249, 168, 37, 1) 67%);
 $color-gradient-discount: linear-gradient(180deg, #20c086 -12.08%, rgba(32, 192, 134, 0) 117.94%);
-
+//------------------------
 $shadow-button: drop-shadow(
 	0 4px 6px
 		rgba(

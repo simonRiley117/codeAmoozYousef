@@ -16,32 +16,20 @@ const { TabPane } = Tabs;
 function Index() {
   const location = useLocation();
   useEffect(() => {
-    setMenu([
-      {
-        name: "صفحه اصلی",
-        rout: "",
-      },
-      {
-        name: "دوره ها",
-        rout: "/courses",
-      },
-      {
-        name: location.state.name,
-        rout: "/course",
-      },
-    ]);
+    setMenu(location.state.name);
     setId(location.state.id);
   }, [location]);
-  const [menu, setMenu] = useState([]);
+  const [menu, setMenu] = useState("");
+  console.log(`object`, menu);
   const [id, setId] = useState();
   return (
     <div className="container">
-      <BreadCrump item={menu} />
+      <BreadCrump title={menu} />
       <div className="Course">
         <HeaderDiscount />
         <div className="grid Course__container relative">
-          <div style={{ position: "relative" }}>
-            <div>
+          <div style={{ position: "relative", minHeight: "100vh" }}>
+            <div style={{ height: "100%" }}>
               <TeacherInfo />
             </div>
           </div>
@@ -69,7 +57,9 @@ function Index() {
               </Tabs>
             </div>
           </div>
-          <div className="relative">
+          <div
+            style={{ position: "relative", minHeight: "100vh" }}
+          >
             <CourseTable />
           </div>
         </div>

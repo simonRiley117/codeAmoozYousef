@@ -1,7 +1,15 @@
 .rate {
-	margin-right: 6vmax;
+	// margin-right: ;
 	color: $color-primary;
-    // direction: ltr;
-
-    
+	// direction: ltr;
+}
+.ant-rate {
+	display: flex !important;
+	flex-direction: row-reverse !important;
+}
+.ant-rate-star > div {
+	transform: rotateY(180deg);
+	&:hover {
+		transform: rotateY(180deg);
+	}
 }

@@ -130,3 +130,11 @@
 .main {
 	padding-top: 8rem;
 }
+.half__circle {
+	width: 5.3rem;
+	height: 5.3rem;
+	background: $color-green-dark;
+	transform: rotate(-90deg);
+	border-radius: 50%;
+	margin-right: -2.7rem;
+}
