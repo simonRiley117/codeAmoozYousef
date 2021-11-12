@@ -2,6 +2,9 @@
 	& .ant-statistic-content {
 		font-family: 'Vazir', 'sans-serif';
 		@include set-font(2.2rem, 600);
+		@include respond(phone) {
+			font-size: 14px;
+		}
 	}
 
 	&.isSuccess {
@@ -19,14 +22,18 @@
 			height: 2px;
 			background-color: $color-error;
 			border-radius: 1px;
-            position: absolute;
-            top: 50%;
-left: 0;
+			position: absolute;
+			top: 50%;
+			left: 0;
 		}
 	}
 
 	& .ant-statistic-content-suffix {
 		margin-right: 1rem;
 		@include set-font(1.8rem, 500);
+		@include respond(phone){
+				
+		font-size: 12px;
+		}
 	}
 }

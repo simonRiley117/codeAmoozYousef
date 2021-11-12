@@ -14,6 +14,10 @@ const CourseCardBg = () => {
 	const [isOff, setIsOff] = useState(false);
 	return (
 		<article className='card-bg'>
+			<div className='card-bg-discount'>
+				<span>40%</span>
+				<span>تخفیف</span>
+			</div>
 			<div className='card-bg-pic'>
 				<img src={courseLogo} alt='python' className='card-bg-pic-logo' />
 				<img src={pythonIcon} alt='python' />

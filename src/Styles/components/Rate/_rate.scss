@@ -11,5 +11,29 @@
 	transform: rotateY(180deg);
 	&:hover {
 		transform: rotateY(180deg);
+		color: #fea219;
+		//
+		// direction: ltr;
+	}
+	@include respond(tablet) {
+		& svg {
+			width: 100%;
+			height: 100%;
+			max-width: 3rem;
+		}
+		& .ant-rate-star-first {
+			width: 100%;
+			// height: 100%;
+			clip-path: inset(0 0 0 50%);
+		}
+	}
+	@include respond(phone) {
+		& svg {
+			max-width: 2.6rem;
+		}
+
+		& .ant-rate-star:not(:last-child) {
+			margin-left: 4px;
+		}
 	}
 }
