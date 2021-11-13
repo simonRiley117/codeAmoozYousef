@@ -3,6 +3,9 @@
     height: 100%;
     width: 95%;
     margin-top: 1rem;
+    @include respond(tablet) {
+        width: 100%;
+    }
     margin-right: auto;
     &__Position {
         position: -webkit-sticky;
@@ -47,6 +50,10 @@
         color: $color-success;
         font-size: 1.8rem;
         margin-left: 0.8rem;
+        &-main {
+            text-decoration: line-through;
+            text-decoration-color: $color-error;
+        }
     }
     &__RateBox {
         margin-top: 1.4rem;

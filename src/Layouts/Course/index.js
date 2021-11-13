@@ -10,6 +10,7 @@ import AskAndAnswer from "@Components/Layouts/Course/Comment/AskAndAnswer";
 import TeacherInfo from "@Components/Layouts/Course/Teacher/TeacherInfo";
 import CourseTable from "@Components/Layouts/Course/Course/CourseTable";
 import { Tabs } from "antd";
+import UseWindowSize from "@App/Sizes/UseWindowSize";
 
 const { TabPane } = Tabs;
 
@@ -20,18 +21,17 @@ function Index() {
     setId(location.state.id);
   }, [location]);
   const [menu, setMenu] = useState("");
-  console.log(`object`, menu);
   const [id, setId] = useState();
+  const windowSize = UseWindowSize();
+
   return (
     <div className="container">
       <BreadCrump title={menu} />
       <div className="Course">
-        <HeaderDiscount />
+        {windowSize !== "sm" && <HeaderDiscount />}
         <div className="grid Course__container relative">
-          <div style={{ position: "relative", minHeight: "100vh" }}>
-            <div style={{ height: "100%" }}>
-              <TeacherInfo />
-            </div>
+          <div className="Course__sideBar relative">
+            <TeacherInfo />
           </div>
           <div>
             <Tabs className="TabBox" type="card">
@@ -42,27 +42,43 @@ function Index() {
                 <Sarfasl />
               </TabPane>
             </Tabs>
-            <div className="Course__Comment">
-              <Tabs className="TabBox " type="card">
-                <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
-                  <Comment />
-                </TabPane>
-                <TabPane
-                  tab="پرسش و پاسخ"
-                  key="2"
-                  className="Sarfasl__commentpart"
-                >
-                  <AskAndAnswer />
-                </TabPane>
-              </Tabs>
-            </div>
+            {windowSize !== "sm" && (
+              <div className="Course__Comment">
+                <Tabs className="TabBox " type="card">
+                  <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
+                    <Comment />
+                  </TabPane>
+                  <TabPane
+                    tab="پرسش و پاسخ"
+                    key="2"
+                    className="Sarfasl__commentpart"
+                  >
+                    <AskAndAnswer />
+                  </TabPane>
+                </Tabs>
+              </div>
+            )}
           </div>
-          <div
-            style={{ position: "relative", minHeight: "100vh" }}
-          >
+          <div className="Course__sideBar relative">
             <CourseTable />
           </div>
         </div>
+        {windowSize === "sm" && (
+          <div className="Course__Comment">
+            <Tabs className="TabBox " type="card">
+              <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
+                <Comment />
+              </TabPane>
+              <TabPane
+                tab="پرسش و پاسخ"
+                key="2"
+                className="Sarfasl__commentpart"
+              >
+                <AskAndAnswer />
+              </TabPane>
+            </Tabs>
+          </div>
+        )}
       </div>
     </div>
   );

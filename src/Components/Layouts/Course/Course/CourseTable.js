@@ -36,7 +36,9 @@ function CourseTable() {
             <div className="flex items-center justify-start CourseTable__infoBox">
               <img alt={Coin} src={Coin} />
               <p className="CourseTable__infoPrice">{price.toLocaleString()}</p>
-              <p className="CourseTable__infotxt">{price1.toLocaleString()}</p>
+              <p className="CourseTable__infotxt CourseTable__infoPrice-main">
+                {price1.toLocaleString()}
+              </p>
               <span className="CourseTable__infotxt">تومان</span>
             </div>
             <div className="CourseTable__RateBox">
