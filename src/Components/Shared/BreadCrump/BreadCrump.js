@@ -11,7 +11,7 @@ const BreadCrump = ({ title }) => {
 		{ path: '/', breadcrumb: 'صفحه اصلی' },
 		{ path: '/news', breadcrumb: 'اخبار' },
 		{ path: '/news/news-info', breadcrumb: title },
-		{ path: '/resume', breadcrumb: 'رزومه' },
+		{ path: '/about-me', breadcrumb: 'درباره ما' },
 		{ path: '/mycourse', breadcrumb: 'دوره های من' },
 		{ path: '/wallet', breadcrumb: 'کیف پول' },
 		{ path: '/setting', breadcrumb: 'تنظیمات' },

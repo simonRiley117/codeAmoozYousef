@@ -63,7 +63,6 @@ const Courses = () => {
 				) : null}
 
 				<Searchxx />
-				<CourseCardBg />
 
 				{text === '' && (
 					<>
