@@ -1,0 +1,166 @@
+.dashboard {
+  // height: auto;
+
+  &-header {
+    &-welcome {
+      h2 {
+        color: #f68521;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+    }
+    &-tutorial {
+      color: #f68521;
+      img {
+        padding: 0.25rem;
+        margin-left: 0.6rem;
+        background: rgba(229, 229, 229, 0.6);
+        border-radius: 50%;
+      }
+
+      &-vid,
+      &-pdf {
+        h6 {
+          color: #f68521;
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.dash-teacher {
+  box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 180px;
+  overflow: hidden;
+  height: 48.4rem;
+  position: relative;
+  background-color: #47bea7;
+}
+.last-course-card {
+  margin-top: -2.5rem;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1.5rem;
+  max-height: 100%;
+  // width: 66.8rem;
+  // justify-content: space-between;
+  text-align: right;
+  color: rgba(18, 18, 18, 0.7);
+  font-size: 1.4rem;
+
+  ul {
+    width: 44.9rem;
+
+    h1 {
+      color: $color-primary;
+      margin-top: 0.7rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+
+    a {
+      color: $color-primary;
+    }
+  }
+
+  &-banner {
+    background-color: #47bea7;
+    border-radius: 56.5px 10px 10px 56.5px;
+
+    div:last-child {
+      border-radius: 50%;
+      background: #fff;
+      padding: 0.8rem;
+    }
+  }
+}
+
+.messages-card {
+  margin-top: -2.5rem;
+  height: 100%;
+}
+
+.message-card {
+  display: flex;
+  // width: 31.7rem;
+  height: 5.6rem;
+  background: rgba(246, 133, 33, 0.4);
+  border-radius: 1.5rem;
+  margin: 0.5rem;
+  // justify-content: space-between;
+  text-align: right;
+  padding: 0.5rem 0;
+
+  &-content {
+    margin-right: 1.5rem;
+    width: 24.4rem;
+
+    &-name {
+      color: #022f47;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    &-num {
+      font-size: 1.2rem;
+      font-weight: 100;
+      color: rgba(18, 18, 18, 0.79);
+    }
+
+    &-preview {
+      font-size: 1.1rem;
+      color: rgba(18, 18, 18, 0.7);
+    }
+
+    &-total {
+      border: 2px solid #f68521;
+      color: #f68521;
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.student-cards {
+  display: flex;
+  margin-top: -2.5rem;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+
+  .student-card {
+    width: 95%;
+    display: flex;
+    width: 28.2rem;
+    height: 5.2rem;
+    align-items: center;
+
+    img {
+      width: 4.9rem;
+      height: 4.9rem;
+      margin-left: 1.2rem;
+    }
+    p {
+      display: block;
+    }
+
+    &-content {
+      &-name {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #022f47;
+      }
+      &-course {
+        color: rgba(18, 18, 18, 0.7);
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

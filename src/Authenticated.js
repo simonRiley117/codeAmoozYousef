@@ -19,6 +19,7 @@ import Course from './Layouts/Course';
 import AboutUs from './Layouts/About us';
 import Example from './Layouts/Example';
 import { UserDataProvider } from './Context/userContext';
+import Dashboard from './Layouts/Dashboard/Dashboard';
 import Home from './Layouts/Home';
 
 const Authenticated = () => {
