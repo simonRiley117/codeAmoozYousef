@@ -2,7 +2,7 @@
     width: 100%;
     // height: 42.9rem;
     overflow-y: auto;
-  
+
     &__codeeditor {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -27,6 +27,9 @@
                 display: inline-block;
                 padding: 6px 1rem;
                 color: #fcca46;
+                @include respond(tablet) {
+                    padding: 0.6rem 0rem;
+                }
             }
             button {
                 cursor: pointer;
@@ -37,6 +40,14 @@
                 &:focus {
                     outline: none;
                 }
+            }
+            @include respond(tablet) {
+                font-size: 1rem;
+                padding: 0.7rem 1rem;
+            }
+            @include respond(smallest-phone) {
+                font-size: 1rem;
+                padding: 0.7rem 0.25rem;
             }
         }
         &-btnBox1 {
@@ -83,6 +94,13 @@
                 color: $color-white;
                 margin-right: 0.5rem;
             }
+            @include respond(tablet) {
+                font-size: 1rem;
+                padding: 0rem 0.8rem;
+            }
+            @include respond(smallest-phone) {
+                font-size: 0.8rem;
+            }
         }
         &-btncopy1 {
             background-color: transparent;
@@ -92,6 +110,14 @@
             .fa-check {
                 color: $color-white;
                 margin-right: 0.5rem;
+            }
+            @include respond(tablet) {
+                font-size: 1rem;
+                .fa-copy,
+                .fa-check {
+                    color: $color-white;
+                    margin-left: 0.5rem;
+                }
             }
         }
         &-btndone {
@@ -103,6 +129,17 @@
                 color: $color-white;
                 margin-right: 0.5rem;
             }
+            @include respond(tablet) {
+                font-size: 1rem;
+                .fas {
+                    // margin-left: 0.5rem;
+                }
+                padding: 0rem 0.5rem;
+            }
+            @include respond(smallest-phone) {
+                font-size: 0.8rem;
+                margin-right: 0;
+            }
         }
         &-btndonedis {
             background-color: $color-grey-dark-1;
@@ -112,6 +149,9 @@
             .fas {
                 color: $color-white;
                 margin-right: 0.5rem;
+            }
+            @include respond(tablet) {
+                // margin-left: 0.5rem;
             }
         }
     }
@@ -138,6 +178,14 @@
         &:focus {
             outline: none;
         }
+        @include respond(tablet) {
+            font-size: 1rem;
+            padding: 0.7rem 1rem;
+        }
+        @include respond(smallest-phone) {
+            font-size: 1rem;
+            padding: 0.7rem 0.25rem;
+        }
     }
 
     &__disactivbtn {
@@ -149,6 +197,13 @@
         border-bottom: 1px solid transparent;
         font-size: 1.5rem;
         padding: 0.5rem 1rem;
+        @include respond(tablet) {
+            font-size: 1rem;
+        }
+        @include respond(smallest-phone) {
+            font-size: 1rem;
+            padding: 0.7rem 0.25rem;
+        }
     }
     &__disactivbtn1 {
         color: white;
@@ -159,6 +214,13 @@
         border-bottom: 1px solid transparent;
         font-size: 1.5rem;
         padding: 0.5rem 1rem;
+        @include respond(tablet) {
+            font-size: 1rem;
+        }
+        @include respond(smallest-phone) {
+            font-size: 1rem;
+            padding: 0.7rem 0.25rem;
+        }
     }
 }
 
@@ -252,6 +314,6 @@
         margin-right: 10px;
     }
 }
-.Example__codeeditor1-btndone {
-    background-color: #fe8c42 !important;
+.CodeeditorWithRun__codeeditor1-btndone {
+    margin-left: 0.5rem;
 }
