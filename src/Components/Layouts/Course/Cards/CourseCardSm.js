@@ -48,11 +48,12 @@ const Coursecardsm = () => {
           <div className="card-sm-content-rating">
             <Rate
               disabled
-              defaultValue={4}
+              defaultValue={2}
               style={{
                 color: "#F68521",
-                direction: "ltr",
+                // direction: "ltr",
                 paddingBottom: "0.5rem",
+                marginRight: "6vmax",
               }}
             />
           </div>

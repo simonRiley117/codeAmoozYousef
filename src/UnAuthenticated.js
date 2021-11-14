@@ -16,9 +16,10 @@ import News from './Layouts/News';
 import Layout from '@Components/Shared/Layout/Layout';
 import { UserDataProvider } from './Context/userContext';
 import EmailVerify from './Components/Layouts/Register/EmailVerify';
+import Course from './Layouts/Course';
+import Example from './Layouts/Example';
 
 const UnAuthenticated = () => {
-	console.log('ffffffffffffffffffff');
 	return (
 		<>
 			<UserDataProvider>
@@ -40,10 +41,19 @@ const UnAuthenticated = () => {
 						<Route exact path='/courses' component={Courses} />
 						<Route
 							exact
+							path='/course'
+							render={(routeProps) => (
+								<Course key={routeProps.history.location.state.id} />
+							)}
+						/>
+						<Route exact path='/example' component={Example} />
+
+						<Route
+							exact
 							path='/account-confirm-email/:confirmedkey'
 							component={EmailVerify}
 						/>
-						<Route path='*'>{() => <Redirect to='/' />}</Route>
+						{/* <Route path="*">{() => <Redirect to={{ pathname: "/" }} />}</Route> */}
 					</Layout>
 				</Switch>
 			</UserDataProvider>

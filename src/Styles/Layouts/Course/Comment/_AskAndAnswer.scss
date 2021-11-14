@@ -27,6 +27,12 @@
         bottom: 0.5rem;
         left: 3rem;
         z-index: 20;
+        @include respond(tablet) {
+            img {
+                width: 2rem;
+                height: auto;
+            }
+        }
     }
     .emoji-mart {
         bottom: 3rem;
@@ -161,5 +167,9 @@
         bottom: 0.8rem;
         z-index: 20;
         right: 1rem;
+        @include respond(tablet) {
+            width: 2rem;
+            height: auto;
+        }
     }
 }

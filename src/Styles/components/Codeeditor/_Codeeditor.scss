@@ -13,6 +13,14 @@
         border-top-left-radius: 0.45rem;
         border-top-right-radius: 0.45rem;
         font-size: 1.5rem;
+        @include respond(tablet) {
+            font-size: 1rem;
+            padding: 0.7rem 1rem;
+        }
+        @include respond(smallest-phone) {
+            font-size: 1rem;
+            padding: 0.7rem 0.25rem;
+        }
         &:focus {
             outline: none;
         }
@@ -25,6 +33,13 @@
         // border-left: 1px solid $color-yellow-dark;
         font-size: 1.5rem;
         padding: 0.15rem 1rem;
+        @include respond(tablet) {
+            font-size: 1rem;
+        }
+        @include respond(smallest-phone) {
+            font-size: 1rem;
+            padding: 0.7rem 0.25rem;
+        }
     }
     &__BtnBox {
         display: flex;
@@ -53,6 +68,9 @@
             outline: none;
         }
         margin-right: 1rem;
+        @include respond(tablet) {
+            font-size: 1rem;
+        }
     }
     &__fulScreen {
         width: 2rem;
@@ -61,6 +79,10 @@
         background-color: transparent;
         cursor: pointer;
         margin-right: 1rem;
+        @include respond(tablet) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
     &__codeeditor {
         display: grid;
@@ -140,6 +162,10 @@
                 color: $color-white;
                 margin-right: 0.5rem;
             }
+            @include respond(tablet) {
+                font-size: 1rem;
+                padding: 0rem 0.8rem;
+            }
         }
         &-btncopy1 {
             background-color: transparent;
@@ -149,6 +175,14 @@
             .fa-check {
                 color: $color-white;
                 margin-right: 0.5rem;
+            }
+            @include respond(tablet) {
+                font-size: 1rem;
+                .fa-copy,
+                .fa-check {
+                    color: $color-white;
+                    margin-left: 0.5rem;
+                }
             }
         }
         &-btndone {
@@ -160,6 +194,15 @@
                 color: $color-white;
                 margin-right: 0.5rem;
             }
+            @include respond(tablet) {
+                .fas {
+                    margin-left: 0.5rem;
+                }
+                padding: 0rem 0.5rem;
+            }
+            @include respond(smallest-phone) {
+                margin-right: 0;
+            }
         }
         &-btndonedis {
             background-color: $color-grey-dark-1;
@@ -169,6 +212,9 @@
             .fas {
                 color: $color-white;
                 margin-right: 0.5rem;
+            }
+            @include respond(tablet) {
+                margin-left: 0.5rem;
             }
         }
     }

@@ -3,8 +3,9 @@ import Detaile from "./Detaile";
 import { Link } from "react-router-dom";
 import Codeeditor from "@Components/Shared/Codeeditor";
 import Accordion from "@Components/Shared/Accordion/Accordion";
-import clock from "@Assets/Pic/clock.png";
+import clock from "@Assets/Icons/clock.svg";
 import { useHistory, useLocation } from "react-router-dom";
+import UseWindowSize from "@App/Sizes/UseWindowSize";
 
 function Index() {
   const location = useLocation();
@@ -12,12 +13,14 @@ function Index() {
   useEffect(() => {
     setId(location.state.id);
   }, [location]);
+  const windowSize = UseWindowSize();
+  let url = "https://testui.codeamooz.com/example/4/5";
   return (
     <div className="Sarfasl">
       <Detaile />
       <div className="Sarfasl__sample flex items-center	justify-between">
         <p>مثال1</p>
-        <div className="Sarfasl__sampleLinkBox flex items-center	justify-center">
+        <div className="Sarfasl__sampleLinkBox flex items-center justify-center ">
           <Link
             to={{
               pathname: "/example",
@@ -27,7 +30,9 @@ function Index() {
               },
             }}
           >
-            https://testui.codeamooz.com/example/4/5
+            {windowSize === "sm"
+              ? url.slice(0, 25) + (url.length > 5 ? "..." : "")
+              : url}
           </Link>
         </div>
       </div>

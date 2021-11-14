@@ -12,7 +12,7 @@ const Accordion = ({ children, header, ...rest }) => {
 
   return (
     <div className="Accordion">
-      <Collapse expandIcon={() => <div className="half__circle" />}>
+      <Collapse expandIcon={() => <div className="" />}>
         <Panel header={header} key="1" {...rest} extra={genExtra()}>
           {children}
         </Panel>

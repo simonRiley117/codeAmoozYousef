@@ -1,0 +1,117 @@
+.CourseTable {
+    background-color: transparent;
+    height: 100%;
+    width: 95%;
+    margin-top: 1rem;
+    @include respond(tablet) {
+        width: 100%;
+    }
+    margin-right: auto;
+    &__Position {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 10rem;
+    }
+    &__Table {
+        background-color: $color-white;
+        box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 1.5rem;
+        padding: 2rem 0;
+        overflow-x: hidden;
+    }
+    &__title {
+        margin-right: 1rem;
+        color: $color-blue;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    &__Body {
+        padding: 0 3.1rem 0 2.7rem;
+        margin-top: 0.3rem;
+    }
+    &__infoBox {
+        margin-bottom: 0.8rem;
+
+        img {
+            width: 2.4rem;
+            height: auto;
+            margin-left: 2.2rem;
+        }
+        span {
+            margin-right: 0.8rem;
+        }
+    }
+    &__infotxt {
+        color: $color-text;
+        font-size: 1.8rem;
+        font-weight: normal;
+    }
+    &__infoPrice {
+        color: $color-success;
+        font-size: 1.8rem;
+        margin-left: 0.8rem;
+        &-main {
+            text-decoration: line-through;
+            text-decoration-color: $color-error;
+        }
+    }
+    &__RateBox {
+        margin-top: 1.4rem;
+        ul {
+            justify-content: right;
+        }
+    }
+    &__DegreeBox {
+        margin-top: 1.6rem;
+    }
+    &__DegreeTitle {
+        color: $color-error;
+        font-size: 1.8rem;
+        font-weight: normal;
+        margin-bottom: 0.8rem;
+    }
+    .ant-radio-wrapper {
+        display: block;
+    }
+    .ant-radio-checked::after {
+        border: 1px solid $color-success;
+        &:hover {
+            border-color: $color-success;
+            border: 1px solid $color-success;
+        }
+    }
+    .ant-radio-checked .ant-radio-inner {
+        border-color: $color-success;
+        &:hover {
+            border-color: $color-success;
+        }
+    }
+    .ant-radio-inner::after {
+        background-color: $color-success;
+    }
+    .ant-radio {
+        &:hover {
+            .ant-radio-inner {
+                border-color: $color-success;
+            }
+        }
+    }
+    &__btn {
+        width: 100%;
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin: 1.3rem 0;
+    }
+    &__ShareBox {
+        img {
+            width: 2.4rem;
+            height: auto;
+            margin-left: 0.7rem;
+        }
+        p {
+            color: $color-text-black-light-2;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+    }
+}

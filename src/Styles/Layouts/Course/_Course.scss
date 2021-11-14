@@ -6,8 +6,26 @@
         & > *:last-child {
             position: relative;
         }
+        @include respond(big-tablet) {
+            grid-template-columns: 1fr 2.5fr 1fr;
+        }
+        @include respond(tab-port) {
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+        @include respond(tablet) {
+            display: flex;
+            flex-direction: column-reverse;
+        }
     }
     &__Comment {
         margin-top: 5rem;
+    }
+    &__sideBar {
+        min-height: 100vh;
+        @include respond(tablet) {
+            height: auto;
+            min-height: auto;
+            margin-bottom: 3.4rem;
+        }
     }
 }
