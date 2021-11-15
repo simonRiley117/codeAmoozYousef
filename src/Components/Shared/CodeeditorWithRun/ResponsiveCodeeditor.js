@@ -9,7 +9,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
 
-function CodeeditorWithRun(props) {
+function ResponsiveCodeeditor(props) {
   languages.map(
     (lang) =>
       lang === props.lan &&
@@ -68,7 +68,7 @@ function CodeeditorWithRun(props) {
         {props.lan && (
           <>
             <div className="container" style={{ position: "relative " }}>
-              <div className="CodeeditorWithRun__codeeditor">
+              <div className=" flex flex-col" style={{ direction: "ltr" }}>
                 <div>
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
                     <p>{`مثال 2.${props.lan}`}</p>
@@ -124,7 +124,7 @@ function CodeeditorWithRun(props) {
                     theme="monokai"
                     value={value}
                     onChange={onChange}
-                    width="45vw"
+                    width="100%"
                     height="64.1vh"
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
@@ -135,7 +135,7 @@ function CodeeditorWithRun(props) {
                     }}
                   />
                 </div>
-                <div style={{ height: "64.1vh" }}>
+                <div>
                   <div className="CodeeditorWithRun__codeeditor-btnBox2">
                     <div className="d-flex">
                       <button
@@ -162,13 +162,13 @@ function CodeeditorWithRun(props) {
                       </button>
                     </div>
                   </div>
-                  <div className="result-codeeditor" style={{ height: "50%" }}>
+                  <div className="result-codeeditor">
                     <AceEditor
                       mode={props.lan}
                       theme="monokai"
                       value={btn === 1 ? res : errs}
-                      width="45vw"
-                      height="100%"
+                      width="100%"
+                      height="30vh"
                       name="UNIQUE_ID_OF_DIV"
                       readOnly
                       editorProps={{ $blockScrolling: true }}
@@ -182,10 +182,7 @@ function CodeeditorWithRun(props) {
                       }}
                     />
                   </div>
-                  <div
-                    className="CodeeditorWithRun__TestBox"
-                    style={{ height: "50%" }}
-                  >
+                  <div className="CodeeditorWithRun__TestBox">
                     <div className="CodeeditorWithRun__codeeditor-btnBox1">
                       <p>Test</p>
                     </div>{" "}
@@ -194,8 +191,8 @@ function CodeeditorWithRun(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
-                      width="45vw"
-                      height="100%"
+                      width="100%"
+                      height="30.5vh"
                       name="UNIQUE_ID_OF_DIV"
                       editorProps={{ $blockScrolling: true }}
                       highlightActiveLine={false}
@@ -224,4 +221,4 @@ function CodeeditorWithRun(props) {
   );
 }
 
-export default CodeeditorWithRun;
+export default ResponsiveCodeeditor;
