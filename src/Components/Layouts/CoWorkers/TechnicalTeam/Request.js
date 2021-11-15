@@ -109,7 +109,7 @@ function Request() {
             />
           </div>
           <div className="text-center flex items-center justify-center MasterSignUp__btnBox ">
-            <Button type="primary" classes="MasterSignUp__btn">
+            <Button type="primary" classes="MasterSignUp__btn" htmlType="submit">
               ارسال
             </Button>
           </div>
