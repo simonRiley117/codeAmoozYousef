@@ -1,7 +1,6 @@
 .about {
 	margin-top: 12rem;
 
-	
 	&-circle {
 		background-color: #46bea7;
 		border-radius: 50%;
@@ -46,24 +45,56 @@
 	}
 	&-text__box {
 		border-radius: 15px;
-		box-shadow: 0 2px 15px 0 #00000040;
+		filter: drop-shadow(0 2px 15px rgba($color: #000, $alpha: 0.2));
 		padding: 2rem;
 		min-width: 50rem;
 		font-size: 1.6rem;
 		font-weight: normal;
 		line-height: 28.8px;
-
-		&-1 {
+		@include display-flex;
+		background-color: $color-white;
+		top: 50%;
+		transform: translateY(-50%);
+		position: absolute;
+		& i {
+			display: block;
+			background-color: $color-white;
+			width: 6rem;
+			height: 2.5rem;
+			border-radius: 3rem;
 			position: absolute;
+			left: -2.4rem;
+			&::after,
+			&::before {
+				content: '';
+
+				// background-color: $color-blue;
+				width: 3rem;
+				height: 3rem;
+				position: absolute;
+				left: 6px;
+				border: 12px solid $color-white;
+				border-left: 0;
+			}
+			&::before {
+				border-top: 0;
+				top: -1.8rem;
+				border-bottom-right-radius: 4rem;
+				transform: rotateY(-29deg);
+			}
+
+			&::after {
+				bottom: -1.75rem;
+				border-top-right-radius: 4rem;
+				border-bottom: 0;
+				transform: rotateY(-30deg);
+			}
+		}
+		&-1 {
 			left: 200%;
-			top: 50%;
-			transform: translateY(-50%);
 		}
 		&-2 {
-			position: absolute;
 			right: 200%;
-			top: 50%;
-			transform: translateY(-50%);
 		}
 	}
 	&-conclusion {
@@ -82,108 +113,107 @@
 	}
 }
 
-
 // &__timeline {
-	// 	@include d-flex-column;
-	// 	margin-top: 6rem;
-	// 	&--circle {
-	// 		@include d-flex-column(center);
-	// 		@include set-font(1.6rem, bold, $color-blue);
-	// 		position: relative;
-	// 		& span {
-	// 			width: 9.6rem;
-	// 			height: 9.6rem;
-	// 			border-radius: 50%;
-	// 			background-color: $color-green-dark;
-	// 			@include display-flex(center);
-	// 		}
-	// 		&.line {
-	// 			// &::after {
-	// 			// 	content: '';
-	// 			// 	height: 15rem;
-	// 			// 	width: 3px;
-	// 			// 	border-radius: 2px;
-	// 			// 	background-color: $color-primary;
-	// 			// 	margin-top: 1.2rem;
-	// 			// }
-	// 			&::before {
-	// 				content: '';
-	// 				height: 15rem;
-	// 				width: 3px;
-	// 				border-radius: 2px;
-	// 				background-color: $color-primary;
-	// 				margin-bottom: 1.2rem;
-	// 			}
-	// 		}
-	// 	}
-	// 	&--item {
-	// 		@include display-flex(center, baseline);
-	// 		margin-top: 1.2rem;
+// 	@include d-flex-column;
+// 	margin-top: 6rem;
+// 	&--circle {
+// 		@include d-flex-column(center);
+// 		@include set-font(1.6rem, bold, $color-blue);
+// 		position: relative;
+// 		& span {
+// 			width: 9.6rem;
+// 			height: 9.6rem;
+// 			border-radius: 50%;
+// 			background-color: $color-green-dark;
+// 			@include display-flex(center);
+// 		}
+// 		&.line {
+// 			// &::after {
+// 			// 	content: '';
+// 			// 	height: 15rem;
+// 			// 	width: 3px;
+// 			// 	border-radius: 2px;
+// 			// 	background-color: $color-primary;
+// 			// 	margin-top: 1.2rem;
+// 			// }
+// 			&::before {
+// 				content: '';
+// 				height: 15rem;
+// 				width: 3px;
+// 				border-radius: 2px;
+// 				background-color: $color-primary;
+// 				margin-bottom: 1.2rem;
+// 			}
+// 		}
+// 	}
+// 	&--item {
+// 		@include display-flex(center, baseline);
+// 		margin-top: 1.2rem;
 
-	// 		& .about__timeline--circle span {
-	// 			width: 7rem;
-	// 			height: 7rem;
-	// 		}
-	// 	}
-	// 	&--pic {
-	// 		flex-basis: 42%;
-	// 		max-width: 42%;
-	// 		max-height: 30rem;
-	// 		overflow: hidden;
-	// 		border-radius: 1.5rem;
-	// 		align-self: flex-start;
+// 		& .about__timeline--circle span {
+// 			width: 7rem;
+// 			height: 7rem;
+// 		}
+// 	}
+// 	&--pic {
+// 		flex-basis: 42%;
+// 		max-width: 42%;
+// 		max-height: 30rem;
+// 		overflow: hidden;
+// 		border-radius: 1.5rem;
+// 		align-self: flex-start;
 
-	// 		& img {
-	// 			object-fit: cover;
-	// 		}
-	// 	}
-	// 	&--content {
-	// 		flex-basis: 42%;
-	// 		max-width: 42%;
-	// 		padding: 2rem 2.5rem;
-	// 		border-radius: 1.5rem;
-	// 		position: relative;
-	// 		filter: drop-shadow(0 2px 15px rgba($color: #000, $alpha: 0.2));
-	// 		background-color: $color-white;
-	// 		@include display-flex;
-	// 		top: -2rem;
-	// 		& i {
-	// 			display: block;
-	// 			background-color: $color-white;
-	// 			width: 6rem;
-	// 			height: 2.5rem;
-	// 			border-radius: 3rem;
-	// 			position: absolute;
-	// 			left: -2.4rem;
-	// 			&::after,
-	// 			&::before {
-	// 				content: '';
+// 		& img {
+// 			object-fit: cover;
+// 		}
+// 	}
+// 	&--content {
+// 		flex-basis: 42%;
+// 		max-width: 42%;
+// 		padding: 2rem 2.5rem;
+// 		border-radius: 1.5rem;
+// 		position: relative;
+// 		filter: drop-shadow(0 2px 15px rgba($color: #000, $alpha: 0.2));
+// 		background-color: $color-white;
+// 		@include display-flex;
+// 		top: -2rem;
+// 		& i {
+// 			display: block;
+// 			background-color: $color-white;
+// 			width: 6rem;
+// 			height: 2.5rem;
+// 			border-radius: 3rem;
+// 			position: absolute;
+// 			left: -2.4rem;
+// 			&::after,
+// 			&::before {
+// 				content: '';
 
-	// 				// background-color: $color-blue;
-	// 				width: 3rem;
-	// 				height: 3rem;
-	// 				position: absolute;
-	// 				left: 6px;
-	// 				border: 12px solid $color-white;
-	// 				border-left: 0;
-	// 			}
-	// 			&::before {
-	// 				border-top: 0;
-	// 				top: -1.8rem;
-	// 				border-bottom-right-radius: 4rem;
-	// 				transform: rotateY(-29deg);
-	// 			}
+// 				// background-color: $color-blue;
+// 				width: 3rem;
+// 				height: 3rem;
+// 				position: absolute;
+// 				left: 6px;
+// 				border: 12px solid $color-white;
+// 				border-left: 0;
+// 			}
+// 			&::before {
+// 				border-top: 0;
+// 				top: -1.8rem;
+// 				border-bottom-right-radius: 4rem;
+// 				transform: rotateY(-29deg);
+// 			}
 
-	// 			&::after {
-	// 				bottom: -1.75rem;
-	// 				border-top-right-radius: 4rem;
-	// 				border-bottom: 0;
-	// 				transform: rotateY(-30deg);
-	// 			}
-	// 		}
-	// 	}
-	// 	& p {
-	// 		@include set-font(1.6rem, 500, $color-text-light);
-	// 		line-height: 1.8;
-	// 	}
-	// }
+// 			&::after {
+// 				bottom: -1.75rem;
+// 				border-top-right-radius: 4rem;
+// 				border-bottom: 0;
+// 				transform: rotateY(-30deg);
+// 			}
+// 		}
+// 	}
+// 	& p {
+// 		@include set-font(1.6rem, 500, $color-text-light);
+// 		line-height: 1.8;
+// 	}
+// }
