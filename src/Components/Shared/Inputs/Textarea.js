@@ -17,7 +17,7 @@ const Textarea = ({
   const error = errors[name];
   return (
     <div className="input col-span-2" id={id}>
-      <label className="input__label">{label} :</label>
+      <label className="input__label">{label} </label>
 
       <Controller
         name={name}

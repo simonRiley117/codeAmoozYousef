@@ -5,12 +5,19 @@
     &__contentBox {
         margin: 4.7rem auto 2rem auto;
         column-gap: 3.88rem;
+        @include respond(tablet) {
+            display: flex;
+            flex-direction: column-reverse;
+            & > *:not(:first-child) {
+                margin-bottom: 3.7rem;
+            }
+        }
     }
     &__box {
-        padding: 4.2rem 3.3rem 7.19rem 3.3rem;
+        padding: 4.2rem 3.3rem 5.19rem 3.3rem;
         border-radius: 20rem;
         filter: $shadow-backgroud;
-        min-height: 56.5rem;
+        height: 56.5rem;
         &-2 {
             background-color: $color-green-opacity;
         }
@@ -25,14 +32,24 @@
         color: $color-blue;
         font-size: 2rem;
     }
+    &__iconBox {
+        height: 26.9rem;
+        width: 26.703rem;
+        position: relative;
+        margin-bottom: 1rem;
+    }
     &__icons {
         width: 26.703rem;
-        height: auto;
+        max-height: 23.9rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
     &__txt {
         color: $color-black-light;
         font-size: 1.7rem;
-        // height: 15rem;
+        height: 15rem;
+        line-height: 2.5rem;
     }
 
     &__btn {

@@ -21,13 +21,14 @@ function index() {
             key={id}
           >
             <p className="CoWorkers__titr font-bold">{index.title}</p>
-
-            <img
-              src={index.icon}
-              alt={index.icon}
-              className="CoWorkers__icons"
-            />
-            <p className="CoWorkers__txt leading-loose">{index.txt}</p>
+            <div className="CoWorkers__iconBox">
+              <img
+                src={index.icon}
+                alt={index.icon}
+                className="CoWorkers__icons"
+              />
+            </div>
+            <p className="CoWorkers__txt">{index.txt}</p>
 
             <div className="text-center">
               <Button ico={false} type="primary" classes="CoWorkers__btn">

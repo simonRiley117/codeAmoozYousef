@@ -1,11 +1,23 @@
 .breadcrumbs {
-	margin: 4rem 0;
-
+	margin: 12.834rem 0 4rem 0;
+	@include respond(tablet) {
+		margin: 8rem 0 4rem 0;
+	}
 	.ant-breadcrumb {
 		display: flex;
+		@include respond(tablet) {
+			font-size: 0.8rem;
+		}
 		span {
 			display: flex;
 			align-items: center;
+		}
+	}
+	.ant-breadcrumb-separator {
+		svg {
+			@include respond(tablet) {
+				font-size: 1rem;
+			}
 		}
 	}
 }
