@@ -1,22 +1,115 @@
 .about {
 	margin-top: 12rem;
 
-	&-circle {
-		background-color: #46bea7;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-weight: bold;
-		max-width: 9rem;
+	&__container {
 		position: relative;
-		&__1 {
-			width: 6rem;
-			height: 6rem;
+		margin-top: 6rem;
+		@include d-flex-column(center);
+		@include respond(tablet) {
+			margin-top: 3rem;
 		}
-		&__2 {
+		&::before {
+			content: '';
+			background-color: $color-primary;
+			width: 3px;
+			height: 90%;
+			margin: 1.2rem 0;
+			border-radius: 2px;
+			position: absolute;
+			@include respond(tablet) {
+				content: none;
+			}
+		}
+
+		& > .dots {
+			position: relative;
+			min-height: 27rem;
+			display: flex;
+			align-items: flex-end;
+			@include respond(laptop) {
+				min-height: 24rem;
+			}
+			@include respond(tab-port) {
+				min-height: 18rem;
+			}
+			@include respond(tablet) {
+				min-height: auto;
+			}
+			&::before {
+				content: '...';
+				position: absolute;
+				@include set-font(7rem, 900, $color-blue);
+				right: 100%;
+				bottom: -1.5rem;
+			}
+		}
+	}
+
+	&__row {
+		@include display-flex(space-between, flex-end);
+		position: relative;
+		@include respond(laptop) {
+			margin-top: 4rem;
+		}
+		@include respond(tablet) {
+			flex-direction: column-reverse !important;
+			align-items: center;
+		}
+		&.reverse {
+			flex-direction: row-reverse;
+			margin-top: -3rem;
+			@include respond(tablet) {
+				margin-top: 0;
+			}
+			& .about__pic {
+				top: 22rem;
+				@include respond(laptop) {
+					top: 18rem;
+				}
+				@include respond(tab-port) {
+					top: 12rem;
+				}
+			}
+		}
+
+		&--box {
+			@include display-flex(space-between);
+			flex-basis: calc(50% + 4.5rem);
+			@include respond(tablet) {
+				flex-basis: 100%;
+				margin-bottom: 3rem;
+			}
+		}
+	}
+
+	&__circle {
+		background-color: $color-green-dark;
+		border-radius: 50%;
+		@include display-flex(center);
+		position: relative;
+		@include set-font(1.6rem, bold, $color-blue);
+		text-align: center;
+		border: 1.2rem solid #fff;
+		@include respond(tablet) {
+			border-width: 0.5rem;
+		}
+		&.small {
 			width: 9rem;
 			height: 9rem;
+		}
+		&.big {
+			width: 11rem;
+			height: 11rem;
+		}
+		&.large {
+			width: 12rem;
+			height: 12rem;
+			padding: 2rem;
+
+			font-size: 14px;
+			@include respond(tablet) {
+				font-size: 12px;
+			}
 		}
 	}
 	&-heading {
@@ -25,45 +118,88 @@
 	}
 	&-line {
 		background-color: $color-primary;
-		display: block;
 		width: 3px;
 		height: 15rem;
-		margin: 2rem 0;
+		margin: 1.5rem 0;
 		border-radius: 2px;
+		@include respond(big-phone) {
+			display: none;
+		}
 	}
-	&-img__1 {
-		position: absolute;
-		left: -650%;
-		top: 40%;
-		width: 55rem;
+	&__pic {
+		position: relative;
+		top: -6rem;
+		overflow: hidden;
+		border-radius: 1.5rem;
+		flex-basis: calc(50% - 10rem);
+		max-height: 30rem;
+		@include respond(laptop) {
+			top: -10rem;
+			flex-basis: calc(50% - 8rem);
+		}
+		@include respond(tablet) {
+			top: 0 !important;
+			flex-basis: 60%;
+			max-width: 60%;
+			margin-bottom: 3rem;
+		}
+		@include respond(phone){
+			flex-basis: 90%;
+			max-width: 90%;
+		
+		}
+
+		// width: 50rem;
+		// @include respond(big-tablet) {
+		// 	width: calc(42vw - 3rem);
+		// }
+		// @include respond(big-phone) {
+		// 	position: relative;
+		// 	width: 100%;
+		// 	flex-basis: 100%;
+		// }
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: currentColor;
+			opacity: 0.3;
+		}
 	}
-	&-img__2 {
-		position: absolute;
-		left: 180%;
-		top: 40%;
-		width: 55rem;
-	}
-	&-text__box {
-		border-radius: 15px;
+
+	&__message {
+		border-radius: 1.5rem;
 		filter: drop-shadow(0 2px 15px rgba($color: #000, $alpha: 0.2));
 		padding: 2rem;
-		min-width: 50rem;
-		font-size: 1.6rem;
-		font-weight: normal;
-		line-height: 28.8px;
 		@include display-flex;
 		background-color: $color-white;
-		top: 50%;
-		transform: translateY(-50%);
-		position: absolute;
+		position: relative;
+		flex-basis: calc(100% - 13rem);
+		// @include respond(laptop) {
+		// 	flex-basis: 80%;
+		// }
+		// @include respond(tab-port) {
+		// 	flex-basis: 75%;
+		// }
+		// @include respond(tablet) {
+		// 	flex-basis: calc();
+		// }
+
+		& p {
+			@include set-font(1.6rem, 500, $color-text-light);
+			line-height: 1.8;
+		}
 		& i {
 			display: block;
 			background-color: $color-white;
 			width: 6rem;
-			height: 2.5rem;
+			height: 3.5rem;
 			border-radius: 3rem;
 			position: absolute;
 			left: -2.4rem;
+			z-index: -1;
 			&::after,
 			&::before {
 				content: '';
@@ -78,40 +214,92 @@
 			}
 			&::before {
 				border-top: 0;
-				top: -1.8rem;
+				top: -1.7rem;
 				border-bottom-right-radius: 4rem;
 				transform: rotateY(-29deg);
 			}
 
 			&::after {
-				bottom: -1.75rem;
+				bottom: -1.7rem;
 				border-top-right-radius: 4rem;
 				border-bottom: 0;
 				transform: rotateY(-30deg);
 			}
 		}
-		&-1 {
-			left: 200%;
+
+		&.rotate {
+			& i {
+				left: auto;
+				right: -2.4rem;
+				transform: rotate(180deg);
+			}
 		}
-		&-2 {
-			right: 200%;
-		}
-	}
-	&-conclusion {
-		font-size: 1.4rem;
-		font-weight: bold;
-		margin-top: 4rem;
-	}
-	&-dots {
-		font-size: 7.5rem;
-		font-weight: bold;
-		position: absolute;
-		top: 0rem;
-		right: 125%;
-		display: block;
-		letter-spacing: -0.5rem;
 	}
 }
+
+// &--left {
+// 	position: relative;
+// 	@include display-flex;
+// 	& .about__pic {
+// 		top: 4rem;
+// 		right: calc(100% + 5rem);
+// 		color: $color-green;
+// 	}
+// 	& .about__box {
+// 		right: calc(100% + 5.5rem);
+// 		transform: rotateY(180deg);
+// 		& p {
+// 			transform: rotateY(-180deg);
+// 		}
+// 	}
+// 	@include respond(big-tablet) {
+// 		& .about__pic {
+// 			right: calc(100% + 3rem);
+// 		}
+// 		& .about__box {
+// 			right: calc(100% + 4rem);
+// 		}
+// 	}
+// 	@include respond(big-phone) {
+// 		& .about__box {
+// 			right: auto;
+// 		}
+// 		& .about__pic {
+// 			right: auto;
+// 		}
+// 	}
+// }
+
+// &--right {
+// 	position: relative;
+// 	@include display-flex;
+
+// 	& .about__box {
+// 		left: calc(100% + 5.2rem);
+// 	}
+// 	& .about__pic {
+// 		bottom: 4rem;
+// 		left: calc(100% + 5rem);
+// 		color: #1a6577;
+// 	}
+// 	@include respond(big-tablet) {
+// 		& .about__box {
+// 			left: calc(100% + 4rem);
+// 		}
+// 		& .about__pic {
+// 			left: calc(100% + 3rem);
+// 		}
+// 	}
+// 	@include respond(big-phone) {
+// 		& .about__box {
+// 			left: auto;
+// 		}
+// 		& .about__pic {
+// 			bottom: auto;
+// 			left: auto;
+// 		}
+// 	}
+// }
 
 // &__timeline {
 // 	@include d-flex-column;

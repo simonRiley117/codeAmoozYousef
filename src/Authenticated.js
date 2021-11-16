@@ -5,7 +5,6 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
-	Redirect,
 	useHistory,
 } from 'react-router-dom';
 import Layout from '@Components/Shared/Layout/Layout';
@@ -57,7 +56,7 @@ const Authenticated = () => {
 							)}
 						/>
 						<Route exact path='/example' component={Example} />
-						<Route path='*'>{() => <Redirect to='/dashboard' />}</Route>
+						{/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
 					</Layout>
 				</Switch>
 			</UserDataProvider>

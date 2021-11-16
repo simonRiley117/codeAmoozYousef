@@ -45,6 +45,7 @@
     "use-react-router-breadcrumbs": "^2.0.2",
     "web-vitals": "^1.0.1"
   },
+
   "scripts": {
     "start": "craco start",
     "build": "craco build",
