@@ -11,10 +11,21 @@
         & > *:last-child {
             color: $color-text-gray-dark;
             font-size: 1.8rem;
+            @include respond(tablet) {
+                width: 30%;
+                text-align: left;
+            }
+        }
+        @include respond(tablet) {
+            justify-content: space-between;
         }
     }
     &__txt {
         width: 70%;
+        @include respond(tablet) {
+            width: 50%;
+            justify-content: space-between;
+        }
         & > *:first-child {
             color: $color-primary;
             font-size: 1.6rem;

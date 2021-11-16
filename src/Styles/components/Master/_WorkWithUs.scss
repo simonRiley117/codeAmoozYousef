@@ -20,8 +20,15 @@
     &__titlebox {
         margin-bottom: 1.6rem;
     }
-    &__title {
+    &__txtBox {
         margin-right: 1.9rem;
+        width: 90%;
+        @include respond(tablet) {
+            width: 80%;
+            text-align: justify;
+        }
+    }
+    &__title {
         font-size: 2rem;
         color: $color-blue;
     }

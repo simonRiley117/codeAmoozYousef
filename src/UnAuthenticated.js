@@ -17,6 +17,7 @@ import Layout from '@Components/Shared/Layout/Layout';
 import { UserDataProvider } from './Context/userContext';
 import EmailVerify from './Components/Layouts/Register/EmailVerify';
 import Course from './Layouts/Course';
+import Dashboard from './Layouts/Dashboard/Dashboard';
 import Example from './Layouts/Example';
 
 const UnAuthenticated = () => {
@@ -46,8 +47,8 @@ const UnAuthenticated = () => {
 								<Course key={routeProps.history.location.state.id} />
 							)}
 						/>
+						<Route exact path='/dash' component={Dashboard} />
 						<Route exact path='/example' component={Example} />
-
 						<Route
 							exact
 							path='/account-confirm-email/:confirmedkey'

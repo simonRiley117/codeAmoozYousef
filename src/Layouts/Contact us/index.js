@@ -56,7 +56,7 @@ const Contact = () => {
                             errors={errors}
                             minRows={7}
                         />
-                        <Button classes="contact-button w-full" type="primary">
+                        <Button classes="contact-button w-full" type="primary" htmlType="submit">
                             ارسال
                         </Button>
                     </form>

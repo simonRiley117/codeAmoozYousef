@@ -19,5 +19,9 @@
         border-right: 1px solid $color-primary;
         padding-right: 1.9rem;
         margin-right: 1.3rem;
+        @include respond(tablet) {
+            width: 90%;
+            text-align: justify;
+        }
     }
 }

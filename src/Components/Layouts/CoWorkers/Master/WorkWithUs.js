@@ -11,13 +11,15 @@ function WorkWithUs() {
       <div className="WorkWithUs__content">
         {info.map((index, id) => (
           <div className="flex flex-col items-start justify-center" key={id}>
-            <div className="flex flex-row items-center justify-start WorkWithUs__titlebox">
+            <div className="flex flex-row items-start justify-start WorkWithUs__titlebox">
               <div className="green-circle">{id + 1}</div>
-              <p className="WorkWithUs__title font-bold">{index.title}</p>
+              <div className="flex flex-col items-start justify-start WorkWithUs__txtBox">
+                <p className="WorkWithUs__title font-bold">{index.title}</p>
+                <p className="WorkWithUs__txt text-right leading-loose">
+                  {index.txt}
+                </p>
+              </div>
             </div>
-            <p className="WorkWithUs__txt text-right leading-loose">
-              {index.txt}
-            </p>
           </div>
         ))}
       </div>
