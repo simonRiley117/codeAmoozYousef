@@ -5,7 +5,7 @@ import Coursecardbanner from "../../Shared/CourseCardBanner/CourseCardBanner";
 import Suggest from "@Assets/Pic/Suggest.png";
 
 const Courses = () => {
-  const [isCourse, setIsCourse] = useState(true);
+  const [isCourse, setIsCourse] = useState(false);
   const course = [
     {
       title: "دوره آنلاین برنامه نویسی python",
@@ -74,7 +74,7 @@ const Courses = () => {
             {course.map((lastCourse) => {
               return (
                 <div className="last-course-card w-full mb-9">
-                  <Coursecardbanner />
+                  <Coursecardbanner suggest={false} />
                   <ul className="lg:grid lg:grid-cols-2 lg:grid-rows-3">
                     <h1 className="col-span-2">{lastCourse.title}</h1>
                     <li>
@@ -110,9 +110,9 @@ const Courses = () => {
           </Card>
         </div>
       )}
-      <div className="last-course-card-suggestion flex md:flex-col items-center justify-center md:col-span-1 col-span-8">
+      <div className="last-course-card-suggestion flex md:flex-col items-center justify-center md:col-span-1 col-span-8 md:p-0 p-4">
         <img src={Suggest} />
-        <a className="text-primary md:w-20 text-center mt-4">
+        <a className="text-primary md:w-20 text-center mt-4 md:mr-0 mr-4">
           پیشنهاد دوره جدید
         </a>
       </div>
