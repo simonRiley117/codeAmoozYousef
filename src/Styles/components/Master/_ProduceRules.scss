@@ -10,5 +10,9 @@
         color: $color-text-black-light-2;
         width: 90%;
         font-size: 1.6rem;
+        @include respond(tablet) {
+            width: 80%;
+            text-align: justify;
+        }
     }
 }

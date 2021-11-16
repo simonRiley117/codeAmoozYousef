@@ -7,7 +7,6 @@ function index() {
     <div className="Technicalteam container">
       <BreadCrump item={menu} />
       <p className="Master__title text-center">Technical team</p>
-
       <div className="Technicalteam__content">
         {items.map((item, id) => (
           <div

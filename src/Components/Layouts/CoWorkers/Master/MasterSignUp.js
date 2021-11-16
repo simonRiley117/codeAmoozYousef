@@ -6,6 +6,7 @@ import InputTextArea from "@Components/Shared/Inputs/Textarea";
 import CheckBox from "@Components/Shared/Inputs/CheckBox";
 import Button from "@Components/Shared/Buttons/Button";
 import UploadProfile from "@Components/Shared/Inputs/UploadProfile";
+import UseWindowSize from "@App/Sizes/UseWindowSize";
 
 function MasterSignUp() {
   const {
@@ -14,6 +15,7 @@ function MasterSignUp() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {};
+  const windowSize = UseWindowSize();
   return (
     <div className="WorkWithUs text-center">
       <div className="WorkWithUs__logoBox ">
@@ -89,17 +91,31 @@ function MasterSignUp() {
             <UploadProfile />
           </div>
           <div className="MasterSignUp__textarea">
-            <InputTextArea
-              rows={4}
-              label="شرح مختصری از شما:"
-              register={{
-                required: true,
-              }}
-              message="شرح را وارد کنید"
-              name="txt"
-              control={control}
-              errors={errors}
-            />
+            {windowSize === "md-2" || windowSize === "sm" ? (
+              <InputTextArea
+                rows={8}
+                label="شرح مختصری از شما:"
+                register={{
+                  required: false,
+                }}
+                message="شرح را وارد کنید"
+                name="txt"
+                control={control}
+                errors={errors}
+              />
+            ) : (
+              <InputTextArea
+                rows={4}
+                label="شرح مختصری از شما:"
+                register={{
+                  required: false,
+                }}
+                message="شرح را وارد کنید"
+                name="txt"
+                control={control}
+                errors={errors}
+              />
+            )}
           </div>
           <div className="flex items-start text-right MasterSignUp__ruleBox">
             <CheckBox
@@ -114,7 +130,11 @@ function MasterSignUp() {
             />
           </div>
           <div className="text-center flex items-center justify-center MasterSignUp__btnBox ">
-            <Button type="primary" classes="MasterSignUp__btn">
+            <Button
+              type="primary"
+              classes="MasterSignUp__btn"
+              htmlType="submit"
+            >
               ارسال
             </Button>
           </div>

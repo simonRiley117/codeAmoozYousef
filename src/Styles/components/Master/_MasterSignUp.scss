@@ -2,13 +2,26 @@
     &__formBox {
         width: 75%;
         margin: 0 auto;
+        @include respond(tablet) {
+            width: 95%;
+        }
     }
     &__gridBox {
         column-gap: 15rem;
         row-gap: 5rem;
+        @include respond(tablet) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+        }
     }
     &__textarea {
         margin-top: 4.6rem;
+        @include respond(tablet) {
+            text-align: right;
+        }
     }
     &__ruleBox {
         margin-top: 2rem;
