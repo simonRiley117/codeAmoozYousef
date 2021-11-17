@@ -133,7 +133,7 @@
 .Courses__searchTitle {
   font-size: 1.8rem;
   color: $color-black;
-  margin-top: 4rem;
+  margin-top: 12rem;
   margin-bottom: 2.4rem;
 }
 .Courses__img {
@@ -141,7 +141,7 @@
   height: 38rem;
   margin: 0 auto;
   position: relative;
-  top: 30%;
+  // top: 30%;
   transform: translateY(-50%);
 }
 .Courses__imgBox {

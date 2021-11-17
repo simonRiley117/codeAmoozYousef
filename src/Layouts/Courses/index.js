@@ -9,7 +9,7 @@ import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
 import Filtersxx from "./Filtersxx";
 import Pagination from "@Components/Shared/Pagination";
 import { cardData } from "../../Components/Layouts/News/cardData";
-
+;
 const Courses = () => {
   // just some testing array to be able to map on cards
   const cards = [
@@ -29,7 +29,6 @@ const Courses = () => {
   // pagination config
   const PageSize = 11;
   const [currentPage, setCurrentPage] = useState(1);
-
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
@@ -38,29 +37,37 @@ const Courses = () => {
   return (
     <div className="container">
       <div className="courses">
-        <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={1}>
-          {cards.map((card, index) => {
-            return (
-              <SwiperSlide key={card.id}>
-                <CourseCardBg />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+      
+          <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={1}>
+            {cards.map((card, index) => {
+              return (
+                <SwiperSlide key={card.id}>
+                  <CourseCardBg />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+ 
 
         <Searchxx />
 
-        <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
-        <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={4}>
-          {cards.map((card, index) => {
-            return (
-              <SwiperSlide style={{ marginBottom: "5.399rem" }}>
-                <Coursecardsm key={card.id} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-        <Filtersxx />
+       
+            <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
+            <Swiper
+              module={[A11y, Autoplay]}
+              spaceBetween={50}
+              slidesPerView={4}
+            >
+              {cards.map((card, index) => {
+                return (
+                  <SwiperSlide style={{ marginBottom: "5.399rem" }}>
+                    <Coursecardsm key={card.id} />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <Filtersxx />
+ 
 
         <div className="grid grid-cols-4 gap-x-6 gap-y-8">
           {currentTableData.map((card) => {
