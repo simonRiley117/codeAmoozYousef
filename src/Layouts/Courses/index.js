@@ -9,8 +9,6 @@ import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
 import Filtersxx from "./Filtersxx";
 import Pagination from "@Components/Shared/Pagination";
 import { cardData } from "../../Components/Layouts/News/cardData";
-import { searchItem } from "@App/Recoil/StateRecoil";
-import { useRecoilState } from "recoil";
 const Courses = () => {
   // just some testing array to be able to map on cards
   const cards = [
@@ -47,8 +45,7 @@ const Courses = () => {
             );
           })}
         </Swiper>
-        <Searchxx />
-        <CourseCardBg />{" "}
+        <Searchxx />{" "}
         <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
         <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={4}>
           {cards.map((card, index) => {
@@ -60,12 +57,17 @@ const Courses = () => {
           })}
         </Swiper>
         <Filtersxx />
-        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
-          {currentTableData.map((card) => {
-            return <Coursecardsm key={card.id} />;
-          })}
+        <div>
+          <p className="Courses__searchTitle font-bold	">
+            {" "}
+            نتیجه جستجو شما برای "{text}":
+          </p>
+          <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+            {currentTableData.map((card) => {
+              return text === card.name ? <Coursecardsm key={card.id} /> : null;
+            })}
+          </div>
         </div>
-        {/*  */}
         <div className="Title-paging">
           <Pagination
             className="pagination-bar"

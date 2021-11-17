@@ -60,5 +60,4 @@ const UnAuthenticated = () => {
     </>
   );
 };
-
 export default UnAuthenticated;

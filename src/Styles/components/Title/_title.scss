@@ -1,29 +1,30 @@
 .title__box {
-	@include d-flex-column;
-	text-align: center;
-	position: relative;
+	@include d-flex-column(center);
 	padding: 1rem;
-
-	&::after {
-		content: '';
-		width: 16rem;
-		height: 1rem;
-		border-radius: 1rem;
-		background-color: $color-success-light;
-		margin-top: 1rem;
-		position: relative;
-		right: -6rem;
-		@include respond(phone) {
-			width: 11rem;
-			height: 0.5rem;
-			right: -4rem;
-		}
-	}
+	width: 100%;
 
 	& h2 {
 		@include set-font(3rem, bold, $color-blue);
+		position: relative;
 		@include respond(phone) {
 			font-size: 16px;
+		}
+
+		&::after {
+			content: '';
+			width: calc(100% - 1.5rem);
+			height: 1rem;
+			border-radius: 1rem;
+			background-color: $color-success-light;
+			margin-top: 1rem;
+			position: relative;
+			right: -25%;
+			display: block;
+			@include respond(phone) {
+				width: 11rem;
+				height: 0.5rem;
+				right: -4rem;
+			}
 		}
 	}
 }

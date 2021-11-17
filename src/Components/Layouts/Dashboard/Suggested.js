@@ -40,18 +40,21 @@ const Suggested = () => {
             {suggests.map((suggest) => {
               return (
                 <div
-                  className="max-w-full grid grid-cols-5"
+                  className="w-full grid grid-cols-5"
                   style={{
                     boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.15)",
                     borderRadius: "1.5rem",
+                    padding: "0.6rem",
                   }}
                 >
                   <div className="col-span-2">
                     <Coursecardbanner suggest={true} />
                   </div>
                   <div className="col-span-3">
-                    <a>{suggest.course}</a>
-                    <p>{suggest.teacher}</p>
+                    <a style={{ color: "#002171", fontSize: "1.4rem" }}>
+                      {suggest.course}
+                    </a>
+                    <p style={{ fontSize: "1.4rem" }}>{suggest.teacher}</p>
                   </div>
                 </div>
               );
