@@ -5,8 +5,11 @@ import Magnifier from "@Assets/Icons/fe_search.svg";
 import { ReactComponent as UserIcon } from "@Assets/Icons/fe_search.svg";
 import { searchItem } from "@App/Recoil/StateRecoil";
 import { useRecoilState } from "recoil";
+import { useHistory } from "react-router";
 const Searchxx = ({ children }) => {
   const [text, setText] = useRecoilState(searchItem);
+  const history = useHistory();
+
   const {
     handleSubmit,
     control,
@@ -15,6 +18,9 @@ const Searchxx = ({ children }) => {
   } = useForm();
   const onSubmit = (data) => {
     setText(data.search);
+    // window.location.href = `/search/${data.search}`;
+    history.push(`/search/${data.search}`);
+    // window.location.pathname = `/search/${text}`;
     reset();
   };
 

@@ -19,6 +19,7 @@ import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 import Course from "./Layouts/Course";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
 import Example from "./Layouts/Example";
+import Search from "./Layouts/Search/Search";
 
 const UnAuthenticated = () => {
   return (
@@ -36,6 +37,7 @@ const UnAuthenticated = () => {
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
+            <Route exact path="/search/:name" component={Search} />
             <Route
               exact
               path="/course"
