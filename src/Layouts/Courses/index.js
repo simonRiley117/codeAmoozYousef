@@ -9,6 +9,7 @@ import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
 import Filtersxx from "./Filtersxx";
 import Pagination from "@Components/Shared/Pagination";
 import { cardData } from "../../Components/Layouts/News/cardData";
+
 const Courses = () => {
   // just some testing array to be able to map on cards
   const cards = [
@@ -28,6 +29,7 @@ const Courses = () => {
   // pagination config
   const PageSize = 11;
   const [currentPage, setCurrentPage] = useState(1);
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
@@ -45,7 +47,9 @@ const Courses = () => {
             );
           })}
         </Swiper>
-        <Searchxx />{" "}
+
+        <Searchxx />
+
         <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
         <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={4}>
           {cards.map((card, index) => {
@@ -57,17 +61,13 @@ const Courses = () => {
           })}
         </Swiper>
         <Filtersxx />
-        <div>
-          <p className="Courses__searchTitle font-bold	">
-            {" "}
-            نتیجه جستجو شما برای "{text}":
-          </p>
-          <div className="grid grid-cols-4 gap-x-6 gap-y-8">
-            {currentTableData.map((card) => {
-              return text === card.name ? <Coursecardsm key={card.id} /> : null;
-            })}
-          </div>
+
+        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+          {currentTableData.map((card) => {
+            return <Coursecardsm key={card.id} />;
+          })}
         </div>
+
         <div className="Title-paging">
           <Pagination
             className="pagination-bar"
