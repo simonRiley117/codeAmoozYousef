@@ -1,27 +1,21 @@
 import React from "react";
 import python from "@Assets/Pic/python.png";
 
-function Detaile() {
-  return (
-    <div className="Detaile AboutDetaile">
-      <img src={python} alt={python} />
-      <div className="AboutDetaile__hederBox">
-        <p className="font-bold">درباره دوره</p>
-      </div>
-      <p className="AboutDetaile__txt leading-loose">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
-        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-        خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید
-        داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان
-        رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
-        پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-      </p>
-    </div>
-  );
+function Detaile({title, intro, cover}) {
+    return (
+        <div className="Detaile AboutDetaile">
+            <div className="AboutDetaile__hederBox">
+                <p className="font-bold">  دوره {title}</p>
+            </div>
+            <img src={cover} alt={cover}/>
+            <div className="AboutDetaile__hederBox">
+                <p className="font-bold">درباره دوره</p>
+            </div>
+            <p className="AboutDetaile__txt leading-loose">
+                {intro}
+            </p>
+        </div>
+    );
 }
 
 export default Detaile;

@@ -60,7 +60,7 @@ function Index() {
             )}
           </div>
           <div className="Course__sideBar relative">
-            <CourseTable />
+            <CourseTable/>
           </div>
         </div>
         {windowSize === "sm" && (
