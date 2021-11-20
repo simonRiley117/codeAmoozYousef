@@ -56,6 +56,8 @@ const Authenticated = () => {
 							)}
 						/>
 						<Route exact path='/example' component={Example} />
+						<Route exact path="/dash" component={Dashboard} />
+
 						{/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
 					</Layout>
 				</Switch>

@@ -45,7 +45,6 @@ const UnAuthenticated = () => {
                 <Course key={routeProps.history.location.state.id} />
               )}
             />
-            <Route exact path="/dash" component={Dashboard} />
             <Route exact path="/example" component={Example} />
 
             <Route
