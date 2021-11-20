@@ -22,14 +22,11 @@ const News = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
-  //   const currentTableData = useMemo(() => {
-  //     const firstPageIndex = (currentPage - 1) * PageSize;
-  //     const lastPageIndex = firstPageIndex + PageSize;
-  //     return cardData.slice(firstPageIndex, lastPageIndex);
-  //   }, [currentPage]);
+
   const setData = (data) => {
     setNewsList(data);
     setLoading(false);
+    setCurrentPage(newsList.page_count);
   };
   const getNewsList = useFetch({
     url: `NewsService`,
@@ -71,9 +68,9 @@ const News = () => {
           </div>
           <div className="Title-paging">
             <Pagination
-              current={currentPage}
+              current={1}
               // total={cardData.length}
-              total={500}
+              total={newsList?.page_count}
               onChange={(page) => setCurrentPage(page)}
             />
           </div>

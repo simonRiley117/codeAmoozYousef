@@ -41,7 +41,7 @@ const Authenticated = () => {
 						<Route exact path='/news' component={News} />
 						<Route
 							exact
-							path='/news/NewsDetails'
+							path='/news/news-info'
 							component={NewsDetails}
 						/>
 						<Route exact path='/faq' component={Faq} />
