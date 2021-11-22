@@ -15,6 +15,7 @@ const BreadCrump = ({ title }) => {
 		{ path: '/mycourse', breadcrumb: 'دوره های من' },
 		{ path: '/wallet', breadcrumb: 'کیف پول' },
 		{ path: '/setting', breadcrumb: 'تنظیمات' },
+		{ path: '/sabadkala', breadcrumb: 'سبدخرید' },
 		{ path: '/mycourse/createcourse', breadcrumb: 'ایجاد دوره' },
 		{ path: '/mycourse/createseasons', breadcrumb: 'جلسات دوره ' },
 		{

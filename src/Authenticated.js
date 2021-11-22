@@ -17,6 +17,7 @@ import Courses from './Layouts/Courses';
 import Course from './Layouts/Course';
 import AboutUs from './Layouts/About us';
 import Example from './Layouts/Example';
+import SabadKala from './Layouts/Sabadkala/SabadKala';
 import { UserDataProvider } from './Context/userContext';
 import Dashboard from './Layouts/Dashboard/Dashboard';
 import Home from './Layouts/Home';
@@ -56,6 +57,7 @@ const Authenticated = () => {
 							)}
 						/>
 						<Route exact path='/example' component={Example} />
+						<Route exact path='/sabad-kala' component={SabadKala} />
 						<Route exact path="/dash" component={Dashboard} />
 
 						{/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}

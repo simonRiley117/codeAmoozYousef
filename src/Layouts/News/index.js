@@ -19,25 +19,24 @@ const override = css`
 let PageSize = 10;
 const News = () => {
   //pagination props preparation
-  const [currentPage, setCurrentPage] = useState(1);
   const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pagination, setpagination] = useState({current:1,pageSize:newsList?.page_count});
 
   const setData = (data) => {
     setNewsList(data);
-    setLoading(false);
-    setCurrentPage(newsList.page_count);
   };
   const getNewsList = useFetch({
     url: `NewsService`,
     method: "GET",
     noHeader: true,
-    setter: setData
+    setter: setNewsList,
+    pagination:pagination
+
   });
 
   return (
-    <>
-      {!loading ? (
+   
         <div className="news container">
           <BreadCrump />
           <h2 className="news-heading ">اخبار</h2>
@@ -68,22 +67,14 @@ const News = () => {
           </div>
           <div className="Title-paging">
             <Pagination
-              current={1}
+              current={pagination.current}
               // total={cardData.length}
               total={newsList?.page_count}
-              onChange={(page) => setCurrentPage(page)}
+              onChange={(page) => setpagination({...pagination,current:page})}
             />
           </div>
         </div>
-      ) : (
-        <RiseLoader
-          color="#0dca78"
-          loading={loading}
-          size={30}
-          css={override}
-        />
-      )}
-    </>
+     
   );
 };
 

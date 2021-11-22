@@ -32,7 +32,10 @@ const UnAuthenticated = () => {
               <CoWorkersRouter />
             </Route>
             <Route exact path="/news" component={News} />
-            <Route exact path="/news/news-info" component={NewsDetails} />
+            <Route exact path="/news/news-info" 
+            render={(routeProps) => (
+              <NewsDetails key={routeProps.history.location.state.id} />
+            )} />
             <Route exact path="/faq" component={Faq} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />

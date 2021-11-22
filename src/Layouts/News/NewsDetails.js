@@ -15,43 +15,27 @@ import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 const NewsDetails = () => {
   const location = useLocation();
   const id = location.state.id;
-  const [loading, setLoading] = useState(true);
   const [NewsData, setNewsData] = useState();
   const [latestNews, setlatestNews] = useState([]);
   const [similarNews, setsimilarNews] = useState([]);
-  const setData = (data) => {
-    setNewsData(data);
-    setLoading(false);
-    getLatestNewsList.reFetch();
-  };
-  const setLatestData = (data) => {
-    setlatestNews(data);
-    getSimilarNewsList.reFetch();
-  };
-  useEffect(() => {
-    //setId(location.state.id - 1);
-    console.log(location);
-  }, [location]);
-  //we should be requesting for api but we don't gave any api so
+ 
   const getNews = useFetch({
     url: `NewsService/${id}`,
     method: "GET",
     noHeader: true,
-    setter: setData,
+    setter: setNewsData,
   });
   const getLatestNewsList = useFetch({
     url: `NewsService/latestNews`,
     method: "GET",
     noHeader: true,
-    setter: setLatestData,
-    trigger: false,
+    setter: setlatestNews,
   });
   const getSimilarNewsList = useFetch({
     url: `NewsService/${id}/similarNews`,
     method: "GET",
     noHeader: true,
     setter: setsimilarNews,
-    trigger: false,
   });
   //information of the news
   const info = (
@@ -68,19 +52,18 @@ const NewsDetails = () => {
     </div>
   );
   return (
-    <>
-      {!loading ? (
+    
         <div className="container">
-          <BreadCrump title={NewsData.title} />
-          <h3 className="Title-heading">{NewsData.title}</h3>
+          <BreadCrump title={NewsData?.title} />
+          <h3 className="Title-heading">{NewsData?.title}</h3>
           <div className="Title">
             <div className="Title-column text-color">
               <NewsDetailsBox
                 borderRadius="15px 15px 0 0"
-                img={NewsData.cover}
+                img={NewsData?.cover}
                 info={info}
               >
-                <p>{NewsData.text}</p>
+                <p>{NewsData?.text}</p>
                 {/* <p>{NewsData.paragraph}</p>
                 <h4>{NewsData.title}</h4>
                 <p>{NewsData.paragraph}</p>
@@ -139,6 +122,7 @@ const NewsDetails = () => {
                           img={card.cover}
                         >
                           <h3 className="orange subtitle">{card.title}</h3>
+                         
                         </NewsItemContainer>
                       </Link>
                     </div>
@@ -148,10 +132,7 @@ const NewsDetails = () => {
             </div>
           </div>
         </div>
-      ) : (
-        "loading"
-      )}
-    </>
+      
   );
 };
 export default NewsDetails;
