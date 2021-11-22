@@ -13,7 +13,7 @@ function Master() {
   const [id, setId] = useState(0);
   return (
     <div className="Master container">
-      <BreadCrump item={menu} />
+      <BreadCrump pathsname="/coWorkers/master" name="اساتید" />
       <p className="Master__title text-center	">اساتید</p>
       <div className="Master__formBox">
         <Tabs className="TabBox" type='card'>
@@ -39,17 +39,3 @@ function Master() {
 }
 
 export default Master;
-const menu = [
-  {
-    name: "صفحه اصلی",
-    rout: "",
-  },
-  {
-    name: "همکاران و اساتید",
-    rout: "coWorkers",
-  },
-  {
-    name: "اساتید",
-    rout: "coWorkers/master",
-  },
-];

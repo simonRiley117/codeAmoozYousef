@@ -101,7 +101,7 @@ const Courses = () => {
                     </li>
                     <li>تعداد دانشجویان: {lastCourse.students} نفر</li>
                     <li>
-                      <a href="#">مشاهده دوره</a>
+                      <a href="/dash/course">مشاهده دوره</a>
                     </li>
                   </ul>
                 </div>
