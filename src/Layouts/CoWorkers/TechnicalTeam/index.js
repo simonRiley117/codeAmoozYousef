@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function index() {
   return (
     <div className="Technicalteam container">
-      <BreadCrump item={menu} />
+      <BreadCrump pathsname="/coWorkers/technicalteam" name="technical Team" />
       <p className="Master__title text-center">Technical team</p>
       <div className="Technicalteam__content">
         {items.map((item, id) => (
@@ -42,20 +42,6 @@ function index() {
 }
 
 export default index;
-const menu = [
-  {
-    name: "صفحه اصلی",
-    rout: "",
-  },
-  {
-    name: "همکاران و اساتید",
-    rout: "coWorkers",
-  },
-  {
-    name: "technical Team",
-    rout: "coWorkers/technicalteam",
-  },
-];
 
 const items = [
   {

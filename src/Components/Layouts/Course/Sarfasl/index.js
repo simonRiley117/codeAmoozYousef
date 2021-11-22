@@ -12,7 +12,7 @@ import Courseintro from "./Courseintro";
 function Index() {
   const location = useLocation();
   const [id, setId] = useState();
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const { token, authDispatch } = useAuth();
   const [courseSeasons, setCourseSeasons] = useState([]);
 
@@ -39,7 +39,6 @@ function Index() {
     <>
       {getCourseSeasons.response?.data ? (
         <div className="Sarfasl">
-         
           {/*<div className="Sarfasl__sample flex items-center	justify-between">*/}
           {/*    <p>مثال1</p>*/}
           {/*    <div className="Sarfasl__sampleLinkBox flex items-center justify-center ">*/}

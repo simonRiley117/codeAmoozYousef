@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function index() {
   return (
     <div className="CoWorkers container">
-      <BreadCrump item={menu} />
+      <BreadCrump pathsname="/coWorkers" name="همکاران و اساتید" />
       <div className="CoWorkers__titleBox">
         <Title>همکاری با ما</Title>
       </div>
@@ -43,16 +43,6 @@ function index() {
 }
 
 export default index;
-const menu = [
-  {
-    name: "صفحه اصلی",
-    rout: "",
-  },
-  {
-    name: "همکاران و اساتید",
-    rout: "coWorkers",
-  },
-];
 const info = [
   {
     title: "تیم کارفرما",

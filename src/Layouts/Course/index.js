@@ -26,7 +26,7 @@ function Index() {
 
   return (
     <div className="container">
-      <BreadCrump title={menu} />
+      <BreadCrump pathsname="/course" name="پایتون" />
       <div className="Course">
         {windowSize !== "sm" && <HeaderDiscount />}
         <div className="grid Course__container relative">
@@ -60,7 +60,7 @@ function Index() {
             )}
           </div>
           <div className="Course__sideBar relative">
-            <CourseTable/>
+            <CourseTable />
           </div>
         </div>
         {windowSize === "sm" && (
