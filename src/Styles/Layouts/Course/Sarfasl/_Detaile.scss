@@ -1,5 +1,5 @@
 .Detaile {
-    padding-top: 2rem;
+    padding: 2rem;
     &__hederBox {
         color: $color-blue;
         & > *:first-child {
@@ -14,5 +14,10 @@
         color: $color-text-light;
         font-size: 1.6rem;
         margin-top: 4rem;
+    }
+    &__exit {
+        text-align: left;
+        margin: 2rem;
+        font-size: 2rem;
     }
 }
