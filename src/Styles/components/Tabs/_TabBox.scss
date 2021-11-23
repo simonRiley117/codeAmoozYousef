@@ -110,6 +110,8 @@
 	}
 	& .ant-tabs-content {
 		background-color: $color-gray;
+		border-bottom-right-radius: 1.5rem;
+		border-bottom-left-radius: 1.5rem;
 	}
 	& .ant-tabs-tabpane {
 		box-shadow: 0 2px 8px rgba($color: #000, $alpha: 0.15);

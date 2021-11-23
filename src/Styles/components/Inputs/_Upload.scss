@@ -1,0 +1,35 @@
+.upload {
+	&__input {
+		display: none;
+	}
+	&__preview {
+		@include display-flex;
+		column-gap: 1rem;
+		margin-right: 2rem;
+		background-color:rgba($color: $color-gray, $alpha: 0.6 );
+		padding: 1rem 1.5rem;
+		border-radius: 1.5rem;
+		&--icon {
+			@include display-flex(center);
+			border-radius: 50%;
+			// background-color: $color-gray-dark;
+		}
+		& p{
+			color:$color-text-light;
+		}
+	}
+}
+.label__button--primary {
+	border-radius: 6rem;
+	height: 40px;
+	min-width: 12rem;
+	padding: 4px 20px;
+	@include display-flex(center);
+	flex-direction: row-reverse;
+	column-gap: 1.5rem;
+	font-size: 16px;
+	font-weight: 500;
+	justify-content: space-around;
+	color: $color-primary;
+	border: 2px solid $color-primary;
+}

@@ -1,0 +1,19 @@
+.ProgressLine {
+    .ant-progress-line {
+        direction: ltr;
+    }
+    .ant-progress-text {
+        display: none;
+    }
+    .ant-progress-success-bg,
+    .ant-progress-bg {
+        background-color: $color-primary;
+    }
+    .ant-progress-inner {
+        background: $color-progress;
+    }
+    .ant-progress-rtl.ant-progress-show-info .ant-progress-outer {
+        margin: 0;
+        padding: 0;
+    }
+}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../constants";
-// import { toast } from "react-toastify";
 import { useAuth } from "./authContext";
+import {  toast } from 'react-toastify';
 
 export default function useFetch({
   method = "GET",
@@ -46,6 +46,9 @@ export default function useFetch({
         if (caller !== null) caller.reFetch();
         if (func !== null) func();
         if (argFunc !== null) argFunc(res.data);
+        if (message !== null) {
+          toast.success(message);
+        }
         // if (message !== null)
         //   toast.success(message, {
         //     position: toast.POSITION.TOP_CENTER,
@@ -61,6 +64,7 @@ export default function useFetch({
         if (errMessage !== null) {
           errMessage(err.response.data);
         }
+        toast.error('دوباره تلاش کنید');
         // toast.error("دوباره تلاش کنید", {
         //   position: toast.POSITION.TOP_CENTER,
         // });
