@@ -7,9 +7,16 @@
   }
 
   div:last-child {
+    img{
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     background: #fff;
-    padding: 0.8rem;
+    padding: 0.1rem;
   }
 }
 
