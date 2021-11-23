@@ -23,13 +23,14 @@ const optionList = [
 ];
 
 function MasterSignUp() {
-    const [teacherCoworkerData, setTeacherCoworkerData] = useState(null);
+    // const [teacherCoworkerData, setTeacherCoworkerData] = useState(null);
     const [teacherCoworkerPostData, setTeacherCoworkerPostData] = useState(null);
-    const [teacherCoworkerLoading, setTeacherCoworkerLoading] = useState(true);
+    // const [teacherCoworkerLoading, setTeacherCoworkerLoading] = useState(true);
     const {handleSubmit, control, formState: {errors}, register} = useForm();
 
     const onSubmit = (data) => {
         let formData = new FormData();
+        console.log('data: ', data)
         if (data.resume.length !== 0) {
             formData.append('resume', data.resume[0], data.resume[0].name);
         }
@@ -44,33 +45,27 @@ function MasterSignUp() {
         postTeacherCoWorker.reFetch();
     };
 
-    const setData = (data = {}) => {
-        console.log('data: ', data)
-        console.log('data.response: ', data.response)
-        setTeacherCoworkerData(data);
-        setTeacherCoworkerLoading(false);
-    };
+    // const setData = (data = {}) => {
+    //     console.log('data: ', data)
+    //     console.log('data.response: ', data.response)
+    //     setTeacherCoworkerData(data);
+    //     setTeacherCoworkerLoading(false);
+    // };
 
-    const getTeacherCoWorkerInfo = useFetch({
-        url: `TeacherCoWorkerService/${teacherCoworkerData?.response?.data?.id}`,
-        method: 'GET',
-        setter: setData,
-    });
-    // console.log('postTeacherCoWorkerresponse: ', getTeacherCoWorkerInfo.response)
-    // console.log('postTeacherCoWorkererror: ', getTeacherCoWorkerInfo.error)
-    // console.log('postTeacherCoWorkerloading: ', getTeacherCoWorkerInfo.loading)
+    // const getTeacherCoWorkerInfo = useFetch({
+    //     url: `TeacherCoWorkerService/${teacherCoworkerData?.response?.data?.id}`,
+    //     method: 'GET',
+    //     setter: setData,
+    // });
 
     const postTeacherCoWorker = useFetch({
         url: 'TeacherCoWorkerService',
         method: 'POST',
         trigger: false,
         data: teacherCoworkerPostData,
-        caller: getTeacherCoWorkerInfo,
+        // caller: getTeacherCoWorkerInfo,
         message: 'اطلاعات با موفقیت ثبت شد',
     });
-    // console.log('postTeacherCoWorker: ', postTeacherCoWorker)
-    // console.log('postTeacherCoWorker.response: ', postTeacherCoWorker.response)
-    // console.log('postTeacherCoWorker.data: ', postTeacherCoWorker.data)
 
     const windowSize = UseWindowSize();
     return (
@@ -95,7 +90,7 @@ function MasterSignUp() {
                                 name="first_name"
                                 control={control}
                                 errors={errors}
-                                value={teacherCoworkerData?.first_name}
+                                // value={teacherCoworkerData?.first_name}
                             />
                             <Input
                                 label="نام خانوادگی:"
@@ -106,7 +101,7 @@ function MasterSignUp() {
                                 name="last_name"
                                 control={control}
                                 errors={errors}
-                                value={teacherCoworkerData?.last_name}
+                                // value={teacherCoworkerData?.last_name}
                             />
                             <Select
                                 label="میزان تحصیلات"
@@ -118,7 +113,7 @@ function MasterSignUp() {
                                 options={optionList}
                                 control={control}
                                 errors={errors}
-                                value={teacherCoworkerData?.degree}
+                                // value={teacherCoworkerData?.degree}
                                 defaultValue='U.DP'
                             />
                             <Input
@@ -130,7 +125,7 @@ function MasterSignUp() {
                                 name="major"
                                 control={control}
                                 errors={errors}
-                                value={teacherCoworkerData?.major}
+                                // value={teacherCoworkerData?.major}
                             />
                             <Input
                                 label="شماره تماس:"
@@ -141,7 +136,7 @@ function MasterSignUp() {
                                 name="phone_number"
                                 control={control}
                                 errors={errors}
-                                value={teacherCoworkerData?.phone_number}
+                                // value={teacherCoworkerData?.phone_number}
                             />
                             <Input
                                 label="ایمیل:"
@@ -158,16 +153,16 @@ function MasterSignUp() {
                                 name="email"
                                 errors={errors}
                                 control={control}
-                                value={teacherCoworkerData?.email}
+                                // value={teacherCoworkerData?.email}
                             />
                             <div className='profile__upload-row'>
                                 <Upload
                                     label='رزومه'
                                     {...register('resume', {
-                                        required: isEmpty(teacherCoworkerData?.resume),
+                                        required: true,
                                     })}
                                     accept='.pdf'
-                                    value={teacherCoworkerData?.resume}
+                                    // value={teacherCoworkerData?.resume}
                                     id='cover_upload'
                                 />
                             </div>
@@ -185,7 +180,7 @@ function MasterSignUp() {
                                     name="bio"
                                     control={control}
                                     errors={errors}
-                                    value={teacherCoworkerData?.bio}
+                                    // value={teacherCoworkerData?.bio}
                                 />
                             ) : (
                                 <InputTextArea
@@ -198,7 +193,7 @@ function MasterSignUp() {
                                     name="bio"
                                     control={control}
                                     errors={errors}
-                                    value={teacherCoworkerData?.bio}
+                                    // value={teacherCoworkerData?.bio}
                                 />
                             )}
                         </div>
@@ -210,7 +205,7 @@ function MasterSignUp() {
                                 control={control}
                                 errors={errors}
                                 register={{
-                                    required: false,
+                                    required: true,
                                 }}
                             />
                         </div>
