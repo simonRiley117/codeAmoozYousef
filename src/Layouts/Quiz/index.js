@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import { useParams, useLocation } from "react-router-dom";
-import ExampleDetail from "@Components/Layouts/Example/ExampleDetail";
+import QuizDetail from "@Components/Layouts/Quiz/QuizDetail";
 
 function Index() {
   const { title } = useParams();
@@ -14,9 +14,9 @@ function Index() {
   }, [location]);
   return (
     <div className="Example container">
-      <BreadCrump pathsname="/example" name="مثال 1" />
+      <BreadCrump pathsname="/dash/quiz" name="آزمون 1" />
       <div className="Example__container">
-        <ExampleDetail />
+        <QuizDetail />
       </div>
     </div>
   );

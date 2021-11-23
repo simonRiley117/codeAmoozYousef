@@ -1,0 +1,39 @@
+.Quiz {
+    &__empty {
+        margin-top: 5.3rem;
+        p {
+            text-align: center;
+            color: $color-black;
+            font-size: 1.8rem;
+        }
+        img {
+            width: 17.3rem;
+            height: auto;
+            margin: 2.5rem auto 10.22rem auto;
+        }
+    }
+    &__box {
+        border: 1px solid $color-text-black-light-4;
+        border-radius: 1.5rem;
+        width: 90%;
+        margin: 2.5rem auto 9.5rem auto;
+    }
+    &__title {
+        margin: 1.8rem auto 4.5rem auto;
+        text-align: center;
+        color: $color-black-light-1;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    &__txt {
+        color: $color-text-black-light-2;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1.4rem;
+        line-height: 2.5rem;
+    }
+    &__btn {
+        margin: 5rem auto 3.1rem auto;
+    }
+}

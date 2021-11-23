@@ -7,7 +7,7 @@
         background-color: $color-editor-back;
         color: $color-yellow-dark;
         border: none;
-        border-bottom: 1px solid $color-yellow-dark;
+        // border-bottom: 1px solid $color-yellow-dark;
         // border-right: 1px solid $color-yellow-dark;
         padding: 0.5rem 1rem;
         border-top-left-radius: 0.45rem;
@@ -160,7 +160,7 @@
             .fa-copy,
             .fa-check {
                 color: $color-white;
-                margin-right: 0.5rem;
+                margin-left: 0.5rem;
             }
             @include respond(tablet) {
                 font-size: 1rem;
@@ -174,7 +174,7 @@
             .fa-copy,
             .fa-check {
                 color: $color-white;
-                margin-right: 0.5rem;
+                margin-left: 0.5rem;
             }
             @include respond(tablet) {
                 font-size: 1rem;
@@ -192,7 +192,7 @@
             padding: 0rem 1rem;
             .fas {
                 color: $color-white;
-                margin-right: 0.5rem;
+                margin-left: 0.5rem;
             }
             @include respond(tablet) {
                 .fas {
@@ -218,4 +218,10 @@
             }
         }
     }
+    .ace_print-margin {
+        left: 0 !important;
+    }
+}
+.ace-monokai .ace_print-margin {
+    left: 0 !important;
 }

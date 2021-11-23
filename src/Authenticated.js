@@ -17,10 +17,11 @@ import Courses from "./Layouts/Courses";
 import Course from "./Layouts/Course";
 import AboutUs from "./Layouts/About us";
 import Example from "./Layouts/Example";
+import Quiz from "./Layouts/Quiz";
 import { UserDataProvider } from "./Context/userContext";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
 import Home from "./Layouts/Home";
-import LastCourse from "./Layouts/Teacher/LastCourse";
+import LastCourse from "./Layouts/Dashboard/LastCourse";
 import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
@@ -66,6 +67,8 @@ const Authenticated = () => {
             <Route exact path="/example" component={Example} />
             <Route exact path="/dash" component={Dashboard} />
             <Route exact path="/dash/course" component={LastCourse} />
+            <Route exact path="/dash/example" component={Example} />
+            <Route exact path="/dash/quiz" component={Quiz} />
 
             {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
           </Layout>

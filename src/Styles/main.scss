@@ -21,7 +21,7 @@
 @import "./base/utilities";
 
 // -------------------- components --------------------
-@import "./components/Dashboard/dashboard";
+
 //--------------share---------------
 @import "./components/Discount/SideBarDiscount";
 @import "./components/Discount/HeaderDiscount";
@@ -51,6 +51,7 @@
 @import "./components/Rate/rate";
 @import "./components/CourseCardBanner/courseCardBanner";
 @import "./components/costBox/costBox";
+@import "./components/Progress/ProgressLine.scss";
 //-------------master------------
 @import "./components/Master/WorkWithUs";
 @import "./components/Master/CoursStandards";
@@ -84,4 +85,6 @@
 @import "./Layouts/Example/Example";
 @import "./Layouts/Example/ExampleDetail";
 @import "./Layouts/SabadKala/sabadkala";
-@import "./Layouts/Teacher/LastCourse";
+@import "./Layouts/Dashboard/dashboard";
+@import "./Layouts/Dashboard/LastCourse";
+@import "./Layouts/Dashboard/Quiz";
