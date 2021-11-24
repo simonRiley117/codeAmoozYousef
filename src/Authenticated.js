@@ -19,7 +19,7 @@ import Course from "./Layouts/Course";
 import AboutUs from "./Layouts/About us";
 import Example from "./Layouts/Example";
 import { UserDataProvider } from "./Context/userContext";
-import Dashboard from "./Layouts/Dashboard/Dashboard";
+import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
 
 const Authenticated = () => {
@@ -51,7 +51,7 @@ const Authenticated = () => {
                 <Course key={routeProps.history.location.state.id} />
               )}
             />
-            <Route exact path="/dash" component={Dashboard} />
+            <Route exact path="/fav" component={Favorites} />
             <Route exact path="/example" component={Example} />
           </Layout>
           <Route path="*">{() => <Redirect to="/" />}</Route>

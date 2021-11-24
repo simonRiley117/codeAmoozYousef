@@ -21,7 +21,8 @@
 @import "./base/utilities";
 
 // -------------------- components --------------------
-@import "./components/Dashboard/dashboard";
+@import "./layouts/Dashboard/dashboard";
+@import "./layouts/Favorites/favorites";
 //--------------share---------------
 @import "./components/Discount/SideBarDiscount";
 @import "./components/Discount/HeaderDiscount";
