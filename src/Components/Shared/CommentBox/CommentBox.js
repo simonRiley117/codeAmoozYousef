@@ -3,7 +3,7 @@ import moment from "moment";
 import { Comment as Comments } from "antd";
 import { Tooltip, Avatar } from "antd";
 
-function CommentBox({ children, name, img, txt, pub }) {
+function CommentBox({ children, name, img, txt,date, pub }) {
   return (
     <div className="CommentBox">
       <Comments
@@ -18,7 +18,7 @@ function CommentBox({ children, name, img, txt, pub }) {
           )
         }
         avatar={img}
-        datetime={<span>{moment().format("YYYY/MM/DD ")}</span>}
+        datetime={<span>{moment(date).format("YYYY/MM/DD ")}</span>}
         content={<p className="leading-9">{txt}</p>}
       >
         {children}

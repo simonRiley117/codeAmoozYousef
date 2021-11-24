@@ -45,7 +45,11 @@ function Index() {
             {windowSize !== "sm" && (
               <div className="Course__Comment">
                 <Tabs className="TabBox " type="card">
-                  <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
+                  <TabPane
+                      size={'small'}
+                      tab="نظرات"
+                      key="1"
+                      className="Sarfasl__commentpart">
                     <Comment />
                   </TabPane>
                   <TabPane
@@ -66,7 +70,10 @@ function Index() {
         {windowSize === "sm" && (
           <div className="Course__Comment">
             <Tabs className="TabBox " type="card">
-              <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
+              <TabPane
+                tab="نظرات"
+                key="1"
+                className="Sarfasl__commentpart">
                 <Comment />
               </TabPane>
               <TabPane
