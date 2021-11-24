@@ -11,28 +11,10 @@ function Index() {
 
   useEffect(() => {
     setTitles(location.state.title);
-    setMenu([
-      {
-        name: "صفحه اصلی",
-        rout: "",
-      },
-      {
-        name: "دوره ها",
-        rout: "courses",
-      },
-      {
-        name: location.state.title,
-        rout: "course",
-      },
-      {
-        name: "مثال 1",
-        rout: `example`,
-      },
-    ]);
   }, [location]);
   return (
     <div className="Example container">
-      <BreadCrump item={menu} />
+      <BreadCrump pathsname="/example" name="مثال 1" />
       <div className="Example__container">
         <ExampleDetail />
       </div>

@@ -19,6 +19,7 @@ import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 import Course from "./Layouts/Course";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Example from "./Layouts/Example";
+import Search from "./Layouts/Search/Search";
 
 const UnAuthenticated = () => {
   return (
@@ -31,11 +32,18 @@ const UnAuthenticated = () => {
               <CoWorkersRouter />
             </Route>
             <Route exact path="/news" component={News} />
-            <Route exact path="/news/NewsDetails" component={NewsDetails} />
+            <Route
+              exact
+              path="/news/news-info"
+              render={(routeProps) => (
+                <NewsDetails key={routeProps.history.location.state.id} />
+              )}
+            />
             <Route exact path="/faq" component={Faq} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
+            <Route exact path="/search/:name" component={Search} />
             <Route
               exact
               path="/course"
@@ -58,5 +66,4 @@ const UnAuthenticated = () => {
     </>
   );
 };
-
 export default UnAuthenticated;

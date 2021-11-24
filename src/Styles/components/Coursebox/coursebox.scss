@@ -1,0 +1,21 @@
+.CoursesBox {
+  padding: 17px;
+  .SabadCoursecard {
+    min-height: 0;
+    .card-bg-title {
+      font-size: 16px;
+      color: $color-primary;
+    }
+    .card-bg-pic{
+        width: 14px;
+    }
+    .card-bg-box {
+      padding: 1.5rem 1.5rem 1.5rem 1rem;
+    }
+    .card-bg-details {
+      h4 {
+        font-size: 14px;
+      }
+    }
+  }
+}

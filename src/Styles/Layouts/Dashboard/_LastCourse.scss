@@ -1,0 +1,49 @@
+.LastCourse {
+    &__container {
+        grid-template-columns: 2fr 1fr;
+        margin-top: 2.7rem;
+        grid-column-gap: 3.3rem;
+    }
+    &__Position {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 10rem;
+    }
+    &__btnBox {
+        margin-bottom: 5rem;
+        margin-top: 2rem;
+    }
+    &__Box {
+        height: 100%;
+        width: 90%;
+    }
+    &__title {
+        text-align: center;
+        margin: 0 auto 0.8rem auto;
+        color: $color-primary-dark-2;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    &__progresstitle {
+        color: $color-text-black-light-2;
+        font-size: 1.6rem;
+    }
+    &__guideBox {
+        margin-top: 2rem;
+    }
+    &__guide {
+        color: $color-primary-dark-2;
+        font-size: 1.6rem;
+        &-icon {
+            color: $color-primary-dark-2;
+            font-size: 1.6rem;
+            border-radius: 50%;
+            border: 1px solid $color-primary-dark-2;
+            width: 2rem;
+            height: 2rem;
+            margin-left: 0.6rem;
+            text-align: center;
+            padding-bottom: 0.1rem;
+        }
+    }
+}

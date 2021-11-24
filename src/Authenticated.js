@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
   useHistory,
 } from "react-router-dom";
 import Layout from "@Components/Shared/Layout/Layout";
@@ -18,12 +17,20 @@ import Courses from "./Layouts/Courses";
 import Course from "./Layouts/Course";
 import AboutUs from "./Layouts/About us";
 import Example from "./Layouts/Example";
+import Quiz from "./Layouts/Quiz";
 import { UserDataProvider } from "./Context/userContext";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
+import LastCourse from "./Layouts/Dashboard/LastCourse";
+import Master from "@Layouts/CoWorkers/Master/Master";
+import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
+import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
+import Employer from "@Layouts/CoWorkers/Employer/Employer";
+import SabadKala from "./Layouts/Sabadkala/SabadKala";
 
 const Authenticated = () => {
   const history = useHistory();
+  console.log("Authenticated ~ history", history);
 
   return (
     <>
@@ -39,11 +46,25 @@ const Authenticated = () => {
               <CoWorkersRouter />
             </Route>
             <Route exact path="/news" component={News} />
-            <Route exact path="/news/NewsDetails" component={NewsDetails} />
+            <Route exact path="/coWorkers/master" component={Master} />
+            <Route
+              exact
+              path="/coWorkers/technicalteam"
+              component={TechnicalTeam}
+            />
+            <Route
+              exact
+              path="/coWorkers/technicalteam/:name"
+              component={TechnicalTeams}
+            />
+            <Route exact path="/coWorkers/employer" component={Employer} />
+            <Route exact path="/news/news-info" component={NewsDetails} />
             <Route exact path="/faq" component={Faq} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
+            <Route exact path="/sabad-kala" component={SabadKala} />
+
             <Route
               exact
               path="/course"
@@ -53,8 +74,13 @@ const Authenticated = () => {
             />
             <Route exact path="/fav" component={Favorites} />
             <Route exact path="/example" component={Example} />
+            <Route exact path="/dash" component={Dashboard} />
+            <Route exact path="/dash/course" component={LastCourse} />
+            <Route exact path="/dash/example" component={Example} />
+            <Route exact path="/dash/quiz" component={Quiz} />
+
+            {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
           </Layout>
-          <Route path="*">{() => <Redirect to="/" />}</Route>
         </Switch>
       </UserDataProvider>
     </>

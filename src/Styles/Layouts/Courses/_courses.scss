@@ -133,18 +133,22 @@
 .Courses__searchTitle {
   font-size: 1.8rem;
   color: $color-black;
-  margin-top: 4rem;
+  margin-top: 12rem;
   margin-bottom: 2.4rem;
 }
 .Courses__img {
   width: 43rem;
   height: 38rem;
   margin: 0 auto;
+  position: relative;
+  // top: 30%;
+  transform: translateY(-50%);
 }
 .Courses__imgBox {
   text-align: center;
   width: 100%;
   margin-top: 2rem;
+  height: 97vh;
 }
 //swiper configs
 .swiper-button-next {

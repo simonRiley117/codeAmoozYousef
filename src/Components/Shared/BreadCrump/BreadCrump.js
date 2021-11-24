@@ -6,19 +6,20 @@ import { Breadcrumb as BreadcrumbBase } from "antd";
 import { ReactComponent as SeparatorIcon } from "@Assets/Icons/SeparatorIcon.svg";
 const { Item } = BreadcrumbBase;
 
-const BreadCrump = ({ title }) => {
+const BreadCrump = ({ title, pathsname, name }) => {
   const routes = [
     { path: "/", breadcrumb: "صفحه اصلی" },
     { path: "/news", breadcrumb: "اخبار" },
     { path: "/news/news-info", breadcrumb: title },
-    { path: "/resume", breadcrumb: "رزومه" },
+    { path: "/about-me", breadcrumb: "درباره ما" },
     { path: "/mycourse", breadcrumb: "دوره های من" },
     { path: "/wallet", breadcrumb: "کیف پول" },
     { path: "/setting", breadcrumb: "تنظیمات" },
-    { path: "/courses", breadcrumb: "دوره ها" },
-    { path: "/course", breadcrumb: title },
     { path: "/mycourse/createcourse", breadcrumb: "ایجاد دوره" },
     { path: "/mycourse/createseasons", breadcrumb: "جلسات دوره " },
+    { path: "/dash", breadcrumb: "داشبورد" },
+    { path: '/sabadkala', breadcrumb: 'سبدخرید' },
+    { path: pathsname, breadcrumb: name },
     {
       path: "/mycourse/createseasons/createcontent",
       breadcrumb: " محتوای مبحث ",

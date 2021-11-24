@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { useParams } from 'react-router-dom';
 
@@ -140,7 +140,9 @@ const Appbar = () => {
 									))}
 								</ul>
 								<div className='Menu_actions'>
+									<Link to='/sabad-kala' >
 									<IconBtn icon={<ShoppingCartIcon />} />
+									</Link>
 									{token ? (
 										<div className='d-flex-align Menu_actions--profile'>
 											<p className='profile__name'>

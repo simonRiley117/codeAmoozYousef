@@ -27,6 +27,7 @@
 @import "./components/Discount/SideBarDiscount";
 @import "./components/Discount/HeaderDiscount";
 @import "./components/Inputs/input";
+@import "./components/Inputs/Upload";
 @import "./components/Inputs/ProfileInput";
 @import "./components/Menu/appbar";
 @import "./components/Menu/sidebarmenu";
@@ -50,6 +51,9 @@
 @import "./components/Price/price";
 @import "./components/Rate/rate";
 @import "./components/CourseCardBanner/courseCardBanner";
+@import "./components/costBox/costBox";
+@import "./components/Coursebox/coursebox.scss";
+@import "./components/Progress/ProgressLine.scss";
 //-------------master------------
 @import "./components/Master/WorkWithUs";
 @import "./components/Master/CoursStandards";
@@ -82,3 +86,7 @@
 @import "./Layouts/Course/Teacher/TeacherInfo";
 @import "./Layouts/Example/Example";
 @import "./Layouts/Example/ExampleDetail";
+@import "./Layouts/SabadKala/sabadkala";
+@import "./Layouts/Dashboard/dashboard";
+@import "./Layouts/Dashboard/LastCourse";
+@import "./Layouts/Dashboard/Quiz";

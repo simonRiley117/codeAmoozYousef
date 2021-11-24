@@ -1,0 +1,39 @@
+.CostBox{
+    padding: 3rem 4.1rem;
+    table{
+        td{
+            border-bottom: 1px solid rgba($color-black-light-1, 0.3);
+            padding: 10px 0;
+            p{
+                text-align: center;
+            }
+        }
+    }
+    &__btn{
+        display: flex;
+        justify-content: center;
+        margin: 15px;
+    }
+    .TipButton{
+        border-radius: 163px;
+        border: 1px solid $color-primary;
+        margin: 19px 0;
+        display: flex;
+     input{
+        border-radius: 163px;
+        border-right: 1px solid $color-primary;
+        padding: 8px 10px;
+        text-align: center;
+         &:focus{
+             outline: none;
+         }
+     }
+     button{
+         padding: 0 15px;
+         color: $color-primary;
+         &:focus{
+            outline: none;
+        }
+     }
+    }
+}

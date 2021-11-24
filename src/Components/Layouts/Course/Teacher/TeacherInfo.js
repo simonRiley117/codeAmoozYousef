@@ -1,64 +1,118 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import teacher from "@Assets/Pic/teacher.png";
-import instafram from "@Assets/Icons/instafram.svg";
-import github from "@Assets/Icons/githubblack.svg";
-import social from "@Assets/Icons/social.svg";
-import linkdin from "@Assets/Icons/linkdin.svg";
+import INSTAGRAM from "@Assets/Icons/instafram.svg";
+import GITHUB from "@Assets/Icons/githubblack.svg";
+import DRIBBLE from "@Assets/Icons/social.svg";
+import LINKEDIN from "@Assets/Icons/linkdin.svg";
 import gSocial from "@Assets/Icons/gSocial.svg";
-import youtub from "@Assets/Icons/youtub.svg";
+import YOUTUBE from "@Assets/Icons/youtub.svg";
 import classNames from "classnames";
 import Button from "@Components/Shared/Buttons/Button";
-import { Tag } from "antd";
+import {Tag} from "antd";
+import useFetch from "@App/Context/useFetch";
+import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 
 function TeacherInfo() {
-  return (
-    <div
-      className={"TeacherInfo text-center items-center justify-center flex-col"}
-    >
-      <div className="TeacherInfo__Position">
-        <div
-          className={classNames(
-            "TeacherInfo__form text-center items-center justify-center flex-col"
-          )}
-        >
-          <div className="TeacherInfo__imgBox">
-            <img src={teacher} alt={teacher} />
-          </div>
-          <p className="TeacherInfo__name">استاد: علیرضا میرزایی فرد</p>
-          <p className="TeacherInfo__description leading-9 text-justify">
-            {" "}
-            ایپسوم متن ساختگی با تولید ایپسوم متن ساختگی با تولید سادگی نامفهوم
-            از لازم است، و برای شرایط فعلی تکنولوژی مورد سادگی نامفهوم از لازم
-            است، و برای شرایط فعلی تکنولوژی مورد
-          </p>
-          <div className="TeacherInfo__socialBox grid grid-cols-3 justify-center justify-self-start	items-center self-center">
-            {socialicon.map((index, id) => (
-              <img src={index.img} alt={index.img} key={id} />
-            ))}
-          </div>
-          <div className="TeacherInfo__btnBox text-center flex items-center justify-center">
-            <Button type="default" classes="MasterSignUp__btn">
-              ارسال
-            </Button>
-          </div>
-        </div>
-        <div className="TeacherInfo__tags">
-          {tags.map((index, id) => (
-            <Tag key={id}>{index}</Tag>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+    const [isCopied, handleCopy] = UseCopyToClipboard(3000);
+    const [socialId, setSocialId] = useState(-1)
+    const [teacherProfileInfo, setTeacherProfileInfo] = useState(null)
+    // let teacherProfileInfo = {}
+
+    const getTeacherProfileInfo = useFetch({
+        url: `CourseService/q6SJ61Ta/courseTeacherProfileBrief`,
+        // url: `CourseService/${id}/courseOrder`,
+        method: "GET",
+        noHeader: true,
+        setter: setTeacherProfileInfo
+    });
+    console.log('teacherProfileInfo: ', teacherProfileInfo)
+
+    let socialicon = []
+    if (getTeacherProfileInfo) {
+        if (getTeacherProfileInfo.response) {
+            // const {
+            //     first_name,
+            //     last_name,
+            //     cover,
+            //     description,
+            //     linkedin,
+            //     dribble,
+            //     instagram,
+            //     youtube,
+            //     github,
+            //     telegram
+            // } = teacherProfileInfo.teacher
+
+            socialicon = [
+                {img: INSTAGRAM, link: teacherProfileInfo.teacher.instagram},
+                {img: GITHUB, link: teacherProfileInfo.teacher.github},
+                {img: DRIBBLE, link: teacherProfileInfo.teacher.dribble},
+                {img: LINKEDIN, link: teacherProfileInfo.teacher.linkedin},
+                {img: gSocial, link: teacherProfileInfo.teacher.telegram},
+                {img: YOUTUBE, link: teacherProfileInfo.teacher.youtube},
+            ];
+        }
+    }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setSocialId(-1)
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [socialId]);
+
+    const handleImgClick = (link, id) => {
+        handleCopy(link)
+        setSocialId(id)
+    }
+
+    return (
+        <>
+            {getTeacherProfileInfo?.response
+                ?<div
+                    className={"TeacherInfo text-center items-center justify-center flex-col"}
+                >
+                    <div className="TeacherInfo__Position">
+                        <div
+                            className={classNames(
+                                "TeacherInfo__form text-center items-center justify-center flex-col"
+                            )}
+                        >
+                            <div className="TeacherInfo__imgBox">
+                                <img src={teacherProfileInfo.teacher.cover} alt={teacherProfileInfo.teacher.cover}/>
+                            </div>
+                            <p className="TeacherInfo__name">{`استاد: ${teacherProfileInfo.teacher.first_name} ${teacherProfileInfo.teacher.last_name}`}</p>
+                            <p className="TeacherInfo__description leading-9 text-justify">
+                                {" "}
+                                {teacherProfileInfo.teacher.description}
+                            </p>
+                            <div
+                                className="TeacherInfo__socialBox grid grid-cols-3 justify-center justify-self-start	items-center self-center">
+                                {socialicon.map((item, id) => (
+                                    isCopied && socialId === id ? "کپی شد" : <img
+                                        onClick={() => handleImgClick(item.link, id)}
+                                        src={item.img}
+                                        alt={item.img}
+                                        key={id}/>
+                                ))}
+                            </div>
+                            <div className="TeacherInfo__btnBox text-center flex items-center justify-center">
+                                <Button type="default" classes="MasterSignUp__btn">
+                                    مشاهده پروفایل
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="TeacherInfo__tags">
+                            {teacherProfileInfo.tags.map((tag, id) => (
+                                <Tag key={id}>{tag}</Tag>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                : <div>LOADING...</div>
+            }
+        </>
+    );
 }
 
 export default TeacherInfo;
-const socialicon = [
-  { img: instafram },
-  { img: github },
-  { img: social },
-  { img: linkdin },
-  { img: gSocial },
-  { img: youtub },
-];
-const tags = ["دوره آنلاین", "برنامه نویسی", "پایتون", "python", "کد نویسی"];

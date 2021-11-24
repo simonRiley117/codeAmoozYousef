@@ -17,7 +17,7 @@ const Coursecardbanner = ({ suggest, courseLogo }) => {
         <img src={LogoTypo} />
       </div>
       <div className="logo">
-        <img src={CourseLogo} />
+        <img src={courseLogo} />
       </div>
     </div>
   );
