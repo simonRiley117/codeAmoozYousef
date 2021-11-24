@@ -17,7 +17,7 @@ import Layout from "@Components/Shared/Layout/Layout";
 import { UserDataProvider } from "./Context/userContext";
 import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 import Course from "./Layouts/Course";
-import Dashboard from "./Layouts/Dashboard/Dashboard";
+import Favorites from "./Layouts/Favorites/Favorites";
 import Example from "./Layouts/Example";
 import Search from "./Layouts/Search/Search";
 
@@ -32,10 +32,13 @@ const UnAuthenticated = () => {
               <CoWorkersRouter />
             </Route>
             <Route exact path="/news" component={News} />
-            <Route exact path="/news/news-info" 
-            render={(routeProps) => (
-              <NewsDetails key={routeProps.history.location.state.id} />
-            )} />
+            <Route
+              exact
+              path="/news/news-info"
+              render={(routeProps) => (
+                <NewsDetails key={routeProps.history.location.state.id} />
+              )}
+            />
             <Route exact path="/faq" component={Faq} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
@@ -48,6 +51,7 @@ const UnAuthenticated = () => {
                 <Course key={routeProps.history.location.state.id} />
               )}
             />
+            <Route exact path="/fav" component={Favorites} />
             <Route exact path="/example" component={Example} />
 
             <Route
