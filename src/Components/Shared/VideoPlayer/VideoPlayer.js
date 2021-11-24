@@ -20,7 +20,7 @@ function VideoPlayer(props) {
       </video> */}
       <video
         ref={videoRef}
-        src={props.sr}
+        src={props.src}
         poster={process.env.PUBLIC_URL + "/poster.png"}
         className="VideoPlayer__video"
         controls={play}
