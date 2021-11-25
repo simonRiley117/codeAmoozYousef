@@ -28,6 +28,7 @@ import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
 import Employer from "@Layouts/CoWorkers/Employer/Employer";
 import SabadKala from "./Layouts/Sabadkala/SabadKala";
+import Dashboard from "@Layouts/Dashboard/Dashboard";
 
 const Authenticated = () => {
   const history = useHistory();

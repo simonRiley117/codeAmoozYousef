@@ -15,6 +15,7 @@ function Index() {
   const [modal, setModal] = useState(false);
   const { token, authDispatch } = useAuth();
   const [courseSeasons, setCourseSeasons] = useState([]);
+  const [contentUuid,setContentUuid]=useState(null)
 
   const getCourseSeasons = useFetch({
     url: `CourseService/q6SJ61Ta/seasons`,
@@ -22,22 +23,28 @@ function Index() {
     noHeader: token ? false : true,
     setter: setCourseSeasons,
   });
-
   console.log("getCourseSeasons.loading: ", getCourseSeasons.loading);
   console.log("getCourseSeasons: ", getCourseSeasons);
   console.log("courseSeasons: ", courseSeasons);
+
   useEffect(() => {
     console.log("location.state.id: ", location.state.id);
     setId(location.state.id);
   }, [location]);
+
   const handleModalVisible = () => {
     setModal(false);
   };
-  const windowSize = UseWindowSize();
-  let url = "https://testui.codeamooz.com/example/4/5";
+
+  const handleModalShow=(uuid)=>{
+    setModal(true)
+    setContentUuid(uuid)
+  }
+  // const windowSize = UseWindowSize();
+  // let url = "https://testui.codeamooz.com/example/4/5";
   return (
     <>
-      {getCourseSeasons.response?.data ? (
+      {getCourseSeasons?.response?.data ? (
         <div className="Sarfasl">
           {/*<div className="Sarfasl__sample flex items-center	justify-between">*/}
           {/*    <p>مثال1</p>*/}
@@ -60,11 +67,11 @@ function Index() {
           {/*<Codeeditor lan={"c_cpp"} value={'printf("hello, %s", name)'}/>*/}
           <div className="Sarfasl__Accordionbox">
             {courseSeasons.data.map((season, index) => (
-              <Accordion header={season.title}>
+              <Accordion header={season.title} key={season.uuid}>
                 {season.contents.map((content, index) => (
                   <div
                     className="flex justify-between items-center"
-                    onClick={setModal(true)}
+                    onClick={()=>handleModalShow(content.uuid)}
                   >
                     <div className="flex items-center Sarfasl__Accordiontxtbox">
                       <div className="Sarfasl__Accordionnumber">
@@ -85,28 +92,28 @@ function Index() {
       ) : (
         <div>LOADING...</div>
       )}
-      <Courseintro visible={modal} onCancel={handleModalVisible} />
+      <Courseintro visible={modal} contentUuid={contentUuid} onCancel={handleModalVisible} />
     </>
   );
 }
 
 export default Index;
 
-const cor = [
-  {
-    nam: "جلسه اول: آشنایی",
-    all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
-  },
-  {
-    nam: "جلسه دوم: آشنایی",
-    all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
-  },
-  {
-    nam: "جلسه سوم: آشنایی",
-    all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
-  },
-  {
-    nam: "جلسه چهارم: آشنایی",
-    all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
-  },
-];
+// const cor = [
+//   {
+//     nam: "جلسه اول: آشنایی",
+//     all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
+//   },
+//   {
+//     nam: "جلسه دوم: آشنایی",
+//     all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
+//   },
+//   {
+//     nam: "جلسه سوم: آشنایی",
+//     all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
+//   },
+//   {
+//     nam: "جلسه چهارم: آشنایی",
+//     all: [{ txt: "چرا پایتون؟" }, { txt: "پایتون چیست؟" }],
+//   },
+// ];

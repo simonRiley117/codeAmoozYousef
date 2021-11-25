@@ -64,7 +64,7 @@ export default function useFetch({
         if (errMessage !== null) {
           errMessage(err.response.data);
         }
-        toast.error('دوباره تلاش کنید');
+        // toast.error('دوباره تلاش کنید');
         // toast.error("دوباره تلاش کنید", {
         //   position: toast.POSITION.TOP_CENTER,
         // });

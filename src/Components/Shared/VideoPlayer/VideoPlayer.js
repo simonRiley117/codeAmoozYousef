@@ -7,7 +7,7 @@ function VideoPlayer(props) {
     setPlay(true);
   };
   const videoRef = useRef();
-
+    console.log('src: ',props.src)
   return (
     <div className={`VideoPlayer__videoBox relative ${props.className}`}>
       {/* <video className="VideoPlayer__video" controls={play} autoPlay={play}>
