@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Filtersxx = () => {
+   
     return (
         <div className='courses-filters font-bold mb-12'>
             <div className='courses-filters__box'>

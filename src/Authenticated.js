@@ -22,6 +22,7 @@ import { UserDataProvider } from "./Context/userContext";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
 import LastCourse from "./Layouts/Dashboard/LastCourse";
+import Dashboard from "./Layouts/Dashboard/Dashboard";
 import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";

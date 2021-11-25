@@ -4,6 +4,8 @@ import CourseCardBg from "@Components/Layouts/Course/Cards/CourseCardBg";
 import Searchxx from "./Searchxx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import useFetch from "@App/Context/useFetch";
+
 // images
 import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
 import Filtersxx from "./Filtersxx";
@@ -29,20 +31,28 @@ const Courses = () => {
   // pagination config
   const PageSize = 11;
   const [currentPage, setCurrentPage] = useState(1);
+  const [latestCourse, setLatestCourse] = useState([]);
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return cards.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
+    const getNewsList = useFetch({
+    url: `CourseService/latestCourse`,
+    method: "GET",
+    noHeader: true,
+    setter: setLatestCourse,
+
+  });
   return (
     <div className="container">
       <div className="courses">
       
-          <Swiper module={[A11y, Autoplay]} spaceBetween={50} slidesPerView={1}>
-            {cards.map((card, index) => {
+          <Swiper module={[A11y, Autoplay]} spaceBetween={10} slidesPerView={1}>
+            {latestCourse.map((card, index) => {
               return (
-                <SwiperSlide key={card.id}>
-                  <CourseCardBg />
+                <SwiperSlide key={card.uuid}>
+                  <CourseCardBg card={card}/>
                 </SwiperSlide>
               );
             })}
@@ -55,7 +65,7 @@ const Courses = () => {
             <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
             <Swiper
               module={[A11y, Autoplay]}
-              spaceBetween={50}
+              spaceBetween={25}
               slidesPerView={4}
             >
               {cards.map((card, index) => {

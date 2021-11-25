@@ -10,8 +10,9 @@ import pythonIcon from "@Assets/Icons/python.svg";
 import { ReactComponent as CoinIcon } from "@Assets/Icons/Coin.svg";
 import { ReactComponent as ClockIcon } from "@Assets/Icons/clock.svg";
 
-const CourseCardBg = () => {
+const CourseCardBg = ({card}) => {
   const [isOff, setIsOff] = useState(false);
+
   return (
     <article className="card-bg">
       <div className="card-bg-discount">
@@ -19,8 +20,8 @@ const CourseCardBg = () => {
         <span>تخفیف</span>
       </div>
       <div className="card-bg-pic">
-        <img src={courseLogo} alt="python" className="card-bg-pic-logo" />
-        <img src={pythonIcon} alt="python" />
+        <img src={card.cover} alt="python" className="card-bg-pic-logo" />
+      
       </div>
       <div className="card-bg-info">
         <div className="card-bg-content">
@@ -34,27 +35,29 @@ const CourseCardBg = () => {
                 },
               }}
             >
-              دوره آنلاین برنامه نویسی HTML
+              {card.title}
             </Link>
           </h5>
           <div className="card-bg-box">
             <div className="card-profile">
-              <img src={teacherPic} alt={teacherPic} />
+              <img src={card.teacher_avatar	} alt={teacherPic} />
             </div>
             <div className="card-bg-details">
-              <h4> علیرضا میرزایی فرد </h4>
+              <h4> {card.teacher_first_name}  {card.teacher_last_name} </h4>
               <div className="card-bg-details-time">
                 <ClockIcon />
-                <span>07:13:00</span>
+                <span>{card.total_time_of_course}</span>
               </div>
               <div className="card-bg-details-price">
                 <CoinIcon />
-                <Price value={50000} success />
+                <Price value={card.get_price_without_degree_with_some_extra_info} success />
                 <Price value={70000} isDiscount suffix="تومان" />
               </div>
+
             </div>
+            <Rate allowClear={false} defaultValue={card.mean_of_participant_points.grade} />
+
           </div>
-          <Rate defaultValue={4} />
         </div>
       </div>
     </article>
