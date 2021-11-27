@@ -31,7 +31,7 @@ const CourseCardBg = ({card}) => {
                 pathname: "/course",
                 state: {
                   name: "دوره آنلاین برنامه نویسی HTM",
-                  id: "1",
+                  id: card.uuid,
                 },
               }}
             >
@@ -55,7 +55,7 @@ const CourseCardBg = ({card}) => {
               </div>
 
             </div>
-            <Rate allowClear={false} defaultValue={card.mean_of_participant_points.grade} />
+            <Rate disabled allowClear={false} defaultValue={card.mean_of_participant_points.grade} />
 
           </div>
         </div>
