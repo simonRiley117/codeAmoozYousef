@@ -28,6 +28,8 @@ import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
 import Employer from "@Layouts/CoWorkers/Employer/Employer";
 import SabadKala from "./Layouts/Sabadkala/SabadKala";
+import Search from "./Layouts/Search/Search";
+
 
 const Authenticated = () => {
   const history = useHistory();
@@ -64,6 +66,8 @@ const Authenticated = () => {
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
+            <Route exact path="/search/:name" component={Search} />
+
             <Route exact path="/sabad-kala" component={SabadKala} />
 
             <Route
@@ -75,7 +79,7 @@ const Authenticated = () => {
             />
             <Route exact path="/fav" component={Favorites} />
             <Route exact path="/example" component={Example} />
-            <Route exact path="/dash" component={Dashboard} />
+            {/* <Route exact path="/dash" component={Dashboard} /> */}
             <Route exact path="/dash/course" component={LastCourse} />
             <Route exact path="/dash/example" component={Example} />
             <Route exact path="/dash/quiz" component={Quiz} />
