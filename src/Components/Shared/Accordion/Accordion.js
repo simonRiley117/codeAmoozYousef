@@ -1,24 +1,34 @@
-import React, { useState } from "react";
-import { Collapse } from "antd";
-import { ReactComponent as Arrow } from "@Assets/Icons/arrow-down.svg";
+import React from 'react';
+import { Collapse } from 'antd';
+import { ReactComponent as Arrow } from '@Assets/Icons/arrow-down.svg';
+import classNames from 'classnames';
 
-const genExtra = () => (
-  <div className="arrow__color">
-    <Arrow />
-  </div>
+const { Panel } = Collapse;
+
+const ArrowIcon = ({ active }) => (
+	<div
+		className={classNames('accordion__arrow', {
+			active: active,
+		})}
+	>
+		<Arrow />
+	</div>
 );
-const Accordion = ({ children, header, ...rest }) => {
-  const { Panel } = Collapse;
 
-  return (
-    <div className="Accordion">
-      <Collapse expandIcon={() => <div className="" />}>
-        <Panel header={header} key="1" {...rest} extra={genExtra()}>
-          {children}
-        </Panel>
-      </Collapse>
-    </div>
-  );
+const Accordion = ({ children, half, ...rest }) => {
+	return (
+		<Collapse
+			className={classNames('accordion', {
+				accordion__circle: half,
+			})}
+			expandIcon={({ isActive }) => <ArrowIcon active={isActive} />}
+			ghost
+			expandIconPosition='left'
+			{...rest}
+		>
+			{children}
+		</Collapse>
+	);
 };
 
-export default Accordion;
+export { Accordion, Panel };
