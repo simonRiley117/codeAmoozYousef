@@ -6,8 +6,9 @@ function Detaile({title, intro, cover}) {
         <div className="Detaile AboutDetaile">
             <div className="AboutDetaile__hederBox">
                 <p className="font-bold">  دوره {title}</p>
+                <div>&nbsp;</div>
             </div>
-            <img src={cover} alt={cover}/>
+            <img src={cover} alt={cover} style={{maxHeight:'250px'}}/>
             <div className="AboutDetaile__hederBox">
                 <p className="font-bold">درباره دوره</p>
             </div>

@@ -1,0 +1,83 @@
+.Transaction {
+    &__Title {
+        color: $color-text;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 2.1rem;
+    }
+    &__box {
+        background-color: $color-white;
+        box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 1.5rem;
+        padding: 1.3rem 0;
+        height: 46.8rem;
+    }
+    .ant-table-container table > thead > tr th {
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+    .ant-table-container table > tbody > tr td {
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+    .ant-table-container table > thead > tr:first-child th:first-child,
+    .ant-table-container table > tbody > tr td:first-child {
+        width: 5.6rem;
+        padding-right: 2.9rem;
+    }
+    .ant-table-container table > tbody > tr td:first-child,
+    .ant-table-container table > tbody > tr td:nth-child(2) {
+        color: $color-primary;
+    }
+    .ant-table-container table > tbody > tr td:nth-child(5) {
+        color: $color-error;
+    }
+    .ant-table-container table > tbody > tr td:nth-child(6) {
+        color: $color-success;
+    }
+    .ant-table-container table > thead > tr:first-child th:nth-child(2) {
+        width: 21rem;
+    }
+    .ant-table-container table > thead > tr:first-child th:nth-child(3) {
+        width: 19rem;
+    }
+    .ant-table-container table > thead > tr:first-child th:nth-child(4) {
+        width: 23.7rem;
+    }
+    .ant-table-container table > thead > tr:first-child th:nth-child(5) {
+        width: 12rem;
+    }
+    .ant-table-container table > thead > tr:first-child th:nth-child(6) {
+        width: 12.3rem;
+    }
+    .ant-table-container table > thead > tr:first-child th:last-child {
+        width: 9.6rem;
+    }
+    .ant-table-thead > tr > th {
+        background-color: transparent;
+        border-bottom: none;
+    }
+    .ant-table-thead
+        > tr
+        > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+        width: 0;
+        height: 0;
+        background-color: transparent;
+    }
+    .ant-table-thead > tr > th,
+    .ant-table-tbody > tr > td,
+    .ant-table tfoot > tr > th,
+    .ant-table tfoot > tr > td {
+        padding: 0 0 2.4rem 0;
+    }
+    .ant-table-tbody > tr > td {
+        background-color: $color-gray;
+        border-bottom: 0.5rem solid $color-white;
+        padding: 1rem 0;
+    }
+    .ant-table-row {
+        &:first-child {
+            padding-right: 2.9rem;
+        }
+    }
+}

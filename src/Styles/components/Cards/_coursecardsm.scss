@@ -2,31 +2,29 @@
   z-index: 10;
   position: relative;
   max-height: 418px;
-  width: 300px;
   background: #fff;
-  box-shadow: 0px 2px 25px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   overflow: hidden;
-
+  margin: 5px 0;
   &-img {
     height: auto;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(
-      120deg,
-      rgba(#45bda6, 1) 0%,
-      rgba(#45bda6, 1) 20%,
-      rgba(#b4d236, 1) 20%,
-      rgba(#b4d236, 1) 100%
-    );
+    transition: all 0.5s ease-in-out;
+    // background: linear-gradient(
+    //   120deg,
+    //   rgba(#45bda6, 1) 0%,
+    //   rgba(#45bda6, 1) 20%,
+    //   rgba(#b4d236, 1) 20%,
+    //   rgba(#b4d236, 1) 100%
+    // );
 
     &-title {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-      padding-top: 2rem;
-      align-items: center;
-      margin-left: -5.5rem;
+      img {
+        width: 100%;
+        height: 200px;
+      }
 
       h4 {
         font-size: 4rem;
@@ -37,16 +35,15 @@
 
     &-pic {
       display: flex;
-      padding-top: 1.5rem;
       padding-right: 1rem;
-      padding-bottom: 2rem;
       align-items: center;
       font-size: 1.6rem;
+      transform: translateY(-32px);
 
       h4 {
         background: #45bda6;
         padding: 1rem 4rem;
-        margin-right: -5rem;
+        margin-right: -2rem;
         border-radius: 1rem;
         position: relative;
         z-index: 9;
@@ -55,6 +52,11 @@
       img {
         position: relative;
         z-index: 11;
+        position: relative;
+        z-index: 11;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
       }
     }
 
@@ -67,7 +69,7 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.5);
       transition: all 2s cubic-bezier(0.39, 0.58, 0.57, 1);
-
+      transition: all 0.5s ease-in-out;
       button {
         position: absolute;
 
@@ -114,6 +116,7 @@
 
   &-content {
     padding: 2rem 1rem;
+    margin-top: -35px;
 
     h5 {
       font-size: 2.5rem;

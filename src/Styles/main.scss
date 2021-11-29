@@ -1,6 +1,7 @@
 // -------------------- tailwindcss --------------------
 @import "~tailwindcss/tailwind.css";
-
+// -------------------- react-toastify --------------------
+@import "~react-toastify/dist/ReactToastify.css";
 // -------------------- react-slick --------------------
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
@@ -24,6 +25,8 @@
 @import "./layouts/Dashboard/dashboard";
 @import "./layouts/Favorites/favorites";
 @import "./components/profile/profileForm";
+@import "./Layouts/Dashboard/dashboard";
+@import "./Layouts/Favorites/favorites";
 //--------------share---------------
 @import "./components/Discount/SideBarDiscount";
 @import "./components/Discount/HeaderDiscount";
@@ -91,3 +94,4 @@
 @import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Dashboard/LastCourse";
 @import "./Layouts/Dashboard/Quiz";
+@import "./Layouts/Dashboard/Transaction";

@@ -7,7 +7,7 @@ function VideoPlayer(props) {
     setPlay(true);
   };
   const videoRef = useRef();
-
+    console.log('src: ',props.src)
   return (
     <div className={`VideoPlayer__videoBox relative ${props.className}`}>
       {/* <video className="VideoPlayer__video" controls={play} autoPlay={play}>
@@ -20,7 +20,7 @@ function VideoPlayer(props) {
       </video> */}
       <video
         ref={videoRef}
-        src={props.sr}
+        src={props.src}
         poster={process.env.PUBLIC_URL + "/poster.png"}
         className="VideoPlayer__video"
         controls={play}

@@ -4,7 +4,7 @@ import teacherPic from "@Assets/Icons/cardProfile.png";
 import { Rate, Statistic } from "antd";
 import { Link } from "react-router-dom";
 
-const Coursecardsm = () => {
+const Coursecardsm = ({ card }) => {
   const [isOff, setIsOff] = useState(false);
   return (
     <div className="card-sm">
@@ -16,12 +16,13 @@ const Coursecardsm = () => {
             40% تخفیف
           </div>
           <div className="card-sm-img-title">
-            <img src={courseLogo} />
-            <h4>python</h4>
+            <img src={card.cover} />
           </div>
           <div className="card-sm-img-pic">
-            <img src={teacherPic} />
-            <h4>علیرضا میرزایی فرد</h4>
+            <img src={card.teacher_avatar} />
+            <h4>
+              {card.teacher_first_name} {card.teacher_last_name}{" "}
+            </h4>
           </div>
           <div className="card-sm-img-hover">
             <button>افزودن به سبد خرید</button>
@@ -30,25 +31,24 @@ const Coursecardsm = () => {
         </div>
         <div className="card-sm-content">
           <h5 className="cursor-pointer	">
-            {" "}
             <Link
               to={{
                 pathname: "/course",
-                state: { name: "دوره آنلاین برنامه نویسی HTM" },
+                state: { name: "دوره آنلاین برنامه نویسی HTM", id: card.uuid },
               }}
             >
-              دوره آنلاین برنامه نویسی HTML{" "}
+              {card.title}
             </Link>
           </h5>
-          <span className="card-sm-content-time">07:13:00</span>
+          <span className="card-sm-content-time">{card.total_time_of_course}</span>
           <Statistic
-            value={50000}
+            value={card.get_price_without_degree_with_some_extra_info}
             valueStyle={{ color: "#329c00", marginTop: "-1.5rem" }}
           />
           <div className="card-sm-content-rating">
             <Rate
               disabled
-              defaultValue={2}
+              allowClear={false} defaultValue={card.mean_of_participant_points.grade}
               style={{
                 color: "#F68521",
                 // direction: "ltr",

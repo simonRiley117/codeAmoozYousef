@@ -3,39 +3,42 @@
   display: flex;
   justify-content: space-between;
 
-  width: 100%;
+  width: 99%;
   background-color: $color-white;
   // background: linear-gradient(116deg, $color-white 45%, #b3d136 45%);
-  filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
   border-radius: 4rem;
   overflow: hidden;
   position: relative;
   min-height: 30rem;
+  margin: 5px;
+  
+
   // max-width: 120rem;
   @include respond(tablet) {
     justify-content: center;
     padding: 0 6px;
   }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 37%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba($color: #b3d136, $alpha: 0.8);
-    z-index: -1;
-    clip-path: polygon(17rem 0%, 100% 0%, 100% 100%, 0% 100%);
-    @include respond(tablet) {
-      left: 48%;
-    }
-    @include respond(phone) {
-      left: 44%;
-    }
-    @include respond(smallest-phone) {
-      left: 40%;
-    }
-  }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 37%;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: rgba($color: #b3d136, $alpha: 0.8);
+  //   z-index: -1;
+  //   clip-path: polygon(17rem 0%, 100% 0%, 100% 100%, 0% 100%);
+  //   @include respond(tablet) {
+  //     left: 48%;
+  //   }
+  //   @include respond(phone) {
+  //     left: 44%;
+  //   }
+  //   @include respond(smallest-phone) {
+  //     left: 40%;
+  //   }
+  // }
 
   &-discount {
     position: absolute;
@@ -57,7 +60,7 @@
 
   &-pic {
     @include d-flex-column(center);
-    flex-grow: 2;
+
     @include respond(tablet) {
       justify-content: space-between;
       padding: 2rem;
@@ -72,9 +75,10 @@
     }
 
     & img {
-      width: 100%;
+      width: 65rem;
+      height: 30rem;
+      align-self: baseline;
       &:last-child {
-        max-width: 20rem;
         @include respond(tablet) {
           max-width: 16rem;
         }
@@ -88,16 +92,12 @@
     }
 
     &-logo {
-      margin-bottom: 1.5rem;
-      max-width: 10.5rem;
 
       @include respond(tablet) {
         max-width: 6rem;
-        margin-top: -1rem;
       }
       @include respond(phone) {
         max-width: 5rem;
-        margin-top: 1.5rem;
       }
     }
   }
@@ -165,7 +165,8 @@
     padding: 2.5rem 3.5rem 2.5rem 6rem;
     border-radius: 10rem;
     margin: 2rem 0;
-    width: 100%;
+    width: 122%;
+    transform: translateX(9rem);
     @include respond(phone) {
       // padding: 2rem 2rem 2rem 4rem;
       margin: 1rem 0;
@@ -178,7 +179,7 @@
     // margin-right: -12rem;
     & img {
       height: 100%;
-      min-width: 16rem;
+      min-width: 12rem;
       max-height: 10rem;
       object-fit: cover;
       @include respond(phone) {
@@ -206,8 +207,8 @@
       height: calc(100% + 2rem);
       border-radius: 1px;
       background-color: $color-blue-dark;
-      transform: rotate(27deg);
-      right: -3rem;
+      //transform: rotate(27deg);
+      right: -2rem;
       top: -1rem;
       @include respond(tablet) {
         height: 100%;
@@ -223,7 +224,6 @@
     & > h4 {
       @include set-font(2.4rem, 600);
       margin-bottom: 1rem;
-      margin-right: -1.5rem;
       @include respond(phone) {
         font-size: 14px;
         margin-bottom: 4px;
@@ -234,7 +234,6 @@
       @extend .d-flex;
       @include set-font(1.8rem, 600);
       margin-bottom: 0.8rem;
-      margin-right: 0.3rem;
 
       & svg {
         max-width: 2.4rem;
@@ -256,7 +255,6 @@
     &-price {
       @extend .d-flex;
       @include set-font(1.8rem, 600);
-      margin-right: 2.2rem;
       line-height: 1.6;
       & svg {
         max-width: 2.7rem;
@@ -284,8 +282,8 @@
 .card-profile {
   overflow: hidden;
   border-radius: 0 10rem 10rem 1rem;
-  clip-path: polygon(5rem 0, 100% 0, 100% 100%, 0% 100%);
+  //clip-path: polygon(5rem 0, 100% 0, 100% 100%, 0% 100%);
   @include respond(phone) {
-    clip-path: polygon(4.2rem 0, 100% 0, 100% 100%, 0% 100%);
+   // clip-path: polygon(4.2rem 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
