@@ -22,6 +22,7 @@ import { UserDataProvider } from "./Context/userContext";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
 import LastCourse from "./Layouts/Dashboard/LastCourse";
+import Transaction from "./Layouts/Dashboard/Transaction";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
 import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
@@ -83,6 +84,7 @@ const Authenticated = () => {
             <Route exact path="/dash/course" component={LastCourse} />
             <Route exact path="/dash/example" component={Example} />
             <Route exact path="/dash/quiz" component={Quiz} />
+            <Route exact path="/dash/transaction" component={Transaction} />
 
             {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
           </Layout>

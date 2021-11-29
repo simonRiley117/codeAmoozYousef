@@ -29,17 +29,4 @@ function Employer() {
 }
 
 export default Employer;
-const menu = [
-  {
-    name: "صفحه اصلی",
-    rout: "",
-  },
-  {
-    name: "همکاران و اساتید",
-    rout: "coWorkers",
-  },
-  {
-    name: "تیم کارفرما",
-    rout: "coWorkers/employer",
-  },
-];
+
