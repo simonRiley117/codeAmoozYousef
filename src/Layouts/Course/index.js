@@ -32,7 +32,7 @@ function Index() {
                 {windowSize !== "sm" && <HeaderDiscount/>}
                 <div className="grid Course__container relative">
                     <div className="Course__sideBar relative">
-                        <TeacherInfo/>
+                        <TeacherInfo courseId={id}/>
                     </div>
                     <div>
                         <Tabs className="TabBox" type="card">
@@ -65,7 +65,7 @@ function Index() {
                         )}
                     </div>
                     <div className="Course__sideBar relative">
-                        <CourseTable/>
+                        <CourseTable courseId={id}/>
                     </div>
                 </div>
                 {windowSize === "sm" && (

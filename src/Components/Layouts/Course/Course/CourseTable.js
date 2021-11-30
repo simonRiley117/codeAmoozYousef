@@ -18,7 +18,7 @@ const override = {
 }
 const WITHOUT_DEGREE = 'بدون مدرک'
 
-function CourseTable({id}) {
+function CourseTable({courseId}) {
     const [orderCourse, setOrderCourse] = useState({})
     const [degree, setDegree] = useState(null);
     const {token, authDispatch} = useAuth();
@@ -29,8 +29,7 @@ function CourseTable({id}) {
     };
 
     const getCourseOrder = useFetch({
-        url: `CourseService/q6SJ61Ta/courseOrder`,
-        // url: `CourseService/${id}/courseOrder`,
+        url: `CourseService/${courseId}/courseOrder`,
         method: "GET",
         noHeader: token ? false : true,
         setter: setOrderCourse
