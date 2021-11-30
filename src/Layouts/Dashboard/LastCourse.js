@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BreadCrump from '@Components/Shared/BreadCrump/BreadCrump';
 import {Tabs} from 'antd';
 import VideoPlayer from '@Components/Shared/VideoPlayer/VideoPlayer';
-import Detaile from '@Components/Layouts/Course/Sarfasl/Detaile';
+import Detail from '@Components/Layouts/Course/Sarfasl/Detail';
 import Button from '@Components/Shared/Buttons/Button';
 import {Accordion, Panel} from '@Components/Shared/Accordion/Accordion';
 import ProgressLine from '@Components/Shared/Progress/ProgressLine';
@@ -21,7 +21,7 @@ function LastCourse() {
     const [courseSeasons, setCourseSeasons] = useState([]);
     const [contentUuid, setContentUuid] = useState(null)
     const getCourseSeasons = useFetch({
-        url: `CourseService/q6SJ61Ta/sidebar`,
+        url: `CourseService/y2nnbfSt/sidebar`,
         method: 'GET',
         noHeader: false,
         setter: setCourseSeasons,
@@ -97,7 +97,7 @@ function LastCourse() {
                         <div>
                             <Tabs className='TabBox' type='card'>
                                 <TabPane tab='ویدیو' key='1'>
-                                    <Detaile contentUuid={contentUuid}/>
+                                    <Detail contentUuid={contentUuid}/>
                                 </TabPane>
                                 <TabPane tab='تمرین و مثال' key='2'>
                                     <TrainExample contentUuid={contentUuid}/>

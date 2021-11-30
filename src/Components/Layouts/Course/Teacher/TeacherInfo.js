@@ -19,7 +19,7 @@ function TeacherInfo() {
     // let teacherProfileInfo = {}
 
     const getTeacherProfileInfo = useFetch({
-        url: `CourseService/q6SJ61Ta/courseTeacherProfileBrief`,
+        url: `CourseService/y2nnbfSt/courseTeacherProfileBrief`,
         // url: `CourseService/${id}/courseOrder`,
         method: "GET",
         noHeader: true,
