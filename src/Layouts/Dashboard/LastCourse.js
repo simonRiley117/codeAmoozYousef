@@ -17,20 +17,22 @@ import classNames from "classnames";
 const {TabPane} = Tabs;
 
 function LastCourse() {
-
     const [courseSeasons, setCourseSeasons] = useState([]);
     const [contentUuid, setContentUuid] = useState(null)
+
+    const setData = (data) => {
+        console.log('data: ', data)
+        setCourseSeasons(data)
+        setContentUuid(data.first_content_uuid)
+    }
+
     const getCourseSeasons = useFetch({
         url: `CourseService/q6SJ61Ta/sidebar`,
         method: 'GET',
         noHeader: false,
-        setter: setCourseSeasons,
+        setter: setData,
     });
 
-    // const setData=()=>(
-    //     setCourseSeasons(getCourseSeasons)
-    //     setContentUuid(getCourseSeasons)
-    // )
 
     // console.log('getCourseSeasons.loading: ', getCourseSeasons.loading);
     // console.log('getCourseSeasons: ', getCourseSeasons);
