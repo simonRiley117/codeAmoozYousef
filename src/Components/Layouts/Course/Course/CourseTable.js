@@ -29,7 +29,7 @@ function CourseTable({id}) {
     };
 
     const getCourseOrder = useFetch({
-        url: `CourseService/q6SJ61Ta/courseOrder`,
+        url: `CourseService/y2nnbfSt/courseOrder`,
         // url: `CourseService/${id}/courseOrder`,
         method: "GET",
         noHeader: token ? false : true,

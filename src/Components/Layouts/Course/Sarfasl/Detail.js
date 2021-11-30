@@ -1,18 +1,20 @@
 import React, {useEffect, useState} from "react";
 import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
-import useFetch from "../../../../Context/useFetch";
-import {useAuth} from "../../../../Context/authContext";
+import useFetch from "@App/Context/useFetch";
+import {useAuth} from "@App/Context/authContext";
 
-function Detaile({contentUuid}) {
-    console.log('contentUuid Detaile: ', contentUuid)
+function Detail({contentUuid}) { 
+    console.log('contentUuid: ', contentUuid)
     const [content, setContent] = useState(null);
+    const {token, authDispatch} = useAuth();
     // const [contentId, setContentId] = useState(null);
+
     // setContentId(prevContent => prevContent !== contentUuid ? contentUuid : prevContent)
 
     const getContent = useFetch({
         url: `ContentService/${contentUuid}/getModalContent`,
         method: "GET",
-        noHeader: false,
+        noHeader: token ? false : true,
         setter: setContent
     });
 
@@ -44,4 +46,4 @@ function Detaile({contentUuid}) {
     );
 }
 
-export default Detaile;
+export default Detail;
