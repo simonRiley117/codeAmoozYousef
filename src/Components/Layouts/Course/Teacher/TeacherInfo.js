@@ -11,8 +11,15 @@ import Button from "@Components/Shared/Buttons/Button";
 import {Tag} from "antd";
 import useFetch from "@App/Context/useFetch";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
+import {ClipLoader} from "react-spinners";
 
-function TeacherInfo() {
+const override = {
+    display: 'block',
+    margin: '0 auto',
+    borderColor: 'green',
+}
+
+function TeacherInfo({courseId}) {
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
     const [socialId, setSocialId] = useState(-1)
     const [teacherProfileInfo, setTeacherProfileInfo] = useState(null)
@@ -20,7 +27,6 @@ function TeacherInfo() {
 
     const getTeacherProfileInfo = useFetch({
         url: `CourseService/q6SJ61Ta/courseTeacherProfileBrief`,
-        // url: `CourseService/${id}/courseOrder`,
         method: "GET",
         noHeader: true,
         setter: setTeacherProfileInfo
@@ -109,7 +115,7 @@ function TeacherInfo() {
                         </div>
                     </div>
                 </div>
-                : <div>LOADING...</div>
+                : <ClipLoader color="#43aa8b" loading={true} css={override} size={60}/>
             }
         </>
     );

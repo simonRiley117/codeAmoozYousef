@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import useFetch from "@App/Context/useFetch";
 
-const Filtersxx = ({cateid,chooseCat}) => {
+const FilterCourses = ({cateid,chooseCat}) => {
     const [categories, setCategories] = useState([]);
 
         
@@ -64,4 +64,4 @@ const Filtersxx = ({cateid,chooseCat}) => {
     </div>
   );
 };
-export default Filtersxx;
+export default FilterCourses;

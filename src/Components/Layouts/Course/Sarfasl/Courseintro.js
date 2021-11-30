@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "../../Register/Modal";
-import Detaile from "./Detaile";
+import Detail from "./Detail";
 
 function Courseintro({contentUuid, onCancel, visible, ...rest}) {
     return (
@@ -9,7 +9,7 @@ function Courseintro({contentUuid, onCancel, visible, ...rest}) {
                 className="fas fa-times cursor-pointer Detaile__exit"
                 onClick={onCancel}
             />
-            <Detaile contentUuid={contentUuid}/>
+            <Detail contentUuid={contentUuid}/>
         </Modal>
     );
 }

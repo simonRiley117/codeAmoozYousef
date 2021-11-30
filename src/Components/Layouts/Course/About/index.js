@@ -51,7 +51,7 @@ function Index() {
                         </p>
                     ))}
                 </div>
-                :<div>LOADING...</div>
+                :null
             }
         </>
     );
