@@ -31,10 +31,10 @@ function ExampleDetail({example}) {
                 </div>
                 <div className="flex items-center ExampleDetail__downloadBox">
                     <img src={pdf} alt={pdf}/>
-                    <p className="cursor-pointer">فایل مثال 1</p>
+                    <p className="cursor-pointer">{example.file}</p>
                 </div>
             </div>
-            <CodeeditorWithRun lan="python" value={example.code}/>
+            <CodeeditorWithRun lan={example.language === 'c' ? 'c_cpp' : example.language} value={example.code}/>
         </div>
     );
 }
