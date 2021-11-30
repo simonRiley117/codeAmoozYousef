@@ -30,7 +30,7 @@ const CourseCardBg = ({card}) => {
               to={{
                 pathname: "/course",
                 state: {
-                  name: "دوره آنلاین برنامه نویسی HTM",
+                  name:card.title ,
                   id: card.uuid,
                 },
               }}
