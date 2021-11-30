@@ -4,17 +4,15 @@ import useFetch from "../../../../Context/useFetch";
 import {useAuth} from "../../../../Context/authContext";
 
 function Detaile({contentUuid}) {
-    console.log('contentUuid: ', contentUuid)
+    console.log('contentUuid Detaile: ', contentUuid)
     const [content, setContent] = useState(null);
-    const {token, authDispatch} = useAuth();
     // const [contentId, setContentId] = useState(null);
-
     // setContentId(prevContent => prevContent !== contentUuid ? contentUuid : prevContent)
 
     const getContent = useFetch({
         url: `ContentService/${contentUuid}/getModalContent`,
         method: "GET",
-        noHeader: token ? false : true,
+        noHeader: false,
         setter: setContent
     });
 

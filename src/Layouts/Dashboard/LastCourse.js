@@ -75,7 +75,7 @@ function LastCourse() {
                     &nbsp;&nbsp;
                     {/*<img src={Lock} alt={Lock}/>*/}
                     <IconBtn
-                        classes={classNames('CreateSeason__btn', {
+                        classes={classNames('Sarfasl__btn', {
                             lock: !lock,
                         })}
                         icon={
@@ -94,7 +94,7 @@ function LastCourse() {
         <>
             {getCourseSeasons?.response?.data?.seasons ? (
                 <div className='LastCourse'>
-                    <BreadCrump pathsname='/dash/course' name='پایتون'/>
+                    <BreadCrump pathsname='/dash/course' name={courseSeasons.title}/>
                     <div className='grid LastCourse__container relative'>
                         <div>
                             <Tabs className='TabBox' type='card'>
