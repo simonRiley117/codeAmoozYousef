@@ -19,11 +19,13 @@ const {TabPane} = Tabs;
 function LastCourse() {
     const [courseSeasons, setCourseSeasons] = useState([]);
     const [contentUuid, setContentUuid] = useState(null)
+    const [quizUuid, setQuizUuid] = useState(null)
 
     const setData = (data) => {
         console.log('data: ', data)
         setCourseSeasons(data)
-        setContentUuid(data.first_content_uuid)
+        setContentUuid(data.init_data.first_content_uuid)
+        setQuizUuid(data.init_data.first_quiz_uuid)
     }
 
     const getCourseSeasons = useFetch({
@@ -33,6 +35,10 @@ function LastCourse() {
         setter: setData,
     });
 
+    const setUuids = (cUUID, qUUID) => {
+        setContentUuid(cUUID)
+        setQuizUuid(qUUID)
+    }
     console.log('contentUuid LastCourse: ', contentUuid)
 
     const getHeader = (index, title, done, time, lock) => (
@@ -96,6 +102,13 @@ function LastCourse() {
         )
     )
 
+    // const [activeKey,setActiveKey]=useState('1')
+    // const handleTabChange = (selectedkey) => {
+    //     setActiveKey(selectedkey);
+    //     console.log("change callback");
+    //     getCourseSeasons.reFetch()
+    // };
+
     return (
         <>
             {getCourseSeasons?.response?.data?.seasons ? (
@@ -103,15 +116,17 @@ function LastCourse() {
                     <BreadCrump pathsname='/dash/course' name={courseSeasons.title}/>
                     <div className='grid LastCourse__container relative'>
                         <div>
+                            {/*<Tabs activeKey={activeKey} className='TabBox' type='card' onChange={handleTabChange}>*/}
+                            {/*<Tabs className='TabBox' type='card' destroyInactiveTabPane={true}>*/}
                             <Tabs className='TabBox' type='card'>
-                                <TabPane tab='ویدیو' key='1'>
+                                <TabPane tab='ویدیو' key={`${contentUuid}_1`}>
                                     <Detail contentUuid={contentUuid}/>
                                 </TabPane>
-                                <TabPane tab='تمرین و مثال' key='2'>
+                                <TabPane tab='تمرین و مثال' key={`${contentUuid}_2`}>
                                     <TrainExample contentUuid={contentUuid}/>
                                 </TabPane>
-                                <TabPane tab='آزمون' key='3'>
-                                    <Quiz contentUuid={contentUuid}/>
+                                <TabPane tab='آزمون' key={`${contentUuid}_3`}>
+                                    <Quiz quizUuid={quizUuid}/>
                                 </TabPane>
                             </Tabs>
                             <div className='flex items-center justify-between LastCourse__btnBox'>
@@ -152,7 +167,7 @@ function LastCourse() {
                                                 {season.contents ? (
                                                     season.contents.map((content, index) => (
                                                         <div className='flex justify-between items-center'
-                                                             onClick={() => setContentUuid(content.id)}
+                                                             onClick={() => setUuids(content.id, content.quiz_id)}
                                                              key={index}>
                                                             <div className='flex items-center Sarfasl__Accordiontxtbox'>
                                                                 {content.is_content_passed ? (
