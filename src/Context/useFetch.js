@@ -41,7 +41,7 @@ export default function useFetch({
 
     customHandler: (err, res) => {
       if (res) {
-        console.log("data", res.data);
+        // console.log("data", res.data);
         if (setter !== null) setter(res.data);
         if (caller !== null) caller.reFetch();
         if (func !== null) func();
