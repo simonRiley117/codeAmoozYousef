@@ -3,13 +3,10 @@ import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
 import useFetch from "@App/Context/useFetch";
 import {useAuth} from "@App/Context/authContext";
 
-function Detail({contentUuid}) { 
+function Detail({contentUuid}) {
     console.log('contentUuid: ', contentUuid)
     const [content, setContent] = useState(null);
     const {token, authDispatch} = useAuth();
-    // const [contentId, setContentId] = useState(null);
-
-    // setContentId(prevContent => prevContent !== contentUuid ? contentUuid : prevContent)
 
     const getContent = useFetch({
         url: `ContentService/${contentUuid}/getModalContent`,
@@ -17,14 +14,8 @@ function Detail({contentUuid}) {
         noHeader: token ? false : true,
         setter: setContent
     });
-
-    // useEffect(() => {
-    //     getContent.reFetch()
-    // }, [contentId]);
-
-    // getContent.reFetch()
-    // console.log('getContent: ', getContent)
     console.log('content: ', content)
+
     return (
         <>
             {getContent?.response ? (

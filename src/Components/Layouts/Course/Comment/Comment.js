@@ -15,7 +15,7 @@ import CommentDraftReplyBox from "../../../Shared/CommentBox/CommentDraftReplyBo
 import {toast} from "react-toastify";
 import {useAuth} from "../../../../Context/authContext";
 
-function Comment() {
+function Comment({courseId}) {
     const {token} = useAuth();
     const [commentInfo, setCommentInfo] = useState(null);
     const setCommentData = (data) => {
@@ -23,7 +23,7 @@ function Comment() {
     }
     const getCommentInfo = useFetch({
         url: `CommentService`,
-        params: {course_uuid: 'q6SJ61Ta'},
+        params: {course_uuid: courseId},
         method: 'GET',
         noHeader: true,
         setter: setCommentData,
@@ -36,7 +36,7 @@ function Comment() {
     }
     const getDraftCommentInfo = useFetch({
         url: `CommentService/draftComments`,
-        params: {course_uuid: 'q6SJ61Ta'},
+        params: {course_uuid: courseId},
         method: 'GET',
         noHeader: false,
         setter: setDraftCommentData,
@@ -58,7 +58,7 @@ function Comment() {
         let formData = new FormData();
 
         formData.append('text', input);
-        formData.append('course_uuid', 'q6SJ61Ta')
+        formData.append('course_uuid', courseId)
         setCommentPostData(formData);
         postComment.reFetch();
         console.log('postComment: ', postComment)

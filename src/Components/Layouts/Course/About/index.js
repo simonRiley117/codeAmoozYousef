@@ -4,11 +4,11 @@ import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
 import useFetch from "@App/Context/useFetch";
 
 
-function Index() {
+function Index({courseId}) {
     const [courseInfo, setCourseInfo] = useState({})
 
     const getAboutCourse = useFetch({
-        url: `CourseService/q6SJ61Ta`,
+        url: `CourseService/${courseId}`,
         // url: `CourseService/${id}/courseOrder`,
         method: "GET",
         noHeader: true,

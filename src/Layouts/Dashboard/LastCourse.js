@@ -27,35 +27,41 @@ function LastCourse() {
     }
 
     const getCourseSeasons = useFetch({
-        url: `CourseService/y2nnbfSt/sidebar`,
+        url: `CourseService/q6SJ61Ta/sidebar`,
         method: 'GET',
         noHeader: false,
         setter: setData,
     });
 
-
-    // console.log('getCourseSeasons.loading: ', getCourseSeasons.loading);
-    // console.log('getCourseSeasons: ', getCourseSeasons);
-    // console.log('courseSeasons: ', courseSeasons.seasons);
+    console.log('contentUuid LastCourse: ', contentUuid)
 
     const getHeader = (index, title, done, time, lock) => (
         done ? (
             <div className='Sarfasl__AccordionCenter'>
                 <div className='Sarfasl__AccordionCenter' style={{justifyContent: 'flex-start'}}>
-                    <div>
-                        <div className='Sarfasl__Accordiondone'>
-                            <i className='fas fa-check'></i>
-                        </div>
-                        &nbsp;
-                        <div>{title}</div>
+                    <div className='Sarfasl__Accordiondone'>
+                        <i className='fas fa-check'></i>
                     </div>
+                    &nbsp;
+                    <div>{title}</div>
                 </div>
-                <div className='Sarfasl__AccordionItem'>
+                <div className='Sarfasl__AccordionCenter'>
                     <p>{time}</p>
                     &nbsp;
                     <img src={Clock} alt={Clock}/>
                     &nbsp;&nbsp;
-                    <img src={Lock} alt={Lock}/>
+                    {/*<img src={Lock} alt={Lock}/>*/}
+                    <IconBtn
+                        classes={classNames('Sarfasl__btn', {
+                            lock: !lock,
+                        })}
+                        icon={
+                            <>
+                                <img src={Lock} alt={Lock}/>
+                                <i/>
+                            </>
+                        }
+                    />
                 </div>
             </div>
 
@@ -68,7 +74,7 @@ function LastCourse() {
                     &nbsp;
                     <div>{title}</div>
                 </div>
-                <div className='Sarfasl__AccordionItem'>
+                <div className='Sarfasl__AccordionCenter'>
                     <p>{time}</p>
                     &nbsp;
                     <img src={Clock} alt={Clock}/>
@@ -138,13 +144,16 @@ function LastCourse() {
                                         {courseSeasons.seasons.map((season, index) => (
                                             <Panel
                                                 collapsible={season.lockedOn ? 'disabled' : 'header'}
-                                                header={getHeader(index, season.title, season.is_season_passed, season.total_time_for_each_season, season.lockedOn)}
+                                                header={getHeader(index, season.title,
+                                                    season.is_season_passed,
+                                                    season.total_time_for_each_season,
+                                                    season.lockedOn)}
                                                 key={season.uuid}>
                                                 {season.contents ? (
                                                     season.contents.map((content, index) => (
                                                         <div className='flex justify-between items-center'
-                                                             onClick={() => setContentUuid(content.uuid)}
-                                                             key={content.uuid}>
+                                                             onClick={() => setContentUuid(content.id)}
+                                                             key={index}>
                                                             <div className='flex items-center Sarfasl__Accordiontxtbox'>
                                                                 {content.is_content_passed ? (
                                                                     <div
