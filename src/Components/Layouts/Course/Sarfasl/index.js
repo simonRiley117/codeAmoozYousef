@@ -83,7 +83,7 @@ function Index() {
                     &nbsp;&nbsp;
                     {/*<img src={Lock} alt={Lock}/>*/}
                     <IconBtn
-                        classes={classNames('CreateSeason__btn', {
+                        classes={classNames('Sarfasl__btn', {
                             lock: !lock,
                         })}
                         icon={
