@@ -5,13 +5,16 @@ import Searchxx from "./Searchxx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import useFetch from "@App/Context/useFetch";
-
+import SwiperCore, {
+  Navigation,Mousewheel,Keyboard
+} from 'swiper';
 // images
 import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
-import Filtersxx from "./Filtersxx";
+import FilterCourses from "./FilterCourses";
 import Pagination from "@Components/Shared/Pagination";
 import { cardData } from "../../Components/Layouts/News/cardData";
 const Courses = () => {
+  SwiperCore.use([Navigation,Mousewheel,Keyboard]);
   // just some testing array to be able to map on cards
   const cards = [
     { id: 1, name: "دوره آنلاین برنامه نویسی HTML" },
@@ -66,7 +69,7 @@ const Courses = () => {
   return (
     <div className="container">
       <div className="courses">
-        <Swiper module={[A11y, Autoplay]} spaceBetween={10} slidesPerView={1}>
+        <Swiper className='courses__latest'  navigation={true} module={[A11y, Autoplay]} spaceBetween={10} slidesPerView={1}>
           {latestCourse.map((card, index) => {
             return (
               <SwiperSlide key={card.uuid}>
@@ -88,7 +91,7 @@ const Courses = () => {
             );
           })}
         </Swiper> */}
-        <Filtersxx cateid={cateid} chooseCat={chooseCat} />
+        <FilterCourses cateid={cateid} chooseCat={chooseCat} />
 
         <div className="grid grid-cols-4 gap-x-6 gap-y-8">
           {allcourse?.results.map((card) => {

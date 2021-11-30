@@ -1,6 +1,12 @@
 .courses {
   padding-top: 10rem;
   padding-bottom: 3rem;
+  &__latest {
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: $color-black-light;
+    }
+  }
   & .search {
     background-color: #ef801933;
     color: rgba(35, 62, 109, 0.7);
@@ -16,8 +22,9 @@
     }
     &-container {
       position: relative;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
+
+      width: 72%;
+      margin: 3rem auto;
     }
     &::placeholder {
       color: rgba(35, 62, 109, 0.7);
@@ -152,9 +159,6 @@
 }
 //swiper configs
 .swiper-button-next {
-  transform: translateX(-4rem);
-  color: black;
-  background-color: black;
   z-index: 10000000000000000000000;
 }
 

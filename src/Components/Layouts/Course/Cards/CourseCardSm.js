@@ -34,7 +34,7 @@ const Coursecardsm = ({ card }) => {
             <Link
               to={{
                 pathname: "/course",
-                state: { name: "دوره آنلاین برنامه نویسی HTM", id: card.uuid },
+                state: { name: card.title, id: card.uuid },
               }}
             >
               {card.title}
