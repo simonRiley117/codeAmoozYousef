@@ -13,7 +13,7 @@ import IconBtn from '../../../Shared/Buttons/IconBtn';
 import Modal from '@Components/Shared/Modal/Modal';
 import Detail from './Detail';
 
-const Topic = () => {
+const Topic = ({courseId}) => {
     const location = useLocation();
     const [id, setId] = useState();
     const [modal, setModal] = useState(false);
@@ -24,7 +24,7 @@ const Topic = () => {
     const [showModal, setShowModal] = useState(false);
 
     const getCourseSeasons = useFetch({
-        url: `CourseService/q6SJ61Ta/seasons`,
+        url: `CourseService/${courseId}/seasons`,
         method: 'GET',
         noHeader: token ? false : true,
         setter: setCourseSeasons,

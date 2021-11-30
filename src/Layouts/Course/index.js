@@ -37,10 +37,10 @@ function Index() {
                     <div>
                         <Tabs className="TabBox" type="card">
                             <TabPane tab="درباره این دوره" key="1">
-                                <About/>
+                                <About courseId={id}/>
                             </TabPane>
                             <TabPane tab="سرفصل ها" key="2">
-                                <Sarfasl/>
+                                <Sarfasl courseId={id}/>
                             </TabPane>
                         </Tabs>
                         {windowSize !== "sm" && (
@@ -51,14 +51,14 @@ function Index() {
                                         tab="نظرات"
                                         key="1"
                                         className="Sarfasl__commentpart">
-                                        <Comment/>
+                                        <Comment courseId={id}/>
                                     </TabPane>
                                     <TabPane
                                         tab="پرسش و پاسخ"
                                         key="2"
                                         className="Sarfasl__commentpart"
                                     >
-                                        <AskAndAnswer/>
+                                        <AskAndAnswer courseId={id}/>
                                     </TabPane>
                                 </Tabs>
                             </div>
@@ -75,14 +75,14 @@ function Index() {
                                 tab="نظرات"
                                 key="1"
                                 className="Sarfasl__commentpart">
-                                <Comment/>
+                                <Comment courseId={id}/>
                             </TabPane>
                             <TabPane
                                 tab="پرسش و پاسخ"
                                 key="2"
                                 className="Sarfasl__commentpart"
                             >
-                                <AskAndAnswer/>
+                                <AskAndAnswer courseId={id}/>
                             </TabPane>
                         </Tabs>
                     </div>

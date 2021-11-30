@@ -11,7 +11,7 @@ import useFetch from "../../../../Context/useFetch";
 import {toast} from "react-toastify";
 import {useAuth} from "../../../../Context/authContext";
 
-function AskAndAnswer() {
+function AskAndAnswer({courseId}) {
     const {token} = useAuth();
     const [messageInfo, setMessageInfo] = useState(null);
     const setMessageData = (data) => {
@@ -19,7 +19,7 @@ function AskAndAnswer() {
     }
     const getMessageInfo = useFetch({
         url: `QuestionService/user_get`,
-        params: {course_uuid: 'q6SJ61Ta'},
+        params: {course_uuid: courseId},
         method: 'GET',
         noHeader: false,
         setter: setMessageData,
@@ -41,7 +41,7 @@ function AskAndAnswer() {
     const onSubmit = (data) => {
         let formData = new FormData();
         formData.append('question_message', input);
-        formData.append('course_uuid', 'q6SJ61Ta')
+        formData.append('course_uuid', courseId)
         setMessagePostData(formData);
         postMessage.reFetch();
         console.log('postMessage: ', postMessage)
