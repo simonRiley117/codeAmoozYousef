@@ -23,7 +23,7 @@ function Comment() {
     }
     const getCommentInfo = useFetch({
         url: `CommentService`,
-        params: {course_uuid: 'q6SJ61Ta'},
+        params: {course_uuid: 'y2nnbfSt'},
         method: 'GET',
         noHeader: true,
         setter: setCommentData,
@@ -36,7 +36,7 @@ function Comment() {
     }
     const getDraftCommentInfo = useFetch({
         url: `CommentService/draftComments`,
-        params: {course_uuid: 'q6SJ61Ta'},
+        params: {course_uuid: 'y2nnbfSt'},
         method: 'GET',
         noHeader: false,
         setter: setDraftCommentData,
@@ -58,7 +58,7 @@ function Comment() {
         let formData = new FormData();
 
         formData.append('text', input);
-        formData.append('course_uuid', 'q6SJ61Ta')
+        formData.append('course_uuid', 'y2nnbfSt')
         setCommentPostData(formData);
         postComment.reFetch();
         console.log('postComment: ', postComment)

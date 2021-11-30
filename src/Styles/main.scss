@@ -1,93 +1,99 @@
 // -------------------- tailwindcss --------------------
-@import "~tailwindcss/tailwind.css";
+@import '~tailwindcss/tailwind.css';
 // -------------------- react-toastify --------------------
 @import '~react-toastify/dist/ReactToastify.css';
 // -------------------- react-slick --------------------
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 
-@import "~swiper/swiper-bundle.css";
+@import '~swiper/swiper-bundle.css';
 // -------------------- fonts --------------------
-@import "./base/font";
+@import './base/font';
 
 // -------------------- abstracts --------------------
-@import "./abstracts/variables";
-@import "./abstracts/mixins";
-@import "./abstracts/functions";
-@import "./abstracts/animations";
+@import './abstracts/variables';
+@import './abstracts/mixins';
+@import './abstracts/functions';
+@import './abstracts/animations';
 
 // -------------------- base --------------------
-@import "./base/base";
-@import "./base/typography";
-@import "./base/utilities";
+@import './base/base';
+@import './base/typography';
+@import './base/utilities';
 
 // -------------------- components --------------------
-@import "./Layouts/Dashboard/dashboard";
-@import "./Layouts/Favorites/favorites";
+@import './layouts/Dashboard/dashboard';
+@import './layouts/Favorites/favorites';
+@import './components/profile/profileForm';
+@import './Layouts/Dashboard/dashboard';
+@import './Layouts/Favorites/favorites';
 //--------------share---------------
-@import "./components/Discount/SideBarDiscount";
-@import "./components/Discount/HeaderDiscount";
-@import "./components/Inputs/input";
-@import "./components/Inputs/Upload";
-@import "./components/Inputs/ProfileInput";
-@import "./components/Menu/appbar";
-@import "./components/Menu/sidebarmenu";
-@import "./components/Inputs/textarea";
-@import "./components/Footer/Footer";
-@import "./components/DefaultFormBox/DefaultFormBox";
-@import "./components/Buttons/button";
-@import "./components/Buttons/link";
-@import "./components/BreadCrump/BreadCrump";
-@import "./components/Title/title";
-@import "./components/PopUp/PopUp";
-@import "./components/Cards/coursecardbg";
-@import "./components/Cards/coursecardsm";
-@import "./components/VideoPlayer/VideoPlayer";
-@import "./components/Codeeditor/Codeeditor";
-@import "./components/Pagination/pagination";
-@import "./components/Accordion/Accordion.scss";
-@import "./components/Tabs/TabBox";
-@import "./components/CommentBox/CommentBox";
-@import "./components/CodeeditorWithRun/CodeeditorWithRun";
-@import "./components/Price/price";
-@import "./components/Rate/rate";
-@import "./components/CourseCardBanner/courseCardBanner";
-@import "./components/costBox/costBox";
-@import "./components/Coursebox/coursebox.scss";
-@import "./components/Progress/ProgressLine.scss";
+@import './components/Discount/SideBarDiscount';
+@import './components/Discount/HeaderDiscount';
+@import './components/Inputs/input';
+@import './components/Inputs/Upload';
+@import './components/Inputs/ProfileInput';
+@import './components/Menu/appbar';
+@import './components/Menu/sidebarmenu';
+@import './components/Inputs/textarea';
+@import './components/Footer/Footer';
+@import './components/DefaultFormBox/DefaultFormBox';
+@import './components/Buttons/button';
+@import './components/Buttons/link';
+@import './components/BreadCrump/BreadCrump';
+@import './components/Title/title';
+@import './components/PopUp/PopUp';
+@import './components/Cards/coursecardbg';
+@import './components/Cards/coursecardsm';
+@import './components/VideoPlayer/VideoPlayer';
+@import './components/Codeeditor/Codeeditor';
+@import './components/Pagination/pagination';
+@import './components/Accordion/Accordion.scss';
+@import './components/Tabs/TabBox';
+@import './components/CommentBox/CommentBox';
+@import './components/CodeeditorWithRun/CodeeditorWithRun';
+@import './components/Price/price';
+@import './components/Rate/rate';
+@import './components/CourseCardBanner/courseCardBanner';
+@import './components/costBox/costBox';
+@import './components/Coursebox/coursebox.scss';
+@import './components/Progress/ProgressLine.scss';
+@import './components/Modal/modal';
+
 //-------------master------------
-@import "./components/Master/WorkWithUs";
-@import "./components/Master/CoursStandards";
-@import "./components/Master/ProduceRules";
-@import "./components/Master/MasterSignUp";
+@import './components/Master/WorkWithUs';
+@import './components/Master/CoursStandards';
+@import './components/Master/ProduceRules';
+@import './components/Master/MasterSignUp';
 //----------------TechnicalTeam-----------
-@import "./components/TechnicalTeam/Deatil";
+@import './components/TechnicalTeam/Deatil';
 
 // -------------------- layout --------------------
 //-----------------Coworker-----------
-@import "./Layouts/News/news";
-@import "./Layouts/Home/home";
-@import "./Layouts/Faq/faq";
+@import './Layouts/News/news';
+@import './Layouts/Home/home';
+@import './Layouts/Faq/faq';
 
-@import "./Layouts/Course/Course";
-@import "./Layouts/CoWorkers/Master";
-@import "./Layouts/CoWorkers/CoWorkers";
-@import "./Layouts/CoWorkers/Technicalteam";
-@import "./Layouts/Contact-us/contact";
-@import "./Layouts/About-us/about-us";
-@import "./Layouts/Courses/courses";
-@import "./Layouts/Course/Sarfasl/Detaile";
-@import "./Layouts/Course/About/Detaile";
-@import "./Layouts/Course/About/About";
-@import "./Layouts/Course/Sarfasl/Sarfasl";
-@import "./Layouts/Course/Comment/AskAndAnswer";
-@import "./Layouts/Course/Comment/Comment";
-@import "./Layouts/Course/Course/CourseTable";
-@import "./Layouts/Register/register";
-@import "./Layouts/Course/Teacher/TeacherInfo";
-@import "./Layouts/Example/Example";
-@import "./Layouts/Example/ExampleDetail";
-@import "./Layouts/SabadKala/sabadkala";
-@import "./Layouts/Dashboard/dashboard";
-@import "./Layouts/Dashboard/LastCourse";
-@import "./Layouts/Dashboard/Quiz";
+@import './Layouts/Course/Course';
+@import './Layouts/CoWorkers/Master';
+@import './Layouts/CoWorkers/CoWorkers';
+@import './Layouts/CoWorkers/Technicalteam';
+@import './Layouts/Contact-us/contact';
+@import './Layouts/About-us/about-us';
+@import './Layouts/Courses/courses';
+@import './Layouts/Course/Sarfasl/Detaile';
+@import './Layouts/Course/About/Detaile';
+@import './Layouts/Course/About/About';
+@import './Layouts/Course/Sarfasl/Sarfasl';
+@import './Layouts/Course/Comment/AskAndAnswer';
+@import './Layouts/Course/Comment/Comment';
+@import './Layouts/Course/Course/CourseTable';
+@import './Layouts/Register/register';
+@import './Layouts/Course/Teacher/TeacherInfo';
+@import './Layouts/Example/Example';
+@import './Layouts/Example/ExampleDetail';
+@import './Layouts/SabadKala/sabadkala';
+@import './Layouts/Dashboard/dashboard';
+@import './Layouts/Dashboard/LastCourse';
+@import './Layouts/Dashboard/Quiz';
+@import './Layouts/Dashboard/Transaction';

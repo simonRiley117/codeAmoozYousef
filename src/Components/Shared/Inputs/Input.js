@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Input as InputBase } from "antd";
-import { Controller } from "react-hook-form";
+import { Controller, useController } from "react-hook-form";
 import classNames from "classnames";
 
 const Input = ({
@@ -10,31 +10,35 @@ const Input = ({
   message,
   control,
   register,
-  errors,
   classes,
   label,
+  absolute,
   ...rest
 }) => {
-  const error = errors[name];
+  const {
+    field,
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+    rules: register,
+    defaultValue: value,
+  });
   return (
-    <div className="input text-right ">
-      <label className="input__label">{label}</label>
-      <Controller
-        name={name}
-        control={control}
-        rules={register}
-        defaultValue={value}
-        render={({ field }) => (
-          <InputBase
-            className={classNames("input__field", [classes], {
-              input__error: error,
-            })}
-            {...field}
-            {...rest}
-          />
-        )}
+    <div
+      className={classNames("input", {
+        input__absolute: absolute,
+      })}
+    >
+      {label ? <label className="input__label">{label} :</label> : null}
+      <InputBase
+        className={classNames("input__field", [classes], {
+          input__error: error,
+        })}
+        {...field}
+        {...rest}
       />
-      {error && <span className="input__message">{message}</span>}
+      {error && <span className="input__message">{error.message}</span>}
     </div>
   );
 };

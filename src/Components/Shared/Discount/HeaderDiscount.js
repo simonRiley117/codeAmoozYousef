@@ -49,7 +49,6 @@ function HeaderDiscount() {
                 <p>a1b2c3d4</p>
               </div>
               <Button
-                ico={false}
                 type="primary"
                 classes="SideBarDiscount__btn"
                 onClick={() => handleCopy("a1b2c3d4")}

@@ -8,7 +8,7 @@ function Index() {
     const [courseInfo, setCourseInfo] = useState({})
 
     const getAboutCourse = useFetch({
-        url: `CourseService/q6SJ61Ta`,
+        url: `CourseService/y2nnbfSt`,
         // url: `CourseService/${id}/courseOrder`,
         method: "GET",
         noHeader: true,
