@@ -3,7 +3,7 @@ import RulesContainer from "@Components/Layouts/Rules/RulesContainer";
 
 const Rules = () => {
   return (
-    <div>
+    <div className="container">
       <RulesContainer />
     </div>
   );
