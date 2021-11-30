@@ -8,7 +8,7 @@ function Index() {
     const [courseInfo, setCourseInfo] = useState({})
 
     const getAboutCourse = useFetch({
-        url: `CourseService/y2nnbfSt`,
+        url: `CourseService/q6SJ61Ta`,
         // url: `CourseService/${id}/courseOrder`,
         method: "GET",
         noHeader: true,
@@ -51,7 +51,7 @@ function Index() {
                         </p>
                     ))}
                 </div>
-                :<div>LOADING...</div>
+                :null
             }
         </>
     );
