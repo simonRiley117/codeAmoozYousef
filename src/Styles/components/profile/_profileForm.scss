@@ -1,0 +1,28 @@
+.form-wrapper{
+    grid-row-gap: 20px;
+    grid-column-gap: 15rem;
+    margin-right: 13rem;
+    margin-left: 8rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    @include respond(sm-laptop) {
+        grid-column-gap: 10px;
+        margin-right: 3rem;
+        margin-left: 3rem;
+    }
+    @include respond(big-phone) {
+        grid-template-columns: 1fr;
+    }
+}
+.profile__social-row{
+    margin-right: 13rem;
+    margin-left: 8rem;
+    grid-column-gap: 20px;
+    margin-top:15px;
+}
+.profile__upload-row{
+    margin-right: 13rem;
+    margin-left: 8rem;
+    margin-top:15px;
+
+}
