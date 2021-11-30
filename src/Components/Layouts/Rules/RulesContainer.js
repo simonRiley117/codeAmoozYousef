@@ -3,14 +3,14 @@ import CoursMastersLogo from "@Assets/Pic/mastersicon.png";
 
 function RulesContainer() {
   return (
-    <div className="WorkWithUs text-center CoursStandards mt-40">
-      <div className="CoursStandards__titrBox text-right w-full flex items-center justify-center">
-        <p className="CoursStandards__titr font-bold">قوانین و مقررات</p>
+    <div className="WorkWithUs text-center CoursStandards mt-40 rules">
+      <div className="CoursStandards__titrBox text-right">
+        <p className="CoursStandards__titr font-bold">بند 1: موضوع بند</p>
       </div>
       <p className="items-start text-right CoursStandards__text leading-loose">
         {txt}
       </p>
-      <div className="CoursStandards__content">
+      <div className="CoursStandards__content ">
         {info.map((index, id) => (
           <div className="flex flex-col items-start justify-center" key={id}>
             <div className="flex flex-row items-center justify-start WorkWithUs__titlebox">
@@ -24,7 +24,7 @@ function RulesContainer() {
         ))}
       </div>
       <div className=" text-right ">
-        <p className="CoursStandards__titr font-bold">روش تولید محتوا</p>
+        <p className="CoursStandards__titr font-bold">بند 2: موضوع بند</p>
       </div>
       <p className="items-start text-right CoursStandards__text leading-loose">
         {txt}
