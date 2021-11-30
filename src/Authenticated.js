@@ -28,6 +28,8 @@ import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/Technica
 import Employer from "@Layouts/CoWorkers/Employer/Employer";
 import SabadKala from "./Layouts/Sabadkala/SabadKala";
 import Profile from "./Layouts/Profile/Profile";
+import Resume from "./Layouts/resume/Resume";
+import Rules from "./Layouts/Rules/Rules";
 
 const Authenticated = () => {
   const history = useHistory();
@@ -73,7 +75,9 @@ const Authenticated = () => {
                 <Course key={routeProps.history.location.state.id} />
               )}
             />
+            <Route exact path="/rules" component={Rules} />
             <Route exact path="/fav" component={Favorites} />
+            <Route exact path="/resume" component={Resume} />
             <Route exact path="/example" component={Example} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/dash/course" component={LastCourse} />
