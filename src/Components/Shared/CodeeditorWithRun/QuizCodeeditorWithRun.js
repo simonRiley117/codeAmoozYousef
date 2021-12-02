@@ -96,7 +96,7 @@ function QuizCodeeditorWithRun(props) {
         },
     });
     const postPassContent = useAxios({
-        url: `${API_URL}/PassService/${props.contentId}`,
+        url: `${API_URL}/PassService/${props.contentId}/`,
         method: "POST",
         options: {
             headers: {

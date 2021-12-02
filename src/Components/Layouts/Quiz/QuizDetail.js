@@ -2,6 +2,8 @@ import React from "react";
 import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
 import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
+import Button from "../../Shared/Buttons/Button";
+import {Link} from "react-router-dom";
 
 function QuizDetail({quizId, contentId, title, text, test_cases, language, file}) {
     console.log('language: ', language)
@@ -31,8 +33,20 @@ function QuizDetail({quizId, contentId, title, text, test_cases, language, file}
                     ))}
                 </div>
                 <div className="flex items-center ExampleDetail__downloadBox">
-                    <img src={pdf} alt={pdf}/>
-                    <p className="cursor-pointer">{file}</p>
+                    <div className="flex items-center">
+                        <img src={pdf} alt={pdf}/>
+                        <p className="cursor-pointer">{file}</p>
+                    </div>
+                    <Button
+                        ico={false}
+                        type='primary'
+                        classes='CoWorkers__btn flex items-center '
+                        // onClick={handlePassContent}
+                    >
+                        <Link to={'/dash/course'} className="flex items-center">
+                            بازگشت{' '}
+                        </Link>
+                    </Button>
                 </div>
             </div>
             <QuizCodeEditor
