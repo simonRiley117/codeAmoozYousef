@@ -51,7 +51,9 @@ function TrainExample({contentUuid}) {
                                 </div>
                             ) : null}
                             {item?.code?.length > 1 ? (
-                                <Codeeditor lan={item.language === 'c' ? 'c_cpp' : item.language} value={item.code}/>
+                                    <Codeeditor id={item.uuid}
+                                                lan={content.language === 'c' ? 'c_cpp' : content.language}
+                                                value={item.code}/>
                             ) : null}
                             {item?.text?.length > 1 ? (
                                 <p className="Detaile__txt leading-loose">
