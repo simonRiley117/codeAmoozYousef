@@ -46,6 +46,7 @@ function Quiz({quizUuid}) {
                                 to={{
                                     pathname: "/dash/quiz",
                                     state: {
+                                        id: quizContent.uuid,
                                         title: quizContent.name,
                                         text: quizContent.text,
                                         test_cases: quizContent.test_cases,

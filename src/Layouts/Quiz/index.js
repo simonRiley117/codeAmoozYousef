@@ -5,6 +5,7 @@ import QuizDetail from "@Components/Layouts/Quiz/QuizDetail";
 
 function Index() {
     const location = useLocation();
+    const [id, setId] = useState(0);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
     const [language, setLanguage] = useState("");
@@ -12,6 +13,7 @@ function Index() {
     const [test_cases, setTest_cases] = useState([]);
 
     useEffect(() => {
+        setId(location.state.id);
         setTitle(location.state.title);
         setText(location.state.text);
         setTest_cases(location.state.test_cases);
@@ -24,6 +26,7 @@ function Index() {
             <BreadCrump pathsname="/dash/quiz" name={title}/>
             <div className="Example__container">
                 <QuizDetail
+                    id={id}
                     title={title}
                     text={text}
                     file={file}

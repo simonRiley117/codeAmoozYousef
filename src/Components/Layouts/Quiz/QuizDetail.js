@@ -1,11 +1,11 @@
 import React from "react";
 import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
-import CodeeditorWithRun from "@Components/Shared/CodeeditorWithRun";
+import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 
-function QuizDetail({title, text, test_cases,language,file}) {
-    console.log('language: ',language)
-    console.log('typeof language: ',typeof language)
+function QuizDetail({id, title, text, test_cases, language, file}) {
+    console.log('language: ', language)
+    console.log('typeof language: ', typeof language)
     return (
         <div className="ExampleDetail">
             <div className="ExampleDetail__txtBox">
@@ -22,12 +22,12 @@ function QuizDetail({title, text, test_cases,language,file}) {
                             خروجی نمونه:
                         </p>
                     </div>
-                    {test_cases.map((item,index)=>(
-                       <div className="flex flex-col	ExampleDetail__sampledataBox mr-6">
-                        <p className="ExampleDetail__sampledata text-center	">{item.input}</p>
-                        <img src={arrowdown} alt={arrowdown}/>
-                        <p className="ExampleDetail__sampledata text-center	">{item.output}</p>
-                    </div>
+                    {test_cases.map((item, index) => (
+                        <div className="flex flex-col	ExampleDetail__sampledataBox mr-6" key={index}>
+                            <p className="ExampleDetail__sampledata text-center	">{item.input}</p>
+                            <img src={arrowdown} alt={arrowdown}/>
+                            <p className="ExampleDetail__sampledata text-center	">{item.output}</p>
+                        </div>
                     ))}
                 </div>
                 <div className="flex items-center ExampleDetail__downloadBox">
@@ -35,8 +35,10 @@ function QuizDetail({title, text, test_cases,language,file}) {
                     <p className="cursor-pointer">{file}</p>
                 </div>
             </div>
-            <CodeeditorWithRun
-                lan={`${language === `c` ? `c_cpp` : language}`}
+            <QuizCodeEditor
+                name={title}
+                id={id}
+                lan={language === `c` ? `c_cpp` : language}
                 value=''
             />
         </div>

@@ -1,319 +1,387 @@
 .CodeeditorWithRun {
-    width: 100%;
-    // height: 42.9rem;
-    overflow-y: auto;
+  width: 100%;
+  // height: 42.9rem;
+  overflow-y: auto;
 
-    &__codeeditor {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        overflow: hidden;
-        border-radius: 15px;
-        direction: ltr;
-        & > *:first-child {
-            border-right: 1px solid $color-green-light;
-        }
-        &-btnBox {
-            background-color: #272822;
-            border-bottom: 1px solid #fcca46;
-            border-bottom: 1px solid #fcca46;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 1.5rem;
-            // width: 70%;
-            p {
-                display: inline-block;
-                padding: 6px 1rem;
-                color: #fcca46;
-                @include respond(tablet) {
-                    padding: 0.6rem 0rem;
-                }
-            }
-            button {
-                cursor: pointer;
-                border-radius: 2rem;
-                color: $color-white;
-                display: flex;
-                align-items: center;
-                &:focus {
-                    outline: none;
-                }
-            }
-            @include respond(tablet) {
-                font-size: 1rem;
-                padding: 0.7rem 1rem;
-            }
-            @include respond(smallest-phone) {
-                font-size: 1rem;
-                padding: 0.7rem 0.25rem;
-            }
-        }
-        &-btnBox1 {
-            background-color: #272822;
-            border-bottom: 1px solid #fcca46;
-            border-bottom: 1px solid #fcca46;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 1.2rem;
-            p {
-                display: inline-block;
-                padding: 0.5rem 1rem;
-                color: $color-white;
-            }
-            button {
-                cursor: pointer;
-                border-radius: 2rem;
-                color: $color-white;
-                display: flex;
-                align-items: center;
-                &:focus {
-                    outline: none;
-                }
-            }
-        }
-        &-btnBox2 {
-            background-color: #272822;
-            border-bottom: 1px solid #fcca46;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 1.2rem;
-            padding-right: 10rem;
-        }
-        &-btncopy {
-            background-color: transparent;
-            border: 1px solid $color-white;
-            padding: 0rem 1rem;
+  &__codeeditor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    border-radius: 15px;
+    direction: ltr;
 
-            margin-right: 1rem;
-            .fa-copy,
-            .fa-check {
-                color: $color-white;
-                margin-right: 0.5rem;
-            }
-            @include respond(tablet) {
-                font-size: 1rem;
-                padding: 0rem 0.8rem;
-            }
-            @include respond(smallest-phone) {
-                font-size: 0.8rem;
-            }
-        }
-        &-btncopy1 {
-            background-color: transparent;
-            border: 1px solid $color-white;
-            padding: 0rem 1rem;
-            .fa-copy,
-            .fa-check {
-                color: $color-white;
-                margin-right: 0.5rem;
-            }
-            @include respond(tablet) {
-                font-size: 1rem;
-                .fa-copy,
-                .fa-check {
-                    color: $color-white;
-                    margin-left: 0.5rem;
-                }
-            }
-        }
-        &-btndone {
-            background-color: $color-green-light;
-            border: none;
-            margin-right: 0.8rem;
-            padding: 0rem 1rem;
-            .fas {
-                color: $color-white;
-                margin-right: 0.5rem;
-            }
-            @include respond(tablet) {
-                font-size: 1rem;
-                .fas {
-                    // margin-left: 0.5rem;
-                }
-                padding: 0rem 0.5rem;
-            }
-            @include respond(smallest-phone) {
-                font-size: 0.8rem;
-                margin-right: 0;
-            }
-        }
-        &-btndonedis {
-            background-color: $color-grey-dark-1;
-            border: none;
-            margin-right: 0.8rem;
-            padding: 0rem 1rem;
-            .fas {
-                color: $color-white;
-                margin-right: 0.5rem;
-            }
-            @include respond(tablet) {
-                // margin-left: 0.5rem;
-            }
-        }
+    & > *:first-child {
+      border-right: 1px solid $color-green-light;
     }
-    &__TestBox {
-        & > *:first-child {
-            border-top: 1px solid $color-green-light;
-        }
-    }
-    &__Testtxt {
-        color: $color-white;
-        background-color: #272822;
-        border-bottom: 1px solid #fcca46;
-        padding-bottom: 1rem;
-        padding-left: 1rem;
-        font-size: 1.2rem;
-    }
-    &__activbtn {
-        background-color: #363738;
+
+    &-btnBox {
+      background-color: #272822;
+      border-bottom: 1px solid #fcca46;
+      border-bottom: 1px solid #fcca46;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.5rem;
+      // width: 70%;
+      p {
+        display: inline-block;
+        padding: 6px 1rem;
         color: #fcca46;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-bottom: 2px solid #fcca46;
-        font-size: 1.5rem;
-        &:focus {
-            outline: none;
-        }
         @include respond(tablet) {
-            font-size: 1rem;
-            padding: 0.7rem 1rem;
+          padding: 0.6rem 0rem;
         }
-        @include respond(smallest-phone) {
-            font-size: 1rem;
-            padding: 0.7rem 0.25rem;
+      }
+
+      button {
+        cursor: pointer;
+        border-radius: 2rem;
+        color: $color-white;
+        display: flex;
+        align-items: center;
+
+        &:focus {
+          outline: none;
         }
+      }
+
+      @include respond(tablet) {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+      }
+      @include respond(smallest-phone) {
+        font-size: 1rem;
+        padding: 0.7rem 0.25rem;
+      }
     }
 
-    &__disactivbtn {
-        color: $color-black;
-        background-color: transparent;
-        border: none;
-        // border-right: 1px solid $color-black;
-        border-left: 1px solid $color-black;
-        border-bottom: 1px solid transparent;
-        font-size: 1.5rem;
+    &-btnBox1 {
+      background-color: #272822;
+      border-bottom: 1px solid #fcca46;
+      border-bottom: 1px solid #fcca46;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2rem;
+
+      p {
+        display: inline-block;
         padding: 0.5rem 1rem;
-        @include respond(tablet) {
-            font-size: 1rem;
+        color: $color-white;
+      }
+
+      button {
+        cursor: pointer;
+        border-radius: 2rem;
+        color: $color-white;
+        display: flex;
+        align-items: center;
+
+        &:focus {
+          outline: none;
         }
-        @include respond(smallest-phone) {
-            font-size: 1rem;
-            padding: 0.7rem 0.25rem;
-        }
+      }
     }
-    &__disactivbtn1 {
-        color: white;
-        background-color: transparent;
-        border: none;
-        // border-right: 1px solid $color-black;
-        border-left: 1px solid $color-black;
-        border-bottom: 1px solid transparent;
-        font-size: 1.5rem;
-        padding: 0.5rem 1rem;
-        @include respond(tablet) {
-            font-size: 1rem;
-        }
-        @include respond(smallest-phone) {
-            font-size: 1rem;
-            padding: 0.7rem 0.25rem;
-        }
+
+    &-btnBox2 {
+      background-color: #272822;
+      border-bottom: 1px solid #fcca46;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      padding-right: 10rem;
     }
+
+    &-btncopy {
+      background-color: transparent;
+      border: 1px solid $color-white;
+      padding: 0rem 1rem;
+
+      margin-right: 1rem;
+
+      .fa-copy,
+      .fa-check {
+        color: $color-white;
+        margin-right: 0.5rem;
+      }
+
+      @include respond(tablet) {
+        font-size: 1rem;
+        padding: 0rem 0.8rem;
+      }
+      @include respond(smallest-phone) {
+        font-size: 0.8rem;
+      }
+    }
+
+    &-btncopy1 {
+      background-color: transparent;
+      border: 1px solid $color-white;
+      padding: 0rem 1rem;
+
+      .fa-copy,
+      .fa-check {
+        color: $color-white;
+        margin-right: 0.5rem;
+      }
+
+      @include respond(tablet) {
+        font-size: 1rem;
+        .fa-copy,
+        .fa-check {
+          color: $color-white;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    &-btndone {
+      background-color: $color-green-light;
+      border: none;
+      margin-right: 0.8rem;
+      padding: 0rem 1rem;
+
+      .fas {
+        color: $color-white;
+        margin-right: 0.5rem;
+      }
+
+      @include respond(tablet) {
+        font-size: 1rem;
+        .fas {
+          // margin-left: 0.5rem;
+        }
+        padding: 0rem 0.5rem;
+      }
+      @include respond(smallest-phone) {
+        font-size: 0.8rem;
+        margin-right: 0;
+      }
+    }
+
+    &-btndonedis {
+      background-color: $color-grey-dark-1;
+      border: none;
+      margin-right: 0.8rem;
+      padding: 0rem 1rem;
+
+      .fas {
+        color: $color-white;
+        margin-right: 0.5rem;
+      }
+
+      @include respond(tablet) {
+        // margin-left: 0.5rem;
+      }
+    }
+  }
+
+  &__TestBox {
+    & > *:first-child {
+      border-top: 1px solid $color-green-light;
+    }
+  }
+
+  &__Testtxt {
+    color: $color-white;
+    background-color: #272822;
+    border-bottom: 1px solid #fcca46;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+  }
+
+  &__activbtn {
+    background-color: #363738;
+    color: #fcca46;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid #fcca46;
+    font-size: 1.5rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include respond(tablet) {
+      font-size: 1rem;
+      padding: 0.7rem 1rem;
+    }
+    @include respond(smallest-phone) {
+      font-size: 1rem;
+      padding: 0.7rem 0.25rem;
+    }
+  }
+
+  &__disactivbtn {
+    color: $color-black;
+    background-color: transparent;
+    border: none;
+    // border-right: 1px solid $color-black;
+    border-left: 1px solid $color-black;
+    border-bottom: 1px solid transparent;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    @include respond(tablet) {
+      font-size: 1rem;
+    }
+    @include respond(smallest-phone) {
+      font-size: 1rem;
+      padding: 0.7rem 0.25rem;
+    }
+  }
+
+  &__disactivbtn1 {
+    color: white;
+    background-color: transparent;
+    border: none;
+    // border-right: 1px solid $color-black;
+    border-left: 1px solid $color-black;
+    border-bottom: 1px solid transparent;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    @include respond(tablet) {
+      font-size: 1rem;
+    }
+    @include respond(smallest-phone) {
+      font-size: 1rem;
+      padding: 0.7rem 0.25rem;
+    }
+  }
 }
 
 .ExampleTextContainer-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 30px;
 }
+
 .ExampleTextContainer--text {
-    text-align: right;
-    font-size: 15px;
+  text-align: right;
+  font-size: 15px;
 }
+
 .accordion-item {
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
-    height: auto;
-    max-height: 9999px;
-    border-bottom: 0.5px solid rgba($color: #777777, $alpha: 0.4);
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+  height: auto;
+  max-height: 9999px;
+  border-bottom: 0.5px solid rgba($color: #777777, $alpha: 0.4);
 }
 
 .accordion-item.collapsed {
-    max-height: 0;
-    transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
 }
 
 .accordion-title {
-    font-weight: 600;
-    cursor: pointer;
-    color: #666;
-    padding: 7px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #666;
+  padding: 7px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+
+  &:hover,
+  &.open {
+    color: #255d4c;
+  }
+
+  &.open {
+  }
+}
+
+.accordion-content {
+}
+
+.FaqContainer__heading {
+  border-bottom: 0.5px solid rgba($color: #777777, $alpha: 0.4);
+  margin-bottom: 30px;
+}
+
+.accordion-content {
+}
+
+.accordin--children {
+  padding: 0 15px;
+  direction: rtl;
+  font-size: 12px;
+  color: #222222;
+
+  &--box {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: right;
-    &:hover,
-    &.open {
-        color: #255d4c;
-    }
+    margin-bottom: 7px;
+  }
 
-    &.open {
-    }
-}
-
-.accordion-content {
-}
-.FaqContainer__heading {
-    border-bottom: 0.5px solid rgba($color: #777777, $alpha: 0.4);
-    margin-bottom: 30px;
-}
-
-.accordion-content {
-}
-.accordin--children {
-    padding: 0 15px;
-    direction: rtl;
-    font-size: 12px;
-    color: #222222;
-    &--box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 7px;
-    }
-    &--title {
-        display: flex;
-        align-items: center;
-        img {
-            width: 25px;
-            margin-left: 7px;
-        }
-    }
-}
-.test-case {
-    color: #255d4c;
-    font-weight: 500;
-}
-.ExampleTextContainer-defaulbody {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-.ExampleTextContainer-btn {
-    align-self: flex-start;
+  &--title {
     display: flex;
     align-items: center;
 
     img {
-        width: 15px;
-        margin-right: 10px;
+      width: 25px;
+      margin-left: 7px;
     }
+  }
 }
+
+.test-case {
+  color: #255d4c;
+  font-weight: 500;
+}
+
+.ExampleTextContainer-defaulbody {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.ExampleTextContainer-btn {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 15px;
+    margin-right: 10px;
+  }
+}
+
 .CodeeditorWithRun__codeeditor1-btndone {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+
+.quizNumber__part {
+  flex-direction: row-reverse;
+
+  & > *:first-child {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  & > *:last-child {
+    margin-right: 0.8rem;
+    font-size: 2rem;
+  }
+
+  .faildquiz {
+    color: #f50909;
+  }
+
+  .passquiz {
+    color: #f3722c;
+  }
+
+  .goodquiz {
+    color: #0dca78;
+  }
 }
