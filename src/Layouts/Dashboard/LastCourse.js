@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import BreadCrump from '@Components/Shared/BreadCrump/BreadCrump';
 import {Tabs} from 'antd';
 import VideoPlayer from '@Components/Shared/VideoPlayer/VideoPlayer';
@@ -17,29 +17,114 @@ import classNames from "classnames";
 const {TabPane} = Tabs;
 
 function LastCourse() {
+    //TODO: should use Reducer instead of state
+    const [isNext, setIsNext] = useState(false)
     const [courseSeasons, setCourseSeasons] = useState([]);
     const [contentUuid, setContentUuid] = useState(null)
     const [quizUuid, setQuizUuid] = useState(null)
+    const [makeSetDataTrigger, setMakeSetDataTrigger] = useState(false)
+    const [makeSetCurrentSituationDataTrigger, setMakeSetCurrentSituationDataTrigger] = useState(false)
+    // const [callbackPassContent, setCallBackPassContent] = useState(null)
+    const [currentContentState, setCurrentContentState] = useState(null)
+    // const [errorPostData, setErrorPostData] = useState('')
+
+    useEffect(() => {
+        setMakeSetDataTrigger(true)
+    }, []);
+
+    const setCurrentSituationData = (data) => {
+        console.log('setCurrentSituationData ~ data: ', data)
+        setCurrentContentState(data)
+        if (makeSetCurrentSituationDataTrigger) {
+            if (isNext) {
+                setContentUuid(data.next_content_id)
+                setQuizUuid(data.next_quiz_id)
+            } else {
+                setContentUuid(data.prev_content_id)
+                setQuizUuid(data.prev_quiz_id)
+            }
+        }
+    }
+
+    const getCurrentContentState = useFetch({
+        url: `ContentService/${contentUuid}/currentContentState`,
+        method: 'GET',
+        noHeader: false,
+        setter: setCurrentSituationData,
+    });
 
     const setData = (data) => {
-        console.log('data: ', data)
+        console.log('setData ~ data: ', data)
         setCourseSeasons(data)
-        setContentUuid(data.init_data.first_content_uuid)
-        setQuizUuid(data.init_data.first_quiz_uuid)
+        if (makeSetDataTrigger) {
+            setContentUuid(data.init_data.first_content_uuid)
+            setQuizUuid(data.init_data.first_quiz_uuid)
+            setMakeSetDataTrigger(false)
+        }
     }
 
     const getCourseSeasons = useFetch({
         url: `CourseService/q6SJ61Ta/sidebar`,
         method: 'GET',
         noHeader: false,
+        caller: getCurrentContentState,
         setter: setData,
     });
 
     const setUuids = (cUUID, qUUID) => {
         setContentUuid(cUUID)
         setQuizUuid(qUUID)
+        getCurrentContentState.reFetch()
     }
-    console.log('contentUuid LastCourse: ', contentUuid)
+
+    const postPassContent = useFetch({
+        url: `PassService/${contentUuid}`,
+        method: 'POST',
+        noHeader: false,
+        // errMessage:setErrorPostData,
+        caller: getCourseSeasons,
+        // setter: setCallBackPassContent
+    });
+
+    const handleNextContent = () => {
+        if (currentContentState.next_content_passed) {
+            setContentUuid(currentContentState.next_content_id)
+            setQuizUuid(currentContentState.next_quiz_id)
+            getCurrentContentState.reFetch()
+        } else {
+            postPassContent.reFetch()
+            setIsNext(true)
+            setMakeSetCurrentSituationDataTrigger(true)
+        }
+
+        // console.log('callbackPassContent next: ',callbackPassContent)
+        // console.log('handleNextContent.response: ', postPassContent?.response?.data)
+        // if (postPassContent?.response?.data) {
+        //     setContentUuid(postPassContent.response.data.next_content_id)
+        //     setQuizUuid(postPassContent.response.data.next_quiz_id)
+        // }
+    }
+
+    const handlePrevContent = () => {
+        if (currentContentState.prev_content_passed) {
+            setContentUuid(currentContentState.prev_content_id)
+            setQuizUuid(currentContentState.prev_quiz_id)
+            getCurrentContentState.reFetch()
+        } else {
+            postPassContent.reFetch()
+            setIsNext(false)
+            setMakeSetCurrentSituationDataTrigger(true)
+        }
+
+        // console.log('callbackPassContent prev: ',callbackPassContent)
+        // console.log('handlePrevContent.response: ', postPassContent?.response?.data)
+        // if (postPassContent?.response?.data) {
+        //     console.log('prev_content_id: ', postPassContent.response.data.prev_content_id)
+        //     console.log('prev_quiz_id: ', postPassContent.response.data.prev_quiz_id)
+        //     setContentUuid(postPassContent.response.data.prev_content_id)
+        //     setQuizUuid(postPassContent.response.data.prev_quiz_id)
+        // }
+    }
 
     const getHeader = (index, title, done, time, lock) => (
         done ? (
@@ -109,9 +194,12 @@ function LastCourse() {
     //     getCourseSeasons.reFetch()
     // };
 
+    console.log('contentUuid!: ', contentUuid)
+    console.log('quizUuid!: ', quizUuid)
+
     return (
         <>
-            {getCourseSeasons?.response?.data?.seasons ? (
+            {getCourseSeasons?.response?.data?.seasons && getCurrentContentState?.response?.data ? (
                 <div className='LastCourse'>
                     <BreadCrump pathsname='/dash/course' name={courseSeasons.title}/>
                     <div className='grid LastCourse__container relative'>
@@ -126,7 +214,7 @@ function LastCourse() {
                                     <TrainExample contentUuid={contentUuid}/>
                                 </TabPane>
                                 <TabPane tab='آزمون' key={`${contentUuid}_3`}>
-                                    <Quiz quizUuid={quizUuid}/>
+                                    <Quiz quizUuid={quizUuid} contentUuid={contentUuid}/>
                                 </TabPane>
                             </Tabs>
                             <div className='flex items-center justify-between LastCourse__btnBox'>
@@ -134,6 +222,8 @@ function LastCourse() {
                                     ico={false}
                                     type='primary'
                                     classes='CoWorkers__btn flex items-center '
+                                    {...(currentContentState.has_next_content && {onClick: handleNextContent})}
+                                    disabled={!currentContentState.has_next_content}
                                 >
                                     مبحث بعدی
                                     <i className='fas fa-chevron-right'></i>
@@ -142,6 +232,8 @@ function LastCourse() {
                                     ico={false}
                                     type='primary'
                                     classes='CoWorkers__btn flex items-center '
+                                    {...(currentContentState.has_prev_content && {onClick: handlePrevContent})}
+                                    disabled={!currentContentState.has_prev_content}
                                 >
                                     <i className='fas fa-chevron-left'></i>
                                     مبحث قبلی{' '}
@@ -167,7 +259,7 @@ function LastCourse() {
                                                 {season.contents ? (
                                                     season.contents.map((content, index) => (
                                                         <div className='flex justify-between items-center'
-                                                             onClick={() => setUuids(content.id, content.quiz_id)}
+                                                             {...(!content.lockedOn && {onClick: () => setUuids(content.id, content.quiz_id)})}
                                                              key={index}>
                                                             <div className='flex items-center Sarfasl__Accordiontxtbox'>
                                                                 {content.is_content_passed ? (

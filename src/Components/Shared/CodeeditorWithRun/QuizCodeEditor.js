@@ -11,13 +11,15 @@ function QuizCodeEditor(props) {
             {windowSize === "sm" || windowSize === "md-2" ? (
                 <QuizResponsiveCodeeditor
                     name={props.name}
-                    id={props.id}
+                    quizId={props.quizId}
+                    contentId={props.contentId}
                     lan={props.lan}
                     value={props.value}/>
             ) : (
                 <QuizCodeeditorWithRun
                     name={props.name}
-                    id={props.id}
+                    quizId={props.quizId}
+                    contentId={props.contentId}
                     lan={props.lan}
                     value={props.value}/>
             )}

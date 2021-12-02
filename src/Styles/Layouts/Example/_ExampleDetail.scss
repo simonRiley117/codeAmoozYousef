@@ -43,6 +43,9 @@
     }
     &__downloadBox {
         margin-top: 3.918rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         img {
             width: 3.764rem;
             height: auto;
