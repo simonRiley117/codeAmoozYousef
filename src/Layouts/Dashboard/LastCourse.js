@@ -41,6 +41,27 @@ function LastCourse() {
     }
     console.log('contentUuid LastCourse: ', contentUuid)
 
+
+    // const setDataAfterPassContent = () => {
+    //     getCourseSeasons.reFetch()
+    // }
+
+    // const postPassContent = useFetch({
+    //     url: `PassService/${contentUuid}`,
+    //     method: 'POST',
+    //     noHeader: false,
+    //     // caller:getCourseSeasons.reFetch(),
+    //     setter: setDataAfterPassContent,
+    // });
+
+    // const handlePassContent = () => {
+    //     const {response, loading, error, reFetch} = postPassContent.reFetch()
+    //     console.log('reFetch response: ',response)
+    //     console.log('reFetch loading: ',loading)
+    //     console.log('reFetch error: ',error)
+    //     console.log('reFetch reFetch: ',reFetch)
+    // }
+
     const getHeader = (index, title, done, time, lock) => (
         done ? (
             <div className='Sarfasl__AccordionCenter'>
@@ -126,7 +147,7 @@ function LastCourse() {
                                     <TrainExample contentUuid={contentUuid}/>
                                 </TabPane>
                                 <TabPane tab='آزمون' key={`${contentUuid}_3`}>
-                                    <Quiz quizUuid={quizUuid}/>
+                                    <Quiz quizUuid={quizUuid} contentUuid={contentUuid}/>
                                 </TabPane>
                             </Tabs>
                             <div className='flex items-center justify-between LastCourse__btnBox'>
@@ -134,6 +155,7 @@ function LastCourse() {
                                     ico={false}
                                     type='primary'
                                     classes='CoWorkers__btn flex items-center '
+                                    // onClick={handlePassContent}
                                 >
                                     مبحث بعدی
                                     <i className='fas fa-chevron-right'></i>
@@ -142,6 +164,7 @@ function LastCourse() {
                                     ico={false}
                                     type='primary'
                                     classes='CoWorkers__btn flex items-center '
+                                    // onClick={handlePassContent}
                                 >
                                     <i className='fas fa-chevron-left'></i>
                                     مبحث قبلی{' '}

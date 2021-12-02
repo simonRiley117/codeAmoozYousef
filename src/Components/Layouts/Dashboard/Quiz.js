@@ -4,7 +4,7 @@ import Button from "@Components/Shared/Buttons/Button";
 import {Link} from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
 
-function Quiz({quizUuid}) {
+function Quiz({quizUuid, contentUuid}) {
     const [quizContent, setQuizContent] = useState(null);
     const [quizLoading, setQuizLoading] = useState(true);
 
@@ -46,7 +46,8 @@ function Quiz({quizUuid}) {
                                 to={{
                                     pathname: "/dash/quiz",
                                     state: {
-                                        id: quizContent.uuid,
+                                        content_id:contentUuid,
+                                        quiz_id: quizUuid,
                                         title: quizContent.name,
                                         text: quizContent.text,
                                         test_cases: quizContent.test_cases,

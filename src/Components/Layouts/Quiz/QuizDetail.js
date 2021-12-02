@@ -3,7 +3,7 @@ import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
 import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 
-function QuizDetail({id, title, text, test_cases, language, file}) {
+function QuizDetail({quizId, contentId, title, text, test_cases, language, file}) {
     console.log('language: ', language)
     console.log('typeof language: ', typeof language)
     return (
@@ -37,7 +37,8 @@ function QuizDetail({id, title, text, test_cases, language, file}) {
             </div>
             <QuizCodeEditor
                 name={title}
-                id={id}
+                quizId={quizId}
+                contentId={contentId}
                 lan={language === `c` ? `c_cpp` : language}
                 value=''
             />

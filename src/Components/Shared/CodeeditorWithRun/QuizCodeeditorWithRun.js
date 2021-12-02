@@ -31,6 +31,7 @@ function QuizCodeeditorWithRun(props) {
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
     const [load, setLoad] = useState(false);
     const [btn, setBtn] = useState(1);
+    const [numberComplit, setNumberComplit] = useState(0);
     const {token} = useAuth();
     const QuizPlayGround = useAxios({
         url: `${API_URL}/CompilerService/v2/quiz/playground/`,
@@ -79,6 +80,14 @@ function QuizCodeeditorWithRun(props) {
                     ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
                     : setErrs(res.data.compiler_stderr);
                 setLoad(false);
+
+                if (res.data.compile_result === 100) {
+                    setNumberComplit(res.data.compile_result);
+                    postPassContent.reFetch();
+                } else {
+                    setNumber(res.data.compile_result);
+                    setLoad(false);
+                }
             }
             if (err) {
                 console.log(err.response);
@@ -86,10 +95,31 @@ function QuizCodeeditorWithRun(props) {
             }
         },
     });
+    const postPassContent = useAxios({
+        url: `${API_URL}/PassService/${props.contentId}`,
+        method: "POST",
+        options: {
+            headers: {
+                Authorization: `JWT ${token}`,
+            },
+        },
+        customHandler: (err, res) => {
+            if (res) {
+                console.log("postPassContent", res.data);
+                setNumber(numberComplit);
+                setLoad(false);
+            }
+            if (err) {
+                console.log(err.response);
+                setNumber(numberComplit);
+                setLoad(false);
+            }
+        },
+    });
     const handleSend = () => {
         setData({
             submissions: {
-                question_id: props.id,
+                question_id: props.quizId,
                 input: test,
                 source: value,
             },
@@ -100,7 +130,7 @@ function QuizCodeeditorWithRun(props) {
     const handleInputSend = () => {
         setData({
             submissions: {
-                question_id: props.id,
+                question_id: props.quizId,
                 source: value,
                 // input: test,
             },
