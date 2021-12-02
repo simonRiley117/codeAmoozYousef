@@ -8,45 +8,104 @@ import AceEditor from "react-ace";
 // import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
+import {useAuth} from "../../../Context/authContext";
+import useAxios from "@use-hooks/axios";
+import {API_URL} from "../../../constants";
 
-function ResponsiveCodeeditor(props) {
+function ExampleResponsiveCodeeditor(props) {
   languages.map(
     (lang) =>
       lang === props.lan &&
       require(`ace-builds/src-noconflict/mode-${lang}`) &&
       require(`ace-builds/src-noconflict/snippets/${lang}`)
   );
-  const [loading, setLoading] = useState(true);
   const [value, setValue] = useState(props.value);
   const [test, setTest] = useState("");
   const [number, setNumber] = useState(0);
   const [res, setRes] = useState("");
   const [errs, setErrs] = useState("");
-  const [info, setInfo] = useState();
-  const [info1, setInfo1] = useState("");
+  // const [info, setInfo] = useState();
+  // const [info1, setInfo1] = useState("");
   const [data, setData] = useState("");
   const [isCopied, handleCopy] = UseCopyToClipboard(3000);
   const [load, setLoad] = useState(false);
   const [btn, setBtn] = useState(1);
+  const {token} = useAuth();
+    const ExamplePlayGround = useAxios({
+        url: `${API_URL}/CompilerService/v2/example/playground/`,
+        method: "POST",
+        options: {
+            data: data,
+            headers: {
+                Authorization: `JWT ${token}`,
+            },
+        },
+        customHandler: (err, res) => {
+            if (res) {
+                console.log("ExamplePlayGround", res.data);
+                // setInfo(res.data);
+                res.data.compiler_stdout ? setBtn(1) : setBtn(2);
+                setRes(res.data.compiler_stdout);
+                res.data.compiler_stderr
+                    ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
+                    : setErrs(res.data.compiler_stderr);
+                setLoad(false);
+            }
+            if (err) {
+                console.log(err.response);
+                setLoad(false);
+            }
+        },
+    });
+    const ExampleSendToServer = useAxios({
+        url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
+        method: "POST",
+        options: {
+            data: data,
+            headers: {
+                Authorization: `JWT ${token}`,
+            },
+        },
+        customHandler: (err, res) => {
+            if (res) {
+                console.log("ExampleSendToServer", res.data);
+                // setInfo1(res.data);
+                setNumber(res.data.compile_result);
+                res.data.compiler_stderr ? setBtn(1) : setBtn(2);
+                setRes(res.data.compiler_stdout);
+
+                res.data.compiler_stderr
+                    ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
+                    : setErrs(res.data.compiler_stderr);
+                setLoad(false);
+            }
+            if (err) {
+                console.log(err.response);
+                setLoad(false);
+            }
+        },
+    });
   const handleSend = () => {
     setData({
       submissions: {
-        CodeeditorWithRun_id: props.exmpid,
+        example_id: props.id,
         input: test,
         source: value,
       },
     });
     setLoad(true);
+    ExamplePlayGround.reFetch()
   };
   const handleInputSend = () => {
     setData({
       submissions: {
-        CodeeditorWithRun_id: props.exmpid,
+        example_id: props.id,
         source: value,
-        input: test,
+        // input: test,
       },
     });
     setLoad(true);
+    ExampleSendToServer.reFetch()
   };
   function onChange(newValue) {
     setValue(newValue);
@@ -221,4 +280,4 @@ function ResponsiveCodeeditor(props) {
   );
 }
 
-export default ResponsiveCodeeditor;
+export default ExampleResponsiveCodeeditor;

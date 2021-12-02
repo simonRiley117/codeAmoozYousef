@@ -1,9 +1,11 @@
 import React from "react";
 import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
-import CodeeditorWithRun from "@Components/Shared/CodeeditorWithRun";
+import ExampleCodeEditor from "../../Shared/CodeeditorWithRun/ExampleCodeEditor";
+
 
 function ExampleDetail({example}) {
+    console.log('example: ',example)
     return (
         <div className="ExampleDetail">
             <div className="ExampleDetail__txtBox">
@@ -34,7 +36,11 @@ function ExampleDetail({example}) {
                     <p className="cursor-pointer">{example.file}</p>
                 </div>
             </div>
-            <CodeeditorWithRun lan={example.language === 'c' ? 'c_cpp' : example.language} value={example.code}/>
+            <ExampleCodeEditor
+                name={example.name}
+                id={example.uuid}
+                lan={example.language === 'c' ? 'c_cpp' : example.language}
+                value={example.code}/>
         </div>
     );
 }
