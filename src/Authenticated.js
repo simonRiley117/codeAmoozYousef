@@ -26,7 +26,7 @@ import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
 import Employer from "@Layouts/CoWorkers/Employer/Employer";
-import SabadKala from "./Layouts/Sabadkala/SabadKala";
+import ShoppingCard from "./Layouts/ShoppingCard/ShoppingCard";
 import Profile from "./Layouts/Profile/Profile";
 import Resume from "./Layouts/resume/Resume";
 import Rules from "./Layouts/Rules/Rules";
@@ -66,7 +66,7 @@ const Authenticated = () => {
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
-            <Route exact path="/sabad-kala" component={SabadKala} />
+            <Route exact path="/shopping-card" component={ShoppingCard} />
 
             <Route
               exact
