@@ -39,11 +39,7 @@
     padding-top: 15px;
     margin-top: 10px;
     width: 100%;
-    &-level {
-      padding: 5px 8px;
-      border-radius: 5px;
-      background-color: #46bea7;
-    }
+
   }
   // max-width: 120rem;
   @include respond(tablet) {
@@ -117,6 +113,12 @@
     }
     &-star {
       color: $color-primary;
+    }
+    &-level {
+      padding: 5px 8px;
+      border-radius: 5px;
+      background-color: #46bea7;
+      text-align: center;
     }
   }
 
