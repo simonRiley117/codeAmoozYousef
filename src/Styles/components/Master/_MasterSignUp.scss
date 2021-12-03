@@ -8,7 +8,10 @@
     }
     &__gridBox {
         column-gap: 15rem;
-        row-gap: 5rem;
+        & > * {
+            margin-bottom: 3rem;
+        }
+        justify-content: flex-start;
         @include respond(tablet) {
             display: flex;
             flex-direction: column;
@@ -18,7 +21,8 @@
         }
     }
     &__textarea {
-        margin-top: 4.6rem;
+        margin-top: 2rem;
+        text-align: right;
         @include respond(tablet) {
             text-align: right;
         }

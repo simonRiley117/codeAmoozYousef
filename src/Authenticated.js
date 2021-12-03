@@ -22,6 +22,7 @@ import { UserDataProvider } from "./Context/userContext";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
 import LastCourse from "./Layouts/Dashboard/LastCourse";
+import NewCourse from "./Layouts/Dashboard/NewCourse";
 import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
@@ -30,6 +31,7 @@ import SabadKala from "./Layouts/Sabadkala/SabadKala";
 import Profile from "./Layouts/Profile/Profile";
 import Resume from "./Layouts/resume/Resume";
 import Rules from "./Layouts/Rules/Rules";
+import Dashboard from "./Layouts/Dashboard/Dashboard";
 
 const Authenticated = () => {
   const history = useHistory();
@@ -80,9 +82,11 @@ const Authenticated = () => {
             <Route exact path="/resume" component={Resume} />
             <Route exact path="/example" component={Example} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/dash" component={Dashboard} />
             <Route exact path="/dash/course" component={LastCourse} />
             <Route exact path="/dash/example" component={Example} />
             <Route exact path="/dash/quiz" component={Quiz} />
+            <Route exact path="/dash/newcourse" component={NewCourse} />
 
             {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
           </Layout>
