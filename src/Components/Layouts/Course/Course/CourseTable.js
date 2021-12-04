@@ -53,7 +53,7 @@ function CourseTable({courseId}) {
       data: addtocardData,
     });
     const addToCard = () => {
-      setaddtocardData({ course_uuid: courseId, degree_uuid: degree.uuid });
+      setaddtocardData({ course_uuid: courseId, degree_uuid: degree.degree_uuid });
       getLatestCourseList.reFetch()
     };
     return (
