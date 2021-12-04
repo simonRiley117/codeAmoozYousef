@@ -54,7 +54,7 @@ const Coursecardsm = ({ card }) => {
               <Star />
               <p className="card-sm-content-time">
                 {card.mean_of_participant_points.grade}
-                <span>(500)</span>
+                <span>({card.nums_of_voter})</span>
                 نفر
               </p>
             </div>

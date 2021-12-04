@@ -30,12 +30,12 @@ const CourseCardBg = ({ card }) => {
   };
   return (
     <article className="card-bg">
-      <div className="card-bg-discount">
+      {/* <div className="card-bg-discount">
         <span>40%</span>
         <span>تخفیف</span>
-      </div>
+      </div> */}
       <div className="card-bg-pic">
-        <img src={courseLogo} alt="python" className="card-bg-pic-logo" />
+        <img src={card.cover} alt="python" className="card-bg-pic-logo" />
       </div>
       <div className="card-bg-info">
         <div className="card-bg-content ">
@@ -55,13 +55,11 @@ const CourseCardBg = ({ card }) => {
                 },
               }}
             >
-              دوره جاوا
+              {card.title}
             </Link>
           </h5>
-          <p className="mt-6">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
+          <p className="mt-6 card-bg-des">
+          {card.intro}
           </p>
 
           <div className='d-flex-space '>
@@ -70,8 +68,8 @@ const CourseCardBg = ({ card }) => {
               <div className="d-flex-align card-bg-info-row-star">
                 <Star />
                 <p className="card-bg-time">
-                  {card.mean_of_participant_points.grade}
-                  <span>(500)</span>
+                  {card.mean_of_participant_points.grade ? card.mean_of_participant_points.grade : "0" }
+                  <span>({card.nums_of_voter})</span>
                   نفر
                 </p>
               </div>

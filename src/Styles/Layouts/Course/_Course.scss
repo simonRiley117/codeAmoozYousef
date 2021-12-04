@@ -34,3 +34,16 @@
 .ant-tabs-tab{
     height: 30px !important;
 }
+.courses{
+    &__grid{
+        @include respond(sm-laptop) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        @include respond(tablet) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @include respond(big-phone) {
+            grid-template-columns: 1fr ;
+        }
+    }
+}

@@ -93,15 +93,28 @@
       display: flex;
       align-items: center;
       margin-top: 2rem;
+      @include respond(big-phone) {
+        flex-direction: column;
+      }
     }
 
     &__column {
+      @include respond(big-phone) {
+        width: 100%;
+      }
       &:nth-child(2) {
         flex-basis: 45%;
         margin-right: 3rem;
+        @include respond(big-phone) {
+          margin-right: 0;
+
+        }
       }
       &:nth-child(1) {
         flex-basis: 55%;
+        @include respond(big-phone) {
+          margin-bottom: 10px;
+        }
       }
 
       .filters-title {

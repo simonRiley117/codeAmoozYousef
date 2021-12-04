@@ -79,7 +79,7 @@ const Courses = () => {
         </Swiper> */}
         <FilterCourses cateid={cateid} chooseCat={chooseCat} />
 
-        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+        <div className=" courses__grid grid grid-cols-4 gap-x-6 gap-y-8">
           {allcourse?.results.map((card) => {
             return <Coursecardsm key={card.uuid}  card={card} />;
           })}
