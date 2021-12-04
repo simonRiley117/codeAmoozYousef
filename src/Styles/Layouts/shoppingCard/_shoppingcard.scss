@@ -4,6 +4,9 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 26px;
+    @include respond(tablet){
+      grid-template-columns: 2r 1fr;
+    }
   }
   &__DegreeBox{
     .ant-radio-group{
