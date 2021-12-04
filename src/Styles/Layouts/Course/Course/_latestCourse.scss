@@ -1,0 +1,33 @@
+.latestCourse {
+  margin-top: 20px;
+  .card-bg {
+    margin: 50px 0;
+  }
+  &__center {
+    overflow: hidden;
+
+    .slick-list {
+      overflow: unset;
+      width: 54%;
+      margin: 0 auto;
+    }
+    .slick-slide {
+      direction: rtl;
+      .card-bg {
+        transform: scale(0.9);
+        backdrop-filter: blur(6px);
+        // background-color: rgba($color: #eaeaea, $alpha: 0.5)
+      }
+    }
+    .slick-slide.slick-active.slick-center.slick-current {
+      .card-bg {
+        transform: scale(1.15);
+        position: relative;
+        z-index: 1000;
+        backdrop-filter: none;
+
+        box-shadow: 0px 0px 11px 6px rgb(0, 0, 0, 12%);
+      }
+    }
+  }
+}

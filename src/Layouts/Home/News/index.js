@@ -70,11 +70,45 @@ const News = () => {
 							slideToClickedSlide
 							coverflowEffect={{
 								rotate: 0,
-								stretch: 40,
-								depth: 400,
-								modifier: 3,
+								
 								slideShadows: false,
 								scale: 1,
+							}}
+							breakpoints={{
+								350: {
+									coverflowEffect: {
+										depth: 100,
+										modifier: 1,
+										stretch: 0,
+									},
+								},
+								480: {
+									coverflowEffect: {
+										depth: 200,
+										stretch: 10,
+									},
+								},
+
+								650: {
+									coverflowEffect: {
+										depth: 300,
+										modifier: 2,
+									},
+								},
+								900: {
+									coverflowEffect: {
+										stretch: 2,
+										depth: 350,
+										modifier: 3,
+									},
+								},
+								1500: {
+									coverflowEffect: {
+										depth: 400,
+										stretch: 10,
+										modifier: 3,
+									},
+								},
 							}}
 							pagination={{
 								clickable: true,

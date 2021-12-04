@@ -22,6 +22,7 @@ function CourseTable({courseId}) {
     const [orderCourse, setOrderCourse] = useState({})
     const [degree, setDegree] = useState(null);
     const {token, authDispatch} = useAuth();
+    const [addtocardData, setaddtocardData] = useState();
 
     const setCostForSelectedDegree = (e) => {
         const selectedDegree = costs.filter(item => item.uuid === e.target.value)
@@ -44,7 +45,17 @@ function CourseTable({courseId}) {
         costs,
         has_user_course
     } = orderCourse
-
+    //ریکویست اضافه کردن به سبد کالا ارور 404 میخوره
+    const getLatestCourseList = useFetch({
+      url: `CartService/addToCart`,
+      method: "POST",
+      trigger: false,
+      data: addtocardData,
+    });
+    const addToCard = () => {
+      setaddtocardData({ course_uuid: courseId, degree_uuid: degree.degree_uuid });
+      getLatestCourseList.reFetch()
+    };
     return (
         <>
             {getCourseOrder.response?.data ? (
@@ -100,7 +111,7 @@ function CourseTable({courseId}) {
                                             </Radio.Group>
                                         </div>
                                         {degree !== null
-                                            ? <Button type='primary' classes='CourseTable__btn'>
+                                            ? <Button onClick={()=>addToCard()} type='primary' classes='CourseTable__btn'>
                                                 افزودن به سبد خرید
                                             </Button>
                                             : <Button type='primary' classes='CourseTable__btn' disabled={true}>
@@ -108,7 +119,7 @@ function CourseTable({courseId}) {
                                             </Button>
                                         }
                                     </>
-                                    : <Button type='primary' classes='CourseTable__btn' disabled={true}>
+                                    : <Button  type='primary' classes='CourseTable__btn' disabled={true}>
                                         <span style={{color: '#222'}}>دوره رو قبلا خریدی</span>
                                     </Button>}
                                 <div className='flex items-center justify-center CourseTable__ShareBox '>

@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { A11y, Autoplay } from "swiper";
-import CourseCardBg from "@Components/Layouts/Course/Cards/CourseCardBg";
 import Searchxx from "./Searchxx";
+import LatestCourse from "./LatestCourse"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import useFetch from "@App/Context/useFetch";
@@ -33,7 +33,6 @@ const Courses = () => {
   // pagination config
   const PageSize = 11;
   const [currentPage, setCurrentPage] = useState(1);
-  const [latestCourse, setLatestCourse] = useState([]);
   const [favcourses, setfavcourses] = useState(null);
   const [cateid, setcateid] = useState(null);
   const chooseCat = (id)=>{
@@ -46,12 +45,7 @@ const Courses = () => {
     const lastPageIndex = firstPageIndex + PageSize;
     return cards.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
-  const getLatestCourseList = useFetch({
-    url: `CourseService/latestCourse`,
-    method: "GET",
-    noHeader: true,
-    setter: setLatestCourse,
-  });
+  
   const getFavCourseList = useFetch({
     url: `CourseService/mostFavoriteCourse`,
     method: "GET",
@@ -69,15 +63,7 @@ const Courses = () => {
   return (
     <div className="container">
       <div className="courses">
-        <Swiper className='courses__latest'  navigation={true} module={[A11y, Autoplay]} spaceBetween={10} slidesPerView={1}>
-          {latestCourse.map((card, index) => {
-            return (
-              <SwiperSlide key={card.uuid}>
-                <CourseCardBg card={card} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+         <LatestCourse />
 
         <Searchxx />
 

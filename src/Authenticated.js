@@ -7,7 +7,9 @@ import {
   Switch,
   useHistory,
 } from "react-router-dom";
+import { UserDataProvider } from "./Context/userContext";
 import Layout from "@Components/Shared/Layout/Layout";
+
 import News from "@Layouts/News";
 import CoWorkersRouter from "./Router/CoWorkersRouter";
 import NewsDetails from "./Layouts/News/NewsDetails";
@@ -18,7 +20,6 @@ import Course from "./Layouts/Course";
 import AboutUs from "./Layouts/About us";
 import Example from "./Layouts/Example";
 import Quiz from "./Layouts/Quiz";
-import { UserDataProvider } from "./Context/userContext";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
 import LastCourse from "./Layouts/Dashboard/LastCourse";
@@ -26,11 +27,13 @@ import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
 import Employer from "@Layouts/CoWorkers/Employer/Employer";
-import SabadKala from "./Layouts/Sabadkala/SabadKala";
+import ShoppingCard from "./Layouts/ShoppingCard/ShoppingCard";
 import Profile from "./Layouts/Profile/Profile";
 import Resume from "./Layouts/resume/Resume";
 import Rules from "./Layouts/Rules/Rules";
 import CourseTopic from "./Layouts/Course topic/CourseTopic";
+import Search from "./Layouts/Search/Search";
+import Dashboard from "./Layouts/Dashboard/Dashboard";
 
 const Authenticated = () => {
   const history = useHistory();
@@ -67,7 +70,8 @@ const Authenticated = () => {
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/about-me" component={AboutUs} />
             <Route exact path="/courses" component={Courses} />
-            <Route exact path="/sabad-kala" component={SabadKala} />
+            <Route exact path="/shopping-card" component={ShoppingCard} />
+            <Route exact path="/search/:name" component={Search} />
 
             <Route
               exact
@@ -82,6 +86,7 @@ const Authenticated = () => {
             <Route exact path="/resume" component={Resume} />
             <Route exact path="/example" component={Example} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/dash" component={Dashboard} />
             <Route exact path="/dash/course" component={LastCourse} />
             <Route exact path="/dash/example" component={Example} />
             <Route exact path="/dash/quiz" component={Quiz} />

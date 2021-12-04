@@ -43,13 +43,10 @@
     padding: 0;
   }
 
-  &__action {
-  }
-
   &__arrow {
     margin-left: 5px;
     transition: all 300ms;
-
+    // @include display-flex(center);
     &.active {
       transform: rotate(180deg);
     }
@@ -74,57 +71,6 @@
       }
     }
   }
-  // margin: 20px 0;
-  // position: relative;
-  // .half__circle {
-  // 	width: 25px;
-  // 	height: 25px;
-  // 	background: #46bea7;
-  // 	transform: rotate(-90deg);
-  // 	border-radius: 50%;
-  // 	right: -12px !important;
-  // }
-  // .ant-collapse {
-  // 	border-color: $color-dark-gray;
-  // 	overflow: hidden;
-  // 	background-color: #ffffff;
-  // 	position: relative;
-  // }
-  // .ant-collapse-content {
-  // 	border-color: #ffffff;
-  // }
-  // .ant-collapse-icon-position-right
-  // 	> .ant-collapse-item
-  // 	> .ant-collapse-header {
-  // 	padding-right: 20px;
-  // }
-  // .ant-collapse > .ant-collapse-item {
-  // 	border-color: $color-dark-gray;
-  // }
-  // .ant-collapse-content > .ant-collapse-content-box {
-  // 	padding: 16px 0;
-  // }
-  // .ant-collapse-rtl.ant-collapse
-  // 	> .ant-collapse-item
-  // 	> .ant-collapse-header
-  // 	.ant-collapse-extra {
-  // 	top: 7px;
-  // 	position: relative;
-  // 	.arrow__color {
-  // 		color: $color-blue;
-  // 	}
-  // }
-  // .ant-collapse-item.ant-collapse-item-active {
-  // 	box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
-  // }
+  &__faq {
+  }
 }
-// .ant-collapse-item.ant-collapse-item-active {
-// 	.arrow__color {
-// 		transform: rotate(180deg);
-// 	}
-// }
-// .accordion-delete {
-// 	position: absolute;
-// 	left: 42px;
-// 	top: 4px;
-// }

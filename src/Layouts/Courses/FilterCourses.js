@@ -1,26 +1,25 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import useFetch from "@App/Context/useFetch";
 
-const FilterCourses = ({cateid,chooseCat}) => {
-    const [categories, setCategories] = useState([]);
+const FilterCourses = ({ cateid, chooseCat }) => {
+  const [categories, setCategories] = useState([]);
 
-        
-	const getCategories = useFetch({
-		url: `HelpsService/categories`,
-		// setter:setCategories,
-        noHeader: true,
+  const getCategories = useFetch({
+    url: `HelpsService/categories`,
+    // setter:setCategories,
+    noHeader: true,
 
-		argFunc: (res) => {
-			let category = [];
+    argFunc: (res) => {
+      let category = [];
 
-			res.results.map((item) => {
-				category.push({ label: item.name, value: item.id.toString() });
-			});
+      res.results.map((item) => {
+        category.push({ label: item.name, value: item.id.toString() });
+      });
 
-			setCategories(category);
-		},
-	});
- 
+      setCategories(category);
+    },
+  });
+
   return (
     <div className="courses-filters font-bold mb-12">
       <div className="courses-filters__box">
@@ -36,13 +35,19 @@ const FilterCourses = ({cateid,chooseCat}) => {
             <ul className="filters-items">
               {categories.map((i) => (
                 <li
-                key={i.value}
-                className={cateid=== i.label && "filters-items__active"}
-                onClick={()=>chooseCat(i.label)}
+                  key={i.value}
+                  className={cateid === i.value && "filters-items__active"}
+                  onClick={() => chooseCat(i.value)}
                 >
                   {i.label}
                 </li>
               ))}
+              <li
+                className={cateid === null && "filters-items__active"}
+                onClick={() => chooseCat(null)}
+              >
+                همه
+              </li>
               {/* <li className="filters-items__active">همه</li>
               <li>دسکتاپ</li>
               <li>تحت وب</li>

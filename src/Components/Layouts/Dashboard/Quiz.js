@@ -1,48 +1,69 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import quiz from "@Assets/Pic/quiz.png";
 import Button from "@Components/Shared/Buttons/Button";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import useFetch from "../../../Context/useFetch";
 
-function Quiz() {
-  const [haveQuiz, setHaveQuiz] = useState(true);
-  let id = "1";
-  return (
-    <div className="Quiz">
-      {!haveQuiz ? (
-        <div className="Quiz__empty">
-          <p>این مبحث آزمونی نداره! میتونی بری مبحث بعدی:) </p>
-          <img src={quiz} alt={quiz} />{" "}
-        </div>
-      ) : (
-        <div className="Quiz__box">
-          <p className="Quiz__title">آزمون جلسه اول</p>
-          <p className="Quiz__txt">
-            کتابهای زیادی در شصت نیاز، و متون بلکه روزنامه و مجله در ستون و
-            سطرآنچنان که افزارها است، چاپگرها و کاربردهای متنوع با هدف بهبود
-            ابزارهای کاربردی می باشد، و سه درصد گذشته حال و آینده، شناخت فراوان
-            جامعه و متخصصان را می طلبد،تا با نرم سطرآنچنان که افزارها است،
-            چاپگرها و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، و
-            سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-            طلبد،تا با نرم
-          </p>
+function Quiz({quizUuid, contentUuid}) {
+    const [quizContent, setQuizContent] = useState(null);
+    const [quizLoading, setQuizLoading] = useState(true);
 
-          <Button ico={false} type="primary" classes="CoWorkers__btn Quiz__btn">
-            <Link
-              to={{
-                pathname: "/dash/quiz",
-                state: {
-                  title: " phyton دوره برنامه نویسی",
-                  id: id,
-                },
-              }}
-            >
-              شروع
-            </Link>
-          </Button>
+    const setData = (data) => {
+        setQuizContent(data);
+        setQuizLoading(false);
+    }
+
+    const getQuizContent = useFetch({
+        url: `QuizService/${quizUuid}/get_user_quiz`,
+        method: "GET",
+        noHeader: false,
+        setter: setData
+    });
+
+    return (
+        <div className="Quiz">
+            {!quizUuid ? (
+                <div className="Quiz__empty">
+                    <p>این مبحث آزمونی نداره! میتونی بری مبحث بعدی:) </p>
+                    <img src={quiz} alt={quiz}/>{" "}
+                </div>
+            ) : (
+                !quizLoading ? (
+                    <div className="Quiz__box">
+                        <p className="Quiz__title">آزمون درس</p>
+                        <p className="Quiz__txt">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در
+                            شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                            شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی
+                            ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط
+                            سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته
+                            اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
+                        </p>
+                        <Button ico={false} type="primary" classes="CoWorkers__btn Quiz__btn">
+                            <Link
+                                to={{
+                                    pathname: "/dash/quiz",
+                                    state: {
+                                        content_id:contentUuid,
+                                        quiz_id: quizUuid,
+                                        title: quizContent.name,
+                                        text: quizContent.text,
+                                        test_cases: quizContent.test_cases,
+                                        language: quizContent.language,
+                                        file: quizContent.file,
+                                    },
+                                }}
+                            >
+                                شروع
+                            </Link>
+                        </Button>
+                    </div>
+                ) : null
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
 export default Quiz;

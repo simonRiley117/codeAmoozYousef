@@ -51,11 +51,11 @@ const Topic = ({courseId}) => {
 
     const renderSeasonInfo = (time, lock) => (
         <div className='Sarfasl__AccordionItem'>
+            {lock && <img src={Lock} alt={Lock}/>}
             <div className='Sarfasl__AccordionItem--time'>
                 <time>{time}</time>
                 <img src={Clock} alt={Clock}/>
             </div>
-            {lock && <img src={Lock} alt={Lock}/>}
         </div>
     );
 

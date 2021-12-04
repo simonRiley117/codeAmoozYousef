@@ -1,9 +1,11 @@
 import React from "react";
 import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
-import CodeeditorWithRun from "@Components/Shared/CodeeditorWithRun";
+import ExampleCodeEditor from "../../Shared/CodeeditorWithRun/ExampleCodeEditor";
+
 
 function ExampleDetail({example}) {
+    console.log('example: ', example)
     return (
         <div className="ExampleDetail">
             <div className="ExampleDetail__txtBox">
@@ -20,21 +22,25 @@ function ExampleDetail({example}) {
                             خروجی نمونه:
                         </p>
                     </div>
-                    {example.test_cases.map((item,index)=>(
-                        <div className="flex flex-col	ExampleDetail__sampledataBox mr-6">
-                        <p className="ExampleDetail__sampledata text-center	">{item.input}</p>
-                        <img src={arrowdown} alt={arrowdown}/>
-                        <p className="ExampleDetail__sampledata text-center	">{item.output}</p>
-                    </div>
+                    {example.test_cases.map((item, index) => (
+                        <div key={index} className="flex flex-col	ExampleDetail__sampledataBox mr-6">
+                            <p className="ExampleDetail__sampledata text-center	">{item.input}</p>
+                            <img src={arrowdown} alt={arrowdown}/>
+                            <p className="ExampleDetail__sampledata text-center	">{item.output}</p>
+                        </div>
                     ))}
 
                 </div>
                 <div className="flex items-center ExampleDetail__downloadBox">
                     <img src={pdf} alt={pdf}/>
-                    <p className="cursor-pointer">فایل مثال 1</p>
+                    <p className="cursor-pointer">{example.file}</p>
                 </div>
             </div>
-            <CodeeditorWithRun lan="python" value={example.code}/>
+            <ExampleCodeEditor
+                name={example.name}
+                id={example.uuid}
+                lan={example.language === 'c' ? 'c_cpp' : example.language}
+                value={example.code}/>
         </div>
     );
 }

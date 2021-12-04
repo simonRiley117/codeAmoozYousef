@@ -1,9 +1,9 @@
 import React from 'react'
-import SabadCoursecard from "./SabadCoursecard"
+import ShoppingCoursecard from "./ShoppingCoursecard"
 const CoursesBox = () => {
     return (
         <div className='primary-box CoursesBox'>
-            <SabadCoursecard />
+            <ShoppingCoursecard />
         </div>
     )
 }
