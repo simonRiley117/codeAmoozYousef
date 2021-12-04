@@ -12,11 +12,15 @@
 html {
 	box-sizing: border-box;
 	font-size: 62.5%;
-	@include respond(sm-laptop) {
+	@include respond(laptop) {
 		font-size: 50%;
 	}
 	// overflow: hidden;
 	direction: ltr;
+	scroll-behavior: smooth;
+	scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(300px);
+	scroll-snap-type: y mandatory;
 }
 
 body {
@@ -25,9 +29,8 @@ body {
 	// overflow: auto;
 }
 
-#root{
+#root {
 	direction: rtl;
-
 }
 
 body,
@@ -87,3 +90,6 @@ video {
 // 		width: 100% !important;
 // 	}
 // }
+.main {
+	
+}
