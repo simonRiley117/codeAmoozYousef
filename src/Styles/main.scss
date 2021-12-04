@@ -28,6 +28,7 @@
 @import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Favorites/favorites";
 @import "./Layouts/Rules/rules";
+@import "./components/CourseTopic/courseTopic";
 //--------------share---------------
 @import "./components/Discount/SideBarDiscount";
 @import "./components/Discount/HeaderDiscount";
@@ -60,6 +61,7 @@
 @import "./components/Coursebox/coursebox.scss";
 @import "./components/Progress/ProgressLine.scss";
 @import "./components/Modal/modal";
+@import "./components/Phase/Phase";
 
 //-------------master------------
 @import "./components/Master/WorkWithUs";

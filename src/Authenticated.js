@@ -30,6 +30,7 @@ import SabadKala from "./Layouts/Sabadkala/SabadKala";
 import Profile from "./Layouts/Profile/Profile";
 import Resume from "./Layouts/resume/Resume";
 import Rules from "./Layouts/Rules/Rules";
+import CourseTopic from "./Layouts/Course topic/CourseTopic";
 
 const Authenticated = () => {
   const history = useHistory();
@@ -76,6 +77,7 @@ const Authenticated = () => {
               )}
             />
             <Route exact path="/rules" component={Rules} />
+            <Route exact path="/topic" component={CourseTopic} />
             <Route exact path="/fav" component={Favorites} />
             <Route exact path="/resume" component={Resume} />
             <Route exact path="/example" component={Example} />

@@ -1,0 +1,71 @@
+.make__phase {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  &--box {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70px;
+
+    @include respond(big-phone) {
+      justify-content: flex-end;
+
+      height: 70px;
+    }
+    p {
+      white-space: nowrap;
+      color: #cbccce;
+      font-size: 13px;
+      @include respond(big-phone) {
+        white-space: normal;
+        text-align: center;
+      }
+      @include respond(phone) {
+        max-height: 41px;
+        margin-bottom: 9px;
+        font-size: 12px;
+      }
+    }
+  }
+  &-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fdfdff;
+    margin: 10px 0;
+    color: #ffffff;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba($color: $color-text, $alpha: 0.3);
+    @include respond(tablet) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &-line {
+    width: 84px;
+    height: 19px;
+    margin: 0 30px;
+    position: relative;
+    z-index: 0;
+    border-bottom: 1px solid rgba(18, 18, 18, 0.3);
+    &:last-child {
+      display: none;
+    }
+    @include respond(tablet) {
+      margin: 0 8px;
+      margin-bottom: -19px;
+    }
+    @include respond(phone) {
+      margin-bottom: -35px;
+    }
+  }
+}
