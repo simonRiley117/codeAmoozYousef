@@ -23,6 +23,7 @@ import Quiz from "./Layouts/Quiz";
 import Favorites from "./Layouts/Favorites/Favorites";
 import Home from "./Layouts/Home";
 import LastCourse from "./Layouts/Dashboard/LastCourse";
+import MyCourses from "./Layouts/Dashboard/MyCourses";
 import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
@@ -88,6 +89,7 @@ const Authenticated = () => {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/dash" component={Dashboard} />
             <Route exact path="/dash/course" component={LastCourse} />
+            <Route exact path="/dash/my-course" component={MyCourses} />
             <Route exact path="/dash/example" component={Example} />
             <Route exact path="/dash/quiz" component={Quiz} />
 
