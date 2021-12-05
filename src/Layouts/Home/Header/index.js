@@ -25,7 +25,7 @@ const index = () => {
 							کدآموز، تخصصی ترین وب سایت آموزش برنامه نویسی
 							<br /> به صورت کاملا آنلاین زیر نظر بهترین اساتید
 						</p>
-						<Button type='primary' icon={<ArrowLeftIcon />} large>
+						<Button type='primary' icon={<ArrowLeftIcon />} >
 							همین حالا شروع کن
 						</Button>
 					</div>

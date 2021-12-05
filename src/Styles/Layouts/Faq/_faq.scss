@@ -1,30 +1,57 @@
 .faq {
-  max-width: 80%;
-  margin:10rem auto 3rem auto;
-  &-heading {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
+	&__accordion {
+		& .ant-collapse-header {
+			@include set-font(1.8rem, 600, $color-text-gray-dark);
 
-  // accordion
-  &-accordion {
-    @include d-flex-column('','flex-start');
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    cursor: pointer;
-    &__paragraph {
-      font-weight: bold;
-      margin-right: 1rem;
-    }
-    &__heading {
-      display: flex;
-      align-items: center;
-      padding: 1rem;
-    }
-    &__content {
-      padding: 1.3rem;
-      padding-top: 0;
-    }
-  }
+			& > span {
+				margin-right: 4rem;
+			}
+		}
+		& .ant-collapse-item-active {
+			& .ant-collapse-header {
+				color: $color-blue-light;
+			}
+		}
+
+		& .ant-collapse-content-box {
+			padding: 12px 3rem;
+
+			& p {
+				line-height: 1.8;
+				@include set-font(1.6rem, 400, rgba($color-text, 0.8));
+			}
+		}
+
+		&--icon {
+			width: 2.2rem;
+			height: 2.2rem;
+			display: flex !important;
+			align-items: center;
+			justify-content: center;
+
+			&::after,
+			&::before {
+				content: '';
+				border-radius: 4px;
+				background-color: $color-primary;
+				position: absolute;
+			}
+
+			&::after {
+				width: 100%;
+				height: 2px;
+			}
+			&::before {
+				width: 2px;
+				height: 100%;
+				transition: all 300ms;
+			}
+
+			&.active {
+				&::before {
+					transform: rotate(90deg);
+				}
+			}
+		}
+	}
 }

@@ -140,7 +140,7 @@ const Appbar = () => {
 									))}
 								</ul>
 								<div className='Menu_actions'>
-									<Link to='/sabad-kala' >
+									<Link to='/shopping-card' >
 									<IconBtn icon={<ShoppingCartIcon />} />
 									</Link>
 									{token ? (

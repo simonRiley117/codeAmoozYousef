@@ -28,6 +28,7 @@
 @import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Favorites/favorites";
 @import "./Layouts/Rules/rules";
+@import "./components/CourseTopic/courseTopic";
 //--------------share---------------
 @import "./components/Discount/SideBarDiscount";
 @import "./components/Discount/HeaderDiscount";
@@ -60,6 +61,9 @@
 @import "./components/Coursebox/coursebox.scss";
 @import "./components/Progress/ProgressLine.scss";
 @import "./components/Modal/modal";
+@import "./components/Phase/Phase";
+@import "./components/MyCourses/MyCoursesTab.scss";
+@import "./components/MyCourses/MycourseCard.scss";
 
 //-------------master------------
 @import "./components/Master/WorkWithUs";
@@ -94,9 +98,10 @@
 @import "./Layouts/Course/Teacher/TeacherInfo";
 @import "./Layouts/Example/Example";
 @import "./Layouts/Example/ExampleDetail";
-@import "./Layouts/SabadKala/sabadkala";
+@import "./Layouts/shoppingCard/shoppingcard";
 @import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Dashboard/LastCourse";
 @import "./Layouts/Dashboard/Quiz";
 @import "./Layouts/Dashboard/Transaction";
 @import "./Layouts/Dashboard/NewCourse";
+@import "./Layouts/shoppingCard/shoppingcard";

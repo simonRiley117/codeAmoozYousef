@@ -1,0 +1,43 @@
+.course-topic {
+  flex: auto;
+  @include d-flex-column;
+  padding-bottom: 2rem;
+  @include respond(phone) {
+    padding-bottom: 0;
+  }
+  &--form {
+    flex: auto;
+    @include d-flex-column(space-between, flex-start);
+    width: 100vmin;
+    max-width: 100%;
+    @include respond(tablet) {
+      width: 100%;
+    }
+    @include respond(phone) {
+      align-items: stretch;
+
+      & .button {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  }
+  &--wrapper {
+    width: 100%;
+    @include respond(phone) {
+      margin-bottom: 3rem;
+    }
+  }
+  &--btn {
+    @include display-flex(space-between);
+    width: 100%;
+    @include respond(smallest-phone) {
+      flex-direction: column;
+      row-gap: 2rem;
+
+      & .button {
+        margin-left: 0;
+      }
+    }
+  }
+}

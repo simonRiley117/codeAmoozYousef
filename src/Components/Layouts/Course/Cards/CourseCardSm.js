@@ -13,14 +13,17 @@ import IconBtn from "@Components/Shared/Buttons/IconBtn";
 const Coursecardsm = ({ card }) => {
   const [isOff, setIsOff] = useState(false);
   const [courseid, setCourseid] = useState(null);
-
-  // const getLatestCourseList = useFetch({
-  //   url: `CourseService/latestCourse`,
-  //   method: "POST",
-  //   noHeader: true,
-  
-  // });
-
+  const [addtocardData, setaddtocardData] = useState();
+  const getLatestCourseList = useFetch({
+    url: `CartService/addToCart`,
+    method: "POST",
+    trigger: false,
+    data: addtocardData,
+  });
+  const addToCard = (id) => {
+    setaddtocardData({ course_uuid: id, degree_uuid: null });
+    getLatestCourseList.reFetch()
+  };
   return (
     <div className="card-sm">
       <div>
@@ -35,8 +38,14 @@ const Coursecardsm = ({ card }) => {
           </div>
 
           <div className="card-sm-img-hover">
-           <div className="card-sm-img-hover--shopingcard">  <IconBtn title="افزودن به سبدخرید" icon={<CardIcon />} /></div>
-           <div className="card-sm-img-hover--heart"> <IconBtn title="افزودن به لیست علاقه مندیها" icon={<Heart />} /></div>
+            <div className="card-sm-img-hover--shopingcard">
+              {" "}
+              <IconBtn onClick={()=>addToCard(card.uuid)} title="افزودن به سبدخرید" icon={<CardIcon />} />
+            </div>
+            <div className="card-sm-img-hover--heart">
+              {" "}
+              <IconBtn title="افزودن به لیست علاقه مندیها" icon={<Heart />} />
+            </div>
           </div>
         </div>
         <div className="card-sm-content">
@@ -45,7 +54,7 @@ const Coursecardsm = ({ card }) => {
               <Star />
               <p className="card-sm-content-time">
                 {card.mean_of_participant_points.grade}
-                <span>(500)</span>
+                <span>({card.nums_of_voter})</span>
                 نفر
               </p>
             </div>
@@ -57,7 +66,9 @@ const Coursecardsm = ({ card }) => {
             </div>
             <div className="d-flex-align card-sm-info-row-user">
               <User />
-              <p className="card-sm-content-time">{card.num_of_participants}نفر</p>
+              <p className="card-sm-content-time">
+                {card.num_of_participants}نفر
+              </p>
             </div>
           </div>
 
@@ -79,9 +90,7 @@ const Coursecardsm = ({ card }) => {
           </div>
 
           <div className="d-flex-space card-sm-footer">
-            <div className='card-sm-footer-level'>
-              {card.level}
-            </div>
+            <div className="card-sm-footer-level">{card.level}</div>
             <Statistic
               value={card.get_price_without_degree_with_some_extra_info}
               valueStyle={{ color: "#329c00", marginTop: "-1.5rem" }}

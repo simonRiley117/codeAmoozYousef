@@ -17,17 +17,21 @@ html {
 	}
 	// overflow: hidden;
 	direction: ltr;
+	scroll-behavior: smooth;
+	scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(300px);
+	scroll-snap-type: y mandatory;
 }
 
 body {
 	font-family: 'Vazir', 'sans-serif';
 	color: $color-text;
 	// overflow: auto;
+	height: auto;
 }
 
-#root{
+#root {
 	direction: rtl;
-
 }
 
 body,
@@ -87,3 +91,6 @@ video {
 // 		width: 100% !important;
 // 	}
 // }
+.main {
+	
+}

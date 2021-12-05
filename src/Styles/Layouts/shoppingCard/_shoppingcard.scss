@@ -1,9 +1,20 @@
-.sabadKala {
+.shoppingcard {
   padding-top: 9rem;
   &__row{
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 26px;
+    @include respond(tablet){
+      grid-template-columns: 2r 1fr;
+    }
+  }
+  &__DegreeBox{
+    .ant-radio-group{
+      display: grid;
+      label{
+        margin: 8px 0;
+      }
+    }
   }
 }
 .primary-box {
