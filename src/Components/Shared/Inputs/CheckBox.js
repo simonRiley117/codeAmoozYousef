@@ -1,56 +1,63 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Checkbox as CheckboxBase } from "antd";
-import { Controller } from "react-hook-form";
-import classNames from "classnames";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Checkbox } from 'antd';
+import { Controller, useController } from 'react-hook-form';
+import classNames from 'classnames';
 
-const CheckBox = ({
-  name,
-  value,
-  control,
-  errors,
-  classes,
-  label,
-  message,
-  messageerror,
-  register,
-  href,
-  ...rest
+const CheckboxInput = ({
+	name,
+	message,
+	control,
+	register,
+	classes,
+	label,
+	onSelected,
+	large,
+	...rest
 }) => {
-  const error = errors[name];
-  return (
-    <div className="input input__CheckboxBase">
-      <Controller
-        name={name}
-        control={control}
-        rules={register}
-        render={({ field }) => (
-          <CheckboxBase {...field}>
-            {" "}
-            <div className="flex items-center ">
-              <a href={`/${href}`} className="input__Link">
-                {message}
-              </a>
-              {label}{" "}
-            </div>
-          </CheckboxBase>
-        )}
-      />
-      {error && <span className="input__message">{messageerror}</span>}
-    </div>
-  );
+	const {
+		field: { onChange, value },
+		fieldState: { error },
+	} = useController({
+		name,
+		control,
+		rules: register,
+		defaultValue: false,
+	});
+	return (
+		<div className='input'>
+			<Checkbox
+				className={classNames('input__check', [classes], {
+					input__error: error,
+					checkbox__large: large,
+				})}
+				// {...field}
+				onChange={(e) => {
+					!!onSelected && onSelected(e.target.checked);
+					onChange(e);
+				}}
+				checked={value || false}
+				{...rest}
+			>
+				{label}
+			</Checkbox>
+			{error && <span className='input__message'>{message}</span>}
+		</div>
+	);
 };
 
-CheckboxBase.propTypes = {
-  classes: PropTypes.any,
-  control: PropTypes.any,
-  errors: PropTypes.any,
-  label: PropTypes.string,
-  message: PropTypes.string,
-  messageerror: PropTypes.string,
-  href: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.any,
-  register: PropTypes.any,
+CheckboxInput.defaultProps = {
+	value: false,
 };
-export default CheckBox;
+
+CheckboxInput.propTypes = {
+	classes: PropTypes.any,
+	control: PropTypes.any,
+	errors: PropTypes.any,
+	label: PropTypes.string,
+	message: PropTypes.string,
+	name: PropTypes.string,
+	register: PropTypes.any,
+	value: PropTypes.bool,
+};
+export default CheckboxInput;

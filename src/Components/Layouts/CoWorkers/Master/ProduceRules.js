@@ -5,7 +5,6 @@ function ProduceRules() {
   return (
     <div className="WorkWithUs text-center">
       <div className="WorkWithUs__logoBox ">
-        <div className="WorkWithUs__logoBack rounded-full"></div>
         <img src={ProduceRulesLogo} alt={ProduceRulesLogo} />
       </div>
       <div className="ProduceRules__content">

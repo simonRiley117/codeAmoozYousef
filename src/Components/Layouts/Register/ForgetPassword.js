@@ -9,7 +9,7 @@ import Input from "@Components/Shared/Inputs/Input";
 import Button from "@Components/Shared/Buttons/Button";
 import classNames from "classnames";
 import useFetch from "../../../Context/useFetch";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ForgetPassword = ({ onCancel, active, handleForgetPassword }) => {
   const {
@@ -20,7 +20,7 @@ const ForgetPassword = ({ onCancel, active, handleForgetPassword }) => {
   } = useForm();
 
   const [postData, setPostData] = useState();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const forgotRequest = useFetch({
     url: `auth/password/reset`,
@@ -36,7 +36,7 @@ const ForgetPassword = ({ onCancel, active, handleForgetPassword }) => {
     errMessage: (mess) => {
       if (mess.detail == "Not found.") {
         //! toast error message
-        history.push("/");
+        navigate("/");
       }
     },
   });

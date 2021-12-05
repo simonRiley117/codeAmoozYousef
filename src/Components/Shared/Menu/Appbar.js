@@ -133,7 +133,7 @@ const Appbar = () => {
 								<ul className='Menu__ul  list'>
 									{menuItem.map((item) => (
 										<li key={item.id} className='Menu__li'>
-											<NavLink exact to={item.url}>
+											<NavLink  to={item.url}>
 												{item.text}
 											</NavLink>
 										</li>

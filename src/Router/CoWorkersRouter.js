@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, Routes, useMatch } from "react-router-dom";
 import Master from "@Layouts/CoWorkers/Master/Master";
 import TechnicalTeams from "@Components/Layouts/CoWorkers/TechnicalTeam/TechnicalTeams";
 import CoWorkers from "@Layouts/CoWorkers";
@@ -7,27 +7,27 @@ import TechnicalTeam from "@Layouts/CoWorkers/TechnicalTeam";
 import Employer from "@Layouts/CoWorkers/Employer/Employer";
 
 const CoWorkersRouter = () => {
-  let { path, url } = useRouteMatch();
+  let { pathname, url } = useMatch();
 
   return (
     <div>
-      <Switch>
-        <Route exact path={`${path}`}>
+      <Routes>
+        <Route exact path={`${pathname}`}>
           <CoWorkers />
         </Route>
-        <Route exact path={`${path}/master`}>
+        <Route exact path={`${pathname}/master`}>
           <Master />
         </Route>
-        <Route exact path={`${path}/technicalteam`}>
+        <Route exact path={`${pathname}/technicalteam`}>
           <TechnicalTeam />
         </Route>
-        <Route exact path={`${path}/technicalteam/:name`}>
+        <Route exact path={`${pathname}/technicalteam/:name`}>
           <TechnicalTeams />
         </Route>
-        <Route exact path={`${path}/employer`}>
+        <Route exact path={`${pathname}/employer`}>
           <Employer />
         </Route>
-      </Switch>
+      </Routes>
     </div>
   );
 };

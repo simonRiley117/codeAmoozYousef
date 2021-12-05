@@ -5,7 +5,6 @@ function CoursStandards() {
   return (
     <div className="WorkWithUs text-center CoursStandards">
       <div className="WorkWithUs__logoBox ">
-        <div className="WorkWithUs__logoBack rounded-full"></div>
         <img src={CoursMastersLogo} alt={CoursMastersLogo} />
       </div>
       <div className="CoursStandards__titrBox text-right ">
