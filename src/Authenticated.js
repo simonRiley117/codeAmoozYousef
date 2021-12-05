@@ -35,7 +35,7 @@ import Rules from "./Layouts/Rules/Rules";
 import CourseTopic from "./Layouts/Course topic/CourseTopic";
 import Search from "./Layouts/Search/Search";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
-
+import NewCourse from "./Layouts/Dashboard/NewCourse";
 const Authenticated = () => {
   const history = useHistory();
   console.log("Authenticated ~ history", history);
