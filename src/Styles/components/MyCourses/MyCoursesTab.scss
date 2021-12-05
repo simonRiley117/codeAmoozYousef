@@ -1,6 +1,29 @@
 .MyCourses {
-    margin-top: 80px;
-    &__Tab{
-        width: 70%;
+  margin-top: 80px;
+  &__Tab {
+    width: 70%;
+  }
+}
+.CourseRateModal__form {
+  padding: 4rem 6rem;
+  &--rate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ant-rate {
+      color: $color-primary;
+      font-size: 5rem;
     }
+  }
+  &--btnbox {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+  }
+  &--title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: bold;
+  }
 }

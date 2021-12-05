@@ -1,14 +1,14 @@
 import React from "react";
 import { Tabs } from "antd";
 import MyCourseCard from "./MyCourseCard"
-const MyCoursesTab = () => {
+const MyCoursesTab = ({handleModalShow}) => {
   const { TabPane } = Tabs;
 
   return (
     <div className='MyCourses__Tab'>
       <Tabs className="MyCoursesTab__TabBox TabBox" type="card">
         <TabPane tab="دوره های درحال گذراندن" key="1">
-            <MyCourseCard />
+            <MyCourseCard handleModalShow={handleModalShow}/>
         </TabPane>
         <TabPane tab="دوره های تکمیل شده " key="2"><MyCourseCard finishedCourse={true} /></TabPane>
       </Tabs>
