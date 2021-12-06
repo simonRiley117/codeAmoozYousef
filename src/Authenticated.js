@@ -36,6 +36,9 @@ import CourseTopic from "./Layouts/Course topic/CourseTopic";
 import Search from "./Layouts/Search/Search";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
 import NewCourse from "./Layouts/Dashboard/NewCourse";
+import Mysendes from "./Layouts/Dashboard/Mysendes";
+import Transaction from "./Layouts/Dashboard/Transaction";
+import PasswordChange from "./Layouts/Dashboard/Password";
 const Authenticated = () => {
   const history = useHistory();
   console.log("Authenticated ~ history", history);
@@ -93,6 +96,9 @@ const Authenticated = () => {
             <Route exact path="/dash/example" component={Example} />
             <Route exact path="/dash/quiz" component={Quiz} />
             <Route exact path="/dash/newcourse" component={NewCourse} />
+            <Route exact path="/dash/mysendes" component={Mysendes} />
+            <Route exact path="/dash/transaction" component={Transaction} />
+            <Route exact path="/dash/password" component={PasswordChange} />
 
             {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
           </Layout>
