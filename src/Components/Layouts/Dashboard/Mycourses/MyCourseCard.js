@@ -14,7 +14,7 @@ import { ReactComponent as Star } from "@Assets/Icons/star.svg";
 import useFetch from "@App/Context/useFetch";
 import Button from "@Components/Shared/Buttons/Button";
 import BtnLink from "@Components/Shared/Buttons/Link";
-const MyCourseCard = ({ card, finishedCourse }) => {
+const MyCourseCard = ({ card, finishedCourse,handleModalShow }) => {
   return (
     <article className="card-bg MyCourses__Card">
       <div className="card-bg-pic">
@@ -52,7 +52,7 @@ const MyCourseCard = ({ card, finishedCourse }) => {
                   strokeColor={"#196476"}
                   percent={50}
                 />
-                <div className="MyCourses__Card--Link ">امتیاز به این دوره</div>{" "}
+                <div className="MyCourses__Card--Link " onClick={handleModalShow}>امتیاز به این دوره</div>{" "}
               </>
             ) : (
               <>
@@ -65,7 +65,7 @@ const MyCourseCard = ({ card, finishedCourse }) => {
                   {" "}
                   دریافت گواهی پایان دوره دانشگاه صنعتی
                 </Link>
-                <div className="MyCourses__Card--Link ">
+                <div className="MyCourses__Card--Link " onClick={handleModalShow}>
                   امتیاز به این دوره
                 </div>{" "}
               </>
@@ -85,5 +85,4 @@ const MyCourseCard = ({ card, finishedCourse }) => {
 };
 
 export default MyCourseCard;
-//  <Price value={card.get_price_without_degree_with_some_extra_info} success />
-//  <Price value={70000} isDiscount suffix="تومان" />
+
