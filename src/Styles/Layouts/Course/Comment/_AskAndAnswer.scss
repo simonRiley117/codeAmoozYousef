@@ -4,9 +4,11 @@
 
     &__input {
         width: 100%;
-        padding-left: 6rem !important;
-        padding-right: 5rem !important;
+        // padding-left: 6rem !important;
+        // padding-right: 5rem !important;
+        padding: 0.8rem 6rem 0rem 6rem !important;
         font-size: 1.4rem !important;
+        height: 4.5rem !important;
         svg {
             fill: none;
             width: 17px;
