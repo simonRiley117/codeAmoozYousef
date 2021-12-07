@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Tabs } from 'antd';
 import MyCourseCard from './MyCourseCard';
@@ -17,7 +16,7 @@ const MyCoursesTab = () => {
 			</Tabs>
 		</div>
 	);
-
+ 
 };
 
 export default MyCoursesTab;
