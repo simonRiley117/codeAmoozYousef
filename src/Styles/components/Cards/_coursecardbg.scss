@@ -28,18 +28,21 @@
       height: 69px;
     }
   }
-  &--shopingcard {
+  &--box{
     top: 15px;
-    border-radius: 50%;
     position: absolute;
     left: 14px;
+    display: flex;
+    align-items: center;
+
   }
+  &--shopingcard {
+    border-radius: 50%;
+     }
 
   &--heart {
-    top: 15px;
     border-radius: 50%;
-    position: absolute;
-    left: 66px;
+    margin-right: 8px; 
   }
   button {
     background: #fff;

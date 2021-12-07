@@ -96,18 +96,23 @@
      // background: rgba(255, 255, 255, 0.5);
       transition: all 2s cubic-bezier(0.39, 0.58, 0.57, 1);
       transition: all 0.5s ease-in-out;
-      &--shopingcard {
-        top: 8px;
-        border-radius: 50%;
+      &--box{
+        top: 10px;
         position: absolute;
         right: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: cent
+      }
+      &--shopingcard {
+       margin-bottom: 15px;
+        border-radius: 50%;
+
       }
 
       &--heart {
-        top: 60px;
-        border-radius: 50%;
-        position: absolute;
-        right: 5px;
+               border-radius: 50%;
+
       }
       button {
         background: #fff;

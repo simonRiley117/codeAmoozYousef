@@ -5,7 +5,8 @@ import { ReactComponent as User } from "@Assets/Icons/user.svg";
 import { ReactComponent as ClockIcon } from "@Assets/Icons/clock.svg";
 import { ReactComponent as Star } from "@Assets/Icons/star.svg";
 import useFetch from "@App/Context/useFetch";
-
+import Price from "@Components/Shared/Price/Price";
+import {  toast } from 'react-toastify';
 import { Rate, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
@@ -14,15 +15,26 @@ const Coursecardsm = ({ card }) => {
   const [isOff, setIsOff] = useState(false);
   const [courseid, setCourseid] = useState(null);
   const [addtocardData, setaddtocardData] = useState();
-  const getLatestCourseList = useFetch({
+  const Addtocard = useFetch({
     url: `CartService/addToCart`,
     method: "POST",
     trigger: false,
     data: addtocardData,
+    argFunc:(res)=>{toast.error('     دوره با موفقیت به سبد کالا اضافه شد ')},
+    argErrFunc : (err) => handleErrorAddtocard(err),
   });
+  const handleErrorAddtocard = (err)=>{
+   console.log("errCard",err)
+   if(err?.data === "course already exists"){
+    toast.error('این دوره از قبل اضافه شده است')
+   }
+   if(err?.detail === "Given token not valid for any token type"){
+    toast.error('برای خرید دوره اول وارد سایت شوید')
+   }
+  }
   const addToCard = (id) => {
     setaddtocardData({ course_uuid: id, degree_uuid: null });
-    getLatestCourseList.reFetch();
+    Addtocard.reFetch();
   };
   return (
     <div className="card-sm">
@@ -38,18 +50,20 @@ const Coursecardsm = ({ card }) => {
           </div>
 
           <div className="card-sm-img-hover">
-            <div className="card-sm-img-hover--shopingcard">
+            <div className="card-sm-img-hover--box"> <div className="card-sm-img-hover--shopingcard">
               {" "}
-              <IconBtn
+            { !card.has_user_course &&
+             <IconBtn
                 onClick={() => addToCard(card.uuid)}
                 title="افزودن به سبدخرید"
                 icon={<CardIcon />}
-              />
+              />}
             </div>
             <div className="card-sm-img-hover--heart">
               {" "}
               <IconBtn title="افزودن به لیست علاقه مندیها" icon={<Heart />} />
-            </div>
+            </div></div>
+
           </div>
         </div>
         <div className="card-sm-content">
@@ -95,10 +109,30 @@ const Coursecardsm = ({ card }) => {
 
           <div className="d-flex-space card-sm-footer">
             <div className="card-sm-footer-level">{card.level}</div>
-            <Statistic
+           {card.get_price_without_degree_with_some_extra_info
+                  .discountAmount === 0 ? <Price
+              value={
+                card.get_price_without_degree_with_some_extra_info
+                  .discountAmount
+              }
+              success
+            /> : "رایگان"}
+            {card.get_price_without_degree_with_some_extra_info.discountRate ||
+              card.get_price_without_degree_with_some_extra_info
+                .discountRate !== 0 ? (
+                <Price
+                  value={
+                    card.get_price_without_degree_with_some_extra_info
+                      .originalAmount 
+                  }
+                  isDiscount
+                  suffix="تومان"
+                />
+              ):null}
+            {/* <Statistic
               value={card.get_price_without_degree_with_some_extra_info}
               valueStyle={{ color: "#329c00", marginTop: "-1.5rem" }}
-            />
+            /> */}
           </div>
 
           {/* <div className="card-sm-content-rating">
