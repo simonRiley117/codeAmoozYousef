@@ -1,12 +1,11 @@
-import React from 'react'
-import MyCoursesTab from "@Components/Layouts/Dashboard/Mycourses/MyCoursesTab"
+import React from 'react';
+import MyCoursesTab from '@Components/Layouts/Dashboard/Mycourses/MyCoursesTab';
 const MyCourses = () => {
-    return (
-        <div className='MyCourses'>
-                        <MyCoursesTab />
+	return (
+		<div className='MyCourses'>
+			<MyCoursesTab />
+		</div>
+	);
+};
 
-        </div>
-    )
-}
-
-export default MyCourses
+export default MyCourses;
