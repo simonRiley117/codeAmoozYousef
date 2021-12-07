@@ -30,7 +30,7 @@ function CourseTable({courseId}) {
     };
 
     const getCourseOrder = useFetch({
-        url: `CourseService/${courseId}/courseOrder`,
+        url: `CourseService/react/courseOrder`,
         method: "GET",
         noHeader: token ? false : true,
         setter: setOrderCourse

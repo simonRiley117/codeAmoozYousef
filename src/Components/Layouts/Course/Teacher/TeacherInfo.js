@@ -26,7 +26,7 @@ function TeacherInfo({courseId}) {
     // let teacherProfileInfo = {}
 
     const getTeacherProfileInfo = useFetch({
-        url: `CourseService/${courseId}/courseTeacherProfileBrief`,
+        url: `CourseService/react/courseTeacherProfileBrief`,
         method: "GET",
         noHeader: true,
         setter: setTeacherProfileInfo

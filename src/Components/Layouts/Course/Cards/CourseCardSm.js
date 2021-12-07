@@ -93,8 +93,8 @@ const Coursecardsm = ({ card }) => {
           <h5 className="cursor-pointer	">
             <Link
               to={{
-                pathname: "/course",
-                state: { name: card.title, id: card.uuid },
+                pathname: "/courses/content",
+                state: { nameid: "react", id: "5BiZCqjR" },
               }}
             >
               {card.title}
