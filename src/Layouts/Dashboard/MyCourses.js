@@ -23,4 +23,5 @@ const MyCourses = () => {
   );
 };
 
+>>>>>>> 37b61d87c43510a96fe78c2d18d555888176a485
 export default MyCourses;
