@@ -16,6 +16,7 @@ const MyCoursesTab = () => {
 			</Tabs>
 		</div>
 	);
+
 };
 
 export default MyCoursesTab;

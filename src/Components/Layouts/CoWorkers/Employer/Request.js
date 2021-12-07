@@ -59,7 +59,6 @@ function Request() {
 							}}
 							name='company_name'
 							control={control}
-							
 						/>
 						<Input
 							label='نام موسس'
@@ -71,7 +70,6 @@ function Request() {
 							}}
 							name='founder_name'
 							control={control}
-							
 						/>
 						<Input
 							label='زمینه کاری'
@@ -84,7 +82,6 @@ function Request() {
 							}}
 							name='major'
 							control={control}
-							
 						/>
 						<div></div>
 						<Input
@@ -97,7 +94,6 @@ function Request() {
 							}}
 							name='phone_number'
 							control={control}
-							
 						/>
 						<Input
 							label='ایمیل'
@@ -112,7 +108,6 @@ function Request() {
 								},
 							}}
 							name='email'
-							
 							control={control}
 						/>
 						<div className='profile__upload-row'>
@@ -136,7 +131,6 @@ function Request() {
 							message='شرح را وارد کنید'
 							name='bio'
 							control={control}
-							
 						/>
 					</div>
 					<div className='flex items-start text-right MasterSignUp__ruleBox'>
@@ -145,7 +139,6 @@ function Request() {
 							message='قوانین و مقررات'
 							name='rule'
 							control={control}
-							
 							register={{
 								required: true,
 							}}
