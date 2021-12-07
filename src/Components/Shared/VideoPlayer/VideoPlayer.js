@@ -7,7 +7,7 @@ function VideoPlayer(props) {
     setPlay(true);
   };
   const videoRef = useRef();
-    console.log('src: ',props.src)
+  console.log("src: ", props.src);
   return (
     <div className={`VideoPlayer__videoBox relative ${props.className}`}>
       {/* <video className="VideoPlayer__video" controls={play} autoPlay={play}>
@@ -25,6 +25,7 @@ function VideoPlayer(props) {
         className="VideoPlayer__video"
         controls={play}
         autoPlay={play}
+        controlsList="nodownload"
       />
       {!play && <img src={icon} alt={icon} onClick={handlePlay} />}
     </div>
