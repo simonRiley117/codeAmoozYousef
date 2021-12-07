@@ -96,7 +96,7 @@ const CourseCardBg = ({ card }) => {
           <h5 className="card-bg-title">
             <Link
               to={{
-                pathname: "/course",
+                pathname: "/courses/content",
                 state: {
                   name: title,
                   id: uuid,

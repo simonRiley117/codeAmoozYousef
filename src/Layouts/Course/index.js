@@ -15,11 +15,11 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 const { TabPane } = Tabs;
 
 function Index() {
-//   const location = useLocation();
-//   console.log("LOCATION: ", location);
-//   useEffect(() => {
-//     setId("");
-//   }, [location]);
+  //   const location = useLocation();
+  //   console.log("LOCATION: ", location);
+  //   useEffect(() => {
+  //     setId("");
+  //   }, [location]);
   const [id, setId] = useState("5BiZCqjR");
   const windowSize = UseWindowSize();
 
@@ -29,9 +29,12 @@ function Index() {
       <div className="Course">
         {windowSize !== "sm" && <HeaderDiscount />}
         <div className="grid Course__container relative">
-          <div className="Course__sideBar relative">
-            <TeacherInfo courseId={id} />
-          </div>
+          {windowSize !== "sm" && (
+            <div className="Course__sideBar relative">
+              <TeacherInfo courseId={id} />
+            </div>
+          )}
+
           <div>
             <Tabs className="TabBox" type="card">
               <TabPane tab="درباره این دوره" key="1">
@@ -63,9 +66,22 @@ function Index() {
               </div>
             )}
           </div>
-          <div className="Course__sideBar relative">
-            <CourseTable courseId={id} />
-          </div>
+          {windowSize !== "sm" && (
+            <div className="Course__sideBar relative">
+              <CourseTable courseId={id} />
+            </div>
+          )}
+
+          {windowSize === "sm" && (
+            <div>
+              <div className="Course__sideBar relative">
+                <TeacherInfo courseId={id} />
+              </div>
+              <div className="Course__sideBar relative">
+                <CourseTable courseId={id} />
+              </div>
+            </div>
+          )}
         </div>
         {windowSize === "sm" && (
           <div className="Course__Comment">

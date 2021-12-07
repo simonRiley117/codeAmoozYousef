@@ -109,7 +109,7 @@ const Coursecardsm = ({ card }) => {
             <Link
               to={{
                 pathname: "/courses/content",
-                state: { nameid: "react", id: "5BiZCqjR" },
+                state: { nameid: card.title, id: card.uuid },
               }}
             >
               {title}
