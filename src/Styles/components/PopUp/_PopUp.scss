@@ -1,12 +1,4 @@
 .PopUp {
-    background-color: $color-ppoup-backgroud;
-    position: absolute;
-    left: 12.2rem;
-    top: 10.2rem;
-    border-radius: 1.5rem;
-    font-size: 1.6rem;
-    padding: 1.5rem 1.3rem;
-    animation: plce 1s;
 }
 @keyframes plce {
     0% {
@@ -15,4 +7,17 @@
     100% {
         left: 12.2rem;
     }
+}
+.ant-notification-notice {
+    background-color: $color-ppoup-backgroud !important;
+    border-radius: 1.5rem;
+    font-size: 1.6rem;
+    padding: 1.5rem 1.3rem;
+}
+.ant-notification {
+    top: 10rem !important;
+}
+.ant-notification-close-icon,
+.ant-notification-rtl .ant-notification-notice-icon {
+    display: none;
 }

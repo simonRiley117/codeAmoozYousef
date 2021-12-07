@@ -212,6 +212,7 @@ function MasterSignUp() {
 			</div>
 		</>
 	);
+
 }
 
 export default MasterSignUp;

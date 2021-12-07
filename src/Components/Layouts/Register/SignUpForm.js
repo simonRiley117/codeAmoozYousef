@@ -93,9 +93,11 @@ const SignUpForm = ({ handleActive }) => {
         <Input
           label="نام کاربری"
           register={{
-            required: true,
+            required: {
+              value: true,
+              message: "نام کاربری را وارد کنید",
+            },
           }}
-          message="نام کاربری را وارد کنید"
           name="username"
           control={control}
           errors={errors}
@@ -104,9 +106,11 @@ const SignUpForm = ({ handleActive }) => {
         <Input
           label="ایمیل"
           register={{
-            required: true,
+            required: {
+              value: true,
+              message: "ایمیل را وارد کنید",
+            },
           }}
-          message="ایمیل را وارد کنید"
           name="email"
           control={control}
           errors={errors}

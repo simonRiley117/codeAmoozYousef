@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Input from '@Components/Shared/Inputs/Input';
@@ -203,6 +204,7 @@ function Request() {
 			</div>
 		</div>
 	);
+
 }
 
 export default Request;

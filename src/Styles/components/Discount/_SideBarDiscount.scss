@@ -98,6 +98,10 @@
     }
     &__timer {
         margin-top: 1rem;
+    }
+    &__timer,
+    .ant-statistic,
+    .ant-statistic-content {
         color: $color-primary-dark-2;
         font-size: 1.6rem;
     }

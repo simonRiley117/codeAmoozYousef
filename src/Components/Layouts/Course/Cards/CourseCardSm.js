@@ -22,7 +22,7 @@ const Coursecardsm = ({ card }) => {
   });
   const addToCard = (id) => {
     setaddtocardData({ course_uuid: id, degree_uuid: null });
-    getLatestCourseList.reFetch()
+    getLatestCourseList.reFetch();
   };
   return (
     <div className="card-sm">
@@ -40,7 +40,11 @@ const Coursecardsm = ({ card }) => {
           <div className="card-sm-img-hover">
             <div className="card-sm-img-hover--shopingcard">
               {" "}
-              <IconBtn onClick={()=>addToCard(card.uuid)} title="افزودن به سبدخرید" icon={<CardIcon />} />
+              <IconBtn
+                onClick={() => addToCard(card.uuid)}
+                title="افزودن به سبدخرید"
+                icon={<CardIcon />}
+              />
             </div>
             <div className="card-sm-img-hover--heart">
               {" "}
@@ -96,6 +100,7 @@ const Coursecardsm = ({ card }) => {
               valueStyle={{ color: "#329c00", marginTop: "-1.5rem" }}
             />
           </div>
+
           {/* <div className="card-sm-content-rating">
             <Rate
               disabled

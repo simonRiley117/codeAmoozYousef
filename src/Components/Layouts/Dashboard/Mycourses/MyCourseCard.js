@@ -79,8 +79,8 @@ const MyCourseCard = ({ card, finishedCourse }) => {
 			</div>
 		</article>
 	);
+
 };
 
 export default MyCourseCard;
-//  <Price value={card.get_price_without_degree_with_some_extra_info} success />
-//  <Price value={70000} isDiscount suffix="تومان" />
+
