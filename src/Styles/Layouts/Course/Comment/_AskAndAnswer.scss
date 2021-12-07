@@ -6,7 +6,7 @@
         width: 100%;
         // padding-left: 6rem !important;
         // padding-right: 5rem !important;
-        padding: 0.8rem 6rem 0rem 6rem !important;
+        padding: 0.4rem 6rem 0.4rem 6rem !important;
         font-size: 1.4rem !important;
         height: 4.5rem !important;
         svg {
@@ -26,9 +26,13 @@
     }
     &__emogibox {
         // bottom: -3.5rem;
-        bottom: 0.5rem;
+        bottom: 0.65rem;
         left: 3rem;
         z-index: 20;
+        img {
+            width: 3.2rem;
+            height: 3.2rem;
+        }
         @include respond(tablet) {
             img {
                 width: 2rem;
@@ -166,12 +170,16 @@
         }
     }
     &__sendBtn {
-        bottom: 0.8rem;
+        bottom: 1rem;
         z-index: 20;
         right: 1rem;
         @include respond(tablet) {
             width: 2rem;
             height: auto;
         }
+    }
+    .emoji-mart-bar,
+    .emoji-mart-search {
+        display: none;
     }
 }
