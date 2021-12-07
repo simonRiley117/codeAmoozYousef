@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "@App/Context/useFetch";
 import Slider from "react-slick";
-import CourseCardBg from "@Components/Layouts/Course/Cards/CourseCardBg";
+import CourseCardSm from "@Components/Layouts/Course/Cards/CourseCardSm";
 
 const FavoriteCourse = () => {
   const [favcourses, setfavcourses] = useState(null);
@@ -51,7 +51,7 @@ const FavoriteCourse = () => {
       {" "}
       <Slider {...settings}>
         {favcourses?.map((card) => (
-          <CourseCardBg card={card} key={card.uuid} />
+          <CourseCardSm card={card} key={card.uuid} />
         ))}
       </Slider>
     </div>
