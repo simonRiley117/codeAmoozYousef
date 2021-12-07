@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
-import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import classNames from 'classnames';
@@ -51,14 +51,14 @@ const menuItem = [
 ];
 
 const Appbar = () => {
+	const navigate = useNavigate();
 	const [isOpenMenu, setOpenMenu] = useState(false);
 	const [isModalVisible, setModalVisible] = useState(false);
 	const { userData } = useUserData();
 	const { pathname, search } = useLocation();
-	const dark = pathname === '/' || pathname === '/dashboard';
+	const dark = pathname === '/';
 	const { sticky } = UseScrollAppbar();
 	const { token } = useAuth();
-	const { redirectToTeacher } = useParams();
 
 	const handleToggleMenu = () => {
 		setOpenMenu((prev) => !prev);
@@ -74,8 +74,14 @@ const Appbar = () => {
 	};
 
 	useEffect(() => {
-		if (search == '?redirectTeacher') {
+		if (dark && !token && search == '?redirectTeacher') {
 			handleModalVisible();
+		}
+
+		if (token && search == '?redirectTeacher') {
+			navigate(pathname, {
+				replace: true,
+			});
 		}
 	}, []);
 
@@ -133,16 +139,15 @@ const Appbar = () => {
 								<ul className='Menu__ul  list'>
 									{menuItem.map((item) => (
 										<li key={item.id} className='Menu__li'>
-											<NavLink  to={item.url}>
-												{item.text}
-											</NavLink>
+											<NavLink to={item.url}>{item.text}</NavLink>
 										</li>
 									))}
 								</ul>
 								<div className='Menu_actions'>
-									<Link to='/shopping-card' >
-									<IconBtn icon={<ShoppingCartIcon />} />
-									</Link>
+									<IconBtn
+										icon={<ShoppingCartIcon />}
+										onClick={() => navigate('/shopping-card')}
+									/>
 									{token ? (
 										<div className='d-flex-align Menu_actions--profile'>
 											<p className='profile__name'>

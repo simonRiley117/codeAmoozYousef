@@ -23,7 +23,6 @@ import Courses from '@Layouts/Courses';
 import Course from '@Layouts/Course';
 import Favorites from '@Layouts/Favorites/Favorites';
 import Rules from '@Layouts/Rules/Rules';
-import CourseTopic from '@Layouts/CourseTopic/CourseTopic';
 import Example from '@Layouts/Example';
 
 import ShoppingCard from '@Layouts/ShoppingCard/ShoppingCard';
@@ -31,12 +30,13 @@ import Search from '@Layouts/Search/Search';
 
 const Router = () => {
 	const { token } = useAuth();
-	// return token ? <Authenticated /> : <UnAuthenticated />;
 	return (
 		<>
 			<Routes>
 				<Route element={<Layout />}>
-					<Route index path='/' element={<Home />} />
+					<Route  path='/' element={<Home />}>
+						<Route index path='/:redirectTeacher?' element={<Home />}/>
+					</Route>
 					<Route path='/coWorkers' element={<CoWorkers />} />
 					<Route path='coWorkers/master' element={<Master />} />
 					<Route

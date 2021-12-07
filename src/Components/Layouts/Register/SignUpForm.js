@@ -135,7 +135,7 @@ const SignUpForm = ({ handleActive }) => {
           prefix={<LockIcon />}
         />
         <Checkbox checked={checkBoxState} onChange={onChange}>
-          <Link>قوانین و مقررات</Link> سایت را قبول دارم
+          <Link to='/'>قوانین و مقررات</Link> سایت را قبول دارم
         </Checkbox>
         <Button
           disabled={registerRequest.loading || !checkBoxState ? true : false}

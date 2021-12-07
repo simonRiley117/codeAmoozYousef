@@ -24,13 +24,14 @@ const SignUp = ({ onCancel, handleActive }) => {
             id="google"
             type="primary"
             icon={<img src={GoogleLogoPic} alt="google" />}
+            to='/'
           >
             ثبت نام با اکانت گوگل
           </Link>
-          <Link type="primary" classes="social">
+          <Link to='/' type="primary" classes="social">
             <LinkedInIcon />
           </Link>
-          <Link type="primary" classes="social">
+          <Link to='/' type="primary" classes="social">
             <GithubIcon />
           </Link>
         </div>
