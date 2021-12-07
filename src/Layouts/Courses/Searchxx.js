@@ -34,10 +34,10 @@ const Searchxx = ({ children }) => {
 				classes='search'
 				placeholder='میخوای چی یاد بگیری'
 				suffix={
-					<UserIcon
-						onClick={handleSubmit(onSubmit)}
-						className='cursor-pointer'
-					/>
+				   <UserIcon
+				   	onClick={handleSubmit(onSubmit)}
+				   	className='cursor-pointer'
+				   />
 				}
 			/>
 			{/* <img
