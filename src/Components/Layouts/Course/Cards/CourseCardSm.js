@@ -12,6 +12,21 @@ import { Link } from "react-router-dom";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
 
 const Coursecardsm = ({ card }) => {
+  const {
+    uuid,
+    num_of_participants,
+    teacher_first_name,
+    level,
+    teacher_last_name,
+    total_time_of_course,
+    nums_of_voter,
+    mean_of_participant_points,
+    is_favorite,
+    title,
+    has_user_course,
+    get_price_without_degree_with_some_extra_info,
+    teacher_avatar,cover
+  } = card;
   const [isOff, setIsOff] = useState(false);
   const [courseid, setCourseid] = useState(null);
   const [addtocardData, setaddtocardData] = useState();
@@ -20,7 +35,7 @@ const Coursecardsm = ({ card }) => {
     method: "POST",
     trigger: false,
     data: addtocardData,
-    argFunc:(res)=>{toast.error('     دوره با موفقیت به سبد کالا اضافه شد ')},
+    argFunc:(res)=>{toast.success('     دوره با موفقیت به سبد کالا اضافه شد ')},
     argErrFunc : (err) => handleErrorAddtocard(err),
   });
   const handleErrorAddtocard = (err)=>{
@@ -46,15 +61,15 @@ const Coursecardsm = ({ card }) => {
             40% تخفیف
           </div>
           <div className="card-sm-img-title">
-            <img src={card.cover} />
+            <img src={cover} alt='course-cover'/>
           </div>
 
           <div className="card-sm-img-hover">
             <div className="card-sm-img-hover--box"> <div className="card-sm-img-hover--shopingcard">
               {" "}
-            { !card.has_user_course &&
+            { !has_user_course &&
              <IconBtn
-                onClick={() => addToCard(card.uuid)}
+                onClick={() => addToCard(uuid)}
                 title="افزودن به سبدخرید"
                 icon={<CardIcon />}
               />}
@@ -71,21 +86,21 @@ const Coursecardsm = ({ card }) => {
             <div className="d-flex-align card-sm-info-row-star">
               <Star />
               <p className="card-sm-content-time">
-                {card.mean_of_participant_points.grade}
-                <span>({card.nums_of_voter})</span>
+                {mean_of_participant_points.grade}
+                <span>({nums_of_voter})</span>
                 نفر
               </p>
             </div>
             <div className="d-flex-align card-sm-info-row-time">
               <ClockIcon />
               <p className="card-sm-content-time">
-                {card.total_time_of_course}
+                {total_time_of_course}
               </p>
             </div>
             <div className="d-flex-align card-sm-info-row-user">
               <User />
               <p className="card-sm-content-time">
-                {card.num_of_participants}نفر
+                {num_of_participants}نفر
               </p>
             </div>
           </div>
@@ -97,57 +112,42 @@ const Coursecardsm = ({ card }) => {
                 state: { nameid: "react", id: "5BiZCqjR" },
               }}
             >
-              {card.title}
+              {title}
             </Link>
           </h5>
           <div className="card-sm-img-pic">
-            <img src={card.teacher_avatar} />
+            <img src={teacher_avatar} />
             <h4>
-              {card.teacher_first_name} {card.teacher_last_name}
+              {teacher_first_name} {teacher_last_name}
             </h4>
           </div>
 
           <div className="d-flex-space card-sm-footer">
-            <div className="card-sm-footer-level">{card.level}</div>
-           {card.get_price_without_degree_with_some_extra_info
+            <div className="card-sm-footer-level">{level}</div>
+           {get_price_without_degree_with_some_extra_info
                   .discountAmount === 0 ? <Price
               value={
-                card.get_price_without_degree_with_some_extra_info
+                get_price_without_degree_with_some_extra_info
                   .discountAmount
               }
               success
             /> : "رایگان"}
-            {card.get_price_without_degree_with_some_extra_info.discountRate ||
-              card.get_price_without_degree_with_some_extra_info
+            {get_price_without_degree_with_some_extra_info.discountRate ||
+              get_price_without_degree_with_some_extra_info
                 .discountRate !== 0 ? (
                 <Price
                   value={
-                    card.get_price_without_degree_with_some_extra_info
+                    get_price_without_degree_with_some_extra_info
                       .originalAmount 
                   }
                   isDiscount
                   suffix="تومان"
                 />
               ):null}
-            {/* <Statistic
-              value={card.get_price_without_degree_with_some_extra_info}
-              valueStyle={{ color: "#329c00", marginTop: "-1.5rem" }}
-            /> */}
+           
           </div>
 
-          {/* <div className="card-sm-content-rating">
-            <Rate
-              disabled
-              allowClear={false}
-              defaultValue={card.mean_of_participant_points.grade}
-              style={{
-                color: "#F68521",
-                // direction: "ltr",
-                paddingBottom: "0.5rem",
-                marginRight: "6vmax",
-              }}
-            />
-          </div> */}
+       
         </div>
       </div>
     </div>
