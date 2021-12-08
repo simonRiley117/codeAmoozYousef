@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Pagination from "@Components/Shared/Pagination";
 import useFetch from "@App/Context/useFetch";
 import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
-
+import Searchxx from "../Courses/Searchxx";
 function Search() {
   const { name } = useParams();
   const [allcourse, setallcourse] = useState(null);
@@ -20,8 +20,11 @@ function Search() {
   const PageSize = 11;
   const [currentPage, setCurrentPage] = useState(1);
   return (
-    <div>
-      <div className='courses'>
+    <div className="Search">
+      <div className="courses Search__box" style={{ paddingTop: "10rem" }}>
+        <div className="Search__input">
+          <Searchxx />
+        </div>
         <p className="Courses__searchTitle font-bold	">
           {" "}
           نتیجه جستجو شما برای "{name}":
