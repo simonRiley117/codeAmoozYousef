@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import useFetch from "@App/Context/useFetch";
 import Slider from "react-slick";
 import CourseCardSm from "@Components/Layouts/Course/Cards/CourseCardSm";
-import {NextArrow,PrevArrow} from "./Arrows"
+import { NextArrow, PrevArrow } from "./Arrows";
 
 const FavoriteCourse = () => {
   const [favcourses, setfavcourses] = useState(null);
 
   const getFavCourseList = useFetch({
-    url: `CourseService/mostFavoriteCourse`,
+    // url: `CourseService/mostFavoriteCourse`,
+    url: `CourseService/latestCourse`,
     method: "GET",
     noHeader: true,
     setter: setfavcourses,
   });
-  
+
   const settings = {
     className: "FavoriteCourse__slider",
-    infinite:  false,
-    slidesToShow:4,
+    infinite: false,
+    slidesToShow: 4,
     speed: 500,
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow  />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -46,7 +47,7 @@ const FavoriteCourse = () => {
     ],
   };
   return (
-    <div className='FavoriteCourse'>
+    <div className="FavoriteCourse">
       {" "}
       <Slider {...settings}>
         {favcourses?.map((card) => (
