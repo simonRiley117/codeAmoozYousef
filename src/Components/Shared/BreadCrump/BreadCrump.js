@@ -4,9 +4,10 @@ import { NavLink } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { Breadcrumb as BreadcrumbBase } from 'antd';
 import { ReactComponent as SeparatorIcon } from '@Assets/Icons/SeparatorIcon.svg';
+import classNames from 'classnames';
 const { Item } = BreadcrumbBase;
 
-const BreadCrump = ({ title }) => {
+const BreadCrump = ({ title, classes }) => {
 	// { path: '/news/news-info', breadcrumb: title },
 	const routes = [
 		{ path: '/', breadcrumb: 'صفحه اصلی' },
@@ -18,7 +19,7 @@ const BreadCrump = ({ title }) => {
 	];
 	const breadcrumbs = useBreadcrumbs(routes);
 	return (
-		<div className='breadcrumbs'>
+		<div className={classNames('breadcrumbs', [classes])}>
 			<BreadcrumbBase className='breadcrumb' separator={<SeparatorIcon />}>
 				{breadcrumbs.map(({ match, breadcrumb }) => (
 					<Item key={match.pathname}>

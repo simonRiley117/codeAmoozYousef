@@ -1,7 +1,11 @@
 .breadcrumbs {
-	margin: 12.834rem 0 4rem 0;
+	margin: 12rem 0 4rem 0;
 	@include respond(tablet) {
 		margin: 8rem 0 4rem 0;
+	}
+
+	&__dashboard {
+		margin: 2rem 0 4rem ;
 	}
 	.ant-breadcrumb {
 		display: flex;

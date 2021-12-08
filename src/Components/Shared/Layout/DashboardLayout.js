@@ -17,7 +17,7 @@ const DashboardLayout = () => {
 						<SidebarMenu />
 					</aside>
 					<Content className='layout__content'>
-						<BreadCrumb />
+						<BreadCrumb classes='breadcrumbs__dashboard'/>
 						<Outlet />
 					</Content>
 				</section>
