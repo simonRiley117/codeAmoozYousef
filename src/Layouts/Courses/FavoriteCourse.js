@@ -8,8 +8,8 @@ const FavoriteCourse = () => {
   const [favcourses, setfavcourses] = useState(null);
 
   const getFavCourseList = useFetch({
-    // url: `CourseService/mostFavoriteCourse`,
-    url: `CourseService/latestCourse`,
+   url: `CourseService/mostFavoriteCourse`,
+    
     method: "GET",
     noHeader: true,
     setter: setfavcourses,
