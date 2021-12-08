@@ -76,12 +76,12 @@ const CourseCardBg = ({ card }) => {
       </div> */}
         <div
         className={
-          cost.discountRate !== 0
+          cost?.discountRate !== 0
             ? "card-bg-off-show"
             : "card-bg-off-hide"
         }
       >
-        {cost.discountRate}%تخفیف
+        {cost?.discountRate}%تخفیف
       </div>
       <div className="card-bg-pic">
         <img src={cover} alt="python" className="card-bg-pic-logo" />
@@ -151,17 +151,17 @@ const CourseCardBg = ({ card }) => {
                 {teacher_first_name} {teacher_last_name}
               </h4>
             </div>
-            {cost.discountRate || cost.discountRate !== 0 ? (
+            {cost?.discountRate || cost?.discountRate !== 0 ? (
               <div>
-                {cost.originalAmount !== 0 ? (
-                  <Price value={cost.originalAmount} isDiscount />
+                {cost?.originalAmount !== 0 ? (
+                  <Price value={cost?.originalAmount} isDiscount />
                 ) : (
                   <p>رایگان</p>
                 )}
               </div>
             ) : null}
-            {cost.discountAmount !== 0 ? (
-              <Price value={cost.discountAmount} suffix="تومان" success />
+            {cost?.discountAmount !== 0 ? (
+              <Price value={cost?.discountAmount} suffix="تومان" success />
             ) : (
              <p className='success'> رایگان</p>
             )}
