@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Appbar from '../Menu/Appbar';
 
@@ -7,7 +8,7 @@ const Layout = ({ children }) => {
 		<>
 			<Appbar />
 			<main id='target' reference='target' className='main'>
-				{children}
+				<Outlet />
 			</main>
 			{/* <Footer /> */}
 		</>

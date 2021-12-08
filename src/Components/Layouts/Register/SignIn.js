@@ -27,13 +27,14 @@ const SignIn = ({ onCancel, handleForgetPassword, handleActive }) => {
               id="google"
               type="primary"
               icon={<img src={GoogleLogoPic} alt="google" />}
+              to='/'
             >
               ورود با اکانت گوگل
             </Link>
-            <Link type="primary" classes="social">
+            <Link to='/' type="primary" classes="social">
               <LinkedInIcon />
             </Link>
-            <Link type="primary" classes="social">
+            <Link to='/' type="primary" classes="social">
               <GithubIcon />
             </Link>
           </div>

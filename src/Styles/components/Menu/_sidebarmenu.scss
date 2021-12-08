@@ -1,24 +1,48 @@
 .sidebarMenu {
-	background: $color-blue-dark;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	height: 90vh;
-	border-top-left-radius: 123px;
+	// background: $color-blue-dark;
+	// // position: fixed;
+	// height: 100%;
+	// border-top-left-radius: 123px;
+
 	color: #ffffff;
 	font-size: 14px;
 	transition: all 0.4s;
+	background: $color-section;
+	border-top-left-radius: 14rem;
+
+	padding-top: 10rem;
+
+	display: flex;
+	min-height: calc(100vh - 4rem);
+	overflow: hidden;
+
+	@include respond(big-tablet) {
+		min-height: calc(100vh - 8rem);
+	}
+	@include respond(tablet) {
+		display: none;
+	}
+	&__back {
+	}
 	.selected {
 		color: $color-primary;
 	}
 	&__ul {
-		margin: 95px 20px 50px 0;
+		margin: 0 20px 50px 0;
 	}
 	&__li {
 		cursor: pointer;
 		margin: 20.5px 0;
-		img {
-			width: 32px;
+		.menuIcon {
+			svg {
+				width: 32px;
+			}
+		}
+		&.exit {
+			color: $color-error;
+		}
+		&.close {
+			color: #ffefae;
 		}
 	}
 	a {
@@ -28,5 +52,10 @@
 		padding-right: 16px;
 		transition: all 0.4s;
 		white-space: nowrap;
+	}
+}
+.layout__sidebar {
+	@include respond(sm-laptop) {
+		// display:none;
 	}
 }

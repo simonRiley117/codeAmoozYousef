@@ -5,7 +5,6 @@ function WorkWithUs() {
   return (
     <div className="WorkWithUs text-center">
       <div className="WorkWithUs__logoBox ">
-        <div className="WorkWithUs__logoBack rounded-full"></div>
         <img src={coworckerLogo} alt={coworckerLogo} />
       </div>
       <div className="WorkWithUs__content">
@@ -14,7 +13,7 @@ function WorkWithUs() {
             <div className="flex flex-row items-start justify-start WorkWithUs__titlebox">
               <div className="green-circle">{id + 1}</div>
               <div className="flex flex-col items-start justify-start WorkWithUs__txtBox">
-                <p className="WorkWithUs__title font-bold">{index.title}</p>
+                <h4 className="WorkWithUs__title mb-4">{index.title}</h4>
                 <p className="WorkWithUs__txt text-right leading-loose">
                   {index.txt}
                 </p>

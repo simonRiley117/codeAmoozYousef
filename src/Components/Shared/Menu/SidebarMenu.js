@@ -1,129 +1,86 @@
-import React, { useState } from "react";
-import homeIcon from "@App/assets/img/sidebarmenu/home.svg";
-import profileIcon from "@App/assets/img/sidebarmenu/user.svg";
-import resumeIcon from "@App/assets/img/sidebarmenu/resume.svg";
-import courseIcon from "@App/assets/img/sidebarmenu/course.svg";
-import walletIcon from "@App/assets/img/sidebarmenu/wallet.svg";
-import messageIcon from "@App/assets/img/sidebarmenu/message.svg";
-import settingIcon from "@App/assets/img/sidebarmenu/setting.svg";
-import closeIcon from "@App/assets/img/sidebarmenu/close.svg";
-import exiteIcon from "@App/assets/img/sidebarmenu/quite.svg";
-import activehomeIcon from "@App/assets/img/sidebarmenu - active/home.svg";
-import activeprofileIcon from "@App/assets/img/sidebarmenu - active/user.svg";
-import activeresumeIcon from "@App/assets/img/sidebarmenu - active/resume.svg";
-import activecourseIcon from "@App/assets/img/sidebarmenu - active/course.svg";
-import activewalletIcon from "@App/assets/img/sidebarmenu - active/wallet.svg";
-import activemessageIcon from "@App/assets/img/sidebarmenu - active/message.svg";
-import activesettingIcon from "@App/assets/img/sidebarmenu - active/setting.svg";
-
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import { ReactComponent as HomeIcon } from '@Assets/Icons/home.svg';
+import { ReactComponent as UserIcon } from '@Assets/Icons/user.svg';
+import { ReactComponent as ResumeIcon } from '@Assets/Icons/resume.svg';
+import { ReactComponent as CourseIcon } from '@Assets/Icons/course.svg';
+import { ReactComponent as WalletIcon } from '@Assets/Icons/wallet.svg';
+import { ReactComponent as MessageIcon } from '@Assets/Icons/message.svg';
+import { ReactComponent as SettingIcon } from '@Assets/Icons/setting.svg';
+import { ReactComponent as CloseIcon } from '@Assets/Icons/close.svg';
+import { ReactComponent as ExiteIcon } from '@Assets/Icons/quite.svg';
+import SidebarMenuItem from './SidebarMenuItem';
+const sidebarmenuItem = [
+	{
+		text: 'پیشخوان',
+		icon: <HomeIcon />,
+		url: '/dashboard',
+	},
+	{
+		text: 'پروفایل',
+		icon: <UserIcon />,
+		url: 'dashboard/profile',
+	},
+	{
+		text: 'رزومه',
+		icon: <ResumeIcon />,
+		url: 'dashboard/resume',
+	},
+	{
+		text: 'دوره های من',
+		icon: <CourseIcon />,
+		url: 'dashboard/my-course',
+	},
+	{
+		text: 'کیف پول',
+		icon: <WalletIcon />,
+		url: 'dashboard/wallet',
+	},
+	{
+		text: 'پیام ها',
+		icon: <MessageIcon />,
+		url: 'dashboard/messages',
+	},
+	{
+		text: 'تنظیمات',
+		icon: <SettingIcon />,
+		url: 'dashboard/setting',
+	},
+];
 
 const SidebarMenu = () => {
-  const [expand, setExpand] = useState(false);
-  const sidebarmenuItem = [
-    {
-      text: "پیشخوان",
-      icon: homeIcon,
-      url: "/",
-      activeIcon: activehomeIcon,
-    },
-    {
-      text: "پروفایل",
-      icon: profileIcon,
-      url: "/profile",
-      activeIcon: activeprofileIcon,
-    },
-    {
-      text: "رزومه",
-      icon: resumeIcon,
-      url: "/resume",
-      activeIcon: activeresumeIcon,
-    },
-    {
-      text: "دوره های من",
-      icon: courseIcon,
-      url: "/mycourse",
-      activeIcon: activecourseIcon,
-    },
-    {
-      text: "کیف پول",
-      icon: walletIcon,
-      url: "/wallet",
-      activeIcon: activewalletIcon,
-    },
-    {
-      text: "پیام ها",
-      icon: messageIcon,
-      url: "/messages",
-      activeIcon: activemessageIcon,
-    },
-    {
-      text: "تنظیمات",
-      icon: settingIcon,
-      url: "/setting",
-      activeIcon: activesettingIcon,
-    },
-    {
-      text: "بستن",
-      icon: closeIcon,
-      color: "#FFEFAE",
-      onclick: true,
-    },
-    {
-      text: "خروج",
-      icon: exiteIcon,
-      color: "#FF8572",
-    },
-  ];
-  const closeNav = () => {
-    setExpand(!expand);
-  };
-  const location = useLocation();
-  console.log(location);
-  return (
-    <div className="sidebarMenu__back">
-      <div
-        className="sidebarMenu "
-        style={!expand ? { width: "176px" } : { width: "84px" }}
-      >
-        <ul className="sidebarMenu__ul list">
-          {sidebarmenuItem.map((i) => (
-            <>
-              {i.url !== undefined ? (
-                <li className="sidebarMenu__li d-flex-align">
-                  <NavLink
-                    exact
-                    to={`${i.url}`}
-                    className="d-flex-align"
-                    activeClassName="selected"
-                  >
-                    {location.pathname === i.url ? (
-                      <img src={i.activeIcon} alt="Menu_icon" />
-                    ) : (
-                      <img src={i.icon} alt="Menu_icon" />
-                    )}
-                    {!expand ? <p>{i.text}</p> : null}
-                  </NavLink>
-                </li>
-              ) : (
-                <li
-                  className="sidebarMenu__li d-flex-align"
-                  onClick={i.onclick ? closeNav : null}
-                >
-                  {location.pathname === i.url ? (
-                    <img src={i.activeIcon} alt="Menu_icon" />
-                  ) : (
-                    <img src={i.icon} alt="Menu_icon" />
-                  )}
-                  {!expand ? <p>{i.text}</p> : null}
-                </li>
-              )}
-            </>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
+	const [expand, setExpand] = useState(false);
+
+	const closeNav = () => {
+		setExpand((prev) => !prev);
+	};
+
+	return (
+		<div
+			className='sidebarMenu'
+			style={!expand ? { width: '176px' } : { width: '68px' }}
+		>
+			<ul className='sidebarMenu__ul list'>
+				{sidebarmenuItem.map((item) => (
+					<SidebarMenuItem key={item.url} {...item} />
+				))}
+				<li
+					className='sidebarMenu__li d-flex-align close'
+					onClick={closeNav}
+				>
+					<div className='menuIcon'>
+						<CloseIcon />
+					</div>
+					<p>بستن</p>
+				</li>
+				<li className='sidebarMenu__li d-flex-align exit'>
+					<div className='menuIcon'>
+						<ExiteIcon />
+					</div>
+					<p>خروج</p>
+				</li>
+			</ul>
+		</div>
+	);
 };
 
 export default SidebarMenu;

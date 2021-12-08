@@ -1,10 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
 
 function EmailVerify(props) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { confirmedkey } = useParams();
 
@@ -15,12 +14,12 @@ function EmailVerify(props) {
     noHeader: true,
     message: "ایمیل با موفقیت تایید شد",
     argFunc: (res) => {
-      history.push("/");
+      navigate("/");
     },
     errMessage: (mess) => {
       if (mess.detail == "Not found.") {
         //! toast error message
-        history.push("/");
+        navigate("/");
       }
     },
   });

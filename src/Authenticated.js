@@ -1,14 +1,6 @@
-import React, { useState } from "react";
-import { API_URL } from "./constants";
-import useAxios from "@use-hooks/axios";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useHistory,
-} from "react-router-dom";
-import { UserDataProvider } from "./Context/userContext";
-import Layout from "@Components/Shared/Layout/Layout";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import DashboardLayout from '@Components/Shared/Layout/DashboardLayout';
 
 import News from "@Layouts/News";
 import CoWorkersRouter from "./Router/CoWorkersRouter";
@@ -43,71 +35,34 @@ import TeacherResume from "./Layouts/Teacher Resume/TeacherResume";
 const Authenticated = () => {
   const history = useHistory();
   console.log("Authenticated ~ history", history);
+import Example from './Layouts/Example';
+import Quiz from './Layouts/Quiz';
 
-  return (
-    <>
-      <UserDataProvider>
-        <Switch>
-          <Layout>
-            <Route
-              exact
-              path="/dashboard/:redirectToTeacher?"
-              component={Home}
-            />
-            <Route exact path="/coWorkers">
-              <CoWorkersRouter />
-            </Route>
-            <Route exact path="/news" component={News} />
-            <Route exact path="/coWorkers/master" component={Master} />
-            <Route
-              exact
-              path="/coWorkers/technicalteam"
-              component={TechnicalTeam}
-            />
-            <Route
-              exact
-              path="/coWorkers/technicalteam/:name"
-              component={TechnicalTeams}
-            />
-            <Route exact path="/coWorkers/employer" component={Employer} />
-            <Route exact path="/news/news-info" component={NewsDetails} />
-            <Route exact path="/faq" component={Faq} />
-            <Route exact path="/contact-us" component={Contact} />
-            <Route exact path="/about-me" component={AboutUs} />
-            <Route exact path="/courses" component={Courses} />
-            <Route exact path="/shopping-card" component={ShoppingCard} />
-            <Route exact path="/search/:name" component={Search} />
+import LastCourse from './Layouts/Dashboard/LastCourse';
+import MyCourses from '@Layouts/Dashboard/MyCourses';
 
-            <Route
-              exact
-              path="/course"
-              render={(routeProps) => (
-                <Course key={routeProps.history.location.state.id} />
-              )}
-            />
-            <Route exact path="/rules" component={Rules} />
-            <Route exact path="/topic" component={CourseTopic} />
-            <Route exact path="/fav" component={Favorites} />
-            <Route exact path="/resume" component={Resume} />
-            <Route exact path="/example" component={Example} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/dash" component={Dashboard} />
-            <Route exact path="/dash/course" component={LastCourse} />
-            <Route exact path="/dash/my-course" component={MyCourses} />
-            <Route exact path="/dash/example" component={Example} />
-            <Route exact path="/dash/quiz" component={Quiz} />
-            <Route exact path="/dash/newcourse" component={NewCourse} />
-            <Route exact path="/dash/mysendes" component={Mysendes} />
-            <Route exact path="/dash/transaction" component={Transaction} />
-            <Route exact path="/dash/password" component={PasswordChange} />
-            <Route exact path="/teacher/resume" component={TeacherResume} />
+import Profile from './Layouts/Profile/Profile';
+import Resume from './Layouts/resume/Resume';
+import CourseTopic from './Layouts/CourseTopic/CourseTopic';
+import Dashboard from './Layouts/Dashboard/Dashboard';
 
-            {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
-          </Layout>
-        </Switch>
-      </UserDataProvider>
-    </>
-  );
+const Authenticated = () => {
+	return (
+		<Routes>
+			<Route element={<DashboardLayout />}>
+				<Route path='/dashboard' element={<Dashboard />} />
+				<Route path='/dashboard/topic' element={<CourseTopic />} />
+				<Route path='/dashboard/resume' element={<Resume />} />
+				<Route path='/dashboard/profile' element={<Profile />} />
+				<Route path='/dashboard/my-course' element={<MyCourses />} />
+				<Route path='/dashboard/course' element={<LastCourse />} />
+				<Route path='/dashboard/course/example' element={<Example />} />
+				<Route path='/dashboard/course/quiz' element={<Quiz />} />
+
+				{/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
+			</Route>
+		</Routes>
+	);
 };
 
 export default Authenticated;
