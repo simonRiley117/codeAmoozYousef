@@ -13,37 +13,37 @@ const sidebarmenuItem = [
 	{
 		text: 'پیشخوان',
 		icon: <HomeIcon />,
-		url: '/',
+		url: '/dashboard',
 	},
 	{
 		text: 'پروفایل',
 		icon: <UserIcon />,
-		url: '/profile',
+		url: 'dashboard/profile',
 	},
 	{
 		text: 'رزومه',
 		icon: <ResumeIcon />,
-		url: '/resume',
+		url: 'dashboard/resume',
 	},
 	{
 		text: 'دوره های من',
 		icon: <CourseIcon />,
-		url: '/my-course',
+		url: 'dashboard/my-course',
 	},
 	{
 		text: 'کیف پول',
 		icon: <WalletIcon />,
-		url: '/wallet',
+		url: 'dashboard/wallet',
 	},
 	{
 		text: 'پیام ها',
 		icon: <MessageIcon />,
-		url: '/messages',
+		url: 'dashboard/messages',
 	},
 	{
 		text: 'تنظیمات',
 		icon: <SettingIcon />,
-		url: '/setting',
+		url: 'dashboard/setting',
 	},
 ];
 
@@ -61,7 +61,7 @@ const SidebarMenu = () => {
 		>
 			<ul className='sidebarMenu__ul list'>
 				{sidebarmenuItem.map((item) => (
-					<SidebarMenuItem {...item} />
+					<SidebarMenuItem key={item.url} {...item} />
 				))}
 				<li
 					className='sidebarMenu__li d-flex-align close'

@@ -5,10 +5,11 @@ const SidebarMenuItem = ({ url, icon, text, ...rest }) => {
 	return (
 		<li className='sidebarMenu__li d-flex-align' {...rest}>
 			<NavLink
-				exact
 				to={url}
-				className='d-flex-align'
-				activeClassName='selected'
+				className={({ isActive }) =>
+					isActive ? 'd-flex-align selected' : 'd-flex-align'
+				}
+				end
 			>
 				<div className='menuIcon'>{icon}</div>
 				<p>{text}</p>
@@ -18,5 +19,3 @@ const SidebarMenuItem = ({ url, icon, text, ...rest }) => {
 };
 
 export default SidebarMenuItem;
-
-
