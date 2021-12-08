@@ -19,6 +19,7 @@ export default function useFetch({
   noHeader = false,
   setLoader = null,
   errMessage = null,
+  argErrFunc=null
 }) {
   const { token } = useAuth();
 
@@ -64,6 +65,8 @@ export default function useFetch({
         if (errMessage !== null) {
           errMessage(err.response.data);
         }
+        if (argErrFunc !== null) argErrFunc(err.response.data);
+
         // toast.error('دوباره تلاش کنید');
         // toast.error("دوباره تلاش کنید", {
         //   position: toast.POSITION.TOP_CENTER,

@@ -2,12 +2,27 @@ import React from "react";
 import ico from "@Assets/Pic/coding-cuate-5352 1.png";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 import Button from "@Components/Shared/Buttons/Button";
+import { useTimer } from "react-timer-hook";
 
 function HeaderDiscount() {
   const [isCopied, handleCopy] = UseCopyToClipboard(3000);
-
+  const time = new Date();
+  const {
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    resume,
+    restart,
+  } = useTimer({ time, onExpire: () => console.warn("onExpire called") });
+  function onFinish() {
+    console.log("finished!");
+  }
   return (
-    <div className="HeaderDiscount SideBarDiscount flex items-end justify-between ">
+    <div className="HeaderDiscount SideBarDiscount flex items-end justify-between">
       <div className="HeaderDiscount__endCircleBox relative">
         <div className="HeaderDiscount__endDarkOrange"></div>
         <div className="HeaderDiscount__endYellow absolute"></div>
@@ -19,7 +34,7 @@ function HeaderDiscount() {
           <p className="HeaderDiscount__discount">40%</p>
         </div>
       </div>
-      <div className="w-10/12">
+      <div className="w-10/12 sm:w-full	">
         <div className="HeaderDiscount__titleBox items-start text-right justify-start">
           <p className="HeaderDiscount__title">
             تخفیف ویژه برای تمام دوره های کدآموز شروع شد!!!
@@ -33,13 +48,13 @@ function HeaderDiscount() {
               ))}
             </div>
             <div className="SideBarDiscount__timer flex justify-between items-center">
-              <p>20</p>
+              <p>{seconds}</p>
               <p>:</p>
-              <p>45</p>
+              <p>{minutes}</p>
               <p>:</p>
-              <p>13</p>
+              <p>{hours}</p>
               <p>:</p>
-              <p>12</p>
+              <p> {days}</p>
             </div>
           </div>
           <div className="SideBarDiscount__discountBox flex items-start justify-between">

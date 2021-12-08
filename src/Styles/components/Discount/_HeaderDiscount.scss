@@ -1,8 +1,14 @@
 .HeaderDiscount {
     padding: 1.2rem 10rem;
     width: 100%;
+    @include respond(tablet) {
+        padding: 1rem;
+    }
     &__circleBox {
         width: 10%;
+        @include respond(tablet) {
+            width: 5%;
+        }
     }
     &__LightorangeCircle {
         background-color: $color-primary-light-1;
@@ -11,17 +17,31 @@
         border-radius: 50%;
         bottom: -0.5rem;
         right: 4rem;
+        @include respond(tablet) {
+            width: 4rem;
+            height: 4rem;
+            right: 2.5rem;
+        }
         &-redborder {
             bottom: 0rem;
             right: 4.5rem;
+            @include respond(tablet) {
+                right: 2.5rem;
+            }
         }
     }
     &__imgbox {
         margin: 0 0rem 0 8rem;
+        @include respond(tablet) {
+            margin: 0 0rem 0 4rem;
+        }
     }
     &__img {
         width: 16rem;
         height: auto;
+        @include respond(tablet) {
+            width: 10rem;
+        }
     }
     &__discountBox {
         margin-right: 1rem;
@@ -35,6 +55,10 @@
         padding: 1.6rem;
         width: 30%;
         margin-left: 3rem;
+        @include respond(tablet) {
+            width: 50%;
+            padding: 1rem 0.5rem;
+        }
     }
     &__endCircleBox {
         margin-bottom: auto;
@@ -44,6 +68,10 @@
         background-color: $color-primary-dark-1;
         width: 9.1rem;
         height: 9.1rem;
+        @include respond(tablet) {
+            width: 6rem;
+            height: 6rem;
+        }
         border-radius: 50%;
         margin-top: 0rem;
         margin-right: 3rem;
@@ -51,6 +79,10 @@
     &__endYellow {
         width: 8.8rem;
         height: 8.8rem;
+        @include respond(tablet) {
+            width: 5.5rem;
+            height: 5.5rem;
+        }
         border-radius: 50%;
         right: 0.5rem;
         background-color: $color-yellow;
@@ -65,12 +97,20 @@
         border-radius: 50%;
         width: 8.7rem;
         height: 8.7rem;
+        @include respond(tablet) {
+            width: 6rem;
+            height: 6rem;
+        }
     }
     &__midredBorder {
         border: 2px solid $color-red;
         border-radius: 50%;
         width: 7rem;
         height: 7rem;
+        @include respond(tablet) {
+            width: 4rem;
+            height: 4rem;
+        }
     }
     &__discount {
         margin: auto 0;
@@ -78,6 +118,9 @@
         top: 50%;
         transform: translateY(-50%);
         font-size: 2rem;
+        @include respond(tablet) {
+            font-size: 1.5rem;
+        }
     }
     &__endLightOrange {
         background-color: $color-primary-light-1;
@@ -86,6 +129,10 @@
         border-radius: 50%;
         bottom: -1.4rem;
         left: -3.6rem;
+        @include respond(tablet) {
+            width: 4rem;
+            height: 4rem;
+        }
         &-redborder {
             bottom: -1rem;
             left: -3.2rem;
@@ -95,6 +142,9 @@
         width: 70%;
         // margin-top: -3.5rem;
         margin-right: 4rem;
+        @include respond(tablet) {
+            width: 100%;
+        }
     }
     &__title {
         color: $color-text;

@@ -6,6 +6,10 @@
         background-color: $color-yellow;
         width: 9.1rem;
         height: 9.1rem;
+        @include respond(tablet) {
+            width: 6rem;
+            height: 6rem;
+        }
         border-radius: 50%;
         // margin-right: auto;
     }
@@ -16,6 +20,10 @@
         border-radius: 50%;
         top: 0;
         right: -1rem;
+        @include respond(tablet) {
+            width: 4rem;
+            height: 4rem;
+        }
         &-redborder {
             top: 0.4rem;
             right: -1.5rem;
@@ -38,6 +46,10 @@
         border-radius: 50%;
         width: 5.7rem;
         height: 5.7rem;
+        @include respond(tablet) {
+            width: 4rem;
+            height: 4rem;
+        }
     }
     &__smredBorder {
         border: 2px solid $color-red;
@@ -94,6 +106,9 @@
     &__timerTitle {
         p {
             display: inline-block;
+            @include respond(tablet) {
+                font-size: 1rem;
+            }
         }
     }
     &__timer {
@@ -138,6 +153,7 @@
         border-radius: 50%;
         bottom: -0.8rem;
         left: -1.2rem;
+
         &-redborder {
             bottom: -0.5rem;
             left: -1rem;
