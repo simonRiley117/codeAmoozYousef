@@ -24,14 +24,14 @@ const Courses = () => {
     method: "GET",
     noHeader: true,
     setter: setallcourse,
-    params: { categories: cateid },
+    params: { categories: cateid  },
   });
 
   return (
     <div className="container">
       <div className="courses">
-        <LatestCourse />
-        <Searchxx />
+        <LatestCourse getallCourseList={getallCourseList}/>
+        <Searchxx   />
         <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
         <FavoriteCourse />
         {/* <FilterCourses cateid={cateid} chooseCat={chooseCat} /> */}

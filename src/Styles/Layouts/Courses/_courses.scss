@@ -181,3 +181,8 @@
   color: $color-text;
   border: none;
 }
+.FavoriteCourse{
+  &__center {
+    overflow: hidden;
+  }
+}

@@ -6,7 +6,7 @@ import { ReactComponent as ClockIcon } from "@Assets/Icons/clock.svg";
 import { ReactComponent as Star } from "@Assets/Icons/star.svg";
 import useFetch from "@App/Context/useFetch";
 import Price from "@Components/Shared/Price/Price";
-import {  toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { Rate, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
@@ -25,9 +25,10 @@ const Coursecardsm = ({ card }) => {
     title,
     has_user_course,
     get_price_without_degree_with_some_extra_info,
-    teacher_avatar,cover
+    teacher_avatar,
+    cover,
   } = card;
-  const [isOff, setIsOff] = useState(false);
+  const cost = get_price_without_degree_with_some_extra_info;
   const [courseid, setCourseid] = useState(null);
   const [addtocardData, setaddtocardData] = useState();
   const Addtocard = useFetch({
@@ -35,50 +36,54 @@ const Coursecardsm = ({ card }) => {
     method: "POST",
     trigger: false,
     data: addtocardData,
-    argFunc:(res)=>{toast.success('     دوره با موفقیت به سبد کالا اضافه شد ')},
-    argErrFunc : (err) => handleErrorAddtocard(err),
+    argFunc: (res) => {
+      toast.success("     دوره با موفقیت به سبد کالا اضافه شد ");
+    },
+    argErrFunc: (err) => handleErrorAddtocard(err),
   });
-  const handleErrorAddtocard = (err)=>{
-   console.log("errCard",err)
-   if(err?.data === "course already exists"){
-    toast.error('این دوره از قبل اضافه شده است')
-   }
-   if(err?.detail === "Given token not valid for any token type"){
-    toast.error('برای خرید دوره اول وارد سایت شوید')
-   }
-  }
+  const handleErrorAddtocard = (err) => {
+    console.log("errCard", err);
+    if (err?.data === "course already exists") {
+      toast.error("این دوره از قبل اضافه شده است");
+    }
+    if (err?.detail === "Given token not valid for any token type") {
+      toast.error("برای خرید دوره اول وارد سایت شوید");
+    }
+  };
   const addToCard = (id) => {
     setaddtocardData({ course_uuid: id, degree_uuid: null });
     Addtocard.reFetch();
   };
   return (
     <div className="card-sm">
+      <div
+        className={
+          cost.discountRate !== 0 ? "card-sm-off-show" : "card-sm-off-hide"
+        }
+      >
+        {cost.discountRate}%تخفیف
+      </div>
       <div>
         <div className="card-sm-img">
-          <div
-            className={isOff ? "card-sm-img-off-show" : "card-sm-img-off-hide"}
-          >
-            40% تخفیف
-          </div>
           <div className="card-sm-img-title">
-            <img src={cover} alt='course-cover'/>
+            <img src={cover} alt="course-cover" />
           </div>
 
           <div className="card-sm-img-hover">
-            <div className="card-sm-img-hover--box"> <div className="card-sm-img-hover--shopingcard">
-              {" "}
-            { !has_user_course &&
-             <IconBtn
-                onClick={() => addToCard(uuid)}
-                title="افزودن به سبدخرید"
-                icon={<CardIcon />}
-              />}
+            <div className="card-sm-img-hover--box">
+              <div className="card-sm-img-hover--shopingcard">
+                {!has_user_course && (
+                  <IconBtn
+                    onClick={() => addToCard(uuid)}
+                    title="افزودن به سبدخرید"
+                    icon={<CardIcon />}
+                  />
+                )}
+              </div>
+              <div className="card-sm-img-hover--heart">
+                <IconBtn title="افزودن به لیست علاقه مندیها" icon={<Heart />} />
+              </div>
             </div>
-            <div className="card-sm-img-hover--heart">
-              {" "}
-              <IconBtn title="افزودن به لیست علاقه مندیها" icon={<Heart />} />
-            </div></div>
-
           </div>
         </div>
         <div className="card-sm-content">
@@ -93,15 +98,11 @@ const Coursecardsm = ({ card }) => {
             </div>
             <div className="d-flex-align card-sm-info-row-time">
               <ClockIcon />
-              <p className="card-sm-content-time">
-                {total_time_of_course}
-              </p>
+              <p className="card-sm-content-time">{total_time_of_course}</p>
             </div>
             <div className="d-flex-align card-sm-info-row-user">
               <User />
-              <p className="card-sm-content-time">
-                {num_of_participants}نفر
-              </p>
+              <p className="card-sm-content-time">{num_of_participants}نفر</p>
             </div>
           </div>
 
@@ -116,7 +117,7 @@ const Coursecardsm = ({ card }) => {
             </Link>
           </h5>
           <div className="card-sm-img-pic">
-            <img src={teacher_avatar} />
+            <img src={teacher_avatar} alt='teacher-avatar' />
             <h4>
               {teacher_first_name} {teacher_last_name}
             </h4>
@@ -124,30 +125,22 @@ const Coursecardsm = ({ card }) => {
 
           <div className="d-flex-space card-sm-footer">
             <div className="card-sm-footer-level">{level}</div>
-           {get_price_without_degree_with_some_extra_info
-                  .discountAmount === 0 ? <Price
-              value={
-                get_price_without_degree_with_some_extra_info
-                  .discountAmount
-              }
-              success
-            /> : "رایگان"}
-            {get_price_without_degree_with_some_extra_info.discountRate ||
-              get_price_without_degree_with_some_extra_info
-                .discountRate !== 0 ? (
-                <Price
-                  value={
-                    get_price_without_degree_with_some_extra_info
-                      .originalAmount 
-                  }
-                  isDiscount
-                  suffix="تومان"
-                />
-              ):null}
-           
+            
+            {cost.discountRate || cost.discountRate !== 0 ? (
+              <div>
+                {cost.originalAmount !== 0 ? (
+                  <Price value={cost.originalAmount} isDiscount />
+                ) : (
+                  <p>رایگان</p>
+                )}
+              </div>
+            ) : null}
+            {cost.discountAmount !== 0 ? (
+              <Price value={cost.discountAmount} suffix="تومان" success />
+            ) : (
+             <p className='success'> رایگان</p>
+            )}
           </div>
-
-       
         </div>
       </div>
     </div>

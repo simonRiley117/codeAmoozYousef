@@ -29,7 +29,8 @@ const CourseCardBg = ({ card }) => {
   } = card;
   const [addtocardData, setaddtocardData] = useState();
   const [isFavorite, setIsFavorite] = useState({ isFavorite: is_favorite });
-  
+  const cost = get_price_without_degree_with_some_extra_info;
+
   const Addtocard = useFetch({
     //addtocard=>data:course_uuid: "", degree_uuid: null 
     url: `CartService/addToCart`,
@@ -73,6 +74,15 @@ const CourseCardBg = ({ card }) => {
         <span>40%</span>
         <span>تخفیف</span>
       </div> */}
+        <div
+        className={
+          cost.discountRate !== 0
+            ? "card-bg-off-show"
+            : "card-bg-off-hide"
+        }
+      >
+        {cost.discountRate}%تخفیف
+      </div>
       <div className="card-bg-pic">
         <img src={cover} alt="python" className="card-bg-pic-logo" />
       </div>
@@ -141,27 +151,20 @@ const CourseCardBg = ({ card }) => {
                 {teacher_first_name} {teacher_last_name}
               </h4>
             </div>
-            {get_price_without_degree_with_some_extra_info.discountAmount !==
-            0 ? (
-              <Price
-                value={
-                  get_price_without_degree_with_some_extra_info.discountAmount
-                }
-                success
-              />
-            ) : (
-              "رایگان"
-            )}
-            {get_price_without_degree_with_some_extra_info.discountRate ||
-            get_price_without_degree_with_some_extra_info.discountRate !== 0 ? (
-              <Price
-                value={
-                  get_price_without_degree_with_some_extra_info.originalAmount
-                }
-                isDiscount
-                suffix="تومان"
-              />
+            {cost.discountRate || cost.discountRate !== 0 ? (
+              <div>
+                {cost.originalAmount !== 0 ? (
+                  <Price value={cost.originalAmount} isDiscount />
+                ) : (
+                  <p>رایگان</p>
+                )}
+              </div>
             ) : null}
+            {cost.discountAmount !== 0 ? (
+              <Price value={cost.discountAmount} suffix="تومان" success />
+            ) : (
+             <p className='success'> رایگان</p>
+            )}
           </div>
         </div>
       </div>

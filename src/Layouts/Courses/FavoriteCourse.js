@@ -47,7 +47,7 @@ const FavoriteCourse = () => {
     ],
   };
   return (
-    <div>
+    <div className='FavoriteCourse'>
       {" "}
       <Slider {...settings}>
         {favcourses?.map((card) => (
