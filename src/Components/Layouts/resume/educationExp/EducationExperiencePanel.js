@@ -4,7 +4,7 @@ import EducationExperinceDone from "./EducationExperinceDone";
 import EducationExperienceForm from "./EducationExperienceForm";
 import Button from "@Components/Shared/Buttons/Button";
 
-const EducationExperiencePanel = () => {
+const EducationExperiencePanel = ({ readable }) => {
   return (
     <div className="WorkExperiencePanel">
       <EducationExperinceDone
@@ -13,12 +13,14 @@ const EducationExperiencePanel = () => {
         startdate="1 تیر 1397"
         endDate="1 تیر 1398"
       />
-      <EducationExperienceForm />
-    
-      <Button type="text" size="small" success>
-        <PlusIcon />
-        <p>اضافه کردن سوابق تحصیلی</p>
+      {!readable && <EducationExperienceForm />}
+
+      {!readable && (
+        <Button type="text" size="small" success>
+          <PlusIcon />
+          <p>اضافه کردن سوابق تحصیلی</p>
         </Button>
+      )}
     </div>
   );
 };

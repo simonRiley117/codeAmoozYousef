@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "@Components/Shared/Inputs/Input";
 import DatePickerInput from "@Components/Shared/Inputs/DatePickerInput";
-import ResumeFormWrapper from '@Components/Layouts/resume/ResumeWrapper/ResumeFormWrapper'
+import ResumeFormWrapper from "@Components/Layouts/resume/ResumeWrapper/ResumeFormWrapper";
 
-const EducationExperienceForm = () => {
+const EducationExperienceForm = ({ readable }) => {
   const {
     handleSubmit,
     control,
@@ -12,9 +12,8 @@ const EducationExperienceForm = () => {
   } = useForm();
   const onSubmit = (data) => {};
   return (
-      <ResumeFormWrapper className='WorkExperienceForm' >
+    <ResumeFormWrapper className="WorkExperienceForm">
       <form onSubmit={handleSubmit(onSubmit)}>
-    
         <div className="grid grid-cols-2 resume-grid-gap ">
           <Input
             label="سمت شما"
@@ -58,12 +57,9 @@ const EducationExperienceForm = () => {
             control={control}
             errors={errors}
           />
-     
         </div>
-       
-       
       </form>
-      </ResumeFormWrapper>
+    </ResumeFormWrapper>
   );
 };
 
