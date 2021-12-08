@@ -58,10 +58,10 @@ const Coursecardsm = ({ card }) => {
     <div className="card-sm">
       <div
         className={
-          cost.discountRate !== 0 ? "card-sm-off-show" : "card-sm-off-hide"
+          cost?.discountRate !== 0 ? "card-sm-off-show" : "card-sm-off-hide"
         }
       >
-        {cost.discountRate}%تخفیف
+        {cost?.discountRate}%تخفیف
       </div>
       <div>
         <div className="card-sm-img">
@@ -126,16 +126,16 @@ const Coursecardsm = ({ card }) => {
           <div className="d-flex-space card-sm-footer">
             <div className="card-sm-footer-level">{level}</div>
             
-            {cost.discountRate || cost.discountRate !== 0 ? (
+            {cost?.discountRate || cost?.discountRate !== 0 ? (
               <div>
-                {cost.originalAmount !== 0 ? (
+                {cost?.originalAmount !== 0 ? (
                   <Price value={cost.originalAmount} isDiscount />
                 ) : (
                   <p>رایگان</p>
                 )}
               </div>
             ) : null}
-            {cost.discountAmount !== 0 ? (
+            {cost?.discountAmount !== 0 ? (
               <Price value={cost.discountAmount} suffix="تومان" success />
             ) : (
              <p className='success'> رایگان</p>
