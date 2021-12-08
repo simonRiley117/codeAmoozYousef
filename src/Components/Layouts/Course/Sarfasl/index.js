@@ -29,9 +29,6 @@ const Topic = ({courseId}) => {
         noHeader: token ? false : true,
         setter: setCourseSeasons,
     });
-    // console.log('getCourseSeasons.loading: ', getCourseSeasons.loading);
-    // console.log('getCourseSeasons: ', getCourseSeasons);
-    // console.log('courseSeasons: ', courseSeasons);
 
     useEffect(() => {
         console.log('location.state.id: ', location.state.id);
