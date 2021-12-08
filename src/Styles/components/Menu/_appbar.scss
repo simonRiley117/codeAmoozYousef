@@ -1,16 +1,13 @@
 .Menu__sec {
 	color: #ffffff;
 	font-size: 14px;
+
 	position: fixed;
 	width: 100vw;
 	top: 0;
 	z-index: 1000;
 	background-color: transparent;
 	transition: background-color 200ms ease, top 300ms linear;
-
-	&.visible {
-		top: 0;
-	}
 	&.sticky {
 		background-color: $color-white;
 		filter: $shadow-backgroud;
@@ -21,6 +18,10 @@
 			color: $color-black-light;
 		}
 	}
+	&.visible {
+		top: 0;
+	}
+
 	&.activeMenu {
 		background-color: $color-blue;
 	}

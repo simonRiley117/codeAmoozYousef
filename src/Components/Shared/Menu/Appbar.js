@@ -88,7 +88,7 @@ const Appbar = () => {
 	return (
 		<>
 			<div
-				className={classNames('Menu__sec', {
+				className={classNames('Menu__sec primary', {
 					sticky: sticky,
 				})}
 			>

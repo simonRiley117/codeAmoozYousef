@@ -1,5 +1,5 @@
 import React from 'react';
-import Appbar from '../Menu/Appbar';
+import DashboardAppbar from '../Menu/DashboardAppbar';
 import SidebarMenu from '../Menu/SidebarMenu';
 import { Layout } from 'antd';
 import BreadCrumb from '../BreadCrump/BreadCrump';
@@ -10,7 +10,7 @@ const DashboardLayout = () => {
 	return (
 			<Layout className='layout__dashboard'>
 				<header className='layout__header'>
-					<Appbar />
+					<DashboardAppbar />
 				</header>
 				<section className='layout__wrapper'>
 					<aside className='layout__sidebar'>
