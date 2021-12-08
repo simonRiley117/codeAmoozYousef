@@ -1,5 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "@Components/Shared/Buttons/Button"
+import useFetch from "@App/Context/useFetch";
+import ShoppingCoursecard from "./ShoppingCoursecard";
+import { ClipLoader } from "react-spinners";
 const TipButton = () => {
   return (
     <form>
@@ -11,38 +14,37 @@ const TipButton = () => {
     </form>
   );
 };
-const CostBox = () => {
+const CostBox = ({orderCard,payment}) => {
+ 
+  const {final_amount,discounted_cost,discount_amount }=payment;
   return (
     <div className="primary-box CostBox">
       <table style={{ width: "100%" }}>
         <tr>
           <td> مجموع هزینه:</td>
           <td>
-            {" "}
-            <p>500.000</p>
+            <p>{discounted_cost}</p>
           </td>
           <td>تومان</td>
         </tr>
         <tr>
           <td> تخفیف:</td>
           <td>
-            {" "}
-            <p>100.000</p>
+            <p>{discount_amount}</p>
           </td>
           <td>تومان</td>
         </tr>
         <tr>
           <td> پرداختی:</td>
           <td>
-            <p className="success">400.000</p>
+            <p className="success">{final_amount}</p>
           </td>
           <td>تومان</td>
         </tr>
         <tr>
           <td> تعداد:</td>
           <td>
-            {" "}
-            <p>1</p>
+            <p>{orderCard?.results?.length}</p>
           </td>
           <td>عدد</td>
         </tr>
