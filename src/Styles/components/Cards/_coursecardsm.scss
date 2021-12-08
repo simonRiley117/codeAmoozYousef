@@ -116,7 +116,9 @@
         right: 5px;
         display: flex;
         flex-direction: column;
-        align-items: cent
+        align-items: center;
+        z-index: 1000;
+
       }
       &--shopingcard {
        margin-bottom: 15px;

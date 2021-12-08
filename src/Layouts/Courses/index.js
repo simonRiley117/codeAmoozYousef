@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useFetch from "@App/Context/useFetch";
 import Searchxx from "./Searchxx";
 import LatestCourse from "./LatestCourse";
-// images
+import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import Coursecardsm from "@Components/Layouts/Course/Cards/CourseCardSm";
 import FilterCourses from "./FilterCourses";
 import Pagination from "@Components/Shared/Pagination";
@@ -30,6 +30,8 @@ const Courses = () => {
   return (
     <div className="container">
       <div className="courses">
+      <BreadCrump pathsname="/course"  />
+
         <LatestCourse getallCourseList={getallCourseList}/>
         <Searchxx   />
         <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
