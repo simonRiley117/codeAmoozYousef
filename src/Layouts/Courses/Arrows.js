@@ -1,13 +1,27 @@
-import React from 'react';
-
-const Arrow = ({src, classes}) => {
-    return (
-            <img src={src} alt="arrow" className={classes}/>
-    );
-};
-export const PrevArrow = ({src,classes}) => {
+import React from "react";
+import LeftArrow from "@Assets/Icons/arrow-left.svg";
+import RightArrow from "@Assets/Icons/arrow-right.svg";
+function NextArrow(props) {
+  const { className, style, onClick } = props;
   return (
-    <img src={src} className={classes} alt="arrow"/>
+    <div
+    className={`${className} NextArrow__icons`}
+      onClick={onClick}
+    >
+      <img src={LeftArrow} alt="" />
+    </div>
   );
-};
-export default Arrow;
+}
+export { NextArrow };
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} PrevArrow__icons`}
+      onClick={onClick}
+    >
+      <img src={LeftArrow} alt="" />
+    </div>
+  );
+}
+export { PrevArrow };

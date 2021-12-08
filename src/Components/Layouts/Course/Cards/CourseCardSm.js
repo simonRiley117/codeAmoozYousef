@@ -37,7 +37,7 @@ const Coursecardsm = ({ card }) => {
     trigger: false,
     data: addtocardData,
     argFunc: (res) => {
-      toast.success("     دوره با موفقیت به سبد کالا اضافه شد ");
+      toast.success("دوره با موفقیت به سبد کالا اضافه شد ");
     },
     argErrFunc: (err) => handleErrorAddtocard(err),
   });
@@ -129,14 +129,14 @@ const Coursecardsm = ({ card }) => {
             {cost?.discountRate || cost?.discountRate !== 0 ? (
               <div>
                 {cost?.originalAmount !== 0 ? (
-                  <Price value={cost.originalAmount} isDiscount />
+                  <Price value={cost?.originalAmount} isDiscount />
                 ) : (
                   <p>رایگان</p>
                 )}
               </div>
             ) : null}
             {cost?.discountAmount !== 0 ? (
-              <Price value={cost.discountAmount} suffix="تومان" success />
+              <Price value={cost?.discountAmount} suffix="تومان" success />
             ) : (
              <p className='success'> رایگان</p>
             )}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetch from "@App/Context/useFetch";
 import Slider from "react-slick";
 import CourseCardSm from "@Components/Layouts/Course/Cards/CourseCardSm";
+import {NextArrow,PrevArrow} from "./Arrows"
 
 const FavoriteCourse = () => {
   const [favcourses, setfavcourses] = useState(null);
@@ -12,29 +13,27 @@ const FavoriteCourse = () => {
     noHeader: true,
     setter: setfavcourses,
   });
+  
   const settings = {
-    className: "latestCourse__center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "0",
-    slidesToShow: 5,
+    className: "FavoriteCourse__slider",
+    infinite:  false,
+    slidesToShow:4,
     speed: 500,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow  />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 730,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
         },
       },
       {
