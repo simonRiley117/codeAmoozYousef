@@ -14,6 +14,21 @@
   margin: 5px auto;
   padding: 15px;
   width: 100%;
+  &-off-hide {
+    display: none;
+  }
+  &-off-show {
+    position: absolute;
+    font-size: 1.6rem;
+    background: #f68521;
+    padding: 1rem 3.5rem;
+    border-bottom-left-radius: 1rem;
+    color: #fff;
+    top: 0px;
+    z-index: 100;
+    right: 0;
+  }
+
   @include respond(tablet) {
    width: 96%;
   }
@@ -24,8 +39,10 @@
     height: 100px;
     overflow: hidden;
     font-size: 1.4rem;
+    height: 48px;
+
     @include respond(sm-laptop) {
-      height: 69px;
+      height: 48px;
     }
   }
   &--box{

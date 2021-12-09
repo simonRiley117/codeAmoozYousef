@@ -8,6 +8,20 @@
   overflow: hidden;
   margin: 5px 0;
   padding: 15px;
+  &-off-hide {
+    display: none;
+  }
+  &-off-show {
+    position: absolute;
+    font-size: 1.6rem;
+    background: #f68521;
+    padding: 1rem 3.5rem;
+    border-bottom-left-radius: 1rem;
+    color: #fff;
+    top: 0px;
+    z-index: 100;
+    right: 0;
+  }
   &-footer {
     border-top: 1px solid rgba(229, 229, 229, 0.8);
     padding-top: 15px;
@@ -102,7 +116,9 @@
         right: 5px;
         display: flex;
         flex-direction: column;
-        align-items: cent
+        align-items: center;
+        z-index: 1000;
+
       }
       &--shopingcard {
        margin-bottom: 15px;
@@ -129,10 +145,14 @@
     }
     &-off-show {
       position: absolute;
-      font-size: 1.3rem;
-      background: $color-primary;
-      padding: 1rem 1.5rem;
+      font-size: 1.6rem;
+      background: #f68521;
+      padding: 1rem 3.5rem;
       border-bottom-left-radius: 1rem;
+      color: #fff;
+      top: 0px;
+      z-index: 100;
+      right: 0;
     }
   }
 

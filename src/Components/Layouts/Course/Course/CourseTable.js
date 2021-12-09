@@ -48,7 +48,6 @@ function CourseTable({ courseId }) {
     costs,
     has_user_course,
   } = orderCourse;
-  //ریکویست اضافه کردن به سبد کالا ارور 404 میخوره
   const getLatestCourseList = useFetch({
     url: `CartService/addToCart`,
     method: "POST",

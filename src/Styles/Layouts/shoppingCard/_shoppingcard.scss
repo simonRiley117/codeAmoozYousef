@@ -1,11 +1,15 @@
 .shoppingcard {
   padding-top: 9rem;
+  .card-bg{
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 0 #ffffff;
+  }
   &__row{
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 26px;
     @include respond(tablet){
-      grid-template-columns: 2r 1fr;
+      grid-template-columns: 1fr ;
     }
   }
   &__DegreeBox{

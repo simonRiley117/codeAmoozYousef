@@ -1,5 +1,4 @@
 .courses {
-  padding-top: 10rem;
   padding-bottom: 3rem;
   &__latest {
     .swiper-button-next,
@@ -107,7 +106,6 @@
         margin-right: 3rem;
         @include respond(big-phone) {
           margin-right: 0;
-
         }
       }
       &:nth-child(1) {
@@ -180,4 +178,34 @@
   background-color: #e5e5e5;
   color: $color-text;
   border: none;
+}
+.FavoriteCourse {
+  margin-bottom: 40px;
+
+  &__slider {
+    
+    .slick-slider {
+    }
+    
+    .slick-slider .slick-track,
+    .slick-slider .slick-list {
+      transform: translate3d(0, 0, 0);
+      direction: rtl;
+    }
+    .slick-track{
+      margin-right: 0;
+    }
+    .card-sm {
+      margin: 5px 1.2rem;
+      direction: rtl !important;
+
+    }
+
+  }
+  .NextArrow__icons {
+    img {
+      transform: rotate(180deg);
+
+    }
+  }
 }

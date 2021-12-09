@@ -11,11 +11,14 @@ const BreadCrump = ({ title, classes }) => {
 	// { path: '/news/news-info', breadcrumb: title },
 	const routes = [
 		{ path: '/', breadcrumb: 'صفحه اصلی' },
+		{ path: '/courses', breadcrumb: ' لیست دوره ها' },
 		{ path: '/coWorkers', breadcrumb: 'همکاران واساتید' },
 		{ path: '/coWorkers/master', breadcrumb: 'اساتید' },
 		{ path: '/coWorkers/technicalteam', breadcrumb: 'technical Team' },
 		{ path: '/coWorkers/technicalteam/information', breadcrumb: title },
 		{ path: '/coWorkers/employer', breadcrumb: 'تیم کارفرما' },
+		{ path: '/dashboard/', breadcrumb: 'داشبورد ' },
+		{ path: '/dashboard/my-course', breadcrumb: 'دوره های من ' },
 	];
 	const breadcrumbs = useBreadcrumbs(routes);
 	return (
