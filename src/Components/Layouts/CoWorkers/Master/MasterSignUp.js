@@ -23,11 +23,7 @@ function MasterSignUp() {
 	// const [teacherCoworkerData, setTeacherCoworkerData] = useState(null);
 	const [teacherCoworkerPostData, setTeacherCoworkerPostData] = useState(null);
 	// const [teacherCoworkerLoading, setTeacherCoworkerLoading] = useState(true);
-	const {
-		handleSubmit,
-		control,
-		register,
-	} = useForm();
+	const { handleSubmit, control, register } = useForm();
 
 	const onSubmit = (data) => {
 		let formData = new FormData();
@@ -162,11 +158,15 @@ function MasterSignUp() {
 							<div className='profile__upload-row'>
 								<Upload
 									label='رزومه'
-									{...register('resume', {
-										required: true,
-									})}
+									register={{
+										required: {
+											value: true,
+											message: 'روزمه خود را انتخاب کنید',
+										},
+									}}
+									name='resume'
+									control={control}
 									accept='.pdf'
-									// value={teacherCoworkerData?.resume}
 									id='cover_upload'
 								/>
 							</div>
@@ -212,7 +212,6 @@ function MasterSignUp() {
 			</div>
 		</>
 	);
-
 }
 
 export default MasterSignUp;
