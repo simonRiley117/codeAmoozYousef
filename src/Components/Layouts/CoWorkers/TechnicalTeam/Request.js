@@ -4,10 +4,10 @@ import Input from '@Components/Shared/Inputs/Input';
 import InputTextArea from '@Components/Shared/Inputs/Textarea';
 import CheckBox from '@Components/Shared/Inputs/CheckBox';
 import Button from '@Components/Shared/Buttons/Button';
-import UploadProfile from '@Components/Shared/Inputs/UploadProfile';
 import useFetch from '../../../../Context/useFetch';
 import Select from '../../../Shared/Inputs/Select';
 import Upload from '../../../Shared/Inputs/Upload';
+import { useUserData } from '@App/Context/userContext';
 
 const optionList = [
 	{ label: ' دیپلم', value: 'U.DP' },
@@ -18,16 +18,23 @@ const optionList = [
 ];
 
 function Request() {
-	// const [technicalCoworkerData, setTechnicalCoworkerData] = useState(null);
+	const { userData } = useUserData();
+
 	const [technicalCoworkerPostData, setTechnicalCoworkerPostData] =
 		useState(null);
-	// const [technicalCoworkerLoading, setTechnicalCoworkerLoading] = useState(true);
 	const {
 		handleSubmit,
 		control,
-		formState: { errors },
 		register,
-	} = useForm();
+		reset,
+		formState: { errors },
+	} = useForm({
+		defaultValues: {
+			first_name: userData?.first_name,
+			last_name: userData?.last_name,
+			email: userData?.email,
+		},
+	});
 
 	const onSubmit = (data) => {
 		let formData = new FormData();
@@ -44,17 +51,6 @@ function Request() {
 		setTechnicalCoworkerPostData(formData);
 		postTechnicalCoWorker.reFetch();
 	};
-
-	// const setData = (data = {}) => {
-	//     setTechnicalCoworkerData(data);
-	//     setTechnicalCoworkerLoading(false);
-	// };
-
-	// const getTechnicalCoWorkerInfo = useFetch({
-	//     url: `TechnicalTeamCoWorkerService/${technicalCoworkerData?.response?.data?.id}`,
-	//     method: 'GET',
-	//     setter: setData,
-	// });
 
 	const postTechnicalCoWorker = useFetch({
 		url: 'TechnicalTeamCoWorkerService',
@@ -152,17 +148,6 @@ function Request() {
 							control={control}
 							// value={technicalCoworkerData?.email}
 						/>
-						<div className='profile__upload-row'>
-							<Upload
-								label='رزومه'
-								{...register('resume', {
-									required: true,
-								})}
-								accept='.pdf'
-								// value={technicalCoworkerData?.resume}
-								id='cover_upload'
-							/>
-						</div>
 					</div>
 					<div className='MasterSignUp__textarea'>
 						<InputTextArea
@@ -177,6 +162,16 @@ function Request() {
 							control={control}
 
 							// value={technicalCoworkerData?.bio}
+						/>
+					</div>
+					<div className='profile__upload-row'>
+						<Upload
+							label='رزومه'
+							{...register('resume', { required: true })}
+							message='رزومه خود را انتخاب کنید'
+							error={errors['resume']}
+							accept='.pdf'
+							id='cover_upload'
 						/>
 					</div>
 					<div className='flex items-start text-right MasterSignUp__ruleBox'>
@@ -203,7 +198,6 @@ function Request() {
 			</div>
 		</div>
 	);
-
 }
 
 export default Request;

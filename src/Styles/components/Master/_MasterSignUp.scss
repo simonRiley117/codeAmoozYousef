@@ -7,17 +7,16 @@
 		}
 	}
 	&__gridBox {
-		column-gap: 15rem;
-		row-gap: 5rem;
+		gap: 2rem 10rem;
 		@include respond(tablet) {
-			gap:2rem 5rem ;
+			gap: 2rem 5rem;
 		}
 		@include respond(phone) {
 			grid-template-columns: 1fr;
 		}
 	}
 	&__textarea {
-		margin-top: 4.6rem;
+		margin-top: 2rem;
 		@include respond(tablet) {
 			text-align: right;
 		}
@@ -31,5 +30,4 @@
 	&__btnBox {
 		margin-top: 7rem;
 	}
-
 }
