@@ -12,6 +12,7 @@ import {ClipLoader} from "react-spinners";
 import {useAuth} from "@App/Context/authContext";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 import {Link} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const override = {
     display: "block",
@@ -29,13 +30,16 @@ function CourseTable({courseId}) {
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
 
     const setCostForSelectedDegree = (e) => {
-        const selectedDegree = costs.filter((item) => item.uuid === e.target.value);
+        const selectedDegree = orderCourse?.costs.filter((item) => item.uuid === e.target.value);
         setDegree(selectedDegree[0]);
     };
 
     const setData = (data) => {
+        // console.log('ddd: ', data)
         setLoadingOrderCourse(false)
         setOrderCourse(data)
+        setDegree(data.selected_degree)
+        // selected_degree
     }
     const getCourseOrder = useFetch({
         url: `CourseService/${courseId}/courseOrder`,
@@ -44,22 +48,36 @@ function CourseTable({courseId}) {
         setter: setData,
     });
 
-    const {
-        title,
-        total_time_of_course,
-        nums_of_seasons,
-        mean_of_participant_points,
-        num_of_participants,
-        costs,
-        has_user_course,
-    } = orderCourse;
+    // const {
+    //     title,
+    //     total_time_of_course,
+    //     nums_of_seasons,
+    //     mean_of_participant_points,
+    //     num_of_participants,
+    //     costs,
+    //     has_user_course,
+    // } = orderCourse;
 
     const addToCart = useFetch({
         url: `CartService/addToCart`,
         method: "POST",
         trigger: false,
         data: addtocardData,
+        caller: getCourseOrder,
+        argFunc: (res) => {
+            toast.success("سفارش با موفقیت ثبت شد");
+        },
+        argErrFunc: (err) => handleError(err),
     });
+
+    const handleError = (err) => {
+        if (err?.data === "course already exists") {
+            toast.error("قبلا به سبد خرید اضافه شده است");
+        }
+        if (err?.detail === "Given token not valid for any token type") {
+            toast.error("برای ثبت سفارش وارد سایت شوید");
+        }
+    };
 
     const addToCard = () => {
         setaddtocardData({
@@ -78,21 +96,21 @@ function CourseTable({courseId}) {
                     <div className="CourseTable__Table">
                         <div className="flex items-center justify-start CourseTable__titleBox">
                             <div className="half__circle relative"></div>
-                            <p className="CourseTable__title">{title}</p>
+                            <p className="CourseTable__title">{orderCourse?.title}</p>
                         </div>
                         <div className="CourseTable__Body">
                             <div className="flex items-center justify-start CourseTable__infoBox">
                                 <img alt={clock} src={clock}/>
-                                <p className="CourseTable__infotxt">{total_time_of_course}</p>
+                                <p className="CourseTable__infotxt">{orderCourse?.total_time_of_course}</p>
                             </div>
                             <div className="flex items-center justify-start CourseTable__infoBox">
                                 <img alt={section} src={section}/>
-                                <p className="CourseTable__infotxt">{nums_of_seasons}</p>
+                                <p className="CourseTable__infotxt">{orderCourse?.nums_of_seasons}</p>
                                 <span className="CourseTable__infotxt">جلسه</span>
                             </div>
                             <div className="flex items-center justify-start CourseTable__infoBox">
                                 <img alt={user} src={user}/>
-                                <p className="CourseTable__infotxt">{num_of_participants}</p>
+                                <p className="CourseTable__infotxt">{orderCourse?.num_of_participants}</p>
                                 <span className="CourseTable__infotxt">
                     {" "}
                                     نفر در این دوره شرکت کرده اند
@@ -119,25 +137,25 @@ function CourseTable({courseId}) {
                             )}
                             <div className="CourseTable__RateBox">
                                 <Rate
-                                    defaultValue={mean_of_participant_points.grade}
+                                    defaultValue={orderCourse?.mean_of_participant_points?.grade}
                                     disabled={true}
                                 />
                             </div>
-                            {!has_user_course ? (
+                            {!orderCourse?.has_user_course ? (
                                 <>
                                     <div className="CourseTable__DegreeBox">
                                         <p className="CourseTable__DegreeTitle">
                                             دریافت گواهی پایان دوره:
                                         </p>
-                                        <Radio.Group onChange={setCostForSelectedDegree}>
-                                            {costs.map((degree) =>
-                                                degree.name === WITHOUT_DEGREE ? (
-                                                    <Radio checked={true} value={degree.uuid}>
-                                                        {degree.name}
-                                                    </Radio>
-                                                ) : (
-                                                    <Radio value={degree.uuid}>{degree.name}</Radio>
-                                                )
+                                        <Radio.Group onChange={setCostForSelectedDegree} name="radiogroup" value={degree?.uuid}>
+                                            {orderCourse?.costs?.map((degre) =>
+                                                // degre.name === WITHOUT_DEGREE ? (
+                                                //     <Radio value={degre.uuid}>
+                                                //         {degre.name}
+                                                //     </Radio>
+                                                // ) : (
+                                                    <Radio value={degre.uuid}>{degre.name}</Radio>
+                                                // )
                                             )}
                                         </Radio.Group>
                                     </div>
