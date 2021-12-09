@@ -14,7 +14,7 @@ import { useUserData } from "@App/Context/userContext";
 // import { ReactComponent as Instagram } from "@Assets/Icons/instagram.svg";
 // import { ReactComponent as Linkdin } from "@Assets/Icons/linkdin.svg";
 // import { ReactComponent as Telegram } from "@Assets/Icons/TelegramLogo.svg";
-import { isEmpty } from "lodash";
+// import { isEmpty } from "lodash";
 
 // const convertToFile = async (url) => {
 //   const response = await fetch(url, {
@@ -100,7 +100,7 @@ const ProfileForm = () => {
       {!ProfileLoading ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-wrapper">
-            <div className="uploadProfile__box flex col-span-2">
+            <div className="uploadProfile__box flex">
               <UploadProfile
                 defaultImage={profileData.cover}
                 {...register("cover")}
@@ -210,75 +210,8 @@ const ProfileForm = () => {
               control={control}
               value={profileData?.phone_number}
             />
-            {/* <Textarea
-              label="آدرس "
-              register={{
-                required: {
-                  value: true,
-                  message: "آدرس را وارد کنید",
-                },
-              }}
-              name="address"
-              control={control}
-              value={profileData?.address}
-            /> */}
           </div>
-          {/* <div className="grid grid-cols-4 profile__social-row">
-            <Input
-              label="github"
-              register={{
-                required: {
-                  value: true,
-                  message: "آیدی گیت هاب الزامی است  ",
-                },
-              }}
-              name="github"
-              control={control}
-              prefix={<Github />}
-              value={profileData?.github}
-            />
-            <Input
-              label="linkdin"
-              register={{
-                required: false,
-              }}
-              name="linkdin"
-              control={control}
-              prefix={<Linkdin />}
-              value={profileData?.linkedin}
-            />
-            <Input
-              label="instagram"
-              register={{
-                required: false,
-              }}
-              name="instagram"
-              control={control}
-              prefix={<Instagram />}
-              value={profileData?.instagram}
-            />
-            <Input
-              label="telegram"
-              register={{
-                required: false,
-              }}
-              name="telegram"
-              control={control}
-              prefix={<Telegram />}
-              value={profileData?.telegram}
-            />
-          </div>
-          <div className="profile__upload-row">
-            <Upload
-              label="رزومه"
-              {...register("resume", {
-                required: isEmpty(profileData?.resume),
-              })}
-              accept=".pdf"
-              value={profileData?.resume}
-              id="cover_upload"
-            />
-          </div> */}
+
           <div className="center w-100 mt-40">
             <Button type="primary" htmlType="submit">
               ثبت تغییرات
