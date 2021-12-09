@@ -145,7 +145,7 @@ const Coursecardsm = (
 
                     <h5 className="cursor-pointer	">
                         <Link
-                            to={"/courses/content"}
+                            to={`/courses/content/${uuid}`}
                             state={{
                                 name: title,
                                 id: uuid
