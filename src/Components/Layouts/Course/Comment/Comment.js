@@ -16,7 +16,6 @@ import {toast} from "react-toastify";
 import {useAuth} from "../../../../Context/authContext";
 
 function Comment({courseId}) {
-    const {token} = useAuth();
     const [commentInfo, setCommentInfo] = useState(null);
 
     const getCommentInfo = useFetch({
@@ -85,38 +84,60 @@ function Comment({courseId}) {
         setInput(input + emoji);
     };
 
+    const [openReply, setOpenReply] = useState(false)
+    const [replyIndex, setReplyIndex] = useState(-1)
+    const handleToggleReply = (index) => {
+        // console.log('state1: ', openReply)
+        // console.log('state2: ', openState)
+        setOpenReply((prevState) => !prevState )
+        setReplyIndex(index)
+    }
     return (
         <div className="AskAndAnswer relative">
             <div className="AskAndAnswer__content Comment">
                 {getCommentInfo?.response
                     ? commentInfo.results.map((comment, index) => (
                         <CommentBox
-                            key={comment.uuid}
+                            uuid={comment.uuid + index}
+                            index={index}
                             draft={false}
                             name={`${comment.first_name} ${comment.last_name}`}
                             img={comment.user_picture}
                             txt={comment.text}
                             date={comment.date_created}
                             pub={comment.is_accepted}
+                            hasReply={comment.has_reply}
+                            handleToggleReply={handleToggleReply}
+                            openReply={openReply}
                         >
                             {comment.has_reply ? (
+                                // toggleReply ? (
                                 <CommentReplyBox
+                                    index={index}
+                                    replyIndex={replyIndex}
+                                    toggleReply={openReply}
                                     commentId={comment.uuid}
                                     // name={commen[0].name}
                                     // img={commen[0].img}
                                     // txt={commen[0].txt}
                                     pub={true}
                                 />
+                                // ) : null
                             ) : null}
 
                             {comment.has_draft_reply ? (
+                                // toggleReply ? (
                                 <CommentDraftReplyBox
+                                    index={index}
+                                    replyIndex={replyIndex}
+                                    toggleReply={openReply}
                                     commentId={comment.uuid}
                                     // name={commen[0].name}
                                     // img={commen[0].img}
                                     // txt={commen[0].txt}
                                     pub={false}
                                 />
+                                // ) : null
                             ) : null}
                         </CommentBox>
                     ))
@@ -124,13 +145,15 @@ function Comment({courseId}) {
                 {getDraftCommentInfo?.response
                     ? draftCommentInfo.results.map((comment, index) => (
                         <CommentBox
-                            key={comment.uuid}
+                            key={comment.uuid + index + index}
+                            uuid={comment.uuid}
                             draft={true}
                             name={`${comment.first_name} ${comment.last_name}`}
                             img={comment.user_picture}
                             txt={comment.text}
                             date={comment.date_created}
                             pub={comment.is_accepted}
+                            hasReply={false}
                         />
                     ))
                     : null}

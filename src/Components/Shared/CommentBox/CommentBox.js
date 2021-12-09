@@ -1,13 +1,53 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import moment from "moment";
 import {Comment as Comments} from "antd";
 import {Tooltip, Avatar} from "antd";
+import {useAuth} from "../../../Context/authContext";
 
-function CommentBox({children, name, img, txt, date, pub, draft}) {
+function CommentBox(
+    {
+        uuid,
+        children,
+        name,
+        img,
+        txt,
+        date,
+        pub,
+        draft,
+        hasReply,
+        handleToggleReply,
+        index,
+        openReply
+    }) {
+
+    // const [replayState, setReplyState] = useState(openReply) // false=close true=open
+    //
+    // useEffect(() => {
+    //     setReplyState((prevState) => !prevState)
+    // }, [replayState]);
+
     return (
         <div className="CommentBox">
             <Comments
-                actions={[<span key="comment-nested-reply-to">{!draft && 'Reply to'} </span>]}
+                actions={[
+                    <div key={`comment-nested-reply-to_${uuid}_0`}
+                         style={{
+                             display: 'flex',
+                             alignItems: 'center',
+                             justifyContent: 'space-between',
+                             margin: '0 1rem'
+                         }}>
+                        <span key={`comment-nested-reply-to_${uuid}_1`}>{!draft && 'Reply to'} </span>
+                        <span
+                            onClick={() => {
+                                handleToggleReply(index)
+                            }}
+                            key={`comment-nested-reply-to_${uuid}_2`}
+                        >
+                            {hasReply && 'Show Answer'}
+                        </span>
+                    </div>
+                ]}
                 author={
                     pub ? (
                         <a>{name}</a>
