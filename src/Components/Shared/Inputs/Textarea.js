@@ -1,9 +1,18 @@
 import React from 'react';
 import { Input as InputBase } from 'antd';
-import {  useController } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 import classNames from 'classnames';
 
-const Textarea = ({ name, value, control, register, id, label, ...rest }) => {
+const Textarea = ({
+	name,
+	value,
+	control,
+	register,
+	id,
+	minRows,
+	label,
+	...rest
+}) => {
 	const {
 		field,
 		fieldState: { error },
@@ -21,7 +30,7 @@ const Textarea = ({ name, value, control, register, id, label, ...rest }) => {
 				className={classNames('input__field', {
 					input__error: error,
 				})}
-				autoSize={{ minRows: 4, maxRows: 5 }}
+				autoSize={{ minRows: minRows || 4, maxRows: 5 }}
 				{...field}
 				{...rest}
 			/>
