@@ -20,13 +20,18 @@ const optionList = [
 
 function MasterSignUp() {
 	const { userData } = useUserData();
-	console.log('MasterSignUp ~ userData', userData);
 	const [teacherCoworkerPostData, setTeacherCoworkerPostData] = useState(null);
-	const { handleSubmit, control } = useForm({
+	const {
+		handleSubmit,
+		control,
+		register,
+		reset,
+		formState: { errors },
+	} = useForm({
 		defaultValues: {
-			first_name: userData.first_name,
-			last_name: userData.last_name,
-			email: userData.email,
+			first_name: userData?.first_name,
+			last_name: userData?.last_name,
+			email: userData?.email,
 		},
 	});
 
@@ -52,8 +57,8 @@ function MasterSignUp() {
 		method: 'POST',
 		trigger: false,
 		data: teacherCoworkerPostData,
-		// caller: getTeacherCoWorkerInfo,
 		message: 'اطلاعات با موفقیت ثبت شد',
+		func: () => reset(),
 	});
 
 	return (
@@ -168,14 +173,9 @@ function MasterSignUp() {
 						<div className='profile__upload-row'>
 							<Upload
 								label='رزومه'
-								register={{
-									required: {
-										value: true,
-										message: 'روزمه خود را انتخاب کنید',
-									},
-								}}
-								name='resume'
-								control={control}
+								{...register('resume', { required: true })}
+								message='رزومه خود را انتخاب کنید'
+								error={errors['resume']}
 								accept='.pdf'
 								id='cover_upload'
 							/>

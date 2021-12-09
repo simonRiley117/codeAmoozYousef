@@ -35,8 +35,6 @@ const DatePickerInput = ({
 				digits={digits}
 				calendar={persian}
 				locale={persian_fa}
-				calendarPosition='top-right'
-				fixMainPosition
 				inputClass={classNames('input__field date__picker', {
 					input__error: error,
 				})}
