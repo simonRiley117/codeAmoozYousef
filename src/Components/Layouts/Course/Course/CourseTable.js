@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import clock from "@Assets/Icons/clock.svg";
 import Coin from "@Assets/Icons/Coin.svg";
 import section from "@Assets/Icons/section.svg";
@@ -13,6 +13,9 @@ import {useAuth} from "@App/Context/authContext";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
+import INSTAGRAM from "@Assets/Icons/instafram.svg";
+import LinkedIn from "@Assets/Icons/linkdin.svg";
+import Telegram from "@Assets/Icons/gSocial.svg";
 
 const override = {
     display: "block",
@@ -28,6 +31,9 @@ function CourseTable({courseId}) {
     const {token} = useAuth();
     const [addtocardData, setaddtocardData] = useState();
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
+    const [socialId, setSocialId] = useState(-1);
+    const [socialsInfo, setSocialsInfo] = useState([])
+    const [socialLoading, setSocialLoading] = useState(true)
 
     const setCostForSelectedDegree = (e) => {
         const selectedDegree = orderCourse?.costs.filter((item) => item.uuid === e.target.value);
@@ -47,6 +53,32 @@ function CourseTable({courseId}) {
         noHeader: token ? false : true,
         setter: setData,
     });
+
+    const setSocialData = (data) => {
+        setSocialsInfo(data)
+        setSocialLoading(false)
+    }
+
+    const getSocials = useFetch({
+        url: `SocialService/${courseId}`,
+        method: "GET",
+        setter: setSocialData,
+    });
+
+    let socialicon = [];
+    if (!socialLoading) {
+        socialicon = socialsInfo.results?.map((item) => (
+                {
+                    img: item.social_name === 'Telegram' ? Telegram : (
+                        item.social_name === 'LinkedIn' ? LinkedIn : (
+                            INSTAGRAM
+                        )
+                    ),
+                    link: item.social_url
+                }
+            )
+        )
+    }
 
     // const {
     //     title,
@@ -89,6 +121,21 @@ function CourseTable({courseId}) {
     const handleLinkCopy = () => {
         handleCopy(window.location.href);
     };
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setSocialId(-1);
+        }, 2000);
+        return () => clearTimeout(timer);
+    }, [socialId]);
+
+    const handleImgClick = (link, id) => {
+        handleCopy(link);
+        setSocialId(id);
+    };
+
+    console.log('socialsInfo: ', socialsInfo)
+    console.log('socialicon: ', socialicon)
     return (
         !loadingorOerCourse ? (
             <div className="CourseTable">
@@ -147,13 +194,14 @@ function CourseTable({courseId}) {
                                         <p className="CourseTable__DegreeTitle">
                                             دریافت گواهی پایان دوره:
                                         </p>
-                                        <Radio.Group onChange={setCostForSelectedDegree} name="radiogroup" value={degree?.uuid}>
+                                        <Radio.Group onChange={setCostForSelectedDegree} name="radiogroup"
+                                                     value={degree?.uuid}>
                                             {orderCourse?.costs?.map((degre) =>
-                                                // degre.name === WITHOUT_DEGREE ? (
-                                                //     <Radio value={degre.uuid}>
-                                                //         {degre.name}
-                                                //     </Radio>
-                                                // ) : (
+                                                    // degre.name === WITHOUT_DEGREE ? (
+                                                    //     <Radio value={degre.uuid}>
+                                                    //         {degre.name}
+                                                    //     </Radio>
+                                                    // ) : (
                                                     <Radio value={degre.uuid}>{degre.name}</Radio>
                                                 // )
                                             )}
@@ -191,7 +239,21 @@ function CourseTable({courseId}) {
                                 onClick={handleLinkCopy}
                             >
                                 <img src={share} alt={share} className="cursor-pointer"/>
-                                <p>لینک به اشتراک گذاشتن دوره</p>
+                                <div>
+                                    <p>لینک به اشتراک گذاشتن دوره</p>
+                                </div>
+                                {socialicon.map((item, id) =>
+                                    isCopied && socialId === id ? (
+                                        "کپی شد"
+                                    ) : (
+                                        <img
+                                            onClick={() => handleImgClick(item.link, id)}
+                                            src={item.img}
+                                            alt={item.img}
+                                            key={id}
+                                        />
+                                    )
+                                )}
                             </div>
                         </div>
                     </div>

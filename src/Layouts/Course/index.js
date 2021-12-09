@@ -62,7 +62,7 @@ function Index() {
                                         key="2"
                                         className="Sarfasl__commentpart"
                                     >
-                                        {/*<AskAndAnswer courseId={id}/>*/}
+                                        <AskAndAnswer courseId={id}/>
                                     </TabPane>
                                 </Tabs>
                             </div>
@@ -70,7 +70,7 @@ function Index() {
                     </div>
                     {windowSize !== "sm" && (
                         <div className="Course__sideBar relative">
-                            {/*<CourseTable courseId={id}/>*/}
+                            <CourseTable courseId={id}/>
                         </div>
                     )}
 
@@ -80,7 +80,7 @@ function Index() {
                                 <TeacherInfo courseId={id}/>
                             </div>
                             <div className="Course__sideBar relative">
-                                {/*<CourseTable courseId={id}/>*/}
+                                <CourseTable courseId={id}/>
                             </div>
                         </div>
                     )}
@@ -89,14 +89,14 @@ function Index() {
                     <div className="Course__Comment">
                         <Tabs className="TabBox " type="card">
                             <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
-                                {/*<Comment courseId={id}/>*/}
+                                <Comment courseId={id}/>
                             </TabPane>
                             <TabPane
                                 tab="پرسش و پاسخ"
                                 key="2"
                                 className="Sarfasl__commentpart"
                             >
-                                {/*<AskAndAnswer courseId={id}/>*/}
+                                <AskAndAnswer courseId={id}/>
                             </TabPane>
                         </Tabs>
                     </div>
