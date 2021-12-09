@@ -15,6 +15,7 @@ import useFetch from '@App/Context/useFetch';
 import Button from '@Components/Shared/Buttons/Button';
 import BtnLink from '@Components/Shared/Buttons/Link';
 const MyCourseCard = ({ card, finishedCourse }) => {
+	
 	return (
 		<article className='card-bg MyCourses__Card'>
 			<div className='card-bg-pic'>

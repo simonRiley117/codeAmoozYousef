@@ -15,8 +15,12 @@ import { ReactComponent as User } from "@Assets/Icons/user.svg";
 import { ReactComponent as Star } from "@Assets/Icons/star.svg";
 import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
 import { ReactComponent as CardIcon } from "@Assets/Icons/shoppingCard.svg";
+import { ReactComponent as Trash } from "@Assets/Icons/Trash.svg";
 import useFetch from "@App/Context/useFetch";
-const ShoppingCoursecard = ({ card ,getPayment,getorderSummary}) => {
+import Modal from "@Components/Shared/Modal/Modal";
+import Button from "@Components/Shared/Buttons/Button";
+
+const ShoppingCoursecard = ({ card, getPayment, getorderSummary }) => {
   const {
     all_degrees,
     course_id,
@@ -31,6 +35,8 @@ const ShoppingCoursecard = ({ card ,getPayment,getorderSummary}) => {
     uuid,
   } = card;
   const [degree, setDegree] = useState(null);
+  const [modal, setModal] = useState(false);
+
   const handleChange = (e) => {
     const selectedDegree = all_degrees.find(
       (item) => item[1] === e.target.value
@@ -38,26 +44,57 @@ const ShoppingCoursecard = ({ card ,getPayment,getorderSummary}) => {
     setDegree(selectedDegree[0]);
     ChangeDegree.reFetch();
   };
-  const CallFunc =()=>{
-    getorderSummary.reFetch()
-    getPayment.reFetch()
-  }
+  const CallFunc = () => {
+    getorderSummary.reFetch();
+    getPayment.reFetch();
+  };
   const ChangeDegree = useFetch({
     url: `CartService/${uuid}/editOrderItem`,
     method: "PUT",
     trigger: false,
-    func:CallFunc,
+    func: CallFunc,
     argFunc: (res) => {
       toast.success("مدرک با موفقیت تغییر کرد ");
     },
     data: { degree: degree },
   });
+  const DeleteCourse = useFetch({
+    url: `CartService/removeFromCart`,
+    method: "DELETE",
+    trigger: false,
+    func: CallFunc,
+    argFunc: (res) => {
+      toast.success(" دوره با موفقیت حذف شد");
+    },
+    params: { course_uuid: course_id },
+  });
+  const handleModalVisible = () => {
+    setModal(false);
+  };
+
+  const handleModalShow = (uuid, lock) => {
+    setModal(true);
+  };
+  const handleDelete = ()=>{
+    DeleteCourse.reFetch()
+    handleModalVisible()
+  }
   return (
     <article className="card-bg">
       <div className="card-bg-pic">
         <img src={Cover} alt="python" className="card-bg-pic-logo" />
       </div>
+
       <div className="card-bg-info">
+        <div className="card-bg--box">
+          <div className="card-bg--heart">
+            <IconBtn
+              onClick={handleModalShow}
+              title="افزودن به لیست علاقه مندیها"
+              icon={<Trash />}
+            />
+          </div>
+        </div>
         <div className="card-bg-content ">
           <h5 className="card-bg-title">
             <Link
@@ -75,9 +112,11 @@ const ShoppingCoursecard = ({ card ,getPayment,getorderSummary}) => {
               defaultValue={degree_name}
             >
               {all_degrees?.map((i) => (
-                <Radio key={i[0]} value={i[1]}> {i[1]} </Radio>
+                <Radio key={i[0]} value={i[1]}>
+                  {" "}
+                  {i[1]}{" "}
+                </Radio>
               ))}
-              
             </Radio.Group>
           </div>
           <div className="d-flex-space card-bg-footer">
@@ -105,6 +144,15 @@ const ShoppingCoursecard = ({ card ,getPayment,getorderSummary}) => {
           </div>
         </div>
       </div>
+      <Modal className='ExitModal' visible={modal} onCancel={handleModalVisible}>
+        <div className="ExitModal__back">
+          <p className='mb-12'>آیا از حذف دوره مطمئن هستید؟</p>
+          <div className="d-flex-space">
+            <Button onClick={handleDelete}>بله</Button>
+            <Button onClick={handleModalVisible} type='primary'>خیر</Button>
+          </div>
+        </div>
+      </Modal>
     </article>
   );
 };
