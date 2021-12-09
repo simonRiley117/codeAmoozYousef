@@ -25,12 +25,13 @@ function Comment({courseId}) {
         noHeader: true,
         setter: setCommentInfo,
     });
-
+    const {token} = useAuth();
     const [draftCommentInfo, setDraftCommentInfo] = useState(null);
     const getDraftCommentInfo = useFetch({
         url: `CommentService/draftComments`,
         params: {course_uuid: courseId},
         method: "GET",
+        trigger: token ? true : false,
         noHeader: false,
         setter: setDraftCommentInfo,
     });
@@ -89,7 +90,7 @@ function Comment({courseId}) {
     const handleToggleReply = (index) => {
         // console.log('state1: ', openReply)
         // console.log('state2: ', openState)
-        setOpenReply((prevState) => !prevState )
+        setOpenReply((prevState) => !prevState)
         setReplyIndex(index)
     }
     return (
