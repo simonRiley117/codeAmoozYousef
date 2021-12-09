@@ -24,7 +24,12 @@ function TeacherInfo({ courseId }) {
   const [isCopied, handleCopy] = UseCopyToClipboard(3000);
   const [socialId, setSocialId] = useState(-1);
   const [teacherProfileInfo, setTeacherProfileInfo] = useState(null);
-  // let teacherProfileInfo = {}
+  // const [loadingTeacherProfileInfo, setLoadingTeacherProfileInfo] = useState(true);
+
+  // const setData=(data)=>{
+  //   setTeacherProfileInfo(data)
+  //   setLoadingTeacherProfileInfo(false)
+  // }
 
   const getTeacherProfileInfo = useFetch({
     url: `CourseService/${courseId}/courseTeacherProfileBrief`,
@@ -64,7 +69,7 @@ function TeacherInfo({ courseId }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setSocialId(-1);
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [socialId]);
 
