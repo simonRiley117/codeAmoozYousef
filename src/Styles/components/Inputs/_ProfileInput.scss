@@ -1,43 +1,55 @@
-.UploadProfile {
-    &__label {
-        margin-bottom: 1.3rem;
-        font-size: 1.8rem;
-    }
-    &__txt {
-        margin-right: -8rem;
-        font-size: 1.6rem;
-    }
-}
-
-.custom-file-input {
-    color: transparent;
-}
-.custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-}
-.custom-file-input::before {
-    content: "انتخاب فایل";
-    color: $color-primary;
-    display: inline-block;
-    background: $color-white;
-    border: 3px solid $color-primary;
-    border-radius: 17.7rem;
-    padding: 0.75rem 3.3rem;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
+.profile__uploader {
+  &--cover {
     cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-size: 1.6rem;
+    max-width: 12.2rem;
+    max-height: 12.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &--cover {
+    .imagePreview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      cursor: pointer;
+    }
+  }
 }
-.custom-file-input:hover::before {
-    background-color: $color-primary;
-    color: $color-white;
-    text-shadow: 1px 1px $color-primary;
+.UploadProfile--uploadcoverbox {
+  .UploadProfile__input {
+    display: none;
+  }
+  .UploadProfile__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $color-white;
+    border-radius: 50%;
+    padding: 4px;
+    color: $color-success;
+  }
 }
-.custom-file-input:active {
-    outline: 0;
+.SocialInput {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  &__p {
+    width: 121px;
+    text-align: left;
+    @include respond(sm-laptop) {
+      font-size: 14px;
+    }
+  }
 }
-.custom-file-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+.uploadProfile__box {
+  grid-column: 1/-1;
+  align-items: center;
+  &-name {
+    font-size: 18px;
+  }
+  &-id {
+    font-size: 16px;
+    margin-top: 10px;
+  }
 }
