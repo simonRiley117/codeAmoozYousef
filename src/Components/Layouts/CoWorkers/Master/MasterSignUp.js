@@ -5,11 +5,10 @@ import Input from '@Components/Shared/Inputs/Input';
 import InputTextArea from '@Components/Shared/Inputs/Textarea';
 import CheckBox from '@Components/Shared/Inputs/CheckBox';
 import Button from '@Components/Shared/Buttons/Button';
+import useFetch from '@App/Context/useFetch';
 import { useUserData } from '@App/Context/userContext';
-import useFetch from '../../../../Context/useFetch';
 import Select from '@Components/Shared/Inputs/Select';
-import Upload from '../../../Shared/Inputs/Upload';
-import { isEmpty } from 'lodash';
+import Upload from '@Components/Shared/Inputs/Upload';
 
 const optionList = [
 	{ label: ' دیپلم', value: 'U.DP' },
@@ -20,10 +19,16 @@ const optionList = [
 ];
 
 function MasterSignUp() {
-	// const [teacherCoworkerData, setTeacherCoworkerData] = useState(null);
+	const { userData } = useUserData();
+	console.log('MasterSignUp ~ userData', userData);
 	const [teacherCoworkerPostData, setTeacherCoworkerPostData] = useState(null);
-	// const [teacherCoworkerLoading, setTeacherCoworkerLoading] = useState(true);
-	const { handleSubmit, control, register } = useForm();
+	const { handleSubmit, control } = useForm({
+		defaultValues: {
+			first_name: userData.first_name,
+			last_name: userData.last_name,
+			email: userData.email,
+		},
+	});
 
 	const onSubmit = (data) => {
 		let formData = new FormData();
@@ -41,19 +46,6 @@ function MasterSignUp() {
 		setTeacherCoworkerPostData(formData);
 		postTeacherCoWorker.reFetch();
 	};
-
-	// const setData = (data = {}) => {
-	//     console.log('data: ', data)
-	//     console.log('data.response: ', data.response)
-	//     setTeacherCoworkerData(data);
-	//     setTeacherCoworkerLoading(false);
-	// };
-
-	// const getTeacherCoWorkerInfo = useFetch({
-	//     url: `TeacherCoWorkerService/${teacherCoworkerData?.response?.data?.id}`,
-	//     method: 'GET',
-	//     setter: setData,
-	// });
 
 	const postTeacherCoWorker = useFetch({
 		url: 'TeacherCoWorkerService',
@@ -155,21 +147,7 @@ function MasterSignUp() {
 								control={control}
 								// value={teacherCoworkerData?.email}
 							/>
-							<div className='profile__upload-row'>
-								<Upload
-									label='رزومه'
-									register={{
-										required: {
-											value: true,
-											message: 'روزمه خود را انتخاب کنید',
-										},
-									}}
-									name='resume'
-									control={control}
-									accept='.pdf'
-									id='cover_upload'
-								/>
-							</div>
+
 							{/*<UploadProfile/>*/}
 						</div>
 						<div className='MasterSignUp__textarea'>
@@ -185,6 +163,21 @@ function MasterSignUp() {
 								control={control}
 
 								// value={teacherCoworkerData?.bio}
+							/>
+						</div>
+						<div className='profile__upload-row'>
+							<Upload
+								label='رزومه'
+								register={{
+									required: {
+										value: true,
+										message: 'روزمه خود را انتخاب کنید',
+									},
+								}}
+								name='resume'
+								control={control}
+								accept='.pdf'
+								id='cover_upload'
 							/>
 						</div>
 						<div className='flex items-start text-right MasterSignUp__ruleBox'>
