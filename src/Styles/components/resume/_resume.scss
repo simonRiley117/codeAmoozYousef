@@ -1,0 +1,53 @@
+.resume {
+	&__bg {
+		padding: 24px 50px;
+		background-color: rgba($color: $color-gray, $alpha: 0.3);
+		@include respond(sm-laptop) {
+			padding: 24px 25px;
+		}
+	}
+	&__box {
+		@include display-flex(space-between,flex-end);
+		column-gap: 2rem;
+
+		& > .input{
+			flex: 1 1 auto;
+		}
+	}
+	&__button {
+		color: $color-text-light;
+		& svg {
+			max-width: 18px;
+			max-height: 18px;
+		}
+	}
+}
+.IconBox-ab {
+	position: absolute;
+	left: 30px;
+	top: 9px;
+	svg {
+		cursor: pointer;
+	}
+}
+.resume-grid-gap {
+	grid-gap: 2rem 4rem;
+	@include respond(big-phone) {
+		grid-template-columns: 1fr;
+
+		
+	}
+}
+.ResumeFormWrapper {
+	margin: 23px 0;
+}
+.add-form-flex {
+	align-items: center;
+	color: $color-success;
+	margin: 0 10px;
+	cursor: pointer;
+	svg {
+		width: 15px;
+		margin-left: 10px;
+	}
+}

@@ -6,8 +6,8 @@ import SkillsPanel from "@Components/Layouts/resume/skills/SkillsPanel";
 const Resume = ({ readable }) => {
   return (
     <>
-      {!readable && <h3 className="title mt-20 mb-10"> رزومه شما</h3>}
-      {readable && <h3 className="title mt-20 mb-10"> رزومه</h3>}
+      {!readable && <h3 className="title  mb-10"> رزومه شما</h3>}
+      {readable && <h3 className="title  mb-10"> رزومه</h3>}
 
       <Accordion half>
         <Panel header={<span>سوابق کاری</span>}>

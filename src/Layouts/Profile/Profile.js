@@ -3,7 +3,7 @@ import ProfileForm from "@Components/Layouts/profile/ProfileForm";
 
 const Profile = () => {
   return (
-    <div className="mt-72">
+    <div>
       <ProfileForm />
     </div>
   );
