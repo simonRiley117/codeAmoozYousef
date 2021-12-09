@@ -90,6 +90,7 @@ const Coursecardsm = (
         postToFav.reFetch()
     }
 
+    console.log('UUIDSM: ', uuid)
     return (
         <div className="card-sm">
             <div
@@ -144,11 +145,13 @@ const Coursecardsm = (
 
                     <h5 className="cursor-pointer	">
                         <Link
-                            to={{
-                                pathname: "/courses/content",
-                                state: {nameid: card.title, id: card.uuid},
-                            }}
-                        >
+                            to={"/courses/content"}
+                            state={{
+                                name: title,
+                                id: uuid
+                                // name: 'X',
+                                // id: 'Y'
+                            }}>
                             {title}
                         </Link>
                     </h5>

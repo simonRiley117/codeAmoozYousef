@@ -88,6 +88,8 @@ const CourseCardBg = (
     const addToWishList = () => {
         postToFav.reFetch()
     }
+
+    console.log('UUIDBG: ', uuid)
     return (
         <article className="card-bg">
             {/* <div className="card-bg-discount">
@@ -125,14 +127,13 @@ const CourseCardBg = (
 
                     <h5 className="card-bg-title">
                         <Link
-                            to={{
-                                pathname: "/courses/content",
-                                state: {
-                                    name: title,
-                                    id: uuid,
-                                },
-                            }}
-                        >
+                            to={"/courses/content"}
+                            state={{
+                                name: title,
+                                id: uuid,
+                                // name: 'X',
+                                // id: 'Y'
+                            }}>
                             {title}
                         </Link>
                     </h5>
