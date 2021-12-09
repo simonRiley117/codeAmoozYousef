@@ -1,10 +1,10 @@
-import React, { useState, createElement } from "react";
-import { ReactComponent as Arroe } from "@Assets/Icons/Frame 28.svg";
-import { useForm as formBox } from "react-hook-form";
-import { Picker } from "emoji-mart";
+import React, {useState, createElement} from "react";
+import {ReactComponent as Arroe} from "@Assets/Icons/Frame 28.svg";
+import {useForm as formBox} from "react-hook-form";
+import {Picker} from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 import Smiley from "@Assets/Pic/Smiley.png";
-import { Input as InputBase } from "antd";
+import {Input as InputBase} from "antd";
 import classNames from "classnames";
 import CommentBox from "@Components/Shared/CommentBox/CommentBox";
 import ico from "@Assets/Pic/avatar.png";
@@ -12,168 +12,167 @@ import ico1 from "@Assets/Pic/avatar1.png";
 import useFetch from "../../../../Context/useFetch";
 import CommentReplyBox from "../../../Shared/CommentBox/CommentReplyBox";
 import CommentDraftReplyBox from "../../../Shared/CommentBox/CommentDraftReplyBox";
-import { toast } from "react-toastify";
-import { useAuth } from "../../../../Context/authContext";
+import {toast} from "react-toastify";
+import {useAuth} from "../../../../Context/authContext";
 
-function Comment({ courseId }) {
-  const { token } = useAuth();
-  const [commentInfo, setCommentInfo] = useState(null);
-  const setCommentData = (data) => {
-    setCommentInfo(data);
-  };
-  const getCommentInfo = useFetch({
-    url: `CommentService`,
-    params: { course_uuid: courseId },
-    method: "GET",
-    noHeader: true,
-    setter: setCommentData,
-  });
+function Comment({courseId}) {
+    const {token} = useAuth();
+    const [commentInfo, setCommentInfo] = useState(null);
 
-  const [draftCommentInfo, setDraftCommentInfo] = useState(null);
-  const setDraftCommentData = (data) => {
-    setDraftCommentInfo(data);
-  };
-  const getDraftCommentInfo = useFetch({
-    url: `CommentService/draftComments`,
-    params: { course_uuid: courseId },
-    method: "GET",
-    noHeader: false,
-    setter: setDraftCommentData,
-  });
+    const getCommentInfo = useFetch({
+        url: `CommentService`,
+        params: {course_uuid: courseId},
+        method: "GET",
+        noHeader: true,
+        setter: setCommentInfo,
+    });
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = formBox();
-  const [commentPostData, setCommentPostData] = useState(null);
-  const postComment = useFetch({
-    url: "CommentService",
-    method: "POST",
-    trigger: false,
-    noHeader: false,
-    data: commentPostData,
-    caller: getDraftCommentInfo,
-    message: "پیام با موفقیت ثبت شد",
-  });
-  const onSubmit = (data) => {
-    let formData = new FormData();
+    const [draftCommentInfo, setDraftCommentInfo] = useState(null);
+    const getDraftCommentInfo = useFetch({
+        url: `CommentService/draftComments`,
+        params: {course_uuid: courseId},
+        method: "GET",
+        noHeader: false,
+        setter: setDraftCommentInfo,
+    });
 
-    formData.append("text", input);
-    formData.append("course_uuid", courseId);
-    setCommentPostData(formData);
-    postComment.reFetch();
-    console.log("postComment: ", postComment);
-    console.log("postComment.error: ", postComment.error);
-    // console.log('postComment.error: ', postComment.error.response.status)
-    if (!token) {
-      toast.error("برای ثبت نظر ابتدا وارد سایت شوید");
-    } else {
-      if (postComment.error.response.status === 409) {
-        toast.error("حواست نیست!دوبار داری میفرستی");
-      }
-    }
-    // console.log('formData: ', formData)
-    setInput("");
-    // console.log('input: ', input)
-  };
+    const {
+        handleSubmit,
+        control,
+        formState: {errors},
+    } = formBox();
 
-  const [show, setShow] = useState(false);
-  const [input, setInput] = useState("");
-  const addEmoji = (e) => {
-    let sym = e.unified.split("-");
-    let codesArray = [];
-    sym.forEach((el) => codesArray.push("0x" + el));
-    let emoji = String.fromCodePoint(...codesArray);
-    setInput(input + emoji);
-  };
+    const [commentPostData, setCommentPostData] = useState(null);
+    const postComment = useFetch({
+        url: "CommentService",
+        method: "POST",
+        trigger: false,
+        noHeader: false,
+        data: commentPostData,
+        caller: getDraftCommentInfo,
+        argFunc: (res) => {
+            toast.success("پیام با موفقیت ثبت شد");
+        },
+        argErrFunc: (err) => handleError(err),
+    });
 
-  return (
-    <div className="AskAndAnswer relative">
-      <div className="AskAndAnswer__content Comment">
-        {getCommentInfo?.response
-          ? commentInfo.results.map((comment, index) => (
-              <CommentBox
-                key={comment.uuid}
-                name={`${comment.first_name} ${comment.last_name}`}
-                img={comment.user_picture}
-                txt={comment.text}
-                date={comment.date_created}
-                pub={comment.is_accepted}
-              >
-                {comment.has_reply ? (
-                  <CommentReplyBox
-                    commentId={comment.uuid}
-                    // name={commen[0].name}
-                    // img={commen[0].img}
-                    // txt={commen[0].txt}
-                    pub={true}
-                  />
-                ) : null}
+    const handleError = (err) => {
+        if (err?.data === "Warning! Duplicate Comment") {
+            toast.error("حواست نیست!دوبار داری میفرستی");
+        }
+        if (err?.detail === "Given token not valid for any token type") {
+            toast.error("برای ثبت نظر ابتدا وارد سایت شوید");
+        }
+    };
 
-                {comment.has_draft_reply ? (
-                  <CommentDraftReplyBox
-                    commentId={comment.uuid}
-                    // name={commen[0].name}
-                    // img={commen[0].img}
-                    // txt={commen[0].txt}
-                    pub={false}
-                  />
-                ) : null}
-              </CommentBox>
-            ))
-          : null}
-        {getDraftCommentInfo?.response
-          ? draftCommentInfo.results.map((comment, index) => (
-              <CommentBox
-                key={comment.uuid}
-                name={`${comment.first_name} ${comment.last_name}`}
-                img={comment.user_picture}
-                txt={comment.text}
-                date={comment.date_created}
-                pub={comment.is_accepted}
-              />
-            ))
-          : null}
-      </div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="AskAndAnswer__form absolute"
-      >
-        <div className="input text-right ">
-          <InputBase.Group style={{ bottom: "0" }}>
-            <div className="flex justify-end items-center">
-              <InputBase
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                type="text"
-                name="text"
-                id="input"
-                placeholder="پیام خود را بنویسید..."
-                className={classNames("input__field", "AskAndAnswer__input")}
-                onClick={() => setShow(false)}
-              />
+    const onSubmit = (data) => {
+        let formData = new FormData();
+
+        formData.append("text", input);
+        formData.append("course_uuid", courseId);
+        setCommentPostData(formData);
+        postComment.reFetch();
+        setInput("");
+    };
+
+    const [show, setShow] = useState(false);
+    const [input, setInput] = useState("");
+    const addEmoji = (e) => {
+        let sym = e.unified.split("-");
+        let codesArray = [];
+        sym.forEach((el) => codesArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codesArray);
+        setInput(input + emoji);
+    };
+
+    return (
+        <div className="AskAndAnswer relative">
+            <div className="AskAndAnswer__content Comment">
+                {getCommentInfo?.response
+                    ? commentInfo.results.map((comment, index) => (
+                        <CommentBox
+                            key={comment.uuid}
+                            draft={false}
+                            name={`${comment.first_name} ${comment.last_name}`}
+                            img={comment.user_picture}
+                            txt={comment.text}
+                            date={comment.date_created}
+                            pub={comment.is_accepted}
+                        >
+                            {comment.has_reply ? (
+                                <CommentReplyBox
+                                    commentId={comment.uuid}
+                                    // name={commen[0].name}
+                                    // img={commen[0].img}
+                                    // txt={commen[0].txt}
+                                    pub={true}
+                                />
+                            ) : null}
+
+                            {comment.has_draft_reply ? (
+                                <CommentDraftReplyBox
+                                    commentId={comment.uuid}
+                                    // name={commen[0].name}
+                                    // img={commen[0].img}
+                                    // txt={commen[0].txt}
+                                    pub={false}
+                                />
+                            ) : null}
+                        </CommentBox>
+                    ))
+                    : null}
+                {getDraftCommentInfo?.response
+                    ? draftCommentInfo.results.map((comment, index) => (
+                        <CommentBox
+                            key={comment.uuid}
+                            draft={true}
+                            name={`${comment.first_name} ${comment.last_name}`}
+                            img={comment.user_picture}
+                            txt={comment.text}
+                            date={comment.date_created}
+                            pub={comment.is_accepted}
+                        />
+                    ))
+                    : null}
             </div>
-            <div>
-              <Arroe
-                onClick={input !== "" ? handleSubmit(onSubmit) : undefined}
-                className="cursor-pointer	AskAndAnswer__sendBtn absolute"
-              />
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="AskAndAnswer__form absolute"
+            >
+                <div className="input text-right ">
+                    <InputBase.Group style={{bottom: "0"}}>
+                        <div className="flex justify-end items-center">
+                            <InputBase
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                type="text"
+                                name="text"
+                                id="input"
+                                placeholder="پیام خود را بنویسید..."
+                                className={classNames("input__field", "AskAndAnswer__input")}
+                                onClick={() => setShow(false)}
+                            />
+                        </div>
+                        <div>
+                            <Arroe
+                                onClick={input !== "" ? handleSubmit(onSubmit) : undefined}
+                                className="cursor-pointer	AskAndAnswer__sendBtn absolute"
+                            />
+                        </div>
+                    </InputBase.Group>
+                </div>
+            </form>
+            <div className="absolute AskAndAnswer__emogibox">
+                <img
+                    src={Smiley}
+                    alt={Smiley}
+                    className="cursor-pointer"
+                    onClick={() => setShow(!show)}
+                />
             </div>
-          </InputBase.Group>
+            {show && <Picker onSelect={addEmoji}/>}
         </div>
-      </form>
-      <div className="absolute AskAndAnswer__emogibox">
-        <img
-          src={Smiley}
-          alt={Smiley}
-          className="cursor-pointer"
-          onClick={() => setShow(!show)}
-        />
-      </div>
-      {show && <Picker onSelect={addEmoji} />}
-    </div>
-  );
+    );
 }
 
 export default Comment;
