@@ -239,14 +239,19 @@ function CourseTable({courseId}) {
                                 onClick={handleLinkCopy}
                             >
                                 <img src={share} alt={share} className="cursor-pointer"/>
-                                <div>
-                                    <p>لینک به اشتراک گذاشتن دوره</p>
-                                </div>
+                                <p>لینک به اشتراک گذاشتن دوره</p>
+                            </div>
+                            {/*<p*/}
+                            {/*    style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>*/}
+                            {/*    لینک شبکه های اجتماعی*/}
+                            {/*</p>*/}
+                            <div className="flex items-center justify-center CourseTable__ShareBox ">
                                 {socialicon.map((item, id) =>
                                     isCopied && socialId === id ? (
                                         "کپی شد"
                                     ) : (
                                         <img
+                                            className="cursor-pointer"
                                             onClick={() => handleImgClick(item.link, id)}
                                             src={item.img}
                                             alt={item.img}
@@ -254,6 +259,7 @@ function CourseTable({courseId}) {
                                         />
                                     )
                                 )}
+                                <p>لینک شبکه های اجتماعی</p>
                             </div>
                         </div>
                     </div>

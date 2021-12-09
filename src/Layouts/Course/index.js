@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useHistory, useLocation} from "react-router-dom";
+import {useHistory, useLocation, useParams} from "react-router-dom";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import SideBarDiscount from "@Components/Shared/Discount/SideBarDiscount";
 import HeaderDiscount from "@Components/Shared/Discount/HeaderDiscount";
@@ -15,6 +15,8 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 const {TabPane} = Tabs;
 
 function Index() {
+    const {courseId} = useParams();
+    console.log('PARAMS: ', courseId)
     const location = useLocation();
     console.log('LOCATION: ', location)
     useEffect(() => {

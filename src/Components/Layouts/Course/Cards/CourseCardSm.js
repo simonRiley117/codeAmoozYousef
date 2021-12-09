@@ -144,25 +144,24 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
             </div>
           </div>
 
-          <h5 className="cursor-pointer	">
-            <Link
-              to={"/courses/content"}
-              state={{
-                name: title,
-                id: uuid,
-                // name: 'X',
-                // id: 'Y'
-              }}
-            >
-              {title}
-            </Link>
-          </h5>
-          <div className="card-sm-img-pic">
-            <img src={teacher_avatar} alt="teacher-avatar" />
-            <h4>
-              {teacher_first_name} {teacher_last_name}
-            </h4>
-          </div>
+                    <h5 className="cursor-pointer	">
+                        <Link
+                            to={`/courses/content/${uuid}`}
+                            state={{
+                                name: title,
+                                id: uuid
+                                // name: 'X',
+                                // id: 'Y'
+                            }}>
+                            {title}
+                        </Link>
+                    </h5>
+                    <div className="card-sm-img-pic">
+                        <img src={teacher_avatar} alt='teacher-avatar'/>
+                        <h4>
+                            {teacher_first_name} {teacher_last_name}
+                        </h4>
+                    </div>
 
           <div className="d-flex-space card-sm-footer">
             <div className="card-sm-footer-level">{level}</div>

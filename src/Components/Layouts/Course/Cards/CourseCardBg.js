@@ -125,20 +125,19 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
             </div>
           )}
 
-          <h5 className="card-bg-title">
-            <Link
-              to={"/courses/content"}
-              state={{
-                name: title,
-                id: uuid,
-                // name: 'X',
-                // id: 'Y'
-              }}
-            >
-              {title}
-            </Link>
-          </h5>
-          <p className="mt-6 card-bg-des">{intro}</p>
+                    <h5 className="card-bg-title">
+                        <Link
+                            to={`/courses/content/${uuid}`}
+                            state={{
+                                name: title,
+                                id: uuid,
+                                // name: 'X',
+                                // id: 'Y'
+                            }}>
+                            {title}
+                        </Link>
+                    </h5>
+                    <p className="mt-6 card-bg-des">{intro}</p>
 
           <div className="d-flex-space ">
             <div className="card-bg-info-row ">
