@@ -13,6 +13,7 @@ import Lock from '@Assets/Icons/lock.svg';
 import useFetch from "../../Context/useFetch";
 import IconBtn from "../../Components/Shared/Buttons/IconBtn";
 import classNames from "classnames";
+import {useLocation} from "react-router";
 
 const {TabPane} = Tabs;
 
@@ -27,6 +28,15 @@ function LastCourse() {
     // const [callbackPassContent, setCallBackPassContent] = useState(null)
     const [currentContentState, setCurrentContentState] = useState(null)
     // const [errorPostData, setErrorPostData] = useState('')
+
+    const location = useLocation();
+    console.log('LOCATION: ', location)
+    useEffect(() => {
+        setMenu(location.state.name);
+        setId(location.state.id);
+    }, [location]);
+    const [menu, setMenu] = useState("");
+    const [id, setId] = useState();
 
     useEffect(() => {
         setMakeSetDataTrigger(true)
