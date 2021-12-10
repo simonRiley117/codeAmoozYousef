@@ -46,7 +46,6 @@ const Courses = () => {
             <div className="container">
                 <div className="courses">
                     <BreadCrump pathsname="/course"/>
-
                     <LatestCourse
                         liftUpLatestCourseRequest={liftUpLatestCourseRequest}
                         getallCourseList={getallCourseList}/>

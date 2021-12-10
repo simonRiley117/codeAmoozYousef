@@ -167,15 +167,15 @@ function CourseTable({courseId}) {
                                 <div className="flex items-center justify-start CourseTable__infoBox">
                                     <img alt={Coin} src={Coin}/>
                                     <p className="CourseTable__infoPrice">
-                                        {degree.discount_amount !== 0 && degree.discount_amount}
+                                        {degree?.discount_amount !== 0 && degree?.discount_amount}
                                     </p>
-                                    {degree.amount === 0 ? (
+                                    {degree?.amount === 0 ? (
                                         <p className="CourseTable__infotxt ">رایگان</p>
                                     ) : (
                                         <div className="flex items-center justify-start ">
                                             {" "}
                                             <p className="CourseTable__infotxt CourseTable__infoPrice-main">
-                                                {degree.amount}
+                                                {degree?.amount}
                                             </p>
                                             <span className="CourseTable__infotxt">تومان</span>
                                         </div>

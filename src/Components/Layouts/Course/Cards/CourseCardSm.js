@@ -1,147 +1,148 @@
-import React, {useState} from "react";
-import {ReactComponent as Heart} from "@Assets/Icons/heart.svg";
-import {ReactComponent as CardIcon} from "@Assets/Icons/shoppingCard.svg";
-import {ReactComponent as User} from "@Assets/Icons/user.svg";
-import {ReactComponent as ClockIcon} from "@Assets/Icons/clock.svg";
-import {ReactComponent as Star} from "@Assets/Icons/star.svg";
+import React, { useState } from "react";
+import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
+import { ReactComponent as CardIcon } from "@Assets/Icons/shoppingCard.svg";
+import { ReactComponent as User } from "@Assets/Icons/user.svg";
+import { ReactComponent as ClockIcon } from "@Assets/Icons/clock.svg";
+import { ReactComponent as Star } from "@Assets/Icons/star.svg";
 import useFetch from "@App/Context/useFetch";
 import Price from "@Components/Shared/Price/Price";
-import {toast} from "react-toastify";
-import {Rate, Statistic} from "antd";
-import {Link} from "react-router-dom";
+import { toast } from "react-toastify";
+import { Rate, Statistic } from "antd";
+import { Link } from "react-router-dom";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
 
-const Coursecardsm = (
-    {
-        card,
-        liftRequest,
-        getallCourseList
-    }) => {
-    const {
-        uuid,
-        num_of_participants,
-        teacher_first_name,
-        level,
-        teacher_last_name,
-        total_time_of_course,
-        nums_of_voter,
-        mean_of_participant_points,
-        is_favorite,
-        title,
-        has_user_course,
-        get_price_without_degree_with_some_extra_info,
-        teacher_avatar,
-        cover,
-    } = card;
-    const cost = get_price_without_degree_with_some_extra_info;
-    // const [courseid, setCourseid] = useState(null);
-    const [addtocardData, setaddtocardData] = useState();
+const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
+  const {
+    uuid,
+    num_of_participants,
+    teacher_first_name,
+    level,
+    teacher_last_name,
+    total_time_of_course,
+    nums_of_voter,
+    mean_of_participant_points,
+    is_favorite,
+    title,
+    has_user_course,
+    get_price_without_degree_with_some_extra_info,
+    teacher_avatar,
+    cover,
+  } = card;
+  const cost = get_price_without_degree_with_some_extra_info;
+  // const [courseid, setCourseid] = useState(null);
+  const [addtocardData, setaddtocardData] = useState();
 
-    const Addtocard = useFetch({
-        //addtocard=>data:course_uuid: "", degree_uuid: null
-        url: `CartService/addToCart`,
-        method: "POST",
-        trigger: false,
-        data: addtocardData,
-        // caller: getLatestCourseList,
-        argFunc: (res) => {
-            toast.success("دوره با موفقیت به سبد کالا اضافه شد");
-            liftRequest.reFetch()
-            getallCourseList.reFetch()
-        },
-        argErrFunc: (err) => handleErrorAddtocard(err),
-    });
-    const handleErrorAddtocard = (err) => {
-        if (err?.data === "course already exists") {
-            toast.error("این دوره از قبل به سبد کالا اضافه شده است");
-        }
-        if (err?.detail === "Given token not valid for any token type") {
-            toast.error("برای خرید دوره اول وارد سایت شوید");
-        }
-    };
-
-    const addToCard = (id) => {
-        setaddtocardData({course_uuid: id, degree_uuid: null});
-        Addtocard.reFetch();
-    };
-
-    const postToFav = useFetch({
-        url: `StudentService/willing_course_post`,
-        method: "POST",
-        trigger: false,
-        data: {course_uuid: uuid},
-        argFunc: (res) => {
-            toast.success("دوره با موفقیت به لیست علاقه مندی های شما اضافه شد");
-            liftRequest.reFetch()
-            getallCourseList.reFetch()
-        },
-        argErrFunc: (err) => handleErrorAddtoFav(err),
-    });
-    const handleErrorAddtoFav = (err) => {
-        if (err?.data === "You already have this course in your willingList") {
-            toast.error("این دوره از قبل به لیست علاقه مندی ها اضافه شده است");
-        }
-        if (err?.detail === "Given token not valid for any token type") {
-            toast.error("برای خرید دوره اول وارد سایت شوید");
-        }
-    };
-
-    const addToWishList = () => {
-        postToFav.reFetch()
+  const Addtocard = useFetch({
+    //addtocard=>data:course_uuid: "", degree_uuid: null
+    url: `CartService/addToCart`,
+    method: "POST",
+    trigger: false,
+    data: addtocardData,
+    // caller: getLatestCourseList,
+    argFunc: (res) => {
+      toast.success("دوره با موفقیت به سبد کالا اضافه شد");
+      liftRequest.reFetch();
+      getallCourseList.reFetch();
+    },
+    argErrFunc: (err) => handleErrorAddtocard(err),
+  });
+  const handleErrorAddtocard = (err) => {
+    if (err?.data === "course already exists") {
+      toast.error("این دوره از قبل به سبد کالا اضافه شده است");
     }
+    if (err?.detail === "Given token not valid for any token type") {
+      toast.error("برای خرید دوره اول وارد سایت شوید");
+    }
+  };
 
-    console.log('UUIDSM: ', uuid)
-    return (
-        <div className="card-sm">
-            <div
-                className={
-                    cost?.discountRate !== 0 ? "card-sm-off-show" : "card-sm-off-hide"
-                }
-            >
-                {cost?.discountRate}%تخفیف
-            </div>
-            <div>
-                <div className="card-sm-img">
-                    <div className="card-sm-img-title">
-                        <img src={cover} alt="course-cover"/>
-                    </div>
+  const addToCard = (id) => {
+    setaddtocardData({ course_uuid: id, degree_uuid: null });
+    Addtocard.reFetch();
+  };
 
-                    <div className="card-sm-img-hover">
-                        <div className="card-sm-img-hover--box">
-                            <div className="card-sm-img-hover--shopingcard">
-                                {!has_user_course && (
-                                    <IconBtn
-                                        onClick={() => addToCard(uuid)}
-                                        title="افزودن به سبدخرید"
-                                        icon={<CardIcon/>}
-                                    />
-                                )}
-                            </div>
-                            <div className="card-sm-img-hover--heart">
-                                <IconBtn onClick={addToWishList} title="افزودن به لیست علاقه مندیها" icon={<Heart/>}/>
-                            </div>
-                        </div>
-                    </div>
+  const postToFav = useFetch({
+    url: `StudentService/willing_course_post`,
+    method: "POST",
+    trigger: false,
+    data: { course_uuid: uuid },
+    argFunc: (res) => {
+      toast.success("دوره با موفقیت به لیست علاقه مندی های شما اضافه شد");
+      liftRequest.reFetch();
+      getallCourseList.reFetch();
+    },
+    argErrFunc: (err) => handleErrorAddtoFav(err),
+  });
+  const handleErrorAddtoFav = (err) => {
+    if (err?.data === "You already have this course in your willingList") {
+      toast.error("این دوره از قبل به لیست علاقه مندی ها اضافه شده است");
+    }
+    if (err?.detail === "Given token not valid for any token type") {
+      toast.error("برای خرید دوره اول وارد سایت شوید");
+    }
+  };
+
+  const addToWishList = () => {
+    postToFav.reFetch();
+  };
+
+  console.log("UUIDSM: ", uuid);
+  return (
+    <div className="card-sm">
+      <div
+        className={
+          cost?.discountRate !== 0 ? "card-sm-off-show" : "card-sm-off-hide"
+        }
+      >
+        {cost?.discountRate}%تخفیف
+      </div>
+      <div>
+        <div className="card-sm-img">
+          <div className="card-sm-img-title">
+            <img src={cover} alt="course-cover" />
+          </div>
+
+          {!has_user_course && (
+            <div className="card-sm-img-hover">
+              <div className="card-sm-img-hover--box">
+                <div className="card-sm-img-hover--shopingcard">
+                  {!has_user_course && (
+                    <IconBtn
+                      onClick={() => addToCard(uuid)}
+                      title="افزودن به سبدخرید"
+                      icon={<CardIcon />}
+                    />
+                  )}
                 </div>
-                <div className="card-sm-content">
-                    <div className="card-sm-info-row ">
-                        <div className="d-flex-align card-sm-info-row-star">
-                            <Star/>
-                            <p className="card-sm-content-time">
-                                {mean_of_participant_points.grade}
-                                <span>({nums_of_voter})</span>
-                                نفر
-                            </p>
-                        </div>
-                        <div className="d-flex-align card-sm-info-row-time">
-                            <ClockIcon/>
-                            <p className="card-sm-content-time">{total_time_of_course}</p>
-                        </div>
-                        <div className="d-flex-align card-sm-info-row-user">
-                            <User/>
-                            <p className="card-sm-content-time">{num_of_participants}نفر</p>
-                        </div>
-                    </div>
+                <div className="card-sm-img-hover--heart">
+                  <IconBtn
+                    onClick={addToWishList}
+                    title="افزودن به لیست علاقه مندیها"
+                    icon={<Heart />}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="card-sm-content">
+          <div className="card-sm-info-row ">
+            <div className="d-flex-align card-sm-info-row-star">
+              <Star />
+              <p className="card-sm-content-time">
+                {mean_of_participant_points.grade}
+                <span>({nums_of_voter})</span>
+                نفر
+              </p>
+            </div>
+            <div className="d-flex-align card-sm-info-row-time">
+              <ClockIcon />
+              <p className="card-sm-content-time">{total_time_of_course}</p>
+            </div>
+            <div className="d-flex-align card-sm-info-row-user">
+              <User />
+              <p className="card-sm-content-time">{num_of_participants}نفر</p>
+            </div>
+          </div>
 
                     <h5 className="cursor-pointer	">
                         <Link
@@ -162,28 +163,38 @@ const Coursecardsm = (
                         </h4>
                     </div>
 
-                    <div className="d-flex-space card-sm-footer">
-                        <div className="card-sm-footer-level">{level}</div>
+          <div className="d-flex-space card-sm-footer">
+            <div className="card-sm-footer-level">{level}</div>
 
-                        {cost?.discountRate || cost?.discountRate !== 0 ? (
-                            <div>
-                                {cost?.originalAmount !== 0 ? (
-                                    <Price value={cost.originalAmount} isDiscount/>
-                                ) : (
-                                    <p>رایگان</p>
-                                )}
-                            </div>
-                        ) : null}
-                        {cost?.discountAmount !== 0 ? (
-                            <Price value={cost.discountAmount} suffix="تومان" success/>
-                        ) : (
-                            <p className='success'> رایگان</p>
-                        )}
-                    </div>
-                </div>
-            </div>
+            {!has_user_course && (
+              <>
+                {cost?.discountRate || cost?.discountRate !== 0 ? (
+                  <div>
+                    {cost?.originalAmount !== 0 ? (
+                      <Price value={cost.originalAmount} isDiscount />
+                    ) : (
+                      <p>رایگان</p>
+                    )}
+                  </div>
+                ) : null}
+              </>
+            )}
+            {!has_user_course ? (
+              <>
+                {cost?.discountAmount !== 0 ? (
+                  <Price value={cost.discountAmount} suffix="تومان" success />
+                ) : (
+                  <p className="success"> رایگان</p>
+                )}
+              </>
+            ) : (
+              <p className="success"> این دوره خریده شده است</p>
+            )}
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Coursecardsm;
