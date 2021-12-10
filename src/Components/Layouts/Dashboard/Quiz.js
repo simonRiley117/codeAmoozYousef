@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import quiz from "@Assets/Pic/quiz.png";
 import Button from "@Components/Shared/Buttons/Button";
 import {Link} from "react-router-dom";
@@ -17,8 +17,16 @@ function Quiz({quizUuid, contentUuid}) {
         url: `QuizService/${quizUuid}/get_user_quiz`,
         method: "GET",
         noHeader: false,
+        trigger: false,
         setter: setData
     });
+
+    useEffect(() => {
+        if (quizUuid) {
+            getQuizContent.reFetch()
+        }
+    }, [quizUuid]);
+
 
     return (
         <div className="Quiz">
@@ -46,7 +54,7 @@ function Quiz({quizUuid, contentUuid}) {
                                 to={{
                                     pathname: "/dash/quiz",
                                     state: {
-                                        content_id:contentUuid,
+                                        content_id: contentUuid,
                                         quiz_id: quizUuid,
                                         title: quizContent.name,
                                         text: quizContent.text,

@@ -22,6 +22,7 @@ function LastCourse() {
     const [isNext, setIsNext] = useState(false)
     const [courseSeasons, setCourseSeasons] = useState([]);
     const [contentUuid, setContentUuid] = useState(null)
+    const [courseUuid, setCourseUuid] = useState(null)
     const [quizUuid, setQuizUuid] = useState(null)
     const [makeSetDataTrigger, setMakeSetDataTrigger] = useState(false)
     const [makeSetCurrentSituationDataTrigger, setMakeSetCurrentSituationDataTrigger] = useState(false)
@@ -32,11 +33,8 @@ function LastCourse() {
     const location = useLocation();
     console.log('LOCATION: ', location)
     useEffect(() => {
-        setMenu(location.state.name);
-        setId(location.state.id);
+        setCourseUuid(location.state.id);
     }, [location]);
-    const [menu, setMenu] = useState("");
-    const [id, setId] = useState();
 
     useEffect(() => {
         setMakeSetDataTrigger(true)
@@ -60,6 +58,7 @@ function LastCourse() {
         url: `ContentService/${contentUuid}/currentContentState`,
         method: 'GET',
         noHeader: false,
+        trigger: false,
         setter: setCurrentSituationData,
     });
 
@@ -74,7 +73,7 @@ function LastCourse() {
     }
 
     const getCourseSeasons = useFetch({
-        url: `CourseService/q6SJ61Ta/sidebar`,
+        url: `CourseService/${courseUuid}/sidebar`,
         method: 'GET',
         noHeader: false,
         caller: getCurrentContentState,
@@ -91,6 +90,7 @@ function LastCourse() {
         url: `PassService/${contentUuid}`,
         method: 'POST',
         noHeader: false,
+        trigger: false,
         // errMessage:setErrorPostData,
         caller: getCourseSeasons,
         // setter: setCallBackPassContent
@@ -211,7 +211,7 @@ function LastCourse() {
         <>
             {getCourseSeasons?.response?.data?.seasons && getCurrentContentState?.response?.data ? (
                 <div className='LastCourse'>
-                    <BreadCrump pathsname='/dash/course' name={courseSeasons.title}/>
+                    {/*<BreadCrump pathsname='/dash/course' name={courseSeasons.title}/>*/}
                     <div className='grid LastCourse__container relative'>
                         <div>
                             {/*<Tabs activeKey={activeKey} className='TabBox' type='card' onChange={handleTabChange}>*/}
