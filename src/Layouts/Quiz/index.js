@@ -7,6 +7,7 @@ function Index() {
     const location = useLocation();
     const [quizId, setQuizId] = useState(null);
     const [contentId, setContentId] = useState(null);
+    const [courseId, setCourseId] = useState(null);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
     const [language, setLanguage] = useState("");
@@ -21,6 +22,7 @@ function Index() {
         setTest_cases(location.state.test_cases);
         setLanguage(location.state.language);
         setFile(location.state.file);
+        setCourseId(location.state.courseUuid);
     }, [location]);
 
     return (
@@ -30,6 +32,7 @@ function Index() {
                 <QuizDetail
                     quizId={quizId}
                     contentId={contentId}
+                    courseId={courseId}
                     title={title}
                     text={text}
                     file={file}

@@ -55,7 +55,7 @@ const Authenticated = () => {
         <Route path="/dashboard/resume" element={<Resume />} />
         <Route path="/dashboard/profile" element={<Profile />} />
         <Route path="/dashboard/my-course" element={<MyCourses />} />
-        <Route path="/dashboard/course" element={<LastCourse />} />
+        <Route path="/dashboard/course/:courseId" element={<LastCourse />} />
         <Route path="/dashboard/course/example" element={<Example />} />
         <Route path="/dashboard/course/quiz" element={<Quiz />} />
 

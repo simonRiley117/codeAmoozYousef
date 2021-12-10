@@ -4,7 +4,7 @@ import Codeeditor from "@Components/Shared/Codeeditor";
 import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "../../../Context/useFetch";
 
-function TrainExample({contentUuid}) {
+function TrainExample({contentUuid,courseUuid}) {
     console.log('contentUuid TrainExample: ', contentUuid)
     const [content, setContent] = useState(null);
     const [contentLoading, setContentLoading] = useState(true);
@@ -35,12 +35,11 @@ function TrainExample({contentUuid}) {
                                     <p>مثال</p>
                                     <div className="Sarfasl__sampleLinkBox flex items-center justify-center ">
                                         <Link
-                                            to={{
-                                                pathname: "/dash/example",
-                                                state: {
-                                                    title: item.name,
-                                                    id: item.uuid,
-                                                },
+                                            to={"/dashboard/course/example"}
+                                            state={{
+                                                title: item.name,
+                                                id: item.uuid,
+                                                courseUuid:courseUuid
                                             }}
                                         >
                                             {windowSize === "sm"

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import Codeeditor from '@Components/Shared/Codeeditor';
 import {Accordion, Panel} from '@Components/Shared/Accordion/Accordion';
 import {useHistory, useLocation} from 'react-router-dom';
@@ -14,10 +14,10 @@ import Modal from '@Components/Shared/Modal/Modal';
 import Detail from './Detail';
 
 const Topic = ({courseId}) => {
-    const location = useLocation();
-    const [id, setId] = useState();
+    // const location = useLocation();
+    // const [id, setId] = useState();
     const [modal, setModal] = useState(false);
-    const {token, authDispatch} = useAuth();
+    const {token} = useAuth();
     const [courseSeasons, setCourseSeasons] = useState([]);
     console.log('Topic ~ courseSeasons', courseSeasons);
     const [contentUuid, setContentUuid] = useState(null);
@@ -30,10 +30,10 @@ const Topic = ({courseId}) => {
         setter: setCourseSeasons,
     });
 
-    useEffect(() => {
-        console.log('location.state.id: ', location.state.id);
-        setId(location.state.id);
-    }, [location]);
+    // useEffect(() => {
+    //     console.log('location.state.id: ', location.state.id);
+    //     setId(location.state.id);
+    // }, [location]);
 
     const handleModalVisible = () => {
         setModal(false);

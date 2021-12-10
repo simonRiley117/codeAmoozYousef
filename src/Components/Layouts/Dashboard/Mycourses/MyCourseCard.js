@@ -44,8 +44,8 @@ const MyCourseCard = ({card, finishedCourse}) => {
 
     return (
         !loadingCourseData ? (
-            courseData.results.map((course) => (
-                <article className='card-bg MyCourses__Card'>
+            courseData.results.map((course, index) => (
+                <article key={index} className='card-bg MyCourses__Card'>
                     <div className='card-bg-pic'>
                         <img src={course.cover} alt={course.title} className='card-bg-pic-logo'/>
                     </div>
@@ -53,13 +53,13 @@ const MyCourseCard = ({card, finishedCourse}) => {
                         <div className='card-bg-content '>
                             <div className='d-flex-space MyCourses__Card--header'>
                                 <h5 className='card-bg-title'>
-                                    <Link to='/dashboard/course'
+                                    <Link to={`/dashboard/course/${course.course_id}`}
                                           state={{
                                               name: course.title,
                                               id: course.course_id,
                                           }}>{course.title}</Link>
                                 </h5>
-                                <BtnLink to='/dashboard/course'
+                                <BtnLink to={`/dashboard/course/${course.course_id}`}
                                          state={{
                                              name: course.title,
                                              id: course.course_id,

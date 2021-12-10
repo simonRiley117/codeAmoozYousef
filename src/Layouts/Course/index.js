@@ -20,16 +20,16 @@ function Index() {
     const location = useLocation();
     console.log('LOCATION: ', location)
     useEffect(() => {
-        setMenu(location.state.name);
-        setId(location.state.id);
+        // setMenu(location.state.name);
+        setId(courseId);
     }, [location]);
-    const [menu, setMenu] = useState("");
+    // const [menu, setMenu] = useState("");
     const [id, setId] = useState();
     const windowSize = UseWindowSize();
 
     return (
         <div className="container">
-            <BreadCrump pathsname="/course" name={menu}/>
+            <BreadCrump/>
             <div className="Course">
                 {windowSize !== "sm" && <HeaderDiscount/>}
                 <div className="grid Course__container relative">

@@ -221,10 +221,10 @@ function LastCourse() {
                                     <Detail contentUuid={contentUuid}/>
                                 </TabPane>
                                 <TabPane tab='تمرین و مثال' key={`${contentUuid}_2`}>
-                                    <TrainExample contentUuid={contentUuid}/>
+                                    <TrainExample contentUuid={contentUuid} courseUuid={courseUuid}/>
                                 </TabPane>
                                 <TabPane tab='آزمون' key={`${contentUuid}_3`}>
-                                    <Quiz quizUuid={quizUuid} contentUuid={contentUuid}/>
+                                    <Quiz quizUuid={quizUuid} contentUuid={contentUuid} courseUuid={courseUuid}/>
                                 </TabPane>
                             </Tabs>
                             <div className='flex items-center justify-between LastCourse__btnBox'>

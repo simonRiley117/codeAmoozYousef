@@ -5,7 +5,7 @@ import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 import Button from "../../Shared/Buttons/Button";
 import {Link} from "react-router-dom";
 
-function QuizDetail({quizId, contentId, title, text, test_cases, language, file}) {
+function QuizDetail({quizId, contentId, courseId, title, text, test_cases, language, file}) {
     console.log('language: ', language)
     console.log('typeof language: ', typeof language)
     return (
@@ -43,7 +43,7 @@ function QuizDetail({quizId, contentId, title, text, test_cases, language, file}
                         classes='CoWorkers__btn flex items-center '
                         // onClick={handlePassContent}
                     >
-                        <Link to='/dash/course' className="flex items-center">
+                        <Link to={`/dashboard/course/${courseId}`} className="flex items-center">
                             بازگشت{' '}
                         </Link>
                     </Button>

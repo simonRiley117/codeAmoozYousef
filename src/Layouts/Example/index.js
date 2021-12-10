@@ -4,13 +4,18 @@ import {useParams, useLocation} from "react-router-dom";
 import ExampleDetail from "@Components/Layouts/Example/ExampleDetail";
 import useFetch from "../../Context/useFetch";
 
-function Index(props) {
-    console.log('PROPS: ', props.location.state)
-    // const {title} = useParams();
-    // const location = useLocation();
-    // const [titles, setTitles] = useState("");
-    // const [menu, setMenu] = useState([]);
-    const {title, id} = props.location.state
+function Index() {
+    const location = useLocation();
+    console.log('LOCATION: ', location)
+    useEffect(() => {
+        setId(location.state.id);
+        setCourseUuid(location.state.courseUuid);
+        // setTitle(location.state.title);
+    }, [location]);
+
+    const [id, setId] = useState(null)
+    const [courseUuid, setCourseUuid] = useState(null)
+    // const [title, setTitle] = useState('')
     const [example, setExample] = useState(null);
     const [exampleLoading, setExampleLoading] = useState(true);
 
@@ -36,9 +41,9 @@ function Index(props) {
         <>
             {!exampleLoading ? (
                 <div className="Example container">
-                    <BreadCrump pathsname="/dash/example" name={title}/>
+                    {/*<BreadCrump pathsname="/dash/example" name={title}/>*/}
                     <div className="Example__container">
-                        <ExampleDetail example={example}/>
+                        <ExampleDetail example={example} courseUuid={courseUuid}/>
                     </div>
                 </div>
             ) : null}
