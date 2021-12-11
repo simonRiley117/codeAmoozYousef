@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import teacher from "@Assets/Pic/teacher.png";
 import INSTAGRAM from "@Assets/Icons/instafram.svg";
 import GITHUB from "@Assets/Icons/githubblack.svg";
@@ -121,9 +122,11 @@ function TeacherInfo({ courseId }) {
                 )}
               </div>
               <div className="TeacherInfo__btnBox text-center flex items-center justify-center">
-                <Button type="default" classes="MasterSignUp__btn">
-                  مشاهده پروفایل
-                </Button>
+                <Link to="/courses/content/teacher">
+                  <Button type="default" classes="MasterSignUp__btn">
+                    مشاهده پروفایل
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="TeacherInfo__tags">
