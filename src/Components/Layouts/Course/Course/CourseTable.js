@@ -61,6 +61,7 @@ function CourseTable({courseId}) {
 
     const getSocials = useFetch({
         url: `SocialService/${courseId}`,
+        noHeader: true,
         method: "GET",
         setter: setSocialData,
     });
