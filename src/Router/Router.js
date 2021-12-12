@@ -36,7 +36,7 @@ const Router = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />}>
-            <Route index path="/:redirectTeacher?" element={<Home />} />
+            <Route index path="/:redirectTeacher" element={<Home />} />
           </Route>
           <Route path="/coWorkers" element={<CoWorkers />} />
           <Route path="coWorkers/master" element={<Master />} />
