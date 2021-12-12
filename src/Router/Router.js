@@ -25,9 +25,9 @@ import Favorites from "@Layouts/Favorites/Favorites";
 import Rules from "@Layouts/Rules/Rules";
 import Example from "@Layouts/Example";
 import TeacherResume from "@Layouts/Teacher Resume/TeacherResume";
-
 import ShoppingCard from "@Layouts/ShoppingCard/ShoppingCard";
 import Search from "@Layouts/Search/Search";
+import CourseContent from "@Layouts/CourseContent/CourseContent";
 
 const Router = () => {
   const { token } = useAuth();
@@ -63,8 +63,11 @@ const Router = () => {
           <Route path="/shopping-card" element={<ShoppingCard />} />
 
           <Route path="/search/:name" element={<Search />} />
+          <Route path="/course/:courseId" element={<CourseContent />} />
+
         </Route>
       </Routes>
+
       {token ? <Authenticated /> : <UnAuthenticated />}
     </>
   );

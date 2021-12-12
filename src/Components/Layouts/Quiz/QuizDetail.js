@@ -43,7 +43,7 @@ function QuizDetail({quizId, contentId, courseId, title, text, test_cases, langu
                         classes='CoWorkers__btn flex items-center '
                         // onClick={handlePassContent}
                     >
-                        <Link to={`/dashboard/course/${courseId}`} className="flex items-center">
+                        <Link to={`/course/${courseId}`} className="flex items-center">
                             بازگشت{' '}
                         </Link>
                     </Button>
