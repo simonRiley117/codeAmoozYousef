@@ -22,7 +22,7 @@ const BreadCrump = ({title, classes}) => {
         {path: '/dashboard/my-course', breadcrumb: 'دوره های من '},
     ];
     const breadcrumbs = useBreadcrumbs(routes);
-    console.log('breadcrumbs: ', breadcrumbs)
+   // console.log('breadcrumbs: ', breadcrumbs)
     return (
         <div className={classNames('breadcrumbs', [classes])}>
             <BreadcrumbBase className='breadcrumb' separator={<SeparatorIcon/>}>

@@ -53,13 +53,13 @@ const MyCourseCard = ({card, finishedCourse}) => {
                         <div className='card-bg-content '>
                             <div className='d-flex-space MyCourses__Card--header'>
                                 <h5 className='card-bg-title'>
-                                    <Link to={`/dashboard/course/${course.course_id}`}
+                                    <Link to={`/course/${course.course_id}`}
                                           state={{
                                               name: course.title,
                                               id: course.course_id,
                                           }}>{course.title}</Link>
                                 </h5>
-                                <BtnLink to={`/dashboard/course/${course.course_id}`}
+                                <BtnLink to={`/course/${course.course_id}`}
                                          state={{
                                              name: course.title,
                                              id: course.course_id,

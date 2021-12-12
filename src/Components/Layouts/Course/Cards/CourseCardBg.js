@@ -32,6 +32,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
   const [addtocardData, setaddtocardData] = useState();
   // const [isFavorite, setIsFavorite] = useState({isFavorite: is_favorite});
   const cost = get_price_without_degree_with_some_extra_info;
+  const [isfav, setisFav] = useState(is_favorite);
 
   const Addtocard = useFetch({
     //addtocard=>data:course_uuid: "", degree_uuid: null
@@ -84,7 +85,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
   const addToWishList = () => {
     postToFav.reFetch();
   };
-
+  const removeromWishList = () => {};
   console.log("UUIDBG: ", uuid);
   return (
     <article className="card-bg">
@@ -112,32 +113,39 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
                     onClick={() => addToCard(uuid)}
                     title="افزودن به سبدخرید"
                     icon={<CardIcon />}
+                    disabled={Addtocard.loading}
                   />
                 )}
               </div>
-              <div className="card-bg--heart">
+              <div
+                className={`card-bg--heart ${
+                  !isfav ? "wishList--empthy" : "wishList--full"
+                }`}
+              >
                 <IconBtn
-                  onClick={addToWishList}
+                  onClick={!isfav ? addToWishList : removeromWishList}
                   title="افزودن به لیست علاقه مندیها"
                   icon={<Heart />}
+                  disabled={postToFav.loading}
                 />
               </div>
             </div>
           )}
 
-                    <h5 className="card-bg-title">
-                        <Link
-                            to={`/courses/content/${uuid}`}
-                            state={{
-                                name: title,
-                                id: uuid,
-                                // name: 'X',
-                                // id: 'Y'
-                            }}>
-                            {title}
-                        </Link>
-                    </h5>
-                    <p className="mt-6 card-bg-des">{intro}</p>
+          <h5 className="card-bg-title">
+            <Link
+              to={`/courses/content/${uuid}`}
+              state={{
+                name: title,
+                id: uuid,
+                // name: 'X',
+                // id: 'Y'
+              }}
+            >
+              {title}
+            </Link>
+          </h5>
+          <p className="mt-6 card-bg-des">{intro}</p>
 
           <div className="d-flex-space ">
             <div className="card-bg-info-row ">
