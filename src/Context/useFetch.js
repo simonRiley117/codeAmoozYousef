@@ -1,84 +1,85 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import useAxios from "@use-hooks/axios";
-import { API_URL } from "../constants";
-import { useAuth } from "./authContext";
-import {  toast } from 'react-toastify';
+import {API_URL} from "../constants";
+import {useAuth} from "./authContext";
+import {toast} from 'react-toastify';
 
 export default function useFetch({
-  method = "GET",
-  url,
-  setter = null,
-  data = null,
-  params = null,
-  trigger = true,
-  caller = null,
-  func = null,
-  message = null,
-  argFunc = null,
-  pagination = null,
-  noHeader = false,
-  setLoader = null,
-  errMessage = null,
-  argErrFunc=null
-}) {
-  const { token } = useAuth();
+                                     method = "GET",
+                                     url,
+                                     setter = null,
+                                     data = null,
+                                     params = null,
+                                     trigger = true,
+                                     caller = null,
+                                     func = null,
+                                     message = null,
+                                     argFunc = null,
+                                     pagination = null,
+                                     noHeader = false,
+                                     setLoader = null,
+                                     errMessage = null,
+                                     argErrFunc = null
+                                 }) {
+    const {token} = useAuth();
 
-  const { response, loading, error, reFetch } = useAxios({
-    url:
-      pagination == null
-        ? `${API_URL}/${url}/`
-        : `${API_URL}/${url}/?page=${pagination.current}&pageSize=${pagination.pageSize}`,
-    method: method,
-    options: {
-      headers: noHeader
-        ? {}
-        : {
-            // 'content-type': 'multipart/form-data',
-            Authorization: `JWT ${token}`,
-          },
-      data: data,
-      params: params,
-    },
+    const {response, loading, error, reFetch} = useAxios({
+        url:
+            pagination == null
+                ? `${API_URL}/${url}/`
+                : `${API_URL}/${url}/?page=${pagination.current}&pageSize=${pagination.pageSize}`,
+        method: method,
+        options: {
+            withCredentials: true,
+            headers: noHeader
+                ? {}
+                : {
+                    // 'content-type': 'multipart/form-data',
+                    Authorization: `JWT ${token}`,
+                },
+            data: data,
+            params: params,
+        },
 
-    customHandler: (err, res) => {
-      if (res) {
-        // console.log("data", res.data);
-        if (setter !== null) setter(res.data);
-        if (caller !== null) caller.reFetch();
-        if (func !== null) func();
-        if (argFunc !== null) argFunc(res.data);
-        if (message !== null) {
-          toast.success(message);
-        }
-        // if (message !== null)
-        //   toast.success(message, {
-        //     position: toast.POSITION.TOP_CENTER,
-        //   });
-      }
-      if (err) {
-        console.log(err);
+        customHandler: (err, res) => {
+            if (res) {
+                // console.log("data", res.data);
+                if (setter !== null) setter(res.data);
+                if (caller !== null) caller.reFetch();
+                if (func !== null) func();
+                if (argFunc !== null) argFunc(res.data);
+                if (message !== null) {
+                    toast.success(message);
+                }
+                // if (message !== null)
+                //   toast.success(message, {
+                //     position: toast.POSITION.TOP_CENTER,
+                //   });
+            }
+            if (err) {
+                console.log(err);
 
-        console.log(err.response);
-        if (setLoader !== null) {
-          setLoader(false);
-        }
-        if (errMessage !== null) {
-          errMessage(err.response.data);
-        }
-        if (argErrFunc !== null) argErrFunc(err.response?.data);
+                console.log(err.response);
+                if (setLoader !== null) {
+                    setLoader(false);
+                }
+                if (errMessage !== null) {
+                    errMessage(err.response.data);
+                }
+                if (argErrFunc !== null) argErrFunc(err.response?.data);
 
-        // toast.error('دوباره تلاش کنید');
-        // toast.error("دوباره تلاش کنید", {
-        //   position: toast.POSITION.TOP_CENTER,
-        // });
-        // authDispatch({ type: "LOGOUT" });
-      }
-    },
-  });
+                // toast.error('دوباره تلاش کنید');
+                // toast.error("دوباره تلاش کنید", {
+                //   position: toast.POSITION.TOP_CENTER,
+                // });
+                // authDispatch({ type: "LOGOUT" });
+            }
+        },
+    });
 
-  useEffect(() => {
-    if (trigger) reFetch();
-  }, []);
+    useEffect(() => {
+        if (trigger) reFetch();
+    }, []);
 
-  return { response, error, loading, reFetch };
+    return {response, error, loading, reFetch};
 }
