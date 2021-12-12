@@ -59,7 +59,7 @@ const News = () => {
     }
 
     const getNewsList = useFetch({
-        url: `NewsService`,
+        url: `NewsService/latestNews`,
         method: "GET",
         noHeader: true,
         setter: setData,
