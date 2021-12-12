@@ -2,20 +2,22 @@ import React from "react";
 import ProgressLine from "@Components/Shared/Progress/ProgressLine";
 import { ClipLoader } from "react-spinners";
 
-const CourseStatus = ({ details, loading }) => {
+const CourseStatus = ({ details,    Currentcontentname,
+    loading }) => {
   const {
     content_passed_numbers,
     course_progress,
     current_content_name,
-
     latest_content_user_passed_name,
   } = details;
+  console.clear()
+  console.log(Currentcontentname)
   return (
     <div className="CourseStatus">
      
         <div>
         <p>
-          اسم مبحث: <span> {current_content_name} </span>
+          اسم مبحث: <span> {Currentcontentname} </span>
         </p>
         <p>
           آخرین مبحث گذرانده شده:

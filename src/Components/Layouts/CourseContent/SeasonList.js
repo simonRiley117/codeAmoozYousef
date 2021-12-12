@@ -8,19 +8,35 @@ import SeasonsItem from "./SeasonsItem";
 import { useLocation } from "react-router";
 import useFetch from "../../../Context/useFetch";
 
-const SeasonList = ({ sidebarList, activeSeasons }) => {
-  const [seasonID, setSeasonID] = useState(activeSeasons);
-  
-  const getSeasonId = (id) => {
-    setSeasonID(id);
-  };
-
+const SeasonList = ({
+  activeContent,
+  sidebarList,
+  activeSeasons,
+  setquizUuid,
+  getContentName,
+  changeContentID,
+}) => {
+  let [openPanels, setOpenPanels] = React.useState([activeSeasons]);
   return (
     <div className="Sarfasl__Accordionbox">
-      <Accordion defaultActiveKey={activeSeasons}>
-         {sidebarList.seasons.map((season, index) => (
-           <SeasonsItem key={season.uuid} season={season} index={index}/>
-         ))}
+      <Accordion
+        defaultActiveKey={activeSeasons}
+        activeKey={openPanels}
+        onChange={setOpenPanels}
+      >
+        {sidebarList.seasons.map((season, index) => (
+          <SeasonsItem
+            setquizUuid={setquizUuid}
+            changeContentID={changeContentID}
+            activeContent={activeContent}
+            openPanels={openPanels}
+            activeSeasons={activeSeasons}
+            key={season.uuid}
+            season={season}
+            index={index}
+            getContentName={getContentName}
+          />
+        ))}
       </Accordion>
     </div>
   );

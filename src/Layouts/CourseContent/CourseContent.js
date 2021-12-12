@@ -1,102 +1,88 @@
 import React, { useEffect, useState } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
-import { Tabs } from "antd";
-import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
-import Detail from "@Components/Layouts/Course/Sarfasl/Detail";
 import Button from "@Components/Shared/Buttons/Button";
 import CourseStatus from "@Components/Layouts/CourseContent/CourseStatus";
-import { Accordion, Panel } from "@Components/Shared/Accordion/Accordion";
-import ProgressLine from "@Components/Shared/Progress/ProgressLine";
-import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
-import Quiz from "@Components/Layouts/Dashboard/Quiz";
 import ContentTab from "@Components/Layouts/CourseContent/ContentTabs";
 import SeasonList from "@Components/Layouts/CourseContent/SeasonList";
-import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
-import Lock from "@Assets/Icons/lock.svg";
 import useFetch from "../../Context/useFetch";
-import IconBtn from "../../Components/Shared/Buttons/IconBtn";
-import classNames from "classnames";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-const override = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "green",
-};
-const { TabPane } = Tabs;
 
 function CourseContent() {
-  const [CurrentStatus, setSurrentStatus] = useState();
+  const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
+  const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
+  const [Currentcontentid, setCurrentContentid] = useState(null);
+  const [Currentcontentname, setCurrentContentname] = useState(null);
+  const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
   const { courseId } = useParams();
-  const getCurrentContentState = useFetch({
-    url: `CourseService/${courseId}/currentCourseState`,
-    method: "GET",
-    setter: setSurrentStatus,
-  });
   const getCourseSeasons = useFetch({
     url: `CourseService/${courseId}/sidebar`,
     method: "GET",
     noHeader: false,
     setter: setSidebarList,
+    trigger: false,
   });
-  // const getCurrentContentState = useFetch({
-  //   url: `ContentService/${contentUuid}/currentContentState`,
-  //   method: "GET",
-  //   noHeader: false,
-  //   trigger: false,
-  //   setter: setCurrentSituationData,
-  // });
+  const getContentName=(name)=>{
+    setCurrentContentname(name)
+  }
+  const getCurrentCourseState = useFetch({
+    url: `CourseService/${courseId}/currentCourseState`,
+    method: "GET",
+    setter: setCurrentCourseStatus,
+    caller: getCourseSeasons,
+    argFunc: (res) => {
+      if (Currentcontentid === null) {
+        setCurrentContentid(res.current_content_id);
+      }
+      getCurrentContentState.reFetch();
+    },
+  });
+  const getCurrentContentState = useFetch({
+    url: `ContentService/${Currentcontentid}/currentContentState`,
+    method: "GET",
+    trigger: false,
+    setter: setCurrentcontenStatus,
+  });
+  const changeContentID = (id, name) => {
+    setCurrentContentname(name);
+    setCurrentContentid(id);
+    getCurrentCourseState.reFetch();
+  };
+  useEffect(() => {
+    console.log("cur__id", Currentcontentid);
+  }, [Currentcontentid]);
 
-  // const setData = (data) => {
-  //   console.log("setData ~ data: ", data);
-  //   setCourseSeasons(data);
-  //   if (makeSetDataTrigger) {
-  //     setContentUuid(data.init_data.first_content_uuid);
-  //     setQuizUuid(data.init_data.first_quiz_uuid);
-  //     setMakeSetDataTrigger(false);
-  //   }
-  // };
+  const postPassContent = useFetch({
+    url: `PassService/${Currentcontentid}`,
+    method: "POST",
+      trigger: false,
+    // errMessage:setErrorPostData,
+    caller: getCurrentCourseState,
+    // setter: setCallBackPassContent
+  });
 
-  // const setUuids = (cUUID, qUUID) => {
-  //   setContentUuid(cUUID);
-  //   setQuizUuid(qUUID);
-  //   getCurrentContentState.reFetch();
-  // };
+  const handleNextContent = () => {
+    if (CurrentcontenStatus.next_content_passed) {
+      setCurrentContentid(CurrentcontenStatus.next_content_id);
+     // setQuizUuid(CurrentcontenStatus.next_quiz_id);
+     getCurrentCourseState.reFetch();
+    } else {
+      postPassContent.reFetch();
+    }
+  };
 
-  // const postPassContent = useFetch({
-  //   url: `PassService/${contentUuid}`,
-  //   method: "POST",
-  //   noHeader: false,
-  //   trigger: false,
-  //   // errMessage:setErrorPostData,
-  //   caller: getCourseSeasons,
-  //   // setter: setCallBackPassContent
-  // });
-
-  // const handleNextContent = () => {
-  //   if (currentContentState.next_content_passed) {
-  //     setContentUuid(currentContentState.next_content_id);
-  //     setQuizUuid(currentContentState.next_quiz_id);
-  //     getCurrentContentState.reFetch();
-  //   } else {
-  //     postPassContent.reFetch();
-  //     setIsNext(true);
-  //     setMakeSetCurrentSituationDataTrigger(true);
-  //   }
-  // };
-
-  // const handlePrevContent = () => {
-  //   if (currentContentState.prev_content_passed) {
-  //     setContentUuid(currentContentState.prev_content_id);
-  //     setQuizUuid(currentContentState.prev_quiz_id);
-  //     getCurrentContentState.reFetch();
-  //   } else {
-  //     postPassContent.reFetch();
-  //     setIsNext(false);
-  //     setMakeSetCurrentSituationDataTrigger(true);
-  //   }
-  // };
+   const handlePrevContent = () => {
+     if (CurrentcontenStatus.prev_content_passed) {
+       setCurrentContentid(CurrentcontenStatus.prev_content_id);
+       //setQuizUuid(CurrentcontenStatus.prev_quiz_id);
+       getCurrentCourseState.reFetch();
+     } else {
+       postPassContent.reFetch();
+      // setIsNext(false);
+      //setMakeSetCurrentSituationDataTrigger(true);
+     }
+   };
 
   // // const [activeKey,setActiveKey]=useState('1')
   // // const handleTabChange = (selectedkey) => {
@@ -110,76 +96,78 @@ function CourseContent() {
 
   return (
     <>
-      <div className="LastCourse">
-        <div className="container">
-          <BreadCrump
-            pathsname="/dash/course"
-            //  name={courseSeasons.title}
-          />
-          <div className="grid LastCourse__container relative">
-            <div className="LastCourse__Box">
-              <div className="LastCourse__Position">
-                <p className="LastCourse__title"></p>
-                {CurrentStatus && sidebarList && (
+      {CurrentCourseStatus && sidebarList && (
+        <div className="LastCourse">
+          <div className="container">
+            <BreadCrump
+              pathsname="/dash/course"
+              //  name={courseSeasons.title}
+            />
+            <div className="grid LastCourse__container relative">
+              <div className="LastCourse__Box">
+                <div className="LastCourse__Position">
+                  <p className="LastCourse__title"></p>
                   <SeasonList
                     sidebarList={sidebarList}
-                    activeSeasons={CurrentStatus.current_season_id}
-                    activeContent={CurrentStatus.current_content_id}
+                    activeSeasons={CurrentCourseStatus.current_season_id}
+                    activeContent={Currentcontentid}
+                    setquizUuid={setquizUuid}
+                    changeContentID={changeContentID}
+                    getContentName={getContentName}
                   />
-                )}
-                <div className="flex items-center cursor-pointer LastCourse__guideBox">
-                  <p className="LastCourse__guide-icon"> i</p>
-                  <p className="LastCourse__guide">راهنمای صفحه</p>
+                  <div className="flex items-center cursor-pointer LastCourse__guideBox">
+                    <p className="LastCourse__guide-icon"> i</p>
+                    <p className="LastCourse__guide">راهنمای صفحه</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              {CurrentStatus ? (
-                <CourseStatus
-                  loading={getCurrentContentState.loading}
-                  details={CurrentStatus}
-                />
-              ) : (
-                <div>
-                  <ClipLoader color="#EF8019" loading={true} size={40} />
-                </div>
-              )}
+              <div>
+                {CurrentCourseStatus && Currentcontentname !== null ? (
+                  <CourseStatus
+                    Currentcontentname={Currentcontentname}
+                    loading={getCurrentContentState.loading}
+                    details={CurrentCourseStatus}
+                  />
+                ) : (
+                  <div>
+                    <ClipLoader color="#EF8019" loading={true} size={40} />
+                  </div>
+                )}
 
-              {/* <ContentTab
-                  contentUuid={contentUuid}
+                <ContentTab
+                  contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
-                  courseUuid={courseUuid}
-                /> */}
-              <div className="flex items-center justify-between LastCourse__btnBox">
-                {/* <Button
-                    ico={false}
+                  courseUuid={courseId}
+                />
+                {/* <div className="flex items-center justify-between LastCourse__btnBox">
+                   <Button
                     type="primary"
                     classes="CoWorkers__btn flex items-center "
-                    {...(currentContentState.has_next_content && {
+                    {...(CurrentcontenStatus.has_next_content && {
                       onClick: handleNextContent,
                     })}
-                    disabled={!currentContentState.has_next_content}
+                    disabled={!CurrentcontenStatus.has_next_content}
                   >
                     مبحث بعدی
                     <i className="fas fa-chevron-right"></i>
                   </Button>
                   <Button
-                    ico={false}
                     type="primary"
                     classes="CoWorkers__btn flex items-center "
-                    {...(currentContentState.has_prev_content && {
+                    {...(CurrentcontenStatus.has_prev_content && {
                       onClick: handlePrevContent,
                     })}
-                    disabled={!currentContentState.has_prev_content}
+                    disabled={!CurrentcontenStatus.has_prev_content}
                   >
                     <i className="fas fa-chevron-left"></i>
                     مبحث قبلی{" "}
-                  </Button> */}
+                  </Button> 
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
