@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Accordion, Panel } from "@Components/Shared/Accordion/Accordion";
-import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
-import Lock from "@Assets/Icons/lock.svg";
-import IconBtn from "@Components/Shared/Buttons/IconBtn";
-import classNames from "classnames";
+import { Accordion } from "@Components/Shared/Accordion/Accordion";
 import SeasonsItem from "./SeasonsItem";
 import { useLocation } from "react-router";
 import useFetch from "../../../Context/useFetch";
@@ -18,12 +14,18 @@ const SeasonList = ({
   setIsContentPass
 }) => {
   let [openPanels, setOpenPanels] = React.useState([activeSeasons]);
+  useEffect(() => {
+    if(!openPanels.includes(activeSeasons)){
+      openPanels.push(activeSeasons)
+    }
+  }, [,activeSeasons])
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion
         defaultActiveKey={activeSeasons}
         activeKey={openPanels}
         onChange={setOpenPanels}
+        destroyInactivePanel={true}
       >
         {sidebarList.seasons.map((season, index) => (
           <SeasonsItem

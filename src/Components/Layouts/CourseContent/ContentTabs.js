@@ -3,7 +3,7 @@ import { Tabs } from "antd";
 import Detail from "@Components/Layouts/Course/Sarfasl/Detail";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
 import Quiz from "@Components/Layouts/Dashboard/Quiz";
-const ContentTabs = ({ contentUuid, quizUuid ,courseUuid}) => {
+const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize }) => {
   const { TabPane } = Tabs;
 
   return (
@@ -21,6 +21,15 @@ const ContentTabs = ({ contentUuid, quizUuid ,courseUuid}) => {
           courseUuid={courseUuid}
         />
       </TabPane>
+      {hasSeasonQuize === "You have not passed quiz season" && (
+        <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
+          <Quiz
+            quizUuid={quizUuid}
+            contentUuid={contentUuid}
+            courseUuid={courseUuid}
+          />
+        </TabPane>
+      )}
     </Tabs>
   );
 };

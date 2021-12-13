@@ -10,15 +10,12 @@ const CourseStatus = ({ details,    Currentcontentname,
     current_content_name,
     latest_content_user_passed_name,
   } = details;
-  console.clear()
   console.log(Currentcontentname)
   return (
     <div className="CourseStatus">
      
         <div>
-        <p>
-          اسم مبحث: <span> {Currentcontentname} </span>
-        </p>
+ 
         <p>
           آخرین مبحث گذرانده شده:
           <span>{latest_content_user_passed_name}</span>

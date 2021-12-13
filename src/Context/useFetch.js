@@ -22,7 +22,6 @@ export default function useFetch({
   argErrFunc = null,
 }) {
   const { token } = useAuth();
- console.log(token)
   const { response, loading, error, reFetch } = useAxios({
     url:
       pagination == null

@@ -15,15 +15,21 @@ const ContentItem = ({
   useEffect(() => {
     if (activeContent === content.id) {
       setquizUuid(content.quiz_id);
-      getContentName(content.title);
       setIsContentPass(content.is_content_passed);
+      
     }
-  }, []);
+
+  }, [activeContent]);
+  const handleClick= ()=>{
+    if(!content.lockedOn){
+      changeContentID(content.id, content.title)
+    }
+  }
   return (
     <div>
       <div
         className="flex justify-between items-center cursor-pointer"
-        onClick={() => changeContentID(content.id, content.title)}
+        onClick={ handleClick}
       >
         <div className="flex items-center Sarfasl__Accordiontxtbox">
           {content.is_content_passed ? (
