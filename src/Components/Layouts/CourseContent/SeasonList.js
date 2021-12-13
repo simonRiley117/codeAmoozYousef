@@ -15,6 +15,7 @@ const SeasonList = ({
   setquizUuid,
   getContentName,
   changeContentID,
+  setIsContentPass
 }) => {
   let [openPanels, setOpenPanels] = React.useState([activeSeasons]);
   return (
@@ -35,6 +36,7 @@ const SeasonList = ({
             season={season}
             index={index}
             getContentName={getContentName}
+            setIsContentPass={setIsContentPass}
           />
         ))}
       </Accordion>

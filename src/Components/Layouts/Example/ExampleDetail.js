@@ -45,7 +45,7 @@ function ExampleDetail({example, courseUuid}) {
                     classes='CoWorkers__btn flex items-center '
                     // onClick={handlePassContent}
                 >
-                    <Link to={`/dashboard/course/${courseUuid}`} className="flex items-center">
+                    <Link to={`/course/${courseUuid}`} className="flex items-center">
                         بازگشت{' '}
                     </Link>
                 </Button>
