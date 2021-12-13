@@ -28,6 +28,7 @@ import TeacherResume from "@Layouts/Teacher Resume/TeacherResume";
 
 import ShoppingCard from "@Layouts/ShoppingCard/ShoppingCard";
 import Search from "@Layouts/Search/Search";
+import Coursetopic from "@Layouts/CourseTopic/CourseTopic";
 import CourseContent from "@Layouts/CourseContent/CourseContent";
 
 const Router = () => {
@@ -57,6 +58,7 @@ const Router = () => {
           <Route path="/courses/content/:courseId" element={<Course />} />
           <Route path="/courses/content/teacher" element={<TeacherResume />} />
           <Route path="/courses/example" element={<Example />} />
+          <Route path="/courses/topic" element={<Coursetopic />} />
 
           <Route path="/rules" element={<Rules />} />
           <Route path="/fav" element={<Favorites />} />
