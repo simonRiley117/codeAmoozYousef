@@ -119,8 +119,8 @@ const SeasonHeader = ({
           }
         />
        {!lock && <div
-          className={classNames("accordion__arrow", {
-            active: !openPanels.includes(id),
+          className={classNames("accordion__arrow custom__accordion--arrow", {
+            active: openPanels.includes(id),
           })}
         >
           <Arrow />

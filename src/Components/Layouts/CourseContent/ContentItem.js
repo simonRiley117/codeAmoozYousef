@@ -28,7 +28,7 @@ const ContentItem = ({
   return (
     <div>
       <div
-        className="flex justify-between items-center cursor-pointer"
+        className="flex justify-between items-center cursor-pointer px-8"
         onClick={ handleClick}
       >
         <div className="flex items-center Sarfasl__Accordiontxtbox">
