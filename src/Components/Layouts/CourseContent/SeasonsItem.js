@@ -20,17 +20,27 @@ const SeasonsItem = ({
   activeContent,
   setquizUuid,
   changeContentID,
+  setIsContentPass,
   ...props
 }) => {
-  const [courseList, setcourseList] = useState([]);
+  const [contentList, setcontentList] = useState([]);
   const getCourseSeasons = useFetch({
     url: `SeasonService/${season.uuid}/sidebar`,
     method: "GET",
     trigger: activeSeasons === season.uuid,
-    setter: setcourseList,
+    setter: setcontentList,
   });
+  useEffect(() => {
+    console.log(openPanels)
+    if(
+      openPanels.includes(season.uuid)
+    ){
+      getCourseSeasons.reFetch()
+
+    }
+  }, [activeContent])
   const FetchContent = () => {
-    if (courseList.length === 0 && !season.lockedOn) {
+    if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
     }
   };
@@ -53,15 +63,17 @@ const SeasonsItem = ({
       key={season.uuid}
       {...props}
     >
-      {courseList.contents?.map((content, index) => (
+      {contentList?.map((content, index) => (
         <ContentItem
-        changeContentID={changeContentID}
-        setquizUuid={setquizUuid}
+         changeContentID={changeContentID}
+         setquizUuid={setquizUuid}
           activeContent={activeContent}
           key={content.id}
           index={index}
           content={content}
           getContentName={getContentName}
+          setIsContentPass={setIsContentPass}
+
         />
       ))}
     </Panel>
