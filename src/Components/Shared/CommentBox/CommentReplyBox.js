@@ -14,8 +14,8 @@ function CommentReplyBox(
         pub,
         commentId,
         toggleReply,
-        index,
-        replyIndex
+        // index,
+        // replyIndex
     }) {
     console.log('commentId: ', commentId)
     const [replyInfo, setReplyInfo] = useState(null);
@@ -40,7 +40,7 @@ function CommentReplyBox(
     // const [singleFetch, setSingleFetch] = useState(true)
     console.log('toggleReply: ', toggleReply)
     useEffect(() => {
-        if (index === replyIndex && toggleReply) {
+        if (toggleReply) {
             getReplyInfo.reFetch()
             // setToggleRep((prevState => !prevState))
             // setSingleFetch(false)

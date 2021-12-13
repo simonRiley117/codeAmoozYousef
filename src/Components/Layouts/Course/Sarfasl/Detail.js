@@ -4,18 +4,14 @@ import useFetch from '@App/Context/useFetch';
 import { useAuth } from '@App/Context/authContext';
 
 function Detail({ contentUuid }) {
-	console.log('Detail ~ contentUuid', contentUuid);
 	const [content, setContent] = useState(null);
-	console.log('Detail ~ content', content);
 	const { token, authDispatch } = useAuth();
-
 	const getContent = useFetch({
 		url: `ContentService/${contentUuid}/getModalContent`,
 		method: 'GET',
 		noHeader: token ? false : true,
 		setter: setContent,
 	});
-
 	useEffect(() => {
 		getContent.reFetch();
 	}, [contentUuid]);
@@ -26,7 +22,6 @@ function Detail({ contentUuid }) {
 				<div className='Detaile'>
 					<div className='Detaile__hederBox'>
 						<p>{content.title}</p>
-						{/*<p>پایتون چیست؟</p>*/}
 					</div>
 					<div>
 						<VideoPlayer src={content.video} />

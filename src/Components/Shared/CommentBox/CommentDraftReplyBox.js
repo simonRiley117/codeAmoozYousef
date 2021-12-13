@@ -14,8 +14,8 @@ function CommentDraftReplyBox(
         pub,
         commentId,
         toggleReply,
-        index,
-        replyIndex
+        // index,
+        // replyIndex
     }) {
     console.log('commentId: ', commentId)
     const [replyInfo, setReplyInfo] = useState(null);
@@ -39,7 +39,7 @@ function CommentDraftReplyBox(
     // const [singleFetch, setSingleFetch] = useState(true)
     console.log('DrafttoggleReply: ', toggleReply)
     useEffect(() => {
-        if (toggleReply && index === replyIndex) {
+        if (toggleReply) {
             getReplyInfo.reFetch()
             // setSingleFetch(false)
         }

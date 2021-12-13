@@ -31,7 +31,7 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
   const cost = get_price_without_degree_with_some_extra_info;
   // const [courseid, setCourseid] = useState(null);
   const [addtocardData, setaddtocardData] = useState();
-
+  const [isfav, setisFav] = useState(is_favorite);
   const Addtocard = useFetch({
     //addtocard=>data:course_uuid: "", degree_uuid: null
     url: `CartService/addToCart`,
@@ -69,8 +69,20 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
       toast.success("دوره با موفقیت به لیست علاقه مندی های شما اضافه شد");
       liftRequest.reFetch();
       getallCourseList.reFetch();
+      setisFav(!isfav)
     },
     argErrFunc: (err) => handleErrorAddtoFav(err),
+  });
+  const DeleteFav = useFetch({
+    url: `StudentService/willing_course_delete`,
+    method: "DELETE",
+    trigger: false,
+    argFunc: (res) => {
+      toast.success("دوره با موفقیت به لیست علاقه مندی های شما اضافه شد");
+      liftRequest.reFetch();
+      getallCourseList.reFetch();
+      setisFav(!isfav)
+    },
   });
   const handleErrorAddtoFav = (err) => {
     if (err?.data === "You already have this course in your willingList") {
@@ -82,10 +94,12 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
   };
 
   const addToWishList = () => {
+    
     postToFav.reFetch();
   };
-
-  console.log("UUIDSM: ", uuid);
+  const removeromWishList = ()=>{
+    DeleteFav.reFetch()
+  }
   return (
     <div className="card-sm">
       <div
@@ -110,14 +124,20 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
                       onClick={() => addToCard(uuid)}
                       title="افزودن به سبدخرید"
                       icon={<CardIcon />}
+                      disabled={Addtocard.loading}
                     />
                   )}
                 </div>
-                <div className="card-sm-img-hover--heart">
+                <div
+                  className={`card-sm-img-hover--heart ${
+                    !isfav ? "wishList--empthy" : "wishList--full"
+                  }`}
+                >
                   <IconBtn
-                    onClick={addToWishList}
+                    onClick={!isfav ? addToWishList : removeromWishList}
                     title="افزودن به لیست علاقه مندیها"
                     icon={<Heart />}
+                    disabled={postToFav.loading}
                   />
                 </div>
               </div>
@@ -144,24 +164,25 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
             </div>
           </div>
 
-                    <h5 className="cursor-pointer	">
-                        <Link
-                            to={`/courses/content/${uuid}`}
-                            state={{
-                                name: title,
-                                id: uuid
-                                // name: 'X',
-                                // id: 'Y'
-                            }}>
-                            {title}
-                        </Link>
-                    </h5>
-                    <div className="card-sm-img-pic">
-                        <img src={teacher_avatar} alt='teacher-avatar'/>
-                        <h4>
-                            {teacher_first_name} {teacher_last_name}
-                        </h4>
-                    </div>
+          <h5 className="cursor-pointer	">
+            <Link
+              to={`/courses/content/${uuid}`}
+              state={{
+                name: title,
+                id: uuid,
+                // name: 'X',
+                // id: 'Y'
+              }}
+            >
+              {title}
+            </Link>
+          </h5>
+          <div className="card-sm-img-pic">
+            <img src={teacher_avatar} alt="teacher-avatar" />
+            <h4>
+              {teacher_first_name} {teacher_last_name}
+            </h4>
+          </div>
 
           <div className="d-flex-space card-sm-footer">
             <div className="card-sm-footer-level">{level}</div>
