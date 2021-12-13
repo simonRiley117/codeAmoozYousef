@@ -172,8 +172,8 @@ const DahsboardAppbar = () => {
                   <img src={userData.cover} alt="profile" />
                   {hoverMenu && (
                     <div className="profile-menu">
-                      <Link to="/">حساب کاربری</Link>
-                      <Link to="/">علاقه مندی‌ها</Link>
+                      <Link to="/dashboard">حساب کاربری</Link>
+                      <Link to="/fav">علاقه مندی‌ها</Link>
                       <Link to="/">خروج</Link>
                     </div>
                   )}
