@@ -2,38 +2,26 @@ import React from "react";
 import ProgressLine from "@Components/Shared/Progress/ProgressLine";
 import { ClipLoader } from "react-spinners";
 
-const CourseStatus = ({ details,    Currentcontentname,
-    loading }) => {
+const CourseStatus = ({ details, Currentcontentname, loading }) => {
   const {
     content_passed_numbers,
     course_progress,
     current_content_name,
     latest_content_user_passed_name,
   } = details;
-  console.clear()
-  console.log(Currentcontentname)
+  console.log(Currentcontentname);
   return (
     <div className="CourseStatus">
-     
-        <div>
-        <p>
-          اسم مبحث: <span> {Currentcontentname} </span>
-        </p>
-        <p>
-          آخرین مبحث گذرانده شده:
-          <span>{latest_content_user_passed_name}</span>
-        </p>
-        <p>
-          تعداد مبحث های گذرانده شده : <span>{content_passed_numbers}</span>
-        </p>
-        <p className="LastCourse__progresstitle">
-          پیشرفت شما در دوره: <span>{course_progress}%</span>
-        </p>
-        <ProgressLine precent={course_progress} />
+      <div className=" CourseStatus__table mb-8">
+        <p>آخرین مبحث گذرانده شده:</p>
+        <p className="success text-center">{latest_content_user_passed_name}</p>
+        <p>تعداد مبحث های گذرانده شده :</p>
+        <p className="success text-center">{content_passed_numbers}</p>
+        <p className="LastCourse__progresstitle">پیشرفت شما در دوره:</p>
+        <p className="text-center">{course_progress}%</p>
       </div>
-     
-        
-      
+      <ProgressLine  precent={course_progress} />
+
     </div>
   );
 };

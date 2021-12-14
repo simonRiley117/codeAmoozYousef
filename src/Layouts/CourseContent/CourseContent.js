@@ -12,7 +12,7 @@ function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
   const [Currentcontentid, setCurrentContentid] = useState(null);
-  const [Currentcontentname, setCurrentContentname] = useState(null);
+  const [SeasonsQuizeid, setSeasonsQuizeid] = useState(null);
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
@@ -24,9 +24,7 @@ function CourseContent() {
     setter: setSidebarList,
     trigger: false,
   });
-  const getContentName = (name) => {
-    setCurrentContentname(name);
-  };
+
   const getCurrentCourseState = useFetch({
     url: `CourseService/${courseId}/currentCourseState`,
     method: "GET",
@@ -45,17 +43,8 @@ function CourseContent() {
     setter: setCurrentcontenStatus,
   });
   const changeContentID = (id, name) => {
-    setCurrentContentname(name);
     setCurrentContentid(id);
-    getCurrentCourseState.reFetch();
   };
-  useEffect(() => {
-    if (Currentcontentid) {
-      getCurrentContentState.reFetch();
-    }
-
-    console.log("cur__id", Currentcontentid);
-  }, [Currentcontentid]);
 
   const postPassContent = useFetch({
     url: `PassService/${Currentcontentid}`,
@@ -70,10 +59,18 @@ function CourseContent() {
     console.log(err);
   };
   useEffect(() => {
-    if(quizUuid === null){
+    if (quizUuid === null) {
       postPassContent.reFetch();
     }
-  }, [])
+  }, []);
+  useEffect(() => {
+    if (Currentcontentid) {
+      getCurrentContentState.reFetch();
+      getCurrentCourseState.reFetch();
+    }
+
+    console.log("cur__id", Currentcontentid);
+  }, [Currentcontentid]);
   // has_next_content: true
   // has_prev_content: false
   // next_content_id: "Qd4Hd1XA"
@@ -91,18 +88,10 @@ function CourseContent() {
   };
 
   const handlePrevContent = () => {
-    setCurrentContentid(CurrentcontenStatus.prev_content_passed);
+    setCurrentContentid(CurrentcontenStatus.prev_content_id);
   };
 
-  // // const [activeKey,setActiveKey]=useState('1')
-  // // const handleTabChange = (selectedkey) => {
-  // //     setActiveKey(selectedkey);
-  // //     console.log("change callback");
-  // //     getCourseSeasons.reFetch()
-  // // };
-
-  // console.log("contentUuid!: ", contentUuid);
-  // console.log("quizUuid!: ", quizUuid);
+  console.log("pass", isContentPass);
 
   return (
     <>
@@ -120,7 +109,6 @@ function CourseContent() {
                     activeContent={Currentcontentid}
                     setquizUuid={setquizUuid}
                     changeContentID={changeContentID}
-                    getContentName={getContentName}
                     setIsContentPass={setIsContentPass}
                   />
                   <div className="flex items-center cursor-pointer LastCourse__guideBox">
@@ -130,10 +118,8 @@ function CourseContent() {
                 </div>
               </div>
               <div>
-                {CurrentCourseStatus && Currentcontentname !== null ? (
+                {CurrentCourseStatus ? (
                   <CourseStatus
-                    Currentcontentname={Currentcontentname}
-                    loading={getCurrentContentState.loading}
                     details={CurrentCourseStatus}
                   />
                 ) : (
@@ -146,6 +132,7 @@ function CourseContent() {
                   contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
                   courseUuid={courseId}
+                  hasSeasonQuize={CurrentcontenStatus?.next_content_id}
                 />
                 {CurrentcontenStatus && (
                   <div className="flex items-center justify-between LastCourse__btnBox">
@@ -155,7 +142,12 @@ function CourseContent() {
                       {...(CurrentcontenStatus.has_next_content && {
                         onClick: handleNextContent,
                       })}
-                      disabled={!CurrentcontenStatus.has_next_content}
+                      disabled={
+                        !CurrentcontenStatus.has_next_content ||
+                        (!isContentPass && quizUuid !== null) ||
+                        CurrentcontenStatus.next_content_id ===
+                          "You have not passed quiz season"
+                      }
                     >
                       مبحث بعدی
                       <i className="fas fa-chevron-right"></i>
@@ -169,7 +161,7 @@ function CourseContent() {
                       disabled={!CurrentcontenStatus.has_prev_content}
                     >
                       <i className="fas fa-chevron-left"></i>
-                      مبحث قبلی{" "}
+                      مبحث قبلی
                     </Button>
                   </div>
                 )}

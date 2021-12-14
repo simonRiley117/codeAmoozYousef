@@ -31,14 +31,11 @@ const SeasonsItem = ({
     setter: setcontentList,
   });
   useEffect(() => {
-    console.log(openPanels)
-    if(
-      openPanels.includes(season.uuid)
-    ){
-      getCourseSeasons.reFetch()
-
+    console.log(openPanels);
+    if (openPanels.includes(season.uuid)) {
+      getCourseSeasons.reFetch();
     }
-  }, [activeContent])
+  }, [activeContent]);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
@@ -65,15 +62,14 @@ const SeasonsItem = ({
     >
       {contentList?.map((content, index) => (
         <ContentItem
-         changeContentID={changeContentID}
-         setquizUuid={setquizUuid}
+          changeContentID={changeContentID}
+          setquizUuid={setquizUuid}
           activeContent={activeContent}
           key={content.id}
           index={index}
           content={content}
           getContentName={getContentName}
           setIsContentPass={setIsContentPass}
-
         />
       ))}
     </Panel>
@@ -108,11 +104,11 @@ const SeasonHeader = ({
       <div className="Sarfasl__AccordionCenter">
         <p>{time}</p>
         &nbsp;
-        <img src={Clock} alt={Clock} />
+        <img src={Clock} alt={Clock} className="time__icon" />
         &nbsp;&nbsp;
         {/*<img src={Lock} alt={Lock}/>*/}
         <IconBtn
-          classes={classNames("Sarfasl__btn", {
+          classes={classNames("Sarfasl__btn lock__icon", {
             lock: !lock,
           })}
           icon={
@@ -122,13 +118,13 @@ const SeasonHeader = ({
             </>
           }
         />
-        <div
-          className={classNames("accordion__arrow", {
-            active: !openPanels.includes(id),
+       {!lock && <div
+          className={classNames("accordion__arrow custom__accordion--arrow", {
+            active: openPanels.includes(id),
           })}
         >
           <Arrow />
-        </div>
+        </div>}
       </div>
     </div>
   );

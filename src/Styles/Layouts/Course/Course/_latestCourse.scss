@@ -1,5 +1,6 @@
 .latestCourse {
   margin-top: 20px;
+ 
   .card-bg {
     margin: 5rem auto;
   }
@@ -8,8 +9,8 @@
     .slick-prev {
       left: 160px;
       z-index: 999;
-     
-      &::before{
+
+      &::before {
         display: none;
       }
       img {
@@ -19,8 +20,8 @@
     .slick-next {
       right: 160px;
       z-index: 999;
-   
-      &::before{
+
+      &::before {
         display: none;
       }
       img {
