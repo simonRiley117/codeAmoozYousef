@@ -35,7 +35,7 @@ function Index() {
                 <div className="grid Course__container relative">
                     {windowSize !== "sm" && (
                         <div className="Course__sideBar relative">
-                            <TeacherInfo courseId={id}/>
+                            <TeacherInfo courseId={id} resume={false}/>
                         </div>
                     )}
 
