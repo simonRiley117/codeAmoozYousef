@@ -6,7 +6,7 @@ import { useForm as formBox } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import ShoppingCoursecard from "./ShoppingCoursecard";
 import { ClipLoader } from "react-spinners";
-const TipButton = () => {
+const TipButton = ({ orderCard, getPayment }) => {
   const [coupon_number, setCoupounNum] = useState();
 
   const {
@@ -19,9 +19,9 @@ const TipButton = () => {
     url: `CartService/addCoupon`,
     method: "POST",
     trigger: false,
+    caller: getPayment,
     argFunc: (res) => {
       toast.success("کد تخفیف با موفقیت اعمال شد ");
-      
     },
     data: coupon_number,
     argErrFunc: (err) => handleError(err),
@@ -30,6 +30,27 @@ const TipButton = () => {
   const handleError = (err) => {
     if (err?.data === "This Coupon Is Invalid") {
       toast.error("کد تخفیف اشتباه است");
+    }
+    if (err?.data === "This Coupon Is Expired") {
+      toast.error("تاریخ انقضای کد تخفیف گذشته است   ");
+    }
+    if (err?.data === "This Coupon is already used for this Order") {
+      toast.error("این کد تخفیف قبلا استفاده شده است");
+    }
+    if (err?.data === "This User has no Order") {
+      toast.error("لیست سفارش های شما خالی است ");
+    }
+    if (err?.data === "This Coupon is already used for this OrderItem") {
+      toast.error("این کد تخفیف قبلا برای این دوره استفاده شده است        ");
+    }
+    if (
+      err?.data ===
+      "There is no course in your order that related to this coupon"
+    ) {
+      toast.error("دوره ای برای این کد تخفیف وجود نداره        ");
+    }
+    if (err?.data === "This Coupon is not valid for you") {
+      toast.error("این کد تخفیف برای شما قابل استفاده نیست");
     }
   };
 
@@ -42,7 +63,13 @@ const TipButton = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="TipButton">
-        <button type="submit"> اعمال کدتخفیف</button>
+        <button
+          disabled={orderCard?.results?.length === 0 || postCoupone.loading}
+          type="submit"
+        >
+          {" "}
+          اعمال کدتخفیف
+        </button>
         <input {...register("coupon_number", { required: true })} type="text" />
       </div>
       {errors.coupon_number && <p className="error"> این فیلد اجباری است</p>}
@@ -50,7 +77,7 @@ const TipButton = () => {
     </form>
   );
 };
-const CostBox = ({ orderCard, payment }) => {
+const CostBox = ({ orderCard, payment, getPayment }) => {
   const { final_amount, discounted_cost, discount_amount } = payment;
   const navigate = useNavigate();
 
@@ -66,41 +93,52 @@ const CostBox = ({ orderCard, payment }) => {
   const buyCourse = () => {
     Payment.reFetch();
   };
+  const orderCardLength = orderCard?.results?.length;
   return (
-    <div className="primary-box CostBox">
+    <div
+      className={`primary-box CostBox ${
+        orderCardLength === 0 ? "CostBox__empthy" : null
+      }`}
+    >
       <table style={{ width: "100%" }}>
         <tr>
           <td> مجموع هزینه:</td>
           <td>
-            <p>{discounted_cost}</p>
+            <p>{orderCardLength === 0 ? "0" : discounted_cost}</p>
           </td>
           <td>تومان</td>
         </tr>
         <tr>
           <td> تخفیف:</td>
           <td>
-            <p>{discount_amount}</p>
+            <p>{orderCardLength === 0 ? "0" : discount_amount}</p>
           </td>
           <td>تومان</td>
         </tr>
         <tr>
           <td> پرداختی:</td>
           <td>
-            <p className="success">{final_amount}</p>
+            <p className="success">
+              {orderCardLength === 0 ? "0" : final_amount}
+            </p>
           </td>
           <td>تومان</td>
         </tr>
         <tr>
           <td> تعداد:</td>
           <td>
-            <p>{orderCard?.results?.length}</p>
+            <p>{orderCardLength}</p>
           </td>
           <td>عدد</td>
         </tr>
       </table>
-      <TipButton />
+      <TipButton orderCard={orderCard} getPayment={getPayment} />
       <div className="CostBox__btn">
-        <Button onClick={buyCourse} type="primary">
+        <Button
+          disabled={orderCardLength === 0 || Payment.loading}
+          onClick={buyCourse}
+          type="primary"
+        >
           تکمیل خرید
         </Button>
       </div>

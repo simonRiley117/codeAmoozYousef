@@ -23,11 +23,14 @@ const ShoppingCard = () => {
           <h2> سبدخرید</h2>
         </div>
         <div className="shoppingcard__row  ">
-          <CoursesBox getPayment={getPayment} orderCard={orderCard} getorderSummary={getorderSummary} />
-          <CostBox
-            payment={payment}
+          <CoursesBox
+            getPayment={getPayment}
             orderCard={orderCard}
+            getorderSummary={getorderSummary}
           />
+          <CostBox 
+          getPayment={getPayment}
+           payment={payment} orderCard={orderCard} />
         </div>
       </div>
     </div>

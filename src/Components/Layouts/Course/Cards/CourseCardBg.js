@@ -28,11 +28,12 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
     get_price_without_degree_with_some_extra_info,
     teacher_avatar,
     cover,
+    is_course_in_cart
   } = card;
   const [addtocardData, setaddtocardData] = useState();
-  // const [isFavorite, setIsFavorite] = useState({isFavorite: is_favorite});
   const cost = get_price_without_degree_with_some_extra_info;
   const [isfav, setisFav] = useState(is_favorite);
+  const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart);
 
   const Addtocard = useFetch({
     //addtocard=>data:course_uuid: "", degree_uuid: null
@@ -45,6 +46,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
       toast.success("دوره با موفقیت به سبد کالا اضافه شد");
       getLatestCourseList.reFetch();
       getallCourseList.reFetch();
+      setisCourseinCart(true)
     },
     argErrFunc: (err) => handleErrorAddtocard(err),
   });
@@ -66,6 +68,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
       toast.success("دوره با موفقیت به لیست علاقه مندی های شما اضافه شد");
       getLatestCourseList.reFetch();
       getallCourseList.reFetch();
+      setisFav(true)
     },
     argErrFunc: (err) => handleErrorAddtoFav(err),
   });
@@ -107,9 +110,10 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
         <div className="card-bg-content ">
           {!has_user_course && (
             <div className="card-bg--box">
-              <div className="card-bg--shopingcard">
+              <div className={`card-bg--shopingcard ${!isCourseinCart ? "wishList--empthy" : "wishList--full"}`}>
                 {!has_user_course && (
                   <IconBtn
+                    getPopupContainer={false}
                     onClick={() => addToCard(uuid)}
                     title="افزودن به سبدخرید"
                     icon={<CardIcon />}
@@ -123,6 +127,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
                 }`}
               >
                 <IconBtn
+                getPopupContainer={false}
                   onClick={!isfav ? addToWishList : removeromWishList}
                   title="افزودن به لیست علاقه مندیها"
                   icon={<Heart />}

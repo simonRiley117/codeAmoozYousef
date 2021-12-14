@@ -29,6 +29,12 @@
   border-radius: 15px;
   width: 100%;
 }
+.CostBox__empthy{
+  td{
+   color: $color-text-light;
+
+  }
+}
 .ExitModal{
   .ant-modal-content{
      width: 300px;

@@ -7,9 +7,9 @@
   &__center {
     overflow: hidden;
     .slick-prev {
-      left: 160px;
+      left: 10px;
       z-index: 999;
-
+      opacity: 0.6;
       &::before {
         display: none;
       }
@@ -18,8 +18,9 @@
       }
     }
     .slick-next {
-      right: 160px;
+      right: 10px;
       z-index: 999;
+      opacity: 0.6;
 
       &::before {
         display: none;
