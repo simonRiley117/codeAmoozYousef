@@ -17,9 +17,13 @@ import Modal from "@Components/Shared/Modal/Modal";
 import logo from "@Assets/Logo/logo.svg";
 import { ReactComponent as ShoppingCartIcon } from "@Assets/Icons/shopping-cart.svg";
 import { ReactComponent as LogoTextIcon } from "@Assets/Logo/codeamooz-text.svg";
+import { Divider } from "antd";
 import { useAuth } from "@App/Context/authContext";
 import { useUserData } from "@App/Context/userContext";
 import { useEffect } from "react";
+import { ReactComponent as ExiteIcon } from "@Assets/Icons/quite.svg";
+import { ReactComponent as UserIcon } from "@Assets/Icons/user.svg";
+import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
 
 const Appbar = () => {
   const navigate = useNavigate();
@@ -187,11 +191,22 @@ const Appbar = () => {
                         <img src={userData.cover} alt="profile" />
                         {hoverMenu && (
                           <div className="profile-menu">
-                            <Link to="/dashboard">حساب کاربری</Link>
-                            <Link to="/fav">علاقه مندی‌ها</Link>
-                            <a href="#" onClick={handleModalShow}>
-                              خروج
-                            </a>
+                            <div className="profile-menu-item">
+                              <UserIcon />
+                              <Link to="/dashboard">حساب کاربری</Link>
+                            </div>
+                            <Divider style={{ margin: "5px 0" }} />
+                            <div className="profile-menu-item">
+                              <Heart />
+                              <Link to="/fav">علاقه مندی‌ها</Link>
+                            </div>
+                            <Divider style={{ margin: "5px 0" }} />
+                            <div className="profile-menu-item">
+                              <ExiteIcon />
+                              <a href="#" onClick={handleModalShow}>
+                                خروج
+                              </a>
+                            </div>
                           </div>
                         )}
                         <Modal

@@ -1,3 +1,4 @@
+import useFetch from "@App/Context/useFetch";
 import React, { useState } from "react";
 
 import logo from "@Assets/Logo/logo.svg";
@@ -18,6 +19,13 @@ import { ReactComponent as WalletIcon } from "@Assets/Icons/wallet.svg";
 import { ReactComponent as MessageIcon } from "@Assets/Icons/message.svg";
 import { ReactComponent as SettingIcon } from "@Assets/Icons/setting.svg";
 import SidebarMenuItem from "./SidebarMenuItem";
+import { ReactComponent as ExiteIcon } from "@Assets/Icons/quite.svg";
+import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
+import { Divider } from "antd";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import Button from "../Buttons/Button";
+import Modal from "@Components/Shared/Modal/Modal";
 
 const menuItem = [
   {
@@ -94,6 +102,8 @@ const DahsboardAppbar = () => {
 
   const [isOpenMenu, setOpenMenu] = useState(false);
   const [hoverMenu, setHoverMenu] = useState(false);
+  const [modal, setModal] = useState(false);
+
   const { sticky } = UseScrollAppbar();
 
   const { userData } = useUserData();
@@ -106,6 +116,27 @@ const DahsboardAppbar = () => {
       ? (html.style.overflowY = "hidden")
       : (html.style.overflowY = "auto");
   };
+
+  const handleModalShow = (uuid, lock) => {
+    setModal((prev) => !prev);
+  };
+
+  const logout = () => {
+    Logout.reFetch();
+  };
+
+  const Logout = useFetch({
+    url: `auth/logout`,
+    method: "POST",
+    trigger: false,
+    argFunc: (res) => {
+      toast.success("شما از حساب خود خارج شدید");
+      Cookies.remove("token");
+
+      navigate("/", { replace: true });
+      window.location.reload();
+    },
+  });
 
   const renderSideBarItem = () => {
     return sidebarmenuItem.map((item) => (
@@ -172,9 +203,37 @@ const DahsboardAppbar = () => {
                   <img src={userData.cover} alt="profile" />
                   {hoverMenu && (
                     <div className="profile-menu">
-                      <Link to="/dashboard">حساب کاربری</Link>
-                      <Link to="/fav">علاقه مندی‌ها</Link>
-                      <Link to="/">خروج</Link>
+                      <div className="profile-menu-item">
+                        <UserIcon />
+                        <Link to="/dashboard">حساب کاربری</Link>
+                      </div>
+                      <Divider style={{ margin: "5px 0" }} />
+                      <div className="profile-menu-item">
+                        <Heart />
+                        <Link to="/fav">علاقه مندی‌ها</Link>
+                      </div>
+                      <Divider style={{ margin: "5px 0" }} />
+                      <div className="profile-menu-item">
+                        <ExiteIcon />
+                        <a href="#" onClick={handleModalShow}>
+                          خروج
+                        </a>
+                      </div>
+                      <Modal
+                        className="ExitModal"
+                        visible={modal}
+                        onCancel={handleModalShow}
+                      >
+                        <div className="ExitModal__back">
+                          <p className="mb-12">آیا از خروج مطمئن هستید؟</p>
+                          <div className="d-flex-space">
+                            <Button onClick={logout}>بله</Button>
+                            <Button onClick={handleModalShow} type="primary">
+                              خیر
+                            </Button>
+                          </div>
+                        </div>
+                      </Modal>
                     </div>
                   )}
                 </div>
