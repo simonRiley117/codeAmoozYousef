@@ -35,7 +35,7 @@ function Index(props) {
     return (
         <>
             {!exampleLoading ? (
-                <div className="Example container">
+                <div className="Example ">
                     <BreadCrump pathsname="/dash/example" name={title}/>
                     <div className="Example__container">
                         <ExampleDetail example={example}/>

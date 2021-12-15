@@ -24,7 +24,7 @@ function Index() {
     }, [location]);
 
     return (
-        <div className="Example container">
+        <div className="Example">
             <BreadCrump pathsname="/dash/quiz" name={title}/>
             <div className="Example__container">
                 <QuizDetail

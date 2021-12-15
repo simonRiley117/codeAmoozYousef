@@ -6,7 +6,7 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 function ExampleCodeEditor(props) {
     const windowSize = UseWindowSize();
     return (
-        <div>
+        <div className="w-full">
             {windowSize === "sm" || windowSize === "md-2" ? (
                 <ExampleResponsiveCodeeditor
                     name={props.name}
