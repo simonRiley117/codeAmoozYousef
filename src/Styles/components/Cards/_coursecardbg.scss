@@ -39,8 +39,10 @@
     height: 100px;
     overflow: hidden;
     font-size: 1.4rem;
-    height: 48px;
-
+    height: 6rem;
+    @include respond(laptop) {
+      height: 6rem;
+    }
     @include respond(sm-laptop) {
       height: 48px;
     }
@@ -175,7 +177,7 @@
     
 
     & img {
-      width: 32rem;
+      width: 27rem;
       height: 100%;;
       @include respond(sm-laptop) {
         width: 26rem;

@@ -1,20 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Price from "@Components/Shared/Price/Price";
-import Rate from "@Components/Shared/Rate/Rate";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import { Radio } from "antd";
 import { toast } from "react-toastify";
-
 // Assets
-
-import Cover from "@Assets/Pic/js.png";
-import { ReactComponent as CoinIcon } from "@Assets/Icons/Coin.svg";
-import { ReactComponent as ClockIcon } from "@Assets/Icons/clock.svg";
-import { ReactComponent as User } from "@Assets/Icons/user.svg";
-import { ReactComponent as Star } from "@Assets/Icons/star.svg";
-import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
-import { ReactComponent as CardIcon } from "@Assets/Icons/shoppingCard.svg";
 import { ReactComponent as Trash } from "@Assets/Icons/Trash.svg";
 import useFetch from "@App/Context/useFetch";
 import Modal from "@Components/Shared/Modal/Modal";
@@ -33,6 +23,7 @@ const ShoppingCoursecard = ({ card, getPayment, getorderSummary }) => {
     teacher_last_name,
     teacher_name,
     uuid,
+    course_cover,
   } = card;
   const [degree, setDegree] = useState(null);
   const [modal, setModal] = useState(false);
@@ -75,23 +66,26 @@ const ShoppingCoursecard = ({ card, getPayment, getorderSummary }) => {
   const handleModalShow = (uuid, lock) => {
     setModal(true);
   };
-  const handleDelete = ()=>{
-    DeleteCourse.reFetch()
-    handleModalVisible()
-  }
+  const handleDelete = () => {
+    DeleteCourse.reFetch();
+    handleModalVisible();
+  };
   return (
     <article className="card-bg">
       <div className="card-bg-pic">
-        <img src={Cover} alt="python" className="card-bg-pic-logo" />
+        <img src={course_cover} alt="python" className="card-bg-pic-logo" />
       </div>
 
       <div className="card-bg-info">
         <div className="card-bg--box">
           <div className="card-bg--heart">
             <IconBtn
+              disabled={DeleteCourse.loading}
               onClick={handleModalShow}
-              title="افزودن به لیست علاقه مندیها"
+              title="حذف دوره"
               icon={<Trash />}
+              getPopupContainer={false}
+
             />
           </div>
         </div>
@@ -121,7 +115,7 @@ const ShoppingCoursecard = ({ card, getPayment, getorderSummary }) => {
           </div>
           <div className="d-flex-space card-bg-footer">
             <div className="card-bg-img-pic">
-              <img src={teacher_avatar} />
+              <img src={teacher_avatar} alt='teacher-avatar' />
               <h4>
                 {teacher_name} {teacher_last_name}
               </h4>
@@ -144,12 +138,18 @@ const ShoppingCoursecard = ({ card, getPayment, getorderSummary }) => {
           </div>
         </div>
       </div>
-      <Modal className='ExitModal' visible={modal} onCancel={handleModalVisible}>
+      <Modal
+        className="ExitModal"
+        visible={modal}
+        onCancel={handleModalVisible}
+      >
         <div className="ExitModal__back">
-          <p className='mb-12'>آیا از حذف دوره مطمئن هستید؟</p>
+          <p className="mb-12">آیا از حذف دوره مطمئن هستید؟</p>
           <div className="d-flex-space">
             <Button onClick={handleDelete}>بله</Button>
-            <Button onClick={handleModalVisible} type='primary'>خیر</Button>
+            <Button onClick={handleModalVisible} type="primary">
+              خیر
+            </Button>
           </div>
         </div>
       </Modal>

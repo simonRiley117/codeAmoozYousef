@@ -27,11 +27,13 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
     get_price_without_degree_with_some_extra_info,
     teacher_avatar,
     cover,
+    is_course_in_cart
   } = card;
   const cost = get_price_without_degree_with_some_extra_info;
   // const [courseid, setCourseid] = useState(null);
   const [addtocardData, setaddtocardData] = useState();
   const [isfav, setisFav] = useState(is_favorite);
+  const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart);
   const Addtocard = useFetch({
     //addtocard=>data:course_uuid: "", degree_uuid: null
     url: `CartService/addToCart`,
@@ -43,6 +45,7 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
       toast.success("دوره با موفقیت به سبد کالا اضافه شد");
       liftRequest.reFetch();
       getallCourseList.reFetch();
+      setisCourseinCart(true)
     },
     argErrFunc: (err) => handleErrorAddtocard(err),
   });
@@ -77,8 +80,9 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
     url: `StudentService/willing_course_delete`,
     method: "DELETE",
     trigger: false,
+    data:{ course_uuid: uuid },
     argFunc: (res) => {
-      toast.success("دوره با موفقیت به لیست علاقه مندی های شما اضافه شد");
+      toast.success("دوره با موفقیت به لیست علاقه مندی ها حذف شد   ");
       liftRequest.reFetch();
       getallCourseList.reFetch();
       setisFav(!isfav)
@@ -118,9 +122,11 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
           {!has_user_course && (
             <div className="card-sm-img-hover">
               <div className="card-sm-img-hover--box">
-                <div className="card-sm-img-hover--shopingcard">
+                <div className={`card-sm-img-hover--shopingcard ${!isCourseinCart ? "wishList--empthy" : "wishList--full"}`}>
                   {!has_user_course && (
                     <IconBtn
+                      getPopupContainer={false}
+
                       onClick={() => addToCard(uuid)}
                       title="افزودن به سبدخرید"
                       icon={<CardIcon />}
@@ -134,6 +140,7 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
                   }`}
                 >
                   <IconBtn
+                    getPopupContainer={false}
                     onClick={!isfav ? addToWishList : removeromWishList}
                     title="افزودن به لیست علاقه مندیها"
                     icon={<Heart />}

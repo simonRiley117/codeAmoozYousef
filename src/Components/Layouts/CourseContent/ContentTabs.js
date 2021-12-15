@@ -3,13 +3,13 @@ import { Tabs } from "antd";
 import Detail from "@Components/Layouts/Course/Sarfasl/Detail";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
 import Quiz from "@Components/Layouts/Dashboard/Quiz";
-const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize }) => {
+const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize,setActiveSeason }) => {
   const { TabPane } = Tabs;
 
   return (
     <Tabs className="TabBox" type="card">
       <TabPane tab="ویدیو" key={`${contentUuid}_1`}>
-        <Detail contentUuid={contentUuid} />
+        <Detail iscontent={true} setActiveSeason={setActiveSeason} contentUuid={contentUuid} />
       </TabPane>
       <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
         <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} />
