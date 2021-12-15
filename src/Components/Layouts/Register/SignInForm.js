@@ -14,6 +14,14 @@ import useFetch from "../../../Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
 import { useLocation } from "react-router-dom";
 import { TEAChER_URL } from "@App/constants";
+import DotLoader from "react-spinners/DotLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: #fff;
+`;
 
 const SignInForm = () => {
   const { authDispatch } = useAuth();
@@ -23,6 +31,7 @@ const SignInForm = () => {
     formState: { errors },
   } = useForm();
   const [postData, setPostData] = useState();
+  const [loading, setLoading] = useState(false);
   const { pathname, search } = useLocation();
 
   const loginRequest = useFetch({
@@ -32,7 +41,7 @@ const SignInForm = () => {
     trigger: false,
     noHeader: true,
     argFunc: (res) => {
-      // setLoading(false);
+      setLoading(false);
 
       if (search == "?redirectTeacher") {
         window.location.href = TEAChER_URL + `/callback/${res.access_token}`;
@@ -45,10 +54,14 @@ const SignInForm = () => {
       }
       // history.push("/panel");
     },
+    argErrFunc: (res) => {
+      setLoading(false);
+    },
   });
 
   const onSubmit = (data) => {
     setPostData({ username: data.username, password: data.password });
+    setLoading(true);
     loginRequest.reFetch();
   };
 
@@ -79,7 +92,16 @@ const SignInForm = () => {
         />
         <Checkbox>منو به خاطر بسپار</Checkbox>
         <Button disabled={loginRequest.loading} htmlType="submit">
-          ورود
+          {loading ? (
+            <DotLoader
+              color="#fff"
+              loading={loading}
+              css={override}
+              size={22}
+            />
+          ) : (
+            "ورود"
+          )}
         </Button>
       </div>
     </form>

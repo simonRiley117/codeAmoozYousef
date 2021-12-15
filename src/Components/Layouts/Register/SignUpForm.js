@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "@Components/Shared/Inputs/Input";
 import Password from "@Components/Shared/Inputs/Password";
-
+import { toast } from "react-toastify";
 import { ReactComponent as UserIcon } from "@Assets/Icons/user.svg";
 import { ReactComponent as LockIcon } from "@Assets/Icons/lock.svg";
 import { Checkbox } from "antd";
 import Button from "@Components/Shared/Buttons/Button";
 import { Link } from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
+import DotLoader from "react-spinners/DotLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: #fff;
+`;
 
 const SignUpForm = ({ handleActive }) => {
   const {
@@ -20,6 +28,8 @@ const SignUpForm = ({ handleActive }) => {
 
   const [postData, setPostData] = useState();
   const [checkBoxState, setCheckBoxState] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const registerRequest = useFetch({
     url: `auth/register`,
@@ -27,7 +37,18 @@ const SignUpForm = ({ handleActive }) => {
     data: postData,
     trigger: false,
     noHeader: true,
-    errMessage: (mess) => {
+
+    argFunc: (res) => {
+      setLoading(false);
+      if (res.detail === "Verification e-mail sent.") {
+        handleActive();
+        // reset();
+        //   toast.error(showMessage, {
+        //     position: toast.POSITION.TOP_CENTER,
+        //   });
+      }
+    },
+    argErrFunc: (mess) => {
       let showMessage = "";
       if ("password1" in mess)
         if (
@@ -57,17 +78,10 @@ const SignUpForm = ({ handleActive }) => {
       //   toast.error(showMessage, {
       //     position: toast.POSITION.TOP_CENTER,
       //   });
+      setLoading(false);
+      setError(showMessage);
     },
-
-    argFunc: (res) => {
-      if (res.detail == "Verification e-mail sent.") {
-        handleActive();
-        // reset();
-        //   toast.error(showMessage, {
-        //     position: toast.POSITION.TOP_CENTER,
-        //   });
-      }
-    },
+    errMessage: error,
   });
 
   const onSubmit = (data) => {
@@ -78,9 +92,10 @@ const SignUpForm = ({ handleActive }) => {
         password2: data.password2,
         email: data.email,
       });
+      setLoading(true);
       registerRequest.reFetch();
     } else {
-      //! send error message
+      toast.error("رمز عبور با تکرار آن متفاوت هستند");
     }
   };
 
@@ -139,13 +154,22 @@ const SignUpForm = ({ handleActive }) => {
           prefix={<LockIcon />}
         />
         <Checkbox checked={checkBoxState} onChange={onChange}>
-          <Link to='/'>قوانین و مقررات</Link> سایت را قبول دارم
+          <Link to="/">قوانین و مقررات</Link> سایت را قبول دارم
         </Checkbox>
         <Button
           disabled={registerRequest.loading || !checkBoxState ? true : false}
           htmlType="submit"
         >
-          ثبت نام
+          {loading ? (
+            <DotLoader
+              color="#fff"
+              loading={loading}
+              css={override}
+              size={22}
+            />
+          ) : (
+            "   ثبت نام"
+          )}
         </Button>
       </div>
     </form>

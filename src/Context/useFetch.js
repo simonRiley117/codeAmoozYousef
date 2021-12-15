@@ -29,7 +29,7 @@ export default function useFetch({
         : `${API_URL}/${url}/?page=${pagination.current}&pageSize=${pagination.pageSize}`,
     method: method,
     options: {
-     // withCredentials: true,
+      // withCredentials: true,
       headers: noHeader
         ? {}
         : {
@@ -62,8 +62,10 @@ export default function useFetch({
         if (setLoader !== null) {
           setLoader(false);
         }
-        if (errMessage !== null) {
-          errMessage(err.response.data);
+        if (errMessage === null) {
+          toast.error(err.response.statusText);
+        } else {
+          toast.error(errMessage);
         }
         if (argErrFunc !== null) argErrFunc(err.response?.data);
 
