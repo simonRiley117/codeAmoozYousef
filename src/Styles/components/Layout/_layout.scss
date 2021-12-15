@@ -1,56 +1,56 @@
 .layout {
-	&__dashboard {
-		min-height: 100vh;
-		background-color: $color-white;
-		// max-width: 1920px;
-	}
+  &__dashboard {
+    min-height: 100vh;
+    background-color: $color-white;
+    // max-width: 1920px;
+  }
 
-	&__header {
-		z-index: 1000;
-		background-color: $color-white;
-		padding-bottom: 4rem;
-		position: sticky;
-		top: 0;
-		@include respond(tablet) {
-			padding-bottom: 0;
-		}
-	}
+  &__header {
+    z-index: 1000;
+    background-color: $color-white;
+    // padding-bottom: 4rem;
+    position: sticky;
+    top: 0;
+    @include respond(tablet) {
+      padding-bottom: 0;
+    }
+  }
 
-	&__sidebar {
-		z-index: 1010;
+  &__sidebar {
+    z-index: 1010;
 
-		transition: all 200ms;
-		// background-color: transparent;
-		position: sticky;
-		top: 4rem;
-		height: 100%;
-		// flex: auto;
-		margin-top: -6.5rem;
-		@include respond(big-tablet) {
-			margin-top: -4rem;
-			top: 8rem;
-		}
-	}
+    transition: all 200ms;
+    // background-color: transparent;
+    position: sticky;
+    top: 4rem;
+    height: 100%;
+    // flex: auto;
+    margin-top: -6.5rem;
+    @include respond(big-tablet) {
+      margin-top: -4rem;
+      top: 8rem;
+    }
+  }
 
-	&__wrapper {
-		display: flex;
-		direction: rtl;
-		min-height: 0;
-		flex: auto;
-		position: relative;
-	}
+  &__wrapper {
+    display: flex;
+    direction: rtl;
+    min-height: 0;
+    flex: auto;
+    position: relative;
+  }
 
-	&__content {
-		margin: 0 5rem 2rem;
-		margin-left: 123px;
-		padding-bottom: 2rem;
-		display: flex;
-		flex-direction: column;
-		@include respond(sm-laptop) {
-			margin: 3rem;
-		}
-		@include respond(phone) {
-			margin: 2rem;
-		}
-	}
+  &__content {
+    margin: 0 3rem 2rem;
+    margin-left: 123px;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    @include respond(sm-laptop) {
+      margin: 3rem;
+    }
+    @include respond(phone) {
+      margin: 2rem;
+    }
+  }
 }

@@ -20,6 +20,7 @@ const Button = ({
         success: success,
         disabled: disabled,
       })}
+      disabled={disabled}
       {...rest}
     >
       {children}

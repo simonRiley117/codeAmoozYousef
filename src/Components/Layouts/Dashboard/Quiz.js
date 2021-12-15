@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import quiz from "@Assets/Pic/quiz.png";
 import Button from "@Components/Shared/Buttons/Button";
 import {Link} from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
 
-function Quiz({quizUuid, contentUuid}) {
+function Quiz({quizUuid, contentUuid, courseUuid}) {
     const [quizContent, setQuizContent] = useState(null);
     const [quizLoading, setQuizLoading] = useState(true);
 
@@ -17,8 +17,16 @@ function Quiz({quizUuid, contentUuid}) {
         url: `QuizService/${quizUuid}/get_user_quiz`,
         method: "GET",
         noHeader: false,
+        trigger: false,
         setter: setData
     });
+
+    useEffect(() => {
+        if (quizUuid) {
+            getQuizContent.reFetch()
+        }
+    }, [quizUuid]);
+
 
     return (
         <div className="Quiz">
@@ -43,17 +51,16 @@ function Quiz({quizUuid, contentUuid}) {
                         </p>
                         <Button ico={false} type="primary" classes="CoWorkers__btn Quiz__btn">
                             <Link
-                                to={{
-                                    pathname: "/dash/quiz",
-                                    state: {
-                                        content_id:contentUuid,
-                                        quiz_id: quizUuid,
-                                        title: quizContent.name,
-                                        text: quizContent.text,
-                                        test_cases: quizContent.test_cases,
-                                        language: quizContent.language,
-                                        file: quizContent.file,
-                                    },
+                                to={"/dashboard/course/quiz"}
+                                state={{
+                                    content_id: contentUuid,
+                                    quiz_id: quizUuid,
+                                    courseUuid: courseUuid,
+                                    title: quizContent.name,
+                                    text: quizContent.text,
+                                    test_cases: quizContent.test_cases,
+                                    language: quizContent.language,
+                                    file: quizContent.file,
                                 }}
                             >
                                 شروع

@@ -2,9 +2,11 @@ import React from "react";
 import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
 import ExampleCodeEditor from "../../Shared/CodeeditorWithRun/ExampleCodeEditor";
+import {Link} from "react-router-dom";
+import Button from "../../Shared/Buttons/Button";
 
 
-function ExampleDetail({example}) {
+function ExampleDetail({example, courseUuid}) {
     console.log('example: ', example)
     return (
         <div className="ExampleDetail">
@@ -32,9 +34,21 @@ function ExampleDetail({example}) {
 
                 </div>
                 <div className="flex items-center ExampleDetail__downloadBox">
-                    <img src={pdf} alt={pdf}/>
-                    <p className="cursor-pointer">{example.file}</p>
+                    <div className="flex items-center">
+                        <img src={pdf} alt={pdf}/>
+                        <p className="cursor-pointer">{example.file}</p>
+                    </div>
                 </div>
+                <Button
+                    ico={false}
+                    type='primary'
+                    classes='CoWorkers__btn flex items-center '
+                    // onClick={handlePassContent}
+                >
+                    <Link to={`/course/${courseUuid}`} className="flex items-center">
+                        بازگشت{' '}
+                    </Link>
+                </Button>
             </div>
             <ExampleCodeEditor
                 name={example.name}

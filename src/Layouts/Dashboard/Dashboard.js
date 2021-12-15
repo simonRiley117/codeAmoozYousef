@@ -25,7 +25,7 @@ const Dashboard = () => {
   return (
     <>
       {!dashboardLoading ? (
-        <section className="container mt-40">
+        <section className="container">
           <div className="dashboard grid md:grid-cols-3 auto-rows-min gap-8 items-stretch grid-cols-1">
             <div className="dashboard-header-welcome flex items-center md:col-span-2 ">
               <h2>{`سلام ${dashboardInfo.first_name}، خوش اومدی!`}</h2>

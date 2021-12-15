@@ -5,7 +5,7 @@ import React from 'react';
 const Price = ({ isDiscount, success, ...rest }) => {
 	return (
 		<Statistic
-			className={classNames('price', {
+			className={classNames('price whitespace-nowrap mx-1', {
 				isSuccess: success,
 				discount: isDiscount,
 			})}

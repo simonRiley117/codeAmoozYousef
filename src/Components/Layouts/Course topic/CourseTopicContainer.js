@@ -39,6 +39,8 @@ const Coursetopiccontainer = () => {
     setPhaseNum((prevState) => prevState - 1);
   };
 
+  // A function to change the Phases
+
   const changeForm = () => {
     switch (PhaseNum) {
       case 1:

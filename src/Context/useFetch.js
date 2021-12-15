@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../constants";
 import { useAuth } from "./authContext";
-import {  toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function useFetch({
   method = "GET",
@@ -19,10 +19,9 @@ export default function useFetch({
   noHeader = false,
   setLoader = null,
   errMessage = null,
-  argErrFunc=null
+  argErrFunc = null,
 }) {
   const { token } = useAuth();
-
   const { response, loading, error, reFetch } = useAxios({
     url:
       pagination == null
@@ -30,6 +29,7 @@ export default function useFetch({
         : `${API_URL}/${url}/?page=${pagination.current}&pageSize=${pagination.pageSize}`,
     method: method,
     options: {
+     // withCredentials: true,
       headers: noHeader
         ? {}
         : {
