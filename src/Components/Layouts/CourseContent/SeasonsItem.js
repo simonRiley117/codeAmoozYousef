@@ -31,11 +31,11 @@ const SeasonsItem = ({
     setter: setcontentList,
   });
   useEffect(() => {
-    console.log(openPanels);
+    console.log("openPanel",openPanels);
     if (openPanels.includes(season.uuid)) {
       getCourseSeasons.reFetch();
     }
-  }, [activeContent]);
+  }, [activeContent,openPanels]);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();

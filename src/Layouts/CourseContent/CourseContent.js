@@ -35,6 +35,7 @@ function CourseContent() {
       if (Currentcontentid === null) {
         setCurrentContentid(res.current_content_id);
       }
+      setActiveSeason(CurrentCourseStatus.current_season_id)
     },
   });
   const getCurrentContentState = useFetch({

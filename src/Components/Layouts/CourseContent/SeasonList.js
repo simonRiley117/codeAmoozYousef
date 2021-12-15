@@ -18,7 +18,7 @@ const SeasonList = ({
     if(!openPanels.includes(activeSeasons)){
       openPanels.push(activeSeasons)
     }
-  }, [,activeSeasons])
+  }, [activeSeasons])
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion
