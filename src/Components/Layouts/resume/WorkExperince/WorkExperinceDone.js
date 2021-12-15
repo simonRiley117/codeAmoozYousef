@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 
 import {ReactComponent as Line} from "@Assets/Icons/Line 27.svg";
 import ResumeDoneWrapper from '@Components/Layouts/resume/ResumeWrapper/ResumeDoneWrapper'
-import Time from "../../../Shared/Time/Time";
+//import Time from "../../../Shared/Time/Time";
 
 const WorkExperinceDone = (
     {
@@ -37,11 +37,11 @@ const WorkExperinceDone = (
                         {/*<p>*/}
                         {/*    <span>{teacherProf?.profession_start_date}</span> - <span>{teacherProf.profession_end_date}</span>*/}
                         {/*</p>*/}
-                        <p className='whitespace-nowrap'>
+                        {/* <p className='whitespace-nowrap'>
                             <Time value={teacherProf?.profession_start_date}/> تا
                             {teacherProf?.profession_end_date ? <Time value={teacherProf?.profession_end_date}/> :
                                 <span>تاکنون&nbsp;  </span>}
-                        </p>
+                        </p> */}
                     </div>
                     <p className="WorkExperinceDone__des">{teacherProf?.profession_description}</p>
                 </ResumeDoneWrapper>

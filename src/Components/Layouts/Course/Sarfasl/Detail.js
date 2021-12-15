@@ -3,7 +3,7 @@ import VideoPlayer from '@Components/Shared/VideoPlayer/VideoPlayer';
 import useFetch from '@App/Context/useFetch';
 import { useAuth } from '@App/Context/authContext';
 
-function Detail({ contentUuid }) {
+function Detail({ contentUuid ,setActiveSeason,iscontent}) {
 	const [content, setContent] = useState(null);
 	const { token, authDispatch } = useAuth();
 	const getContent = useFetch({
@@ -11,6 +11,7 @@ function Detail({ contentUuid }) {
 		method: 'GET',
 		noHeader: token ? false : true,
 		setter: setContent,
+		argFunc:(res)=>{setActiveSeason(res.season)}
 	});
 	useEffect(() => {
 		getContent.reFetch();

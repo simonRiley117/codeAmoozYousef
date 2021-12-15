@@ -12,6 +12,7 @@ function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
   const [Currentcontentid, setCurrentContentid] = useState(null);
+  const [ActiveSeason, setActiveSeason] = useState(null);
   const [SeasonsQuizeid, setSeasonsQuizeid] = useState(null);
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
@@ -105,7 +106,7 @@ function CourseContent() {
                   <p className="LastCourse__title">{sidebarList.title}</p>
                   <SeasonList
                     sidebarList={sidebarList}
-                    activeSeasons={CurrentCourseStatus.current_season_id}
+                    activeSeasons={ActiveSeason}
                     activeContent={Currentcontentid}
                     setquizUuid={setquizUuid}
                     changeContentID={changeContentID}
@@ -121,6 +122,7 @@ function CourseContent() {
                 {CurrentCourseStatus ? (
                   <CourseStatus
                     details={CurrentCourseStatus}
+                    
                   />
                 ) : (
                   <div>
@@ -132,6 +134,8 @@ function CourseContent() {
                   contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
                   courseUuid={courseId}
+
+                  setActiveSeason={setActiveSeason}
                   hasSeasonQuize={CurrentcontenStatus?.next_content_id}
                 />
                 {CurrentcontenStatus && (
