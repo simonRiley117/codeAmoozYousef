@@ -67,6 +67,7 @@ const ForgetPassword = ({ onCancel, active, handleForgetPassword }) => {
               }}
               message="ایمیل را وارد کنید"
               name="email"
+              type="email"
               control={control}
               errors={errors}
               prefix={<UserIcon />}
