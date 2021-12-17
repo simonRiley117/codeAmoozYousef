@@ -1,4 +1,4 @@
-# Data Science Graph Algo Back
+# Data Science Graph Algo Front
 its just all about applying two data science algorithm to newtork(graph) visualization data and get exported outputed algorithm to excel
 
 
