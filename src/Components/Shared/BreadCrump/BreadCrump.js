@@ -8,7 +8,7 @@ import classNames from 'classnames';
 
 const {Item} = BreadcrumbBase;
 
-const BreadCrump = ({title, classes}) => {
+const BreadCrump = ({title, classes,name}) => {
     // { path: '/news/news-info', breadcrumb: title },
     const routes = [
         {path: '/', breadcrumb: 'صفحه اصلی'},
@@ -20,6 +20,7 @@ const BreadCrump = ({title, classes}) => {
         {path: '/coWorkers/employer', breadcrumb: 'تیم کارفرما'},
         {path: '/dashboard/', breadcrumb: 'داشبورد '},
         {path: '/dashboard/my-course', breadcrumb: 'دوره های من '},
+        {path: '/courses/content', breadcrumb: name},
     ];
     const breadcrumbs = useBreadcrumbs(routes);
    // console.log('breadcrumbs: ', breadcrumbs)

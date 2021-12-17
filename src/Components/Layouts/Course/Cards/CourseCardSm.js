@@ -173,7 +173,7 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 
           <h5 className="cursor-pointer	">
             <Link
-              to={`/courses/content/${uuid}`}
+              to={`/courses/content`}
               state={{
                 name: title,
                 id: uuid,
