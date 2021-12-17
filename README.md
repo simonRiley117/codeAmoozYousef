@@ -1,3 +1,9 @@
+# Data Science Graph Algo Back
+its just all about applying two data science algorithm to newtork(graph) visualization data and get exported outputed algorithm to excel
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
