@@ -30,14 +30,14 @@ function Index() {
   const [id, setId] = useState();
   const [name, setName] = useState();
   const windowSize = UseWindowSize();
-  const addToCart = useFetch({
-    url: `CartService/discount`,
-    method: "GET",
-    trigger: true,
-    argFunc: (res) => {
-      setData(res);
-    },
-  });
+  // const addToCart = useFetch({
+  //   url: `CartService/discount`,
+  //   method: "GET",
+  //   trigger: true,
+  //   argFunc: (res) => {
+  //     setData(res);
+  //   },
+  // });
   console.log(`data`, data);
   return (
     <div className="container">
