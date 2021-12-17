@@ -43,7 +43,7 @@ function Index() {
     <div className="container">
       <BreadCrump name={name} />
       <div className="Course">
-        {windowSize !== "sm" && <HeaderDiscount />}
+        {windowSize !== "sm" ? <HeaderDiscount /> : <SideBarDiscount />}
         <div className="grid Course__container relative">
           {windowSize !== "sm" && (
             <div className="Course__sideBar relative">

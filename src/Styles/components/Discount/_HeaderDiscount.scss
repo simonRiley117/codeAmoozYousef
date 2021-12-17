@@ -1,12 +1,12 @@
 .HeaderDiscount {
     padding: 1.2rem 10rem;
     width: 100%;
-    @include respond(tablet) {
+    @include respond(sm-laptop) {
         padding: 1rem;
     }
     &__circleBox {
         width: 10%;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 5%;
         }
     }
@@ -17,7 +17,7 @@
         border-radius: 50%;
         bottom: -0.5rem;
         right: 4rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 4rem;
             height: 4rem;
             right: 2.5rem;
@@ -25,21 +25,21 @@
         &-redborder {
             bottom: 0rem;
             right: 4.5rem;
-            @include respond(tablet) {
+            @include respond(sm-laptop) {
                 right: 2.5rem;
             }
         }
     }
     &__imgbox {
         margin: 0 0rem 0 8rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             margin: 0 0rem 0 4rem;
         }
     }
     &__img {
         width: 16rem;
         height: auto;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 10rem;
         }
     }
@@ -55,7 +55,7 @@
         padding: 1.6rem;
         width: 30%;
         margin-left: 3rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 50%;
             padding: 1rem 0.5rem;
         }
@@ -68,7 +68,7 @@
         background-color: $color-primary-dark-1;
         width: 9.1rem;
         height: 9.1rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 6rem;
             height: 6rem;
         }
@@ -79,7 +79,7 @@
     &__endYellow {
         width: 8.8rem;
         height: 8.8rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 5.5rem;
             height: 5.5rem;
         }
@@ -97,7 +97,7 @@
         border-radius: 50%;
         width: 8.7rem;
         height: 8.7rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 6rem;
             height: 6rem;
         }
@@ -107,7 +107,7 @@
         border-radius: 50%;
         width: 7rem;
         height: 7rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 4rem;
             height: 4rem;
         }
@@ -118,7 +118,7 @@
         top: 50%;
         transform: translateY(-50%);
         font-size: 2rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             font-size: 1.5rem;
         }
     }
@@ -129,7 +129,7 @@
         border-radius: 50%;
         bottom: -1.4rem;
         left: -3.6rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 4rem;
             height: 4rem;
         }
@@ -142,7 +142,7 @@
         width: 70%;
         // margin-top: -3.5rem;
         margin-right: 4rem;
-        @include respond(tablet) {
+        @include respond(sm-laptop) {
             width: 100%;
         }
     }
