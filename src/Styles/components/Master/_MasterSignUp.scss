@@ -2,8 +2,12 @@
 	&__formBox {
 		width: 75%;
 		margin: 0 auto;
+
 		@include respond(tablet) {
 			width: 95%;
+		}
+		@include respond(big-desktop) {
+			width: 50%;
 		}
 	}
 	&__gridBox {
@@ -13,6 +17,9 @@
 		}
 		@include respond(phone) {
 			grid-template-columns: 1fr;
+		}
+		@include respond(big-desktop) {
+			gap: 1rem 5rem;
 		}
 	}
 	&__textarea {
