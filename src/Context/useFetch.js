@@ -65,7 +65,7 @@ export default function useFetch({
                 if (errMessage === '') {
 
                 } else if (errMessage === null) {
-                    toast.error(err.response?.statusText);
+                    // toast.error(err.response?.statusText);
                 } else {
                     toast.error(errMessage);
                 }
