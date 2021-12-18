@@ -35,7 +35,7 @@ const SeasonsItem = ({
     if (openPanels.includes(season.uuid)||activeSeasons === season.uuid) {
       getCourseSeasons.reFetch();
     }
-  }, [, activeContent, openPanels]);
+  }, [activeSeasons, openPanels]);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
@@ -86,7 +86,7 @@ const SeasonHeader = ({
   FetchContent,
 }) => {
   return (
-    <div onClick={FetchContent} className="Sarfasl__AccordionCenter">
+    <div onClick={!lock ? FetchContent : null} className="Sarfasl__AccordionCenter">
       <div
         className="Sarfasl__AccordionCenter"
         style={{ justifyContent: "flex-start" }}
