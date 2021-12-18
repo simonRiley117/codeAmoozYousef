@@ -69,23 +69,16 @@ function CourseContent() {
       getCurrentContentState.reFetch();
     }
     setActiveSeason(CurrentCourseStatus?.current_season_id)
-
-    console.log("cur__id", Currentcontentid);
+    
   }, [Currentcontentid]);
-  // has_next_content: true
-  // has_prev_content: false
-  // next_content_id: "Qd4Hd1XA"
-  // next_content_passed: false
-  // next_quiz_id: null
-  // prev_content_id: null
-  // prev_content_passed: null
-  // prev_quiz_id: null
+
   const handleNextContent = () => {
     if (!isContentPass) {
       postPassContent.reFetch();
     } else {
       setCurrentContentid(CurrentcontenStatus.next_content_id);
     }
+   
   };
 
   const handlePrevContent = () => {
