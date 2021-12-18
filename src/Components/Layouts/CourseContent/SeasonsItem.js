@@ -27,15 +27,15 @@ const SeasonsItem = ({
   const getCourseSeasons = useFetch({
     url: `SeasonService/${season.uuid}/sidebar`,
     method: "GET",
-    trigger: activeSeasons === season.uuid,
+    trigger: false,
     setter: setcontentList,
   });
   useEffect(() => {
-    console.log("openPanel",openPanels);
-    if (openPanels.includes(season.uuid)) {
+    console.log("openPanel", openPanels);
+    if (openPanels.includes(season.uuid)||activeSeasons === season.uuid) {
       getCourseSeasons.reFetch();
     }
-  }, [activeContent,openPanels]);
+  }, [, activeContent, openPanels]);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
@@ -91,13 +91,13 @@ const SeasonHeader = ({
         className="Sarfasl__AccordionCenter"
         style={{ justifyContent: "flex-start" }}
       >
-        <div className="Sarfasl__Accordiondone">
-          {done ? (
+        {done ? (
+          <div className="Sarfasl__Accordiondone">
             <i className="fas fa-check"></i>
-          ) : (
-            <div className="Sarfasl__Accordionnumber">{index + 1} </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="Sarfasl__Accordionnumber"><span>{index + 1}</span> </div>
+        )}
         &nbsp;
         <div>{title}</div>
       </div>
@@ -118,13 +118,15 @@ const SeasonHeader = ({
             </>
           }
         />
-       {!lock && <div
-          className={classNames("accordion__arrow custom__accordion--arrow", {
-            active: openPanels.includes(id),
-          })}
-        >
-          <Arrow />
-        </div>}
+        {!lock && (
+          <div
+            className={classNames("accordion__arrow custom__accordion--arrow", {
+              active: openPanels.includes(id),
+            })}
+          >
+            <Arrow />
+          </div>
+        )}
       </div>
     </div>
   );
