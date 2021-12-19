@@ -5,7 +5,6 @@ import { Table } from "antd";
 function Transaction() {
   return (
     <div className="Transaction">
-      <BreadCrump pathsname="/dash/transaction" name="تراکنش ها" />
       <p className="Transaction__Title">تراکنش ها</p>
       <div className="Transaction__box">
         <Table pagination={false} columns={columns} dataSource={dataSource} />

@@ -7,7 +7,7 @@ import SeasonList from "@Components/Layouts/CourseContent/SeasonList";
 import useFetch from "../../Context/useFetch";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { API_URL } from "@App/constants";
 
 function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
@@ -22,7 +22,6 @@ function CourseContent() {
   const location = useLocation();
   const [id, setId] = useState();
   const [name, setName] = useState();
-  const queryClient = new QueryClient();
   useEffect(() => {
     // setMenu(location.state.name);
     setId(location.state.id);
@@ -36,6 +35,14 @@ function CourseContent() {
     trigger: false,
   });
 
+  const fetchPeople = async () => {
+    const response = await fetch(
+      `${API_URL}/CourseService/${id}/currentCourseState`
+    );
+    console.log("fetch people");
+    return response.json();
+  };
+
   const getCurrentCourseState = useFetch({
     url: `CourseService/${id}/currentCourseState`,
     method: "GET",
@@ -45,7 +52,6 @@ function CourseContent() {
       if (Currentcontentid === null) {
         setCurrentContentid(res.current_content_id);
       }
-      setActiveSeason(CurrentCourseStatus.current_season_id);
     },
   });
   const getCurrentContentState = useFetch({
@@ -78,19 +84,10 @@ function CourseContent() {
   useEffect(() => {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
-      getCurrentCourseState.reFetch();
     }
-
-    console.log("cur__id", Currentcontentid);
+    setActiveSeason(CurrentCourseStatus?.current_season_id);
   }, [Currentcontentid]);
-  // has_next_content: true
-  // has_prev_content: false
-  // next_content_id: "Qd4Hd1XA"
-  // next_content_passed: false
-  // next_quiz_id: null
-  // prev_content_id: null
-  // prev_content_passed: null
-  // prev_quiz_id: null
+
   const handleNextContent = () => {
     if (!isContentPass) {
       postPassContent.reFetch();
@@ -110,7 +107,7 @@ function CourseContent() {
       {CurrentCourseStatus && sidebarList && (
         <div className="LastCourse">
           <div className="container">
-            <BreadCrump  name={name} />
+            <BreadCrump name={name} />
             <div className="grid LastCourse__container relative">
               <div className="LastCourse__Box">
                 <div className="LastCourse__Position">

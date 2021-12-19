@@ -42,12 +42,18 @@ import Profile from "./Layouts/Profile/Profile";
 import Resume from "./Layouts/resume/Resume";
 import CourseTopic from "./Layouts/CourseTopic/CourseTopic";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
+import NewCourse from "./Layouts/Dashboard/NewCourse";
+import Password from "./Layouts/Dashboard/Password";
+import Transaction from "./Layouts/Dashboard/Transaction";
 
 const Authenticated = () => {
   return (
     <Routes>
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/suggest" element={<NewCourse />} />
+        <Route path="/dashboard/wallet" element={<Transaction />} />
+        <Route path="/dashboard/setting" element={<Password />} />
         <Route path="/dashboard/topic" element={<CourseTopic />} />
         <Route path="/dashboard/resume" element={<Resume />} />
         <Route path="/dashboard/profile" element={<Profile />} />

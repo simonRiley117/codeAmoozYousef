@@ -15,7 +15,6 @@ function PasswordChange() {
   const onSubmit = (data) => {};
   return (
     <div>
-      <BreadCrump pathsname="/dash/password" name="تنظیمات" />
       <p className="NewCourse__title text-center ">تعویض کلمه عبور</p>
       <form onSubmit={handleSubmit(onSubmit)} className="NewCourse__formBox ">
         <Password

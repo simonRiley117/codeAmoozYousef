@@ -27,15 +27,15 @@ const SeasonsItem = ({
   const getCourseSeasons = useFetch({
     url: `SeasonService/${season.uuid}/sidebar`,
     method: "GET",
-    trigger: activeSeasons === season.uuid,
+    trigger: false,
     setter: setcontentList,
   });
   useEffect(() => {
-    console.log("openPanel",openPanels);
-    if (openPanels.includes(season.uuid)) {
+    console.log("openPanel", openPanels);
+    if (openPanels.includes(season.uuid) || activeSeasons === season.uuid) {
       getCourseSeasons.reFetch();
     }
-  }, [activeContent,openPanels]);
+  }, [activeSeasons, openPanels]);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
@@ -60,18 +60,19 @@ const SeasonsItem = ({
       key={season.uuid}
       {...props}
     >
-      {contentList?.map((content, index) => (
-        <ContentItem
-          changeContentID={changeContentID}
-          setquizUuid={setquizUuid}
-          activeContent={activeContent}
-          key={content.id}
-          index={index}
-          content={content}
-          getContentName={getContentName}
-          setIsContentPass={setIsContentPass}
-        />
-      ))}
+      {contentList.length !== 0 &&
+        contentList.contents.map((content, index) => (
+          <ContentItem
+            changeContentID={changeContentID}
+            setquizUuid={setquizUuid}
+            activeContent={activeContent}
+            key={content.id}
+            index={index}
+            content={content}
+            getContentName={getContentName}
+            setIsContentPass={setIsContentPass}
+          />
+        ))}
     </Panel>
   );
 };
@@ -86,18 +87,23 @@ const SeasonHeader = ({
   FetchContent,
 }) => {
   return (
-    <div onClick={FetchContent} className="Sarfasl__AccordionCenter">
+    <div
+      onClick={!lock ? FetchContent : null}
+      className="Sarfasl__AccordionCenter"
+    >
       <div
         className="Sarfasl__AccordionCenter"
         style={{ justifyContent: "flex-start" }}
       >
-        <div className="Sarfasl__Accordiondone">
-          {done ? (
+        {done ? (
+          <div className="Sarfasl__Accordiondone">
             <i className="fas fa-check"></i>
-          ) : (
-            <div className="Sarfasl__Accordionnumber">{index + 1} </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="Sarfasl__Accordionnumber">
+            <span>{index + 1}</span>{" "}
+          </div>
+        )}
         &nbsp;
         <div>{title}</div>
       </div>
@@ -118,13 +124,15 @@ const SeasonHeader = ({
             </>
           }
         />
-       {!lock && <div
-          className={classNames("accordion__arrow custom__accordion--arrow", {
-            active: openPanels.includes(id),
-          })}
-        >
-          <Arrow />
-        </div>}
+        {!lock && (
+          <div
+            className={classNames("accordion__arrow custom__accordion--arrow", {
+              active: openPanels.includes(id),
+            })}
+          >
+            <Arrow />
+          </div>
+        )}
       </div>
     </div>
   );

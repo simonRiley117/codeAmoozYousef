@@ -33,7 +33,7 @@ function Mysendes() {
                 <div className="Sarfasl__sampleLinkBox flex items-center justify-center ">
                   <Link
                     to={{
-                      pathname: "/dash/quiz",
+                      pathname: "/dashboard/quiz",
                       state: {
                         title: name,
                       },

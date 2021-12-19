@@ -69,12 +69,12 @@ export default function useFetch({
           toast.error(errMessage);
         }
         if (argErrFunc !== null) argErrFunc(err.response?.data);
-
-        // toast.error('دوباره تلاش کنید');
-        // toast.error("دوباره تلاش کنید", {
-        //   position: toast.POSITION.TOP_CENTER,
-        // });
-        // authDispatch({ type: "LOGOUT" });
+        else if (errMessage === null) {
+          // toast.error(err.response?.statusText);
+        } else {
+          toast.error(errMessage);
+        }
+        if (argErrFunc !== null) argErrFunc(err.response?.data);
       }
     },
   });
