@@ -7,6 +7,7 @@ import SeasonList from "@Components/Layouts/CourseContent/SeasonList";
 import useFetch from "../../Context/useFetch";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
@@ -21,7 +22,7 @@ function CourseContent() {
   const location = useLocation();
   const [id, setId] = useState();
   const [name, setName] = useState();
-  console.log("LOCATION: ", location);
+  const queryClient = new QueryClient();
   useEffect(() => {
     // setMenu(location.state.name);
     setId(location.state.id);
@@ -109,7 +110,7 @@ function CourseContent() {
       {CurrentCourseStatus && sidebarList && (
         <div className="LastCourse">
           <div className="container">
-            <BreadCrump pathsname="/dash/course" name={sidebarList.title} />
+            <BreadCrump  name={name} />
             <div className="grid LastCourse__container relative">
               <div className="LastCourse__Box">
                 <div className="LastCourse__Position">
