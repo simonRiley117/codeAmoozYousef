@@ -19,7 +19,6 @@ function NewCourse() {
   };
   return (
     <div className="NewCourse">
-      <BreadCrump pathsname="/dash/newcourse" name="پیشنهاد دوره جدید" />
       <p className="NewCourse__title text-center ">پیشنهاد دوره جدید</p>
       <form onSubmit={handleSubmit(onSubmit)} className="NewCourse__formBox">
         <div className="flex items-center  NewCourse__inputBox">

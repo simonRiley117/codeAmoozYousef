@@ -92,7 +92,7 @@ function CourseContent() {
       {CurrentCourseStatus && sidebarList && (
         <div className="LastCourse">
           <div className="container">
-            <BreadCrump pathsname="/dash/course" name={sidebarList.title} />
+            <BreadCrump pathsname="/dashboard/course" name={sidebarList.title} />
             <div className="grid LastCourse__container relative">
               <div className="LastCourse__Box">
                 <div className="LastCourse__Position">
