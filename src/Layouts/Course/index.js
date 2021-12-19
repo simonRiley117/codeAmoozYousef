@@ -17,9 +17,7 @@ const { TabPane } = Tabs;
 
 function Index() {
   const { courseId } = useParams();
-  console.log("PARAMS: ", courseId);
   const location = useLocation();
-  console.log("LOCATION: ", location);
   const [data, setData] = useState("");
   useEffect(() => {
     // setMenu(location.state.name);

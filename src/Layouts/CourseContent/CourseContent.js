@@ -5,7 +5,7 @@ import CourseStatus from "@Components/Layouts/CourseContent/CourseStatus";
 import ContentTab from "@Components/Layouts/CourseContent/ContentTabs";
 import SeasonList from "@Components/Layouts/CourseContent/SeasonList";
 import useFetch from "../../Context/useFetch";
-import { useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 function CourseContent() {
@@ -18,8 +18,17 @@ function CourseContent() {
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
   const { courseId } = useParams();
+  const location = useLocation();
+  const [id, setId] = useState();
+  const [name, setName] = useState();
+  console.log("LOCATION: ", location);
+  useEffect(() => {
+    // setMenu(location.state.name);
+    setId(location.state.id);
+    setName(location.state.name);
+  }, [location]);
   const getCourseSeasons = useFetch({
-    url: `CourseService/${courseId}/sidebar`,
+    url: `CourseService/${id}/sidebar`,
     method: "GET",
     noHeader: false,
     setter: setSidebarList,
@@ -27,7 +36,7 @@ function CourseContent() {
   });
 
   const getCurrentCourseState = useFetch({
-    url: `CourseService/${courseId}/currentCourseState`,
+    url: `CourseService/${id}/currentCourseState`,
     method: "GET",
     setter: setCurrentCourseStatus,
     caller: getCourseSeasons,
@@ -35,7 +44,7 @@ function CourseContent() {
       if (Currentcontentid === null) {
         setCurrentContentid(res.current_content_id);
       }
-      setActiveSeason(CurrentCourseStatus.current_season_id)
+      setActiveSeason(CurrentCourseStatus.current_season_id);
     },
   });
   const getCurrentContentState = useFetch({
@@ -121,10 +130,7 @@ function CourseContent() {
               </div>
               <div>
                 {CurrentCourseStatus ? (
-                  <CourseStatus
-                    details={CurrentCourseStatus}
-                    
-                  />
+                  <CourseStatus details={CurrentCourseStatus} />
                 ) : (
                   <div>
                     <ClipLoader color="#EF8019" loading={true} size={40} />
@@ -134,8 +140,7 @@ function CourseContent() {
                 <ContentTab
                   contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
-                  courseUuid={courseId}
-
+                  courseUuid={id}
                   setActiveSeason={setActiveSeason}
                   hasSeasonQuize={CurrentcontenStatus?.next_content_id}
                 />

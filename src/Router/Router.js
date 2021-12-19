@@ -66,7 +66,7 @@ const Router = () => {
           <Route path="/shopping-card" element={<ShoppingCard />} />
 
           <Route path="/search/:name" element={<Search />} />
-          <Route path="/course/:courseId" element={<CourseContent />} />
+          <Route path="/coursecontent" element={<CourseContent />} />
         </Route>
       </Routes>
       {token ? <Authenticated /> : <UnAuthenticated />}
