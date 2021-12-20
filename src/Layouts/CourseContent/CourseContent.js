@@ -25,7 +25,6 @@ function CourseContent() {
     setter: setSidebarList,
     trigger: false,
   });
-
   const getCurrentCourseState = useFetch({
     url: `CourseService/${courseId}/currentCourseState`,
     method: "GET",
@@ -115,7 +114,6 @@ function CourseContent() {
                 {CurrentCourseStatus ? (
                   <CourseStatus
                     details={CurrentCourseStatus}
-                    
                   />
                 ) : (
                   <div>

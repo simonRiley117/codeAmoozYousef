@@ -20,6 +20,7 @@ const BreadCrump = ({title, classes,name}) => {
         {path: '/coWorkers/employer', breadcrumb: 'تیم کارفرما'},
         {path: '/dashboard/', breadcrumb: 'داشبورد '},
         {path: '/dashboard/my-course', breadcrumb: 'دوره های من '},
+        {path: '/dashboard/messages', breadcrumb: 'پیام های من'},
         {path: '/courses/content', breadcrumb: name},
     ];
     const breadcrumbs = useBreadcrumbs(routes);

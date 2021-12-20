@@ -42,6 +42,9 @@ import Profile from "./Layouts/Profile/Profile";
 import Resume from "./Layouts/resume/Resume";
 import CourseTopic from "./Layouts/CourseTopic/CourseTopic";
 import Dashboard from "./Layouts/Dashboard/Dashboard";
+import MyMessages from "./Layouts/Dashboard/MyMassages";
+import EmptyChatroom from "@Components/Layouts/Dashboard/MyMessages/EmptyChatroom";
+import ChatroomUser from "@Components/Layouts/Dashboard/MyMessages/ChatroomUser";
 
 const Authenticated = () => {
   return (
@@ -54,7 +57,11 @@ const Authenticated = () => {
         <Route path="/dashboard/my-course" element={<MyCourses />} />
         <Route path="/dashboard/course/example" element={<Example />} />
         <Route path="/dashboard/course/quiz" element={<Quiz />} />
-
+        <Route element={<MyMessages />} >
+        
+        <Route path="/dashboard/messages"  element={<EmptyChatroom />} />
+        <Route path="/dashboard/messages/:id"  element={<ChatroomUser />} />
+      </Route>
         {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
       </Route>
     </Routes>
