@@ -252,6 +252,7 @@
       width: 100%;
       padding-left: 2rem;
       margin-bottom: 3rem;
+
       &--profile {
         flex-direction: row-reverse;
         margin-right: 2rem;
@@ -547,4 +548,18 @@
       }
     }
   }
+}
+.Menu_action--badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-primary;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: 10px;
+  position: absolute;
+  bottom: 6px;
+  right: 2px;
 }

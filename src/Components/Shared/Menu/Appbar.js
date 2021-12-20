@@ -36,6 +36,7 @@ const Appbar = () => {
   const dark = pathname === "/";
   const { sticky } = UseScrollAppbar();
   const { token } = useAuth();
+  const {  authDispatch } = useAuth();
 
   const menuItem = [
     {
@@ -100,21 +101,22 @@ const Appbar = () => {
   }, []);
 
   const logout = () => {
-    Logout.reFetch();
-  };
+    authDispatch({ type: "LOGOUT" });
+    navigate("/", { replace: true });
+    };
 
-  const Logout = useFetch({
-    url: `auth/logout`,
-    method: "POST",
-    trigger: false,
-    argFunc: (res) => {
-      toast.success("شما از حساب خود خارج شدید");
-      Cookies.remove("token");
+  // const Logout = useFetch({
+  //   url: `auth/logout`,
+  //   method: "POST",
+  //   trigger: false,
+  //   argFunc: (res) => {
+  //     toast.success("شما از حساب خود خارج شدید");
+  //     Cookies.remove("token");
 
-      navigate("/", { replace: true });
-      window.location.reload();
-    },
-  });
+  //     navigate("/", { replace: true });
+  //     window.location.reload();
+  //   },
+  // });
 
   return (
     <>
@@ -175,10 +177,11 @@ const Appbar = () => {
                   ))}
                 </ul>
                 <div className="Menu_actions">
-                  <IconBtn
+                  {token && <div className=' relative'><IconBtn
                     icon={<ShoppingCartIcon />}
                     onClick={() => navigate("/shopping-card")}
                   />
+                  <div className='Menu_action--badge '><p>{userData.cart}</p></div></div>}
                   {token ? (
                     <div className="d-flex-align Menu_actions--profile">
                       <p className="profile__name">{userData.username}</p>
