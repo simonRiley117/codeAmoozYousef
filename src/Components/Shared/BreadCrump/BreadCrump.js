@@ -22,6 +22,7 @@ const BreadCrump = ({title, classes,name}) => {
         {path: '/dashboard/my-course', breadcrumb: 'دوره های من '},
         {path: '/dashboard/messages', breadcrumb: 'پیام های من'},
         {path: '/courses/content', breadcrumb: name},
+        {path: '/coursecontent', breadcrumb: name},
     ];
     const breadcrumbs = useBreadcrumbs(routes);
    // console.log('breadcrumbs: ', breadcrumbs)

@@ -32,7 +32,7 @@ const SeasonsItem = ({
   });
   useEffect(() => {
     console.log("openPanel", openPanels);
-    if (openPanels.includes(season.uuid)||activeSeasons === season.uuid) {
+    if (openPanels.includes(season.uuid) || activeSeasons === season.uuid) {
       getCourseSeasons.reFetch();
     }
   }, [activeSeasons, openPanels]);
@@ -60,18 +60,19 @@ const SeasonsItem = ({
       key={season.uuid}
       {...props}
     >
-      {contentList?.map((content, index) => (
-        <ContentItem
-          changeContentID={changeContentID}
-          setquizUuid={setquizUuid}
-          activeContent={activeContent}
-          key={content.id}
-          index={index}
-          content={content}
-          getContentName={getContentName}
-          setIsContentPass={setIsContentPass}
-        />
-      ))}
+      {contentList.length !== 0 &&
+        contentList.map((content, index) => (
+          <ContentItem
+            changeContentID={changeContentID}
+            setquizUuid={setquizUuid}
+            activeContent={activeContent}
+            key={content.id}
+            index={index}
+            content={content}
+            getContentName={getContentName}
+            setIsContentPass={setIsContentPass}
+          />
+        ))}
     </Panel>
   );
 };
@@ -86,7 +87,10 @@ const SeasonHeader = ({
   FetchContent,
 }) => {
   return (
-    <div onClick={!lock ? FetchContent : null} className="Sarfasl__AccordionCenter">
+    <div
+      onClick={!lock ? FetchContent : null}
+      className="Sarfasl__AccordionCenter"
+    >
       <div
         className="Sarfasl__AccordionCenter"
         style={{ justifyContent: "flex-start" }}
@@ -96,7 +100,9 @@ const SeasonHeader = ({
             <i className="fas fa-check"></i>
           </div>
         ) : (
-          <div className="Sarfasl__Accordionnumber"><span>{index + 1}</span> </div>
+          <div className="Sarfasl__Accordionnumber">
+            <span>{index + 1}</span>{" "}
+          </div>
         )}
         &nbsp;
         <div>{title}</div>

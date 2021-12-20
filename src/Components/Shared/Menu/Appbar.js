@@ -39,7 +39,7 @@ const Appbar = () => {
 
   const menuItem = [
     {
-      url: token ? "/dashboard" : "/",
+      url: "/",
       text: "صفحه ی اصلی",
       id: 1,
     },

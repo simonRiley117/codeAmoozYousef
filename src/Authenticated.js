@@ -45,12 +45,18 @@ import Dashboard from "./Layouts/Dashboard/Dashboard";
 import MyMessages from "./Layouts/Dashboard/MyMassages";
 import EmptyChatroom from "@Components/Layouts/Dashboard/MyMessages/EmptyChatroom";
 import ChatroomUser from "@Components/Layouts/Dashboard/MyMessages/ChatroomUser";
+import NewCourse from "./Layouts/Dashboard/NewCourse";
+import Password from "./Layouts/Dashboard/Password";
+import Transaction from "./Layouts/Dashboard/Transaction";
 
 const Authenticated = () => {
   return (
     <Routes>
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/suggest" element={<NewCourse />} />
+        <Route path="/dashboard/wallet" element={<Transaction />} />
+        <Route path="/dashboard/setting" element={<Password />} />
         <Route path="/dashboard/topic" element={<CourseTopic />} />
         <Route path="/dashboard/resume" element={<Resume />} />
         <Route path="/dashboard/profile" element={<Profile />} />

@@ -3,10 +3,11 @@ import ico from "@Assets/Pic/coding-cuate-5352 1.png";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 import Button from "@Components/Shared/Buttons/Button";
 import { useTimer } from "react-timer-hook";
+import moment from "moment";
 
-function HeaderDiscount() {
+function HeaderDiscount({ data }) {
   const [isCopied, handleCopy] = UseCopyToClipboard(3000);
-  const time = new Date();
+  const expiryTimestamp = new Date(data.date_expired);
   const {
     seconds,
     minutes,
@@ -17,7 +18,10 @@ function HeaderDiscount() {
     pause,
     resume,
     restart,
-  } = useTimer({ time, onExpire: () => console.warn("onExpire called") });
+  } = useTimer({
+    expiryTimestamp,
+    onExpire: () => console.warn("onExpire called"),
+  });
   function onFinish() {
     console.log("finished!");
   }
@@ -27,11 +31,11 @@ function HeaderDiscount() {
         <div className="HeaderDiscount__endDarkOrange"></div>
         <div className="HeaderDiscount__endYellow absolute"></div>
         <div className="HeaderDiscount__redBorderbig HeaderDiscount__endYellow-redborder absolute items-center text-center justify-center">
-          <p className="HeaderDiscount__discount">40%</p>
+          <p className="HeaderDiscount__discount">{data.percentage}%</p>
         </div>
         <div className="HeaderDiscount__endLightOrange absolute"></div>
         <div className="HeaderDiscount__midredBorder HeaderDiscount__endLightOrange-redborder absolute items-center	text-center justify-center">
-          <p className="HeaderDiscount__discount">40%</p>
+          <p className="HeaderDiscount__discount">{data.percentage}%</p>
         </div>
       </div>
       <div className="w-10/12 sm:w-full	">
@@ -61,7 +65,7 @@ function HeaderDiscount() {
             <p className="SideBarDiscount__title">کد تخفیف:</p>
             <div className="HeaderDiscount__discountBox">
               <div className="SideBarDiscount__discountcode justify-center items-center text-center">
-                <p>a1b2c3d4</p>
+                <p>{data.coupon_number}</p>
               </div>
               <Button
                 type="primary"
@@ -83,11 +87,11 @@ function HeaderDiscount() {
           <div className="SideBarDiscount__yellowCircle"></div>
           <div className="SideBarDiscount__DarkorangeCircle absolute"></div>
           <div className="SideBarDiscount__redBorder SideBarDiscount__DarkorangeCircle-redborder absolute items-center	text-center justify-center">
-            <p className="HeaderDiscount__discount">40%</p>
+            <p className="HeaderDiscount__discount">{data.percentage}%</p>
           </div>
           <div className="HeaderDiscount__LightorangeCircle absolute"></div>
           <div className="SideBarDiscount__redBorder HeaderDiscount__LightorangeCircle-redborder absolute items-center	text-center justify-center">
-            <p className="HeaderDiscount__discount">40%</p>
+            <p className="HeaderDiscount__discount">{data.percentage}%</p>
           </div>
         </div>
       </div>

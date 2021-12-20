@@ -12,15 +12,14 @@ import CourseTable from "@Components/Layouts/Course/Course/CourseTable";
 import { Tabs } from "antd";
 import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "@App/Context/useFetch";
+import moment from "moment";
 
 const { TabPane } = Tabs;
 
 function Index() {
   const { courseId } = useParams();
-  console.log("PARAMS: ", courseId);
   const location = useLocation();
-  console.log("LOCATION: ", location);
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   useEffect(() => {
     // setMenu(location.state.name);
     setId(location.state.id);
@@ -30,20 +29,24 @@ function Index() {
   const [id, setId] = useState();
   const [name, setName] = useState();
   const windowSize = UseWindowSize();
-  // const addToCart = useFetch({
-  //   url: `CartService/discount`,
-  //   method: "GET",
-  //   trigger: true,
-  //   argFunc: (res) => {
-  //     setData(res);
-  //   },
-  // });
-  console.log(`data`, data);
+  const addToCart = useFetch({
+    url: `CartService/discount`,
+    method: "GET",
+    trigger: true,
+    argFunc: (res) => {
+      setData(res.results);
+    },
+  });
   return (
     <div className="container">
       <BreadCrump name={name} />
       <div className="Course">
-        {windowSize !== "sm" ? <HeaderDiscount /> : <SideBarDiscount />}
+        { windowSize !== "sm" ? (
+         data.length !== 0 && <HeaderDiscount data={data} />
+        ) : (
+          data.length !== 0 && <SideBarDiscount data={data} />
+        )}
+
         <div className="grid Course__container relative">
           {windowSize !== "sm" && (
             <div className="Course__sideBar relative">
