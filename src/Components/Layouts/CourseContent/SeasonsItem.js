@@ -61,7 +61,7 @@ const SeasonsItem = ({
       {...props}
     >
       {contentList.length !== 0 &&
-        contentList.contents.map((content, index) => (
+        contentList.map((content, index) => (
           <ContentItem
             changeContentID={changeContentID}
             setquizUuid={setquizUuid}

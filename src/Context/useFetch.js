@@ -64,12 +64,6 @@ export default function useFetch({
         }
         if (errMessage === "") {
         } else if (errMessage === null) {
-          toast.error(err.response?.statusText);
-        } else {
-          toast.error(errMessage);
-        }
-        if (argErrFunc !== null) argErrFunc(err.response?.data);
-        else if (errMessage === null) {
           // toast.error(err.response?.statusText);
         } else {
           toast.error(errMessage);
