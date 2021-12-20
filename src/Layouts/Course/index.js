@@ -41,10 +41,10 @@ function Index() {
     <div className="container">
       <BreadCrump name={name} />
       <div className="Course">
-        {data.length !== 0 && windowSize !== "sm" ? (
-          <HeaderDiscount data={data} />
+        { windowSize !== "sm" ? (
+         data.length !== 0 && <HeaderDiscount data={data} />
         ) : (
-          <SideBarDiscount data={data} />
+          data.length !== 0 && <SideBarDiscount data={data} />
         )}
 
         <div className="grid Course__container relative">
