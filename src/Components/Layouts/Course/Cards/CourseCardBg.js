@@ -77,7 +77,7 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
             toast.error("این دوره از قبل به لیست علاقه مندی ها اضافه شده است");
         }
         if (err?.detail === "Given token not valid for any token type") {
-            toast.error("برای خرید دوره اول وارد سایت شوید");
+            toast.error("برای افزودن به لیست علاقه مندی ها اول وارد سایت شوید");
         }
     };
 
