@@ -10,6 +10,7 @@ import share from "@Assets/Icons/share.svg";
 import useFetch from "@App/Context/useFetch";
 import {ClipLoader} from "react-spinners";
 import {useAuth} from "@App/Context/authContext";
+import {useUserData} from "@App/Context/userContext";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
@@ -29,6 +30,7 @@ function CourseTable({courseId}) {
     const [loadingorOerCourse, setLoadingOrderCourse] = useState(true);
     const [degree, setDegree] = useState(null);
     const {token} = useAuth();
+    const {getUser} = useUserData();
     const [addtocardData, setaddtocardData] = useState();
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
     const [socialId, setSocialId] = useState(-1);
@@ -95,11 +97,12 @@ function CourseTable({courseId}) {
         url: `CartService/addToCart`,
         method: "POST",
         trigger: false,
-        noHeader: true,
+        // noHeader: true,
         data: addtocardData,
         caller: getCourseOrder,
         argFunc: (res) => {
             toast.success("سفارش با موفقیت ثبت شد");
+            getUser.reFetch()
         },
         argErrFunc: (err) => handleError(err),
     });
