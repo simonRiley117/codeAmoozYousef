@@ -29,7 +29,7 @@ export default function useFetch({
         : `${API_URL}/${url}/?page=${pagination.current}&pageSize=${pagination.pageSize}`,
     method: method,
     options: {
-     // withCredentials: true,
+      // withCredentials: true,
       headers: noHeader
         ? {}
         : {
@@ -62,16 +62,13 @@ export default function useFetch({
         if (setLoader !== null) {
           setLoader(false);
         }
-        if (errMessage !== null) {
-          errMessage(err.response.data);
+        if (errMessage === "") {
+        } else if (errMessage === null) {
+          // toast.error(err.response?.statusText);
+        } else {
+          toast.error(errMessage);
         }
         if (argErrFunc !== null) argErrFunc(err.response?.data);
-
-        // toast.error('دوباره تلاش کنید');
-        // toast.error("دوباره تلاش کنید", {
-        //   position: toast.POSITION.TOP_CENTER,
-        // });
-        // authDispatch({ type: "LOGOUT" });
       }
     },
   });

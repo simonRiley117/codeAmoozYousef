@@ -53,7 +53,7 @@ const Courses = () => {
           liftUpLatestCourseRequest={liftUpLatestCourseRequest}
           getallCourseList={getallCourseList}
         />
-        <Searchxx />
+        {/* <Searchxx /> */}
         <h3 className="text-4xl font-bold mb-12">پرطرفدار ترین دوره ها</h3>
         {/*<FavoriteCourse/>*/}
         {/*<FilterCourses cateid={cateid} chooseCat={chooseCat} />*/}

@@ -5,8 +5,9 @@ import CourseStatus from "@Components/Layouts/CourseContent/CourseStatus";
 import ContentTab from "@Components/Layouts/CourseContent/ContentTabs";
 import SeasonList from "@Components/Layouts/CourseContent/SeasonList";
 import useFetch from "../../Context/useFetch";
-import { useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { API_URL } from "@App/constants";
 
 function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
@@ -18,16 +19,32 @@ function CourseContent() {
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
   const { courseId } = useParams();
+  const location = useLocation();
+  const [id, setId] = useState();
+  const [name, setName] = useState();
+  useEffect(() => {
+    // setMenu(location.state.name);
+    setId(location.state.id);
+    setName(location.state.name);
+  }, [location]);
   const getCourseSeasons = useFetch({
-    url: `CourseService/${courseId}/sidebar`,
+    url: `CourseService/${id}/sidebar`,
     method: "GET",
     noHeader: false,
     setter: setSidebarList,
     trigger: false,
   });
 
+  const fetchPeople = async () => {
+    const response = await fetch(
+      `${API_URL}/CourseService/${id}/currentCourseState`
+    );
+    console.log("fetch people");
+    return response.json();
+  };
+
   const getCurrentCourseState = useFetch({
-    url: `CourseService/${courseId}/currentCourseState`,
+    url: `CourseService/${id}/currentCourseState`,
     method: "GET",
     setter: setCurrentCourseStatus,
     caller: getCourseSeasons,
@@ -67,19 +84,10 @@ function CourseContent() {
   useEffect(() => {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
-      getCurrentCourseState.reFetch();
     }
-
-    console.log("cur__id", Currentcontentid);
+    setActiveSeason(CurrentCourseStatus?.current_season_id);
   }, [Currentcontentid]);
-  // has_next_content: true
-  // has_prev_content: false
-  // next_content_id: "Qd4Hd1XA"
-  // next_content_passed: false
-  // next_quiz_id: null
-  // prev_content_id: null
-  // prev_content_passed: null
-  // prev_quiz_id: null
+
   const handleNextContent = () => {
     if (!isContentPass) {
       postPassContent.reFetch();
@@ -99,7 +107,7 @@ function CourseContent() {
       {CurrentCourseStatus && sidebarList && (
         <div className="LastCourse">
           <div className="container">
-            <BreadCrump pathsname="/dash/course" name={sidebarList.title} />
+            <BreadCrump name={name} />
             <div className="grid LastCourse__container relative">
               <div className="LastCourse__Box">
                 <div className="LastCourse__Position">
@@ -122,7 +130,6 @@ function CourseContent() {
                 {CurrentCourseStatus ? (
                   <CourseStatus
                     details={CurrentCourseStatus}
-                    
                   />
                 ) : (
                   <div>
@@ -133,8 +140,7 @@ function CourseContent() {
                 <ContentTab
                   contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
-                  courseUuid={courseId}
-
+                  courseUuid={id}
                   setActiveSeason={setActiveSeason}
                   hasSeasonQuize={CurrentcontenStatus?.next_content_id}
                 />
