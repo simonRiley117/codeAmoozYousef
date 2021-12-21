@@ -18,6 +18,7 @@ function CourseContent() {
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
+  console.log("CourseContent ~ sidebarList", sidebarList)
   const { courseId } = useParams();
   const location = useLocation();
   const [id, setId] = useState();
