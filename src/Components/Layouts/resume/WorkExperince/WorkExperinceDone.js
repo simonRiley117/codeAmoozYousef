@@ -1,50 +1,80 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import {ReactComponent as Line} from "@Assets/Icons/Line 27.svg";
 import ResumeDoneWrapper from '@Components/Layouts/resume/ResumeWrapper/ResumeDoneWrapper'
-//import Time from "../../../Shared/Time/Time";
+import Time from "../../../Shared/Time/Time";
+import WorkExperienceForm from "./WorkExperienceForm";
 
 const WorkExperinceDone = (
     {
-        // title,
-        // company,
-        // startdate,
-        // endDate,
-        // description,
-        getTeacherProfessionInfo,
-        teacherProfession,
-        loadingTeacherProfession,
+        getProfessionInfo,
+        profession,
+        loadingProfession,
+        showForm,
+        type,
+        readable
     }) => {
 
     useEffect(() => {
-        getTeacherProfessionInfo.reFetch()
+        getProfessionInfo.reFetch()
     }, []);
 
+    const [edit, setEdit] = useState(false);
+    const showEdit = () => {
+        setEdit((before) => !before);
+    }
+
     return (
-        !loadingTeacherProfession ? (
-            teacherProfession.results.map((teacherProf) => (
-                <ResumeDoneWrapper className="WorkExperinceDone">
-                    <div className=" WorkExperinceDone__header  ">
-                        <p className="WorkExperinceDone__title">
-                            {teacherProf?.profession_title}
-                        </p>
-                    </div>
-                    <div className="WorkExperinceDone__middle flex">
-                        <p>{teacherProf?.company_name}</p>
-                        <span>
+        !loadingProfession ? (
+            profession.results.map((teacherProf) => (
+                <>
+                    <ResumeDoneWrapper
+                        className="WorkExperinceDone"
+                        type={type}
+                        id={teacherProf.uuid}
+                        caller={getProfessionInfo}
+                        showEdit={showEdit}
+                        readable={readable}
+                    >
+                        <div className=" WorkExperinceDone__header  ">
+                            <p className="WorkExperinceDone__title">
+                                {teacherProf?.profession_title}
+                            </p>
+                        </div>
+                        <div className="WorkExperinceDone__middle flex">
+                            <p>{teacherProf?.company_name}</p>
+                            <span>
                             <Line/>
                         </span>
-                        {/*<p>*/}
-                        {/*    <span>{teacherProf?.profession_start_date}</span> - <span>{teacherProf.profession_end_date}</span>*/}
-                        {/*</p>*/}
-                        {/* <p className='whitespace-nowrap'>
-                            <Time value={teacherProf?.profession_start_date}/> تا
-                            {teacherProf?.profession_end_date ? <Time value={teacherProf?.profession_end_date}/> :
-                                <span>تاکنون&nbsp;  </span>}
-                        </p> */}
-                    </div>
-                    <p className="WorkExperinceDone__des">{teacherProf?.profession_description}</p>
-                </ResumeDoneWrapper>
+                            {/*<p>*/}
+                            {/*    <span>{teacherProf?.profession_start_date}</span> - <span>{teacherProf.profession_end_date}</span>*/}
+                            {/*</p>*/}
+                            <p className='whitespace-nowrap'>
+                                <Time value={teacherProf?.profession_start_date}/> تا
+                                {teacherProf?.profession_end_date ? <Time value={teacherProf?.profession_end_date}/> :
+                                    <span>تاکنون&nbsp;  </span>}
+                            </p>
+                        </div>
+                        <p className="WorkExperinceDone__des">{teacherProf?.profession_description}</p>
+                    </ResumeDoneWrapper>
+
+                    {!readable && (
+                        edit && (
+                            <WorkExperienceForm
+                                showEdit={showEdit}
+                                edit
+                                showForm={showForm}
+                                getWorks={getProfessionInfo}
+                                company_name={teacherProf?.company_name}
+                                profession_description={teacherProf?.profession_description}
+                                profession_end_date={teacherProf?.profession_end_date}
+                                profession_start_date={teacherProf?.profession_start_date}
+                                profession_title={teacherProf?.profession_title}
+                                id={teacherProf?.uuid}
+                            />
+                        )
+                    )}
+                </>
             ))
         ) : null
     );
