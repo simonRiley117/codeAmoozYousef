@@ -29,11 +29,11 @@ import { useUserData } from "@App/Context/userContext";
 // };
 
 const optionList = [
-  { label: " دیپلم", value: "U.DP" },
-  { label: "فوق دیپلم ", value: "DP" },
-  { label: "کارشناسی ", value: "B.S" },
-  { label: "کارشناسی ارشد ", value: "M.S" },
-  { label: "دکترا ", value: "Ph.D" },
+    {label: "دیپلم", value: "U.DP"},
+    {label: "فوق دیپلم ", value: "DP"},
+    {label: "کارشناسی ", value: "B.S"},
+    {label: "کارشناسی ارشد ", value: "M.S"},
+    {label: "دکترا ", value: "Ph.D"},
 ];
 
 const ProfileForm = () => {

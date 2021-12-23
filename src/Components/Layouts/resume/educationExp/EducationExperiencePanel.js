@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {ReactComponent as PlusIcon} from "@Assets/Icons/plus.svg";
 import EducationExperinceDone from "./EducationExperinceDone";
 import EducationExperienceForm from "./EducationExperienceForm";
@@ -7,28 +7,38 @@ import Button from "@Components/Shared/Buttons/Button";
 const EducationExperiencePanel = (
     {
         readable,
-        getTeacherGradeInfo,
-        teacherGrade,
-        loadingTeacherGrade
+        getGradeInfo,
+        grade,
+        loadingGrade
     }) => {
+    const [addItem, setAddItem] = useState(false);
+    const showForm = () => {
+        setAddItem((before) => !before);
+    };
     return (
         <div className="WorkExperiencePanel">
             <EducationExperinceDone
-                getTeacherGradeInfo={getTeacherGradeInfo}
-                teacherGrade={teacherGrade}
-                loadingTeacherGrade={loadingTeacherGrade}
-                // title="برنامه نویس"
-                // company="گروه آوید"
-                // startdate="1 تیر 1397"
-                // endDate="1 تیر 1398"
+                getGradeInfo={getGradeInfo}
+                grade={grade}
+                loadingGrade={loadingGrade}
+                readable={readable}
+                showForm={showForm}
             />
-            {!readable && <EducationExperienceForm/>}
-
             {!readable && (
-                <Button type="text" size="small" success>
-                    <PlusIcon/>
-                    <p>اضافه کردن سوابق تحصیلی</p>
-                </Button>
+                addItem && (
+                    <EducationExperienceForm
+                        showForm={showForm}
+                        getEducations={getGradeInfo}
+                    />
+                )
+            )}
+            {!readable && (
+                !addItem && (
+                    <Button type="text" size="small" success onClick={showForm}>
+                        <PlusIcon/>
+                        <p>اضافه کردن سوابق تحصیلی</p>
+                    </Button>
+                )
             )}
         </div>
     );

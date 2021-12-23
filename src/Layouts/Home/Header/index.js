@@ -5,6 +5,7 @@ import SearchBox from '@Components/Layouts/Home/SearchBox';
 // Assets
 import { ReactComponent as ArrowLeftIcon } from '@Assets/Icons/arrow-left.svg';
 import ImageSrc from '@Assets/Pic/home-header-bg.png';
+import Link from '@Components/Shared/Buttons/Link';
 
 const index = () => {
 	return (
@@ -25,9 +26,9 @@ const index = () => {
 							کدآموز، تخصصی ترین وب سایت آموزش برنامه نویسی
 							<br /> به صورت کاملا آنلاین زیر نظر بهترین اساتید
 						</p>
-						<Button type='primary' icon={<ArrowLeftIcon />} >
+						<Link to='/courses' type='primary' icon={<ArrowLeftIcon />}>
 							همین حالا شروع کن
-						</Button>
+						</Link>
 					</div>
 				</section>
 			</div>

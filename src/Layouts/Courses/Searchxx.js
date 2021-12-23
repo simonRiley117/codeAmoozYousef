@@ -4,7 +4,7 @@ import Input from "../../Components/Shared/Inputs/Input";
 import { ReactComponent as UserIcon } from "@Assets/Icons/fe_search.svg";
 import { searchItem } from "@App/Recoil/StateRecoil";
 import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import searchic from "@Assets/Pic/search.png";
 import Vector from "@Assets/Pic/Vector.png";
 import search from "@Assets/Pic/fe_search.png";
@@ -21,8 +21,11 @@ const Searchxx = ({ children }) => {
   const onSubmit = (data) => {
     setText(data.search);
     // window.location.href = `/search/${data.search}`;
-    navigate(`/search/${data.search}`);
-    // window.location.pathname = `/search/${text}`;
+    navigate({
+			pathname: '/search',
+			search: `?${createSearchParams({ s: data })}`,
+			// search: value,
+		});
     reset();
   };
   console.log(`result`, result);

@@ -7,26 +7,31 @@ import MasterSignUp from '@Components/Layouts/CoWorkers/Master/MasterSignUp';
 import Title from '@Components/Shared/Title';
 
 import { Tabs } from 'antd';
+import { useLocation } from 'react-router';
 
 const { TabPane } = Tabs;
 
 const Master = () => {
+	const {
+		state: { activeTab },
+	} = useLocation();
+	console.log('Master ~ state', !!activeTab);
 	return (
 		<div className='Master container'>
 			<BreadCrump />
 			<Title>اساتید</Title>
 			<div className='Master__formBox'>
-				<Tabs className='TabBox' type='card'>
-					<TabPane tab='همکاری با ما' key='1'>
+				<Tabs className='TabBox' type='card' defaultActiveKey={activeTab}>
+					<TabPane tab='همکاری با ما' key='workWithUs'>
 						<WorkWithUs />
 					</TabPane>
-					<TabPane tab='استاندارد های دوره' key='2'>
+					<TabPane tab='استاندارد های دوره' key='standards'>
 						<CoursStandards />
 					</TabPane>
-					<TabPane tab='قوانین تولید' key='3'>
+					<TabPane tab='قوانین تولید' key='rules'>
 						<ProduceRules />
 					</TabPane>
-					<TabPane tab='ثبت نام' key='4'>
+					<TabPane tab='ثبت نام' key='signUp'>
 						<MasterSignUp />
 					</TabPane>
 				</Tabs>

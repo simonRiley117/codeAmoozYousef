@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Price from "@Components/Shared/Price/Price";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import {toast} from "react-toastify";
+import {useUserData} from "@App/Context/userContext";
 // Assets
 import {ReactComponent as ClockIcon} from "@Assets/Icons/clock.svg";
 import {ReactComponent as User} from "@Assets/Icons/user.svg";
@@ -30,6 +31,7 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         cover,
         is_course_in_cart
     } = card;
+    const {getUser} = useUserData();
     const [addtocardData, setaddtocardData] = useState();
     const cost = get_price_without_degree_with_some_extra_info;
     const [isfav, setisFav] = useState(is_favorite);
@@ -47,6 +49,7 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
             getLatestCourseList.reFetch();
             getallCourseList.reFetch();
             setisCourseinCart(true)
+            getUser.reFetch()
         },
         argErrFunc: (err) => handleErrorAddtocard(err),
     });
@@ -77,7 +80,7 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
             toast.error("این دوره از قبل به لیست علاقه مندی ها اضافه شده است");
         }
         if (err?.detail === "Given token not valid for any token type") {
-            toast.error("برای خرید دوره اول وارد سایت شوید");
+            toast.error("برای افزودن به لیست علاقه مندی ها اول وارد سایت شوید");
         }
     };
 

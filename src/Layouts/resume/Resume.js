@@ -6,49 +6,49 @@ import SkillsPanel from "@Components/Layouts/resume/skills/SkillsPanel";
 import useFetch from "../../Context/useFetch";
 
 const Resume = ({readable, teacherId}) => {
-    const [teacherProfession, setTeacherProfession] = useState([])
-    const [loadingTeacherProfession, setLoadingTeacherProfession] = useState(true)
-    const [teacherGrade, setTeacherGrade] = useState([])
-    const [loadingTeacherGrade, setLoadingTeacherGrade] = useState(true)
-    const [teacherSkill, setTeacherSkill] = useState([])
-    const [loadingTeacherSkill, setLoadingTeacherSkill] = useState(true)
+    const [profession, setProfession] = useState([])
+    const [loadingProfession, setLoadingProfession] = useState(true)
+    const [grade, setGrade] = useState([])
+    const [loadingGrade, setLoadingGrade] = useState(true)
+    const [skill, setSkill] = useState([])
+    const [loadingSkill, setLoadingSkill] = useState(true)
 
-    const setTeacherProfessionInfo = (data) => {
-        setTeacherProfession(data)
-        setLoadingTeacherProfession(false)
+    const setProfessionInfo = (data) => {
+        setProfession(data)
+        setLoadingProfession(false)
     }
-    const setTeacherGradeInfo = (data) => {
-        setTeacherGrade(data)
-        setLoadingTeacherGrade(false)
+    const setrGradeInfo = (data) => {
+        setGrade(data)
+        setLoadingGrade(false)
     }
-    const setTeacherSkillInfo = (data) => {
-        setTeacherSkill(data)
-        setLoadingTeacherSkill(false)
+    const setSkillInfo = (data) => {
+        setSkill(data)
+        setLoadingSkill(false)
     }
 
-    const getTeacherProfessionInfo = useFetch({
-        url: `TeacherProfessionService`,
-        params: {teacher_uuid: teacherId},
+    const getProfessionInfo = useFetch({
+        url: teacherId ? `TeacherProfessionService` : `StudentProfessionService`,
+        params: teacherId ? {teacher_uuid: teacherId} : '',
         method: "GET",
-        noHeader: true,
+        noHeader: teacherId ? true : false,
         trigger: false,
-        setter: setTeacherProfessionInfo,
+        setter: setProfessionInfo,
     });
-    const getTeacherGradeInfo = useFetch({
-        url: `TeacherGradeService`,
-        params: {teacher_uuid: teacherId},
+    const getGradeInfo = useFetch({
+        url: teacherId ? `TeacherGradeService` : `StudentGradeService`,
+        params: teacherId ? {teacher_uuid: teacherId} : '',
         method: "GET",
-        noHeader: true,
+        noHeader: teacherId ? true : false,
         trigger: false,
-        setter: setTeacherGradeInfo,
+        setter: setrGradeInfo,
     });
-    const getTeacherSkillInfo = useFetch({
-        url: `TeacherSkillService`,
-        params: {teacher_uuid: teacherId},
+    const getSkillInfo = useFetch({
+        url: teacherId ? `TeacherSkillService` : `StudentAwardService`,
+        params: teacherId ? {teacher_uuid: teacherId} : '',
         method: "GET",
-        noHeader: true,
+        noHeader: teacherId ? true : false,
         trigger: false,
-        setter: setTeacherSkillInfo,
+        setter: setSkillInfo,
     });
 
     return (
@@ -58,23 +58,23 @@ const Resume = ({readable, teacherId}) => {
             <Accordion half>
                 <Panel header={<span>سوابق کاری</span>}>
                     <WorkExperiencePanel
-                        getTeacherProfessionInfo={getTeacherProfessionInfo}
-                        teacherProfession={teacherProfession}
-                        loadingTeacherProfession={loadingTeacherProfession}
+                        getProfessionInfo={getProfessionInfo}
+                        profession={profession}
+                        loadingProfession={loadingProfession}
                         readable={readable}/>
                 </Panel>
                 <Panel header={<span>سوابق تحصیلی</span>}>
                     <EducationExperiencePanel
-                        getTeacherGradeInfo={getTeacherGradeInfo}
-                        teacherGrade={teacherGrade}
-                        loadingTeacherGrade={loadingTeacherGrade}
+                        getGradeInfo={getGradeInfo}
+                        grade={grade}
+                        loadingGrade={loadingGrade}
                         readable={readable}/>
                 </Panel>
                 <Panel header={<span>مهارت ها</span>}>
                     <SkillsPanel
-                        getTeacherSkillInfo={getTeacherSkillInfo}
-                        teacherSkill={teacherSkill}
-                        loadingTeacherSkill={loadingTeacherSkill}
+                        getSkillInfo={getSkillInfo}
+                        skill={skill}
+                        loadingSkill={loadingSkill}
                         readable={readable}/>
                 </Panel>
             </Accordion>

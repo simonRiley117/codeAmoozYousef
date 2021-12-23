@@ -63,7 +63,7 @@ const Router = () => {
 
         
 
-          <Route path="/search/:name" element={<Search />} />
+          <Route path="/search" element={<Search />} />
         </Route>
       </Routes>
       {token ? <Authenticated /> : <UnAuthenticated />}
