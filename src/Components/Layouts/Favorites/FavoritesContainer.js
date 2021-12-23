@@ -1,23 +1,38 @@
 import FavoritesItem from "./FavoritesItem";
 import FavoriteEmpty from "./FavoriteEmpty";
-import React, { useState } from "react";
-import CourseCardBg from "../Course/Cards/CourseCardBg";
+import React, { useState, useEffect } from "react";
+import useFetch from "@App/Context/useFetch";
+import { data } from "autoprefixer";
 
 const Favoritescontainer = () => {
   const [hasFav, setHasFav] = useState(false);
-  var showPage;
+  const [favoritesData, setFavoritesData] = useState();
 
-  if (hasFav) {
-    showPage = <FavoritesItem />;
-  } else if (!hasFav) {
-    showPage = <FavoriteEmpty />;
-  }
+  const showFavorites = (data) => {
+    setFavoritesData(data.results);
+    setHasFav(true);
+    console.log(data.results);
+  };
+
+  const getFavoritesData = useFetch({
+    url: `StudentService/willing_list`,
+    method: "GET",
+    setter: showFavorites,
+  });
+
+  const renderFavorite = () => {
+    if (hasFav) {
+      return <FavoritesItem favData={favoritesData} />;
+    } else {
+      return <FavoriteEmpty />;
+    }
+  };
   return (
     <div>
-      <div className="favorites-main-title flex justify-center text-center">
-        <h1>لیست علاقه مندی‌ها</h1>
+      <div className="favorites-main-title title__box flex justify-center text-center">
+        <h2>لیست علاقه مندی‌ها</h2>
       </div>
-      <div className="favorites">{showPage}</div>
+      <div className="favorites">{renderFavorite()}</div>
     </div>
   );
 };
