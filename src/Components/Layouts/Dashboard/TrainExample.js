@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Codeeditor from "@Components/Shared/Codeeditor";
 import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "../../../Context/useFetch";
+import { ClipLoader } from "react-spinners";
 
 function TrainExample({contentUuid,courseUuid}) {
     console.log('contentUuid TrainExample: ', contentUuid)
@@ -61,7 +62,9 @@ function TrainExample({contentUuid,courseUuid}) {
                             ) : null}
                         </div>
                     ))
-                ) : null}
+                ) : <div className='center m-4'>
+                <ClipLoader color="#EF8019" loading={true} size={20} />
+              </div>}
         </>
     );
 }

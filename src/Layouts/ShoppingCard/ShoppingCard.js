@@ -10,7 +10,7 @@ const ShoppingCard = () => {
     const [payment, setPayment] = useState([]);
     const getPayment = useFetch({
         url: `CartService/showPayment`,
-        trigger: !orderCard === [] ? true : false,
+        trigger: orderCard !==[] ? true : false,
         method: "GET",
         setter: setPayment,
     });

@@ -40,6 +40,11 @@
 .d-flex-col {
 	@include d-flex-column;
 }
+.center{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 .d-flex-align {
 	display: flex;

@@ -17,7 +17,8 @@ import Modal from "@Components/Shared/Modal/Modal";
 import logo from "@Assets/Logo/logo.svg";
 import { ReactComponent as ShoppingCartIcon } from "@Assets/Icons/shopping-cart.svg";
 import { ReactComponent as LogoTextIcon } from "@Assets/Logo/codeamooz-text.svg";
-import { Divider } from "antd";
+import { Divider, Popover } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import { useAuth } from "@App/Context/authContext";
 import { useUserData } from "@App/Context/userContext";
 import { useEffect } from "react";
@@ -36,6 +37,7 @@ const Appbar = () => {
   const dark = pathname === "/";
   const { sticky } = UseScrollAppbar();
   const { token } = useAuth();
+  const { authDispatch } = useAuth();
 
   const menuItem = [
     {
@@ -100,22 +102,54 @@ const Appbar = () => {
   }, []);
 
   const logout = () => {
-    Logout.reFetch();
+    authDispatch({ type: "LOGOUT" });
+    navigate("/", { replace: true });
   };
 
-  const Logout = useFetch({
-    url: `auth/logout`,
-    method: "POST",
-    trigger: false,
-    argFunc: (res) => {
-      toast.success("شما از حساب خود خارج شدید");
-      Cookies.remove("token");
+  // const Logout = useFetch({
+  //   url: `auth/logout`,
+  //   method: "POST",
+  //   trigger: false,
+  //   argFunc: (res) => {
+  //     toast.success("شما از حساب خود خارج شدید");
+  //     Cookies.remove("token");
 
-      navigate("/", { replace: true });
-      window.location.reload();
-    },
-  });
+  //     navigate("/", { replace: true });
+  //     window.location.reload();
+  //   },
+  // });
 
+  const profileMenu = (
+    <div className="profile-menu">
+      <div className="profile-menu-item">
+        <UserIcon />
+        <Link to="/dashboard">حساب کاربری</Link>
+      </div>
+      <Divider style={{ margin: "5px 0" }} />
+      <div className="profile-menu-item">
+        <Heart />
+        <Link to="/fav">علاقه مندی‌ها</Link>
+      </div>
+      <Divider style={{ margin: "5px 0" }} />
+      <div className="profile-menu-item">
+        <ExiteIcon />
+        <a href="#" onClick={handleModalShow}>
+          خروج
+        </a>
+      </div>
+      <Modal className="ExitModal" visible={modal} onCancel={handleModalShow}>
+        <div className="ExitModal__back">
+          <p className="mb-12">آیا از خروج مطمئن هستید؟</p>
+          <div className="d-flex-space">
+            <Button onClick={logout}>بله</Button>
+            <Button onClick={handleModalShow} type="primary">
+              خیر
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    </div>
+  );
   return (
     <>
       <div
@@ -169,61 +203,46 @@ const Appbar = () => {
               >
                 <ul className="Menu__ul  list">
                   {menuItem.map((item) => (
-                    <li key={item.id} className="Menu__li">
+                    <li
+                      key={item.id}
+                      className="Menu__li"
+                      onClick={() => setOpenMenu(false)}
+                    >
                       <NavLink to={item.url}>{item.text}</NavLink>
                     </li>
                   ))}
                 </ul>
                 <div className="Menu_actions">
-                  <IconBtn
-                    icon={<ShoppingCartIcon />}
-                    onClick={() => navigate("/shopping-card")}
-                  />
+                  {token && (
+                    <div className=" relative">
+                      <IconBtn
+                        icon={<ShoppingCartIcon />}
+                        onClick={() => navigate("/shopping-card")}
+                      />
+                      <div className="Menu_action--badge ">
+                        <p>{userData.cart}</p>
+                      </div>
+                    </div>
+                  )}
                   {token ? (
                     <div className="d-flex-align Menu_actions--profile">
                       <p className="profile__name">{userData.username}</p>
 
-                      <div
-                        className={classNames("profile__image")}
-                        onMouseEnter={() => setHoverMenu(true)}
-                        onMouseLeave={() => setHoverMenu(false)}
-                      >
-                        <img src={userData.cover} alt="profile" />
-                        {hoverMenu && (
-                          <div className="profile-menu">
-                            <div className="profile-menu-item">
-                              <UserIcon />
-                              <Link to="/dashboard">حساب کاربری</Link>
-                            </div>
-                            <Divider style={{ margin: "5px 0" }} />
-                            <div className="profile-menu-item">
-                              <Heart />
-                              <Link to="/fav">علاقه مندی‌ها</Link>
-                            </div>
-                            <Divider style={{ margin: "5px 0" }} />
-                            <div className="profile-menu-item">
-                              <ExiteIcon />
-                              <a href="#" onClick={handleModalShow}>
-                                خروج
-                              </a>
-                            </div>
-                          </div>
-                        )}
-                        <Modal
-                          className="ExitModal"
-                          visible={modal}
-                          onCancel={handleModalShow}
+                      <div className={classNames("profile__image")}>
+                        <Popover
+                          trigger="click"
+                          placement="bottomLeft"
+                          content={profileMenu}
                         >
-                          <div className="ExitModal__back">
-                            <p className="mb-12">آیا از خروج مطمئن هستید؟</p>
-                            <div className="d-flex-space">
-                              <Button onClick={logout}>بله</Button>
-                              <Button onClick={handleModalShow} type="primary">
-                                خیر
-                              </Button>
-                            </div>
+                          <div className="flex justify-center items-center">
+                            <img
+                              src={userData.cover}
+                              alt="profile"
+                              className="ml-4"
+                            />
+                            <DownOutlined />
                           </div>
-                        </Modal>
+                        </Popover>
                       </div>
                     </div>
                   ) : (

@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import SidebarMenuItem from "./SidebarMenuItem";
 import { useNavigate } from "react-router";
+import { useAuth } from "@App/Context/authContext";
+
 const sidebarmenuItem = [
   {
     text: "پیشخوان",
@@ -55,6 +57,7 @@ const sidebarmenuItem = [
 
 const SidebarMenu = () => {
   const [modal, setModal] = useState(false);
+  const {  authDispatch } = useAuth();
 
   const [expand, setExpand] = useState(false);
 
@@ -69,22 +72,23 @@ const SidebarMenu = () => {
     setModal(true);
   };
   const logout = () => {
-    Logout.reFetch();
+    authDispatch({ type: "LOGOUT" });
+    navigate("/", { replace: true });
   };
   const navigate = useNavigate();
 
-  const Logout = useFetch({
-    url: `auth/logout`,
-    method: "POST",
-    trigger: false,
-    argFunc: (res) => {
-      toast.success("شما از حساب خود خارج شدید");
-      Cookies.remove("token");
+  // const Logout = useFetch({
+  //   url: `auth/logout`,
+  //   method: "POST",
+  //   trigger: false,
+  //   argFunc: (res) => {
+  //     toast.success("شما از حساب خود خارج شدید");
+  //     Cookies.remove("token");
 
-      navigate("/", { replace: true });
-      window.location.reload()
-    },
-  });
+  //     navigate("/", { replace: true });
+  //     window.location.reload()
+  //   },
+  // });
   return (
     <div
       className="sidebarMenu"

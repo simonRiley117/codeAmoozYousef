@@ -17,19 +17,27 @@ const override = css`
   margin: 0 auto;
   border-color: #fff;
 `;
-
+/**
+ * return register to site
+ * @param   {integer} username  
+ * @param   {integer} email
+ * @param   {integer} password1  
+ * @param   {integer} password2  
+  
+ *
+ * @return  send email-confirm to user email
+ * 
+ * **/
 const SignUpForm = ({handleActive}) => {
     const {
         handleSubmit,
         control,
         formState: {errors},
-        reset,
     } = useForm();
 
     const [postData, setPostData] = useState();
     const [checkBoxState, setCheckBoxState] = useState(false);
     const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState("");
 
     const registerRequest = useFetch({
         url: `auth/register`,
@@ -37,20 +45,16 @@ const SignUpForm = ({handleActive}) => {
         data: postData,
         trigger: false,
         noHeader: true,
-
         argFunc: (res) => {
             setLoading(false);
             if (res.detail === "Verification e-mail sent.") {
                 handleActive();
+                //go to login page
                 toast.success('ایمیل تایید کاربری ارسال شد', {});
-                // reset();
-                //   toast.error(showMessage, {
-                //     position: toast.POSITION.TOP_CENTER,
-                //   });
+          
             }
         },
         argErrFunc: (mess) => {
-            // let showMessage = "";
             if ("password1" in mess)
                 if (mess.password1.includes(
                     "This password is too short. It must contain at least 8 characters."
@@ -79,11 +83,8 @@ const SignUpForm = ({handleActive}) => {
                 } else {
                     toast.error(mess.email)
                 }
-            //   toast.error(showMessage, {
-            //     position: toast.POSITION.TOP_CENTER,
-            //   });
+       
             setLoading(false);
-            // setError(showMessage);
         },
         errMessage: '',
     });
@@ -104,6 +105,7 @@ const SignUpForm = ({handleActive}) => {
     };
 
     function onChange(e) {
+    //accept ruls func
         setCheckBoxState(e.target.checked);
     }
 

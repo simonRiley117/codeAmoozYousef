@@ -7,30 +7,39 @@ import Button from "@Components/Shared/Buttons/Button";
 const SkillsPanel = (
     {
         readable,
-        getTeacherSkillInfo,
-        teacherSkill,
-        loadingTeacherSkill,
+        getSkillInfo,
+        skill,
+        loadingSkill,
     }) => {
-    const [AddForm, setAddForm] = useState(true);
+    const [addItem, setAddItem] = useState(false);
+    const showForm = () => {
+        setAddItem((before) => !before);
+    };
     return (
         <div className="WorkExperiencePanel ">
             <SkillsDone
-                getTeacherSkillInfo={getTeacherSkillInfo}
-                teacherSkill={teacherSkill}
-                loadingTeacherSkill={loadingTeacherSkill}/>
-
-            {AddForm && !readable && <SkillsForm/>}
+                getSkillInfo={getSkillInfo}
+                readable={readable}
+                skill={skill}
+                type="skill"
+                showForm={showForm}
+                loadingSkill={loadingSkill}/>
 
             {!readable && (
-                <Button
-                    onClick={() => setAddForm(true)}
-                    type="text"
-                    size="small"
-                    success
-                >
-                    <PlusIcon/>
-                    <p>اضافه کردن مهارت </p>
-                </Button>
+                addItem && (
+                    <SkillsForm
+                        showForm={showForm}
+                        getSkill={getSkillInfo}/>
+                )
+            )}
+
+            {!readable && (
+                !addItem && (
+                    <Button type='text' size='small' success onClick={showForm}>
+                        <PlusIcon/>
+                        <p>اضافه کردن مهارت </p>
+                    </Button>
+                )
             )}
         </div>
     );

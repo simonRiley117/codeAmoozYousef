@@ -3,11 +3,26 @@ import quiz from "@Assets/Pic/quiz.png";
 import Button from "@Components/Shared/Buttons/Button";
 import {Link} from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
+import { ClipLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
 
 function Quiz({quizUuid, contentUuid, courseUuid}) {
     const [quizContent, setQuizContent] = useState(null);
     const [quizLoading, setQuizLoading] = useState(true);
-
+    let navigate = useNavigate();
+     
+    const handleClick = ()=>{
+        navigate("/dashboard/course/quiz",{state:{
+            content_id: contentUuid,
+            quiz_id: quizUuid,
+            courseUuid: courseUuid,
+            title: quizContent.name,
+            text: quizContent.text,
+            test_cases: quizContent.test_cases,
+            language: quizContent.language,
+            file: quizContent.file,
+        }})
+    }
     const setData = (data) => {
         setQuizContent(data);
         setQuizLoading(false);
@@ -36,7 +51,7 @@ function Quiz({quizUuid, contentUuid, courseUuid}) {
                     <img src={quiz} alt={quiz}/>{" "}
                 </div>
             ) : (
-                !quizLoading ? (
+                !getQuizContent.loading ? (
                     <div className="Quiz__box">
                         <p className="Quiz__title">آزمون درس</p>
                         <p className="Quiz__txt">
@@ -49,25 +64,14 @@ function Quiz({quizUuid, contentUuid, courseUuid}) {
                             سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته
                             اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
                         </p>
-                        <Button ico={false} type="primary" classes="CoWorkers__btn Quiz__btn">
-                            <Link
-                                to={"/dashboard/course/quiz"}
-                                state={{
-                                    content_id: contentUuid,
-                                    quiz_id: quizUuid,
-                                    courseUuid: courseUuid,
-                                    title: quizContent.name,
-                                    text: quizContent.text,
-                                    test_cases: quizContent.test_cases,
-                                    language: quizContent.language,
-                                    file: quizContent.file,
-                                }}
-                            >
+                        <Button onClick={handleClick} ico={false} type="primary" classes="CoWorkers__btn Quiz__btn">
+                            
                                 شروع
-                            </Link>
                         </Button>
                     </div>
-                ) : null
+                ) : <div className='center m-4'>
+                <ClipLoader color="#EF8019" loading={true} size={20} />
+              </div>
             )}
         </div>
     );

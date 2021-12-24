@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Accordion, Panel } from "@Components/Shared/Accordion/Accordion";
 import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
 import Lock from "@Assets/Icons/lock.svg";
-import IconBtn from "@Components/Shared/Buttons/IconBtn";
-import classNames from "classnames";
 import ContentItem from "./ContentItem";
-import { useLocation } from "react-router";
 import useFetch from "../../../Context/useFetch";
-import { CollapsePanelProps } from "antd";
 import { ReactComponent as Arrow } from "@Assets/Icons/arrow-down.svg";
+import { ClipLoader } from "react-spinners";
 
 const SeasonsItem = ({
   openPanels,
@@ -21,9 +18,10 @@ const SeasonsItem = ({
   setquizUuid,
   changeContentID,
   setIsContentPass,
-  ...props
+  ...rest
 }) => {
   const [contentList, setcontentList] = useState([]);
+  console.log("contentList", contentList);
   const getCourseSeasons = useFetch({
     url: `SeasonService/${season.uuid}/sidebar`,
     method: "GET",
@@ -35,32 +33,15 @@ const SeasonsItem = ({
     if (openPanels.includes(season.uuid) || activeSeasons === season.uuid) {
       getCourseSeasons.reFetch();
     }
-  }, [activeSeasons, openPanels]);
+  }, [, activeContent, openPanels]);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
     }
   };
   return (
-    <Panel
-      collapsible={season.lockedOn ? "disabled" : "header"}
-      extra={
-        <SeasonHeader
-          title={season.title}
-          done={season.is_season_passed}
-          time={season.total_time_for_each_season}
-          lock={season.lockedOn}
-          id={season.uuid}
-          index={index}
-          FetchContent={FetchContent}
-          openPanels={openPanels}
-        />
-      }
-      showArrow={false}
-      key={season.uuid}
-      {...props}
-    >
-      {contentList.length !== 0 &&
+    <>
+      {!getCourseSeasons.loading ? (
         contentList.map((content, index) => (
           <ContentItem
             changeContentID={changeContentID}
@@ -72,69 +53,14 @@ const SeasonsItem = ({
             getContentName={getContentName}
             setIsContentPass={setIsContentPass}
           />
-        ))}
-    </Panel>
+        ))
+      ) : (
+        <div className='center m-4'>
+          <ClipLoader color="#EF8019" loading={true} size={20} />
+        </div>
+      )}
+    </>
   );
 };
-const SeasonHeader = ({
-  openPanels,
-  title,
-  done,
-  time,
-  lock,
-  id,
-  index,
-  FetchContent,
-}) => {
-  return (
-    <div
-      onClick={!lock ? FetchContent : null}
-      className="Sarfasl__AccordionCenter"
-    >
-      <div
-        className="Sarfasl__AccordionCenter"
-        style={{ justifyContent: "flex-start" }}
-      >
-        {done ? (
-          <div className="Sarfasl__Accordiondone">
-            <i className="fas fa-check"></i>
-          </div>
-        ) : (
-          <div className="Sarfasl__Accordionnumber">
-            <span>{index + 1}</span>{" "}
-          </div>
-        )}
-        &nbsp;
-        <div>{title}</div>
-      </div>
-      <div className="Sarfasl__AccordionCenter">
-        <p>{time}</p>
-        &nbsp;
-        <img src={Clock} alt={Clock} className="time__icon" />
-        &nbsp;&nbsp;
-        {/*<img src={Lock} alt={Lock}/>*/}
-        <IconBtn
-          classes={classNames("Sarfasl__btn lock__icon", {
-            lock: !lock,
-          })}
-          icon={
-            <>
-              <img src={Lock} alt={Lock} />
-              <i />
-            </>
-          }
-        />
-        {!lock && (
-          <div
-            className={classNames("accordion__arrow custom__accordion--arrow", {
-              active: openPanels.includes(id),
-            })}
-          >
-            <Arrow />
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+
 export default SeasonsItem;

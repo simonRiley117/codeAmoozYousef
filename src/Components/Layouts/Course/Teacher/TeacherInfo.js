@@ -14,6 +14,7 @@ import useFetch from "@App/Context/useFetch";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
 import {ClipLoader} from "react-spinners";
 import {stringify} from "postcss";
+import UseWindowSize from "@App/Sizes/UseWindowSize";
 
 const override = {
     display: "block",
@@ -21,23 +22,24 @@ const override = {
     borderColor: "green",
 };
 
-function TeacherInfo({courseId, resume}) {
+function TeacherInfo({courseId, resume, liftingUpTags}) {
     console.log('courseId: ', courseId)
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
     const [socialId, setSocialId] = useState(-1);
     const [teacherProfileInfo, setTeacherProfileInfo] = useState(null);
     // const [loadingTeacherProfileInfo, setLoadingTeacherProfileInfo] = useState(true);
 
-    // const setData=(data)=>{
-    //   setTeacherProfileInfo(data)
-    //   setLoadingTeacherProfileInfo(false)
-    // }
-
+    const setData = (data) => {
+        setTeacherProfileInfo(data)
+        windowSize === "sm" && liftingUpTags(data.tags)
+        // setLoadingTeacherProfileInfo(false)
+    }
+    const windowSize = UseWindowSize();
     const getTeacherProfileInfo = useFetch({
         url: `CourseService/${courseId}/courseTeacherProfileBrief`,
         method: "GET",
         noHeader: true,
-        setter: setTeacherProfileInfo,
+        setter: setData,
     });
     console.log("teacherProfileInfo: ", teacherProfileInfo);
 
@@ -134,13 +136,16 @@ function TeacherInfo({courseId, resume}) {
                                 </div>
                             ) : null}
                         </div>
-                        {!resume ? (
-                            <div className="TeacherInfo__tags">
-                                {teacherProfileInfo.tags.map((tag, id) => (
-                                    <Tag key={id}>{tag}</Tag>
-                                ))}
-                            </div>
-                        ) : null}
+                        {windowSize !== "sm" && (
+                            !resume ? (
+                                <div className="TeacherInfo__tags">
+                                    {teacherProfileInfo.tags.map((tag, id) => (
+                                        <Tag key={id}>{tag}</Tag>
+                                    ))}
+                                </div>
+                            ) : null
+                        )}
+
                     </div>
                 </div>
             ) : (

@@ -7,11 +7,21 @@ import { ReactComponent as ClockIcon } from "@Assets/Icons/clock.svg";
 import { ReactComponent as CoinIcon } from "@Assets/Icons/Coin.svg";
 import Price from "@Components/Shared/Price/Price";
 import Rate from "@Components/Shared/Rate/Rate";
+import CourseCardBg from "../Course/Cards/CourseCardBg";
 
-const Favoritesitem = () => {
+const Favoritesitem = ({ favData }) => {
   return (
     <div className="favorites-items w-full">
-      <div className="flex flex-col justify-center items-center pt-20">
+      {favData.map((faves) => (
+        <CourseCardBg card={faves} key={faves.uuid} />
+      ))}
+    </div>
+  );
+};
+
+export default Favoritesitem;
+{
+  /* <div className="flex flex-col justify-center items-center pt-20">
         <div className="logo">
           <img src={CourseLogo} />
         </div>
@@ -41,9 +51,5 @@ const Favoritesitem = () => {
           <a className="link link__default ml-4">افزودن به سبد خرید</a>
           <Rate />
         </div>
-      </div>
-    </div>
-  );
-};
-
-export default Favoritesitem;
+      </div> */
+}

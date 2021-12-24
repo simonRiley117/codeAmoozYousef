@@ -24,7 +24,7 @@ const UserDataProvider = (props) => {
         setUserData(res.data);
       }
       if (err) {
-        // authDispatch({ type: "LOGOUT" });
+         authDispatch({ type: "LOGOUT" });
       }
     },
   });

@@ -22,7 +22,7 @@ const CoursesBox = ({orderCard, getPayment, getorderSummary}) => {
             ))}
             {(orderCard?.results?.length === 0 || orderCard?.results?.length === undefined) && (
                 <div className="ShoppingList__NoCard">
-                    <p>هنوز دوره ای در سبد خرید شما وجود ندارد;(</p>
+                    <p>هنوز دوره ای در سبد خرید شما وجود ندارد ;(</p>
                     <img src={NoShoppingCard} alt="shoppingcard"/>
 
                     <Button onClick={() => navigate("/courses")}>

@@ -14,13 +14,18 @@ const Offers = () => {
 				<div className='home__offers--content'>
 					<OffersItem image={StudentImage}>
 						<h2>دانش آموخته بهترین دوره های برنامه نویس باشد</h2>
-						<Link type='primary' to='/' large>
+						<Link type='primary' to='/courses' large>
 							ثبت نام دوره ها
 						</Link>
 					</OffersItem>
 					<OffersItem image={TeacherImage}>
 						<h2>در بین بهترین اساتید برنامه نویسی باشد</h2>
-						<Link type='primary' to='/' large>
+						<Link
+							type='primary'
+							to='/coWorkers/master'
+							state={{ activeTab: 'signUp' }}
+							large
+						>
 							ثبت نام به عنوان استاد
 						</Link>
 					</OffersItem>

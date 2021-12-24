@@ -8,7 +8,7 @@ import useFetch from "../../Context/useFetch";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { API_URL } from "@App/constants";
-
+import congrats from "@Assets/Icons/congrats.svg"
 function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
@@ -18,6 +18,8 @@ function CourseContent() {
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
+  const [LastDance, setLastDance] = useState(false);
+  console.log("CourseContent ~ sidebarList", sidebarList)
   const { courseId } = useParams();
   const location = useLocation();
   const [id, setId] = useState();
@@ -80,15 +82,21 @@ function CourseContent() {
     if (quizUuid === null) {
       postPassContent.reFetch();
     }
+    setActiveSeason(CurrentCourseStatus?.current_season_id);
+
   }, []);
   useEffect(() => {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
     }
-    setActiveSeason(CurrentCourseStatus?.current_season_id);
+    window.scrollTo(0, 0)
   }, [Currentcontentid]);
+ 
 
   const handleNextContent = () => {
+    if( !CurrentcontenStatus.has_next_content ){
+      setLastDance(true)
+    }
     if (!isContentPass) {
       postPassContent.reFetch();
     } else {
@@ -128,20 +136,26 @@ function CourseContent() {
               </div>
               <div>
                 {CurrentCourseStatus ? (
-                  <CourseStatus details={CurrentCourseStatus} />
+                  <CourseStatus
+                    details={CurrentCourseStatus}
+                  />
                 ) : (
-                  <div>
+                  <div className='center m-4'>
                     <ClipLoader color="#EF8019" loading={true} size={40} />
                   </div>
                 )}
 
-                <ContentTab
+                {!LastDance ? <ContentTab
                   contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
                   courseUuid={id}
                   setActiveSeason={setActiveSeason}
                   hasSeasonQuize={CurrentcontenStatus?.next_content_id}
-                />
+                /> : <div className='LastCourse__congrats '>
+                   <p>تبریک میگم دوره تموم شد</p>
+                  <img src={congrats} alt='' />
+
+                  </div>}
                 {CurrentcontenStatus && (
                   <div className="flex items-center justify-between LastCourse__btnBox">
                     <Button
@@ -151,7 +165,7 @@ function CourseContent() {
                         onClick: handleNextContent,
                       })}
                       disabled={
-                        !CurrentcontenStatus.has_next_content ||
+                       
                         (!isContentPass && quizUuid !== null) ||
                         CurrentcontenStatus.next_content_id ===
                           "You have not passed quiz season"

@@ -19,7 +19,7 @@ const CourseStatus = ({ details, Currentcontentname, loading }) => {
             {latest_content_user_passed_name}
           </p>
         ) : (
-          <p className="text-primary">دوره ای پاس نشده</p>
+          <p className="text-primary"> هنوز مجثی گذرانده نشده</p>
         )}
         <p>تعداد مبحث های گذرانده شده :</p>
         <p className="success text-center">{content_passed_numbers}</p>
