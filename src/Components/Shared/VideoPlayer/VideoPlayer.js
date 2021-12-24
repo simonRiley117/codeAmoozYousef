@@ -18,16 +18,22 @@ function VideoPlayer(props) {
         />
         Your browser does not support the video tag.
       </video> */}
-      <video
-        ref={videoRef}
-        src={props.src}
-        poster={process.env.PUBLIC_URL + "/poster.png"}
-        className="VideoPlayer__video"
-        controls={play}
-        autoPlay={play}
-        controlsList="nodownload"
-      />
-      {!play && <img src={icon} alt={icon} onClick={handlePlay} />}
+      {play && (
+        <video
+          ref={videoRef}
+          src={props.src}
+          poster={process.env.PUBLIC_URL + "/poster.png"}
+          className="VideoPlayer__video"
+          controls={play}
+          autoPlay={"autoplay"}
+          controlsList="nodownload"
+        />
+      )}
+      {!play && (
+        <div className="VideoPlayer__imgBox">
+          <img src={icon} alt={icon} onClick={handlePlay} />
+        </div>
+      )}
     </div>
   );
 }

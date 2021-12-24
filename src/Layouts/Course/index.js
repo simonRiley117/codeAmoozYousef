@@ -32,7 +32,7 @@ function Index() {
   const addToCart = useFetch({
     url: `CartService/discount`,
     method: "GET",
-    trigger: true,
+    noHeader: true,
     argFunc: (res) => {
       setData(res.results);
     },
@@ -41,11 +41,9 @@ function Index() {
     <div className="container">
       <BreadCrump name={name} />
       <div className="Course">
-        { windowSize !== "sm" ? (
-         data.length !== 0 && <HeaderDiscount data={data} />
-        ) : (
-          data.length !== 0 && <SideBarDiscount data={data} />
-        )}
+        {windowSize !== "sm"
+          ? data.length !== 0 && <HeaderDiscount data={data} />
+          : data.length !== 0 && <SideBarDiscount data={data} />}
 
         <div className="grid Course__container relative">
           {windowSize !== "sm" && (
