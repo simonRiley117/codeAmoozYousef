@@ -87,8 +87,12 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
   };
 
   const addToCard = (id) => {
-    setaddtocardData({ course_uuid: id, degree_uuid: null });
-    Addtocard.reFetch();
+    if (token) {
+      setaddtocardData({ course_uuid: id, degree_uuid: null });
+      Addtocard.reFetch();
+    } else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   const addToWishList = () => {
     if (token) {
