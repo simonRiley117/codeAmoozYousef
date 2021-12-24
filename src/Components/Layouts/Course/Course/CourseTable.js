@@ -26,7 +26,7 @@ const override = {
 };
 const WITHOUT_DEGREE = "بدون مدرک";
 
-function CourseTable({ courseId, ids,url1 }) {
+function CourseTable({ courseId, ids, url1 }) {
   const [orderCourse, setOrderCourse] = useState({});
   const [loadingorOerCourse, setLoadingOrderCourse] = useState(true);
   const [degree, setDegree] = useState(null);
@@ -119,11 +119,15 @@ function CourseTable({ courseId, ids,url1 }) {
   };
 
   const addToCard = () => {
-    setaddtocardData({
-      course_uuid: courseId,
-      degree_uuid: degree.degree_uuid,
-    });
-    addToCart.reFetch();
+    if (token) {
+      setaddtocardData({
+        course_uuid: courseId,
+        degree_uuid: degree.degree_uuid,
+      });
+      addToCart.reFetch();
+    } else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   const handleLinkCopy = () => {
     handleCopy(window.location.href);
