@@ -51,9 +51,7 @@ const ProfileForm = () => {
     if (data.cover.length !== 0) {
       formData.append("cover", data.cover[0], data.cover[0].name);
     }
-    if (data.resume.length !== 0) {
-      formData.append("resume", data.resume[0], data.resume[0].name);
-    }
+
     formData.append("description", data.description);
     formData.append("first_name", data.first_name);
     formData.append(
