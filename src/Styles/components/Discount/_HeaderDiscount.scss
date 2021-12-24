@@ -153,6 +153,9 @@
     &__midPart {
         & > *:last-child {
             margin-right: 5rem;
+            @include respond(tablet) {
+                margin-right: 0rem;
+            }
         }
     }
 }

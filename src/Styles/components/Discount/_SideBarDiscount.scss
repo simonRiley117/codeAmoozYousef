@@ -40,6 +40,14 @@
             bottom: 0rem;
             left: 1rem;
         }
+        @include respond(tablet) {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+        @include respond(smallest-phone) {
+            width: 3.5rem;
+            height: 3.5rem;
+        }
     }
     &__redBorder {
         border: 2px solid $color-red;
@@ -59,7 +67,7 @@
     }
     &__circleBox {
         margin-right: auto;
-        width: 40%;
+        width: 20%;
     }
     &__discount {
         margin: auto 0;
@@ -77,6 +85,9 @@
     }
     &__discountBox {
         margin: 1.6rem 0 2.693rem 0;
+        @include respond(tablet) {
+            margin: 1rem 0 2rem 0;
+        }
     }
     &__discountcode {
         background-color: $color-white;
