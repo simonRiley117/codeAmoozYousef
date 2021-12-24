@@ -11,6 +11,7 @@ import {Rate, Statistic} from "antd";
 import {Link} from "react-router-dom";
 import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import {useUserData} from "@App/Context/userContext";
+import { useAuth } from "@App/Context/authContext";
 
 const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
     const {
@@ -36,6 +37,8 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
     const [addtocardData, setaddtocardData] = useState();
     const [isfav, setisFav] = useState(is_favorite);
     const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart);
+    const { token } = useAuth();
+
     const Addtocard = useFetch({
         //addtocard=>data:course_uuid: "", degree_uuid: null
         url: `CartService/addToCart`,
@@ -101,8 +104,11 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
     };
 
     const addToWishList = () => {
-
-        postToFav.reFetch();
+        if (token) {
+            postToFav.reFetch();
+        } else {
+            toast.error("ابتدا وارد سایت شوید");
+          }
     };
     const removeromWishList = () => {
         DeleteFav.reFetch()

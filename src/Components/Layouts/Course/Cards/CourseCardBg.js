@@ -11,6 +11,7 @@ import { ReactComponent as Star } from "@Assets/Icons/star.svg";
 import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
 import { ReactComponent as CardIcon } from "@Assets/Icons/shoppingCard.svg";
 import useFetch from "@App/Context/useFetch";
+import { useAuth } from "@App/Context/authContext";
 
 const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
   const {
@@ -36,6 +37,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
   const cost = get_price_without_degree_with_some_extra_info;
   const [isfav, setisFav] = useState(is_favorite);
   const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart);
+  const { token } = useAuth();
 
   const Addtocard = useFetch({
     //addtocard=>data:course_uuid: "", degree_uuid: null
@@ -89,7 +91,11 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
     Addtocard.reFetch();
   };
   const addToWishList = () => {
-    postToFav.reFetch();
+    if (token) {
+      postToFav.reFetch();
+    } else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   const removeromWishList = () => {};
   console.log("UUIDBG: ", uuid);
