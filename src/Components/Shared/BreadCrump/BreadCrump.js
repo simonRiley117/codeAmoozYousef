@@ -12,6 +12,8 @@ const BreadCrump = ({title, classes,name}) => {
     // { path: '/news/news-info', breadcrumb: title },
     const routes = [
         {path: '/', breadcrumb: 'صفحه اصلی'},
+        {path: '/news', breadcrumb: 'اخبار'},
+        {path: '/news/news-info', breadcrumb: name},
         {path: '/courses', breadcrumb: ' لیست دوره ها'},
         {path: '/coWorkers', breadcrumb: 'همکاران واساتید'},
         {path: '/coWorkers/master', breadcrumb: 'اساتید'},

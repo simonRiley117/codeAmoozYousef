@@ -10,9 +10,16 @@
 	&-grid {
 		// @include display-grid(3.5rem 3rem, 32rem);
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		gap: 3.5rem 3rem;
-		@include respond(phone) {
+		@include respond(sm-laptop) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@include respond(tablet) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include respond(big-phone) {
 			grid-template-columns: 1fr;
 		}
 	}
@@ -21,55 +28,202 @@
 		margin-left: 0;
 		margin-right: auto;
 		width: max-content;
+		height: 36px;
+		font-size: 14px;
+	}
+	&-info {
+		@include display-flex(space-between);
+	}
+
+	&__item {
+		cursor: pointer;
+		border-radius: 2rem;
+		overflow: hidden;
+		background-color: #fff;
+		box-shadow: $box-shadow;
+		padding: 1rem;
+		transition: all 300ms;
+
+		&:hover {
+			transform: translateY(-6px);
+
+			& h2 {
+				color: $color-primary;
+			}
+		}
+		&--pic {
+			& img {
+				border-radius: 1rem;
+				@extend .image;
+				max-height: 250px;
+				object-fit: cover;
+			}
+		}
+
+		&--content {
+			padding: 1.5rem 1rem;
+			display: flex;
+			flex-direction: column;
+
+			& > h2 {
+				@include set-font(1.8rem, 600, $color-text);
+				transition: all 300ms;
+				margin-bottom: 6px;
+			}
+			& > p {
+				display: -webkit-box;
+				line-clamp: 3;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				@include set-font(14px, 500, $color-text-light);
+				margin-bottom: 1.5rem;
+			}
+		}
+
+		&--info {
+			@include display-flex(space-between);
+			column-gap: 5px;
+			color: $color-text-light;
+			margin-top: auto;
+		}
+
+		&--date {
+			@include display-flex;
+			column-gap: 5px;
+			color: $color-text-light;
+		}
+
+		&--loading {
+			@include d-flex-column('', stretch);
+
+			@include respond(sm-laptop) {
+				&:nth-child(4) {
+					display: none;
+				}
+			}
+			@include respond(tablet) {
+				&:nth-child(3) {
+					display: none;
+				}
+			}
+			@include respond(big-phone) {
+				&:nth-child(2) {
+					display: none;
+				}
+			}
+
+			& .ant-skeleton-header {
+				padding-left: 0;
+			}
+
+			& .ant-skeleton-avatar {
+				width: 100%;
+				height: 250px;
+				border-radius: 1rem !important;
+			}
+			& .ant-skeleton-content {
+				padding: 1rem;
+			}
+		}
+	}
+
+	&__details {
+		padding: 1.5rem;
+		// border: 1px solid $color-gray;
+		box-shadow: 0 2px 16px 2px rgba(0, 0, 0, 0.15);
+
+		border-radius: 2rem;
+		&--pic {
+			margin-bottom: 1.5rem;
+			& img {
+				@extend .image;
+				border-radius: 1.5rem;
+				max-height: 45rem;
+				object-fit: cover;
+			}
+		}
+
+		&--info {
+			@include display-flex;
+			column-gap: 2rem;
+			padding: 5px 1.5rem;
+			border-radius: 1rem;
+			background-color: $color-gray;
+			width: fit-content;
+			margin-bottom: 2rem;
+		}
+
+		&--content {
+			padding: 0 1rem;
+			& > p {
+				@include set-font(16px, 500, $color-text);
+				line-height: 1.8;
+				margin-bottom: 5px;
+			}
+
+			& h1,
+			& h2,
+			& h3,
+			& h4,
+			& h5,
+			& h6 {
+				color: $color-text;
+				font-weight: 700;
+				margin: 1.5rem 0;
+			}
+
+			& h1 {
+				font-size: 2.8rem;
+			}
+			& h2 {
+				font-size: 2.6rem;
+			}
+			& h3 {
+				font-size: 2.4rem;
+			}
+			& h4 {
+				font-size: 2.2rem;
+			}
+			& h5 {
+				font-size: 2rem;
+			}
+			& h6 {
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	&__related {
+		padding: 1.5rem;
+		border-radius: 2rem;
+		background-color: #fff;
+		box-shadow: $box-shadow;
+		transition: all 300ms;
+		display: block;
+
+		&:hover {
+			& h4 {
+				color: $color-primary;
+			}
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 1.5rem;
+		}
+		& img {
+			border-radius: 1rem;
+		}
+
+		& h4 {
+			margin: 1rem 1rem 0;
+			font-size: 16px;
+			transition: all 300ms;
+
+		}
 	}
 }
 //card
-.card {
-	@include d-flex-column('', normal);
-	background-color: white;
-	border-radius: 15px;
-	box-shadow: $box-shadow;
-	@include respond(phone) {
-		width: 100%;
-		max-width: calc(100vw - 4rem);
-	}
-	&-content {
-		padding: 2.5rem 4.5rem;
-		@include respond(phone) {
-			padding: 2rem;
-		}
-
-		& p {
-			font-size: 1.6rem;
-			color: $color-text-light;
-			line-height: 1.8;
-			margin-bottom: 1.5rem;
-		}
-		& h4 {
-			font-size: 1.8rem;
-			font-weight: 700;
-			margin-bottom: 1.5rem;
-		}
-	}
-	&-heading {
-		color: $color-primary;
-	}
-	&-paragraph {
-		font-weight: normal;
-		text-overflow: ellipsis;
-
-		/* Needed to make it work */
-		overflow: hidden;
-		white-space: nowrap;
-	}
-	&-img {
-		width: 100%;
-	}
-
-	&-title {
-		@include set-font(1.6rem, 600, $color-primary);
-	}
-}
 
 //single title
 .Title {
@@ -114,13 +268,29 @@
 		}
 	}
 	&-heads {
-		padding: 1rem;
-		margin-bottom: 0.3rem;
-		color: $color-disable;
-		border-bottom: 1px solid rgba($color-gray-dark, 0.5);
+		padding: 8px;
+		margin-bottom: 1rem;
+		border-radius: 1rem;
+		color: $color-text;
 		font-size: 1.6rem;
+		background-color: #fff;
+		box-shadow: 0 2px 12px 0px rgba(0, 0, 0, 0.15);
+		&:hover {
+			& h4 {
+				color: $color-primary;
+			}
+		}
 		@include respond(phone) {
 			text-align: center;
+		}
+		& img {
+			@extend .image;
+			max-width: 5rem;
+			border-radius: 5px;
+		}
+		& h4 {
+			font-size: 16px;
+			transition: all 300ms;
 		}
 	}
 	&-title {
@@ -181,6 +351,6 @@
 .margin-left {
 	margin-left: 3rem;
 }
-.latest-news-link{
+.latest-news-link {
 	font-size: 14px;
 }
