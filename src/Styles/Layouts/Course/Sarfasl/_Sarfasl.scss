@@ -47,10 +47,13 @@
 		color: $color-primary;
 		border-radius: 50%;
 		border: 1px solid $color-primary;
-		width: 2rem;
-		height: 2rem;
-		font-size: 1.4rem;
+		width: 2.1rem;
+		height: 2.1rem;
+		font-size: 1.5rem;
 		@include display-flex(center);
+		p{
+			line-height: 0;
+		}
 	}
 
 	&__Accordiondone {

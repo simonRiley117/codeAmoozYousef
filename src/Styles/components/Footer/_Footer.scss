@@ -1,9 +1,38 @@
 .Footer {
     overflow: hidden;
+    background-color: $color-blue;
+    border-top-right-radius: 3.5rem;
     &__box {
         overflow: hidden;
         height: 39rem;
         max-height: 39rem;
+        @include respond(sm-laptop) {
+            height: 45rem;
+            max-height: 45rem;
+        }
+        @include respond(tablet) {
+            height: 70.8rem;
+            max-height: 70.8rem;
+        }
+    }
+    &__detailBox {
+        @include respond(sm-laptop) {
+            display: flex;
+        }
+        @include respond(tablet) {
+            justify-content: space-between;
+            width: 90%;
+            margin: 0rem auto 0 auto;
+        }
+    }
+    &__detailContainer {
+        @include respond(sm-laptop) {
+            margin-top: 2rem;
+        }
+        @include respond(tablet) {
+            flex-direction: column;
+            width: 100%;
+        }
     }
     &__bluBack {
         height: 47rem;
@@ -11,10 +40,46 @@
     &__content {
         right: 8.688rem;
         top: 6.205rem;
+        @include respond(sm-laptop) {
+            width: 80%;
+        }
+        // @include respond(tablet) {
+        //     top: 2.205rem;
+        //     width: 100%;
+        // }
+        @include respond(sm-laptop) {
+            top: 1.205rem;
+            margin: 0 auto;
+            right: 50%;
+            transform: translateX(50%);
+            flex-direction: column;
+            justify-content: space-between;
+            height: 90%;
+            width: 80%;
+        }
+        @include respond(smallest-phone) {
+            width: 90%;
+        }
     }
     &__AboutUsBox {
-        width: 34.5rem;
+        width: 48.5rem;
         height: 28.3rem;
+        @include respond(laptop) {
+            width: 55.5rem;
+            height: 28.3rem;
+        }
+        @include respond(sm-laptop) {
+            width: 55.5rem;
+            height: 28.3rem;
+        }
+        @include respond(tablet) {
+            width: 55.5rem;
+            height: 30.3rem;
+        }
+        @include respond(smallest-phone) {
+            width: 34.5rem;
+            height: 28.3rem;
+        }
 
         background: $color-white-light;
         border-radius: 14.15rem;
@@ -28,10 +93,18 @@
         }
     }
     &__logo {
-        left: 3rem;
+        left: 9rem;
+
         img {
             width: 6rem;
             height: auto;
+        }
+        @include respond(smallest-phone) {
+            left: 12rem;
+            img {
+                width: 5rem;
+                height: auto;
+            }
         }
     }
     &__SambolsBox {
@@ -45,10 +118,16 @@
     }
     &__accessBox {
         margin: 0 7.922rem 0 7.292rem;
+        @include respond(tablet) {
+            margin: 0;
+        }
     }
     &__contenttxt {
         color: $color-white;
         margin-left: 7.922rem;
+        @include respond(tablet) {
+            margin-left: 0;
+        }
     }
     &__accessTitle {
         color: $color-white;
@@ -58,6 +137,7 @@
         & > * {
             margin-bottom: 1.5rem;
             position: relative;
+            margin-right: 1.5rem;
             &::before {
                 content: "";
                 position: absolute;
@@ -80,5 +160,30 @@
         background-color: $color-green;
         right: 50%;
         transform: translateX(50%);
+    }
+    $size: 10rem;
+
+    &__greenPart {
+        border-bottom-right-radius: 40rem;
+        border-top-right-radius: 40rem;
+        background-color: $color-green;
+        width: 20rem;
+        height: 100%;
+        left: 0;
+        top: 0;
+        margin-left: -5rem;
+        border: 8px solid $color-white;
+        @include respond(tablet) {
+            bottom: -1.5rem;
+            height: 35rem;
+            top: auto;
+            margin-left: -10rem;
+        }
+        @include respond(smallest-phone) {
+            bottom: -1.5rem;
+            height: 35rem;
+            top: auto;
+            margin-left: -13rem;
+        }
     }
 }

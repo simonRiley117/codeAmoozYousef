@@ -21,11 +21,12 @@ import { ReactComponent as SettingIcon } from "@Assets/Icons/setting.svg";
 import SidebarMenuItem from "./SidebarMenuItem";
 import { ReactComponent as ExiteIcon } from "@Assets/Icons/quite.svg";
 import { ReactComponent as Heart } from "@Assets/Icons/heart.svg";
-import { Divider } from "antd";
+import { Divider, Popover } from "antd";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import Button from "../Buttons/Button";
 import Modal from "@Components/Shared/Modal/Modal";
+import { DownOutlined } from "@ant-design/icons";
 
 const menuItem = [
   {
@@ -144,6 +145,38 @@ const DahsboardAppbar = () => {
     ));
   };
 
+  const profileMenu = (
+    <div className="profile-menu">
+      <div className="profile-menu-item">
+        <UserIcon />
+        <Link to="/dashboard">حساب کاربری</Link>
+      </div>
+      <Divider style={{ margin: "5px 0" }} />
+      <div className="profile-menu-item">
+        <Heart />
+        <Link to="/fav">علاقه مندی‌ها</Link>
+      </div>
+      <Divider style={{ margin: "5px 0" }} />
+      <div className="profile-menu-item">
+        <ExiteIcon />
+        <a href="#" onClick={handleModalShow}>
+          خروج
+        </a>
+      </div>
+      <Modal className="ExitModal" visible={modal} onCancel={handleModalShow}>
+        <div className="ExitModal__back">
+          <p className="mb-12">آیا از خروج مطمئن هستید؟</p>
+          <div className="d-flex-space">
+            <Button onClick={logout}>بله</Button>
+            <Button onClick={handleModalShow} type="primary">
+              خیر
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    </div>
+  );
+
   return (
     <div
       className={classNames("appbar__dahsboard", {
@@ -200,42 +233,20 @@ const DahsboardAppbar = () => {
                   onMouseEnter={() => setHoverMenu(true)}
                   onMouseLeave={() => setHoverMenu(false)}
                 >
-                  <img src={userData.cover} alt="profile" />
-                  {hoverMenu && (
-                    <div className="profile-menu">
-                      <div className="profile-menu-item">
-                        <UserIcon />
-                        <Link to="/dashboard">حساب کاربری</Link>
-                      </div>
-                      <Divider style={{ margin: "5px 0" }} />
-                      <div className="profile-menu-item">
-                        <Heart />
-                        <Link to="/fav">علاقه مندی‌ها</Link>
-                      </div>
-                      <Divider style={{ margin: "5px 0" }} />
-                      <div className="profile-menu-item">
-                        <ExiteIcon />
-                        <a href="#" onClick={handleModalShow}>
-                          خروج
-                        </a>
-                      </div>
-                      <Modal
-                        className="ExitModal"
-                        visible={modal}
-                        onCancel={handleModalShow}
-                      >
-                        <div className="ExitModal__back">
-                          <p className="mb-12">آیا از خروج مطمئن هستید؟</p>
-                          <div className="d-flex-space">
-                            <Button onClick={logout}>بله</Button>
-                            <Button onClick={handleModalShow} type="primary">
-                              خیر
-                            </Button>
-                          </div>
-                        </div>
-                      </Modal>
+                  <Popover
+                    trigger="click"
+                    placement="bottomLeft"
+                    content={profileMenu}
+                  >
+                    <div className="flex justify-center items-center">
+                      <img
+                        src={userData.cover}
+                        alt="profile"
+                        className="ml-4"
+                      />
+                      <DownOutlined />
                     </div>
-                  )}
+                  </Popover>
                 </div>
               </div>
             </div>

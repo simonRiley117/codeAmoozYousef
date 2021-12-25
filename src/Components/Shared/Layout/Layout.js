@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
 			<main id='target' reference='target' className='main'>
 				<Outlet />
 			</main>
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 };

@@ -1,0 +1,22 @@
+.ShareModal {
+    padding: 2rem;
+    & > * {
+        margin-right: 2rem;
+    }
+    .fab,
+    .fas {
+        font-size: 4rem;
+    }
+    .fa-whatsapp {
+        color: $color-success;
+    }
+    .fa-facebook-f {
+        color: $color-blue-1;
+    }
+    .fa-twitter {
+        color: $color-blue-3;
+    }
+    .fa-reddit-alien {
+        color: $color-primary-dark;
+    }
+}

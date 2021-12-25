@@ -37,7 +37,7 @@ const ContentItem = ({
               <i className="fas fa-check"></i>
             </div>
           ) : (
-            <div className={"Sarfasl__Accordionnumber"}>{index + 1} </div>
+            <div className={"Sarfasl__Accordionnumber"}><p>{index + 1}</p> </div>
           )}
           <p
             className={`${
