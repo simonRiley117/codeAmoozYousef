@@ -105,6 +105,7 @@ const NewsDetails = () => {
 								<Link
 									key={id}
 									to='/news/news-info'
+									replace
 									state={id}
 									className='d-flex-align Title-heads subtitle'
 								>
@@ -126,16 +127,15 @@ const NewsDetails = () => {
 						)}
 						{similarNews?.map(({ title, id, cover }) => {
 							return (
-								<div
+								<Link
 									key={id}
 									to='/news/news-info'
 									state={id}
 									className='news__related'
-									replace
 								>
 									<img className='image' src={cover} alt={title} />
 									<h4>{title}</h4>
-								</div>
+								</Link>
 							);
 						})}
 					</div>

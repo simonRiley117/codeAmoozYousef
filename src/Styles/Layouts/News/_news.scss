@@ -12,6 +12,7 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 3.5rem 3rem;
+		min-height: 50vh;
 		@include respond(sm-laptop) {
 			grid-template-columns: repeat(3, 1fr);
 		}
@@ -269,7 +270,7 @@
 	grid-template-columns: 4fr 1fr;
 	gap: 3rem;
 	width: 100%;
-
+	min-height: 60vh;
 	&-details {
 		background-color: rgba($color-gray-dark, 0.5);
 		border-radius: 0 100px 100px 0;
