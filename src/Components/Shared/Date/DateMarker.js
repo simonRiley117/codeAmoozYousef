@@ -1,31 +1,35 @@
 import React from 'react';
 import moment from 'jalali-moment';
 import 'moment/locale/fa';
-moment.locale('fa');
+// moment.locale('fa');
+import { DateObject } from 'react-multi-date-picker';
+import persian from 'react-date-object/calendars/persian';
+import persian_fa from 'react-date-object/locales/persian_fa';
 
+// .convert(persian, persian_fa)
+// 		.format('DD MMMM YYYY');
 const DateMarker = ({ date }) => {
-	const now = moment();
-	const currentDate = moment.unix(1240200059).utc();
+	const now = new DateObject();
+	const currentDate = new DateObject(date);
 
 	const renderMarker = () => {
 		if (
-			now.year() === currentDate.year() &&
-			now.month() === currentDate.month()
+			now.year === currentDate.year &&
+			now.month.number === currentDate.month.number
 		) {
-			const day = now.date() - currentDate.date();
+			const day = now.day - currentDate.day;
 			switch (day) {
 				case 0:
 					return 'امروز';
 				case 1:
 					return 'دیروز';
-				case day < 7 && day > 1:
-					return currentDate.format('dddd');
+
 				default:
-					return currentDate.format('L');
+					return currentDate.convert(persian, persian_fa).format('DD MMMM YYYY');
 			}
 		}
 
-		return currentDate.format('L');
+		return currentDate.convert(persian, persian_fa).format('DD MMMM YYYY');
 	};
 
 	return <span className=''>{renderMarker()}</span>;

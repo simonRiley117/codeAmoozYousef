@@ -9,7 +9,6 @@ import _ from 'lodash';
 
 const News = () => {
 	const [newsList, setNewsList] = useState([]);
-	const [loading, setLoading] = useState(true);
 	const [pagination, setpagination] = useState({
 		current: 1,
 		pageSize: newsList?.page_count,
@@ -17,7 +16,6 @@ const News = () => {
 
 	const handleSetData = (data) => {
 		setNewsList(data);
-		setLoading(false);
 	};
 
 	const getNewsList = useFetch({
@@ -33,11 +31,11 @@ const News = () => {
 			<BreadCrump />
 			<h2 className='news-heading '>اخبار</h2>
 			<div className='news-grid'>
+				{getNewsList.loading &&
+					_.range(4).map((key) => <LoadingNewsItem key={key} />)}
 				{newsList?.results?.map((card) => (
 					<NewsItem key={card.id} {...card} />
 				))}
-
-				{loading && _.range(4).map((key) => <LoadingNewsItem key={key} />)}
 			</div>
 			<div className='Title-paging'>
 				<Pagination

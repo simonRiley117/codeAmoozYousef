@@ -42,7 +42,7 @@ const LoadingNewsItem = () => {
 			avatar
 			active
 			paragraph={{ rows: 3 }}
-			className='news__item news__item--loading'
+			className='skeleton news__item news__item--loading'
 		/>
 	);
 };

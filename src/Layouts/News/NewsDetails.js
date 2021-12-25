@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import NewsItemContainer from '@Components/Layouts/News/NewsItemContainer';
 import { Link, useLocation } from 'react-router-dom';
 import useFetch from '@App/Context/useFetch';
 import Parser from 'html-react-parser';
+import { Skeleton } from 'antd';
 
 //images
-import datebook from '@Assets/Pic/Frame 87.png';
 import eye from '@Assets/Pic/Frame 88.png';
 import BreadCrump from '@Components/Shared/BreadCrump/BreadCrump';
 import DateMarker from '@Components/Shared/Date/DateMarker';
@@ -37,6 +36,14 @@ const NewsDetails = () => {
 	});
 	//information of the news
 
+	const getReadTime = (time = '0') => {
+		const [h, m] = time?.split(':');
+
+		const date = new Date();
+		date.setHours(Number(h), Number(m));
+		return date.getMinutes();
+	};
+
 	return (
 		<div className='container'>
 			<BreadCrump name={NewsData?.title} />
@@ -44,31 +51,55 @@ const NewsDetails = () => {
 			<div className='Title'>
 				<div className='Title-column text-color'>
 					<section className='news__details'>
-						<div className='news__details--pic'>
-							<img src={NewsData?.cover} alt={NewsData?.title} />
-						</div>
-						<div className='news__details--info'>
-							<div className='d-flex gap-x-2'>
-								<img src={eye} alt='eye' />
-								<span>4</span>
-							</div>
-							<div className='news__item--date'>
-								<DateMarker />-
-								<p>
-									خواندن در <span>8</span> دقیقه
-								</p>
-							</div>
-						</div>
-						{NewsData?.text && (
-							<div className='news__details--content'>
-								{Parser(NewsData?.text)}
-							</div>
+						{getNews.loading ? (
+							<Skeleton
+								avatar
+								active
+								paragraph={{ rows: 5 }}
+								className='skeleton news__loading--details'
+							/>
+						) : (
+							<>
+								<div className='news__details--pic'>
+									<img src={NewsData?.cover} alt={NewsData?.title} />
+								</div>
+								<div className='news__details--info'>
+									<div className='d-flex gap-x-2'>
+										<img src={eye} alt='eye' />
+										<span>{NewsData?.view_number}</span>
+									</div>
+									<div className='news__item--date'>
+										{NewsData?.published_time && (
+											<DateMarker date={NewsData?.published_time} />
+										)}
+										-
+										<p>
+											خواندن در{' '}
+											<span>{getReadTime(NewsData?.read_time)}</span>{' '}
+											دقیقه
+										</p>
+									</div>
+								</div>
+								{NewsData?.text && (
+									<div className='news__details--content'>
+										{Parser(NewsData?.text)}
+									</div>
+								)}
+							</>
 						)}
 					</section>
 				</div>
 				<div className='Title-column'>
 					<h3 className='Title-heading-sidebar'>جدیدترین اخبار:</h3>
 					<div className='Title-heads__container mr-bt-md'>
+						{getLatestNewsList.loading && (
+							<Skeleton
+								avatar
+								active
+								paragraph={false}
+								className='news__loading--lastNews'
+							/>
+						)}
 						{latestNews?.results?.map(({ title, id, cover }) => {
 							return (
 								<Link
@@ -85,6 +116,14 @@ const NewsDetails = () => {
 					</div>
 					<h3 className='Title-heading-sidebar '>موضوعات مرتبط:</h3>
 					<div className='Title-cards'>
+						{getSimilarNewsList.loading && (
+							<Skeleton
+								avatar
+								active
+								paragraph={false}
+								className='skeleton news__loading--related '
+							/>
+						)}
 						{similarNews?.map(({ title, id, cover }) => {
 							return (
 								<div
