@@ -12,16 +12,18 @@ import { useLocation } from 'react-router';
 const { TabPane } = Tabs;
 
 const Master = () => {
-	const {
-		state: { activeTab },
-	} = useLocation();
-	console.log('Master ~ state', !!activeTab);
+	const { state } = useLocation();
+	console.log('Master ~ state', state);
 	return (
 		<div className='Master container'>
 			<BreadCrump />
 			<Title>اساتید</Title>
 			<div className='Master__formBox'>
-				<Tabs className='TabBox' type='card' defaultActiveKey={activeTab}>
+				<Tabs
+					className='TabBox'
+					type='card'
+					defaultActiveKey={state?.activeTab}
+				>
 					<TabPane tab='همکاری با ما' key='workWithUs'>
 						<WorkWithUs />
 					</TabPane>
