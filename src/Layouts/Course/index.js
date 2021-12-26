@@ -59,6 +59,9 @@ function Index() {
   //     pathname: "/courses/content",
   //     state: { name: name, id: id },
   //   });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const ids = id;
   const url1 = name;
   return (
@@ -85,7 +88,7 @@ function Index() {
               <TabPane tab="سرفصل ها" key="2">
                 {getCourseSeasons?.response ? (
                   <Sarfasl courseId={id} courseSeasons={courseSeasons} />
-                ): (
+                ) : (
                   <Skeleton />
                 )}
               </TabPane>

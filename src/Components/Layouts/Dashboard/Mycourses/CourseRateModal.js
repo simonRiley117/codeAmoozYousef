@@ -25,7 +25,7 @@ const CourseRateModal = () => {
       </div>
       <Textarea label="نظر شما:" name="des" control={control} errors={errors} />
       <div className="CourseRateModal__form--btnbox">
-        <BtnLink>بعدا</BtnLink>
+        <BtnLink to="/">بعدا</BtnLink>
         <Button type="primary">ثبت</Button>
       </div>
     </form>

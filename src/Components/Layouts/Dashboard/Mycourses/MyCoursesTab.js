@@ -3,15 +3,15 @@ import { Tabs } from 'antd';
 import MyCourseCard from './MyCourseCard';
 const { TabPane } = Tabs;
 
-const MyCoursesTab = () => {
+const MyCoursesTab = ({handleModalShow}) => {
 	return (
 		<div className='MyCourses__Tab'>
 			<Tabs className='MyCoursesTab__TabBox TabBox' type='card'>
 				<TabPane tab='دوره های درحال گذراندن' key='1'>
-					<MyCourseCard finishedCourse={false}/>
+					<MyCourseCard handleModalShow={handleModalShow} finishedCourse={false}/>
 				</TabPane>
 				<TabPane tab='دوره های تکمیل شده ' key='2'>
-					<MyCourseCard finishedCourse={true} />
+					<MyCourseCard handleModalShow={handleModalShow} finishedCourse={true} />
 				</TabPane>
 			</Tabs>
 		</div>

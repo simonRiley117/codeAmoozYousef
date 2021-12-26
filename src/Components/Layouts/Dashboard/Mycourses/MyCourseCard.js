@@ -16,7 +16,7 @@ import Button from "@Components/Shared/Buttons/Button";
 import BtnLink from "@Components/Shared/Buttons/Link";
 import { useLocation } from "react-router";
 
-const MyCourseCard = ({ card, finishedCourse }) => {
+const MyCourseCard = ({ card, finishedCourse ,handleModalShow}) => {
   const [courseData, setCourseData] = useState(null);
   const [loadingCourseData, setLoadingCourseData] = useState(true);
 
@@ -34,13 +34,7 @@ const MyCourseCard = ({ card, finishedCourse }) => {
     setter: setData,
   });
 
-  // useEffect(() => {
-  //     if (finishedCourse) {
-  //         getMyDoneCourses.reFetch()
-  //     } else {
-  //         getMyDoingCourses.reFetch()
-  //     }
-  // }, [finishedCourse]);
+
 
   return !loadingCourseData
     ? courseData.results.map((course, index) => (
@@ -90,9 +84,9 @@ const MyCourseCard = ({ card, finishedCourse }) => {
                       strokeColor={"#196476"}
                       percent={course.progresses}
                     />
-                    <div className="MyCourses__Card--Link ">
+                    <div className="MyCourses__Card--Link " onClick={()=>handleModalShow()}>
                       امتیاز به این دوره
-                    </div>{" "}
+                    </div>
                   </>
                 ) : (
                   <>
@@ -106,9 +100,9 @@ const MyCourseCard = ({ card, finishedCourse }) => {
                     <Link to="/course" className="MyCourses__Card--Link ">
                       دریافت گواهی پایان دوره دانشگاه صنعتی
                     </Link>
-                    <div className="MyCourses__Card--Link ">
+                    <div className="MyCourses__Card--Link " onClick={()=>handleModalShow()}>
                       امتیاز به این دوره
-                    </div>{" "}
+                    </div>
                   </>
                 )}
               </div>

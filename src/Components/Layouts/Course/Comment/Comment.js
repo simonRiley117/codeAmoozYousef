@@ -1,4 +1,4 @@
-import React, { useState, createElement, useRef } from "react";
+import React, { useState, createElement, useRef, useEffect } from "react";
 import { ReactComponent as Arroe } from "@Assets/Icons/Frame 28.svg";
 import { useForm as formBox } from "react-hook-form";
 import { Picker } from "emoji-mart";
@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../../Context/authContext";
 import { Popover } from "antd";
 import { Skeleton } from "antd";
+import Button from "@Components/Shared/Buttons/Button";
+import NoCommentImage from "../../../../Assets/Images/Pic/empthyChat.svg";
 
 const optionPickerEmoji = {
   showPreview: false,
@@ -43,15 +45,36 @@ const optionPickerEmoji = {
 
 function Comment({ courseId }) {
   const [commentInfo, setCommentInfo] = useState(null);
+  const [commentList, setcommentList] = useState([]);
   const [visible, setVisible] = useState(false);
-
+  const [pagination, setpagination] = useState({
+    current: 1,
+    pageSize: commentInfo?.page_count,
+  });
+  const setComment = (data) => {
+    setcommentList((currentArray) => [...currentArray, ...data.results]);
+  };
   const getCommentInfo = useFetch({
     url: `CommentService`,
     params: { course_uuid: courseId },
     method: "GET",
     noHeader: true,
+    trigger: false,
     setter: setCommentInfo,
+    pagination: pagination,
+    argFunc: (res) => {
+      setComment(res);
+    },
   });
+  useEffect(() => {
+    getCommentInfo.reFetch();
+  }, [pagination]);
+
+  console.log("commn", commentList);
+
+  const handlePagination = () => {
+    setpagination({ ...pagination, current: pagination.current + 1 });
+  };
   const { token } = useAuth();
   const [draftCommentInfo, setDraftCommentInfo] = useState(null);
   const getDraftCommentInfo = useFetch({
@@ -116,8 +139,7 @@ function Comment({ courseId }) {
     let emoji = String.fromCodePoint(...codesArray);
     // setInput(input + emoji);
     const cursor = ref.current.selectionStart;
-    const text =
-      message.slice(0, cursor) + emoji + message.slice(cursor);
+    const text = message.slice(0, cursor) + emoji + message.slice(cursor);
     setMessageForm(text);
   };
   //   const addEmoji = (e) => {
@@ -143,49 +165,33 @@ function Comment({ courseId }) {
   return (
     <div className="AskAndAnswer relative">
       <div className="AskAndAnswer__content Comment">
-        {getCommentInfo?.response
-          ? commentInfo.results.map((comment, index) => (
-              <CommentBox
-                key={comment.uuid + index}
-                uuid={comment.uuid}
-                // index={index}
-                draft={false}
-                name={`${comment.first_name} ${comment.last_name}`}
-                img={comment.user_picture}
-                txt={comment.text}
-                date={comment.date_created}
-                pub={comment.is_accepted}
-                hasReply={comment.has_reply}
-                hasdDraftReply={comment.has_draft_reply}
-                // handleToggleReply={handleToggleReply}
-                // openReply={openReply}
-              >
-                {/*{comment.has_reply ? (*/}
-                {/*    // toggleReply ? (*/}
-                {/*    <CommentReplyBox*/}
-                {/*        index={index}*/}
-                {/*        replyIndex={replyIndex}*/}
-                {/*        toggleReply={openReply}*/}
-                {/*        commentId={comment.uuid}*/}
-                {/*        pub={true}*/}
-                {/*    />*/}
-                {/*    // ) : null*/}
-                {/*) : null}*/}
+        {getCommentInfo?.response ? (
+          commentList.map((comment, index) => (
+            <CommentBox
+              key={comment.uuid + index}
+              uuid={comment.uuid}
+              // index={index}
+              draft={false}
+              name={`${comment.first_name} ${comment.last_name}`}
+              img={comment.user_picture}
+              txt={comment.text}
+              date={comment.date_created}
+              pub={comment.is_accepted}
+              hasReply={comment.has_reply}
+              hasdDraftReply={comment.has_draft_reply}
+              // handleToggleReply={handleToggleReply}
+              // openReply={openReply}
+            ></CommentBox>
+          ))
+        ) : (
+          <Skeleton />
+        )}
 
-                {/*{comment.has_draft_reply ? (*/}
-                {/*    // toggleReply ? (*/}
-                {/*    <CommentDraftReplyBox*/}
-                {/*        index={index}*/}
-                {/*        replyIndex={replyIndex}*/}
-                {/*        toggleReply={openReply}*/}
-                {/*        commentId={comment.uuid}*/}
-                {/*        pub={false}*/}
-                {/*    />*/}
-                {/*    // ) : null*/}
-                {/*) : null}*/}
-              </CommentBox>
-            ))
-          : <Skeleton />}
+        <div className="center my-8">
+          {pagination.current < commentInfo?.page_count && (
+            <Button onClick={handlePagination}>نمایش بیشتر نظرات</Button>
+          )}
+        </div>
         {getDraftCommentInfo?.response
           ? draftCommentInfo.results.map((comment, index) => (
               <CommentBox
@@ -201,13 +207,22 @@ function Comment({ courseId }) {
               />
             ))
           : null}
+             {
+         ( draftCommentInfo === null && commentList.length === 0 )  ||
+         ( commentList.length === 0  && draftCommentInfo.results.length === 0) ?
+            <div className="center empty__chat">
+              <img src={NoCommentImage} alt="NoCommentImage" />
+            </div>
+           : null
+        }
       </div>
+   
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="AskAndAnswer__form absolute"
       >
         <div className="input text-right ">
-          <InputBase.Group style={{ bottom: "0" }} >
+          <InputBase.Group style={{ bottom: "0" }}>
             <div className="flex justify-end items-center">
               <input
                 value={message}
@@ -216,7 +231,10 @@ function Comment({ courseId }) {
                 name="text"
                 id="input"
                 placeholder="پیام خود را بنویسید..."
-                className={classNames("input__field input__withborder", "AskAndAnswer__input")}
+                className={classNames(
+                  "input__field input__withborder",
+                  "AskAndAnswer__input"
+                )}
                 ref={ref}
               />
             </div>
@@ -231,9 +249,7 @@ function Comment({ courseId }) {
       </form>
       <div className="absolute AskAndAnswer__emogibox">
         <Popover
-          content={
-            <Picker {...optionPickerEmoji} onSelect={onEmojiClick} />
-          }
+          content={<Picker {...optionPickerEmoji} onSelect={onEmojiClick} />}
           title=""
           trigger="click"
           visible={visible}
