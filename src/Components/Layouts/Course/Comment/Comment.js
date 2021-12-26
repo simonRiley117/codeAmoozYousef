@@ -15,6 +15,7 @@ import CommentDraftReplyBox from "../../../Shared/CommentBox/CommentDraftReplyBo
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../Context/authContext";
 import { Popover } from "antd";
+import { Skeleton } from "antd";
 
 const optionPickerEmoji = {
   showPreview: false,
@@ -184,7 +185,7 @@ function Comment({ courseId }) {
                 {/*) : null}*/}
               </CommentBox>
             ))
-          : null}
+          : <Skeleton />}
         {getDraftCommentInfo?.response
           ? draftCommentInfo.results.map((comment, index) => (
               <CommentBox

@@ -11,6 +11,7 @@ import useFetch from "../../../../Context/useFetch";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../Context/authContext";
 import { Popover } from "antd";
+import { Skeleton } from "antd";
 
 const optionPickerEmoji = {
   showPreview: false,
@@ -109,6 +110,7 @@ function AskAndAnswer({ courseId }) {
   };
   return (
     <div className="AskAndAnswer relative">
+      {/* {token ?getMessageInfo?.response ? : <Skeleton />  : } */}
       {messageInfo ? (
         <div className="AskAndAnswer__content">
           {messageInfo.messages.length === 0 ? (

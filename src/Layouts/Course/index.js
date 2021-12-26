@@ -14,6 +14,8 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "@App/Context/useFetch";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@App/Context/authContext";
+import { Skeleton } from "antd";
 
 const { TabPane } = Tabs;
 
@@ -22,6 +24,7 @@ function Index() {
   const location = useLocation();
   const [data, setData] = useState("");
   let navigate = useNavigate();
+  const [courseSeasons, setCourseSeasons] = useState([]);
 
   useEffect(() => {
     // setMenu(location.state.name);
@@ -33,6 +36,7 @@ function Index() {
   const [id, setId] = useState();
   const [name, setName] = useState();
   const windowSize = UseWindowSize();
+  const { token } = useAuth();
   const addToCart = useFetch({
     url: `CartService/discount`,
     method: "GET",
@@ -41,7 +45,12 @@ function Index() {
       setData(res);
     },
   });
-console.log(`data`, data)
+  const getCourseSeasons = useFetch({
+    url: `CourseService/${courseId}/seasons`,
+    method: "GET",
+    noHeader: token ? false : true,
+    setter: setCourseSeasons,
+  });
   const [tags, setTags] = useState();
   const liftingUpTags = (tags) => {
     setTags(tags);
@@ -52,7 +61,6 @@ console.log(`data`, data)
   //   });
   const ids = id;
   const url1 = name;
-
   return (
     <div className="container">
       <BreadCrump name={name} />
@@ -75,7 +83,11 @@ console.log(`data`, data)
                 <About courseId={id} />
               </TabPane>
               <TabPane tab="سرفصل ها" key="2">
-                <Sarfasl courseId={id} />
+                {getCourseSeasons?.response ? (
+                  <Sarfasl courseId={id} courseSeasons={courseSeasons} />
+                ): (
+                  <Skeleton />
+                )}
               </TabPane>
             </Tabs>
             {windowSize !== "sm" && (

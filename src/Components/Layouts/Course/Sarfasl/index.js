@@ -1,129 +1,120 @@
-import React, {useEffect, useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
-import Codeeditor from '@Components/Shared/Codeeditor';
-import {Accordion, Panel} from '@Components/Shared/Accordion/Accordion';
-import {useHistory, useLocation} from 'react-router-dom';
-import {useAuth} from '@App/Context/authContext';
-import useFetch from '@App/Context/useFetch';
-import Courseintro from './Courseintro';
-import Clock, {ReactComponent as LockIcon} from '@Assets/Icons/clock.svg';
-import Lock from '@Assets/Icons/lock.svg';
-import classNames from 'classnames';
-import IconBtn from '../../../Shared/Buttons/IconBtn';
-import Modal from '@Components/Shared/Modal/Modal';
-import Detail from './Detail';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import Codeeditor from "@Components/Shared/Codeeditor";
+import { Accordion, Panel } from "@Components/Shared/Accordion/Accordion";
+import { useHistory, useLocation } from "react-router-dom";
+import { useAuth } from "@App/Context/authContext";
+import useFetch from "@App/Context/useFetch";
+import Courseintro from "./Courseintro";
+import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
+import Lock from "@Assets/Icons/lock.svg";
+import classNames from "classnames";
+import IconBtn from "../../../Shared/Buttons/IconBtn";
+import Modal from "@Components/Shared/Modal/Modal";
+import Detail from "./Detail";
 
-const Topic = ({courseId}) => {
-    // const location = useLocation();
-    // const [id, setId] = useState();
-    const [modal, setModal] = useState(false);
-    const {token} = useAuth();
-    const [courseSeasons, setCourseSeasons] = useState([]);
-    console.log('Topic ~ courseSeasons', courseSeasons);
-    const [contentUuid, setContentUuid] = useState(null);
-    const [showModal, setShowModal] = useState(false);
+const Topic = ({ courseId, courseSeasons }) => {
+  // const location = useLocation();
+  // const [id, setId] = useState();
+  const [modal, setModal] = useState(false);
+  const { token } = useAuth();
+  //   const [courseSeasons, setCourseSeasons] = useState([]);
+  const [contentUuid, setContentUuid] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-    const getCourseSeasons = useFetch({
-        url: `CourseService/${courseId}/seasons`,
-        method: 'GET',
-        noHeader: token ? false : true,
-        setter: setCourseSeasons,
-    });
+  //   const getCourseSeasons = useFetch({
+  //     url: `CourseService/${courseId}/seasons`,
+  //     method: "GET",
+  //     noHeader: token ? false : true,
+  //     setter: setCourseSeasons,
+  //   });
 
-    // useEffect(() => {
-    //     console.log('location.state.id: ', location.state.id);
-    //     setId(location.state.id);
-    // }, [location]);
+  // useEffect(() => {
+  //     console.log('location.state.id: ', location.state.id);
+  //     setId(location.state.id);
+  // }, [location]);
 
-    const handleModalVisible = () => {
-        setModal(false);
-        setContentUuid(null);
-    };
+  const handleModalVisible = () => {
+    setModal(false);
+    setContentUuid(null);
+  };
 
-    const handleModalShow = (uuid, lock) => {
-        setModal(true);
-        setContentUuid(uuid);
-        setShowModal(!lock);
-    };
+  const handleModalShow = (uuid, lock) => {
+    setModal(true);
+    setContentUuid(uuid);
+    setShowModal(!lock);
+  };
 
-    const renderSeasonInfo = (time, lock) => (
-        <div className='Sarfasl__AccordionItem'>
-            {lock && <img src={Lock} alt={Lock}/>}
-            <div className='Sarfasl__AccordionItem--time'>
-                <time>{time}</time>
-                <img src={Clock} alt={Clock}/>
-            </div>
-        </div>
-    );
+  const renderSeasonInfo = (time, lock) => (
+    <div className="Sarfasl__AccordionItem">
+      {lock && <img src={Lock} alt={Lock} />}
+      <div className="Sarfasl__AccordionItem--time">
+        <time>{time}</time>
+        <img src={Clock} alt={Clock} />
+      </div>
+    </div>
+  );
 
-    // const windowSize = UseWindowSize();
-    // let url = "https://testui.codeamooz.com/example/4/5";
-    return (
-        <>
-            {getCourseSeasons?.response?.data && (
-                <div className='Sarfasl'>
-                    <div className='Sarfasl__Accordionbox'>
-                        <Accordion>
-                            {courseSeasons.data.map((season, index) => (
-                                <Panel
-                                    collapsible={season.lockedOn ? 'disabled' : 'header'}
-                                    header={
-                                        <span className='Sarfasl__title'>
-											{season.title}
-										</span>
-                                    }
-                                    extra={renderSeasonInfo(
-                                        season.total_time_for_each_season,
-                                        season.lockedOn
-                                    )}
-                                    key={season.uuid}
-                                >
-                                    {season?.contents?.map((content, index) => (
-                                        <div
-                                            className='Sarfasl__content flex justify-between items-center'
-                                            key={content.uuid}
-                                            onClick={() =>
-                                                handleModalShow(
-                                                    content.uuid,
-                                                    content.lockedOn
-                                                )
-                                            }
-                                        >
-                                            <div className='flex items-center Sarfasl__Accordiontxtbox'>
-                                                {content.is_content_passed ? (
-                                                    <div
-                                                        className={'Sarfasl__Accordiondone'}
-                                                    >
-                                                        <i className='fas fa-check'></i>
-                                                    </div>
-                                                ) : (
-                                                    <div
-                                                        className={'Sarfasl__Accordionnumber'}
-                                                    >
-                                                        {index + 1}
-                                                    </div>
-                                                )}
-                                                <p>{content.title}</p>
-                                            </div>
-                                            {renderSeasonInfo(
-                                                content.duration_time,
-                                                content.lockedOn
-                                            )}
-                                        </div>
-                                    ))}
-                                </Panel>
-                            ))}
-                        </Accordion>
+  // const windowSize = UseWindowSize();
+  // let url = "https://testui.codeamooz.com/example/4/5";
+  return (
+    <>
+      {courseSeasons.data.lenght !== 0 && (
+        <div className="Sarfasl">
+          <div className="Sarfasl__Accordionbox">
+            <Accordion>
+              {courseSeasons.data.map((season, index) => (
+                <Panel
+                  collapsible={season.lockedOn ? "disabled" : "header"}
+                  header={
+                    <span className="Sarfasl__title">{season.title}</span>
+                  }
+                  extra={renderSeasonInfo(
+                    season.total_time_for_each_season,
+                    season.lockedOn
+                  )}
+                  key={season.uuid}
+                >
+                  {season?.contents?.map((content, index) => (
+                    <div
+                      className="Sarfasl__content flex justify-between items-center"
+                      key={content.uuid}
+                      onClick={() =>
+                        handleModalShow(content.uuid, content.lockedOn)
+                      }
+                    >
+                      <div className="flex items-center Sarfasl__Accordiontxtbox">
+                        {content.is_content_passed ? (
+                          <div className={"Sarfasl__Accordiondone"}>
+                            <i className="fas fa-check"></i>
+                          </div>
+                        ) : (
+                          <div className={"Sarfasl__Accordionnumber"}>
+                            {index + 1}
+                          </div>
+                        )}
+                        <p>{content.title}</p>
+                      </div>
+                      {renderSeasonInfo(
+                        content.duration_time,
+                        content.lockedOn
+                      )}
                     </div>
-                </div>
-            )}
+                  ))}
+                </Panel>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      )}
 
-            {showModal && (<Modal visible={modal} onCancel={handleModalVisible}>
-                <Detail contentUuid={contentUuid}/>
-            </Modal>)}
-
-        </>
-    );
+      {showModal && (
+        <Modal visible={modal} onCancel={handleModalVisible}>
+          <Detail contentUuid={contentUuid} />
+        </Modal>
+      )}
+    </>
+  );
 };
 
 export default Topic;
