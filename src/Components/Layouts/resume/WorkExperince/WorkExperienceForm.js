@@ -63,6 +63,7 @@ const WorkExperienceForm = (
                 profession_start_date: data.profession_start_date
                     .convert()
                     .format('YYYY-MM-DD'),
+                profession_end_date: null,
                 company_name: data.company_name,
             });
         else
