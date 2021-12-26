@@ -6,7 +6,6 @@ import useFetch from "../../../Context/useFetch";
 // import {ReactComponent as TrashIcon} from '@Assets/Icons/Trash.svg';
 
 const Upload = forwardRef((props, ref) => {
-    console.log('UPLOAD: ', props)
     const {value, isSubmitted, message, error, label, id, ...rest} = props;
     const [fileName, setFileName] = useState(value?.split('/').pop());
     const handleChange = ({target}) => {
