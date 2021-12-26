@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useFetch from '@App/Context/useFetch';
 import Parser from 'html-react-parser';
@@ -16,18 +16,27 @@ const NewsDetails = () => {
 	const [latestNews, setlatestNews] = useState([]);
 	const [similarNews, setsimilarNews] = useState([]);
 
+	useEffect(() => {
+		setlatestNews([]);
+		getNews.reFetch();
+		getLatestNewsList.reFetch();
+		getSimilarNewsList.reFetch();
+	}, [id]);
+
 	const getNews = useFetch({
 		url: `NewsService/${id}`,
 		method: 'GET',
 		noHeader: true,
 		setter: setNewsData,
 	});
+
 	const getLatestNewsList = useFetch({
 		url: `NewsService/latestNews`,
 		method: 'GET',
 		noHeader: true,
 		setter: setlatestNews,
 	});
+
 	const getSimilarNewsList = useFetch({
 		url: `NewsService/${id}/similarNews`,
 		method: 'GET',
@@ -105,7 +114,6 @@ const NewsDetails = () => {
 								<Link
 									key={id}
 									to='/news/news-info'
-									replace
 									state={id}
 									className='d-flex-align Title-heads subtitle'
 								>
