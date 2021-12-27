@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import NewsItemContainer from '@Components/Layouts/News/NewsItemContainer';
 import Link from '@Components/Shared/Buttons/Link';
 import Pagination from '@Components/Shared/Pagination';
@@ -17,6 +17,10 @@ const News = () => {
 	const handleSetData = (data) => {
 		setNewsList(data);
 	};
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	
+	  }, [])
 
 	const getNewsList = useFetch({
 		url: `NewsService`,

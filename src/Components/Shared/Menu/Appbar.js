@@ -131,7 +131,7 @@ const Appbar = () => {
         <Link to="/fav">علاقه مندی‌ها</Link>
       </div>
       <Divider style={{ margin: "5px 0" }} />
-      <div className="profile-menu-item">
+      <div className="profile-menu-item exite">
         <ExiteIcon />
         <a href="#" onClick={handleModalShow}>
           خروج

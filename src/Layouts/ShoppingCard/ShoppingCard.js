@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import useFetch from "@App/Context/useFetch";
 
 import CostBox from "@Components/Layouts/shoppingcard/CostBox";
@@ -14,6 +14,10 @@ const ShoppingCard = () => {
         method: "GET",
         setter: setPayment,
     });
+    useEffect(() => {
+		window.scrollTo(0, 0);
+	
+	  }, [])
     const getorderSummary = useFetch({
         url: `CartService/orderSummary`,
         method: "GET",
