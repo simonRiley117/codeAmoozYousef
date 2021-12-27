@@ -29,6 +29,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
 		has_user_course,
 		get_price_without_degree_with_some_extra_info,
 		teacher_avatar,
+		teacher_uuid,
 		cover,
 		is_course_in_cart,
 	} = card;
@@ -209,10 +210,10 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
 					<div className='d-flex-space card-bg-footer'>
 						<Link
 							to='/courses/teacher'
-							// state={{
-							// 	courseId: courseId,
-							// 	teacherId: teacherId,
-							// }}
+							state={{
+								courseId: uuid,
+								teacherId: teacher_uuid,
+							}}
 							className='card-bg-img-pic'
 						>
 							<img src={teacher_avatar} alt='teacher-avatar' />

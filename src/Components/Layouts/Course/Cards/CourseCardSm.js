@@ -27,6 +27,7 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 		has_user_course,
 		get_price_without_degree_with_some_extra_info: cost,
 		teacher_avatar,
+		teacher_uuid,
 		cover,
 		is_course_in_cart,
 	} = card;
@@ -217,10 +218,10 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 					<Link
 						className='card-sm-img-pic'
 						to='/courses/teacher'
-						// state={{
-						// 	courseId: courseId,
-						// 	teacherId: teacherId,
-						// }}
+						state={{
+							courseId: uuid,
+							teacherId: teacher_uuid,
+						}}
 					>
 						<img src={teacher_avatar} alt='teacher-avatar' />
 						<span>
