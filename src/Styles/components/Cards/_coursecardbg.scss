@@ -176,7 +176,7 @@
 
 			& .ant-statistic-content-suffix {
 				font-size: 14px;
-				color:$color-text-black-light-3;
+				color: $color-text-black-light-3;
 			}
 		}
 	}
@@ -211,18 +211,30 @@
 		&-pic {
 			display: flex;
 			align-items: center;
+			width: fit-content;
 
-			h4 {
+			&:hover {
+				& span {
+					color: $color-black;
+					font-weight: 700;
+				}
+
+				& img {
+					box-shadow: 0 0 2px 2px $color-green;
+				}
+			}
+			span {
 				margin-right: 1rem;
 				position: relative;
 				z-index: 9;
-				white-space: nowrap;
 				font-size: 14px;
+				transition: all 300ms;
 			}
 
 			img {
 				position: relative;
 				z-index: 11;
+				transition: all 300ms;
 
 				width: 35px;
 				height: 35px;

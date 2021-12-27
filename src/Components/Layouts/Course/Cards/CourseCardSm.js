@@ -7,7 +7,6 @@ import { ReactComponent as Star } from '@Assets/Icons/star.svg';
 import useFetch from '@App/Context/useFetch';
 import Price from '@Components/Shared/Price/Price';
 import { toast } from 'react-toastify';
-import { Rate, Statistic } from 'antd';
 import { Link } from 'react-router-dom';
 import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import { useUserData } from '@App/Context/userContext';
@@ -26,13 +25,12 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 		is_favorite,
 		title,
 		has_user_course,
-		get_price_without_degree_with_some_extra_info,
+		get_price_without_degree_with_some_extra_info: cost,
 		teacher_avatar,
 		cover,
 		is_course_in_cart,
 	} = card;
 	const { getUser } = useUserData();
-	const cost = get_price_without_degree_with_some_extra_info;
 	// const [courseid, setCourseid] = useState(null);
 	const [addtocardData, setaddtocardData] = useState();
 	const [isfav, setisFav] = useState(is_favorite);
@@ -203,9 +201,9 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 						</div>
 					</div>
 
-					<h5 className='cursor-pointer	'>
+					<h5 className='cursor-pointer'>
 						<Link
-							to={`/courses/content`}
+							to='/courses/content'
 							state={{
 								name: title,
 								id: uuid,
@@ -216,12 +214,19 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 							{title}
 						</Link>
 					</h5>
-					<div className='card-sm-img-pic'>
+					<Link
+						className='card-sm-img-pic'
+						to='/courses/teacher'
+						// state={{
+						// 	courseId: courseId,
+						// 	teacherId: teacherId,
+						// }}
+					>
 						<img src={teacher_avatar} alt='teacher-avatar' />
-						<h4>
+						<span>
 							{teacher_first_name} {teacher_last_name}
-						</h4>
-					</div>
+						</span>
+					</Link>
 
 					<div className='card-sm-footer'>
 						<div className='card-sm-footer-level'>{level}</div>

@@ -33,7 +33,7 @@ const Router = () => {
 	const { token } = useAuth();
 	return (
 		<>
-			<Routes >
+			<Routes>
 				<Route element={<Layout />}>
 					<Route path='/' element={<Home />}>
 						<Route index path='/:redirectTeacher?' element={<Home />} />
@@ -50,17 +50,14 @@ const Router = () => {
 					/>
 					<Route path='coWorkers/employer' element={<Employer />} />
 					<Route path='/news' index element={<News />} />
-					<Route path='/news/news-info'  element={<NewsDetails />} />
+					<Route path='/news/news-info' element={<NewsDetails />} />
 					<Route path='/faq' element={<Faq />} />
 					<Route path='/contact-us' element={<Contact />} />
 					<Route path='/about-me' element={<AboutUs />} />
 
 					<Route path='/courses' element={<Courses />} />
 					<Route path='/courses/content' element={<Course />} />
-					<Route
-						path='/courses/content/teacher'
-						element={<TeacherResume />}
-					/>
+					<Route path='/courses/teacher' element={<TeacherResume />} />
 					<Route path='/courses/example' element={<Example />} />
 					<Route path='/courses/topic' element={<Coursetopic />} />
 
