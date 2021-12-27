@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../../Context/authContext";
 import { Popover } from "antd";
 import { Skeleton } from "antd";
+import NoCommentImage from "../../../../Assets/Images/Pic/empthyChat.svg";
 
 const optionPickerEmoji = {
   showPreview: false,
@@ -150,7 +151,9 @@ function AskAndAnswer({ courseId }) {
             )
           )}
         </div>
-      ) : null}
+      ) :   <div className="center empty__chat">
+      <img src={NoCommentImage} alt="NoCommentImage" />
+    </div>}
 
       <form
         onSubmit={handleSubmit(onSubmit)}

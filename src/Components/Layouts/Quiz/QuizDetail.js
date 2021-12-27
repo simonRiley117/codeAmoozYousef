@@ -64,7 +64,7 @@ function QuizDetail({
               }}
               className="flex items-center"
             >
-              بازگشت{" "}
+              بازگشت
             </Link>
           </Button>
         </div>

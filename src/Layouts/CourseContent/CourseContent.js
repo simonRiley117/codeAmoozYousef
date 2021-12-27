@@ -8,7 +8,9 @@ import useFetch from "../../Context/useFetch";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { API_URL } from "@App/constants";
-import congrats from "@Assets/Icons/congrats.svg"
+import congrats from "@Assets/Icons/congrats.svg";
+import { Skeleton } from "antd";
+
 function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
@@ -18,12 +20,14 @@ function CourseContent() {
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
-  const [LastDance, setLastDance] = useState(false);
-  console.log("CourseContent ~ sidebarList", sidebarList)
+  const [LastCourse, setLastCourse] = useState(false);
   const { courseId } = useParams();
   const location = useLocation();
   const [id, setId] = useState();
   const [name, setName] = useState();
+  const handleLastCourse = () => {
+    setLastCourse(true);
+  };
   useEffect(() => {
     // setMenu(location.state.name);
     setId(location.state.id);
@@ -78,25 +82,25 @@ function CourseContent() {
   const handlePassContentError = (err) => {
     console.log(err);
   };
+  //next_content_id:
   useEffect(() => {
     if (quizUuid === null) {
       postPassContent.reFetch();
     }
-    setActiveSeason(CurrentCourseStatus?.current_season_id);
-
+    if (
+      CurrentcontenStatus?.next_content_id !== "You have not passed quiz season"
+    ) {
+      setActiveSeason(CurrentCourseStatus?.current_season_id);
+    }
   }, []);
   useEffect(() => {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
     }
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [Currentcontentid]);
- 
 
   const handleNextContent = () => {
-    if( !CurrentcontenStatus.has_next_content ){
-      setLastDance(true)
-    }
     if (!isContentPass) {
       postPassContent.reFetch();
     } else {
@@ -112,14 +116,14 @@ function CourseContent() {
 
   return (
     <>
-      {CurrentCourseStatus && sidebarList && (
-        <div className="LastCourse">
-          <div className="container">
-            <BreadCrump name={name} />
-            <div className="grid LastCourse__container relative">
-              <div className="LastCourse__Box">
+      <div className="LastCourse">
+        <div className="container">
+          <BreadCrump name={name} />
+          <div className="grid LastCourse__container relative">
+            <div className="LastCourse__Box">
+              {sidebarList && !getCourseSeasons.loading ? (
                 <div className="LastCourse__Position">
-                  <p className="LastCourse__title">{sidebarList.title}</p>
+                  <p className="LastCourse__title">{sidebarList?.title}</p>
                   <SeasonList
                     sidebarList={sidebarList}
                     activeSeasons={ActiveSeason}
@@ -133,65 +137,67 @@ function CourseContent() {
                     <p className="LastCourse__guide">راهنمای صفحه</p>
                   </div>
                 </div>
-              </div>
-              <div>
-                {CurrentCourseStatus ? (
-                  <CourseStatus
-                    details={CurrentCourseStatus}
-                  />
-                ) : (
-                  <div className='center m-4'>
-                    <ClipLoader color="#EF8019" loading={true} size={40} />
-                  </div>
-                )}
+              ) : (
+                <Skeleton />
+              )}
+            </div>
+            <div>
+              {CurrentCourseStatus && !getCurrentContentState.loading ? (
+                <CourseStatus details={CurrentCourseStatus} />
+              ) : (
+                <Skeleton />
+              )}
 
-                {!LastDance ? <ContentTab
+              {!LastCourse ? (
+                <ContentTab
                   contentUuid={Currentcontentid}
                   quizUuid={quizUuid}
                   courseUuid={id}
                   setActiveSeason={setActiveSeason}
                   hasSeasonQuize={CurrentcontenStatus?.next_content_id}
-                /> : <div className='LastCourse__congrats '>
-                   <p>تبریک میگم دوره تموم شد</p>
-                  <img src={congrats} alt='' />
-
-                  </div>}
-                {CurrentcontenStatus && (
-                  <div className="flex items-center justify-between LastCourse__btnBox">
-                    <Button
-                      type="primary"
-                      classes="CoWorkers__btn flex items-center "
-                      {...(CurrentcontenStatus.has_next_content && {
-                        onClick: handleNextContent,
-                      })}
-                      disabled={
-                       
-                        (!isContentPass && quizUuid !== null) ||
-                        CurrentcontenStatus.next_content_id ===
-                          "You have not passed quiz season"
-                      }
-                    >
-                      مبحث بعدی
-                      <i className="fas fa-chevron-right"></i>
-                    </Button>
-                    <Button
-                      type="primary"
-                      classes="CoWorkers__btn flex items-center "
-                      {...(CurrentcontenStatus.has_prev_content && {
-                        onClick: handlePrevContent,
-                      })}
-                      disabled={!CurrentcontenStatus.has_prev_content}
-                    >
-                      <i className="fas fa-chevron-left"></i>
-                      مبحث قبلی
-                    </Button>
-                  </div>
-                )}
-              </div>
+                />
+              ) : (
+                <div className="LastCourse__congrats ">
+                  <h2 className="my-8">تبریک میگم دوره تموم شد</h2>
+                  <img src={congrats} alt="" />
+                </div>
+              )}
+              {CurrentcontenStatus && (
+                <div className="flex items-center justify-between LastCourse__btnBox">
+                  <Button
+                    type="primary"
+                    classes="CoWorkers__btn flex items-center "
+                    onClick={
+                      CurrentcontenStatus.next_content_id !== null
+                        ? handleNextContent
+                        : handleLastCourse
+                    }
+                    disabled={
+                      (!isContentPass && quizUuid !== null) ||
+                      CurrentcontenStatus.next_content_id ===
+                        "You have not passed quiz season"
+                    }
+                  >
+                    مبحث بعدی
+                    <i className="fas fa-chevron-right"></i>
+                  </Button>
+                  <Button
+                    type="primary"
+                    classes="CoWorkers__btn flex items-center "
+                    {...(CurrentcontenStatus.has_prev_content && {
+                      onClick: handlePrevContent,
+                    })}
+                    disabled={!CurrentcontenStatus.has_prev_content}
+                  >
+                    <i className="fas fa-chevron-left"></i>
+                    مبحث قبلی
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

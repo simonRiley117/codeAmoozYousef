@@ -10,7 +10,7 @@
 	.ant-breadcrumb {
 		display: flex;
 		@include respond(tablet) {
-			font-size: 0.8rem;
+			font-size: 12px;
 		}
 		span {
 			display: flex;

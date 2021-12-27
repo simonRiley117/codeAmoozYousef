@@ -1,140 +1,142 @@
 .TabBox {
-	&.ant-tabs-card {
-		& .ant-tabs-nav {
-			& .ant-tabs-tab {
-				border-radius: 1.5rem 1.5rem 0 0;
-				margin: 0 !important;
-			}
-		}
-	}
-	& .ant-tabs-nav {
-		width: 100%;
-		margin-bottom: 0;
+  &.ant-tabs-card {
+    & .ant-tabs-nav {
+      & .ant-tabs-tab {
+        border-radius: 1.5rem 1.5rem 0 0;
+        margin: 0 !important;
+      }
+    }
+  }
+  & .ant-tabs-nav {
+    width: 100%;
+    margin-bottom: 0;
 
-		&::before {
-			content: none;
-		}
+    &::before {
+      content: none;
+    }
 
-		& .ant-tabs-nav-operations {
-			display: none;
-		}
+    & .ant-tabs-nav-operations {
+      display: none;
+    }
 
-		& .ant-tabs-nav-list {
-			width: 100%;
-			& > div:nth-last-child(2)::after {
-				content: none;
-			}
-		}
-		& .ant-tabs-tab {
-			width: 100%;
+    & .ant-tabs-nav-list {
+      width: 100%;
+      & > div:nth-last-child(2)::after {
+        content: none;
+      }
+    }
+    & .ant-tabs-tab {
+      width: 100%;
 
-			justify-content: center;
-			background-color: $color-gray;
-			filter: drop-shadow(0 1px 4px rgba($color: #000, $alpha: 0.15));
-			border: 0;
-			min-height: 5rem;
-			font-size: 1.6rem;
-			font-weight: 600;
-			transition: none;
+      justify-content: center;
+      background-color: $color-gray;
+      filter: drop-shadow(0 1px 4px rgba($color: #000, $alpha: 0.15));
+      border: 0;
+      min-height: 5rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      transition: none;
 
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				width: 4rem;
-				height: 4rem;
-				border: 1rem solid $color-gray;
-				border-top: 0;
-				background-color: transparent;
-			}
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 4rem;
+        height: 4rem;
+        border: 1rem solid $color-gray;
+        border-top: 0;
+        background-color: transparent;
+      }
 
-			&::before {
-				border-right: 0;
-				border-radius: 0 2.5rem 0;
-				right: -3rem;
-				bottom: -1rem;
-			}
-			&::after {
-				border-left: 0;
-				border-radius: 0 0 2.5rem 0;
-				left: -3rem;
-				bottom: -1rem;
-			}
+      &::before {
+        border-right: 0;
+        border-radius: 0 2.5rem 0;
+        right: -3rem;
+        bottom: -1rem;
+      }
+      &::after {
+        border-left: 0;
+        border-radius: 0 0 2.5rem 0;
+        left: -3rem;
+        bottom: -1rem;
+      }
 
-			&:nth-child(1) {
-				z-index: 4;
-				&::before {
-					content: none;
-				}
-			}
-			&:nth-child(2) {
-				z-index: 3;
-			}
-			&:nth-child(3) {
-				z-index: 2;
-			}
-			&:nth-child(4) {
-				z-index: 1;
-				&::after {
-					content: none;
-				}
-			}
-		}
-		& .ant-tabs-tab-active {
-			background-color: #fff;
-			z-index: 10 !important;
-			&::before,
-			&::after {
-				border-color: #fff;
-			}
-		}
-		& .ant-tabs-tab-btn {
-			white-space: break-spaces;
-			text-align: center;
-		}
-	}
-	& .ant-tabs-tab {
-		&:last-child {
-			background-color: rgb(219, 44, 44);
-			&::after {
-				content: none !important;
-			}
-		}
-	}
-	& .ant-tabs-nav-wrap {
-		padding: 1rem 4px 0;
-	}
-	& .ant-tabs-content-holder {
-		padding: 0 4px 4px;
-		margin-top: -1px;
-	}
-	& .ant-tabs-content {
-		background-color: $color-gray;
-		border-bottom-right-radius: 1.5rem;
-		border-bottom-left-radius: 1.5rem;
-	}
-	& .ant-tabs-tabpane {
-		box-shadow: 0 2px 8px rgba($color: #000, $alpha: 0.15);
-		background-color: #fff;
-		padding: 2rem 3rem;
-		@include respond(tablet) {
-			padding: 2rem 1rem;
-		}
-		transition: none;
-		&:nth-child(1) {
-			border-radius: 1.5rem 0 1.5rem 1.5rem;
-		}
-		&:nth-child(2) {
-			border-radius: 1.5rem;
-		}
-		&:nth-child(3) {
-			border-radius: 1.5rem;
-		}
-		&:nth-child(4) {
-			border-radius: 0 1.5rem 1.5rem 1.5rem;
-		}
-		&:last-child {
-			border-radius: 0 1.5rem 1.5rem 1.5rem;
-		}
-	}
+      &:nth-child(1) {
+        z-index: 4;
+        &::before {
+          content: none;
+        }
+      }
+      &:nth-child(2) {
+        z-index: 3;
+      }
+      &:nth-child(3) {
+        z-index: 2;
+      }
+      &:nth-child(4) {
+        z-index: 1;
+        &::after {
+          content: none;
+        }
+      }
+    }
+    & .ant-tabs-tab-active {
+      background-color: #fff;
+      z-index: 10 !important;
+      &::before,
+      &::after {
+        border-color: #fff;
+      }
+    }
+    & .ant-tabs-tab-btn {
+      white-space: break-spaces;
+      text-align: center;
+    }
+  }
+  & .ant-tabs-tab {
+    &:last-child {
+      background-color: rgb(219, 44, 44);
+      &::after {
+        content: none !important;
+      }
+    }
+  }
+  & .ant-tabs-nav-wrap {
+    padding: 1rem 4px 0;
+  }
+  & .ant-tabs-content-holder {
+    padding: 0 4px 4px;
+    margin-top: -1px;
+  }
+  & .ant-tabs-content {
+    background-color: $color-gray;
+    border-bottom-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+  }
+  & .ant-tabs-tabpane {
+    box-shadow: 0 2px 8px rgba($color: #000, $alpha: 0.15);
+    background-color: #fff;
+    padding: 2rem 3rem;
+    min-height: 300px;
+    transition: none;
+
+    @include respond(tablet) {
+      padding: 2rem 1rem;
+    }
+    &:nth-child(1) {
+      border-radius: 1.5rem 0 1.5rem 1.5rem;
+    }
+    &:nth-child(2) {
+      border-radius: 1.5rem;
+    }
+    &:nth-child(3) {
+      border-radius: 1.5rem;
+    }
+    &:nth-child(4) {
+      border-radius: 0 1.5rem 1.5rem 1.5rem;
+    }
+    &:last-child {
+      border-radius: 0 1.5rem 1.5rem 1.5rem;
+    }
+  }
 }
