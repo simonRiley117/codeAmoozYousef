@@ -46,7 +46,7 @@ function Index() {
     },
   });
   const getCourseSeasons = useFetch({
-    url: `CourseService/${courseId}/seasons`,
+    url: `CourseService/${id}/seasons`,
     method: "GET",
     noHeader: token ? false : true,
     setter: setCourseSeasons,

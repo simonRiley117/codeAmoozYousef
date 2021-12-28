@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import DashboardAppbar from '../Menu/DashboardAppbar';
 import SidebarMenu from '../Menu/SidebarMenu';
 import { Layout } from 'antd';
@@ -7,6 +7,10 @@ import { Outlet } from 'react-router-dom';
 const { Content } = Layout;
 
 const DashboardLayout = () => {
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	
+	   }, [])
 	return (
 			<Layout className='layout__dashboard'>
 				<header className='layout__header'>

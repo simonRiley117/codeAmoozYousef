@@ -65,7 +65,7 @@ const Topic = ({ courseId, courseSeasons }) => {
             <Accordion>
               {courseSeasons.data.map((season, index) => (
                 <Panel
-                  collapsible={season.lockedOn ? "disabled" : "header"}
+                  collapsible={!season.lockedOn ? "disabled" : "header"}
                   header={
                     <span className="Sarfasl__title">{season.title}</span>
                   }

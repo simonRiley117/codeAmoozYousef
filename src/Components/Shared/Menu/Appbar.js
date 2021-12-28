@@ -177,6 +177,12 @@ const Appbar = () => {
             <LeftOutlined />
           </div>
         </div>
+      <Divider style={{ margin: "5px 0" }} />
+      <div className="profile-menu-item exite">
+        <ExiteIcon />
+        <a href="#" onClick={handleModalShow}>
+          خروج
+        </a>
       </div>
       <Modal className="ExitModal" visible={modal} onCancel={handleModalShow}>
         <div className="ExitModal__back">

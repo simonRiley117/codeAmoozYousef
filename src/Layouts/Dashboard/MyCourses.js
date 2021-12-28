@@ -7,7 +7,7 @@ const MyCourses = () => {
     const [modal, setModal] = useState(false);
     const handleModalVisible = () => {
         setModal(false);
-    };
+    }
 
     const handleModalShow = (uuid, lock) => {
         setModal(true);

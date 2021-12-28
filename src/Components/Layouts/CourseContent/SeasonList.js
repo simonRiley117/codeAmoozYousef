@@ -29,7 +29,7 @@ const SeasonList = ({
       >
         {sidebarList.seasons.map((season, index) => (
           <Panel
-            collapsible={season.lockedOn ? "disabled" : "header"}
+            collapsible={season.lockedOn ? "disabled" : undefined}
             showArrow={!season.lockedOn}
             header={
               <SeasonTitle

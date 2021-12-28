@@ -127,7 +127,7 @@ function TeacherInfo({courseId, resume, liftingUpTags}) {
                             </div>
                             {!resume ? (
                                 <div className="TeacherInfo__btnBox text-center flex items-center justify-center">
-                                    <Link to="/courses/content/teacher"
+                                    <Link to="/courses/teacher"
                                           state={{courseId: courseId, teacherId: teacherProfileInfo.teacher.uuid}}>
                                         <Button type="default" classes="MasterSignUp__btn">
                                             مشاهده پروفایل

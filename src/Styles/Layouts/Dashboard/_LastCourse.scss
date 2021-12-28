@@ -1,89 +1,105 @@
 .LastCourse {
-	// .ant-collapse-extra {
-	//     width: 100% !important;
+  // .ant-collapse-extra {
+  //     width: 100% !important;
 
-	//     img.time__icon {
-	//         width: 20px;
-	//     }
-	//     .lock__icon{
-	//         img{
-	//             width: 15px;
+  //     img.time__icon {
+  //         width: 20px;
+  //     }
+  //     .lock__icon{
+  //         img{
+  //             width: 15px;
 
-	//         }
-	//         &:hover{
-	//             background-color: #ffff;
-	//         }
-	//     }
-	//   }
-	&__congrats{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	.CourseStatus {
-		padding: 15px;
-		border-radius: 1.5rem;
-		box-shadow: $box-shadow;
-		margin: 5px;
-		&__table {
-			display: flex;
-			justify-content: space-between;
-		}
-	}
-	&__container {
-		grid-template-columns: 1fr 2fr;
-		margin-top: 2.7rem;
-		grid-column-gap: 3.3rem;
-	}
-	&__Position {
-		position: -webkit-sticky;
-		position: sticky;
-		top: 10rem;
-	}
-	&__btnBox {
-		margin-bottom: 5rem;
-		margin-top: 2rem;
-	}
-	&__Box {
-		height: 100%;
-		width: 100%;
-	}
-	&__title {
-		text-align: center;
-		margin: 0 auto 0.8rem auto;
-		color: $color-primary-dark-2;
-		font-size: 1.8rem;
-		font-weight: bold;
-	}
-	&__progresstitle {
-		color: $color-text-black-light-2;
-		font-size: 1.6rem;
-	}
-	&__guideBox {
-		margin-top: 2rem;
-	}
-	&__guide {
-		color: $color-primary-dark-2;
-		font-size: 1.6rem;
-		&-icon {
-			color: $color-primary-dark-2;
-			font-size: 1.6rem;
-			border-radius: 50%;
-			border: 1px solid $color-primary-dark-2;
-			width: 2rem;
-			height: 2rem;
-			margin-left: 0.6rem;
-			text-align: center;
-			padding-bottom: 0.1rem;
-		}
-	}
+  //         }
+  //         &:hover{
+  //             background-color: #ffff;
+  //         }
+  //     }
+  //   }
+  &__congrats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .CourseStatus {
+    padding: 15px;
+    border-radius: 1.5rem;
+    box-shadow: $box-shadow;
+    margin: 5px;
+    &__table {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__container {
+    grid-template-columns: 1fr 2fr;
+    margin-top: 2.7rem;
+    grid-column-gap: 3.3rem;
+    @include respond(tab-port) {
+      grid-template-columns: 1.2fr 2fr;
+      grid-column-gap: 1rem;
+    }
+	@include respond(tablet) {
+		grid-template-columns: 1fr ;
+		grid-gap: 20px;
+	  }
+  }
+  &__Position {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10rem;
+  }
+  &__btnBox {
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+  }
+  &__Box {
+    height: 100%;
+    width: 100%;
+  }
+  &__title {
+    text-align: center;
+    margin: 0 auto 0.8rem auto;
+    color: $color-primary-dark-2;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  &__progresstitle {
+    color: $color-text-black-light-2;
+    font-size: 1.6rem;
+  }
+  &__guideBox {
+    margin-top: 2rem;
+  }
+  &__guide {
+    color: $color-primary-dark-2;
+    font-size: 1.6rem;
+    &-icon {
+      color: $color-primary-dark-2;
+      font-size: 1.6rem;
+      border-radius: 50%;
+      border: 1px solid $color-primary-dark-2;
+      width: 2rem;
+      height: 2rem;
+      margin-left: 0.6rem;
+      text-align: center;
+      padding-bottom: 0.1rem;
+    }
+  }
 }
 
 .accordion .ant-collapse-header {
-	justify-content: space-between !important;
+  justify-content: space-between !important;
 }
 
 //.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow{
 //    margin-left: -15rem;
 //}
+.LastCourse__congrats {
+  h2 {
+    font-size: 2.6rem;
+  }
+  img {
+    width: 250px;
+  }
+}

@@ -141,7 +141,6 @@ function MasterSignUp() {
                                         message: " فرمت درست(۱۲۱۲ ۱۲۳ ۰۹۱۳) شماره تماس وارد شده اشتباه است!",
                                     },
                                 }}
-                                type='number'
                                 name="phone_number"
                                 control={control}
 
