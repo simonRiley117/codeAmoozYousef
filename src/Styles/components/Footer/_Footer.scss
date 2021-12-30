@@ -3,7 +3,7 @@
     background-color: $color-blue;
     border-top-right-radius: 3.5rem;
     margin-top: 5rem;
-    &__box {
+    &__box { //Footer__box
         overflow: hidden;
         height: 39rem;
         max-height: 39rem;
@@ -16,7 +16,7 @@
             max-height: 70.8rem;
         }
     }
-    &__detailBox {
+    &__detailBox { //Footer__
         @include respond(sm-laptop) {
             display: flex;
         }

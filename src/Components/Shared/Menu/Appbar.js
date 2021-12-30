@@ -133,7 +133,10 @@ const Appbar = () => {
           <div className="profile-menu-item-icon">
             <UserOutlined style={{ fontSize: "26px" }} />
           </div>
-          <p className="profile__name font-bold -mb-2">{userData.username}</p>
+          <p className="profile__name font-bold -mb-2">
+            {" "}
+            {userData !== null ? userData.username : ""}
+          </p>
         </div>
       </div>
       <Divider
@@ -177,6 +180,7 @@ const Appbar = () => {
             <LeftOutlined />
           </div>
         </div>
+      </div>
       <Divider style={{ margin: "5px 0" }} />
       <div className="profile-menu-item exite">
         <ExiteIcon />
@@ -237,7 +241,9 @@ const Appbar = () => {
               />
               {token && (
                 <div className="d-flex-align Menu__nav--profile">
-                  <p className="profile__name">{userData.username}</p>
+                  <p className="profile__name">
+                    {userData !== null ? userData.username : ""}
+                  </p>
                   <div className="profile__image">
                     <img src={userData.cover} alt="profile" />
                   </div>

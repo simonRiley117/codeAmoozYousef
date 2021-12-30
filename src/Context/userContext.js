@@ -7,7 +7,7 @@ import { useAuth } from "./authContext";
 const UserDataContext = createContext();
 
 const UserDataProvider = (props) => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(null);
   const [username, setUsername] = useState();
   const { token, authDispatch } = useAuth();
 
@@ -24,7 +24,7 @@ const UserDataProvider = (props) => {
         setUserData(res.data);
       }
       if (err) {
-         authDispatch({ type: "LOGOUT" });
+        authDispatch({ type: "LOGOUT" });
       }
     },
   });
@@ -41,7 +41,7 @@ const UserDataProvider = (props) => {
         </>
       ) : (
         <>
-          <UserDataContext.Provider value={{}} {...props}>
+          <UserDataContext.Provider value={{ userData, getUser }} {...props}>
             {props.children}
           </UserDataContext.Provider>
         </>

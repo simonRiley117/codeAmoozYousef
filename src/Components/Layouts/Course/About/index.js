@@ -4,6 +4,7 @@ import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
 import useFetch from "@App/Context/useFetch";
 import { Skeleton } from 'antd';
 
+
 function Index({ courseId }) {
   const [courseInfo, setCourseInfo] = useState({});
 

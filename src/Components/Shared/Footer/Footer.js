@@ -7,7 +7,7 @@ import logo from "@Assets/Logo/codlogo.png";
 const Footer = () => {
   return (
     <div className="Footer relative w-screen">
-      <div className="Footer__box">
+      <div className="Footer__box"> 
         {/* <img src={back} alt={back} className="Footer__bluBack w-full" /> */}
       </div>
       <div className="flex items-center absolute Footer__content">
