@@ -4,7 +4,26 @@ import DateMarker from '@Components/Shared/Date/DateMarker';
 import { useNavigate } from 'react-router-dom';
 import { Skeleton } from 'antd';
 
-const NewsItem = ({ id, cover, title, short_description }) => {
+const getReadTime = (time = '0') => {
+	const [h, m] = time?.split(':');
+	if (m.at(0) === '0') {
+		return m.at(1);
+	}
+	return m;
+	// const date = new Date();
+	// date.setHours(Number(h), Number(m));
+	// return date.getMinutes();
+};
+
+const NewsItem = ({
+	id,
+	cover,
+	title,
+	short_description,
+	view_number,
+	published_time,
+	read_time,
+}) => {
 	let navigate = useNavigate();
 	return (
 		<article
@@ -20,14 +39,14 @@ const NewsItem = ({ id, cover, title, short_description }) => {
 				<div className='news__item--info'>
 					<div className='d-flex gap-x-2'>
 						<img src={eye} alt='eye' />
-						<span>4</span>
+						<span>{view_number}</span>
 					</div>
 					<div className='news__item--date'>
-						<DateMarker />
+						<DateMarker date={published_time} />
 						{/* <time dateTime='2011-11-18 14:54:39.929-04:00'>5</time> */}
 						-
 						<p>
-							خواندن در <span>8</span> دقیقه
+							زمان مطالعه : <span>{getReadTime(read_time)}</span> دقیقه
 						</p>
 					</div>
 				</div>

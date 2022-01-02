@@ -9,6 +9,7 @@ import _ from 'lodash';
 
 const News = () => {
 	const [newsList, setNewsList] = useState([]);
+    console.log("News ~ newsList", newsList)
 	const [pagination, setpagination] = useState({
 		current: 1,
 		pageSize: newsList?.page_count,

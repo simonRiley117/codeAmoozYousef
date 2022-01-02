@@ -47,10 +47,14 @@ const NewsDetails = () => {
 
 	const getReadTime = (time = '0') => {
 		const [h, m] = time?.split(':');
+		if (m.at(0) === '0') {
+			return m.at(1);
+		}
+		return m;
 
-		const date = new Date();
-		date.setHours(Number(h), Number(m));
-		return date.getMinutes();
+		// const date = new Date();
+		// date.setHours(Number(h), Number(m));
+		// return date.getMinutes();
 	};
 
 	return (
@@ -81,12 +85,9 @@ const NewsDetails = () => {
 										{NewsData?.published_time && (
 											<DateMarker date={NewsData?.published_time} />
 										)}
-										-
-										<p>
-											خواندن در{' '}
-											<span>{getReadTime(NewsData?.read_time)}</span>{' '}
-											دقیقه
-										</p>
+										- زمان مطالعه :{' '}
+										<span>{getReadTime(NewsData?.read_time)}</span>{' '}
+										دقیقه
 									</div>
 								</div>
 								{NewsData?.text && (
