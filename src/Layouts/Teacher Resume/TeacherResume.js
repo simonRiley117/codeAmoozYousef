@@ -5,11 +5,7 @@ import {useLocation} from "react-router-dom";
 
 const Teacherresume = () => {
     const location = useLocation();
-    // console.log('location: ', location)
-    useEffect(() => {
-		window.scrollTo(0, 0);
-	
-	  }, [])
+    
     return (
         <div className="container grid grid-cols-6 mt-60">
             <div>

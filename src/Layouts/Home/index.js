@@ -6,10 +6,7 @@ import Offers from "./Offers";
 import News from "./News";
 
 const Home = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-  }, [])
+  
   return (
     <>
       <Header />

@@ -17,10 +17,7 @@ const News = () => {
 	const handleSetData = (data) => {
 		setNewsList(data);
 	};
-	useEffect(() => {
-		window.scrollTo(0, 0);
 	
-	  }, [])
 
 	const getNewsList = useFetch({
 		url: `NewsService`,

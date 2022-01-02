@@ -59,9 +59,7 @@ function Index() {
   //     pathname: "/courses/content",
   //     state: { name: name, id: id },
   //   });
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   const ids = id;
   const url1 = name;
   return (

@@ -14,10 +14,7 @@ const ShoppingCard = () => {
         method: "GET",
         setter: setPayment,
     });
-    useEffect(() => {
-		window.scrollTo(0, 0);
-	
-	  }, [])
+    
     const getorderSummary = useFetch({
         url: `CartService/orderSummary`,
         method: "GET",

@@ -97,7 +97,6 @@ function CourseContent() {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
     }
-    window.scrollTo(0, 0);
   }, [Currentcontentid]);
 
   const handleNextContent = () => {
