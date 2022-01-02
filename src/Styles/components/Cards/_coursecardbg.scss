@@ -134,16 +134,47 @@
 	}
 	&--shopingcard {
 		border-radius: 50%;
+		&.wishList--full {
+			svg {
+				path {
+					stroke: $color-primary;
+				}
+			}
+			
+			& path {
+				fill: rgba($color: $color-primary, $alpha: 0.08);
+			}
+		}
 	}
 
 	&--heart {
 		border-radius: 50%;
 		margin-right: 8px;
+		&.wishList--full {
+			svg {
+				path {
+					stroke: $color-primary;
+				}
+			}
+			
+			& path {
+				fill: rgba($color: $color-primary, $alpha: 0.08);
+			}
+		}
+		& button {
+			&:hover {
+				color: $color-primary;
+			}
+		}
+		
 	}
 	button {
-		background: #fff;
-		color: $color-blue-light-1;
-		box-shadow: 0px 0px 5px 0px rgba(70, 190, 167, 0.5);
+		background-color: #fff;
+		color: $color-text;
+		box-shadow: 0px 0px 10px 0px rgba($color-blue-2, 0.2);
+		& path {
+			fill: #fff;
+		}
 	}
 
 	&-footer {

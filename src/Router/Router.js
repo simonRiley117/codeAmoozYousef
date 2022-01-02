@@ -20,7 +20,7 @@ import Faq from '@Layouts/Faq';
 import Contact from '@Layouts/Contact us';
 import AboutUs from '@Layouts/About us';
 import Courses from '@Layouts/Courses';
-import Course from '@Layouts/Course';
+import CourseIntro from '@Layouts/CourseIntro';
 import Favorites from '@Layouts/Favorites/Favorites';
 import Rules from '@Layouts/Rules/Rules';
 import Example from '@Layouts/Example';
@@ -56,7 +56,7 @@ const Router = () => {
 					<Route path='/about-me' element={<AboutUs />} />
 
 					<Route path='/courses' element={<Courses />} />
-					<Route path='/courses/content' element={<Course />} />
+					<Route path='/courses/intro' element={<CourseIntro />} />
 					<Route path='/courses/teacher' element={<TeacherResume />} />
 					<Route path='/courses/example' element={<Example />} />
 					<Route path='/courses/topic' element={<Coursetopic />} />

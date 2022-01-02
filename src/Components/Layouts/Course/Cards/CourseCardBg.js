@@ -157,7 +157,7 @@ const CourseCardBg = ({ card, getLatestCourseList, getallCourseList }) => {
 
 					<h5 className='card-bg-title'>
 						<Link
-							to={`/courses/content`}
+							to={`/courses/intro`}
 							state={{
 								name: title,
 								id: uuid,

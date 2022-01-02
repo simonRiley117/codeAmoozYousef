@@ -95,7 +95,7 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
                     <h5 className="card-bg-title">
                         <Link
                             to={{
-                                pathname: "/courses/content",
+                                pathname: "/courses/intro",
                                 state: {nameid: course_name, id: course_id},
                             }}
                         >
