@@ -9,19 +9,11 @@
 	}
 	.ant-breadcrumb {
 		display: flex;
-		@include respond(tablet) {
-			font-size: 12px;
-		}
+		
 		span {
 			display: flex;
 			align-items: center;
 		}
 	}
-	.ant-breadcrumb-separator {
-		svg {
-			@include respond(tablet) {
-				font-size: 1rem;
-			}
-		}
-	}
+	
 }
