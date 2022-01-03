@@ -50,7 +50,7 @@ const ProfileMenu = () => {
           <UserIcon />
           <div className="appbar__profile--info-content">
             <h4>{userData.first_name}</h4>
-            <span>{userData.username}</span>
+            <span>{userData.last_name}</span>
           </div>
         </div>
       </Menu.Item>
