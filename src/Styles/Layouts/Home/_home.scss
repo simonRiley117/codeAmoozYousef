@@ -46,13 +46,11 @@
 			background-color: #e0f3fa;
 			padding: 2.5rem 4rem;
 			border-radius: 3rem;
-			@include d-flex-column('', flex-start);
+			@include d-flex-column("", flex-start);
 			position: relative;
 			margin-right: -30rem;
 			margin-bottom: 30rem;
-			filter: drop-shadow(
-				10px 10px 11px rgba($color: $color-black, $alpha: 0.2)
-			);
+			filter: drop-shadow(10px 10px 11px rgba($color: $color-black, $alpha: 0.2));
 			max-width: 68rem;
 			width: 100%;
 			@include respond(big-tablet) {
@@ -79,7 +77,7 @@
 			}
 
 			&::after {
-				content: '';
+				content: "";
 				position: absolute;
 				width: 0;
 				height: 0;
@@ -236,9 +234,7 @@
 				width: 19rem;
 				height: 19rem;
 				border-radius: 50%;
-				filter: drop-shadow(
-					0 10px 12px rgba($color: $color-black, $alpha: 0.4)
-				);
+				filter: drop-shadow(0 10px 12px rgba($color: $color-black, $alpha: 0.4));
 				background: linear-gradient(
 					221deg,
 					#47bea7 -0.63%,
@@ -301,7 +297,7 @@
 				align-items: center;
 			}
 			&:not(:last-child)::after {
-				content: '';
+				content: "";
 				position: relative;
 				width: 6px;
 				height: 5rem;
@@ -506,7 +502,7 @@
 		// @extend %scroll-effect;
 
 		&--content {
-			@include display-flex('', flex-end);
+			@include display-flex("", flex-end);
 			margin-bottom: 8rem;
 			width: 100%;
 			@include respond(tab-port) {
@@ -591,7 +587,7 @@
 		}
 
 		&--item {
-			@include display-flex('', stretch);
+			@include display-flex("", stretch);
 			direction: rtl;
 			border-radius: 3rem;
 			filter: drop-shadow(0px 0px 26px rgba(0, 0, 0, 0.25));
