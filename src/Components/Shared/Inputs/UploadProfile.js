@@ -2,11 +2,13 @@ import PropTypes from "prop-types";
 import React, { forwardRef, useState } from "react";
 import { ReactComponent as PlusIcon } from "@Assets/Icons/plus.svg";
 import { Controller } from "react-hook-form";
-
+import ReactCrop from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
 const UploadProfile = forwardRef(({ defaultImage, label, ...rest }, ref) => {
   const [imagePreviewUrl, setstateimagePreviewUrl] = useState("");
 
   const [coverfile, setcover] = useState(null);
+  const [crop, setCrop] = useState({ unit: "%", width: 30, aspect: 16 / 9 });
 
   const handleImageChange = (e) => {
     e.preventDefault();
@@ -19,7 +21,30 @@ const UploadProfile = forwardRef(({ defaultImage, label, ...rest }, ref) => {
     };
     reader.readAsDataURL(file);
   };
+  const onSelectFile = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => setcover(reader.result));
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+  const onImageLoaded = (image) => {
+    let imageRef = image;
+  };
 
+  // const onCropComplete = (crop) => {
+  //   makeClientCrop(crop);
+  // };
+  // const makeClientCrop = (crop) => {
+  //   if (imageRef && crop.width && crop.height) {
+  //     const croppedImageUrl = getCroppedImg(
+  //      imageRef,
+  //       crop,
+  //       "newFile.jpeg"
+  //     );
+  //     this.setState({ croppedImageUrl });
+  //   }
+  // };
   return (
     <div className="profile__uploader  relative">
       <div className="profile__uploader--cover">

@@ -26,6 +26,7 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import Button from "../Buttons/Button";
 import Modal from "@Components/Shared/Modal/Modal";
+import Propfile from "./ProfileMenu/Propfile";
 import {
   DownOutlined,
   LeftOutlined,
@@ -152,72 +153,6 @@ const DahsboardAppbar = () => {
     ));
   };
 
-  const profileMenu = (
-    <div className="profile-menu">
-      <div className="px-8 pt-4">
-        <div className="profile-menu-item px-8 py-4">
-          <div className="profile-menu-item-icon">
-            <UserOutlined style={{ fontSize: "26px" }} />
-          </div>
-          <p className="profile__name font-bold -mb-2">{userData.username}</p>
-        </div>
-      </div>
-      <Divider
-        style={{
-          margin: "5px 0",
-        }}
-      />
-      <div className="px-8 pb-4">
-        <div className="profile-menu-item">
-          <div className="profile-menu-item-icon">
-            <HomeOutlined />
-          </div>
-          <Link to="/dashboard" className=" ml-40">
-            حساب کاربری
-          </Link>
-          <div className="profile-menu-item-arrow">
-            <LeftOutlined />
-          </div>
-        </div>
-        {/* <Divider style={{ margin: "5px 0" }} /> */}
-        <div className="profile-menu-item">
-          <div className="profile-menu-item-icon">
-            <HeartOutlined />
-          </div>
-          <Link to="/fav" className=" ml-40">
-            علاقه مندی‌ها
-          </Link>
-          <div className="profile-menu-item-arrow">
-            <LeftOutlined />
-          </div>
-        </div>
-        {/* <Divider style={{ margin: "5px 0" }} /> */}
-        <div className="profile-menu-item text-red-500">
-          <div className="profile-menu-item-icon">
-            <LogoutOutlined />
-          </div>
-          <a href="#" onClick={handleModalShow} className=" ml-40">
-            خروج
-          </a>
-          <div className="profile-menu-item-arrow">
-            <LeftOutlined />
-          </div>
-        </div>
-      </div>
-      <Modal className="ExitModal" visible={modal} onCancel={handleModalShow}>
-        <div className="ExitModal__back">
-          <p className="mb-12">آیا از خروج مطمئن هستید؟</p>
-          <div className="d-flex-space">
-            <Button onClick={logout}>بله</Button>
-            <Button onClick={handleModalShow} type="primary">
-              خیر
-            </Button>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-
   return (
     <div
       className={classNames("appbar__dahsboard", {
@@ -270,18 +205,7 @@ const DahsboardAppbar = () => {
               <div className="d-flex-align Menu_actions--profile">
                 {/* <p className="profile__name">{userData.username}</p> */}
                 <div className={classNames("profile__image")}>
-                  <Popover
-                    trigger="click"
-                    placement="bottomLeft"
-                    content={profileMenu}
-                  >
-                    <div className="flex justify-center items-center relative profile__image-content">
-                      <img src={userData.cover} alt="profile" />
-                      <div className="absolute w-8 h-8 flex items-center justify-center">
-                        <DownOutlined />
-                      </div>
-                    </div>
-                  </Popover>
+                  <Propfile />
                 </div>
               </div>
             </div>
