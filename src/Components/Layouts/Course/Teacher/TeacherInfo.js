@@ -135,7 +135,7 @@ function TeacherInfo({ courseId, resume, liftingUpTags }) {
 
 				{windowSize !== 'sm' && !resume && (
 					<div className='TeacherInfo__tags'>
-						{!getTeacherProfileInfo.loading ? (
+						{getTeacherProfileInfo.loading ? (
 							<div className='TeacherInfo__tags--loading d-flex justify-between'>
 								<Skeleton.Button active shape='round' />
 								<Skeleton.Button active shape='round' />
