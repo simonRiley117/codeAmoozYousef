@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
 import useFetch from "@App/Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
+import { Skeleton } from "antd";
 
 function Detail({ contentUuid, setActiveSeason, iscontent }) {
   const [content, setContent] = useState(null);
@@ -35,7 +36,9 @@ function Detail({ contentUuid, setActiveSeason, iscontent }) {
             {content.short_description}
           </p>
         </div>
-      ) : null}
+      ) : (
+        <Skeleton />
+      )}
     </>
   );
 }

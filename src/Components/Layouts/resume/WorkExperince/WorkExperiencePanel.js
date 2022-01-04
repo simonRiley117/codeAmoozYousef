@@ -3,6 +3,7 @@ import WorkExperienceDone from "./WorkExperinceDone";
 import WorkExperienceForm from "./WorkExperienceForm";
 import {ReactComponent as PlusIcon} from "@Assets/Icons/plus.svg";
 import Button from "@Components/Shared/Buttons/Button";
+import { Skeleton } from "antd";
 
 const WorkExperiencePanel = (
     {

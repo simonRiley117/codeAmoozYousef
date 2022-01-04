@@ -162,7 +162,7 @@ function AskAndAnswer({ courseId }) {
         <div className="input text-right ">
           <InputBase.Group style={{ bottom: "0" }}>
             <div className="flex justify-end items-center">
-              <input
+              <textarea
                 value={message}
                 onChange={(e) => setMessageForm(e.target.value)}
                 type="text"

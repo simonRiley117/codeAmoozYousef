@@ -9,6 +9,9 @@
         padding: 0.4rem 6rem 0.4rem 6rem !important;
         font-size: 1.4rem !important;
         height: 4.5rem !important;
+        word-wrap: break-word;
+        word-break: break-all;
+        height: 4rem;
         svg {
             fill: none;
             width: 17px;

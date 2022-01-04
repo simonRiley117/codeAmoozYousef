@@ -12,6 +12,10 @@ import classNames from "classnames";
 import IconBtn from "../../../Shared/Buttons/IconBtn";
 import Modal from "@Components/Shared/Modal/Modal";
 import Detail from "./Detail";
+import { Tabs, Tag } from "antd";
+import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
+
+const { TabPane } = Tabs;
 
 const Topic = ({ courseId, courseSeasons }) => {
   // const location = useLocation();
@@ -65,7 +69,7 @@ const Topic = ({ courseId, courseSeasons }) => {
             <Accordion>
               {courseSeasons.data.map((season, index) => (
                 <Panel
-                  collapsible={!season.lockedOn ? "disabled" : "header"}
+                  collapsible={season.lockedOn && "disabled"}
                   header={
                     <span className="Sarfasl__title">{season.title}</span>
                   }
@@ -77,7 +81,7 @@ const Topic = ({ courseId, courseSeasons }) => {
                 >
                   {season?.contents?.map((content, index) => (
                     <div
-                      className="Sarfasl__content flex justify-between items-center"
+                      className="Sarfasl__content flex justify-between items-center cursor-pointer"
                       key={content.uuid}
                       onClick={() =>
                         handleModalShow(content.uuid, content.lockedOn)
@@ -110,7 +114,38 @@ const Topic = ({ courseId, courseSeasons }) => {
 
       {showModal && (
         <Modal visible={modal} onCancel={handleModalVisible}>
-          <Detail contentUuid={contentUuid} />
+          {/* <Tabs className="TabBox" type="card">
+            <TabPane tab="درباره این درس" key="1">
+              <Detail contentUuid={contentUuid} />
+            </TabPane>
+            <TabPane tab="آزمون های درس" key="2">
+              <Detail contentUuid={contentUuid} />
+            </TabPane>
+          </Tabs> */}
+          <Tabs className="TabBox" type="card">
+            <TabPane tab="ویدیو" key={`${contentUuid}_1`}>
+              <Detail contentUuid={contentUuid} />
+            </TabPane>
+            <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
+              {/* <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} /> */}
+            </TabPane>
+            <TabPane tab="آزمون" key={`${contentUuid}_3`}>
+              {/* <Quiz
+                quizUuid={quizUuid}
+                contentUuid={contentUuid}
+                courseUuid={courseUuid}
+              /> */}
+            </TabPane>
+            {/* {hasSeasonQuize === "You have not passed quiz season" && (
+              <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
+                <Quiz
+                  quizUuid={quizUuid}
+                  contentUuid={contentUuid}
+                  courseUuid={courseUuid}
+                />
+              </TabPane>
+            )} */}
+          </Tabs>
         </Modal>
       )}
     </>

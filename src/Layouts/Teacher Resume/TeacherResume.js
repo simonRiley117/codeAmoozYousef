@@ -1,7 +1,7 @@
 import TeacherInfo from "@Components/Layouts/Course/Teacher/TeacherInfo";
 import Resume from "@Layouts/resume/Resume";
-import React,{useEffect} from "react";
-import {useLocation} from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Teacherresume = () => {
     const location = useLocation();
