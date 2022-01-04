@@ -8,7 +8,6 @@ import { Radio } from "antd";
 import Button from "@Components/Shared/Buttons/Button";
 import share from "@Assets/Icons/share.svg";
 import useFetch from "@App/Context/useFetch";
-import { ClipLoader } from "react-spinners";
 import { useAuth } from "@App/Context/authContext";
 import { useUserData } from "@App/Context/userContext";
 import UseCopyToClipboard from "@App/Hooks/UseCopyToClipboard";
@@ -18,6 +17,8 @@ import INSTAGRAM from "@Assets/Icons/instafram.svg";
 import LinkedIn from "@Assets/Icons/linkdin.svg";
 import Telegram from "@Assets/Icons/gSocial.svg";
 import ShareModal from "@Components/Shared/Sharemodal/ShareModal";
+import { useHistory, useLocation, useParams } from "react-router-dom";
+import { Skeleton } from "antd";
 
 const override = {
   display: "block",
@@ -38,6 +39,9 @@ function CourseTable({ courseId, ids, url1 }) {
   const [socialsInfo, setSocialsInfo] = useState([]);
   const [socialLoading, setSocialLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [id, setId] = useState();
+  const [name, setName] = useState();
+  const location = useLocation();
 
   const setCostForSelectedDegree = (e) => {
     const selectedDegree = orderCourse?.costs.filter(
@@ -45,7 +49,11 @@ function CourseTable({ courseId, ids, url1 }) {
     );
     setDegree(selectedDegree[0]);
   };
-
+  useEffect(() => {
+    // setMenu(location.state.name);
+    setId(location.state.id);
+    setName(location.state.name);
+  }, [location]);
   const setData = (data) => {
     // console.log('ddd: ', data)
     setLoadingOrderCourse(false);
@@ -253,9 +261,17 @@ function CourseTable({ courseId, ids, url1 }) {
                 )}
               </>
             ) : (
-              <Button type="primary" classes="CourseTable__btn" disabled={true}>
-                <span style={{ color: "#222" }}>دوره رو قبلا خریدی</span>
-              </Button>
+              <Link
+                to={`/coursecontent`}
+                state={{
+                  name: name,
+                  id: id,
+                }}
+              >
+                <Button type="primary" classes="CourseTable__btn">
+                  <span style={{ color: "#222" }}>ورود به دوره</span>
+                </Button>
+              </Link>
             )}
             <div
               className="flex items-center justify-center CourseTable__ShareBox cursor-pointer"
@@ -297,7 +313,13 @@ function CourseTable({ courseId, ids, url1 }) {
       )}
     </div>
   ) : (
-    <ClipLoader color="#43aa8b" loading={true} css={override} size={60} />
+    <div className="CourseTable">
+      <div className="CourseTable__Position">
+        <div className="CourseTable__Table">
+          <Skeleton />
+        </div>
+      </div>
+    </div>
   );
 }
 

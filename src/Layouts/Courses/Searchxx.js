@@ -28,7 +28,6 @@ const Searchxx = ({ children }) => {
 		});
     reset();
   };
-  console.log(`result`, result);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="search-container">
       <Input

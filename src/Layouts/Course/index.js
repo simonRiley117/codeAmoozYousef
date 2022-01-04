@@ -31,7 +31,9 @@ function Index() {
     setId(location.state.id);
     setName(location.state.name);
   }, [location]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // const [menu, setMenu] = useState("");
   const [id, setId] = useState();
   const [name, setName] = useState();
@@ -62,12 +64,15 @@ function Index() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const handleScroll=()=>{
+    
+  }
   const ids = id;
   const url1 = name;
   return (
     <div className="container">
       <BreadCrump name={name} />
-      <div className="Course">
+      <div className="Course" onScroll={handleScroll}>
         {/*todo: it's create bug when uncommented miss beigi*/}
         {windowSize !== "sm"
           ? data !== "" && <HeaderDiscount data={data} />
