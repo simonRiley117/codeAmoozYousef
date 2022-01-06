@@ -61,6 +61,10 @@ const CourseIntro = () => {
         setTags(tags);
     };
 
+    const [has_user_course, set_has_user_course] = useState()
+    const liftUpHas_user_course = (data) => {
+        set_has_user_course(data)
+    }
     const ids = id;
     const url1 = name;
     return (
@@ -110,7 +114,9 @@ const CourseIntro = () => {
                                         key='2'
                                         className='Sarfasl__commentpart'
                                     >
-                                        <AskAndAnswer courseId={id}/>
+                                        <AskAndAnswer
+                                            has_user_course={has_user_course}
+                                            courseId={id}/>
                                     </TabPane>
                                 </Tabs>
                             </div>
@@ -118,7 +124,7 @@ const CourseIntro = () => {
                     </div>
                     {windowSize !== 'sm' && (
                         <div className='Course__sideBar relative'>
-                            <CourseTable courseId={id} ids={ids} url1={url1}/>
+                            <CourseTable liftUpHas_user_course={liftUpHas_user_course} courseId={id} ids={ids} url1={url1}/>
                         </div>
                     )}
 
@@ -131,7 +137,7 @@ const CourseIntro = () => {
                                 />
                             </div>
                             <div className='Course__sideBar relative'>
-                                <CourseTable courseId={id} ids={ids} url1={url1}/>
+                                <CourseTable liftUpHas_user_course={liftUpHas_user_course} courseId={id} ids={ids} url1={url1}/>
                             </div>
                         </div>
                     )}
@@ -151,7 +157,9 @@ const CourseIntro = () => {
                                 key='2'
                                 className='Sarfasl__commentpart'
                             >
-                                <AskAndAnswer courseId={id}/>
+                                <AskAndAnswer
+                                    has_user_course={has_user_course}
+                                    courseId={id}/>
                             </TabPane>
                         </Tabs>
                     </div>

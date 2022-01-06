@@ -22,7 +22,7 @@ function CommentBox(
         // index,
         // openReply
     }) {
-
+    const {token} = useAuth();
     const [openReply, setOpenReply] = useState(false)
     const handleToggleReply = () => {
         setOpenReply((prevState) => !prevState)
@@ -45,7 +45,7 @@ function CommentBox(
                              justifyContent: 'space-between',
                              margin: '0 1rem'
                          }}>
-                        <span key={`comment-nested-reply-to_${uuid}_1`}>{!draft && 'پاسخ به'} </span>
+                        <span key={`comment-nested-reply-to_${uuid}_1`}>{!draft && token && 'پاسخ به'} </span>
                         <span
                             onClick={() => {
                                 handleToggleReply()

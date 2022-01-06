@@ -27,7 +27,7 @@ const override = {
 };
 const WITHOUT_DEGREE = "بدون مدرک";
 
-function CourseTable({ courseId, ids, url1 }) {
+function CourseTable({ courseId, ids, url1,liftUpHas_user_course }) {
   const [orderCourse, setOrderCourse] = useState({});
   const [loadingorOerCourse, setLoadingOrderCourse] = useState(true);
   const [degree, setDegree] = useState(null);
@@ -60,6 +60,7 @@ function CourseTable({ courseId, ids, url1 }) {
     setOrderCourse(data);
     setDegree(data.selected_degree ? data.selected_degree : data.costs[0]);
     // selected_degree
+    liftUpHas_user_course(data.has_user_course)
   };
   const getCourseOrder = useFetch({
     url: `CourseService/${courseId}/courseOrder`,

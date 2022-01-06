@@ -3,6 +3,7 @@ import moment from "moment";
 import {Comment as Comments} from "antd";
 import {Tooltip, Avatar} from "antd";
 import useFetch from "../../../Context/useFetch";
+import {useAuth} from "../../../Context/authContext";
 
 function CommentDraftReplyBox(
     {
@@ -20,7 +21,7 @@ function CommentDraftReplyBox(
     console.log('commentId: ', commentId)
     const [replyInfo, setReplyInfo] = useState(null);
     // const [replyLoading, setReplyLoading] = useState(true);
-
+    const {token} = useAuth();
     const setReplyData = (data) => {
         setReplyInfo(data);
         // setReplyLoading(false);
@@ -39,7 +40,7 @@ function CommentDraftReplyBox(
     // const [singleFetch, setSingleFetch] = useState(true)
     console.log('DrafttoggleReply: ', toggleReply)
     useEffect(() => {
-        if (toggleReply) {
+        if (toggleReply && token) {
             getReplyInfo.reFetch()
             // setSingleFetch(false)
         }
