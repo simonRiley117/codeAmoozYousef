@@ -19,9 +19,7 @@ const NewsItem = ({id, cover, title, short_description, isActive, isPrev, isNext
                 <h2>{title}</h2>
                 <p>{short_description}</p>
                 <Link to={'/news/news-info'}
-                      state={{
-                          newsId: id
-                      }}
+                      state={id}
                 >بیشتر بخوانید</Link>
             </div>
         </article>

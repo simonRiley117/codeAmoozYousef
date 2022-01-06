@@ -11,7 +11,6 @@ import DateMarker from '@Components/Shared/Date/DateMarker';
 
 const NewsDetails = () => {
     const {state: id} = useLocation();
-
     const [NewsData, setNewsData] = useState();
     const [latestNews, setlatestNews] = useState([]);
     const [similarNews, setsimilarNews] = useState([]);
