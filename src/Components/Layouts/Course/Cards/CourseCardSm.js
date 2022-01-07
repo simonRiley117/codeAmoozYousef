@@ -58,9 +58,9 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 		if (err?.data === 'course already exists') {
 			toast.error('این دوره از قبل به سبد کالا اضافه شده است');
 		}
-		if (err?.detail === 'Given token not valid for any token type') {
-			toast.error('برای خرید دوره اول وارد سایت شوید');
-		}
+		// if (err?.detail === 'Given token not valid for any token type') {
+		// 	toast.error('برای خرید دوره اول وارد سایت شوید');
+		// }
 	};
 
 	const addToCard = (id) => {
@@ -101,9 +101,9 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 		if (err?.data === 'You already have this course in your willingList') {
 			toast.error('این دوره از قبل به لیست علاقه مندی ها اضافه شده است');
 		}
-		if (err?.detail === 'Given token not valid for any token type') {
-			toast.error('برای افزودن به لیست علاقه مندی ها اول وارد سایت شوید');
-		}
+		// if (err?.detail === 'Given token not valid for any token type') {
+		// 	toast.error('برای افزودن به لیست علاقه مندی ها اول وارد سایت شوید');
+		// }
 	};
 
 	const addToWishList = () => {
@@ -135,7 +135,7 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 								!isCourseinCart ? 'wishList--empthy' : 'wishList--full'
 							}`}
 						>
-							{!has_user_course && (
+							{(!has_user_course && !is_course_in_cart) && (
 								<IconBtn
 									getPopupContainer={false}
 									onClick={() => addToCard(uuid)}
