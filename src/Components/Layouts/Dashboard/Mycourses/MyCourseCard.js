@@ -15,6 +15,7 @@ import useFetch from "@App/Context/useFetch";
 import Button from "@Components/Shared/Buttons/Button";
 import BtnLink from "@Components/Shared/Buttons/Link";
 import {useLocation} from "react-router";
+import NoCommentImage from "../../../../Assets/Images/Pic/empthyChat.svg";
 
 const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
     const [courseData, setCourseData] = useState(null);
@@ -33,39 +34,39 @@ const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
     });
 
 
-    return !loadingCourseData ? courseData.results.map((course, index) => (
-        <article key={index} className="card-bg MyCourses__Card">
-            <div className="card-bg-pic">
-                <img
-                    src={course.cover}
-                    alt={course.title}
-                    className="card-bg-pic-logo"
-                />
-            </div>
-            <div className="card-bg-info">
-                <div className="card-bg-content ">
-                    <div className="d-flex-space MyCourses__Card--header">
-                        <h5 className="card-bg-title">
-                            <Link
+    return !loadingCourseData ? (courseData.results.length > 0 ? courseData.results.map((course, index) => (
+            <article key={index} className="card-bg MyCourses__Card">
+                <div className="card-bg-pic">
+                    <img
+                        src={course.cover}
+                        alt={course.title}
+                        className="card-bg-pic-logo"
+                    />
+                </div>
+                <div className="card-bg-info">
+                    <div className="card-bg-content ">
+                        <div className="d-flex-space MyCourses__Card--header">
+                            <h5 className="card-bg-title">
+                                <Link
+                                    to={`/coursecontent`}
+                                    state={{
+                                        name: course.title, id: course.course_id,
+                                    }}
+                                >
+                                    {course.title}
+                                </Link>
+                            </h5>
+                            <BtnLink
                                 to={`/coursecontent`}
                                 state={{
                                     name: course.title, id: course.course_id,
                                 }}
                             >
-                                {course.title}
-                            </Link>
-                        </h5>
-                        <BtnLink
-                            to={`/coursecontent`}
-                            state={{
-                                name: course.title, id: course.course_id,
-                            }}
-                        >
-                            مشاهده ی کل دوره
-                        </BtnLink>
-                    </div>
-                    <div className="MyCourses__Card--body">
-                        {!finishedCourse ? (<>
+                                مشاهده ی کل دوره
+                            </BtnLink>
+                        </div>
+                        <div className="MyCourses__Card--body">
+                            {!finishedCourse ? (<>
                                 <div className="MyCourses__Card--body-row d-flex-space">
                                     <p className="MyCourses__Card--body-p ">
                                         پیشرفت شما در دوره :
@@ -95,27 +96,32 @@ const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
                                     امتیاز به این دوره
                                 </div>
                             </>)}
-                    </div>
-                    <div className="d-flex-space card-bg-footer">
-                        <Link
-                            to='/courses/teacher'
-                            state={{
-                                courseId: course.uuid, teacherId: course.teacher_uuid,
-                            }}
-                            className='card-bg-img-pic'
-                        >
-                            <img src={course.teacher_avatar} alt='teacher-avatar'/>
-                            <span>
+                        </div>
+                        <div className="d-flex-space card-bg-footer">
+                            <Link
+                                to='/courses/teacher'
+                                state={{
+                                    courseId: course.uuid, teacherId: course.teacher_uuid,
+                                }}
+                                className='card-bg-img-pic'
+                            >
+                                <img src={course.teacher_avatar} alt='teacher-avatar'/>
+                                <span>
 								{course.teacher_first_name} {course.teacher_last_name}
 							</span>
-                        </Link>
-                        <Link to="/course" className="MyCourses__Card--Link">
-                            ارتباط با استاد
-                        </Link>
+                            </Link>
+                            <Link to="/course" className="MyCourses__Card--Link">
+                                ارتباط با استاد
+                            </Link>
+                        </div>
                     </div>
                 </div>
+            </article>)) : (
+            <div className="center empty__chat">
+                <img src={NoCommentImage} alt="NoCommentImage"/>
             </div>
-        </article>)) : null;
+        )
+    ) : null;
 };
 
 export default MyCourseCard;
