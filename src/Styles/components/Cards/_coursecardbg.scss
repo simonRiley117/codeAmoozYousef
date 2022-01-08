@@ -109,6 +109,8 @@
 		top: 0px;
 		z-index: 100;
 		right: 0;
+
+		
 	}
 
 	&-title {
@@ -135,13 +137,8 @@
 	&--shopingcard {
 		border-radius: 50%;
 		&.wishList--full {
-			svg {
-				path {
-					stroke: $color-primary;
-				}
-			}
-			
 			& path {
+				stroke: $color-primary;
 				fill: rgba($color: $color-primary, $alpha: 0.08);
 			}
 		}
@@ -151,14 +148,9 @@
 		border-radius: 50%;
 		margin-right: 8px;
 		&.wishList--full {
-			svg {
-				path {
-					stroke: $color-primary;
-				}
-			}
-			
 			& path {
-				fill: rgba($color: $color-primary, $alpha: 0.08);
+				stroke: $color-primary;
+				fill: $color-primary;
 			}
 		}
 		& button {
@@ -166,7 +158,6 @@
 				color: $color-primary;
 			}
 		}
-		
 	}
 	button {
 		background-color: #fff;

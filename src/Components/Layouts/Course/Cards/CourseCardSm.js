@@ -91,10 +91,10 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 		trigger: false,
 		data: { course_uuid: uuid },
 		argFunc: (res) => {
-			toast.success('دوره با موفقیت به لیست علاقه مندی ها حذف شد   ');
+			toast.success('دوره از لیست علاقه مندی‌ها حذف شد!');
 			liftRequest.reFetch();
 			getallCourseList.reFetch();
-			setisFav(!isfav);
+			setisFav(false);
 		},
 	});
 	const handleErrorAddtoFav = (err) => {
@@ -127,40 +127,38 @@ const Coursecardsm = ({ card, liftRequest, getallCourseList }) => {
 			>
 				<span>{cost?.discountRate}</span>%تخفیف
 			</p>
-			{!has_user_course && (
-				<div className='card-sm-img-hover'>
-					<div className='card-sm-img-hover--box'>
-						<div
-							className={`card-sm-img-hover--shopingcard ${
-								!isCourseinCart ? 'wishList--empthy' : 'wishList--full'
-							}`}
-						>
-							{(!has_user_course && !is_course_in_cart) && (
-								<IconBtn
-									getPopupContainer={false}
-									onClick={() => addToCard(uuid)}
-									title='افزودن به سبدخرید'
-									icon={<CardIcon />}
-									disabled={Addtocard.loading}
-								/>
-							)}
-						</div>
-						<div
-							className={`card-sm-img-hover--heart ${
-								!isfav ? 'wishList--empthy' : 'wishList--full'
-							}`}
-						>
+			<div className='card-sm-img-hover'>
+				<div className='card-sm-img-hover--box'>
+					<div
+						className={`card-sm-img-hover--shopingcard ${
+							!isCourseinCart ? 'wishList--empthy' : 'wishList--full'
+						}`}
+					>
+						{!has_user_course && !is_course_in_cart && (
 							<IconBtn
 								getPopupContainer={false}
-								onClick={!isfav ? addToWishList : removeromWishList}
-								title='افزودن به لیست علاقه مندیها'
-								icon={<Heart />}
-								disabled={postToFav.loading}
+								onClick={() => addToCard(uuid)}
+								title='افزودن به سبدخرید'
+								icon={<CardIcon />}
+								disabled={Addtocard.loading}
 							/>
-						</div>
+						)}
+					</div>
+					<div
+						className={`card-sm-img-hover--heart ${
+							!isfav ? 'wishList--empthy' : 'wishList--full'
+						}`}
+					>
+						<IconBtn
+							getPopupContainer={false}
+							onClick={!isfav ? addToWishList : removeromWishList}
+							title='افزودن به لیست علاقه مندیها'
+							icon={<Heart />}
+							disabled={postToFav.loading}
+						/>
 					</div>
 				</div>
-			)}
+			</div>
 			<div>
 				<div className='card-sm-img'>
 					<div className='card-sm-img-title'>
