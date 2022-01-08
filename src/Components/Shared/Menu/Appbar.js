@@ -106,7 +106,7 @@ const Appbar = () => {
 							<div className='logo'>
 								<img src={logo} alt='logo' />
 							</div>
-							{/* <img src={Codeamoozlogo} alt='codeamooz' /> */}
+
 							<div className='logo-text'>
 								<LogoTextIcon />
 							</div>
@@ -152,7 +152,7 @@ const Appbar = () => {
 								</ul>
 								<div className='Menu_actions'>
 									{token && (
-										<div className=' relative'>
+										<div className=' relative ml-8'>
 											<IconBtn
 												icon={<ShoppingCartIcon />}
 												onClick={() => navigate('/shopping-card')}
