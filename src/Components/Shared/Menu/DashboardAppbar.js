@@ -110,7 +110,6 @@ const DahsboardAppbar = () => {
   const navigate = useNavigate();
 
   const [isOpenMenu, setOpenMenu] = useState(false);
-  const [hoverMenu, setHoverMenu] = useState(false);
   const [modal, setModal] = useState(false);
 
   const { sticky } = UseScrollAppbar();
@@ -203,7 +202,6 @@ const DahsboardAppbar = () => {
                 onClick={() => navigate("/shopping-card")}
               />
               <div className="d-flex-align Menu_actions--profile">
-                {/* <p className="profile__name">{userData.username}</p> */}
                 <div className={classNames("profile__image")}>
                   <Propfile />
                 </div>

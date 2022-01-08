@@ -327,7 +327,7 @@
 	}
 }
 
-.Menu_actions .appbar {
+.appbar {
 	&__dahsboard {
 		color: #ffffff;
 		font-size: 14px;
@@ -361,9 +361,9 @@
 			@include respond(big-tablet) {
 				padding-right: 3rem;
 				flex: 1 0 20%;
+				order: 2;
 			}
 			@include respond(tablet) {
-				order: 2;
 				padding-right: 0;
 				padding-left: 2rem;
 			}
@@ -428,14 +428,14 @@
 		}
 
 		.Menu__nav {
-			@include respond(tablet) {
+			@include respond(big-tablet) {
 				display: none;
 			}
 			&--btn {
 				flex-direction: column;
 				display: none;
 				z-index: 1051;
-				@include respond(tablet) {
+				@include respond(big-tablet) {
 					display: flex;
 				}
 				&:focus,
@@ -487,11 +487,9 @@
 					padding-left: 2rem;
 					padding-right: 3rem;
 					margin-right: 0.5rem;
-				}
-				@include respond(tablet) {
 					background-color: $color-white;
-					padding-right: 2rem;
 				}
+				
 			}
 		}
 

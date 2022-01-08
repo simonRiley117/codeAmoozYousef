@@ -52,7 +52,7 @@ const Propfile = () => {
 					<div className='appbar__profile--area-menu flex flex-col mt-10 gap-y-8'>
 						<Link to='/dashboard'>داشبورد</Link>
 						<Link to='/fav'>علاقه مندی‌ها</Link>
-						<span>خروج از حساب</span>
+						<span onClick={handleModalShow}>خروج از حساب</span>
 					</div>
 				</div>
 			) : (
