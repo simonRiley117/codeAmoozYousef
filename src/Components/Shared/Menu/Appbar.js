@@ -9,7 +9,6 @@ import UseScrollAppbar from './UseScrollAppbar';
 import Button from '../Buttons/Button';
 import Register from '@Components/Layouts/Register/Register';
 
-
 // Assets
 import logo from '@Assets/Logo/logo.svg';
 import { ReactComponent as ShoppingCartIcon } from '@Assets/Icons/shopping-cart.svg';
@@ -77,7 +76,6 @@ const Appbar = () => {
 		setModalVisible((prev) => !prev);
 	};
 
-	
 	useEffect(() => {
 		if (dark && !token && search == '?redirectTeacher') {
 			handleModalVisible();
@@ -130,9 +128,7 @@ const Appbar = () => {
 							/>
 							{token && (
 								<div className='d-flex-align Menu__nav--profile'>
-									<p className='profile__name'>
-										{userData !== null ? userData.username : ''}
-									</p>
+									<p className='profile__name'>{userData?.username}</p>
 									<div className='profile__image'>
 										<img src={userData.cover} alt='profile' />
 									</div>
@@ -148,7 +144,7 @@ const Appbar = () => {
 										<li
 											key={item.id}
 											className='Menu__li'
-											onClick={() => handleToggleMenu()}
+											onClick={() => setOpenMenu(false)}
 										>
 											<NavLink to={item.url}>{item.text}</NavLink>
 										</li>
