@@ -34,9 +34,6 @@
 		@include respond(laptop) {
 			padding: 0 1.8rem;
 		}
-		@include respond(sm-laptop) {
-			padding: 0 1.2rem;
-		}
 
 		& a {
 			@include set-font(14px, 600, $color-white);
@@ -105,9 +102,8 @@
 		}
 	}
 	.Menu__nav {
-		padding: 8px 3rem;
+		padding: 8px 0;
 		min-height: 8rem;
-		padding-left: 0;
 		width: 100%;
 
 		position: relative;
@@ -119,7 +115,7 @@
 			position: fixed;
 			right: -100vw;
 			top: 0;
-			padding-top: 10rem;
+			padding-top: 8rem;
 			width: 50vw;
 			height: 100vh;
 			background-color: $color-blue;
@@ -183,6 +179,7 @@
 			@include respond(big-tablet) {
 				flex-direction: column;
 				align-items: flex-start;
+				padding-right: 3rem;
 				& .Menu__li {
 					&:not(:last-child) {
 						margin-bottom: 2.5rem;
@@ -263,10 +260,12 @@
 			order: 1;
 			flex-direction: row-reverse;
 			justify-content: space-between;
+			align-items: flex-start;
 			width: 100%;
 			padding-left: 2rem;
 			margin-bottom: 3rem;
-
+			background-color: $color-blue-light-1;
+			padding: 2rem 3rem 2rem 0;
 			&--profile {
 				flex-direction: row-reverse;
 				margin-right: 2rem;
@@ -289,6 +288,24 @@
 			color: $color-white;
 			margin-left: 1.5rem;
 		}
+		&--badge {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: $color-primary;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			overflow: hidden;
+			font-size: 10px;
+			position: absolute;
+			bottom: 6px;
+			right: 2px;
+		}
+	}
+	&--profile {
+		position: relative;
+		// margin-bottom: 3px;
 	}
 
 	p.profile__name {
@@ -307,68 +324,10 @@
 			overflow: hidden;
 			margin-bottom: 3px;
 		}
-		.profile-menu {
-			display: flex;
-			flex-direction: column;
-			position: absolute;
-			left: 0;
-			// top: 0;
-			background: #e5e5e5;
-			border-radius: 8px;
-			padding: 0.6rem 1rem 0.8rem 1rem;
-			font-size: 1.4rem;
-			font-weight: 700;
-			// min-width: 10rem;
-			width: max-content;
-			color: #121212;
-			// align-items: center;
-			justify-content: center;
-
-			&-item {
-				display: flex;
-				*:first-child {
-					margin-left: 10px;
-				}
-			}
-		}
-
-		&-content {
-			// display: none;
-			div {
-				background-color: #fff;
-				color: $color-primary;
-				border-radius: 50%;
-				top: 25px;
-				right: 0;
-				padding: 0.1rem 0.2rem;
-			}
-		}
 	}
 }
 
-.Menu_actions--profile {
-	position: relative;
-	// margin-bottom: 3px;
-
-	.profile-menu {
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		left: 0;
-		// top: 0;
-		background: #e5e5e5;
-		border-radius: 8px;
-		padding: 0.6rem 1rem 0.8rem 0;
-		font-size: 1.4rem;
-		font-weight: 700;
-		min-width: 10rem;
-		color: #121212;
-		// align-items: center;
-		justify-content: center;
-	}
-}
-
-.appbar {
+.Menu_actions .appbar {
 	&__dahsboard {
 		color: #ffffff;
 		font-size: 14px;
@@ -559,104 +518,7 @@
 		}
 	}
 }
-.Menu_action--badge {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: $color-primary;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	overflow: hidden;
-	font-size: 10px;
-	position: absolute;
-	bottom: 6px;
-	right: 2px;
-}
-.profile-menu {
-	display: flex;
-	flex-direction: column;
 
-	background: #fff;
-	font-size: 1.4rem;
-	font-weight: 700;
-	color: #121212;
-	justify-content: center;
-	font-weight: 400;
-	font-size: 1.3rem;
-
-	background: #e5e5e56e;
-	border-radius: 8px;
-	padding: 15px;
-	font-size: 1.6rem;
-	font-weight: normal;
-	color: #121212;
-	justify-content: center;
-	.exite {
-		color: #fe6470;
-	}
-	svg {
-		width: 19px;
-		fill: #e5e5e56e;
-	}
-	&-item {
-		display: flex;
-		align-items: center;
-		padding: 0.7rem 0;
-
-		&-icon {
-			margin-left: 10px;
-			font-weight: 700;
-			font-size: 18px;
-		}
-		&-arrow {
-			margin-right: auto;
-			font-size: 1rem;
-		}
-	}
-
-	p.profile__name {
-		margin-left: 1.6rem;
-		color: $color-text;
-	}
-}
-.ant-popover-inner {
-	border-radius: 14px;
-	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.35);
-
-	overflow: hidden;
-	&-content {
-		padding: 0;
-	}
-}
-.ant-popover-arrow {
-	position: absolute;
-	display: block;
-	width: 23.485281px;
-	height: 13.485281px;
-	overflow: hidden;
-	background: transparent;
-	pointer-events: none;
-	.ant-popover-arrow-content {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		display: block;
-		width: 15px;
-		height: 16px;
-		margin: auto;
-		background-color: #f4f4f4;
-		content: '';
-		pointer-events: auto;
-	}
-}
-.ant-popover.ant-popover-rtl.ant-popover-placement-bottomLeft {
-	left: 30px !important;
-	top: 51px !important;
-	transform-origin: 0px -4px;
-}
 .appbar__profile {
 	max-width: 5rem;
 	max-height: 5rem;
@@ -689,6 +551,29 @@
 		& svg {
 			margin-top: 2px;
 			transition: all 300ms ease-in 30ms;
+		}
+	}
+
+	&--area {
+		& h4 {
+			font-size: 14px;
+			color: $color-gray-dark;
+		}
+		& span {
+			font-size: 12px;
+			color: $color-gray-dark;
+			font-weight: 700;
+		}
+
+		&-menu {
+			& a {
+				color: $color-gray;
+			}
+
+			& span {
+				font-size: 14px;
+				color: $color-error;
+			}
 		}
 	}
 
@@ -765,7 +650,7 @@
 
 		& h4 {
 			line-height: 1.2;
-			@include set-font(1.6rem, 700);
+			@include set-font(16px, 700);
 			margin-bottom: 2px;
 		}
 
