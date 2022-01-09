@@ -161,7 +161,7 @@ const Appbar = () => {
 												icon={<ShoppingCartIcon />}
 												onClick={() => navigate('/shopping-card')}
 											/>
-											<div className='Menu_action--badge '>
+											<div className='Menu_action--badge cursor-pointer'>
 												<p>{userData.cart}</p>
 											</div>
 										</div>
