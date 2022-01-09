@@ -22,6 +22,7 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
         origin_cost,
         teacher_avatar,
         teacher_last_name,
+        teacher_uuid,
         teacher_name,
         uuid,
         course_cover,
@@ -117,10 +118,19 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
                     </div>
                     <div className="d-flex-space card-bg-footer">
                         <div className="card-bg-img-pic">
-                            <img src={teacher_avatar} alt='teacher-avatar'/>
-                            <h4>
-                                {teacher_name} {teacher_last_name}
-                            </h4>
+                            <Link
+                                to='/courses/teacher'
+                                state={{
+                                    courseId: uuid,
+                                    teacherId: teacher_uuid,
+                                }}
+                                className='card-bg-img-pic'
+                            >
+                                <img src={teacher_avatar} alt='teacher-avatar'/>&nbsp;&nbsp;
+                                <h4>
+                                    {teacher_name} {teacher_last_name}
+                                </h4>
+                            </Link>
                         </div>
 
                         {discount_amount || discount_amount !== 0 ? (
