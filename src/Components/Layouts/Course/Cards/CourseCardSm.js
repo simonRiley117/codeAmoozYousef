@@ -171,7 +171,8 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
                             onClick={!isfav ? addToWishList : removeromWishList}
                             title='افزودن به لیست علاقه مندیها'
                             icon={<Heart/>}
-                            disabled={postToFav.loading}
+                           // disabled={postToFav.loading}
+                           disabled
                         />
                     </div>
                 </div>

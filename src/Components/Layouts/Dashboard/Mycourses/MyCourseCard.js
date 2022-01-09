@@ -15,7 +15,7 @@ import useFetch from "@App/Context/useFetch";
 import Button from "@Components/Shared/Buttons/Button";
 import BtnLink from "@Components/Shared/Buttons/Link";
 import {useLocation} from "react-router";
-import NoCommentImage from "../../../../Assets/Images/Pic/empthyChat.svg";
+import NoCommentImage from "../../../../Assets/Images/Pic/nocard.svg";
 
 const MyCourseCard = ({card, finishedCourse, handleModalShow, setSelectedCourse}) => {
     const [courseData, setCourseData] = useState(null);
@@ -122,8 +122,9 @@ const MyCourseCard = ({card, finishedCourse, handleModalShow, setSelectedCourse}
                     </div>
                 </div>
             </article>)) : (
-            <div className="center empty__chat">
+            <div className="center Card__empthy">
                 <img src={NoCommentImage} alt="NoCommentImage"/>
+                <p>دوره ای هنوز ثبت نام نشده</p>
             </div>
         )
     ) : null;
