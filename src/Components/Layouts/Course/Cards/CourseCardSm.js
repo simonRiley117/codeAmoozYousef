@@ -50,7 +50,7 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
             liftRequest.reFetch();
             getallCourseList.reFetch();
             setisCourseinCart(true);
-            getUser.reFetch();
+            // getUser.reFetch();
         },
         argErrFunc: (err) => handleErrorAddtocard(err),
     });

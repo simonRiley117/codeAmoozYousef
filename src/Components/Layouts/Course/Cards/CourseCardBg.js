@@ -4,6 +4,7 @@ import Price from '@Components/Shared/Price/Price';
 import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import {toast} from 'react-toastify';
 import {useUserData} from '@App/Context/userContext';
+import {useCartData} from '@App/Context/cartContext';
 // Assets
 import {ReactComponent as ClockIcon} from '@Assets/Icons/clock.svg';
 import {ReactComponent as User} from '@Assets/Icons/user.svg';
@@ -12,6 +13,7 @@ import {ReactComponent as Heart} from '@Assets/Icons/heart.svg';
 import {ReactComponent as CardIcon} from '@Assets/Icons/shoppingCard.svg';
 import useFetch from '@App/Context/useFetch';
 import {useAuth} from '@App/Context/authContext';
+
 
 const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
     const {
@@ -34,6 +36,7 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         is_course_in_cart,
     } = card;
     const {getUser} = useUserData();
+    const {getCart} = useCartData();
     const [addtocardData, setaddtocardData] = useState();
     const [isfav, setisFav] = useState(is_favorite);
     const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart || has_user_course);
@@ -47,10 +50,11 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         // caller: getLatestCourseList,
         argFunc: (res) => {
             toast.success('دوره با موفقیت به سبد کالا اضافه شد');
+            getCart.reFetch();
             getLatestCourseList.reFetch();
             getallCourseList.reFetch();
             setisCourseinCart(true);
-            getUser.reFetch();
+            // getUser.reFetch();
         },
         argErrFunc: (err) => handleErrorAddtocard(err),
     });

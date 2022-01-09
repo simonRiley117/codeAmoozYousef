@@ -5,6 +5,7 @@ import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import {Radio} from "antd";
 import {toast} from "react-toastify";
 import {useUserData} from "@App/Context/userContext";
+import {useCartData} from '@App/Context/cartContext';
 // Assets
 import {ReactComponent as Trash} from "@Assets/Icons/Trash.svg";
 import useFetch from "@App/Context/useFetch";
@@ -30,6 +31,7 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
     const [degree, setDegree] = useState(null);
     const [modal, setModal] = useState(false);
     const {getUser} = useUserData();
+    const {getCart} = useCartData();
     const handleChange = (e) => {
         const selectedDegree = all_degrees.find(
             (item) => item[1] === e.target.value
@@ -58,7 +60,8 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
         func: CallFunc,
         argFunc: (res) => {
             toast.success(" دوره با موفقیت حذف شد");
-            getUser.reFetch()
+            // getUser.reFetch()
+            getCart.reFetch();
         },
         params: {course_uuid: course_id},
     });
