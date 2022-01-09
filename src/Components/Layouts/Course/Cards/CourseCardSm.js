@@ -11,6 +11,7 @@ import {Link} from 'react-router-dom';
 import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import {useUserData} from '@App/Context/userContext';
 import {useAuth} from '@App/Context/authContext';
+import {useCartData} from '@App/Context/cartContext';
 
 const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
     const {
@@ -31,7 +32,9 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
         cover,
         is_course_in_cart,
     } = card;
-    const {getUser} = useUserData();
+
+    // const {getUser} = useUserData();
+    const {getCart} = useCartData();
     // const [courseid, setCourseid] = useState(null);
     const [addtocardData, setaddtocardData] = useState();
     const [isfav, setisFav] = useState(is_favorite);
@@ -47,26 +50,33 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
         // caller: getLatestCourseList,
         argFunc: (res) => {
             toast.success('دوره با موفقیت به سبد کالا اضافه شد');
-            liftRequest.reFetch();
-            getallCourseList.reFetch();
+            getCart.reFetch();
+            // liftRequest.reFetch();
+            // getallCourseList.reFetch();
             setisCourseinCart(true);
             // getUser.reFetch();
         },
-        argErrFunc: (err) => handleErrorAddtocard(err),
+        // argErrFunc: (err) => handleErrorAddtocard(err),
     });
-    const handleErrorAddtocard = (err) => {
-        if (err?.data === 'course already exists') {
-            toast.error('این دوره از قبل به سبد کالا اضافه شده است');
-        }
-        // if (err?.detail === 'Given token not valid for any token type') {
-        // 	toast.error('برای خرید دوره اول وارد سایت شوید');
-        // }
-    };
+    // const handleErrorAddtocard = (err) => {
+    //     if (err?.data === 'course already exists') {
+    //         toast.error('این دوره از قبل به سبد کالا اضافه شده است');
+    //     }
+    //     // if (err?.detail === 'Given token not valid for any token type') {
+    //     // 	toast.error('برای خرید دوره اول وارد سایت شوید');
+    //     // }
+    // };
 
     const addToCard = (id) => {
+        // console.log('is_course_in_cart: ', is_course_in_cart)
+        // console.log('has_user_course: ', has_user_course)
         if (token) {
-            setaddtocardData({course_uuid: id, degree_uuid: null});
-            Addtocard.reFetch();
+            if (is_course_in_cart || has_user_course) {
+                toast.error('این دوره از قبل به سبد کالا اضافه شده است')
+            } else {
+                setaddtocardData({course_uuid: id, degree_uuid: null});
+                Addtocard.reFetch();
+            }
         } else {
             toast.error('ابتدا وارد سایت شوید');
         }
@@ -79,12 +89,13 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
         data: {course_uuid: uuid},
         argFunc: (res) => {
             toast.success('دوره با موفقیت به لیست علاقه مندی های شما اضافه شد');
-            liftRequest.reFetch();
-            getallCourseList.reFetch();
+            // liftRequest.reFetch();
+            // getallCourseList.reFetch();
             setisFav(!isfav);
         },
-        argErrFunc: (err) => handleErrorAddtoFav(err),
+        // argErrFunc: (err) => handleErrorAddtoFav(err),
     });
+
     const DeleteFav = useFetch({
         url: `StudentService/willing_course_delete`,
         method: 'DELETE',
@@ -92,23 +103,29 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
         data: {course_uuid: uuid},
         argFunc: (res) => {
             toast.success('دوره از لیست علاقه مندی‌ها حذف شد!');
-            liftRequest.reFetch();
-            getallCourseList.reFetch();
+            // liftRequest.reFetch();
+            // getallCourseList.reFetch();
             setisFav(false);
         },
     });
-    const handleErrorAddtoFav = (err) => {
-        if (err?.data === 'You already have this course in your willingList') {
-            toast.error('این دوره از قبل به لیست علاقه مندی ها اضافه شده است');
-        }
-        // if (err?.detail === 'Given token not valid for any token type') {
-        // 	toast.error('برای افزودن به لیست علاقه مندی ها اول وارد سایت شوید');
-        // }
-    };
+
+    // const handleErrorAddtoFav = (err) => {
+    //     if (err?.data === 'You already have this course in your willingList') {
+    //         toast.error('این دوره از قبل به لیست علاقه مندی ها اضافه شده است');
+    //     }
+    //     // if (err?.detail === 'Given token not valid for any token type') {
+    //     // 	toast.error('برای افزودن به لیست علاقه مندی ها اول وارد سایت شوید');
+    //     // }
+    // };
 
     const addToWishList = () => {
         if (token) {
-            postToFav.reFetch();
+            if (is_favorite) {
+                toast.error('این دوره از قبل به لیست علاقه مندی ها اضافه شده است');
+            } else {
+                postToFav.reFetch();
+            }
+
         } else {
             toast.error('ابتدا وارد سایت شوید');
         }

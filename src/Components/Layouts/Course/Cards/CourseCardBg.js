@@ -51,8 +51,8 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         argFunc: (res) => {
             toast.success('دوره با موفقیت به سبد کالا اضافه شد');
             getCart.reFetch();
-            getLatestCourseList.reFetch();
-            getallCourseList.reFetch();
+            // getLatestCourseList.reFetch();
+            // getallCourseList.reFetch();
             setisCourseinCart(true);
             // getUser.reFetch();
         },
@@ -74,8 +74,8 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         data: {course_uuid: uuid},
         argFunc: (res) => {
             toast.success('دوره با موفقیت به لیست علاقه مندی های شما اضافه شد');
-            getLatestCourseList.reFetch();
-            getallCourseList.reFetch();
+            // getLatestCourseList.reFetch();
+            // getallCourseList.reFetch();
             setisFav(true);
         },
         argErrFunc: (err) => handleErrorAddtoFav(err),
@@ -87,8 +87,8 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         data: {course_uuid: uuid},
         argFunc: (res) => {
             toast.success('دوره از لیست علاقه مندی‌ها حذف شد!');
-            getLatestCourseList.reFetch();
-            getallCourseList.reFetch();
+            // getLatestCourseList.reFetch();
+            // getallCourseList.reFetch();
             setisFav(false);
         },
     });
@@ -135,35 +135,35 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
                 <div className='card-bg-content '>
                     <div className='card-bg--box'>
                         {/*{!has_user_course && !is_course_in_cart && (*/}
-                        <div
-                            className={`card-bg--shopingcard ${
-                                !isCourseinCart
-                                    ? 'wishList--empthy'
-                                    : 'wishList--full'
-                            }`}
-                        >
-                            <IconBtn
-                                getPopupContainer={false}
-                                onClick={() => addToCard(uuid)}
-                                title='افزودن به سبدخرید'
-                                icon={<CardIcon/>}
-                                disabled={Addtocard.loading}
-                            />
-                        </div>
+                        {/*<div*/}
+                        {/*    className={`card-bg--shopingcard ${*/}
+                        {/*        !isCourseinCart*/}
+                        {/*            ? 'wishList--empthy'*/}
+                        {/*            : 'wishList--full'*/}
+                        {/*    }`}*/}
+                        {/*>*/}
+                        {/*    <IconBtn*/}
+                        {/*        getPopupContainer={false}*/}
+                        {/*        onClick={() => addToCard(uuid)}*/}
+                        {/*        title='افزودن به سبدخرید'*/}
+                        {/*        icon={<CardIcon/>}*/}
+                        {/*        disabled={Addtocard.loading}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                         {/*)}*/}
-                        <div
-                            className={`card-bg--heart ${
-                                !isfav ? 'wishList--empthy' : 'wishList--full'
-                            }`}
-                        >
-                            <IconBtn
-                                getPopupContainer={false}
-                                onClick={!isfav ? addToWishList : removeromWishList}
-                                title='افزودن به لیست علاقه مندیها'
-                                icon={<Heart/>}
-                                disabled={postToFav.loading}
-                            />
-                        </div>
+                        {/*<div*/}
+                        {/*    className={`card-bg--heart ${*/}
+                        {/*        !isfav ? 'wishList--empthy' : 'wishList--full'*/}
+                        {/*    }`}*/}
+                        {/*>*/}
+                        {/*    <IconBtn*/}
+                        {/*        getPopupContainer={false}*/}
+                        {/*        onClick={!isfav ? addToWishList : removeromWishList}*/}
+                        {/*        title='افزودن به لیست علاقه مندیها'*/}
+                        {/*        icon={<Heart/>}*/}
+                        {/*        disabled={postToFav.loading}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                     </div>
 
                     <h5 className='card-bg-title'>
