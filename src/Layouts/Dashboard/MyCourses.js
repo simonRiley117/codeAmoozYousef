@@ -13,11 +13,14 @@ const MyCourses = () => {
         setModal(true);
     };
 
+    const [selectedCourse, setSelectedCourse] = useState(null)
+
     return (
         <div className="MyCourses">
-            <MyCoursesTab handleModalShow={handleModalShow}/>
+            <MyCoursesTab handleModalShow={handleModalShow}
+                          setSelectedCourse={setSelectedCourse}/>
             <Modal visible={modal} onCancel={handleModalVisible}>
-                <CourseRateModal/>
+                <CourseRateModal selectedCourse={selectedCourse}/>
             </Modal>
         </div>
     );

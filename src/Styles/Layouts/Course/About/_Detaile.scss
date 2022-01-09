@@ -1,27 +1,29 @@
 .AboutDetaile {
-    &__imgBox {
-        width: 95%;
-        margin: 0 auto;
-        text-align: center;
-        // background-image: url();
-        background-size: contain;
-        height: 23.2rem;
-        background-position: center;
-        background-repeat: no-repeat;
-        // background-size: 95% 23.2rem;
-        -webkit-border-radius: 1.5rem;
-        -moz-border-radius: 1.5rem;
-        border-radius: 1.5rem;
-        background-color: $color-white-light;
-    }
+	&__cover {
+		width: 100%;
+		text-align: center;
+		& img {
+			border-radius: 1.5rem;
+			min-width: 50rem;
+			max-height: 40rem;
+			max-width: 100%;
+			@include respond(big-phone) {
+				min-width: fit-content;
+				width: 100%;
+			}
+		}
+	}
 
-    &__hederBox {
-        color: $color-text;
-        font-size: 1.8rem;
-    }
-    &__txt {
-        color: $color-text-light;
-        font-size: 1.6rem;
-        margin-top: 1rem;
-    }
+	&__hederBox {
+		color: $color-text;
+		margin-bottom: 1rem;
+		& h2 {
+			font-size: 2rem;
+		}
+	}
+	&__txt {
+		color: $color-text-light;
+		font-size: 1.6rem;
+		margin-top: 1rem;
+	}
 }

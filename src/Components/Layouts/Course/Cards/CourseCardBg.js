@@ -4,6 +4,7 @@ import Price from '@Components/Shared/Price/Price';
 import IconBtn from '@Components/Shared/Buttons/IconBtn';
 import {toast} from 'react-toastify';
 import {useUserData} from '@App/Context/userContext';
+import {useCartData} from '@App/Context/cartContext';
 // Assets
 import {ReactComponent as ClockIcon} from '@Assets/Icons/clock.svg';
 import {ReactComponent as User} from '@Assets/Icons/user.svg';
@@ -12,6 +13,7 @@ import {ReactComponent as Heart} from '@Assets/Icons/heart.svg';
 import {ReactComponent as CardIcon} from '@Assets/Icons/shoppingCard.svg';
 import useFetch from '@App/Context/useFetch';
 import {useAuth} from '@App/Context/authContext';
+
 
 const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
     const {
@@ -27,17 +29,17 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         is_favorite,
         title,
         has_user_course,
-        get_price_without_degree_with_some_extra_info,
+        get_price_without_degree_with_some_extra_info: cost,
         teacher_avatar,
         teacher_uuid,
         cover,
         is_course_in_cart,
     } = card;
     const {getUser} = useUserData();
+    const {getCart} = useCartData();
     const [addtocardData, setaddtocardData] = useState();
-    const cost = get_price_without_degree_with_some_extra_info;
     const [isfav, setisFav] = useState(is_favorite);
-    const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart);
+    const [isCourseinCart, setisCourseinCart] = useState(is_course_in_cart || has_user_course);
     const {token} = useAuth();
 
     const Addtocard = useFetch({
@@ -48,10 +50,11 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         // caller: getLatestCourseList,
         argFunc: (res) => {
             toast.success('دوره با موفقیت به سبد کالا اضافه شد');
-            getLatestCourseList.reFetch();
-            getallCourseList.reFetch();
+            getCart.reFetch();
+            // getLatestCourseList.reFetch();
+            // getallCourseList.reFetch();
             setisCourseinCart(true);
-            getUser.reFetch();
+            // getUser.reFetch();
         },
         argErrFunc: (err) => handleErrorAddtocard(err),
     });
@@ -71,11 +74,23 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         data: {course_uuid: uuid},
         argFunc: (res) => {
             toast.success('دوره با موفقیت به لیست علاقه مندی های شما اضافه شد');
-            getLatestCourseList.reFetch();
-            getallCourseList.reFetch();
+            // getLatestCourseList.reFetch();
+            // getallCourseList.reFetch();
             setisFav(true);
         },
         argErrFunc: (err) => handleErrorAddtoFav(err),
+    });
+    const deleteFav = useFetch({
+        url: 'StudentService/willing_course_delete',
+        method: 'DELETE',
+        trigger: false,
+        data: {course_uuid: uuid},
+        argFunc: (res) => {
+            toast.success('دوره از لیست علاقه مندی‌ها حذف شد!');
+            // getLatestCourseList.reFetch();
+            // getallCourseList.reFetch();
+            setisFav(false);
+        },
     });
     const handleErrorAddtoFav = (err) => {
         if (err?.data === 'You already have this course in your willingList') {
@@ -102,13 +117,10 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
         }
     };
     const removeromWishList = () => {
+        deleteFav.reFetch();
     };
     return (
         <article className='card-bg'>
-            {/* <div className="card-bg-discount">
-        <span>40%</span>
-        <span>تخفیف</span>
-      </div> */}
             <div
                 className={
                     cost.discountRate !== 0 ? 'card-bg-off-show' : 'card-bg-off-hide'
@@ -121,40 +133,38 @@ const CourseCardBg = ({card, getLatestCourseList, getallCourseList}) => {
             </div>
             <div className='card-bg-info'>
                 <div className='card-bg-content '>
-                    {!has_user_course && (
-                        <div className='card-bg--box'>
-                            <div
-                                className={`card-bg--shopingcard ${
-                                    !isCourseinCart
-                                        ? 'wishList--empthy'
-                                        : 'wishList--full'
-                                }`}
-                            >
-                                {(!has_user_course && !is_course_in_cart) && (
-                                    <IconBtn
-                                        getPopupContainer={false}
-                                        onClick={() => addToCard(uuid)}
-                                        title='افزودن به سبدخرید'
-                                        icon={<CardIcon/>}
-                                        disabled={Addtocard.loading}
-                                    />
-                                )}
-                            </div>
-                            <div
-                                className={`card-bg--heart ${
-                                    !isfav ? 'wishList--empthy' : 'wishList--full'
-                                }`}
-                            >
-                                <IconBtn
-                                    getPopupContainer={false}
-                                    onClick={!isfav ? addToWishList : removeromWishList}
-                                    title='افزودن به لیست علاقه مندیها'
-                                    icon={<Heart/>}
-                                    disabled={postToFav.loading}
-                                />
-                            </div>
-                        </div>
-                    )}
+                    <div className='card-bg--box'>
+                        {/*{!has_user_course && !is_course_in_cart && (*/}
+                        {/*<div*/}
+                        {/*    className={`card-bg--shopingcard ${*/}
+                        {/*        !isCourseinCart*/}
+                        {/*            ? 'wishList--empthy'*/}
+                        {/*            : 'wishList--full'*/}
+                        {/*    }`}*/}
+                        {/*>*/}
+                        {/*    <IconBtn*/}
+                        {/*        getPopupContainer={false}*/}
+                        {/*        onClick={() => addToCard(uuid)}*/}
+                        {/*        title='افزودن به سبدخرید'*/}
+                        {/*        icon={<CardIcon/>}*/}
+                        {/*        disabled={Addtocard.loading}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        {/*)}*/}
+                        {/*<div*/}
+                        {/*    className={`card-bg--heart ${*/}
+                        {/*        !isfav ? 'wishList--empthy' : 'wishList--full'*/}
+                        {/*    }`}*/}
+                        {/*>*/}
+                        {/*    <IconBtn*/}
+                        {/*        getPopupContainer={false}*/}
+                        {/*        onClick={!isfav ? addToWishList : removeromWishList}*/}
+                        {/*        title='افزودن به لیست علاقه مندیها'*/}
+                        {/*        icon={<Heart/>}*/}
+                        {/*        disabled={postToFav.loading}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                    </div>
 
                     <h5 className='card-bg-title'>
                         <Link

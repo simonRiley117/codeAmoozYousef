@@ -17,7 +17,7 @@ import BtnLink from "@Components/Shared/Buttons/Link";
 import {useLocation} from "react-router";
 import NoCommentImage from "../../../../Assets/Images/Pic/empthyChat.svg";
 
-const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
+const MyCourseCard = ({card, finishedCourse, handleModalShow, setSelectedCourse}) => {
     const [courseData, setCourseData] = useState(null);
     const [loadingCourseData, setLoadingCourseData] = useState(true);
 
@@ -78,9 +78,9 @@ const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
                                     strokeColor={"#196476"}
                                     percent={course.progresses}
                                 />
-                                <div className="MyCourses__Card--Link " onClick={() => handleModalShow()}>
-                                    امتیاز به این دوره
-                                </div>
+                                {/*<div className="MyCourses__Card--Link " onClick={() => handleModalShow()}>*/}
+                                {/*    امتیاز به این دوره*/}
+                                {/*</div>*/}
                             </>) : (<>
                                 <div className="d-flex-align">
                                     <Progress type="circle" percent={100}/>
@@ -89,12 +89,17 @@ const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
                                         دوره تکمیل شده{" "}
                                     </p>
                                 </div>
-                                <Link to="/course" className="MyCourses__Card--Link ">
+                                <Link to="/#" className="MyCourses__Card--Link ">
                                     دریافت گواهی پایان دوره دانشگاه صنعتی
                                 </Link>
-                                <div className="MyCourses__Card--Link " onClick={() => handleModalShow()}>
-                                    امتیاز به این دوره
-                                </div>
+                                {!course.is_user_send_score ? (
+                                    <div className="MyCourses__Card--Link " onClick={() => {
+                                        handleModalShow();
+                                        setSelectedCourse(course.course_id)
+                                    }}>
+                                        امتیاز به این دوره
+                                    </div>
+                                ) : null}
                             </>)}
                         </div>
                         <div className="d-flex-space card-bg-footer">
@@ -105,12 +110,12 @@ const MyCourseCard = ({card, finishedCourse, handleModalShow}) => {
                                 }}
                                 className='card-bg-img-pic'
                             >
-                                <img src={course.teacher_avatar} alt='teacher-avatar'/>
+                                <img src={course.teacher_avatar} alt='teacher-avatar'/> &nbsp;
                                 <span>
 								{course.teacher_first_name} {course.teacher_last_name}
 							</span>
                             </Link>
-                            <Link to="/course" className="MyCourses__Card--Link">
+                            <Link to="/#" className="MyCourses__Card--Link">
                                 ارتباط با استاد
                             </Link>
                         </div>

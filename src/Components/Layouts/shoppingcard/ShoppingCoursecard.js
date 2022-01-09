@@ -5,6 +5,7 @@ import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import {Radio} from "antd";
 import {toast} from "react-toastify";
 import {useUserData} from "@App/Context/userContext";
+import {useCartData} from '@App/Context/cartContext';
 // Assets
 import {ReactComponent as Trash} from "@Assets/Icons/Trash.svg";
 import useFetch from "@App/Context/useFetch";
@@ -22,6 +23,7 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
         origin_cost,
         teacher_avatar,
         teacher_last_name,
+        teacher_uuid,
         teacher_name,
         uuid,
         course_cover,
@@ -29,6 +31,7 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
     const [degree, setDegree] = useState(null);
     const [modal, setModal] = useState(false);
     const {getUser} = useUserData();
+    const {getCart} = useCartData();
     const handleChange = (e) => {
         const selectedDegree = all_degrees.find(
             (item) => item[1] === e.target.value
@@ -57,7 +60,8 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
         func: CallFunc,
         argFunc: (res) => {
             toast.success(" دوره با موفقیت حذف شد");
-            getUser.reFetch()
+            // getUser.reFetch()
+            getCart.reFetch();
         },
         params: {course_uuid: course_id},
     });
@@ -117,10 +121,19 @@ const ShoppingCoursecard = ({card, getPayment, getorderSummary}) => {
                     </div>
                     <div className="d-flex-space card-bg-footer">
                         <div className="card-bg-img-pic">
-                            <img src={teacher_avatar} alt='teacher-avatar'/>
-                            <h4>
-                                {teacher_name} {teacher_last_name}
-                            </h4>
+                            <Link
+                                to='/courses/teacher'
+                                state={{
+                                    courseId: uuid,
+                                    teacherId: teacher_uuid,
+                                }}
+                                className='card-bg-img-pic'
+                            >
+                                <img src={teacher_avatar} alt='teacher-avatar'/>&nbsp;&nbsp;
+                                <h4>
+                                    {teacher_name} {teacher_last_name}
+                                </h4>
+                            </Link>
                         </div>
 
                         {discount_amount || discount_amount !== 0 ? (

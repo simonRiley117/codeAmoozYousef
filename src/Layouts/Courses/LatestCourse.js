@@ -1,17 +1,12 @@
-import React, { Component, useState } from 'react';
+import React, {  useState } from 'react';
 import Slider from 'react-slick';
 import useFetch from '@App/Context/useFetch';
 import CourseCardBg from '@Components/Layouts/Course/Cards/CourseCardBg';
 import { useAuth } from '../../Context/authContext';
 import { NextArrow, PrevArrow } from './Arrows';
-import { ClipLoader } from 'react-spinners';
 import { Skeleton } from 'antd';
 import _ from 'lodash';
-const override = {
-	display: 'block',
-	margin: '0 auto',
-	borderColor: 'green',
-};
+
 const LatestCourse = ({ getallCourseList, liftUpLatestCourseRequest }) => {
 	const [latestCourse, setLatestCourse] = useState([]);
 	const { token } = useAuth();
