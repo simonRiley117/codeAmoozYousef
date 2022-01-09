@@ -33,6 +33,7 @@ function VideoPlayer({ className, src }) {
 				controlsList='nodownload'
 				onPause={() => setPlay(false)}
 				onPlay={() => setPlay(true)}
+				preload='none'
 			/>
 			{!isPlay && (
 				<div className='VideoPlayer__imgBox'>
