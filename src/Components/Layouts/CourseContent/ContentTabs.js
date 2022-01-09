@@ -1,15 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import { Tabs } from "antd";
 import Detail from "@Components/Layouts/Course/Sarfasl/Detail";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
 import Quiz from "@Components/Layouts/Dashboard/Quiz";
 const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize,setActiveSeason }) => {
   const { TabPane } = Tabs;
-
+  const [seosononquizeid,setSeosononquizeid] = useState()
   return (
     <Tabs className="TabBox" type="card">
-      <TabPane tab="ویدیو" key={`${contentUuid}_1`}>
-        <Detail iscontent={true} setActiveSeason={setActiveSeason} contentUuid={contentUuid} />
+      <TabPane  tab="ویدیو" key={`${contentUuid}_1`}>
+        <Detail setSeosononquizeid={setSeosononquizeid} iscontent={true} setActiveSeason={setActiveSeason} contentUuid={contentUuid} />
       </TabPane>
       <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
         <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} />
@@ -24,7 +24,7 @@ const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize,setActi
       {hasSeasonQuize === "You have not passed quiz season" && (
         <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
           <Quiz
-            quizUuid={quizUuid}
+            quizUuid={seosononquizeid}
             contentUuid={contentUuid}
             courseUuid={courseUuid}
           />

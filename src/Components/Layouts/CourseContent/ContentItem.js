@@ -3,6 +3,8 @@ import IconBtn from "@Components/Shared/Buttons/IconBtn";
 import classNames from "classnames";
 import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
 import Lock from "@Assets/Icons/lock.svg";
+import { Skeleton } from "antd";
+
 const ContentItem = ({
   content,
   index,
@@ -26,7 +28,7 @@ const ContentItem = ({
     }
   }
   return (
-    <div>
+    content ? <div>
       <div
         className="flex justify-between items-center cursor-pointer px-8"
         onClick={ handleClick}
@@ -79,7 +81,7 @@ const ContentItem = ({
           />
         </div>
       </div>
-    </div>
+    </div> : <Skeleton />
   );
 };
 

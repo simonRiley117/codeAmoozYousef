@@ -163,7 +163,7 @@ function CourseContent() {
               )}
               {CurrentcontenStatus && (
                 <div className="flex items-center justify-between LastCourse__btnBox">
-                  <Button
+                  {!LastCourse &&<Button
                     type="primary"
                     classes="CoWorkers__btn flex items-center "
                     onClick={
@@ -179,7 +179,7 @@ function CourseContent() {
                   >
                     مبحث بعدی
                     <i className="fas fa-chevron-right"></i>
-                  </Button>
+                  </Button>}
                   <Button
                     type="primary"
                     classes="CoWorkers__btn flex items-center "

@@ -4,7 +4,7 @@ import useFetch from "@App/Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
 import { Skeleton } from "antd";
 
-function Detail({ contentUuid, setActiveSeason, iscontent }) {
+function Detail({ contentUuid, setActiveSeason, iscontent,setSeosononquizeid }) {
   const [content, setContent] = useState(null);
   const { token, authDispatch } = useAuth();
   const getContent = useFetch({
@@ -15,6 +15,7 @@ function Detail({ contentUuid, setActiveSeason, iscontent }) {
     argFunc: (res) => {
       if (iscontent) {
         setActiveSeason(res.season);
+        setSeosononquizeid(res.season.season_quiz_uuid)
       }
     },
   });

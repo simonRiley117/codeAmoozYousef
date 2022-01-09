@@ -5,7 +5,6 @@ import Lock from "@Assets/Icons/lock.svg";
 import ContentItem from "./ContentItem";
 import useFetch from "../../../Context/useFetch";
 import { ReactComponent as Arrow } from "@Assets/Icons/arrow-down.svg";
-import { ClipLoader } from "react-spinners";
 
 const SeasonsItem = ({
   openPanels,
@@ -41,8 +40,8 @@ const SeasonsItem = ({
   };
   return (
     <>
-      {!getCourseSeasons.loading ? (
-        contentList.map((content, index) => (
+     
+       { contentList.map((content, index) => (
           <ContentItem
             changeContentID={changeContentID}
             setquizUuid={setquizUuid}
@@ -54,11 +53,7 @@ const SeasonsItem = ({
             setIsContentPass={setIsContentPass}
           />
         ))
-      ) : (
-        <div className='center m-4'>
-          <ClipLoader color="#EF8019" loading={true} size={20} />
-        </div>
-      )}
+       }
     </>
   );
 };
