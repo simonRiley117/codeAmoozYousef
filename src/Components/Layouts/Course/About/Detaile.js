@@ -1,25 +1,20 @@
-import React from "react";
-import python from "@Assets/Pic/python.png";
+import React from 'react';
 
 function Detaile({ title, intro, cover }) {
-  return (
-    <div className="Detaile AboutDetaile">
-      <div className="AboutDetaile__hederBox">
-        <p className="font-bold"> دوره {title}</p>
-        <div>&nbsp;</div>
-      </div>
-      <div
-        className="AboutDetaile__imgBox"
-        style={{ backgroundImage: `url(${cover})` }}
-      >
-        {/* <img src={cover} alt={cover} /> */}
-      </div>
-      <div className="AboutDetaile__hederBox">
-        <p className="font-bold">درباره دوره</p>
-      </div>
-      <p className="AboutDetaile__txt leading-loose">{intro}</p>
-    </div>
-  );
+	return (
+		<div className='Detaile AboutDetaile'>
+			<div className='AboutDetaile__hederBox'>
+				<h2 className='font-bold'>{title}</h2>
+			</div>
+			<div className='AboutDetaile__cover mb-6 flex justify-center'>
+				<img src={cover} alt={title} className='object-cover' />
+			</div>
+			<div className='AboutDetaile__hederBox'>
+				<h2 className='font-bold'>درباره دوره</h2>
+			</div>
+			<p className='AboutDetaile__txt leading-loose'>{intro}</p>
+		</div>
+	);
 }
 
 export default Detaile;
