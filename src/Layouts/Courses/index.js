@@ -46,10 +46,7 @@ const Courses = () => {
 	const liftUpLatestCourseRequest = (request) => {
 		setLiftRequest(request);
 	};
-   useEffect(() => {
-	window.scrollTo(0, 0)
 
-   }, [])
 	return (
 		<div className='container'>
 			<div className='courses'>

@@ -19,6 +19,7 @@ import { useUserData } from '@App/Context/userContext';
 import { useEffect } from 'react';
 
 import Propfile from './ProfileMenu/Propfile';
+import { Badge } from 'antd';
 
 const Appbar = () => {
 	const navigate = useNavigate();
@@ -152,15 +153,19 @@ const Appbar = () => {
 								</ul>
 								<div className='Menu_actions'>
 									{token && (
-										<div className=' relative ml-8'>
-											<IconBtn
-												icon={<ShoppingCartIcon />}
-												onClick={() => navigate('/shopping-card')}
-											/>
-											<div className='Menu_actions--badge '>
-												<p>{userData.cart}</p>
-											</div>
-										</div>
+										<IconBtn
+											classes=' ml-8'
+											icon={
+												<Badge
+													count={userData.cart}
+													size='small'
+													className='Menu_actions--badge'
+												>
+													<ShoppingCartIcon />
+												</Badge>
+											}
+											onClick={() => navigate('/shopping-card')}
+										/>
 									)}
 									{token ? (
 										<div className='d-flex-align Menu_actions--profile'>

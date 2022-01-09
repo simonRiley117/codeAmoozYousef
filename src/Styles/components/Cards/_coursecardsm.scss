@@ -215,7 +215,7 @@
 							stroke: $color-primary;
 						}
 					}
-					
+
 					& path {
 						fill: rgba($color: $color-primary, $alpha: 0.08);
 					}
@@ -232,18 +232,11 @@
 			&--heart {
 				border-radius: 50%;
 				transition-delay: 100ms;
-				& path {
-					fill: #fff;
-				}
+				
 				&.wishList--full {
-					svg {
-						path {
-							stroke: $color-primary;
-						}
-					}
-
 					& path {
-						fill: rgba($color: $color-primary, $alpha: 0.08);
+						stroke: $color-primary;
+						fill: $color-primary;
 					}
 				}
 				& button {
