@@ -30,7 +30,7 @@
 		overflow: hidden;
 		min-height: 590px;
 		background-color: $color-gray;
-		
+
 		&.active {
 			& > .signIn {
 				transform: translateX(-100%);
@@ -187,10 +187,13 @@
 			}
 
 			& .input__field {
-				border: 0;
+				border-color: rgba($color: #fff, $alpha: 0.5);
 				background-color: rgba($color: #fff, $alpha: 0.5);
 				padding: 7px 1.5rem;
 				margin-top: 4px;
+				&.ant-input-affix-wrapper:hover {
+					border-color: rgba($color: #fff, $alpha: 0.5);
+				}
 			}
 			& .input__label {
 				font-size: 14px;
@@ -222,8 +225,8 @@
 
 				& .input__message {
 					position: absolute;
-					bottom: -1.8rem;
-					font-size: 12px;
+					bottom: -1.9rem;
+					font-size: 11px;
 				}
 			}
 			& .ant-checkbox-wrapper {

@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@emotion/react": "^11.5.0",
+    "@hookform/resolvers": "^2.8.5",
     "@n8tb1t/use-scroll-position": "^2.0.3",
     "@tailwindcss/postcss7-compat": "^2.2.16",
     "@testing-library/jest-dom": "^5.11.4",
@@ -52,7 +53,8 @@
     "swiper": "^6.0.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "use-react-router-breadcrumbs": "^3.0.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "craco start",
