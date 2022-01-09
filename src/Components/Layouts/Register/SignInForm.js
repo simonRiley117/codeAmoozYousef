@@ -45,7 +45,9 @@ const SignInForm = () => {
             setLoading(false);
 
             if (search == "?redirectTeacher") {
+
                 window.location.href = TEAChER_URL + `/callback/${res.access_token}`;
+
             } else {
                 authDispatch({
                     type: "LOGIN",
