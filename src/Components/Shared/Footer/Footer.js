@@ -1,7 +1,7 @@
-import React from "react";
-import neshan from "@Assets/Pic/etminan.png";
-import enamad from "@Assets/Pic/enamad.png";
-import logo from "@Assets/Logo/codlogo.png";
+import React from 'react';
+import neshan from '@Assets/Pic/etminan.png';
+import enamad from '@Assets/Pic/enamad.png';
+import logo from '@Assets/Logo/codlogo.png';
 
 const Footer = () => {
   return (
