@@ -6,7 +6,7 @@ import logo from "@Assets/Logo/codlogo.png";
 const Footer = () => {
   return (
     <div className=" relative">
-      <div className="Footer relative w-screen">
+      <div className="Footer relative w-screen container-lg ">
         <div className=" flex items-center justify-between Footer__detail">
           <div className="Footer__AboutUsBox flex flex-col  p-16">
             <p className="Footer__AboutUsBox-title text-4xl	font-semibold">

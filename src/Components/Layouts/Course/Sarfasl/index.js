@@ -122,30 +122,7 @@ const Topic = ({ courseId, courseSeasons }) => {
               <Detail contentUuid={contentUuid} />
             </TabPane>
           </Tabs> */}
-          <Tabs className="TabBox" type="card">
-            <TabPane tab="ویدیو" key={`${contentUuid}_1`}>
-              <Detail contentUuid={contentUuid} />
-            </TabPane>
-            <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
-              {/* <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} /> */}
-            </TabPane>
-            <TabPane tab="آزمون" key={`${contentUuid}_3`}>
-              {/* <Quiz
-                quizUuid={quizUuid}
-                contentUuid={contentUuid}
-                courseUuid={courseUuid}
-              /> */}
-            </TabPane>
-            {/* {hasSeasonQuize === "You have not passed quiz season" && (
-              <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
-                <Quiz
-                  quizUuid={quizUuid}
-                  contentUuid={contentUuid}
-                  courseUuid={courseUuid}
-                />
-              </TabPane>
-            )} */}
-          </Tabs>
+          <Detail contentUuid={contentUuid} />
         </Modal>
       )}
     </>
