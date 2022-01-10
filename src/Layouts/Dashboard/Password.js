@@ -38,6 +38,9 @@ function PasswordChange() {
             })
         },
         argErrFunc: (err) => {
+            if (err.detail === 'you\'re new password must differ from you\'re old password') {
+                toast.error('پسورد قبلی و جدیدت یکیه');
+            }
             if (err.old_password?.includes(
                 'Your old password was entered incorrectly. Please enter it again.'
             )) {
@@ -45,7 +48,7 @@ function PasswordChange() {
             } else if (err.new_password2?.includes("This password is too short. It must contain at least 8 characters.")) {
                 toast.error('پسورد کوتاه است.حداقل هشت رقم وارد کنید')
             } else if (err.new_password2?.includes("This password is too common.")) {
-                toast.error('پسوورد ساده است')
+                toast.error('پسورد ساده است')
             } else if (err.new_password2?.includes("This password is entirely numeric.")) {
                 toast.error('پسوورد باید ترکیبی از حروف و اعداد باشد ')
             } else if (err.new_password1) {
@@ -64,7 +67,7 @@ function PasswordChange() {
             <p className="NewCourse__title text-center ">تعویض کلمه عبور</p>
             <form onSubmit={handleSubmit(onSubmit)} className="NewCourse__formBox ">
                 <Password
-                    label="کلمه عبور فعلی:"
+                    label="کلمه عبور فعلی"
                     register={{
                         required: true,
                     }}
@@ -76,7 +79,7 @@ function PasswordChange() {
                 />
 
                 <Password
-                    label="کلمه عبور جدید:"
+                    label="کلمه عبور جدید"
                     register={{
                         required: true,
                     }}
@@ -87,7 +90,7 @@ function PasswordChange() {
                     errors={errors}
                 />
                 <Password
-                    label="تکرار کلمه عبور جدید:"
+                    label="تکرار کلمه عبور جدید"
                     register={{
                         required: true,
                     }}
