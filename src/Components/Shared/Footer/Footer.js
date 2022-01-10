@@ -38,28 +38,25 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className='flex items-center Footer__SambolsBox'>
-						<a
-							referrerpolicy='origin'
-							target='_blank'
-							href='https://trustseal.enamad.ir/?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
-							rel='noreferrer'
-						>
+						<article className='Footer__SambolsBox--img'>
 							<img
 								referrerpolicy='origin'
 								src='https://Trustseal.eNamad.ir/logo.aspx?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
-								alt=''
+								alt='logo-eNamad'
 								// style='cursor:pointer'
 								id='ORS8gimDMkFKmWVzad3T'
 							/>
-						</a>
-						<img
-							referrerpolicy='origin'
-							id='jxlznbqewlaowlaoesgtnbqe'
-							// style='cursor:pointer'
-							
-							alt='logo-samandehi'
-							src='https://logo.samandehi.ir/logo.aspx?id=124402&p=nbpdodrfshwlshwllymaodrf'
-						/>
+						</article>
+						<article className='Footer__SambolsBox--img'>
+							<img
+								referrerpolicy='origin'
+								id='jxlznbqewlaowlaoesgtnbqe'
+								// style='cursor:pointer'
+
+								alt='logo-samandehi'
+								src='https://logo.samandehi.ir/logo.aspx?id=124402&p=nbpdodrfshwlshwllymaodrf'
+							/>
+						</article>
 					</div>
 				</div>
 				<div className='Footer__GreenLine '></div>
