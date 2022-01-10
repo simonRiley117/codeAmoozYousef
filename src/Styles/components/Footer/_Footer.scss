@@ -29,9 +29,18 @@
     &__detailBox {
         @include respond(tablet) {
             justify-content: space-between;
-            width: 70%;
-            margin-left: auto;
-            margin-right: 2rem;
+            width: 50%;
+            margin: 0 auto;
+        }
+        @include respond(phone) {
+            justify-content: space-between;
+            width: 68%;
+            margin: 0 auto;
+        }
+        @include respond(smallest-phone) {
+            justify-content: space-between;
+            width: 80%;
+            margin: 0 auto;
         }
     }
     &__detailContainer {
@@ -75,7 +84,15 @@
         // height: 28.3rem;
         max-width: 30%;
         @include respond(tablet) {
-            max-width: 90%;
+            max-width: 50%;
+            margin-bottom: 4rem;
+        }
+        @include respond(phone) {
+            max-width: 70%;
+            margin-bottom: 4rem;
+        }
+        @include respond(smallest-phone) {
+            max-width: 85%;
             margin-bottom: 4rem;
         }
         background: $color-white-light;
@@ -91,12 +108,30 @@
     }
     &__logo {
         left: 9rem;
-        @include respond(tablet) {
-            left: 10rem;
-        }
         img {
             width: 6rem;
             height: auto;
+        }
+        @include respond(tablet) {
+            left: auto;
+            right: 4rem;
+        }
+        @include respond(phone) {
+            left: auto;
+            right: 2rem;
+        }
+        @include respond(smallest-phone) {
+            left: auto;
+            right: 1rem;
+            img {
+                width: 4rem;
+                height: auto;
+            }
+        }
+
+        @include respond(big-desktop) {
+            left: auto;
+            right: 4rem;
         }
         // @include respond(smallest-phone) {
         //     left: 12rem;
@@ -168,18 +203,48 @@
         border-bottom-right-radius: 40rem;
         border-top-right-radius: 40rem;
         background-color: $color-green;
-        width: 15%;
+        width: 19%;
         height: 108%;
-        left: 0;
+        left: -8rem;
         bottom: 0;
-        margin-left: -8rem;
+        // margin-left: -8rem;
         border: 8px solid $color-white;
+        @include respond(big-desktop) {
+            border-bottom-right-radius: 40rem;
+            border-top-right-radius: 40rem;
+            background-color: $color-green;
+            width: 15%;
+            height: 108%;
+            bottom: 0;
+            border: 8px solid $color-white;
+            left: -23rem;
+        }
         @include respond(tablet) {
             bottom: 0;
             height: 60%;
             width: 40%;
             // top: auto;
-            margin-left: -20%;
+            left: -26rem;
+            border-bottom-right-radius: 150rem;
+            border-top-right-radius: 150rem;
+            background-color: $color-green;
+        }
+        @include respond(phone) {
+            bottom: 0;
+            height: 50%;
+            width: 40%;
+            // top: auto;
+            left: -12rem;
+            border-bottom-right-radius: 150rem;
+            border-top-right-radius: 150rem;
+            background-color: $color-green;
+        }
+        @include respond(smallest-phone) {
+            bottom: 0;
+            height: 45%;
+            width: 40%;
+            // top: auto;
+            left: -9rem;
             border-bottom-right-radius: 150rem;
             border-top-right-radius: 150rem;
             background-color: $color-green;

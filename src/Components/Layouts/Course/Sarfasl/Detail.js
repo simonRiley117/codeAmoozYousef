@@ -3,19 +3,28 @@ import VideoPlayer from "@Components/Shared/VideoPlayer/VideoPlayer";
 import useFetch from "@App/Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
 import { Skeleton } from "antd";
+import { Tabs, Tag } from "antd";
+import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
 
-function Detail({ contentUuid, setActiveSeason, iscontent,setSeosononquizeid }) {
+const { TabPane } = Tabs;
+function Detail({
+  contentUuid,
+  setActiveSeason,
+  iscontent,
+  setSeosononquizeid,
+}) {
   const [content, setContent] = useState(null);
   const { token, authDispatch } = useAuth();
   const getContent = useFetch({
-    url: `ContentService/${contentUuid}/getModalContent`,
+    // url: `ContentService/${contentUuid}/getModalContent`,
+    url: `ContentService/${contentUuid}/getContent`,
     method: "GET",
     noHeader: token ? false : true,
     setter: setContent,
     argFunc: (res) => {
       if (iscontent) {
         setActiveSeason(res.season);
-        setSeosononquizeid(res.season.season_quiz_uuid)
+        setSeosononquizeid(res.season.season_quiz_uuid);
       }
     },
   });
@@ -25,21 +34,47 @@ function Detail({ contentUuid, setActiveSeason, iscontent,setSeosononquizeid }) 
 
   return (
     <>
-      {getContent?.response ? (
-        <div className="Detaile">
-          <div className="Detaile__hederBox">
-            <p>{content.title}</p>
-          </div>
-          <div>
-            <VideoPlayer src={content.video} />
-          </div>
-          <p className="Detaile__txt leading-loose">
-            {content.short_description}
-          </p>
-        </div>
-      ) : (
-        <Skeleton />
-      )}
+      <Tabs className="TabBox" type="card">
+        <TabPane tab="ویدیو" key={`${contentUuid}_1`}>
+          {getContent?.response ? (
+            <div className="Detaile">
+              <div className="Detaile__hederBox">
+                <p>{content.title}</p>
+              </div>
+              <div>
+                <VideoPlayer src={content.video} />
+              </div>
+              <p className="Detaile__txt leading-loose">
+                {content.short_description}
+              </p>
+            </div>
+          ) : (
+            <Skeleton />
+          )}
+        </TabPane>
+        <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
+          {getContent?.response ? <div></div> : <Skeleton />}
+          {/* <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} /> */}
+        </TabPane>
+        <TabPane tab="آزمون" key={`${contentUuid}_3`}>
+          {getContent?.response ? <div></div> : <Skeleton />}
+
+          {/* <Quiz
+                      quizUuid={quizUuid}
+                      contentUuid={contentUuid}
+                      courseUuid={courseUuid}
+                    /> */}
+        </TabPane>
+        {/* {hasSeasonQuize === "You have not passed quiz season" && (
+                    <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
+                      <Quiz
+                        quizUuid={quizUuid}
+                        contentUuid={contentUuid}
+                        courseUuid={courseUuid}
+                      />
+                    </TabPane>
+                  )} */}
+      </Tabs>
     </>
   );
 }
