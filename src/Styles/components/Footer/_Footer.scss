@@ -107,16 +107,17 @@
         // }
     }
     &__SambolsBox {
-        & > *:last-child {
-            margin-right: -0.3rem;
+       column-gap: 2rem;
+       
+        & img{
+            width: 100%;
+            height: 100%;
+            max-width: 10rem;
         }
-        & > * {
-            height: 8.312rem;
-            width: auto;
-        }
+        
     }
     &__accessBox {
-        margin: 0 7.922rem 0 7.292rem;
+        margin: 0 8rem 0 7.3rem;
         @include respond(tablet) {
             margin: 0;
         }
