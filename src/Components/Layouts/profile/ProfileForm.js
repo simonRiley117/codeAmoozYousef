@@ -79,13 +79,13 @@ const ProfileForm = () => {
   };
 
   const getuserInfo = useFetch({
-    url: `TeacherService/profile_get`,
+    url: `StudentService/profile_get`,
     method: "GET",
     setter: setData,
   });
 
   const PostProfile = useFetch({
-    url: `TeacherService/${profileData?.uuid}`,
+    url: `StudentService/${profileData?.uuid}`,
     method: "PATCH",
     trigger: false,
     data: profilepostData,
