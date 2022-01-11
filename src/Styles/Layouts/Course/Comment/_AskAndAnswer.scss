@@ -1,6 +1,6 @@
 .AskAndAnswer {
     height: 100%;
-    padding-top: 8rem;
+    padding-top: 0rem;
 
     &__input {
         width: 100%;
@@ -21,6 +21,7 @@
                 color: $color-text-black-light-2;
             }
         }
+        
     }
     &__form {
         bottom: 0;
@@ -62,7 +63,7 @@
         justify-content: center;
     }
     &__content {
-        height: 90%;
+        height: 95%;
         overflow-y: auto;
         overflow-x: hidden;
         &::-webkit-scrollbar {
@@ -73,7 +74,7 @@
 
         /* Track */
         &::-webkit-scrollbar-track {
-            background: #858383;
+            background: $color-white;
             border-radius: 20px;
             margin: 2rem 0;
         }

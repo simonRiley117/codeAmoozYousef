@@ -46,7 +46,6 @@
 	justify-content: center;
 }
 
-
 .d-flex-align {
 	display: flex;
 	align-items: center;
@@ -170,4 +169,7 @@
 		border-radius: 1.5rem !important;
 		margin-bottom: 1rem;
 	}
+}
+.ant-comment-inner {
+	padding: 0.9rem 0 !important;
 }

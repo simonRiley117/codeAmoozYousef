@@ -26,7 +26,7 @@ export default function useFetch({
     url:
       pagination == null
         ? `${API_URL}/${url}/`
-        : `${API_URL}/${url}/?page=${pagination.current}&pageSize=${pagination.pageSize}`,
+        : `${API_URL}/${url}/?page=${pagination.current}`,
     method: method,
     options: {
       // withCredentials: true,
