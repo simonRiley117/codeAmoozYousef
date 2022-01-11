@@ -6,7 +6,7 @@ import logo from '@Assets/Logo/codlogo.png';
 const Footer = () => {
 	return (
 		<div className=' relative'>
-			<div className='Footer relative w-screen'>
+			<div className='Footer relative w-screen '>
 				<div className=' flex items-center justify-between Footer__detail'>
 					<div className='Footer__AboutUsBox flex flex-col  p-16'>
 						<p className='Footer__AboutUsBox-title text-4xl	font-semibold'>
@@ -39,20 +39,33 @@ const Footer = () => {
 					</div>
 					<div className='flex items-center Footer__SambolsBox'>
 						<article className='Footer__SambolsBox--img'>
-							<img
+							<a
 								referrerpolicy='origin'
-								src='https://Trustseal.eNamad.ir/logo.aspx?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
-								alt='logo-eNamad'
-								// style='cursor:pointer'
-								id='ORS8gimDMkFKmWVzad3T'
-							/>
+								target='_blank'
+								href='https://trustseal.enamad.ir/?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T' rel="noreferrer"
+							>
+								<img
+									referrerpolicy='origin'
+									src='https://Trustseal.eNamad.ir/logo.aspx?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
+									alt='logo-eNamad'
+									// style='cursor:pointer'
+									id='ORS8gimDMkFKmWVzad3T'
+								/>
+							</a>
+							
 						</article>
 						<article className='Footer__SambolsBox--img'>
 							<img
 								referrerpolicy='origin'
 								id='jxlznbqewlaowlaoesgtnbqe'
 								// style='cursor:pointer'
-
+								onClick={() =>
+									window.open(
+										'https://logo.samandehi.ir/Verify.aspx?id=124402&p=rfthuiwkaodsaodsobpduiwk',
+										'Popup',
+										'toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30'
+									)
+								}
 								alt='logo-samandehi'
 								src='https://logo.samandehi.ir/logo.aspx?id=124402&p=nbpdodrfshwlshwllymaodrf'
 							/>
