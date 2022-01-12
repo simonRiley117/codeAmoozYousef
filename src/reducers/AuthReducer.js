@@ -5,7 +5,7 @@ export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       // localStorage.setItem("token", action.token);
-      Cookies.set("token", action.token, { domain: HOME_URL });
+      Cookies.set("token", action.token, { domain: HOME_URL ,secure: true });
 
       return action.token;
     case "LOGOUT":
