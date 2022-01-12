@@ -10,6 +10,8 @@ import { ClipLoader } from "react-spinners";
 import { API_URL } from "@App/constants";
 import congrats from "@Assets/Icons/congrats.svg";
 import { Skeleton } from "antd";
+import WebTour from "@Components/Layouts/CourseContent/WebTour";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
@@ -28,6 +30,8 @@ function CourseContent() {
   const handleLastCourse = () => {
     setLastCourse(true);
   };
+  const disableBody = (target) => disableBodyScroll(target);
+  const enableBody = (target) => enableBodyScroll(target);
   useEffect(() => {
     // setMenu(location.state.name);
     setId(location.state.id);
@@ -163,26 +167,29 @@ function CourseContent() {
               )}
               {CurrentcontenStatus && (
                 <div className="flex items-center justify-between LastCourse__btnBox">
-                  {!LastCourse &&<Button
-                    type="primary"
-                    classes="CoWorkers__btn flex items-center "
-                    onClick={
-                      CurrentcontenStatus.next_content_id !== null
-                        ? handleNextContent
-                        : handleLastCourse
-                    }
-                    disabled={
-                      (!isContentPass && quizUuid !== null) ||
-                      CurrentcontenStatus.next_content_id ===
-                        "You have not passed quiz season"
-                    }
-                  >
-                    مبحث بعدی
-                    <i className="fas fa-chevron-right"></i>
-                  </Button>}
+                  {!LastCourse && (
+                    <Button
+                      type="primary"
+                      classes="CoWorkers__btnnext CoWorkers__btn flex items-center  "
+                      onClick={
+                        CurrentcontenStatus.next_content_id !== null
+                          ? handleNextContent
+                          : handleLastCourse
+                      }
+                      disabled={
+                        (!isContentPass && quizUuid !== null) ||
+                        CurrentcontenStatus.next_content_id ===
+                          "You have not passed quiz season"
+                      }
+                    >
+                      مبحث بعدی
+                      <i className="fas fa-chevron-right"></i>
+                    </Button>
+                  )}
                   <Button
+                    // data-tut="CoWorkers__btnPast"
                     type="primary"
-                    classes="CoWorkers__btn flex items-center "
+                    classes="CoWorkers__btnPast CoWorkers__btn flex items-center "
                     {...(CurrentcontenStatus.has_prev_content && {
                       onClick: handlePrevContent,
                     })}
@@ -194,6 +201,7 @@ function CourseContent() {
                 </div>
               )}
             </div>
+            <WebTour onAfterOpen={disableBody} onBeforeClose={enableBody} />
           </div>
         </div>
       </div>

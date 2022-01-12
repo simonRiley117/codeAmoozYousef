@@ -1,15 +1,36 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Tabs } from "antd";
-import Detail from "@Components/Layouts/Course/Sarfasl/Detail";
+import ContentDetail from "./ContentDetail";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
 import Quiz from "@Components/Layouts/Dashboard/Quiz";
-const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize,setActiveSeason }) => {
+const ContentTabs = ({
+  contentUuid,
+  quizUuid,
+  courseUuid,
+  hasSeasonQuize,
+  setActiveSeason,
+}) => {
   const { TabPane } = Tabs;
-  const [seosononquizeid,setSeosononquizeid] = useState()
+  const [seosononquizeid, setSeosononquizeid] = useState();
   return (
     <Tabs className="TabBox" type="card">
-      <TabPane  tab="ویدیو" key={`${contentUuid}_1`}>
-        <Detail setSeosononquizeid={setSeosononquizeid} iscontent={true} setActiveSeason={setActiveSeason} contentUuid={contentUuid} />
+      <TabPane tab="ویدیو" key={`${contentUuid}_1`} className="TabBox__video">
+        <ContentDetail
+          setSeosononquizeid={setSeosononquizeid}
+          iscontent={true}
+          setActiveSeason={setActiveSeason}
+          contentUuid={contentUuid}
+        />
+        {/* <div className="ContentDetail__downloadLinkBox text-left">
+          <a
+            href={""}
+            download
+            target={"_blank"}
+            className="ContentDetail__downloadLink"
+          >
+            دانلود ویدیو
+          </a>
+        </div> */}
       </TabPane>
       <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
         <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} />
