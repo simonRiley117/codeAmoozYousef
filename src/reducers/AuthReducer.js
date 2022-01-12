@@ -10,7 +10,7 @@ export const authReducer = (state, action) => {
       return action.token;
     case "LOGOUT":
       // localStorage.removeItem("token");
-      Cookies.remove("token", { domain: HOME_URL });
+      Cookies.remove("token", { path: "/", domain: HOME_URL });
 
       return null;
     default:
