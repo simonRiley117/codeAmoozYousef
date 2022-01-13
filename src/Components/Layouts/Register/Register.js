@@ -44,7 +44,7 @@ const Register = ({ onCancel, visible, ...rest }) => {
         />
 
         <div className="register__overlay">
-          <div class="register__overlay--content">
+          <div className="register__overlay--content">
             <div className="register__content signUp">
               <h2>وقتشه که پیشرفت رو شروع کنی...</h2>
               <img src={loginPic} alt="ورود" />

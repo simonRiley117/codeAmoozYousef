@@ -1,304 +1,207 @@
-import React, { useState, createElement, useRef, useEffect } from "react";
-import { ReactComponent as Arroe } from "@Assets/Icons/Frame 28.svg";
-import { useForm as formBox } from "react-hook-form";
-import { Picker } from "emoji-mart";
-import "emoji-mart/css/emoji-mart.css";
-import Smiley from "@Assets/Pic/Smiley.png";
-import { Input as InputBase } from "antd";
-import classNames from "classnames";
-import CommentBox from "@Components/Shared/CommentBox/CommentBox";
-import ico from "@Assets/Pic/avatar.png";
-import ico1 from "@Assets/Pic/avatar1.png";
-import useFetch from "../../../../Context/useFetch";
-import CommentReplyBox from "../../../Shared/CommentBox/CommentReplyBox";
-import CommentDraftReplyBox from "../../../Shared/CommentBox/CommentDraftReplyBox";
-import { toast } from "react-toastify";
-import { useAuth } from "../../../../Context/authContext";
-import { Popover } from "antd";
-import { Skeleton } from "antd";
-import Button from "@Components/Shared/Buttons/Button";
-import NoCommentImage from "../../../../Assets/Images/Pic/empthyChat.svg";
+import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import CommentBox from '@Components/Shared/CommentBox/CommentBox';
+import useFetch from '../../../../Context/useFetch';
+import { toast } from 'react-toastify';
+import { useAuth } from '../../../../Context/authContext';
+import { Skeleton } from 'antd';
+import Button from '@Components/Shared/Buttons/Button';
+import NoCommentImage from '../../../../Assets/Images/Pic/empthyChat.svg';
+import CommentInput from './CommentInput';
 
-const optionPickerEmoji = {
-  showPreview: false,
-  showSkinTones: false,
-  // emoji: {emojiData},
-  i18n: {
-    search: "جستجو",
-    clear: "پاک کردن", // Accessible label on "clear" button
-    notfound: "ایموجی پیدا نشد",
-    categories: {
-      search: "نتایج جستجو",
-      recent: "اخیرا",
-      smileys: "Smileys & Emotion",
-      people: "شکلک‌ها و مردم",
-      nature: "حیوانات و طبیعت",
-      foods: "غذا و نوشیدنی",
-      activity: "فعالیت‌ها",
-      places: "سفرومکان‌ها",
-      objects: "اشیاء",
-      symbols: "نمادها",
-      flags: "پرچم‌ها",
-    },
-  },
-};
+
 
 function Comment({ courseId }) {
-  const [commentInfo, setCommentInfo] = useState(null);
-  const [commentList, setcommentList] = useState([]);
-  const [visible, setVisible] = useState(false);
-  const [pageSize, setPageSize] = useState(0);
-  const [draftCommentInfo, setDraftCommentInfo] = useState(null);
-  const [more, setMore] = useState(3);
-  const [pagination, setpagination] = useState({
-    current: 1,
-  });
-  const setComment = (data) => {
-    setcommentList((currentArray) => [...currentArray, ...data.results]);
-  };
-  const getCommentInfo = useFetch({
-    url: `CommentService`,
-    params: { course_uuid: courseId },
-    method: "GET",
-    noHeader: true,
-    trigger: false,
-    setter: setCommentInfo,
-    pagination: pagination,
-    argFunc: (res) => {
-      setComment(res);
-      setPageSize(res.page_size);
-    },
-  });
-  useEffect(() => {
-    getCommentInfo.reFetch();
-    // getDraftCommentInfo.reFetch();
-  }, [pagination]);
+	const [commentInfo, setCommentInfo] = useState(null);
+	const [commentList, setcommentList] = useState([]);
+	const [pageSize, setPageSize] = useState(0);
+	const [draftCommentInfo, setDraftCommentInfo] = useState(null);
+	const [more, setMore] = useState(3);
+	const [pagination, setpagination] = useState({
+		current: 1,
+	});
+	const setComment = (data) => {
+		setcommentList((currentArray) => [...currentArray, ...data.results]);
+	};
+	const getCommentInfo = useFetch({
+		url: `CommentService`,
+		params: { course_uuid: courseId },
+		method: 'GET',
+		noHeader: true,
+		trigger: false,
+		setter: setCommentInfo,
+		pagination: pagination,
+		argFunc: (res) => {
+			setComment(res);
+			setPageSize(res.page_size);
+		},
+	});
+	useEffect(() => {
+		getCommentInfo.reFetch();
+		// getDraftCommentInfo.reFetch();
+	}, [pagination]);
 
-  const handlePagination = () => {
-    setpagination({ ...pagination, current: pagination.current + 1 });
-  };
-  const { token } = useAuth();
-  const getDraftCommentInfo = useFetch({
-    url: `CommentService/draftComments`,
-    pagination: pagination,
-    params: { course_uuid: courseId },
-    method: "GET",
-    trigger: token ? true : false,
-    noHeader: false,
-    setter: setDraftCommentInfo,
-  });
-  const [chosenEmoji, setChosenEmoji] = useState(null);
-  const [message, setMessageForm] = useState("");
-  const ref = useRef(null);
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = formBox();
+	const handlePagination = () => {
+		setpagination({ ...pagination, current: pagination.current + 1 });
+	};
+	const { reset, ...othersMethod } = useForm();
 
-  const [commentPostData, setCommentPostData] = useState(null);
-  const postComment = useFetch({
-    url: "CommentService",
-    method: "POST",
-    trigger: false,
-    noHeader: false,
-    data: commentPostData,
-    caller: getDraftCommentInfo,
-    argFunc: (res) => {
-      toast.success("پیام با موفقیت ثبت شد");
-    },
-    argErrFunc: (err) => handleError(err),
-  });
+	const { token } = useAuth();
+	const getDraftCommentInfo = useFetch({
+		url: `CommentService/draftComments`,
+		pagination: pagination,
+		params: { course_uuid: courseId },
+		method: 'GET',
+		trigger: token ? true : false,
+		noHeader: false,
+		setter: setDraftCommentInfo,
+	});
 
-  const handleError = (err) => {
-    if (err?.data === "Warning! Duplicate Comment") {
-      toast.error("حواست نیست!دوبار داری میفرستی");
-    }
-    if (err?.detail === "Given token not valid for any token type") {
-      toast.error("برای ثبت نظر ابتدا وارد سایت شوید");
-    }
-  };
-  const hide = () => {
-    setVisible(false);
-  };
+	const [commentPostData, setCommentPostData] = useState(null);
+	const postComment = useFetch({
+		url: 'CommentService',
+		method: 'POST',
+		trigger: false,
+		noHeader: false,
+		data: commentPostData,
+		caller: getDraftCommentInfo,
+		func: () =>
+			reset({
+				message: '',
+			}),
+		message: 'پیام با موفقیت ثبت شد',
 
-  const handleVisibleChange = (visible) => {
-    setVisible(visible);
-  };
-  const onSubmit = (data) => {
-    if (token) {
-      let formData = new FormData();
-      formData.append("text", message);
-      formData.append("course_uuid", courseId);
-      setCommentPostData(formData);
-      postComment.reFetch();
-    } else {
-      toast.error("برای ثبت نظر ابتدا وارد سایت شوید");
-    }
-    setMessageForm("");
-  };
-  const onEmojiClick = (e) => {
-    let sym = e.unified.split("-");
-    let codesArray = [];
-    sym.forEach((el) => codesArray.push("0x" + el));
-    let emoji = String.fromCodePoint(...codesArray);
-    // setInput(input + emoji);
-    const cursor = ref.current.selectionStart;
-    const text = message.slice(0, cursor) + emoji + message.slice(cursor);
-    setMessageForm(text);
-  };
-  //   const addEmoji = (e) => {
-  //     let sym = e.unified.split("-");
-  //     let codesArray = [];
-  //     sym.forEach((el) => codesArray.push("0x" + el));
-  //     let emoji = String.fromCodePoint(...codesArray);
-  //     // setInput(input + emoji);
-  //     const cursor = ref.current.selectionStart;
-  //     const text = message.slice(0, cursor) + emoji + message.slice(cursor);
-  //     setMessageForm(text);
-  //   };
+		argErrFunc: (err) => handleError(err),
+	});
 
-  // const [openReply, setOpenReply] = useState(false)
-  // const [replyIndex, setReplyIndex] = useState(-1)
-  // const handleToggleReply = (index) => {
-  //     // console.log('state1: ', openReply)
-  //     // console.log('state2: ', openState)
-  //     setOpenReply((prevState) => !prevState)
-  //     setReplyIndex(index)
-  // }
-  const handleMore = () => {
-    setMore(more + draftCommentInfo?.page_size);
-  };
-  return (
-    <div className="AskAndAnswer relative">
-      <div className="AskAndAnswer__content Comment">
-        {getCommentInfo?.response ? (
-          <>
-            {commentList.length !== 0 &&
-              commentList.map(
-                (comment, index) =>
-                  index < more && (
-                    <CommentBox
-                      key={comment.uuid + index}
-                      uuid={comment.uuid}
-                      // index={index}
-                      draft={false}
-                      name={`${comment.first_name} ${comment.last_name}`}
-                      img={comment.user_picture}
-                      txt={comment.text}
-                      date={comment.date_created}
-                      pub={comment.is_accepted}
-                      hasReply={comment.has_reply}
-                      hasdDraftReply={comment.has_draft_reply}
-                      // handleToggleReply={handleToggleReply}
-                      // openReply={openReply}
-                      style={index === pageSize - 1 && { borderBottom: "none" }}
-                    ></CommentBox>
-                  )
-              )}
-            {commentList.length !== 0 && more < commentList?.page_size && (
-              <div className="center my-8">
-                <Button onClick={handleMore}>نمایش بیشتر نظرات</Button>
-              </div>
-            )}
-            {commentList.length !== 0 && (
-              <div className="center my-8">
-                {pagination.current < commentInfo?.page_count && (
-                  <Button onClick={handlePagination}>نمایش بیشتر نظرات</Button>
-                )}
-              </div>
-            )}
-          </>
-        ) : (
-          <Skeleton />
-        )}
+	const handleError = (err) => {
+		if (err?.data === 'Warning! Duplicate Comment') {
+			toast.error('حواست نیست!دوبار داری میفرستی');
+		}
+		if (err?.detail === 'Given token not valid for any token type') {
+			toast.error('برای ثبت نظر ابتدا وارد سایت شوید');
+		}
+	};
 
-        {getDraftCommentInfo?.response ? (
-          <>
-            {draftCommentInfo.length !== 0 &&
-              draftCommentInfo.results.map(
-                (comment, index) =>
-                  index < more && (
-                    <CommentBox
-                      key={comment.uuid + index + index}
-                      uuid={comment.uuid}
-                      draft={true}
-                      name={`${comment.first_name} ${comment.last_name}`}
-                      img={comment.user_picture}
-                      txt={comment.text}
-                      date={comment.date_created}
-                      pub={comment.is_accepted}
-                      hasReply={false}
-                      style={index === pageSize - 1 && { borderBottom: "none" }}
-                    />
-                  )
-              )}
-            {draftCommentInfo.length !== 0 &&
-              more < draftCommentInfo?.page_size && (
-                <div className="center my-8">
-                  <Button onClick={handleMore}>نمایش بیشتر نظرات</Button>
-                </div>
-              )}
-            {draftCommentInfo.length !== 0 && (
-              <div className="center my-8">
-                {pagination.current < draftCommentInfo?.page_count && (
-                  <Button onClick={handlePagination}>نمایش بیشتر نظرات</Button>
-                )}
-              </div>
-            )}
-          </>
-        ) : null}
-        {(draftCommentInfo === null && commentList.length === 0) ||
-        (commentList.length === 0 && draftCommentInfo.results.length === 0) ? (
-          <div className="center empty__chat">
-            <img src={NoCommentImage} alt="NoCommentImage" />
-          </div>
-        ) : null}
-      </div>
+	
+	const handleSetMessage = (data) => {
+			let formData = new FormData();
+			formData.append('text', data.message);
+			formData.append('course_uuid', courseId);
+			setCommentPostData(formData);
+			postComment.reFetch();
+	};
+	
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="AskAndAnswer__form absolute"
-      >
-        <div className="input text-right ">
-          <InputBase.Group style={{ bottom: "0" }}>
-            <div className="flex justify-end items-center">
-              <textarea
-                value={message}
-                onChange={(e) => setMessageForm(e.target.value)}
-                type="text"
-                name="text"
-                id="input"
-                placeholder="پیام خود را بنویسید..."
-                className={classNames(
-                  "input__field input__withborder",
-                  "AskAndAnswer__input"
-                )}
-                ref={ref}
-              />
-            </div>
-            <div>
-              <Arroe
-                onClick={message !== "" ? handleSubmit(onSubmit) : undefined}
-                className="cursor-pointer	AskAndAnswer__sendBtn absolute"
-              />
-            </div>
-          </InputBase.Group>
-        </div>
-      </form>
-      <div className="absolute AskAndAnswer__emogibox">
-        <Popover
-          content={<Picker {...optionPickerEmoji} onSelect={onEmojiClick} />}
-          title=""
-          trigger="click"
-          visible={visible}
-          onVisibleChange={handleVisibleChange}
-        >
-          <img src={Smiley} alt={Smiley} className="cursor-pointer" />
-        </Popover>
-      </div>
-    </div>
-  );
+	const handleMore = () => {
+		setMore(more + draftCommentInfo?.page_size);
+	};
+	return (
+		<div className='AskAndAnswer relative'>
+			<div className='AskAndAnswer__content Comment'>
+				{getCommentInfo?.response ? (
+					<>
+						{commentList.length !== 0 &&
+							commentList.map(
+								(comment, index) =>
+									index < more && (
+										<CommentBox
+											key={comment.uuid + index}
+											uuid={comment.uuid}
+											// index={index}
+											draft={false}
+											name={`${comment.first_name} ${comment.last_name}`}
+											img={comment.user_picture}
+											txt={comment.text}
+											date={comment.date_created}
+											pub={comment.is_accepted}
+											hasReply={comment.has_reply}
+											hasdDraftReply={comment.has_draft_reply}
+											// handleToggleReply={handleToggleReply}
+											// openReply={openReply}
+											style={
+												index === pageSize - 1 && {
+													borderBottom: 'none',
+												}
+											}
+										></CommentBox>
+									)
+							)}
+						{commentList.length !== 0 && more < commentList?.page_size && (
+							<div className='center my-8'>
+								<Button onClick={handleMore}>نمایش بیشتر نظرات</Button>
+							</div>
+						)}
+						{commentList.length !== 0 && (
+							<div className='center my-8'>
+								{pagination.current < commentInfo?.page_count && (
+									<Button onClick={handlePagination}>
+										نمایش بیشتر نظرات
+									</Button>
+								)}
+							</div>
+						)}
+					</>
+				) : (
+					<Skeleton />
+				)}
+
+				{getDraftCommentInfo?.response ? (
+					<>
+						{draftCommentInfo.length !== 0 &&
+							draftCommentInfo.results.map(
+								(comment, index) =>
+									index < more && (
+										<CommentBox
+											key={comment.uuid + index + index}
+											uuid={comment.uuid}
+											draft={true}
+											name={`${comment.first_name} ${comment.last_name}`}
+											img={comment.user_picture}
+											txt={comment.text}
+											date={comment.date_created}
+											pub={comment.is_accepted}
+											hasReply={false}
+											style={
+												index === pageSize - 1 && {
+													borderBottom: 'none',
+												}
+											}
+										/>
+									)
+							)}
+						{draftCommentInfo.length !== 0 &&
+							more < draftCommentInfo?.page_size && (
+								<div className='center my-8'>
+									<Button onClick={handleMore}>
+										نمایش بیشتر نظرات
+									</Button>
+								</div>
+							)}
+						{draftCommentInfo.length !== 0 && (
+							<div className='center my-8'>
+								{pagination.current < draftCommentInfo?.page_count && (
+									<Button onClick={handlePagination}>
+										نمایش بیشتر نظرات
+									</Button>
+								)}
+							</div>
+						)}
+					</>
+				) : null}
+				{(draftCommentInfo === null && commentList.length === 0) ||
+				(commentList.length === 0 &&
+					draftCommentInfo.results.length === 0) ? (
+					<div className='center empty__chat'>
+						<img src={NoCommentImage} alt='NoCommentImage' />
+					</div>
+				) : null}
+			</div>
+
+			<CommentInput onSetDate={handleSetMessage} {...othersMethod} />
+			
+		</div>
+	);
 }
 
 export default Comment;
