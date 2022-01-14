@@ -12,12 +12,14 @@ function Detail({
   setActiveSeason,
   iscontent,
   setSeosononquizeid,
+  ispreviw,
 }) {
   const [content, setContent] = useState(null);
   const { token, authDispatch } = useAuth();
+  const url = ispreviw ? `ContentService/${contentUuid}/getPreviewContent` : `ContentService/${contentUuid}/getContent`
   const getContent = useFetch({
     // url: `ContentService/${contentUuid}/getModalContent`,
-    url: `ContentService/${contentUuid}/getContent`,
+    url: url,
     method: "GET",
     noHeader: token ? false : true,
     setter: setContent,

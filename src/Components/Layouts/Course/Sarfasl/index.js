@@ -14,6 +14,7 @@ import Modal from "@Components/Shared/Modal/Modal";
 import Detail from "./Detail";
 import { Tabs, Tag } from "antd";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
+import { Button, Tooltip } from "antd";
 
 const { TabPane } = Tabs;
 
@@ -97,7 +98,20 @@ const Topic = ({ courseId, courseSeasons }) => {
                             {index + 1}
                           </div>
                         )}
-                        <p>{content.title}</p>
+                        {content.lockedOn ? (
+                          <p>{content.title}</p>
+                        ) : (
+                          <Tooltip
+                            title="مشاهده محتوا"
+                            mouseEnterDelay={1}
+                            placement="top"
+                            autoAdjustOverflow
+                          >
+                            <p className="Sarfasl__content--title">
+                              {content.title}
+                            </p>
+                          </Tooltip>
+                        )}
                       </div>
                       {renderSeasonInfo(
                         content.duration_time,
@@ -122,7 +136,7 @@ const Topic = ({ courseId, courseSeasons }) => {
               <Detail contentUuid={contentUuid} />
             </TabPane>
           </Tabs> */}
-          <Detail contentUuid={contentUuid} />
+          <Detail ispreviw={true} contentUuid={contentUuid} />
         </Modal>
       )}
     </>
