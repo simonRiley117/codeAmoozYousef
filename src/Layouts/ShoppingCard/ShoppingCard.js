@@ -1,25 +1,34 @@
-import React, {useState,useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import useFetch from "@App/Context/useFetch";
 
 import CostBox from "@Components/Layouts/shoppingcard/CostBox";
 import CoursesBox from "@Components/Layouts/shoppingcard/CoursesBox";
 
 const ShoppingCard = () => {
-    const [orderCard, setOrderCard] = useState([]);
-    console.log('orderCardXXX: ', orderCard)
+    const [orderCard, setOrderCard] = useState({results: []});
+    console.log('orderCardXXX.results: ', orderCard.results)
+    console.log('orderCardXXX.results.length: ', orderCard?.results?.length)
     const [payment, setPayment] = useState([]);
-    const getPayment = useFetch({
-        url: `CartService/showPayment`,
-        trigger: orderCard !==[] ? true : false,
-        method: "GET",
-        setter: setPayment,
-    });
-    
+
     const getorderSummary = useFetch({
         url: `CartService/orderSummary`,
         method: "GET",
         setter: setOrderCard,
     });
+
+    const getPayment = useFetch({
+        url: `CartService/showPayment`,
+        trigger: false,
+        method: "GET",
+        setter: setPayment,
+    });
+
+    useEffect(() => {
+        if (orderCard?.results?.length > 0) {
+            getPayment.reFetch()
+        }
+    }, [orderCard?.results?.length])
+
     return (
         <div className="shoppingcard">
             <div className="container">
