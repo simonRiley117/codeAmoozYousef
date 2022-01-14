@@ -1,8 +1,8 @@
 .profile__uploader {
   &--cover {
     cursor: pointer;
-    max-width: 12.2rem;
-    max-height: 12.2rem;
+    width: 12.2rem;
+    height: 12.2rem;
     border-radius: 50%;
     overflow: hidden;
   }

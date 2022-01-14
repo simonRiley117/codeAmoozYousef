@@ -47,8 +47,8 @@ const SignUpForm = ({ handleActive }) => {
 			.required('رمز عبور را دوباره وارد کنید')
 			.oneOf([Yup.ref('password'), null], 'رمز عبور تطابق ندارد'),
 	});
-	const formOptions = { resolver: yupResolver(validationSchema) };
-	const { handleSubmit, control, reset } = useForm(formOptions);
+	const formOptions = {mode:"onChange" , resolver: yupResolver(validationSchema) };
+	const { handleSubmit ,formState:{isValid}, control, reset } = useForm(formOptions);
 
 	const [postData, setPostData] = useState();
 	const [checkBoxState, setCheckBoxState] = useState(false);
@@ -186,7 +186,7 @@ const SignUpForm = ({ handleActive }) => {
 				<Checkbox checked={checkBoxState} onChange={onChange}>
 					<Link to='/'>قوانین و مقررات</Link> سایت را قبول دارم
 				</Checkbox>
-				<Button disabled={registerRequest.loading} htmlType='submit'>
+				<Button disabled={registerRequest.loading || !checkBoxState || !isValid} htmlType='submit'>
 					{loading ? (
 						<DotLoader
 							color='#fff'

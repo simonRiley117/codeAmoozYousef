@@ -27,7 +27,7 @@ const override = css`
 const SignInForm = () => {
   const { authDispatch } = useAuth();
 
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control  } = useForm();
   const [postData, setPostData] = useState();
   const [loading, setLoading] = useState(false);
   const { search } = useLocation();
@@ -59,17 +59,20 @@ const SignInForm = () => {
       // history.push("/panel");
     },
     argErrFunc: (mess) => {
-      if (
-        mess.non_field_errors.includes("There is no user with that username")
-      ) {
-        toast.error("شما هنوز ثبت نام نکرده اید");
+      if("non_field_errors" in mess){
+        if (
+          mess.non_field_errors.includes("There is no user with that username")
+        ) {
+          toast.error("شما هنوز ثبت نام نکرده اید");
+        }
+        if (mess.non_field_errors.includes("Wrong Password")) {
+          toast.error("پسورد اشتباه است");
+        }
+        if (mess.non_field_errors.includes("E-mail is not verified.")) {
+          toast.error("ایمیل تایید نشده است");
+        }
       }
-      if (mess.non_field_errors.includes("Wrong Password")) {
-        toast.error("پسورد اشتباه است");
-      }
-      if (mess.non_field_errors.includes("E-mail is not verified.")) {
-        toast.error("ایمیل تایید نشده است");
-      }
+     
       setLoading(false);
     },
     errMessage: "",
@@ -108,8 +111,7 @@ const SignInForm = () => {
           control={control}
           prefix={<LockIcon />}
         />
-        <Checkbox>منو به خاطر بسپار</Checkbox>
-        <Button disabled={loginRequest.loading} htmlType="submit">
+        <Button disabled={loginRequest.loading } htmlType="submit">
           {loading ? (
             <DotLoader
               color="#fff"

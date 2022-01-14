@@ -6,7 +6,7 @@ import { data } from "autoprefixer";
 
 const Favoritescontainer = () => {
   const [hasFav, setHasFav] = useState(false);
-  const [favoritesData, setFavoritesData] = useState();
+  const [favoritesData, setFavoritesData] = useState([]);
 
   const showFavorites = (data) => {
     setFavoritesData(data.results);
@@ -20,19 +20,16 @@ const Favoritescontainer = () => {
     setter: showFavorites,
   });
 
-  const renderFavorite = () => {
-    if (hasFav) {
-      return <FavoritesItem favData={favoritesData} />;
-    } else {
-      return <FavoriteEmpty />;
-    }
-  };
+
   return (
     <div>
       <div className="favorites-main-title title__box flex justify-center text-center">
         <h2>لیست علاقه مندی‌ها</h2>
       </div>
-      <div className="favorites">{renderFavorite()}</div>
+      <div className="favorites">
+      {favoritesData.length !== 0 ? <FavoritesItem favData={favoritesData} />  : <FavoriteEmpty />}
+
+      </div>
     </div>
   );
 };
