@@ -4,6 +4,7 @@ import useFetch from "@App/Context/useFetch";
 import {toast} from "react-toastify";
 import {useForm as formBox} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
+import {useCartData} from '@App/Context/cartContext';
 import ShoppingCoursecard from "./ShoppingCoursecard";
 import {ClipLoader} from "react-spinners";
 
@@ -83,6 +84,7 @@ const TipButton = ({orderCard, getPayment}) => {
 const CostBox = ({orderCard, payment, getPayment}) => {
     const {final_amount, discounted_cost, discount_amount} = payment;
     const navigate = useNavigate();
+    const {getCart} = useCartData();
 
     const Payment = useFetch({
         url: `CartService/makePaymentCompleted`,
@@ -90,6 +92,7 @@ const CostBox = ({orderCard, payment, getPayment}) => {
         trigger: false,
         argFunc: (res) => {
             toast.success("دوره ها با موفقیت پرداخت شد");
+            getCart.reFetch();
             navigate("/dashboard/my-course");
         },
     });

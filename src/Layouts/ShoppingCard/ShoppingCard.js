@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import useFetch from "@App/Context/useFetch";
-
+// import {useCartData} from '@App/Context/cartContext';
 import CostBox from "@Components/Layouts/shoppingcard/CostBox";
 import CoursesBox from "@Components/Layouts/shoppingcard/CoursesBox";
 
 const ShoppingCard = () => {
+    // const {getCart} = useCartData()
     const [orderCard, setOrderCard] = useState({results: []});
-    console.log('orderCardXXX.results: ', orderCard.results)
-    console.log('orderCardXXX.results.length: ', orderCard?.results?.length)
+    // console.log('orderCardXXX.results: ', orderCard.results)
+    // console.log('orderCardXXX.results.length: ', orderCard?.results?.length)
     const [payment, setPayment] = useState([]);
 
     const getorderSummary = useFetch({
@@ -24,7 +25,7 @@ const ShoppingCard = () => {
     });
 
     useEffect(() => {
-        if (orderCard?.results?.length > 0) {
+        if (orderCard?.results?.length !== 0) {
             getPayment.reFetch()
         }
     }, [orderCard?.results?.length])
