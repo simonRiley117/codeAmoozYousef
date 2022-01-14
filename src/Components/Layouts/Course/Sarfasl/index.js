@@ -127,7 +127,7 @@ const Topic = ({ courseId, courseSeasons }) => {
       )}
 
       {showModal && (
-        <Modal visible={modal} onCancel={handleModalVisible}>
+        <Modal  visible={modal} onCancel={handleModalVisible}>
           {/* <Tabs className="TabBox" type="card">
             <TabPane tab="درباره این درس" key="1">
               <Detail contentUuid={contentUuid} />
@@ -136,7 +136,11 @@ const Topic = ({ courseId, courseSeasons }) => {
               <Detail contentUuid={contentUuid} />
             </TabPane>
           </Tabs> */}
-          <Detail ispreviw={true} contentUuid={contentUuid} />
+           <div className='p-10'>
+             <h2 className="mb-10 text-center">محتوای جلسه</h2>
+             <Detail ispreviw={true} contentUuid={contentUuid} />
+           </div>
+         
         </Modal>
       )}
     </>
