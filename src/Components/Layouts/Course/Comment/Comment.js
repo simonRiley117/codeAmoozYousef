@@ -56,7 +56,9 @@ function Comment({ courseId }) {
 		noHeader: false,
 		setter: setDraftCommentInfo,
 	});
-
+useEffect(() => {
+	window.scroll()
+}, [])
 	const [commentPostData, setCommentPostData] = useState(null);
 	const postComment = useFetch({
 		url: 'CommentService',
