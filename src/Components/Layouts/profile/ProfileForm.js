@@ -106,10 +106,10 @@ const ProfileForm = () => {
 
               <div className="mr-10">
                 <p className="text-primary uploadProfile__box-name">
-                  {userData?.first_name}
+                  {profileData?.first_name}
                 </p>
                 <p className="text-primary uploadProfile__box-id">
-                  {userData?.username}
+                  {profileData?.last_name}
                 </p>
               </div>
             </div>
