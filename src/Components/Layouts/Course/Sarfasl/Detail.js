@@ -5,6 +5,7 @@ import { useAuth } from "@App/Context/authContext";
 import { Skeleton } from "antd";
 import { Tabs, Tag } from "antd";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
+import Quiz from "@Components/Layouts/Dashboard/Quiz";
 
 const { TabPane } = Tabs;
 function Detail({
@@ -16,7 +17,9 @@ function Detail({
 }) {
   const [content, setContent] = useState(null);
   const { token, authDispatch } = useAuth();
-  const url = ispreviw ? `ContentService/${contentUuid}/getPreviewContent` : `ContentService/${contentUuid}/getContent`
+  const url = ispreviw
+    ? `ContentService/${contentUuid}/getPreviewContent`
+    : `ContentService/${contentUuid}/getContent`;
   const getContent = useFetch({
     // url: `ContentService/${contentUuid}/getModalContent`,
     url: url,
@@ -56,16 +59,21 @@ function Detail({
         </TabPane>
         <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
           {getContent?.response ? <div></div> : <Skeleton />}
-          {/* <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} /> */}
+          <TrainExample
+            contentUuid={contentUuid}
+            ispreviw={true}
+            context={content?.context}
+          />
         </TabPane>
         <TabPane tab="آزمون" key={`${contentUuid}_3`}>
           {getContent?.response ? <div></div> : <Skeleton />}
 
-          {/* <Quiz
-                      quizUuid={quizUuid}
-                      contentUuid={contentUuid}
-                      courseUuid={courseUuid}
-                    /> */}
+         <Quiz
+            quizUuid={content.quiz_id}
+            ispreviw={ispreviw}
+            contentUuid={contentUuid}
+            // courseUuid={courseUuid}
+          /> 
         </TabPane>
         {/* {hasSeasonQuize === "You have not passed quiz season" && (
                     <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>

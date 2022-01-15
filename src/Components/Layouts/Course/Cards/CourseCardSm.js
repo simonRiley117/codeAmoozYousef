@@ -169,10 +169,10 @@ const Coursecardsm = ({card, liftRequest, getallCourseList}) => {
                         <IconBtn
                             getPopupContainer={false}
                             onClick={!isfav ? addToWishList : removeromWishList}
-                            title='افزودن به لیست علاقه مندیها'
+                            title={!isfav ? 'افزودن به لیست علاقه مندیها' : 'حذف از لیست علاقه مندی ها'}
                             icon={<Heart/>}
-                           // disabled={postToFav.loading}
-                           disabled
+                            disabled={postToFav.loading}
+                           
                         />
                     </div>
                 </div>

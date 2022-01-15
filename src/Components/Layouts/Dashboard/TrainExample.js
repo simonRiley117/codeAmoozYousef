@@ -6,28 +6,30 @@ import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
 import { Skeleton } from "antd";
 
-function TrainExample({ contentUuid, courseUuid }) {
-  const [content, setContent] = useState(null);
+function TrainExample({ contentUuid, courseUuid ,ispreviw ,context}) {
+  const [content, setContent] = useState(ispreviw ? {context:context}: null);
   const [contentLoading, setContentLoading] = useState(true);
 
   const setData = (data) => {
     setContent(data);
     setContentLoading(false);
   };
-
+ 
   const getContent = useFetch({
     url: `ContentService/${contentUuid}/getContent`,
     method: "GET",
     noHeader: false,
     setter: setData,
+    trigger:!ispreviw 
   });
-
+  
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   // let id = "1";
+  console.log(content)
   return (
     <>
-      {!contentLoading ? (
+      {ispreviw ||!contentLoading ? (
         content.context.map((item, index) => (
           <div key={index}>
             {item?.name ? (
