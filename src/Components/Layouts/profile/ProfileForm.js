@@ -85,7 +85,7 @@ const ProfileForm = () => {
   });
 
   const PostProfile = useFetch({
-    url: `StudentService/${profileData?.uuid}`,
+    url: `StudentService/profile_update`,
     method: "PATCH",
     trigger: false,
     data: profilepostData,
