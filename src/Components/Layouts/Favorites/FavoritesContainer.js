@@ -27,7 +27,7 @@ const Favoritescontainer = () => {
         <h2>لیست علاقه مندی‌ها</h2>
       </div>
       <div className="favorites">
-      {favoritesData.length !== 0 ? <FavoritesItem favData={favoritesData} />  : <FavoriteEmpty />}
+      {favoritesData.length !== 0 ? <FavoritesItem getFavoritesData={getFavoritesData} favData={favoritesData} />  : <FavoriteEmpty />}
 
       </div>
     </div>
