@@ -8,12 +8,12 @@ import { ReactComponent as CoinIcon } from "@Assets/Icons/Coin.svg";
 import Price from "@Components/Shared/Price/Price";
 import Rate from "@Components/Shared/Rate/Rate";
 import CourseCardBg from "../Course/Cards/CourseCardBg";
-
-const Favoritesitem = ({ favData }) => {
+import FavoritCard from "./FavoritCard"
+const Favoritesitem = ({ favData ,getFavoritesData}) => {
   return (
     <div className="favorites-items w-full">
       {favData.map((faves) => (
-        <CourseCardBg card={faves} key={faves.uuid} />
+        <FavoritCard card={faves} getFavoritesData={getFavoritesData} key={faves.uuid} />
       ))}
     </div>
   );
