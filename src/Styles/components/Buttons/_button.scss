@@ -123,9 +123,8 @@
 		}
 	}
 	&__icon {
-		display: flex !important;
-		align-items: center;
-		justify-content: center;
+		@include display-flex(center);
+
 		border: 0;
 		overflow: hidden;
 		width: 40px;
@@ -136,6 +135,7 @@
 
 		&.ant-tooltip-disabled-compatible-wrapper {
 			opacity: 0.5;
+			display: flex !important;
 		}
 
 		& svg {
