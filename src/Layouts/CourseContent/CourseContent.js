@@ -13,7 +13,6 @@ import WebTour from "@Components/Layouts/CourseContent/WebTour";
 // import Tour from "reactour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import PropTypes from "prop-types";
-import Joyride from "react-joyride";
 import { withTour } from "@reactour/tour";
 
 function CourseContent({ setIsOpen, steps, setStep }) {

@@ -51,10 +51,6 @@ export const CreateHead = ({
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
         crossorigin="anonymous"
       />
-      <link
-        href="https://cdn.jsdelivr.net/intro.js/2.3.0/introjs.min.css"
-        rel="stylesheet"
-      />
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       <meta property="og:title" content={title} />
       <meta property="og:url" content={url} />
