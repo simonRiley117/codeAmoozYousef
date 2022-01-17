@@ -48,36 +48,49 @@ import ChatroomUser from "@Components/Layouts/Dashboard/MyMessages/ChatroomUser"
 import NewCourse from "./Layouts/Dashboard/NewCourse";
 import Password from "./Layouts/Dashboard/Password";
 import Transaction from "./Layouts/Dashboard/Transaction";
-import CourseContent from "@Layouts/CourseContent/CourseContent";
-// import CourseContent from "@Layouts/CourseContent";
+// import CourseContent from "@Layouts/CourseContent/CourseContent";
+import CourseContent from "@Layouts/CourseContent";
 import ShoppingCard from "@Layouts/ShoppingCard/ShoppingCard";
 import Layout from "@Components/Shared/Layout/Layout";
+import { CreateHead } from "./Head/Head";
+import { useCartData } from "@App/Context/cartContext";
+import IconBtn from "@Components/Shared/Buttons/IconBtn";
+import { Badge } from "antd";
+import { ReactComponent as ShoppingCartIcon } from "@Assets/Icons/shopping-cart.svg";
 
 const Authenticated = () => {
+  const { cartData, cartData1 } = useCartData();
+
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/shopping-card" element={<ShoppingCard />} />
-        <Route path="/coursecontent" element={<CourseContent />} />
-      </Route>
-      <Route element={<DashboardLayout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/suggest" element={<NewCourse />} />
-        <Route path="/dashboard/wallet" element={<Transaction />} />
-        <Route path="/dashboard/setting" element={<Password />} />
-        <Route path="/dashboard/topic" element={<CourseTopic />} />
-        <Route path="/dashboard/resume" element={<Resume />} />
-        <Route path="/dashboard/profile" element={<Profile />} />
-        <Route path="/dashboard/my-course" element={<MyCourses />} />
-        <Route path="/dashboard/course/example" element={<Example />} />
-        <Route path="/dashboard/course/quiz" element={<Quiz />} />
-        <Route element={<MyMessages />}>
-          <Route path="/dashboard/messages" element={<EmptyChatroom />} />
-          <Route path="/dashboard/messages/:id" element={<ChatroomUser />} />
+    <>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/shopping-card" element={<ShoppingCard />} />
+          <Route path="/coursecontent" element={<CourseContent />} />
         </Route>
-        {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
-      </Route>
-    </Routes>
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/suggest" element={<NewCourse />} />
+          <Route path="/dashboard/wallet" element={<Transaction />} />
+          <Route path="/dashboard/setting" element={<Password />} />
+          <Route path="/dashboard/topic" element={<CourseTopic />} />
+          <Route path="/dashboard/resume" element={<Resume />} />
+          <Route path="/dashboard/profile" element={<Profile />} />
+          <Route path="/dashboard/my-course" element={<MyCourses />} />
+          <Route path="/dashboard/course/example" element={<Example />} />
+          <Route path="/dashboard/course/quiz" element={<Quiz />} />
+          <Route element={<MyMessages />}>
+            <Route path="/dashboard/messages" element={<EmptyChatroom />} />
+            <Route path="/dashboard/messages/:id" element={<ChatroomUser />} />
+          </Route>
+          {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
+        </Route>
+      </Routes>
+      <CreateHead
+        title={`کدآموز-آموزش تعاملی آنلاین برنامه نویسی (${cartData}) `}
+        cartData1={cartData}
+      />
+    </>
   );
 };
 

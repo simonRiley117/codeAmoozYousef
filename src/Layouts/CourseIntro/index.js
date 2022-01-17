@@ -14,7 +14,6 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "@App/Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
 import { Skeleton } from "antd";
-import LazyLoad from "react-lazyload";
 
 const { TabPane } = Tabs;
 

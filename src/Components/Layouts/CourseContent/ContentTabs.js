@@ -14,7 +14,7 @@ const ContentTabs = ({
   const [seosononquizeid, setSeosononquizeid] = useState();
   return (
     <Tabs className="TabBox" type="card">
-      <TabPane tab="ویدیو" key={`${contentUuid}_1`} className="TabBox__video">
+      <TabPane tab="ویدیو" key={`${contentUuid}_1`} className="reactour__video">
         <ContentDetail
           setSeosononquizeid={setSeosononquizeid}
           iscontent={true}
