@@ -48,8 +48,8 @@ import ChatroomUser from "@Components/Layouts/Dashboard/MyMessages/ChatroomUser"
 import NewCourse from "./Layouts/Dashboard/NewCourse";
 import Password from "./Layouts/Dashboard/Password";
 import Transaction from "./Layouts/Dashboard/Transaction";
-import CourseContent from "@Layouts/CourseContent/CourseContent";
-// import CourseContent from "@Layouts/CourseContent";
+// import CourseContent from "@Layouts/CourseContent/CourseContent";
+import CourseContent from "@Layouts/CourseContent";
 import ShoppingCard from "@Layouts/ShoppingCard/ShoppingCard";
 import Layout from "@Components/Shared/Layout/Layout";
 
