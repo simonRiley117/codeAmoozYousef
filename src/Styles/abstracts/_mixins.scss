@@ -32,6 +32,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 		}
 	}
 
+	@if $breakpoint == small-tablet {
+		@media only screen and (max-width: 43.75em) {
+			//700px
+			@content;
+		}
+	}
+
 	@if $breakpoint == tablet {
 		@media only screen and (max-width: 48em) {
 			@content;

@@ -59,7 +59,7 @@ import { Badge } from "antd";
 import { ReactComponent as ShoppingCartIcon } from "@Assets/Icons/shopping-cart.svg";
 
 const Authenticated = () => {
-  const { cartData, cartData1 } = useCartData();
+  const { cartData } = useCartData();
 
   return (
     <>

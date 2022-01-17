@@ -1,164 +1,170 @@
 .button {
-  border-radius: 6rem;
-  height: 4rem;
-  min-width: 12rem;
-  padding: 4px 2rem;
-  @include display-flex(center);
-  flex-direction: row-reverse;
-  column-gap: 1.5rem;
-  font-size: 1.6rem;
-  font-weight: 600;
+	border-radius: 6rem;
+	height: 4rem;
+	min-width: 12rem;
+	padding: 4px 2rem;
+	@include display-flex(center);
+	flex-direction: row-reverse;
+	column-gap: 1.5rem;
+	font-size: 1.6rem;
+	font-weight: 600;
 
-  & svg {
-    max-width: 2rem;
-    max-height: 2rem;
-  }
+	& svg {
+		max-width: 2rem;
+		max-height: 2rem;
+	}
 
-  // &__inline {
-  // 	display: inline-block;
-  // }
-  &.disabled {
-    user-select: none;
-    cursor: not-allowed;
-    color: $color-gray-dark;
-    background-color: $color-gray;
-    border-color: $color-gray;
-    filter: none;
-    box-shadow: none;
-  }
+	// &__inline {
+	// 	display: inline-block;
+	// }
+	&.disabled {
+		user-select: none;
+		cursor: not-allowed;
+		color: $color-gray-dark;
+		background-color: $color-gray;
+		border-color: $color-gray;
+		filter: none;
+		box-shadow: none;
+	}
 
-  &.large {
-    height: 5rem;
-    font-size: 2rem;
-    @include respond(tablet) {
-      font-size: 14px;
-    }
-    & svg {
-      max-width: 2.4rem;
-      max-height: 2.4rem;
-    }
-  }
+	&.large {
+		height: 5rem;
+		font-size: 2rem;
+		@include respond(tablet) {
+			font-size: 14px;
+		}
+		& svg {
+			max-width: 2.4rem;
+			max-height: 2.4rem;
+		}
+	}
 
-  &__default {
-    border: 2px solid $color-primary;
-    color: $color-primary;
+	&__default {
+		border: 2px solid $color-primary;
+		color: $color-primary;
 
-    &:hover {
-      background-color: $color-primary;
-      color: $color-white;
-      filter: $shadow-button;
-    }
-  }
+		&:hover {
+			background-color: $color-primary;
+			color: $color-white;
+			filter: $shadow-button;
+		}
+	}
 
-  &__primary {
-    filter: $shadow-button;
-  }
+	&__primary {
+		filter: $shadow-button;
+	}
 
-  &__gradient {
-    background: $color-gradient;
-    min-width: 15rem;
-    color: $color-white;
-    border: 0;
-    &.disabled {
-      background: $color-gray;
-      &:hover {
-        background: $color-gray;
-      }
-    }
-    &:hover,
-    &:active,
-    &:focus {
-      background: $color-gradient;
-      color: $color-white;
-      filter: $shadow-button;
-    }
-  }
+	&__gradient {
+		background: $color-gradient;
+		min-width: 15rem;
+		color: $color-white;
+		border: 0;
+		&.disabled {
+			background: $color-gray;
+			&:hover {
+				background: $color-gray;
+			}
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			background: $color-gradient;
+			color: $color-white;
+			filter: $shadow-button;
+		}
+	}
 
-  &__text {
-    color: $color-primary;
-    flex-direction: row;
-    column-gap: 1rem;
-    position: relative;
-    overflow: hidden;
-    font-size: 14px;
-    &.disabled {
-      color: $color-gray-dark;
-      background-color: transparent;
-      border-color: transparent;
-      &::after {
-        content: none;
-      }
-      &:hover,
-      &:active,
-      &:focus {
-        color: $color-gray-dark;
-        background-color: transparent;
-        border-color: transparent;
-      }
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-color: currentColor;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: all 350ms cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
+	&__text {
+		color: $color-primary;
+		flex-direction: row;
+		column-gap: 1rem;
+		position: relative;
+		overflow: hidden;
+		font-size: 14px;
+		&.disabled {
+			color: $color-gray-dark;
+			background-color: transparent;
+			border-color: transparent;
+			&::after {
+				content: none;
+			}
+			&:hover,
+			&:active,
+			&:focus {
+				color: $color-gray-dark;
+				background-color: transparent;
+				border-color: transparent;
+			}
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: currentColor;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: all 350ms cubic-bezier(0.645, 0.045, 0.355, 1);
+		}
 
-    &.success {
-      color: $color-success !important;
-    }
-    &:hover,
-    &:active,
-    &:focus {
-      color: $color-primary;
-      background-color: transparent;
+		&.success {
+			color: $color-success !important;
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			color: $color-primary;
+			background-color: transparent;
 
-      &::after {
-        opacity: 0.15;
-      }
-    }
-  }
-  &__icon {
-    @include display-flex(center);
-    border: 0;
-    overflow: hidden;
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-    border-radius: 50%;
-    position: relative;
+			&::after {
+				opacity: 0.15;
+			}
+		}
+	}
+	&__icon {
+		@include display-flex(center);
 
-    & svg {
-      max-width: 22px;
-      max-height: 22px;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-color: currentColor;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: all 350ms cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
+		border: 0;
+		overflow: hidden;
+		width: 40px;
+		height: 40px;
+		padding: 8px;
+		border-radius: 50%;
+		position: relative;
 
-    &:hover,
-    &:active,
-    &:focus {
-      color: currentColor;
-      background-color: transparent;
+		&.ant-tooltip-disabled-compatible-wrapper {
+			opacity: 0.5;
+			display: flex !important;
+		}
 
-      &::after {
-        opacity: 0.15;
-      }
-    }
-  }
+		& svg {
+			max-width: 22px;
+			max-height: 22px;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: currentColor;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: all 350ms cubic-bezier(0.645, 0.045, 0.355, 1);
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: currentColor;
+			background-color: transparent;
+
+			&::after {
+				opacity: 0.15;
+			}
+		}
+	}
 }
 button.ant-btn-primary[disabled],
 button.ant-btn-primary[disabled]:hover,
@@ -168,11 +174,11 @@ button.ant-btn[disabled],
 button.ant-btn[disabled]:hover,
 button.ant-btn[disabled]:focus,
 button.ant-btn[disabled]:active {
-  user-select: none;
-  cursor: not-allowed;
-  color: $color-gray-dark;
-  background-color: $color-gray;
-  border-color: $color-gray;
-  filter: none;
-  box-shadow: none;
+	user-select: none;
+	cursor: not-allowed;
+	color: $color-gray-dark;
+	background-color: $color-gray;
+	border-color: $color-gray;
+	filter: none;
+	box-shadow: none;
 }

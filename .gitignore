@@ -22,3 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /src/Assets/Junior Vs Senior Code - How To Write Better Code As A Web Developer - React.mp4
+
+.vscode
+.idea
