@@ -52,17 +52,12 @@ import Transaction from "./Layouts/Dashboard/Transaction";
 import CourseContent from "@Layouts/CourseContent";
 import ShoppingCard from "@Layouts/ShoppingCard/ShoppingCard";
 import Layout from "@Components/Shared/Layout/Layout";
-import { CreateHead } from "./Head/Head";
-import { useCartData } from "@App/Context/cartContext";
-import IconBtn from "@Components/Shared/Buttons/IconBtn";
-import { Badge } from "antd";
-import { ReactComponent as ShoppingCartIcon } from "@Assets/Icons/shopping-cart.svg";
+
 
 const Authenticated = () => {
-  const { cartData } = useCartData();
 
   return (
-    <>
+    
       <Routes>
         <Route element={<Layout />}>
           <Route path="/shopping-card" element={<ShoppingCard />} />
@@ -86,11 +81,7 @@ const Authenticated = () => {
           {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
         </Route>
       </Routes>
-      <CreateHead
-        title={`کدآموز-آموزش تعاملی آنلاین برنامه نویسی (${cartData}) `}
-        cartData1={cartData}
-      />
-    </>
+ 
   );
 };
 
