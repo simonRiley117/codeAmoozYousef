@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Tour from "reactour";
-import Lock from "@Assets/Icons/lock.svg";
 
 const stepStyle = {
   color: "#000000",
@@ -31,16 +30,12 @@ const steps = [
     style: stepStyle,
   },
   {
-    selector: ".LastCourse .LastCourse__btnBox .CoWorkers__btnPast",
+    // selector: '[data-tut="reactour__iso"]',
+    selector: "#testtttttttttttt",
     content: "از این قسمت میتونی به مباحث قبلی دسترسی داشته باشی",
     style: stepStyle,
   },
-  {
-    selector: ".CoWorkers__btnnext",
-    content:
-      "از این قسمت میتونی به مباحث بعدی دسترسی داشته باشی. در صورتی این گزینه فعاله که آزمون این مبحث رو داده باشی و یا آزمونی نداشته باشی.",
-    style: stepStyle,
-  },
+
   //   {
   //     selector: ".ContentDetail__downloadLinkBox .ContentDetail__downloadLink",
   //     content: "ویدیو های هر مبحث رو می تونید از این قسمت دانلود کنید",

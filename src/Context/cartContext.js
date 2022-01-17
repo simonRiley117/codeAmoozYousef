@@ -8,6 +8,7 @@ const CartDataContext = createContext();
 
 function CartDataProvider(props) {
     const [cartData, setCartData] = useState(null);
+    const [cartData1, setCartData1] = useState(0);
     const {token, authDispatch} = useAuth();
 
     const getCart = useAxios({
@@ -32,7 +33,7 @@ function CartDataProvider(props) {
     });
 
     return (
-        <CartDataContext.Provider value={{cartData, getCart}} {...props}>
+        <CartDataContext.Provider value={{cartData, getCart,cartData1}} {...props}>
             {props.children}
         </CartDataContext.Provider>
     );

@@ -6,14 +6,16 @@ import ContentTab from "@Components/Layouts/CourseContent/ContentTabs";
 import SeasonList from "@Components/Layouts/CourseContent/SeasonList";
 import useFetch from "../../Context/useFetch";
 import { useHistory, useLocation, useParams } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
 import { API_URL } from "@App/constants";
 import congrats from "@Assets/Icons/congrats.svg";
 import { Skeleton } from "antd";
 import WebTour from "@Components/Layouts/CourseContent/WebTour";
+// import Tour from "reactour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import PropTypes from "prop-types";
+import { withTour } from "@reactour/tour";
 
-function CourseContent() {
+function CourseContent({ setIsOpen, steps, setStep }) {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
   const [Currentcontentid, setCurrentContentid] = useState(null);
@@ -32,6 +34,7 @@ function CourseContent() {
   };
   const disableBody = (target) => disableBodyScroll(target);
   const enableBody = (target) => enableBodyScroll(target);
+
   useEffect(() => {
     // setMenu(location.state.name);
     setId(location.state.id);
@@ -86,7 +89,7 @@ function CourseContent() {
   const handlePassContentError = (err) => {
     console.log(err);
   };
-  //next_content_id:
+
   useEffect(() => {
     if (quizUuid === null) {
       postPassContent.reFetch();
@@ -114,16 +117,57 @@ function CourseContent() {
   const handlePrevContent = () => {
     setCurrentContentid(CurrentcontenStatus.prev_content_id);
   };
-
-  console.log("pass", isContentPass);
+  const [isTourOpen, setIsTourOpen] = useState(true);
+  const [stepsEnabled, setStepsEnabled] = useState(true);
+  const [initialStep, setInitialStep] = useState(0);
+  const [hintsEnabled, setHintsEnabled] = useState(true);
+  // const [steps, setSteps] = useState([
+  //   {
+  //     target: ".LastCourse__Position",
+  //     content: "همه جلسات و مباحث دوره شما در این قسمت قرار می گیره.",
+  //   },
+  //   {
+  //     target:
+  //       ".Sarfasl__Accordionbox .Sarfasl__AccordionItem .Sarfasl__AccordionItem__lock",
+  //     content:
+  //       "تا زمانی که مباحث خود را با موفقیت نگذزانید مباحث بعدی برای شما قفل خواهد بود",
+  //   },
+  //   {
+  //     target: ".CourseStatus",
+  //     content: "میزان پیشرفت خود در دوره می توانید در این قسمت مشاهده کنید.",
+  //   },
+  //   {
+  //     target: ".TabBox__video",
+  //     content: "ویدیو های هر مبحث به همراه توضیحاتش توی این بخش قرار میگیره.",
+  //   },
+  //   {
+  //     target: ".LastCourse .LastCourse__btnBox .CoWorkers__btnPast",
+  //     content: "از این قسمت میتونی به مباحث قبلی دسترسی داشته باشی",
+  //   },
+  //   {
+  //     target: ".CoWorkers__btnnext",
+  //     content:
+  //       "از این قسمت میتونی به مباحث بعدی دسترسی داشته باشی. در صورتی این گزینه فعاله که آزمون این مبحث رو داده باشی و یا آزمونی نداشته باشی.",
+  //   },
+  // ]);
+  // const [hints, setHints] = useState([
+  //   {
+  //     target: ".LastCourse__Position",
+  //     hint: "Hello hint",
+  //     hintPosition: "middle-right",
+  //   },
+  // ]);
+  const onExit = () => {
+    setStepsEnabled(false);
+  };
 
   return (
-    <>
+    <div style={{ height: "100%" }}>
       <div className="LastCourse">
         <div className="container">
           <BreadCrump name={name} />
           <div className="grid LastCourse__container relative">
-            <div className="LastCourse__Box">
+            <div className="LastCourse__Box" data-tut="reactour__start">
               {sidebarList && !getCourseSeasons.loading ? (
                 <div className="LastCourse__Position">
                   <p className="LastCourse__title">{sidebarList?.title}</p>
@@ -165,31 +209,73 @@ function CourseContent() {
                   <img src={congrats} alt="" />
                 </div>
               )}
-              {CurrentcontenStatus && (
-                <div className="flex items-center justify-between LastCourse__btnBox">
-                  {!LastCourse && (
-                    <Button
-                      type="primary"
-                      classes="CoWorkers__btnnext CoWorkers__btn flex items-center  "
-                      onClick={
-                        CurrentcontenStatus.next_content_id !== null
-                          ? handleNextContent
-                          : handleLastCourse
-                      }
-                      disabled={
-                        (!isContentPass && quizUuid !== null) ||
-                        CurrentcontenStatus.next_content_id ===
-                          "You have not passed quiz season"
-                      }
-                    >
-                      مبحث بعدی
-                      <i className="fas fa-chevron-right"></i>
-                    </Button>
-                  )}
+              <div>
+                {CurrentcontenStatus && (
+                  <div className="flex items-center justify-between LastCourse__btnBox">
+                    {!LastCourse && (
+                      <Button
+                        type="primary"
+                        classes=" CoWorkers__btn flex items-center  "
+                        onClick={
+                          CurrentcontenStatus.next_content_id !== null
+                            ? handleNextContent
+                            : handleLastCourse
+                        }
+                        disabled={
+                          (!isContentPass && quizUuid !== null) ||
+                          CurrentcontenStatus.next_content_id ===
+                            "You have not passed quiz season"
+                        }
+                      >
+                        مبحث بعدی
+                        <i className="fas fa-chevron-right"></i>
+                      </Button>
+                    )}
+                    <div data-tut="reactour__end">
+                      <Button
+                        type="primary"
+                        classes=" CoWorkers__btn flex items-center "
+                        {...(CurrentcontenStatus.has_prev_content && {
+                          onClick: handlePrevContent,
+                        })}
+                        disabled={!CurrentcontenStatus.has_prev_content}
+                      >
+                        <i className="fas fa-chevron-left"></i>
+                        مبحث قبلی
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+            {/* <WebTour onAfterOpen={disableBody} onBeforeClose={enableBody} /> */}
+          </div>
+          {/* <div className=" relative">
+            {CurrentcontenStatus && (
+              <div className="flex items-center justify-between LastCourse__btnBox">
+                {!LastCourse && (
                   <Button
-                    // data-tut="CoWorkers__btnPast"
                     type="primary"
-                    classes="CoWorkers__btnPast CoWorkers__btn flex items-center "
+                    classes=" CoWorkers__btn flex items-center  "
+                    onClick={
+                      CurrentcontenStatus.next_content_id !== null
+                        ? handleNextContent
+                        : handleLastCourse
+                    }
+                    disabled={
+                      (!isContentPass && quizUuid !== null) ||
+                      CurrentcontenStatus.next_content_id ===
+                        "You have not passed quiz season"
+                    }
+                  >
+                    مبحث بعدی
+                    <i className="fas fa-chevron-right"></i>
+                  </Button>
+                )}
+                <div id="testtttttttttttt">
+                  <Button
+                    type="primary"
+                    classes=" CoWorkers__btn flex items-center "
                     {...(CurrentcontenStatus.has_prev_content && {
                       onClick: handlePrevContent,
                     })}
@@ -199,13 +285,13 @@ function CourseContent() {
                     مبحث قبلی
                   </Button>
                 </div>
-              )}
-            </div>
-            <WebTour onAfterOpen={disableBody} onBeforeClose={enableBody} />
-          </div>
+              </div>
+            )}
+          </div> */}
         </div>
       </div>
-    </>
+      {/* <Joyride steps={steps} run continuous /> */}
+    </div>
   );
 }
 

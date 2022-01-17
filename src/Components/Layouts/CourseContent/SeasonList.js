@@ -91,7 +91,7 @@ const SeasonHeader = ({ time, lock, FetchContent, userData }) => {
   return (
     <div className="Sarfasl__AccordionItem">
       {userData?.tool_gide && (
-        <img src={Lock} alt={Lock} className="Sarfasl__AccordionItem__lock" />
+        <img src={Lock} alt={Lock} data-tut="reactour__lock" />
       )}
       {lock && (
         <img src={Lock} alt={Lock} className="Sarfasl__AccordionItem__lock" />
