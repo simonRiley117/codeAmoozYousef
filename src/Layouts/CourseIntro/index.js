@@ -97,7 +97,7 @@ const CourseIntro = () => {
                 data={data}
                 makeCouponExpire={makeCouponExpire}
               />
-            )}
+            )} 
 
         <div className="grid Course__container relative">
           {windowSize !== "sm" && (
