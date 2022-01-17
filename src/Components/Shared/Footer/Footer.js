@@ -33,7 +33,7 @@ const Footer = () => {
 							<Link to='/'>codeamooz</Link>
 						</div>
 						<div className='flex items-center footer__symbols'>
-							<article className='footer__symbols--img'>
+							{/* <article className='footer__symbols--img'>
 								<a
 									referrerpolicy='origin'
 									target='_blank'
@@ -48,8 +48,8 @@ const Footer = () => {
 										id='ORS8gimDMkFKmWVzad3T'
 									/>
 								</a>
-							</article>
-							<article
+							</article> */}
+							{/* <article
 								className='footer__symbols--img'
 								onClick={() =>
 									window.open(
@@ -67,7 +67,7 @@ const Footer = () => {
 									alt='logo-samandehi'
 									src='https://logo.samandehi.ir/logo.aspx?id=124402&p=nbpdodrfshwlshwllymaodrf'
 								/>
-							</article>
+							</article> */}
 						</div>
 					</section>
 				</div>

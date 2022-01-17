@@ -1812,6 +1812,88 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
   integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
+"@react-aria/focus@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/focus/-/focus-3.5.0.tgz#02b85f97d6114af1eccc0902ce40723b626cb7f9"
+  integrity sha512-Eib75Q6QgQdn8VVVByg5Vipaaj/C//8Bs++sQY7nkomRx4sdArOnXbDppul3YHP6mRfU9VRLvAigEUlReQF/Xw==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/interactions" "^3.6.0"
+    "@react-aria/utils" "^3.9.0"
+    "@react-types/shared" "^3.9.0"
+    clsx "^1.1.1"
+
+"@react-aria/interactions@^3.6.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/interactions/-/interactions-3.7.0.tgz#eb19c1068b557a6b6df1e1c4abef07de719e9f25"
+  integrity sha512-Xomchjb9bqvh3ocil+QCEYFSxsTy8PHEz43mNP6z2yuu3UqTpl2FsWfyKgF/Yy0WKVkyV2dO2uz758KJTCLZhw==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/utils" "^3.10.0"
+    "@react-types/shared" "^3.10.0"
+
+"@react-aria/ssr@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/ssr/-/ssr-3.1.0.tgz#b7163e6224725c30121932a8d1422ef91d1fab22"
+  integrity sha512-RxqQKmE8sO7TGdrcSlHTcVzMP450hqowtBSd2bBS9oPlcokVkaGq28c3Rwa8ty5ctw4EBCjXqjP7xdcKMGDzug==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+
+"@react-aria/utils@^3.10.0", "@react-aria/utils@^3.9.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/utils/-/utils-3.11.0.tgz#215ea23a5435672a822cd713bdb8217972c5c80b"
+  integrity sha512-4yFA8E9xqDCUlolYSsoyp/qxrkiQrnEqx1BQOrKDuicpW7MBJ39pJC23YFMpyK2a6xEptc6xJEeIEFJXp57jJw==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/ssr" "^3.1.0"
+    "@react-stately/utils" "^3.3.0"
+    "@react-types/shared" "^3.10.1"
+    clsx "^1.1.1"
+
+"@react-stately/utils@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.3.0.tgz#99866c5788539268a06035acd5925b25bb4cedde"
+  integrity sha512-f//Y8q0+FFcS04xvCNvbba7WWRLHzj2AegLgdgwTxsnk9Gb+AyuasdRrRY7bGQhdHuEJ7OIiQZ9EQWndDbrTcg==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+
+"@react-types/shared@^3.10.0", "@react-types/shared@^3.10.1", "@react-types/shared@^3.9.0":
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.10.1.tgz#16cd3038361dee63f351fa4d0fd25d90480a149b"
+  integrity sha512-U3dLJtstvOiZ8XLrWdNv9WXuruoDyfIfSXguTs9N0naDdO+M0MIbt/1Hg7Toe43ueAe56GM14IFL+S0/jhv8ow==
+
+"@reactour/mask@*":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@reactour/mask/-/mask-0.4.0.tgz#9d72c3bd834d421e4040151f871b8f675072136e"
+  integrity sha512-yD2MPMtxSXJvlHaoIv0IScUZKtyeT0COnnfDJkf9fPHWAsx3vS5y+rLJFL2BltmtDeMfvDlem7Ac/59LYPF7Dg==
+  dependencies:
+    "@reactour/utils" "*"
+
+"@reactour/popover@*":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@reactour/popover/-/popover-0.4.0.tgz#de7700966a0b8c44e9ebc7b8c3cd57d4ae35b51d"
+  integrity sha512-UQ7QyNZN/kxuesb3bLU01iYyQG5PTN+bZ/PazUak1tC3dey/dTMnsbbKwH0Yjub+5W8F9YnZAmFXylRWE9jsCg==
+  dependencies:
+    "@reactour/utils" "*"
+
+"@reactour/tour@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@reactour/tour/-/tour-2.8.0.tgz#39b02c1872cc19bf92574f0f9e6c9636f792b34b"
+  integrity sha512-yAtEpRcs3ze9JvUu/2tL/xhFRyf5rECZexCZZylD+GP85neZRsJKkcnLouP4BrYUkKUPPHt7zO/VDILo+p2TMQ==
+  dependencies:
+    "@react-aria/focus" "3.5.0"
+    "@reactour/mask" "*"
+    "@reactour/popover" "*"
+    "@reactour/utils" "*"
+
+"@reactour/utils@*":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@reactour/utils/-/utils-0.2.1.tgz#ab3b7038faf685ee160fa7c76256970b13002b15"
+  integrity sha512-HiMH304EMOIBN0sO3zZhqxaujJvJdQLnCOjvHOqM4Az8rtul4N9uTIYQ4QyMwvEZ1Mko/INlpQv6y2sBFRmzhA==
+  dependencies:
+    "@rooks/use-mutation-observer" "4.11.2"
+    resize-observer-polyfill "1.5.1"
+
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz#80de384edfbd7bfc9101164910f86078151a3eca"
@@ -10672,11 +10754,6 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-lazyload@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-3.2.0.tgz#497bd06a6dbd7015e3376e1137a67dc47d2dd021"
-  integrity sha512-zJlrG8QyVZz4+xkYZH5v1w3YaP5wEFaYSUWC4CT9UXfK75IfRAIEdnyIUF+dXr3kX2MOtL1lUaZmaQZqrETwgw==
-
 react-multi-date-picker@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-multi-date-picker/-/react-multi-date-picker-3.2.0.tgz#26f45e20a279af0f5f7c272d1de729bf5bc99c38"
@@ -11082,7 +11159,7 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
-resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
+resize-observer-polyfill@1.5.1, resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
   integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==

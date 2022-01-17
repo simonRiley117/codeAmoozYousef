@@ -11,7 +11,7 @@ const CourseStatus = ({ details, Currentcontentname, loading }) => {
   } = details;
   console.log(Currentcontentname);
   return (
-    <div className="CourseStatus">
+    <div className="CourseStatus" data-tut="reactour__status">
       <div className=" CourseStatus__table mb-8">
         <p>آخرین مبحث گذرانده شده:</p>
         {latest_content_user_passed_name !== null ? (
