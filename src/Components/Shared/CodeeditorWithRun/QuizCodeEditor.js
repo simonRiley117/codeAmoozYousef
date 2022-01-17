@@ -8,7 +8,7 @@ function QuizCodeEditor(props) {
     const windowSize = UseWindowSize();
     return (
         <div>
-            {windowSize === "sm" || windowSize === "md-2" ? (
+            {/* {windowSize === "sm" || windowSize === "md-2" ? (
                 <QuizResponsiveCodeeditor
                     name={props.name}
                     quizId={props.quizId}
@@ -22,7 +22,13 @@ function QuizCodeEditor(props) {
                     contentId={props.contentId}
                     lan={props.lan}
                     value={props.value}/>
-            )}
+            )} */}
+             <QuizCodeeditorWithRun
+                    name={props.name}
+                    quizId={props.quizId}
+                    contentId={props.contentId}
+                    lan={props.lan}
+                    value={props.value}/>
         </div>
     );
 }

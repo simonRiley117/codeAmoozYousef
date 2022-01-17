@@ -7,8 +7,10 @@ import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
 
-function Quiz({ quizUuid, contentUuid, courseUuid }) {
+function Quiz({ quizUuid, contentUuid, courseUuid,ispreviw }) {
   const [quizContent, setQuizContent] = useState(null);
+
+
   const [quizLoading, setQuizLoading] = useState(true);
   let navigate = useNavigate();
 
@@ -32,7 +34,7 @@ function Quiz({ quizUuid, contentUuid, courseUuid }) {
   };
 
   const getQuizContent = useFetch({
-    url: `QuizService/${quizUuid}/get_user_quiz`,
+    url: `QuizService/${quizUuid}/get_user_quiz_preview`,
     method: "GET",
     noHeader: false,
     trigger: false,

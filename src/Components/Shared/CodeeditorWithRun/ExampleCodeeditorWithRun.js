@@ -188,7 +188,7 @@ function ExampleCodeeditorWithRun(props) {
                     theme="monokai"
                     value={value}
                     onChange={onChange}
-                    width="45vw"
+                    width="100%"
                     height="64.1vh"
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
@@ -231,7 +231,7 @@ function ExampleCodeeditorWithRun(props) {
                       mode={props.lan}
                       theme="monokai"
                       value={btn === 1 ? res : errs}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       readOnly
@@ -258,7 +258,7 @@ function ExampleCodeeditorWithRun(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       editorProps={{ $blockScrolling: true }}

@@ -11,7 +11,9 @@
     overflow: hidden;
     border-radius: 15px;
     direction: ltr;
-
+    @include respond(tablet) {
+      grid-template-columns: 1fr;
+  }
     & > *:first-child {
       border-right: 1px solid $color-green-light;
     }
@@ -91,8 +93,8 @@
       align-items: center;
       justify-content: space-between;
       font-size: 1.2rem;
-      padding-right: 10rem;
-      width: 90%;
+     
+     
     }
 
     &-btncopy {

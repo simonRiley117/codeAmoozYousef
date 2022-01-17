@@ -13,7 +13,7 @@ import { API_URL } from "../../../constants";
 import { useAuth } from "../../../Context/authContext";
 
 function QuizCodeeditorWithRun(props) {
-  console.log("PROPS QUIZ: ", props);
+//  console.log("PROPS QUIZ: ", props);
   languages.map(
     (lang) =>
       lang === props.lan &&
@@ -73,14 +73,15 @@ function QuizCodeeditorWithRun(props) {
         console.log("QuizSendToServer", res.data);
         // setInfo1(res.data);
         setNumber(res.data.compile_result);
-        res.data.compiler_stderr ? setBtn(1) : setBtn(2);
+        res.data.compiler_stderr.length > 0 ? setBtn(2) : setBtn(1);
         setRes(res.data.compiler_stdout);
 
         res.data.compiler_stderr
           ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
           : setErrs(res.data.compiler_stderr);
         setLoad(false);
-
+        console.log(res.data.compiler_stderr.length)
+    
         if (res.data.compile_result === 100) {
           setNumberComplit(res.data.compile_result);
           postPassContent.reFetch();
@@ -218,7 +219,7 @@ function QuizCodeeditorWithRun(props) {
                     theme="monokai"
                     value={value}
                     onChange={onChange}
-                    width="45vw"
+                    width="100%"
                     height="64.1vh"
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
@@ -278,7 +279,7 @@ function QuizCodeeditorWithRun(props) {
                       mode={props.lan}
                       theme="monokai"
                       value={btn === 1 ? res : errs}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       readOnly
@@ -305,7 +306,7 @@ function QuizCodeeditorWithRun(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       editorProps={{ $blockScrolling: true }}

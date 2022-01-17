@@ -100,7 +100,11 @@ useEffect(() => {
 	};
 	return (
 		<div className='AskAndAnswer relative'>
-			<div className='AskAndAnswer__content Comment'>
+			<div className={`AskAndAnswer__content Comment ${
+				((draftCommentInfo === null && commentList.length === 0) ||
+				(commentList.length === 0 &&
+					draftCommentInfo.results.length === 0)) && !getCommentInfo.loading ? "flex" : null
+			} `}>
 				{getCommentInfo?.response ? (
 					<>
 						{commentList.length !== 0 &&
@@ -194,7 +198,7 @@ useEffect(() => {
 				{(draftCommentInfo === null && commentList.length === 0) ||
 				(commentList.length === 0 &&
 					draftCommentInfo.results.length === 0) ? (
-					<div className='center empty__chat'>
+					<div className='center empty__chat '>
 						<img src={NoCommentImage} alt='NoCommentImage' />
 					</div>
 				) : null}

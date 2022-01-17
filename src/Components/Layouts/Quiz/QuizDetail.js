@@ -46,10 +46,14 @@ function QuizDetail({
             </div>
           ))}
         </div>
-        <div className="flex items-center ExampleDetail__downloadBox">
+        <div className="flex items-center ExampleDetail__downloadBox mb-10">
           <div className="flex items-center">
-            <img src={pdf} alt={pdf} />
-            <p className="cursor-pointer">{file}</p>
+            {file && (
+              <>
+                <img src={pdf} alt={pdf} />
+                <p className="cursor-pointer"><a href={file}>دانلود فایل</a></p>
+              </>
+            )}
           </div>
           <Button
             ico={false}

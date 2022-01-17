@@ -18,9 +18,10 @@
 
 	@include respond(big-tablet) {
 		min-height: calc(100vh - 8rem);
+		display: none;
 	}
 	@include respond(tablet) {
-		display: none;
+		
 	}
 	&__back {
 	}
