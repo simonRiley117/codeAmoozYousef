@@ -36,7 +36,6 @@ function Detail({
   useEffect(() => {
     getContent.reFetch();
   }, [contentUuid]);
-
   return (
     <>
       <Tabs className="TabBox" type="card">
@@ -58,22 +57,22 @@ function Detail({
           )}
         </TabPane>
         <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
-          {getContent?.response ? <div></div> : <Skeleton />}
-          <TrainExample
+          {getContent?.response ?  <TrainExample
             contentUuid={contentUuid}
             ispreviw={true}
             context={content?.context}
-          />
+          /> : <Skeleton />}
+         
         </TabPane>
         <TabPane tab="آزمون" key={`${contentUuid}_3`}>
-          {getContent?.response ? <div></div> : <Skeleton />}
-
-         <Quiz
+          {getContent?.response ?<Quiz
             quizUuid={content.quiz_id}
             ispreviw={ispreviw}
             contentUuid={contentUuid}
             // courseUuid={courseUuid}
-          /> 
+          /> : <Skeleton />}
+
+         
         </TabPane>
         {/* {hasSeasonQuize === "You have not passed quiz season" && (
                     <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
