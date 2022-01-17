@@ -34,7 +34,7 @@ const UserDataProvider = (props) => {
     });
 
     const getUser = useAxios({
-        url: `${API_URL}/user/`,
+        url: `${API_URL}/StudentService/user/`,
         options: {
             headers: {
                 Authorization: `JWT ${token}`,
