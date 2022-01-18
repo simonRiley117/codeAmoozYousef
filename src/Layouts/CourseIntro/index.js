@@ -30,9 +30,12 @@ const CourseIntro = () => {
   }, [location]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
+    // if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+    //   scrolledToBottom(e);
+    // }
     const position = window.pageYOffset;
     setScrollPosition(position);
-    if (window.pageYOffset > 980) {
+    if (window.pageYOffset > 900) {
       setPos(true);
     }
   };
@@ -96,7 +99,7 @@ const CourseIntro = () => {
                 data={data}
                 makeCouponExpire={makeCouponExpire}
               />
-            )} 
+            )}
 
         <div className="grid Course__container relative">
           {windowSize !== "sm" && (

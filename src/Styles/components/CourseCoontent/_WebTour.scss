@@ -7,7 +7,7 @@
     --reactour-accent: #5cb7b7;
     line-height: 1.3;
     color: rgba(18, 18, 18, 0.4);
-
+    direction: ltr;
     & > *:nth-child(2) {
         justify-content: space-between;
         color: $color-primary !important;
@@ -21,10 +21,14 @@
     &__txtBox {
         text-align: right;
     }
+
     &__number {
         position: absolute;
         bottom: 1rem;
         left: 50%;
         transform: translateX(-50%);
     }
+}
+.reactour__close {
+    right: auto !important;
 }

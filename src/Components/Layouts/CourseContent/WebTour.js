@@ -41,7 +41,7 @@ function WebTour(props) {
   };
   return (
     <Tour
-      // onRequestClose={closeTour}
+      onRequestClose={closeTour}
       steps={props.tourConfig}
       isOpen={showGuid}
       maskClassName="mask"
@@ -50,12 +50,15 @@ function WebTour(props) {
       accentColor={"#F68521"}
       onAfterOpen={disableBody}
       onBeforeClose={enableBody}
-      lastStepNextButton={<button onClick={closeTour}>{"Done"}</button>}
-      showCloseButton={false}
+      lastStepNextButton={<button onClick={closeTour}>{"تمام"}</button>}
+      // showCloseButton={false}
       showNavigation={false}
       showNumber={false}
       showButtons={true}
       stepInteraction={true}
+      closeWithMask={false}
+
+      // style={{ direction: "rtl" }}
     />
   );
 }

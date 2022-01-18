@@ -55,7 +55,7 @@ const tourConfig = [
           }}
         >
           <span className="WebTour__number" style={{ fontWeight: "600" }}>
-            1 of 5
+            1 of 6
           </span>
           {/* <button onClick={() => goTo(1)} className=" WebTour__NextArrow">
             {"Next"}
@@ -87,7 +87,7 @@ const tourConfig = [
           }}
         >
           <span className="WebTour__number" style={{ fontWeight: "600" }}>
-            2 of 5
+            2 of 6
           </span>
           {/* <button onClick={() => goTo(2)}>{"Next"}</button> */}
         </div>
@@ -116,7 +116,7 @@ const tourConfig = [
           }}
         >
           <span className="WebTour__number" style={{ fontWeight: "600" }}>
-            3 of 5
+            3 of 6
           </span>
           {/* <button onClick={() => goTo(3)}>{"Next"}</button> */}
         </div>
@@ -146,7 +146,7 @@ const tourConfig = [
           }}
         >
           <span className="WebTour__number" style={{ fontWeight: "600" }}>
-            4 of 5
+            4 of 6
           </span>
           {/* <button onClick={() => goTo(4)}>{"Next"}</button> */}
         </div>
@@ -175,7 +175,7 @@ const tourConfig = [
           }}
         >
           <span className="WebTour__number" style={{ fontWeight: "600" }}>
-            5 of 5
+            5 of 6
           </span>
           {/* <button onClick={() => goTo(5)}>{"Next"}</button> */}
         </div>
@@ -205,7 +205,7 @@ const tourConfig = [
           }}
         >
           <span className="WebTour__number" style={{ fontWeight: "600" }}>
-            5 of 5
+            5 of 6
           </span>
           {/* <button onClick={() => goTo(5)}>{"Next"}</button> */}
         </div>
