@@ -169,7 +169,7 @@ function ExampleCodeeditorWithRun(props) {
                         <i className="fas fa-play"></i>
                         اجرای کد
                       </button>
-                      <button
+                      {/* <button
                         className={
                           load
                             ? "CodeeditorWithRun__codeeditor-btndonedis"
@@ -180,7 +180,7 @@ function ExampleCodeeditorWithRun(props) {
                       >
                         <i className="fas fa-play"></i>
                         ارسال پاسخ
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                   <AceEditor
