@@ -30,22 +30,30 @@ const CourseIntro = () => {
   }, [location]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
-    // if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
-    //   scrolledToBottom(e);
-    // }
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-    if (window.pageYOffset > 900) {
+    const windowHeight =
+      "innerHeight" in window
+        ? window.innerHeight
+        : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    // const docHeight = Math.max(
+    //   body.scrollHeight - 600,
+    //   body.offsetHeight - 600,
+    //   html.clientHeight - 600,
+    //   html.scrollHeight - 600,
+    //   html.offsetHeight - 600
+    // );
+    const docHeight = document.getElementById("TabBox").clientHeight;
+    const windowBottom = windowHeight + window.pageYOffset;
+    if (windowBottom >= docHeight) {
       setPos(true);
+    } else {
+      console.log(`not at bottom`);
     }
   };
-  console.log(`scrollPosition`, scrollPosition);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
   // const [menu, setMenu] = useState("");
   const [id, setId] = useState();
@@ -109,7 +117,7 @@ const CourseIntro = () => {
           )}
 
           <div>
-            <Tabs className="TabBox" type="card">
+            <Tabs className="TabBox" type="card" id="TabBox">
               <TabPane tab="درباره این دوره" key="1">
                 <About courseId={id} />
               </TabPane>
