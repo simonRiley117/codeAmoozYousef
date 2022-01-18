@@ -19,22 +19,10 @@ import { ReactComponent as WalletIcon } from '@Assets/Icons/wallet.svg';
 import { ReactComponent as MessageIcon } from '@Assets/Icons/message.svg';
 import { ReactComponent as SettingIcon } from '@Assets/Icons/setting.svg';
 import SidebarMenuItem from './SidebarMenuItem';
-import { ReactComponent as ExiteIcon } from '@Assets/Icons/quite.svg';
-import { ReactComponent as Heart } from '@Assets/Icons/heart.svg';
 import { Badge, Divider, Popover } from 'antd';
-import { toast } from 'react-toastify';
-import Cookies from 'js-cookie';
-import Button from '../Buttons/Button';
-import Modal from '@Components/Shared/Modal/Modal';
+
 import Propfile from './ProfileMenu/Propfile';
-import {
-	DownOutlined,
-	LeftOutlined,
-	HomeOutlined,
-	HeartOutlined,
-	LogoutOutlined,
-	UserOutlined,
-} from '@ant-design/icons';
+
 import useMediaQuery from '@App/Hooks/useMediaQuery';
 
 const menuItem = [
@@ -139,7 +127,7 @@ const DahsboardAppbar = () => {
 				sticky: sticky,
 			})}
 		>
-			<div className='d-flex-space'>
+			<div className='d-flex-space Menu-wrapper'>
 				<div className='menu_logo d-flex-align '>
 					<div className='logo'>
 						<img src={logo} alt='logo' />
@@ -181,7 +169,7 @@ const DahsboardAppbar = () => {
 								{renderSideBarItem()}
 							</ul>
 						)}
-						<ul className='Menu__ul d-flex-space list'>
+						<ul className='Menu__ul d-flex-space list mr-16'>
 							{menuItem.map((item) => (
 								<li key={item.id} className='Menu__li'>
 									<NavLink to={item.url}>{item.text}</NavLink>
@@ -190,6 +178,7 @@ const DahsboardAppbar = () => {
 						</ul>
 					</nav>
 				</div>
+
 				<div className='Menu_actions'>
 					<IconBtn
 						classes={classNames({
