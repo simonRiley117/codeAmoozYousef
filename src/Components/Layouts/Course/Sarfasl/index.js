@@ -59,7 +59,7 @@ const Topic = ({ courseId, courseSeasons }) => {
       </div>
     </div>
   );
-
+  console.log(`courseSeasons`, courseSeasons);
   // const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   return (
@@ -82,7 +82,11 @@ const Topic = ({ courseId, courseSeasons }) => {
                 >
                   {season?.contents?.map((content, index) => (
                     <div
-                      className="Sarfasl__content flex justify-between items-center cursor-pointer"
+                      className={
+                        content.lockedOn
+                          ? "Sarfasl__content flex justify-between items-center cursor-not-allowed"
+                          : "Sarfasl__content flex justify-between items-center cursor-pointer"
+                      }
                       key={content.uuid}
                       onClick={() =>
                         handleModalShow(content.uuid, content.lockedOn)
@@ -127,7 +131,7 @@ const Topic = ({ courseId, courseSeasons }) => {
       )}
 
       {showModal && (
-        <Modal  visible={modal} onCancel={handleModalVisible}>
+        <Modal visible={modal} onCancel={handleModalVisible}>
           {/* <Tabs className="TabBox" type="card">
             <TabPane tab="درباره این درس" key="1">
               <Detail contentUuid={contentUuid} />
@@ -136,11 +140,10 @@ const Topic = ({ courseId, courseSeasons }) => {
               <Detail contentUuid={contentUuid} />
             </TabPane>
           </Tabs> */}
-           <div className='p-10'>
-             <h2 className="mb-10 text-center">محتوای جلسه</h2>
-             <Detail ispreviw={true} contentUuid={contentUuid} />
-           </div>
-         
+          <div className="p-10">
+            <h2 className="mb-10 text-center">محتوای جلسه</h2>
+            <Detail ispreviw={true} contentUuid={contentUuid} />
+          </div>
         </Modal>
       )}
     </>

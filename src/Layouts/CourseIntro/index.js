@@ -34,15 +34,6 @@ const CourseIntro = () => {
       "innerHeight" in window
         ? window.innerHeight
         : document.documentElement.offsetHeight;
-    const body = document.body;
-    const html = document.documentElement;
-    // const docHeight = Math.max(
-    //   body.scrollHeight - 600,
-    //   body.offsetHeight - 600,
-    //   html.clientHeight - 600,
-    //   html.scrollHeight - 600,
-    //   html.offsetHeight - 600
-    // );
     const docHeight = document.getElementById("TabBox").clientHeight;
     const windowBottom = windowHeight + window.pageYOffset;
     if (windowBottom >= docHeight) {
