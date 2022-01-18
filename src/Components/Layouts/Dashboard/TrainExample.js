@@ -6,7 +6,7 @@ import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
 import { Skeleton } from "antd";
 
-function TrainExample({ contentUuid, courseUuid ,ispreviw ,context}) {
+function TrainExample({ contentUuid, courseUuid ,ispreviw ,context,lang}) {
   const [content, setContent] = useState(ispreviw ? {context:context}: null);
   const [contentLoading, setContentLoading] = useState(true);
 
@@ -26,7 +26,6 @@ function TrainExample({ contentUuid, courseUuid ,ispreviw ,context}) {
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   // let id = "1";
-  console.log(content)
   return (
     <>
       {ispreviw ||!contentLoading ? (
@@ -55,7 +54,7 @@ function TrainExample({ contentUuid, courseUuid ,ispreviw ,context}) {
             {item?.code?.length > 1 ? (
               <Codeeditor
                 id={item.uuid}
-                lan={content.language === "c" ? "c_cpp" : content.language}
+                lan={!ispreviw ? (content.language === "c" ? "c_cpp" : content.language) : (lang === "c" ? "c_cpp" : lang) }
                 value={item.code}
               />
             ) : null}

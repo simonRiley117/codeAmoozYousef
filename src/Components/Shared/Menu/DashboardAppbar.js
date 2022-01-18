@@ -35,6 +35,7 @@ import {
 	LogoutOutlined,
 	UserOutlined,
 } from '@ant-design/icons';
+import useMediaQuery from '@App/Hooks/useMediaQuery';
 
 const menuItem = [
 	{
@@ -115,36 +116,16 @@ const DahsboardAppbar = () => {
 	const { sticky } = UseScrollAppbar();
 
 	const { userData } = useUserData();
+	const isTablet = useMediaQuery('(max-width: 992px)');
 
 	const handleToggleMenu = () => {
-		setOpenMenu((prev) => !prev);
-
-		const html = document.querySelector('html');
-		!isOpenMenu
-			? (html.style.overflowY = 'hidden')
-			: (html.style.overflowY = 'auto');
+		if (isTablet) {
+			setOpenMenu((prev) => !prev);
+			isOpenMenu
+				? document.body.classList.remove('scrolling-effect')
+				: document.body.classList.add('scrolling-effect');
+		}
 	};
-
-	const handleModalShow = (uuid, lock) => {
-		setModal((prev) => !prev);
-	};
-
-	const logout = () => {
-		Logout.reFetch();
-	};
-
-	const Logout = useFetch({
-		url: `auth/logout`,
-		method: 'POST',
-		trigger: false,
-		argFunc: (res) => {
-			toast.success('شما از حساب خود خارج شدید');
-			Cookies.remove('token');
-
-			navigate('/', { replace: true });
-			window.location.reload();
-		},
-	});
 
 	const renderSideBarItem = () => {
 		return sidebarmenuItem.map((item) => (
@@ -182,9 +163,21 @@ const DahsboardAppbar = () => {
 						}
 						onClick={handleToggleMenu}
 					/>
-					<nav className='Menu__nav d-flex-space'>
-						{isOpenMenu && (
-							<ul className='Menu__ul d-flex-space list'>
+					{isTablet && (
+						<div
+							onClick={handleToggleMenu}
+							className={classNames('Menu__nav--backdrop', {
+								active: isOpenMenu,
+							})}
+						></div>
+					)}
+					<nav
+						className={classNames('Menu__nav d-flex-space', {
+							active: isOpenMenu,
+						})}
+					>
+						{isTablet && (
+							<ul className='Menu__ul Menu__ul--sidebar d-flex-space list mb-8'>
 								{renderSideBarItem()}
 							</ul>
 						)}
@@ -195,28 +188,30 @@ const DahsboardAppbar = () => {
 								</li>
 							))}
 						</ul>
-						{/* <img src={CardIcon} alt='card' /> */}
-						<div className='Menu_actions'>
-							<IconBtn
-								classes='ml-8'
-								icon={
-									<Badge
-										count={userData.cart}
-										size='small'
-										className='Menu_actions--badge'
-									>
-										<ShoppingCartIcon />
-									</Badge>
-								}
-								onClick={() => navigate('/shopping-card')}
-							/>
-							<div className='d-flex-align Menu_actions--profile'>
-								<div className={classNames('profile__image')}>
-									<Propfile />
-								</div>
-							</div>
-						</div>
 					</nav>
+				</div>
+				<div className='Menu_actions'>
+					<IconBtn
+						classes={classNames({
+							activeMenu: isOpenMenu,
+							// dark: dark && !sticky,
+						})}
+						icon={
+							<Badge
+								count={userData.cart}
+								size='small'
+								className='Menu_actions--badge'
+							>
+								<ShoppingCartIcon />
+							</Badge>
+						}
+						onClick={() => navigate('/shopping-card')}
+					/>
+					<div className='d-flex-align Menu_actions--profile'>
+						<div className={classNames('profile__image')}>
+							<Propfile />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
