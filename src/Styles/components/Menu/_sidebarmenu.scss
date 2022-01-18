@@ -21,14 +21,13 @@
 		display: none;
 	}
 	@include respond(tablet) {
-		
 	}
 	&__back {
 	}
 	.selected {
 		color: $color-primary;
 	}
-	&__nestedul{
+	&__nestedul {
 	}
 	&__ul {
 		margin: 0 20px 0 0;
@@ -39,9 +38,21 @@
 	&__li {
 		cursor: pointer;
 		margin: 20.5px 0;
+		@include respond(big-tablet) {
+			margin: 1rem;
+			& > a {
+				column-gap: 2rem;
+			}
+		}
 		.menuIcon {
 			svg {
-				width: 32px;
+				width: 3.2rem;
+				@include respond(big-tablet) {
+					width: 100%;
+					height: 100%;
+					max-width: 2rem;
+					max-height: 2.5rem;
+				}
 			}
 		}
 		&.exit {
