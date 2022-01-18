@@ -1,67 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
 import Tour from "reactour";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { tourguid } from "@App/Recoil/StateRecoil";
+import { useRecoilState } from "recoil";
+import { useAuth } from "@App/Context/authContext";
 
-const stepStyle = {
-  color: "#000000",
-  background: "#fff",
-};
+function WebTour(props) {
+  // const [showguid, setShowguid] = useRecoilState(tourguid);
+  const { setShowGuid, showGuid } = useAuth();
 
-const steps = [
-  {
-    selector: ".LastCourse__Position",
-    content: "همه جلسات و مباحث دوره شما در این قسمت قرار می گیره.",
-    style: stepStyle,
-  },
-  {
-    selector:
-      ".Sarfasl__Accordionbox .Sarfasl__AccordionItem .Sarfasl__AccordionItem__lock",
-    content:
-      "تا زمانی که مباحث خود را با موفقیت نگذزانید مباحث بعدی برای شما قفل خواهد بود",
-    style: stepStyle,
-  },
-  {
-    selector: ".CourseStatus",
-    content: "میزان پیشرفت خود در دوره می توانید در این قسمت مشاهده کنید.",
-    style: stepStyle,
-  },
-  {
-    selector: ".TabBox__video",
-    content: "ویدیو های هر مبحث به همراه توضیحاتش توی این بخش قرار میگیره.",
-    style: stepStyle,
-  },
-  {
-    // selector: '[data-tut="reactour__iso"]',
-    selector: "#testtttttttttttt",
-    content: "از این قسمت میتونی به مباحث قبلی دسترسی داشته باشی",
-    style: stepStyle,
-  },
-
-  //   {
-  //     selector: ".ContentDetail__downloadLinkBox .ContentDetail__downloadLink",
-  //     content: "ویدیو های هر مبحث رو می تونید از این قسمت دانلود کنید",
-  //     style: stepStyle,
-  //   },
-];
-
-function WebTour({ onAfterOpen, onBeforeClose }) {
   const [isTourOpen, setIsTourOpen] = useState(true);
+  const disableBody = (target) => disableBodyScroll(target);
+  const enableBody = (target) => enableBodyScroll(target);
+  const re = useRef(true);
 
+  useLayoutEffect(() => {
+    if (re.current) {
+      re.current = false;
+      return;
+    }
+
+    if (showGuid) {
+      document.documentElement.style.overflowX = "inherit";
+      document.documentElement.style.scrollBehavior = "inherit";
+    } else {
+      document.documentElement.style.overflowX = "hidden";
+      document.documentElement.style.scrollBehavior = "smooth";
+    }
+  }, [showGuid]);
+  // useEffect(() => {
+  //   console.log(`showguid`, showGuid);
+
+  // }, [showGuid]);
+  const openTour = () => {
+    setShowGuid(true);
+  };
+  const closeTour = () => {
+    // setIsTourOpen(false);
+    setShowGuid(false);
+  };
   return (
     <Tour
-      steps={steps}
-      isOpen={isTourOpen}
-      rounded={5}
-      stepInteraction={true}
+      onRequestClose={closeTour}
+      steps={props.tourConfig}
+      isOpen={showGuid}
       maskClassName="mask"
       className="helper"
-      accentColor="#F68521"
-      onRequestClose={() => setIsTourOpen(false)}
-      onBeforeClose={onBeforeClose}
-      onAfterOpen={onAfterOpen}
+      rounded={5}
+      accentColor={"#F68521"}
+      onAfterOpen={disableBody}
+      onBeforeClose={enableBody}
+      lastStepNextButton={<button onClick={closeTour}>{"تمام"}</button>}
+      // showCloseButton={false}
+      showNavigation={false}
+      showNumber={false}
+      showButtons={true}
+      stepInteraction={true}
+      closeWithMask={false}
 
-      //   inViewThreshold={850}
-      //   scrollOffset={50}
-      //   scrollDuration={300}
+      // style={{ direction: "rtl" }}
     />
   );
 }

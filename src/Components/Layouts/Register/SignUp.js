@@ -19,7 +19,7 @@ const SignUp = ({ onCancel, handleActive }) => {
 
       <div className="register__form--wrapper signUp">
         <h2>ثبت نام</h2>
-        <div className="register__form--actions mt-6">
+        {/* <div className="register__form--actions mt-6">
           <Link
             id="google"
             type="primary"
@@ -34,8 +34,8 @@ const SignUp = ({ onCancel, handleActive }) => {
           <Link to='/' type="primary" classes="social">
             <GithubIcon />
           </Link>
-        </div>
-        <Divider>یا</Divider>
+        </div> */}
+        {/* <Divider>یا</Divider> */}
 
         <SignUpForm handleActive={handleActive} />
         <Button

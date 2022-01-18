@@ -58,34 +58,34 @@ function ExampleCodeeditorWithRun(props) {
       }
     },
   });
-  const ExampleSendToServer = useAxios({
-    url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
-    method: "POST",
-    options: {
-      data: data,
-      headers: {
-        Authorization: `JWT ${token}`,
-      },
-    },
-    customHandler: (err, res) => {
-      if (res) {
-        console.log("ExampleSendToServer", res.data);
-        // setInfo1(res.data);
-        setNumber(res.data.compile_result);
-        res.data.compiler_stderr ? setBtn(1) : setBtn(2);
-        setRes(res.data.compiler_stdout);
+  // const ExampleSendToServer = useAxios({
+  //   url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
+  //   method: "POST",
+  //   options: {
+  //     data: data,
+  //     headers: {
+  //       Authorization: `JWT ${token}`,
+  //     },
+  //   },
+  //   customHandler: (err, res) => {
+  //     if (res) {
+  //       console.log("ExampleSendToServer", res.data);
+  //       // setInfo1(res.data);
+  //       setNumber(res.data.compile_result);
+  //       res.data.compiler_stderr ? setBtn(1) : setBtn(2);
+  //       setRes(res.data.compiler_stdout);
 
-        res.data.compiler_stderr
-          ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
-          : setErrs(res.data.compiler_stderr);
-        setLoad(false);
-      }
-      if (err) {
-        console.log(err.response);
-        setLoad(false);
-      }
-    },
-  });
+  //       res.data.compiler_stderr
+  //         ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
+  //         : setErrs(res.data.compiler_stderr);
+  //       setLoad(false);
+  //     }
+  //     if (err) {
+  //       console.log(err.response);
+  //       setLoad(false);
+  //     }
+  //   },
+  // });
   const handleSend = () => {
     setData({
       submissions: {
@@ -97,17 +97,17 @@ function ExampleCodeeditorWithRun(props) {
     setLoad(true);
     ExamplePlayGround.reFetch();
   };
-  const handleInputSend = () => {
-    setData({
-      submissions: {
-        example_id: props.id,
-        source: value,
-        // input: test,
-      },
-    });
-    setLoad(true);
-    ExampleSendToServer.reFetch();
-  };
+  // const handleInputSend = () => {
+  //   setData({
+  //     submissions: {
+  //       example_id: props.id,
+  //       source: value,
+  //       // input: test,
+  //     },
+  //   });
+  //   setLoad(true);
+  //   ExampleSendToServer.reFetch();
+  // };
 
   function onChange(newValue) {
     setValue(newValue);
@@ -169,7 +169,7 @@ function ExampleCodeeditorWithRun(props) {
                         <i className="fas fa-play"></i>
                         اجرای کد
                       </button>
-                      <button
+                      {/* <button
                         className={
                           load
                             ? "CodeeditorWithRun__codeeditor-btndonedis"
@@ -180,7 +180,7 @@ function ExampleCodeeditorWithRun(props) {
                       >
                         <i className="fas fa-play"></i>
                         ارسال پاسخ
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                   <AceEditor

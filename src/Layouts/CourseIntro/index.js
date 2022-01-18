@@ -30,19 +30,21 @@ const CourseIntro = () => {
   }, [location]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-    if (window.pageYOffset > 980) {
+    const windowHeight =
+      "innerHeight" in window
+        ? window.innerHeight
+        : document.documentElement.offsetHeight;
+    const docHeight = document.getElementById("TabBox").clientHeight;
+    const windowBottom = windowHeight + window.pageYOffset;
+    if (windowBottom >= docHeight) {
       setPos(true);
+    } else {
+      console.log(`not at bottom`);
     }
   };
-  console.log(`scrollPosition`, scrollPosition);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
   // const [menu, setMenu] = useState("");
   const [id, setId] = useState();
@@ -96,7 +98,7 @@ const CourseIntro = () => {
                 data={data}
                 makeCouponExpire={makeCouponExpire}
               />
-            )} 
+            )}
 
         <div className="grid Course__container relative">
           {windowSize !== "sm" && (
@@ -106,7 +108,7 @@ const CourseIntro = () => {
           )}
 
           <div>
-            <Tabs className="TabBox" type="card">
+            <Tabs className="TabBox" type="card" id="TabBox">
               <TabPane tab="درباره این دوره" key="1">
                 <About courseId={id} />
               </TabPane>

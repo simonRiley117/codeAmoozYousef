@@ -6,6 +6,9 @@ import useFetch from "../../../Context/useFetch";
 import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
 import Lock from "@Assets/Icons/lock.svg";
 import { useUserData } from "@App/Context/userContext";
+import { tourguid } from "@App/Recoil/StateRecoil";
+import { useRecoilState } from "recoil";
+
 const SeasonList = ({
   activeContent,
   sidebarList,
@@ -22,6 +25,8 @@ const SeasonList = ({
     }
   }, [, activeSeasons, activeContent]);
   const { userData } = useUserData();
+  const [showguid, setShowguid] = useRecoilState(tourguid);
+
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion
@@ -47,6 +52,7 @@ const SeasonList = ({
                 id={season.uuid}
                 openPanels={openPanels}
                 userData={userData}
+                showguid={showguid}
               />
             }
             key={season.uuid}
@@ -87,12 +93,11 @@ const SeasonTitle = ({ title, done, index }) => {
     </span>
   );
 };
-const SeasonHeader = ({ time, lock, FetchContent, userData }) => {
+const SeasonHeader = ({ time, lock, FetchContent, userData, showguid }) => {
+  console.log(`object`, showguid);
   return (
     <div className="Sarfasl__AccordionItem">
-      {userData?.tool_gide && (
-        <img src={Lock} alt={Lock} data-tut="reactour__lock" />
-      )}
+      {showguid && <img src={Lock} alt={Lock} data-tut="reactour__lock" />}
       {lock && (
         <img src={Lock} alt={Lock} className="Sarfasl__AccordionItem__lock" />
       )}
