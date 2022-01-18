@@ -21,10 +21,10 @@ const ProfileMenu = ({ handleModalShow }) => {
 	const handleSelectMenu = ({ key }) => {
 		switch (key) {
 			case 'dashboard':
-				navigate('/dashboard', { replace: true });
+				navigate('/dashboard');
 				return;
 			case 'favorites':
-				navigate('/fav', { replace: true });
+				navigate('/fav');
 				return;
 			case 'exit':
 				handleModalShow();

@@ -48,10 +48,10 @@
 
 	.menu_logo {
 		// padding: 0 1rem;
-		z-index: 1051;
+		// z-index: 1051;
 
 		@include respond(big-tablet) {
-			order: 3;
+			order: 2;
 			justify-content: flex-end;
 		}
 
@@ -115,7 +115,8 @@
 			position: fixed;
 			right: -100vw;
 			top: 0;
-			padding-top: 8rem;
+			padding-top: 10rem;
+			padding-right: 0;
 			width: 50vw;
 			height: 100vh;
 			background-color: $color-blue;
@@ -240,6 +241,25 @@
 			@include respond(big-tablet) {
 				width: auto;
 			}
+			@include respond(smallest-phone) {
+				flex-basis: auto;
+			}
+		}
+
+		&--backdrop {
+			width: 100vw;
+			height: 100vh;
+			background-color: rgb(0 0 0 / 50%);
+			position: fixed;
+			top: 0;
+			right: -100vw;
+			z-index: 0;
+			opacity: 0;
+			transition: right 0.3s, opacity 0.4 0.2s ease-in-out;
+			&.active {
+				right: 0;
+				opacity: 1;
+			}
 		}
 	}
 	& .Menu-wrapper {
@@ -249,6 +269,7 @@
 		height: 8rem;
 		@include respond(big-tablet) {
 			justify-content: space-between;
+			flex-basis: 11rem;
 		}
 		@include respond(smallest-phone) {
 			column-gap: 0;
@@ -257,18 +278,14 @@
 	& .Menu_actions {
 		@include display-flex;
 		@include respond(big-tablet) {
-			order: 1;
-			flex-direction: row-reverse;
+			order: 3;
+			flex-basis: 11rem;
+			// flex-direction: row-reverse;
 			justify-content: space-between;
 			align-items: flex-start;
-			width: 100%;
-			padding-left: 2rem;
-			margin-bottom: 3rem;
-			background-color: $color-blue-light-1;
-			padding: 2rem 3rem 2rem 0;
 			&--profile {
 				flex-direction: row-reverse;
-				margin-right: 2rem;
+				// margin-right: 2rem;
 				& .profile__image {
 					margin-left: 1rem;
 
@@ -283,10 +300,22 @@
 				font-size: 12px;
 			}
 		}
+		@include respond(smallest-phone) {
+			flex-basis: auto;
+		}
 
 		& > .ant-btn {
-			color: $color-white;
-			margin-left: 1.5rem;
+			margin-left: 1rem;
+			& .ant-badge {
+				color: $color-text;
+				transition: all 0.3s 0.1s;
+			}
+			&.dark,
+			&.activeMenu {
+				& .ant-badge {
+					color: #fff;
+				}
+			}
 		}
 	}
 	&--profile {
@@ -536,8 +565,8 @@
 		top: auto;
 		left: auto;
 		@include display-flex(center);
-		width: 20px;
-		height: 20px;
+		width: 2rem;
+		height: 2rem;
 		color: $color-text;
 		border-radius: 50%;
 		background-color: $color-white;
