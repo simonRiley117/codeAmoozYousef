@@ -14,6 +14,8 @@ function QuizDetail({
   test_cases,
   language,
   file,
+  ispreview,
+  ismycoursebol,
 }) {
   console.log("language: ", language);
   console.log("typeof language: ", typeof language);
@@ -51,7 +53,9 @@ function QuizDetail({
             {file && (
               <>
                 <img src={pdf} alt={pdf} />
-                <p className="cursor-pointer"><a href={file}>دانلود فایل</a></p>
+                <p className="cursor-pointer">
+                  <a href={file}>دانلود فایل</a>
+                </p>
               </>
             )}
           </div>
@@ -79,6 +83,8 @@ function QuizDetail({
         contentId={contentId}
         lan={language === `c` ? `c_cpp` : language}
         value=""
+        ispreview={ispreview}
+        ismycoursebol={ismycoursebol}
       />
     </div>
   );
