@@ -11,9 +11,10 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../../../constants";
 import { useAuth } from "../../../Context/authContext";
+import { toast } from "react-toastify";
 
 function QuizCodeeditorWithRun(props) {
-//  console.log("PROPS QUIZ: ", props);
+  //  console.log("PROPS QUIZ: ", props);
   languages.map(
     (lang) =>
       lang === props.lan &&
@@ -33,6 +34,7 @@ function QuizCodeeditorWithRun(props) {
   const [btn, setBtn] = useState(1);
   const [numberComplit, setNumberComplit] = useState(0);
   const { token } = useAuth();
+
   const QuizPlayGround = useAxios({
     url: `${API_URL}/CompilerService/v2/quiz/playground/`,
     method: "POST",
@@ -80,8 +82,8 @@ function QuizCodeeditorWithRun(props) {
           ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
           : setErrs(res.data.compiler_stderr);
         setLoad(false);
-        console.log(res.data.compiler_stderr.length)
-    
+        console.log(res.data.compiler_stderr.length);
+
         if (res.data.compile_result === 100) {
           setNumberComplit(res.data.compile_result);
           postPassContent.reFetch();
@@ -128,16 +130,36 @@ function QuizCodeeditorWithRun(props) {
     setLoad(true);
     QuizPlayGround.reFetch();
   };
+  // ismycoursebol
+  // ispreview
   const handleInputSend = () => {
-    setData({
-      submissions: {
-        question_id: props.quizId,
-        source: value,
-        // input: test,
-      },
-    });
-    setLoad(true);
-    QuizSendToServer.reFetch();
+    if (!token) {
+      toast.error("برای پاسخ به آزمون اول به سایت وارد شوید");
+    }else
+    if (!props.ismycoursebol) {
+      toast.error("برای پاسخ به آزمون در دوره ثبت نام کنید");
+    }else{
+      setData({
+        submissions: {
+          question_id: props.quizId,
+          source: value,
+          // input: test,
+        },
+      });
+      setLoad(true);
+      QuizSendToServer.reFetch();
+    }
+    if ( !props.ispreview ) {
+      setData({
+        submissions: {
+          question_id: props.quizId,
+          source: value,
+          // input: test,
+        },
+      });
+      setLoad(true);
+      QuizSendToServer.reFetch();
+    }
   };
 
   function onChange(newValue) {

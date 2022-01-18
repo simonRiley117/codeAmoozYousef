@@ -6,10 +6,10 @@ import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
+import { useAuth } from "@App/Context/authContext";
 
-function Quiz({ quizUuid, contentUuid, courseUuid,ispreviw }) {
+function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
   const [quizContent, setQuizContent] = useState(null);
-
 
   const [quizLoading, setQuizLoading] = useState(true);
   let navigate = useNavigate();
@@ -25,6 +25,8 @@ function Quiz({ quizUuid, contentUuid, courseUuid,ispreviw }) {
         test_cases: quizContent.test_cases,
         language: quizContent.language,
         file: quizContent.file,
+        ispreviw: ispreviw,
+        ismycoursebol: ismycoursebol,
       },
     });
   };
@@ -32,11 +34,21 @@ function Quiz({ quizUuid, contentUuid, courseUuid,ispreviw }) {
     setQuizContent(data);
     setQuizLoading(false);
   };
-
+  const { token, authDispatch } = useAuth();
+  console.log(token);
+  console.log(ismycoursebol);
+  console.log(token);
+  const previewUrlCondition =
+    !token || !ismycoursebol
+      ? `QuizService/${quizUuid}/get_user_quiz_preview`
+      : `QuizService/${quizUuid}/get_user_quiz`;
+  const url = ispreviw
+    ? previewUrlCondition
+    : `QuizService/${quizUuid}/get_user_quiz`;
   const getQuizContent = useFetch({
-    url: `QuizService/${quizUuid}/get_user_quiz_preview`,
+    url: url,
     method: "GET",
-    noHeader: false,
+    noHeader: token ? false : ispreviw,
     trigger: false,
     setter: setData,
   });

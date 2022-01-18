@@ -12,8 +12,9 @@ function Index() {
     const [text, setText] = useState("");
     const [language, setLanguage] = useState("");
     const [file, setFile] = useState(null);
+    const [ispreview, setispreview] = useState();
+    const [ismycoursebol, setismycoursebol] = useState();
     const [test_cases, setTest_cases] = useState([]);
-
     useEffect(() => {
         setQuizId(location.state.quiz_id);
         setContentId(location.state.content_id);
@@ -23,6 +24,8 @@ function Index() {
         setLanguage(location.state.language);
         setFile(location.state.file);
         setCourseId(location.state.courseUuid);
+        setispreview(location.state.ispreviw);
+        setismycoursebol(location.state.ismycoursebol);
     }, [location]);
 
     return (
@@ -38,6 +41,8 @@ function Index() {
                     file={file}
                     language={language}
                     test_cases={test_cases}
+                    ispreview={ispreview}
+                    ismycoursebol={ismycoursebol}
                 />
             </div>
         </div>
