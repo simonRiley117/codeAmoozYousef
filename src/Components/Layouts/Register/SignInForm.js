@@ -119,7 +119,7 @@ const SignInForm = () => {
                     control={control}
                     prefix={<LockIcon/>}
                 />
-                <Button disabled={loginRequest.loading} htmlType="submit">
+                <Button disabled={loginRequest.loading} classes='mt-6' htmlType="submit">
                     {loading ? (
                         <DotLoader
                             color="#fff"

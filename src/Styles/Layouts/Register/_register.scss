@@ -108,6 +108,9 @@
 				justify-content: center;
 				height: 100%;
 			}
+			& .register__form--wrapper{
+				padding: 1.5rem 3rem;
+			}
 		}
 		& > .button__icon {
 			color: $color-error;
