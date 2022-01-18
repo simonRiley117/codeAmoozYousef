@@ -10,10 +10,10 @@ import ScrollToTop from "./Router/ScrollToTop";
 import { CartDataProvider } from "@App/Context/cartContext";
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <UserDataProvider>
-        <BrowserRouter>
-          <RecoilRoot>
+    <RecoilRoot>
+      <AuthProvider>
+        <UserDataProvider>
+          <BrowserRouter>
             <ScrollToTop />
 
             <ToastContainer
@@ -27,12 +27,12 @@ ReactDOM.render(
               pauseOnHover
             />
             <CartDataProvider>
-              <App/>
+              <App />
             </CartDataProvider>
-          </RecoilRoot>
-        </BrowserRouter>
-      </UserDataProvider>
-    </AuthProvider>
+          </BrowserRouter>
+        </UserDataProvider>
+      </AuthProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
 );
