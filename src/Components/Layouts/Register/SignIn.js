@@ -22,7 +22,7 @@ const SignIn = ({ onCancel, handleForgetPassword, handleActive }) => {
 
         <div className="register__form--wrapper signIn">
           <h2>ورود</h2>
-          <div className="register__form--actions mt-12">
+          {/* <div className="register__form--actions mt-12">
             <Link
               id="google"
               type="primary"
@@ -37,8 +37,8 @@ const SignIn = ({ onCancel, handleForgetPassword, handleActive }) => {
             <Link to='/' type="primary" classes="social">
               <GithubIcon />
             </Link>
-          </div>
-          <Divider>یا</Divider>
+          </div> */}
+          {/* <Divider>یا</Divider> */}
           <SignInForm />
           <Button type="text" onClick={handleForgetPassword}>
             رمز عبور رو فراموش کردم
