@@ -12,11 +12,7 @@ function Index() {
   return (
     <div>
       <CourseContent />
-      <WebTour
-        onClick={handleClose}
-        open={!userData?.tool_gide}
-        tourConfig={tourConfig}
-      />
+      <WebTour tourConfig={tourConfig} />
       {/* <Tour
         onRequestClose={closeTour}
         steps={tourConfig}
