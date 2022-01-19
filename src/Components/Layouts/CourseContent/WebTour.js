@@ -1,15 +1,10 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 import Tour from "reactour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { tourguid } from "@App/Recoil/StateRecoil";
-import { useRecoilState } from "recoil";
 import { useAuth } from "@App/Context/authContext";
 
 function WebTour(props) {
-  // const [showguid, setShowguid] = useRecoilState(tourguid);
   const { setShowGuid, showGuid } = useAuth();
-
-  const [isTourOpen, setIsTourOpen] = useState(true);
   const disableBody = (target) => disableBodyScroll(target);
   const enableBody = (target) => enableBodyScroll(target);
   const re = useRef(true);
@@ -57,6 +52,7 @@ function WebTour(props) {
       showButtons={true}
       stepInteraction={true}
       closeWithMask={false}
+      startAt={0}
 
       // style={{ direction: "rtl" }}
     />

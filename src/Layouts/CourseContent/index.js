@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import WebTour from "@Components/Layouts/CourseContent/WebTour";
 import CourseContent from "./CourseContent";
 import { useUserData } from "@App/Context/userContext";
-import { tourguid } from "@App/Recoil/StateRecoil";
-import { useRecoilState } from "recoil";
 
 function Index() {
   const { userData } = useUserData();
@@ -13,24 +11,6 @@ function Index() {
     <div>
       <CourseContent />
       <WebTour tourConfig={tourConfig} />
-      {/* <Tour
-        onRequestClose={closeTour}
-        steps={tourConfig}
-        isOpen={isTourOpen}
-        maskClassName="mask"
-        className="helper"
-        rounded={5}
-        accentColor={"#F68521"}
-        onAfterOpen={disableBody}
-        onBeforeClose={enableBody}
-        // nextButton={<button>{"Next"}</button>}
-        lastStepNextButton={<button>{"Done"}</button>}
-        showCloseButton={false}
-        showNavigation={false}
-        showNumber={false}
-        showButtons={true}
-        stepInteraction={true}
-      /> */}
     </div>
   );
 }
