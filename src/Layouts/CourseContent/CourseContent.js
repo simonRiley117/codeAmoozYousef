@@ -22,6 +22,7 @@ function CourseContent() {
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
   const [Currentcontentid, setCurrentContentid] = useState(null);
   const [ActiveSeason, setActiveSeason] = useState(null);
+  const [ActiveTab, setActiveTab] = useState(null);
   const [SeasonsQuizeid, setSeasonsQuizeid] = useState(null);
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
@@ -105,6 +106,7 @@ function CourseContent() {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
     }
+    setActiveTab("tab_1")
   }, [Currentcontentid]);
 
   const handleNextContent = () => {
@@ -167,6 +169,8 @@ function CourseContent() {
                     courseUuid={id}
                     setActiveSeason={setActiveSeason}
                     hasSeasonQuize={CurrentcontenStatus?.next_content_id}
+                    ActiveTab={ActiveTab}
+                    setActiveTab={setActiveTab}
                   />
                 ) : (
                   <div className="LastCourse__congrats ">
