@@ -21,7 +21,7 @@ const CourseIntro = () => {
   const location = useLocation();
   const [data, setData] = useState("");
   const [courseSeasons, setCourseSeasons] = useState([]);
-  const [pos, setPos] = useState(false);
+  const [pos, setPos] = useState(true);
 
   useEffect(() => {
     // setMenu(location.state.name);
@@ -30,17 +30,17 @@ const CourseIntro = () => {
   }, [location]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
-    const windowHeight =
-      "innerHeight" in window
-        ? window.innerHeight
-        : document.documentElement.offsetHeight;
-    const docHeight = document.getElementById("TabBox").clientHeight;
-    const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight) {
-      setPos(true);
-    } else {
-      console.log(`not at bottom`);
-    }
+    // const windowHeight =
+    //   "innerHeight" in window
+    //     ? window.innerHeight
+    //     : document.documentElement.offsetHeight;
+    // const docHeight = document.getElementById("TabBox").clientHeight;
+    // const windowBottom = windowHeight + window.pageYOffset;
+    // if (windowBottom >= docHeight) {
+    //   setPos(true);
+    // } else {
+    //   console.log(`not at bottom`);
+    // }
   };
 
   useEffect(() => {
