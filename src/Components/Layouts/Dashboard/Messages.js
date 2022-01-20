@@ -1,119 +1,42 @@
-import messagePic from "@Assets/Pic/nomessage.png";
-import avatar from "@Assets/Pic/avatar.png";
-import {Card} from "antd";
-import React, {useState} from "react";
+import React, { useState } from 'react';
+import DashboardBox from './DashboardBox';
+import MessageItem from './MessageItem';
+import { ReactComponent as MessageEmptyIcon } from '@Assets/Icons/message-empty.svg';
+import Link from '@Components/Shared/Buttons/Link';
+import _ from 'lodash';
 
-const Messages = ({messages}) => {
-    // const [isMessage, setIsMessage] = useState(false);
-    //
-    // const messages = [
-    //   {
-    //     avatar: avatar,
-    //     userName: "علیرضا میرزایی فرد",
-    //     date: "17/5/1400",
-    //     time: "03:17",
-    //     preview: "از طراحان لورم ایپسوم متن ساختگی با ...",
-    //     messagesNum: 1,
-    //   },
-    //   {
-    //     avatar: avatar,
-    //     userName: "علیرضا میرزایی فرد",
-    //     date: "17/5/1400",
-    //     time: "03:17",
-    //     preview: "از طراحان لورم ایپسوم متن ساختگی با ...",
-    //     messagesNum: 1,
-    //   },
-    //   {
-    //     avatar: avatar,
-    //     userName: "علیرضا میرزایی فرد",
-    //     date: "17/5/1400",
-    //     time: "03:17",
-    //     preview: "از طراحان لورم ایپسوم متن ساختگی با ...",
-    //     messagesNum: 1,
-    //   },
-    // ];
+const Messages = ({ messages }) => {
+	const messageList = messages?.slice(0, 3) ?? [];
+	const renderMessageEmpty = () => (
+		<div className='flex flex-col items-center justify-center flex-auto gap-y-8'>
+			<MessageEmptyIcon />
+			<p>در حال حاضر پیامی ندارید</p>
+		</div>
+	);
 
-    return (
-        <div>
-            {!messages.length > 0 ? (
-                <div className="dashboard-courses dash-messages">
-                    <Card
-                        title="پیام‌های شما:"
-                        bordered={false}
-                        headStyle={{border: "none", fontSize: "1.4rem"}}
-                        bodyStyle={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            textAlign: "center",
-                        }}
-                        style={{
-                            borderRadius: "1.5rem",
-                            height: "26.7rem",
-                            boxShadow: "0px 2px 8px 2px rgba(0, 0, 0, 0.15)",
-                        }}
-                    >
-                        <img src={messagePic} style={{paddingBottom: "2rem"}}/>
-                        <p style={{paddingBottom: "2rem"}}>در حال حاضر پیامی ندارید</p>
-                    </Card>
-                </div>
-            ) : (
-                <div>
-                    <Card
-                        title="پیام‌های شما:"
-                        bordered={false}
-                        headStyle={{border: "none", fontSize: "1.4rem"}}
-                        bodyStyle={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            textAlign: "center",
-                        }}
-                        style={{
-                            borderRadius: "1.5rem",
-                            height: "26.7rem",
-                            boxShadow: "0px 2px 8px 2px rgba(0, 0, 0, 0.15)",
-                        }}
-                    >
-                        <div className="messages-card w-full sm:w-auto">
-                            {messages.map((message, index) => {
-                                return (
-                                    <div className="message-card max-w-full">
-                                        <img
-                                            src={message.avatar}
-                                            style={{padding: "0.4rem 1rem 0.4rem 0", borderRadius: '50%'}}
-                                        />
-                                        <div className="message-card-content grid grid-cols-4 grid-rows-2">
-                                            <span className="message-card-content-name col-span-2">
-                                                {message.first_name} {message.last_name}
-                                            </span>
-                                            <span className="message-card-content-num">
-                                                {message.date}
-                                            </span>
-                                            <span className="message-card-content-num">
-                                                {message.time}
-                                            </span>
-                                            <p className="col-span-3 message-card-content-preview">
-                                                {message.text}
-                                            </p>
-                                            <div className="message-card-content-total">
-                                                {++index}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                            <div className="flex justify-end">
-                                <a className="text-primary self-end">بیشتر...</a>
-                            </div>
-                        </div>
-                    </Card>
-                </div>
-            )}
-        </div>
-    );
+	const renderMessage = () =>
+		messageList.map((message) => (
+			<MessageItem key={message.uuid} {...message} />
+		));
+
+	return (
+		<DashboardBox title='پیام‌های شما:' classes='dashboard__message--box'>
+			{_.isEmpty(messageList) ? (
+				renderMessageEmpty()
+			) : (
+				<>
+					<div className='flex flex-col gap-y-3 mt-4'>
+						{renderMessage()}
+					</div>
+					{messages.length > 3 && (
+						<Link to='/' type='text'>
+							بیشتر...
+						</Link>
+					)}
+				</>
+			)}
+		</DashboardBox>
+	);
 };
 
 export default Messages;
