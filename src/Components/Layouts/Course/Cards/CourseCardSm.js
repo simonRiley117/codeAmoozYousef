@@ -22,14 +22,14 @@ const Coursecardsm = ({card}) => {
         total_time_of_course,
         nums_of_voter,
         mean_of_participant_points,
-        is_favorite,
+        // is_favorite,
         title,
         has_user_course,
         get_price_without_degree_with_some_extra_info: cost,
         teacher_avatar,
         teacher_uuid,
         cover,
-        is_course_in_cart,
+        // is_course_in_cart,
     } = card;
 
     const {
