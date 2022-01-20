@@ -1,6 +1,6 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { useAuth } from "@App/Context/authContext";
+import {Route, Routes} from "react-router-dom";
+import {useAuth} from "@App/Context/authContext";
 
 import Authenticated from "@App/Authenticated";
 import UnAuthenticated from "@App/UnAuthenticated";
@@ -30,42 +30,42 @@ import Search from "@Layouts/Search/Search";
 import Coursetopic from "@Layouts/CourseTopic/CourseTopic";
 
 const Router = () => {
-  const { token } = useAuth();
-  return (
-    <>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />}>
-            <Route index path="/:redirectTeacher?" element={<Home />} />
-          </Route>
-          <Route path="/coWorkers" element={<CoWorkers />} />
-          <Route path="coWorkers/master" element={<Master />} />
-          <Route path="coWorkers/technicalteam" element={<TechnicalTeam />} />
-          <Route
-            path="coWorkers/technicalteam/information"
-            element={<TechnicalTeams />}
-          />
-          <Route path="coWorkers/employer" element={<Employer />} />
-          <Route path="/news" index element={<News />} />
-          <Route path="/news/news-info" element={<NewsDetails />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/about-me" element={<AboutUs />} />
+    const {token} = useAuth();
+    return (
+        <>
+            <Routes>
+                <Route element={<Layout/>}>
+                    <Route path="/" element={<Home/>}>
+                        <Route index path="/:redirectTeacher?" element={<Home/>}/>
+                    </Route>
+                    <Route path="/coWorkers" element={<CoWorkers/>}/>
+                    <Route path="coWorkers/master" element={<Master/>}/>
+                    <Route path="coWorkers/technicalteam" element={<TechnicalTeam/>}/>
+                    <Route
+                        path="coWorkers/technicalteam/information"
+                        element={<TechnicalTeams/>}
+                    />
+                    <Route path="coWorkers/employer" element={<Employer/>}/>
+                    <Route path="/news" index element={<News/>}/>
+                    <Route path="/news/news-info" element={<NewsDetails/>}/>
+                    <Route path="/faq" element={<Faq/>}/>
+                    <Route path="/contact-us" element={<Contact/>}/>
+                    <Route path="/about-me" element={<AboutUs/>}/>
 
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/intro" element={<CourseIntro />} />
-          <Route path="/courses/teacher" element={<TeacherResume />} />
-          <Route path="/courses/example" element={<Example />} />
-          <Route path="/courses/topic" element={<Coursetopic />} />
+                    <Route path="/courses" element={<Courses/>}/>
+                    <Route path="/courses/intro" element={<CourseIntro/>}/>
+                    <Route path="/courses/teacher" element={<TeacherResume/>}/>
+                    <Route path="/courses/example" element={<Example/>}/>
+                    <Route path="/courses/topic" element={<Coursetopic/>}/>
 
-          <Route path="/rules" element={<Rules />} />
-          <Route path="/fav" element={<Favorites />} />
+                    <Route path="/rules" element={<Rules/>}/>
+                    <Route path="/fav" element={<Favorites/>}/>
 
-          <Route path="/search" element={<Search />} />
-        </Route>
-      </Routes>
-      {token ? <Authenticated /> : <UnAuthenticated />}
-    </>
-  );
+                    <Route path="/search" element={<Search/>}/>
+                </Route>
+            </Routes>
+            {token ? <Authenticated/> : <UnAuthenticated/>}
+        </>
+    );
 };
 export default Router;
