@@ -135,10 +135,9 @@ function QuizCodeeditorWithRun(props) {
   const handleInputSend = () => {
     if (!token) {
       toast.error("برای پاسخ به آزمون اول به سایت وارد شوید");
-    }else
-    if (!props.ismycoursebol) {
+    } else if (!props.ismycoursebol) {
       toast.error("برای پاسخ به آزمون در دوره ثبت نام کنید");
-    }else{
+    } else {
       setData({
         submissions: {
           question_id: props.quizId,
@@ -149,7 +148,7 @@ function QuizCodeeditorWithRun(props) {
       setLoad(true);
       QuizSendToServer.reFetch();
     }
-    if ( !props.ispreview ) {
+    if (!props.ispreview) {
       setData({
         submissions: {
           question_id: props.quizId,
@@ -178,7 +177,16 @@ function QuizCodeeditorWithRun(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
-
+  const handleSave = (value) => {
+    // const element = document.createElement("a");
+    // const file = new Blob([document.getElementById("myInput").value], {
+    //   type: "text/plain",
+    // });
+    // element.href = URL.createObjectURL(file);
+    // element.download = "myFile.txt";
+    // document.body.appendChild(element); // Required for this to work in FireFox
+    // element.click();
+  };
   return (
     <div>
       <div className="CodeeditorWithRun">
@@ -190,7 +198,10 @@ function QuizCodeeditorWithRun(props) {
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
                     <p>{`${props.name}.${props.lan}`}</p>
                     <div className="d-flex ">
-                      <button className="CodeeditorWithRun__codeeditor-btncopy">
+                      <button
+                        className="CodeeditorWithRun__codeeditor-btncopy"
+                        onClick={() => handleSave(value)}
+                      >
                         ذخیره کدها
                       </button>
                       <button

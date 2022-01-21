@@ -54,7 +54,7 @@ const UserDataProvider = (props) => {
       if (res) {
         console.log("user res: ", res.data);
         setUserData(res.data);
-        if (res.data.tool_gide) {
+        if (!res.data.tool_gide) {
           setShowGuid(!res.data.tool_gide);
         }
       }

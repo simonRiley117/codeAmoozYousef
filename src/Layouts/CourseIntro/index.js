@@ -14,6 +14,7 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "@App/Context/useFetch";
 import { useAuth } from "@App/Context/authContext";
 import { Skeleton } from "antd";
+import { FramerTreeLayoutContext } from "framer-motion";
 
 const { TabPane } = Tabs;
 
@@ -21,7 +22,7 @@ const CourseIntro = () => {
   const location = useLocation();
   const [data, setData] = useState("");
   const [courseSeasons, setCourseSeasons] = useState([]);
-  const [pos, setPos] = useState(true);
+  const [pos, setPos] = useState(FramerTreeLayoutContext);
 
   useEffect(() => {
     // setMenu(location.state.name);
@@ -29,12 +30,12 @@ const CourseIntro = () => {
     setName(location.state.name);
   }, [location]);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
+  const handleScrolll = () => {
     // const windowHeight =
     //   "innerHeight" in window
     //     ? window.innerHeight
     //     : document.documentElement.offsetHeight;
-    // const docHeight = document.getElementById("TabBox").clientHeight;
+    // const docHeight = document.getElementById("TabBoxxx").clientHeight;
     // const windowBottom = windowHeight + window.pageYOffset;
     // if (windowBottom >= docHeight) {
     //   setPos(true);
@@ -44,7 +45,7 @@ const CourseIntro = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrolll);
   }, []);
   // const [menu, setMenu] = useState("");
   const [id, setId] = useState();
@@ -108,7 +109,7 @@ const CourseIntro = () => {
           )}
 
           <div>
-            <Tabs className="TabBox" type="card" id="TabBox">
+            <Tabs className="TabBox" type="card" id="TabBoxxx">
               <TabPane tab="درباره این دوره" key="1">
                 <About courseId={id} />
               </TabPane>

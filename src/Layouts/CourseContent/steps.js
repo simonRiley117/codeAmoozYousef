@@ -1,30 +1,181 @@
-// export const steps = [
-//   {
-//     element: ".LastCourse__Position",
-//     intro: "همه جلسات و مباحث دوره شما در این قسمت قرار می گیره.",
-//   },
-//   {
-//     element:
-//       ".Sarfasl__Accordionbox .Sarfasl__AccordionItem .Sarfasl__AccordionItem__lock",
-//     intro:
-//       "تا زمانی که مباحث خود را با موفقیت نگذزانید مباحث بعدی برای شما قفل خواهد بود",
-//   },
-//   {
-//     element: ".CourseStatus",
-//     intro: "میزان پیشرفت خود در دوره می توانید در این قسمت مشاهده کنید.",
-//   },
-//   {
-//     element: ".TabBox__video",
-//     intro: "ویدیو های هر مبحث به همراه توضیحاتش توی این بخش قرار میگیره.",
-//   },
-//   {
-//     element: ".LastCourse .LastCourse__btnBox .CoWorkers__btnPast",
-//     intro: "از این قسمت میتونی به مباحث قبلی دسترسی داشته باشی",
-//   },
-//   {
-//     element: ".CoWorkers__btnnext",
-//     intro:
-//       "از این قسمت میتونی به مباحث بعدی دسترسی داشته باشی. در صورتی این گزینه فعاله که آزمون این مبحث رو داده باشی و یا آزمونی نداشته باشی.",
-//   },
-// ];
-
+export const tourConfig = [
+  {
+    selector: '[data-tut="reactour__start"]',
+    content: ({ goTo }) => (
+      <div className=" WebTour__txtBox">
+        <div style={{ fontWeight: "600", fontSize: "18px" }}>جلسات</div>
+        <div style={{ marginTop: "15px" }}>
+          همه جلسات و مباحث دوره شما در این قسمت قرار می گیره
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "45px",
+          }}
+        >
+          <span className="WebTour__number" style={{ fontWeight: "600" }}>
+            1 of 6
+          </span>
+          {/* <button onClick={() => goTo(1)} className=" WebTour__NextArrow">
+              {"Next"}
+            </button> */}
+        </div>
+      </div>
+    ),
+    style: {
+      padding: "20px 18px 12px 18px",
+    },
+    position: "left",
+  },
+  {
+    selector: '[data-tut="reactour__lock"]',
+    content: ({ goTo }) => (
+      <div className=" WebTour__txtBox">
+        <div style={{ fontWeight: "600", fontSize: "18px" }}>قفل</div>
+        <div style={{ marginTop: "15px" }}>
+          تا زمانی که مباحث خود را با موفقیت نگذزانید مباحث بعدی برای شما قفل
+          خواهد بود
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "45px",
+          }}
+        >
+          <span className="WebTour__number" style={{ fontWeight: "600" }}>
+            2 of 6
+          </span>
+          {/* <button onClick={() => goTo(2)}>{"Next"}</button> */}
+        </div>
+      </div>
+    ),
+    style: {
+      padding: "20px 18px 12px 18px",
+    },
+    position: "left",
+  },
+  {
+    selector: '[data-tut="reactour__status"]',
+    content: ({ goTo }) => (
+      <div className=" WebTour__txtBox">
+        <div style={{ fontWeight: "600", fontSize: "18px" }}>پیشرفت</div>
+        <div style={{ marginTop: "15px" }}>
+          میزان پیشرفت خود در دوره می توانید در این قسمت مشاهده کنید
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "45px",
+          }}
+        >
+          <span className="WebTour__number" style={{ fontWeight: "600" }}>
+            3 of 6
+          </span>
+          {/* <button onClick={() => goTo(3)}>{"Next"}</button> */}
+        </div>
+      </div>
+    ),
+    style: {
+      padding: "20px 18px 12px 18px",
+    },
+    position: "bottom",
+  },
+  {
+    // selector: '[data-tut="reactour__video"]',
+    selector: ".reactour__video",
+    content: ({ goTo }) => (
+      <div className=" WebTour__txtBox">
+        <div style={{ fontWeight: "600", fontSize: "18px" }}>ویدیو</div>
+        <div style={{ marginTop: "15px" }}>
+          ویدیو های هر مبحث به همراه توضیحاتش توی این بخش قرار میگیره
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "45px",
+          }}
+        >
+          <span className="WebTour__number" style={{ fontWeight: "600" }}>
+            4 of 6
+          </span>
+          {/* <button onClick={() => goTo(4)}>{"Next"}</button> */}
+        </div>
+      </div>
+    ),
+    style: {
+      padding: "20px 18px 12px 18px",
+    },
+    position: "left",
+  },
+  {
+    selector: '[data-tut="reactour__end"]',
+    content: ({ goTo }) => (
+      <div className=" WebTour__txtBox">
+        <div style={{ fontWeight: "600", fontSize: "18px" }}>قبل</div>
+        <div style={{ marginTop: "15px" }}>
+          از این قسمت میتونی به مباحث قبلی دسترسی داشته باشی
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "45px",
+          }}
+        >
+          <span className="WebTour__number" style={{ fontWeight: "600" }}>
+            5 of 6
+          </span>
+          {/* <button onClick={() => goTo(5)}>{"Next"}</button> */}
+        </div>
+      </div>
+    ),
+    style: {
+      padding: "20px 18px 12px 18px",
+    },
+    position: "top",
+  },
+  {
+    selector: '[data-tut="reactour__next"]',
+    content: ({ goTo }) => (
+      <div className=" WebTour__txtBox">
+        <div style={{ fontWeight: "600", fontSize: "18px" }}>قبل</div>
+        <div style={{ marginTop: "15px" }}>
+          از این قسمت میتونی به مباحث بعدی دسترسی داشته باشی. در صورتی این گزینه
+          فعاله که آزمون این مبحث رو داده باشی و یا آزمونی نداشته باشی.{" "}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "45px",
+          }}
+        >
+          <span className="WebTour__number" style={{ fontWeight: "600" }}>
+            6 of 6
+          </span>
+          {/* <button onClick={() => goTo(5)}>{"Next"}</button> */}
+        </div>
+      </div>
+    ),
+    style: {
+      padding: "20px 18px 12px 18px",
+    },
+    position: "top",
+  },
+];
