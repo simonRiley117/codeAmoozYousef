@@ -1,129 +1,83 @@
-import React, { useState } from "react";
-import { Card, Statistic } from "antd";
-import CoursesPic from "@Assets/Pic/noCourses.png";
-import Coursecardbanner from "../../Shared/CourseCardBanner/CourseCardBanner";
-import Suggest from "@Assets/Pic/Suggest.png";
-import _ from "lodash";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import _ from 'lodash';
+import { useUserData } from '@App/Context/userContext';
+import DashboardBox from './DashboardBox';
+import { Link as LinkBase } from 'react-router-dom';
+import { ReactComponent as CourseEmptyIcon } from '@Assets/Icons/course-empty.svg';
+import Link from '@Components/Shared/Buttons/Link';
+import ProgressLine from '@Components/Shared/Progress/ProgressLine';
 
+import profile from '@Assets/Pic/course-profile.png';
 const Courses = ({ course }) => {
-  // const [isCourse, setIsCourse] = useState(false);
-  // const course = [
-  //   {
-  //     title: "دوره آنلاین برنامه نویسی python",
-  //     income: 0,
-  //     students: "0",
-  //     published: false,
-  //   },
-  // ];
-  return (
-    <div className="md:col-span-2 col-span-1 grid grid-cols-8 md:grid-rows-1 gap-5">
-      {_.isEmpty(course) ? (
-        <div className="dashboard-card dash-courses md:col-span-7 col-span-8">
-          <Card
-            title="آخرین دوره شما:"
-            bordered={false}
-            headStyle={{
-              border: "none",
-              fontSize: "1.6rem",
-              paddingBottom: "0",
-            }}
-            bodyStyle={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-            }}
-            style={{
-              borderRadius: "1rem",
-              boxShadow: "0px 2px 25px 2px rgba(0, 0, 0, 0.2)",
-              
-            }}
-          >
-            <img src={CoursesPic} style={{ marginTop: "-4rem" }} />
-            <p style={{ paddingBottom: "0.5rem" }}>
-              هنوز هیچ دوره ای ثبت نام نکردی؟!
-              <br />
-              وقتشه دست به کار شی
-            </p>
-            <button className="button button__default">ایجاد دوره</button>
-          </Card>
-        </div>
-      ) : (
-        <div className="md:col-span-7 col-span-8">
-          <Card
-            title="آخرین دوره شما:"
-            bordered={false}
-            headStyle={{
-              border: "none",
-              fontSize: "1.6rem",
-              paddingBottom: "0",
-            }}
-            bodyStyle={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-            }}
-            style={{
-              borderRadius: "1.5rem",
-              boxShadow: "0px 2px 8px 2px rgba(0, 0, 0, 0.15)",
-              maxHeight: "19.9rem",
-            }}
-          >
-            {/*{course.map((lastCourse) => {*/}
-            {/*    return (*/}
-            <div className="last-course-card w-full mb-9">
-              <Coursecardbanner suggest={false} courseLogo={course.cover} />
-              <ul className="lg:grid lg:grid-cols-2 lg:grid-rows-3">
-                <h1 className="col-span-2">{course.title}</h1>
-                {/*<li>*/}
-                {/*    درآمد این دوره: &nbsp;*/}
-                {/*    <Statistic*/}
-                {/*        value={lastCourse.income}*/}
-                {/*        suffix="تومان"*/}
-                {/*        valueStyle={{*/}
-                {/*            color: "rgba(18, 18, 18, 0.7)",*/}
-                {/*            padding: "1rem 0",*/}
-                {/*            marginTop: "-0.8rem",*/}
-                {/*            fontSize: "1.4rem",*/}
-                {/*        }}*/}
-                {/*        style={{*/}
-                {/*            display: "inline-block",*/}
-                {/*            color: "rgba(18, 18, 18, 0.7)",*/}
-                {/*            fontFamily: "Vazir",*/}
-                {/*        }}*/}
-                {/*    />*/}
-                {/*</li>*/}
-                <li>
-                  وضعیت: &nbsp;
-                  {course.is_published ? "منتشر شده" : "دخیره در پیشنویس"}
-                </li>
-                <li>تعداد دانشجویان: {course.num_of_participants} نفر</li>
-                <li>
-                  <Link to="/dashboard/my-course"> مشاهده دوره</Link>
-                </li>
-              </ul>
-            </div>
-            {/*    );*/}
-            {/*})}*/}
-          </Card>
-        </div>
-      )}
-      <div className="last-course-card-suggestion flex md:flex-col items-center justify-center md:col-span-1 col-span-8 md:p-0 p-4">
-        <img src={Suggest} />
+	const { userData } = useUserData();
+	// console.log('course: ', course)
+	const renderCourseEmpty = () => (
+		<div className='dashboard__course--empty'>
+			<CourseEmptyIcon />
+			<p>
+				هنوز هیچ دوره ای ثبت نام نکردی؟!
+				<br />
+				وقتشه دست به کار شی
+			</p>
 
-        <Link
-          to="/dashboard/suggest"
-          className="text-primary md:w-20 text-center mt-4 md:mr-0 mr-4"
-        >
-          پیشنهاد دوره جدید
-        </Link>
-      </div>
-    </div>
-  );
+			<Link to='/courses'> دوره‌ها</Link>
+		</div>
+	);
+	return (
+		<DashboardBox title='آخرین دوره شما:' classes='dashboard__course--box flex-auto'>
+			{_.isEmpty(course) ? (
+				renderCourseEmpty()
+			) : (
+				<article className='dashboard__course--item flex '>
+					<div className='dashboard__course--item-cover'>
+						<img
+							src={course.cover}
+							alt={course.title}
+							className='image object-cover'
+						/>
+					</div>
+					<div className='dashboard__course--item-content flex  flex-col gap-y-2'>
+						<LinkBase
+							to='/coursecontent'
+							state={{
+								name: course?.title,
+								id: course?.uuid,
+							}}
+						>
+							{course.title}
+						</LinkBase>
+
+						<div className='flex  flex-col gap-y-2'>
+							<div className='flex items-center gap-3'>
+								<span className='font-semibold'>
+									پیشرفت شما در دوره:
+								</span>
+								<span className=' ml-4'>
+									{' '}
+									{course.season_numbers} جلسه
+								</span>
+								<span className='text-primary'>
+									{' '}
+									{course.progresses}%
+								</span>
+							</div>
+							<ProgressLine precent={course.progresses} />
+						</div>
+						<div className='flex items-center gap-5 dashboard__course--item-teacher'>
+							<img
+								src={course.teacher_avatar}
+								alt={course.teacher_first_name}
+								className='image'
+							/>
+							<span>
+								{`${course.teacher_first_name} ${course.teacher_last_name}`}
+							</span>
+						</div>
+					</div>
+				</article>
+			)}
+		</DashboardBox>
+	);
 };
 
 export default Courses;

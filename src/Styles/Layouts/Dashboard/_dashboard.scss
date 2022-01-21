@@ -1,188 +1,301 @@
 .dashboard {
-  // height: auto;
+	// height: auto;
 
-  &-header {
-    &-welcome {
-      h2 {
-        color: #f68521;
-        font-size: 1.8rem;
-        font-weight: 700;
-      }
-    }
-    &-tutorial {
-      color: #f68521;
-      img {
-        padding: 0.25rem;
-        margin-left: 0.6rem;
-        background: rgba(229, 229, 229, 0.6);
-        border-radius: 50%;
-      }
+	display: grid;
+	grid-template-columns: minmax(36rem, 1fr) minmax(340px, 1fr) 1fr;
+	grid-template-rows: 5rem auto auto;
+	gap: 2.4rem 2rem;
 
-      &-vid,
-      &-pdf {
-        h6 {
-          color: #f68521;
-          font-size: 1.4rem;
-          font-weight: 500;
-        }
-      }
-    }
-  }
-}
+	@include respond(laptop) {
+		grid-template-columns: minmax(330px, 1fr) 1fr minmax(320px, 1fr);
+	}
+	@include respond(sm-laptop) {
+		grid-template-columns: 1fr minmax(320px, 1fr);
+		// grid-template-rows: repeat(4, auto);
+	}
+	@include respond(small-tablet) {
+		grid-template-columns: 100%;
+	}
 
-.dash-teacher {
-  box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 180px;
-  overflow: hidden;
-  height: 48.4rem;
-  position: relative;
-  padding: 2.6rem;
-  background-color: #47bea7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #022f47;
+	&-container {
+		max-width: 1400px;
+		margin: 2rem auto 0;
+		padding: 0 2rem;
+		width: 100%;
+		@include respond(laptop) {
+			padding: 0;
+		}
+	}
+	&__title {
+		@include set-font(1.8rem, 700, $color-primary);
+		align-self: end;
+		grid-column: 1/3;
+	}
 
-  h2 {
-    color: #022f47;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 1rem;
-  }
+	&__box {
+		box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.12);
+		border-radius: 1.5rem;
+		background-color: $color-white;
+		display: flex;
+		flex-direction: column;
+		@include respond(tab-port) {
+			&.px-10 {
+				padding: {
+					left: 1.5rem;
+					right: 1.5rem;
+				}
+			}
+			&.py-6 {
+				padding: {
+					top: 1rem;
+					bottom: 1rem;
+				}
+			}
+		}
 
-  img,
-  a {
-    margin-bottom: 1.5rem;
-  }
+		&--title {
+			@include set-font(16px, 600);
+		}
+	}
 
-  p {
-    margin-bottom: 1.8rem;
-  }
+	&__course {
+		grid-column: 1/3;
+		@include respond(small-tablet) {
+			grid-column: 1/2;
+		}
 
-  a {
-    width: 50%;
-  }
-}
-.last-course-card {
-  margin-top: -2.5rem;
-  display: flex;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 1.5rem;
-  max-height: 100%;
-  // width: 66.8rem;
-  // justify-content: space-between;
-  text-align: right;
-  color: rgba(18, 18, 18, 0.7);
-  font-size: 1.4rem;
+		@include respond(big-phone) {
+			flex-direction: column;
+			row-gap: 2rem;
+		}
 
-  ul {
-    width: 44.9rem;
+		&--box {
+			min-height: 20rem;
+		}
+		&--empty {
+			@include d-flex-column(center);
+			flex: 1 1 auto;
 
-    h1 {
-      color: $color-primary;
-      margin-top: 0.7rem;
-      font-weight: 500;
-      font-size: 1.4rem;
-    }
+			& p {
+				text-align: center;
+				margin: 8px 0;
+				line-height: 1.7;
+			}
 
-    a {
-      color: $color-primary;
-    }
-  }
+			& .button {
+				min-width: 19rem;
+			}
+		}
 
-  &-suggestion {
-    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
-    border-radius: 1.5rem;
-  }
-}
+		&--item {
+			border: 1px solid $color-dark-gray;
+			border-radius: 1.5rem;
+			padding: 1rem 1.5rem;
+			margin-top: 1.5rem;
+			@include respond(phone) {
+				flex-direction: column;
+				padding: 1rem;
+			}
+			&-cover {
+				max-width: 16rem;
+				max-height: 16rem;
+				border-radius: 1rem;
+				overflow: hidden;
+				@include respond(phone) {
+					max-width: 100%;
+					max-height: 35rem;
+				}
+			}
+			&-content {
+				align-self: center;
+				flex: 1 1 auto;
+				margin-right: 2rem;
+				@include respond(phone) {
+					margin-right: 0;
+					margin-top: 1.5rem;
+					width: 100%;
+					padding: 0 1rem;
+				}
+				@media only screen and (max-width: 320px) {
+					padding: 0;
+				}
+				& > a {
+					@include set-font(16px, 600, $color-primary);
+					margin-bottom: 1.5rem;
+				}
+			}
+			&-teacher {
+				@include set-font(14px, 500, $color-text-gray-dark);
+				& img {
+					max-width: 5rem;
+					max-height: 5rem;
+					border-radius: 50%;
+					box-shadow: 0 0 0 2px $color-green;
+				}
+			}
+		}
+	}
 
-.messages-card {
-  margin-top: -2.5rem;
-  height: 100%;
-}
+	&__suggest {
+		@extend .dashboard__box;
+		padding: 2rem;
+		flex-basis: 10rem;
+		@include respond(sm-laptop) {
+			flex-basis: 13rem;
+		}
+		@include respond(big-phone) {
+			flex-direction: row;
+			column-gap: 2rem;
+			flex-basis: auto;
 
-.message-card {
-  display: flex;
-  // width: 31.7rem;
-  height: 5.6rem;
-  background: rgba(246, 133, 33, 0.4);
-  border-radius: 1.5rem;
-  margin: 0.5rem;
-  // justify-content: space-between;
-  text-align: right;
-  padding: 0.5rem 0;
+			& img {
+				max-width: 30px;
+				max-height: 30px;
+			}
+		}
+		& > a {
+			@include set-font(16px, 700, $color-primary-dark-2);
+			text-align: center;
+			@include respond(big-phone) {
+				font-size: 14px;
+			}
+			&:hover {
+				color: $color-primary-light;
+			}
+		}
+	}
+	&__suggested {
+		@include respond(sm-laptop) {
+			grid-column: 1/2;
+			grid-row: 4/5;
+		}
 
-  &-content {
-    margin-right: 1.5rem;
-    width: 24.4rem;
+		&--item {
+			border: 1px solid $color-dark-gray;
+			border-radius: 1.5rem;
+			padding: 1rem;
+			margin-top: 1.5rem;
 
-    &-name {
-      color: #022f47;
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
+			& img {
+				max-width: 8rem;
+				max-height: 8rem;
+				border-radius: 1rem;
+			}
+			& a {
+				@include set-font(16px, 700, $color-primary);
+			}
+			& p {
+				color: $color-text-gray-dark;
+			}
+		}
+	}
 
-    &-num {
-      font-size: 1.2rem;
-      font-weight: 100;
-      color: rgba(18, 18, 18, 0.79);
-    }
+	&__message {
+		@include respond(sm-laptop) {
+			grid-column: 1/2;
+			grid-row: 3/4;
+		}
+		&--box {
+			min-height: 31rem;
 
-    &-preview {
-      font-size: 1.1rem;
-      color: rgba(18, 18, 18, 0.7);
-    }
+			& .link {
+				align-self: flex-end;
+				margin-top: 1rem;
+				padding: 0 1.5rem;
+				height: 32px;
+				min-width: auto;
+			}
+		}
 
-    &-total {
-      border: 2px solid #f68521;
-      color: #f68521;
-      border-radius: 50%;
-      width: 2.2rem;
-      height: 2.2rem;
-      text-align: center;
-      font-size: 1.2rem;
-    }
-  }
-}
+		&--item {
+			padding: 6px 1rem 6px 2rem;
+			border-radius: 1.5rem;
+			background-color: rgba($color: $color-primary, $alpha: 0.4);
+			display: flex;
+			align-items: center;
 
-.student-cards {
-  display: flex;
-  margin-top: -2.5rem;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: right;
+			&-cover {
+				min-width: 5rem;
+				height: 5rem;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			&-content {
+				display: grid;
+				grid-template-columns: 1fr auto auto;
+				margin-right: 1.5rem;
+				gap: 4px 1rem;
+				flex: 1 1 auto;
 
-  .student-card {
-    width: 95%;
-    display: flex;
-    width: 28.2rem;
-    height: 5.2rem;
-    align-items: center;
+				& .name {
+					@include set-font(12px, 600, $color-blue);
+					white-space: nowrap;
+				}
 
-    img {
-      width: 4.9rem;
-      height: 4.9rem;
-      margin-left: 1.2rem;
-    }
-    p {
-      display: block;
-    }
+				& .time {
+					@include set-font(12px, 300, $color-text-light);
+				}
 
-    &-content {
-      &-name {
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: #022f47;
-      }
-      &-course {
-        color: rgba(18, 18, 18, 0.7);
-        font-size: 1.1rem;
-      }
-    }
-  }
+				& .description {
+					grid-column: 1/3;
+					display: -webkit-box;
+					line-clamp: 1;
+					-webkit-line-clamp: 1;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+
+	&__login {
+		&-wrapper {
+			grid-row: 1/-1;
+			grid-column: 3/4;
+			@include respond(sm-laptop) {
+				grid-column: 2/3;
+				grid-row: 3/5;
+			}
+			@include respond(small-tablet) {
+				grid-column: 1/2;
+				grid-row: 5/6;
+			}
+		}
+		box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+		border-radius: 30rem;
+		height: 100%;
+		overflow: hidden;
+		padding: 5rem 3rem;
+		background-color: $color-green;
+
+		color: $color-blue;
+		min-height: 40rem;
+		@include respond(sm-laptop) {
+			max-width: 340px;
+		}
+		@include respond(small-tablet) {
+			min-height: 65rem;
+			margin: 0 auto;
+		}
+		& img {
+			max-width: 26rem;
+			max-height: 24rem;
+		}
+		& > h2 {
+			@include set-font(2.4rem, 700, $color-blue);
+		}
+
+		& > p {
+			@include set-font(1.6rem, 500, $color-blue);
+			text-align: center;
+			@include respond(small-tablet) {
+				max-width: 80%;
+			}
+		}
+
+		& .link {
+			min-width: 18rem;
+		}
+	}
 }

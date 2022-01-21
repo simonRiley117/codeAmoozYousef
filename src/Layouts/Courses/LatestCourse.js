@@ -7,13 +7,12 @@ import { NextArrow, PrevArrow } from './Arrows';
 import { Skeleton } from 'antd';
 import _ from 'lodash';
 
-const LatestCourse = ({ getallCourseList, liftUpLatestCourseRequest }) => {
+const LatestCourse = () => {
 	const [latestCourse, setLatestCourse] = useState([]);
 	const { token } = useAuth();
 
 	const setData = (data) => {
 		setLatestCourse(data);
-		liftUpLatestCourseRequest(getLatestCourseList);
 	};
 
 	const getLatestCourseList = useFetch({
@@ -49,8 +48,6 @@ const LatestCourse = ({ getallCourseList, liftUpLatestCourseRequest }) => {
 	const renderCourseItem = () =>
 		latestCourse?.map((card) => (
 			<CourseCardBg
-				getallCourseList={getallCourseList}
-				getLatestCourseList={getLatestCourseList}
 				card={card}
 				key={card.uuid}
 			/>
