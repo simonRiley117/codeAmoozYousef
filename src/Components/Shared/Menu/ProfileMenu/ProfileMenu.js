@@ -26,6 +26,9 @@ const ProfileMenu = ({ handleModalShow }) => {
 			case 'favorites':
 				navigate('/fav');
 				return;
+			case 'myCourse':
+				navigate('/dashboard/my-course');
+				return;
 			case 'exit':
 				handleModalShow();
 				return;
@@ -49,6 +52,10 @@ const ProfileMenu = ({ handleModalShow }) => {
 			<Menu.Item icon={<ArrowLeftIcon />} key='dashboard'>
 				<HomeIcon />
 				<span>داشبورد</span>
+			</Menu.Item>
+			<Menu.Item icon={<ArrowLeftIcon />} key='myCourse'>
+				<HomeIcon />
+				<span>دوره های من</span>
 			</Menu.Item>
 			<Menu.Item icon={<ArrowLeftIcon />} key='favorites'>
 				<Heart id='favorites' />

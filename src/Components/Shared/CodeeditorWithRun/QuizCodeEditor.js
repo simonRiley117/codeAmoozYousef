@@ -31,6 +31,8 @@ function QuizCodeEditor(props) {
         ispreview={props.ispreview}
         ismycoursebol={props.ismycoursebol}
         value={props.value}
+        courseId={props.courseId}
+
       />
     </div>
   );

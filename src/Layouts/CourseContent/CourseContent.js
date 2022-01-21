@@ -106,7 +106,9 @@ function CourseContent() {
     if (Currentcontentid) {
       getCurrentContentState.reFetch();
     }
-    setActiveTab("tab_1")
+    setActiveTab("tab_1");
+    window.scrollTo(0, 0);
+
   }, [Currentcontentid]);
 
   const handleNextContent = () => {

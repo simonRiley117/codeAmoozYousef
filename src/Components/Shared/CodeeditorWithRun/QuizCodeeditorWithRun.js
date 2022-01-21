@@ -12,6 +12,9 @@ import useAxios from "@use-hooks/axios";
 import { API_URL } from "../../../constants";
 import { useAuth } from "../../../Context/authContext";
 import { toast } from "react-toastify";
+import Modal from "@Components/Shared/Modal/Modal";
+import Button from "@Components/Shared/Buttons/Button";
+import { Link } from "react-router-dom";
 
 function QuizCodeeditorWithRun(props) {
   //  console.log("PROPS QUIZ: ", props);
@@ -23,6 +26,7 @@ function QuizCodeeditorWithRun(props) {
   );
   const [value, setValue] = useState(props.value);
   const [test, setTest] = useState("");
+  const [quizeResult, setQuizeResult] = useState();
   const [number, setNumber] = useState(0);
   const [res, setRes] = useState("");
   const [errs, setErrs] = useState("");
@@ -34,7 +38,14 @@ function QuizCodeeditorWithRun(props) {
   const [btn, setBtn] = useState(1);
   const [numberComplit, setNumberComplit] = useState(0);
   const { token } = useAuth();
+  const [modal, setModal] = useState(false);
+  const handleModalVisible = () => {
+    setModal(false);
+  };
 
+  const handleModalShow = (uuid, lock) => {
+    setModal(true);
+  };
   const QuizPlayGround = useAxios({
     url: `${API_URL}/CompilerService/v2/quiz/playground/`,
     method: "POST",
@@ -74,10 +85,12 @@ function QuizCodeeditorWithRun(props) {
       if (res) {
         console.log("QuizSendToServer", res.data);
         // setInfo1(res.data);
+        setQuizeResult(res.data);
+        handleModalShow();
+
         setNumber(res.data.compile_result);
         res.data.compiler_stderr.length > 0 ? setBtn(2) : setBtn(1);
         setRes(res.data.compiler_stdout);
-
         res.data.compiler_stderr
           ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
           : setErrs(res.data.compiler_stderr);
@@ -135,7 +148,7 @@ function QuizCodeeditorWithRun(props) {
   const handleInputSend = () => {
     if (!token) {
       toast.error("برای پاسخ به آزمون اول به سایت وارد شوید");
-    } else if (!props.ismycoursebol) {
+    } else if (props.ispreview && !props.ismycoursebol) {
       toast.error("برای پاسخ به آزمون در دوره ثبت نام کنید");
     } else {
       setData({
@@ -365,6 +378,35 @@ function QuizCodeeditorWithRun(props) {
           </>
         )}
       </div>
+      {quizeResult && (
+        <Modal
+          className="ExitModal"
+          visible={modal}
+          onCancel={handleModalVisible}
+        >
+          <div className="ExitModal__back">
+            <h3>{quizeResult.compile_result}</h3>
+            <p className="mb-12">{quizeResult.compiler_stdout}</p>
+            <div className="d-flex-space">
+              <Button>
+                {" "}
+                <Link
+                  to={`/coursecontent`}
+                  state={{
+                    id: props.courseId,
+                  }}
+                  className="flex items-center"
+                >
+                  صفحه ی دوره
+                </Link>
+              </Button>
+              <Button onClick={handleModalVisible} type="primary">
+                برگشت به آزمون
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

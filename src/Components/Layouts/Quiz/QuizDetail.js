@@ -79,6 +79,7 @@ function QuizDetail({
       </div>
       <QuizCodeEditor
         name={title}
+        courseId={courseId}
         quizId={quizId}
         contentId={contentId}
         lan={language === `c` ? `c_cpp` : language}
