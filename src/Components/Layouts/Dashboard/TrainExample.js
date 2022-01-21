@@ -30,7 +30,7 @@ function TrainExample({ contentUuid, courseUuid ,ispreviw ,context,lang}) {
     <>
       {ispreviw ||!contentLoading ? (
         content.context.map((item, index) => (
-          <div key={index}>
+          <div key={index} className='mt-10'>
             {item?.name ? (
               <div className="Sarfasl__sample flex items-center	justify-between">
                 <p>مثال</p>

@@ -17,6 +17,7 @@ function ContentDetail({
     method: "GET",
     noHeader: token ? false : true,
     setter: setContent,
+    trigger:false,
     argFunc: (res) => {
       if (iscontent) {
         setActiveSeason(res.season);
@@ -25,7 +26,9 @@ function ContentDetail({
     },
   });
   useEffect(() => {
-    getContent.reFetch();
+    if(contentUuid !== null){
+      getContent.reFetch();
+    }
   }, [contentUuid]);
 
   return (
