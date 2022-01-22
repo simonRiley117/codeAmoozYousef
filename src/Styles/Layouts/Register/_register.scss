@@ -108,7 +108,7 @@
 				justify-content: center;
 				height: 100%;
 			}
-			& .register__form--wrapper{
+			& .register__form--wrapper {
 				padding: 1.5rem 3rem;
 			}
 		}
@@ -197,13 +197,15 @@
 				&.ant-input-affix-wrapper:hover {
 					border-color: rgba($color: #fff, $alpha: 0.5);
 				}
+				& svg {
+					max-width: 20px;
+				}
 			}
 			& .input__label {
 				font-size: 14px;
 			}
 			& .ant-input {
 				background-color: transparent;
-				margin-right: 1rem;
 			}
 
 			& .ant-checkbox-inner {
