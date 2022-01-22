@@ -9,10 +9,11 @@ import { useForm } from 'react-hook-form';
 
 function AskAndAnswer({ courseId, has_user_course }) {
 	const { token } = useAuth();
-	const [messageInfo, setMessageInfo] = useState(null);
+	const [messageInfo, setMessageInfo] = useState({});
 	const [messagePostData, setMessagePostData] = useState(null);
 	const setMessageData = (data) => {
-		setMessageInfo(data);
+		console.log('setMessageData ~ data', data.messages);
+		setMessageInfo(data.messages);
 	};
 	const { reset, ...othersMethod } = useForm();
 
@@ -61,16 +62,19 @@ function AskAndAnswer({ courseId, has_user_course }) {
 			{/* {token ?getMessageInfo?.response ? : <Skeleton />  : } */}
 			{messageInfo ? (
 				<div className='AskAndAnswer__content'>
-					{messageInfo.messages.length === 0 ? (
+					{messageInfo?.results?.length === 0 ? (
 						<div className='items-center absolute AskAndAnswer__emptyBox '>
 							<p className=' '>
 								سوالاتتان را در این بخش با استاد این دوره مطرح کنید.
 							</p>
 						</div>
 					) : (
-						messageInfo.messages.map((message, index) =>
-							!message.is_teacher_send ? (
-								<div className='AskAndAnswer__contentBox'>
+						messageInfo.results?.map((message, index) => {
+							return !message.is_teacher_send ? (
+								<div
+									className='AskAndAnswer__contentBox'
+									key={message.uuid}
+								>
 									<div>
 										<div className='AskAndAnswer__askBox flex-col items-start'>
 											<span>شما </span>
@@ -85,7 +89,10 @@ function AskAndAnswer({ courseId, has_user_course }) {
 									</div>
 								</div>
 							) : (
-								<div className='AskAndAnswer__answareBox '>
+								<div
+									className='AskAndAnswer__answareBox '
+									key={message.uuid}
+								>
 									<div className='AskAndAnswer__answare flex-col items-start'>
 										{' '}
 										<span>استاد </span>
@@ -96,8 +103,8 @@ function AskAndAnswer({ courseId, has_user_course }) {
 										<p>{moment(message.date).format('YYYY/MM/DD')}</p>
 									</div>
 								</div>
-							)
-						)
+							);
+						})
 					)}
 				</div>
 			) : (
