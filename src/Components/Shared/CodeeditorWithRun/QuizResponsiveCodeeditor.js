@@ -194,6 +194,7 @@ function QuizResponsiveCodeeditor(props) {
                       enableBasicAutocompletion: true,
                       enableLiveAutocompletion: true,
                       enableSnippets: true,
+                      fontSize: "1.5rem",
                     }}
                   />
                 </div>
@@ -257,6 +258,7 @@ function QuizResponsiveCodeeditor(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>
@@ -280,6 +282,7 @@ function QuizResponsiveCodeeditor(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>

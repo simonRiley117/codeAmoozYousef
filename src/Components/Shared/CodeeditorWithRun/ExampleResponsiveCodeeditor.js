@@ -191,6 +191,8 @@ function ExampleResponsiveCodeeditor(props) {
                       enableBasicAutocompletion: true,
                       enableLiveAutocompletion: true,
                       enableSnippets: true,
+                      fontSize: "1.5rem",
+
                     }}
                   />
                 </div>
@@ -238,6 +240,8 @@ function ExampleResponsiveCodeeditor(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
+
                       }}
                     />
                   </div>
@@ -261,6 +265,8 @@ function ExampleResponsiveCodeeditor(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
+
                       }}
                     />
                   </div>
