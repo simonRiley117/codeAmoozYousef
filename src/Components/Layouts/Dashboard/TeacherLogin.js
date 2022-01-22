@@ -21,6 +21,7 @@ const TeacherLogin = () => {
 						? TEAChER_URL + '/'
 						: TEAChER_URL + '/profile'
 				}
+				target='_blank' rel="noreferrer"
 			>
 				ورود
 			</a>
