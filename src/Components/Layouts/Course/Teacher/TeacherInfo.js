@@ -21,7 +21,7 @@ const override = {
 	borderColor: 'green',
 };
 
-function TeacherInfo({ courseId, resume, liftingUpTags }) {
+function TeacherInfo({ courseId, resume, liftingUpTags,isSticky }) {
 	console.log('courseId: ', courseId);
 	const [isCopied, handleCopy] = UseCopyToClipboard(3000);
 	const [socialId, setSocialId] = useState(-1);
@@ -75,78 +75,86 @@ function TeacherInfo({ courseId, resume, liftingUpTags }) {
 			}
 		>
 			<div
-				className={classNames(
-					'TeacherInfo__form text-center items-center justify-center flex-col'
-				)}
+				className={classNames({
+					TeacherInfo__Position: isSticky,
+				})}
 			>
-				{getTeacherProfileInfo.loading ? (
-					<div className='TeacherInfo__loading'>
-						<Skeleton active avatar paragraph={{ rows: 4 }} />
-						<Skeleton.Button active shape='round' />
-					</div>
-				) : (
-					<>
-						<div className='TeacherInfo__imgBox'>
-							<img
-								src={teacherProfileInfo?.cover}
-								alt={teacherProfileInfo?.first_name}
-							/>
-						</div>
-						<p className='TeacherInfo__name'>{`استاد: ${teacherProfileInfo?.first_name} ${teacherProfileInfo?.last_name}`}</p>
-						<p className='TeacherInfo__description leading-9 text-justify'>
-							{teacherProfileInfo?.description}
-						</p>
-						<div className='TeacherInfo__socialBox grid grid-cols-3 justify-center justify-self-start	items-center self-center'>
-							{socialicon.map((item, id) =>
-								String(item.link) !== 'null' &&
-								String(item.link) !== 'undefined' ? (
-									isCopied && socialId === id ? (
-										'کپی شد'
-									) : (
-										<img
-											onClick={() => handleImgClick(item.link, id)}
-											src={item.img}
-											alt={item.img}
-											key={id}
-										/>
-									)
-								) : null
-							)}
-						</div>
-						{!resume && (
-							<div className='TeacherInfo__btnBox text-center flex items-center justify-center'>
-								<Link
-									to='/courses/teacher'
-									state={{
-										courseId: courseId,
-										teacherId: teacherProfileInfo?.uuid,
-									}}
-								>
-									مشاهده پروفایل
-								</Link>
-							</div>
-						)}
-					</>
-				)}
-			</div>
-
-			{windowSize !== 'sm' && !resume && (
-				<div className='TeacherInfo__tags'>
+				<div
+					className={classNames(
+						'TeacherInfo__form text-center items-center justify-center flex-col'
+					)}
+				>
 					{getTeacherProfileInfo.loading ? (
-						<div className='TeacherInfo__tags--loading d-flex justify-between'>
-							<Skeleton.Button active shape='round' />
-							<Skeleton.Button active shape='round' />
+						<div className='TeacherInfo__loading'>
+							<Skeleton active avatar paragraph={{ rows: 4 }} />
 							<Skeleton.Button active shape='round' />
 						</div>
 					) : (
 						<>
-							{tagsList.map((tag, id) => (
-								<Tag key={id}>{tag}</Tag>
-							))}
+							<div className='TeacherInfo__imgBox'>
+								<img
+									src={teacherProfileInfo?.cover}
+									alt={teacherProfileInfo?.first_name}
+								/>
+							</div>
+							<p className='TeacherInfo__name'>{`استاد: ${teacherProfileInfo?.first_name} ${teacherProfileInfo?.last_name}`}</p>
+							<p className='TeacherInfo__description leading-9 text-justify'>
+								{teacherProfileInfo?.description}
+							</p>
+							<div className='TeacherInfo__socialBox grid grid-cols-3 justify-center justify-self-start	items-center self-center'>
+								{socialicon.map((item, id) =>
+									String(item.link) !== 'null' &&
+									String(item.link) !== 'undefined' ? (
+										isCopied && socialId === id ? (
+											'کپی شد'
+										) : (
+											<img
+												onClick={() =>
+													handleImgClick(item.link, id)
+												}
+												src={item.img}
+												alt={item.img}
+												key={id}
+											/>
+										)
+									) : null
+								)}
+							</div>
+							{!resume && (
+								<div className='TeacherInfo__btnBox text-center flex items-center justify-center'>
+									<Link
+										to='/courses/teacher'
+										state={{
+											courseId: courseId,
+											teacherId: teacherProfileInfo?.uuid,
+										}}
+									>
+										مشاهده پروفایل
+									</Link>
+								</div>
+							)}
 						</>
 					)}
 				</div>
-			)}
+
+				{windowSize !== 'sm' && !resume && (
+					<div className='TeacherInfo__tags'>
+						{getTeacherProfileInfo.loading ? (
+							<div className='TeacherInfo__tags--loading d-flex justify-between'>
+								<Skeleton.Button active shape='round' />
+								<Skeleton.Button active shape='round' />
+								<Skeleton.Button active shape='round' />
+							</div>
+						) : (
+							<>
+								{tagsList.map((tag, id) => (
+									<Tag key={id}>{tag}</Tag>
+								))}
+							</>
+						)}
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }
