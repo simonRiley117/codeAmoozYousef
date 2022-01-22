@@ -37,14 +37,14 @@ const Footer = () => {
                 <a
                   referrerpolicy="origin"
                   target="_blank"
-                  href="https://trustseal.enamad.ir/?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T"
-                  rel="noreferrer"
+                  href="https://trustseal.enamad.ir/?id=251667&code=ORS8gimDMkFKmWVzad3T" rel="noreferrer" 
                 >
                   <img
-                    referrerpolicy="origin"
+				  referrerPolicy="origin"
                     src="https://Trustseal.eNamad.ir/logo.aspx?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T"
                     alt="logo-eNamad"
                     // style='cursor:pointer'
+					data-no-retina
                     id="ORS8gimDMkFKmWVzad3T"
                   />
                 </a>
