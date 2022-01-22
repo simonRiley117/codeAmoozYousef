@@ -17,8 +17,6 @@ function QuizDetail({
   ispreview,
   ismycoursebol,
 }) {
-  console.log("language: ", language);
-  console.log("typeof language: ", typeof language);
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
@@ -54,7 +52,9 @@ function QuizDetail({
               <>
                 <img src={pdf} alt={pdf} />
                 <p className="cursor-pointer">
-                  <a href={file}>دانلود فایل</a>
+                  <a href={file} download target={"_blank"}>
+                    دانلود فایل
+                  </a>
                 </p>
               </>
             )}

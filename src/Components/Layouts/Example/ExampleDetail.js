@@ -43,7 +43,9 @@ function ExampleDetail({ example, courseUuid }) {
             <>
               <img src={pdf} alt={pdf} />
               <p className="cursor-pointer">
-                <a href={example.file}>دانلود فایل</a>
+                <a href={example.file} download target={"_blank"}>
+                  دانلود فایل
+                </a>
               </p>
             </>
           )}
