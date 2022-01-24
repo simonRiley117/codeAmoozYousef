@@ -190,15 +190,15 @@ function QuizCodeeditorWithRun(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
-  const handleSave = (value) => {
-    // const element = document.createElement("a");
-    // const file = new Blob([document.getElementById("myInput").value], {
-    //   type: "text/plain",
-    // });
-    // element.href = URL.createObjectURL(file);
-    // element.download = "myFile.txt";
-    // document.body.appendChild(element); // Required for this to work in FireFox
-    // element.click();
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([value], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = `${props.name}.txt`;
+    document.body.appendChild(element);
+    element.click();
   };
   return (
     <div>
@@ -213,7 +213,7 @@ function QuizCodeeditorWithRun(props) {
                     <div className="d-flex ">
                       <button
                         className="CodeeditorWithRun__codeeditor-btncopy"
-                        onClick={() => handleSave(value)}
+                        onClick={handleDownload}
                       >
                         ذخیره کدها
                       </button>
