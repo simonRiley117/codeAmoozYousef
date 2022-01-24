@@ -15,7 +15,7 @@ function Index() {
 
   const [id, setId] = useState(null);
   const [courseUuid, setCourseUuid] = useState(null);
-  // const [title, setTitle] = useState('')
+  const [title, setTitle] = useState("");
   const [example, setExample] = useState(null);
   const [exampleLoading, setExampleLoading] = useState(true);
 
@@ -31,16 +31,15 @@ function Index() {
     setter: setData,
   });
 
-  // console.log('PROPSzzz: ', titles)
-  // useEffect(() => {
-  //     setTitles(location.state.title);
-  // }, [location]);
+  useEffect(() => {
+    setTitle(location.state.title);
+  }, [location]);
 
   return (
     <>
       {!exampleLoading ? (
         <div className="Example ">
-          {/*<BreadCrump pathsname="/dash/example" name={title}/>*/}
+          <BreadCrump pathsname="/dash/example" name={title} />
           <div className="Example__container">
             <ExampleDetail example={example} courseUuid={courseUuid} />
           </div>

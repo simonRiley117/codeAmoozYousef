@@ -30,7 +30,7 @@ function Index() {
 
     return (
         <div className="Example">
-            {/* <BreadCrump pathsname="/dash/quiz" name={title}/> */}
+            <BreadCrump pathsname="/dash/quiz" name={title}/>
             <div className="Example__container">
                 <QuizDetail
                     quizId={quizId}
