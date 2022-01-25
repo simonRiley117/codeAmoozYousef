@@ -18,13 +18,13 @@
 		border-radius: 15px;
 		border-color: $color-dark-gray;
 		border: 1px solid $color-dark-gray;
-		padding: 7px 24px;
+		padding: 3px 24px;
 		font-size: 1.4rem;
 	}
 	.ant-input-affix-wrapper {
 		border-radius: 15px;
 		border-color: $color-dark-gray;
-		padding: 7px 24px;
+		padding: 3px 24px;
 		font-size: 1.4rem;
 
 		&:not(.ant-input-affix-wrapper-disabled):hover {
@@ -103,7 +103,7 @@
 		& .ant-select-selection-placeholder {
 			border-radius: 15px;
 			border-color: $color-dark-gray;
-			padding: 7px 24px;
+			padding: 3px 24px;
 			font-size: 1.4rem;
 		}
 
@@ -188,7 +188,7 @@
 
 .date__picker {
 	border-radius: 15px;
-	padding: 7px 24px;
+	padding: 3px 24px;
 	font-size: 1.4rem;
 	border: 1px solid $color-dark-gray;
 	width: 100%;
