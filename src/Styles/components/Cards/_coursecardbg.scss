@@ -109,8 +109,6 @@
 		top: 0px;
 		z-index: 100;
 		right: 0;
-
-		
 	}
 
 	&-title {
@@ -204,10 +202,11 @@
 	}
 
 	&-time {
-		display: block;
+		display: flex;
 		margin-right: 6px;
 		margin-bottom: -3px;
 		color: rgba($color: $color-text, $alpha: 0.8);
+		align-items: center;
 	}
 	&-img {
 		height: auto;
@@ -392,4 +391,18 @@
 .card-profile {
 	overflow: hidden;
 	border-radius: 0 10rem 10rem 1rem;
+}
+.ant-rate {
+	font-size: 1rem;
+	@include respond(laptop) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.5rem;
+	}
+}
+.ant-rate-rtl .ant-rate-star:not(:last-child) {
+	@include respond(laptop) {
+		margin-left: 0.2rem !important;
+	}
 }

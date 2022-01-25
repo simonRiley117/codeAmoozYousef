@@ -129,7 +129,7 @@ function CourseContent() {
       <div style={{ height: "100%" }}>
         <div className="LastCourse">
           <div className="container">
-            <BreadCrump name={name} />
+            <BreadCrump name1={name} />
             <div className="grid LastCourse__container relative">
               <div className="LastCourse__Box">
                 {sidebarList && !getCourseSeasons.loading ? (

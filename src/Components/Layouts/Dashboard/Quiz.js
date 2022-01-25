@@ -4,16 +4,20 @@ import Button from "@Components/Shared/Buttons/Button";
 import { Link } from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Skeleton } from "antd";
 import { useAuth } from "@App/Context/authContext";
 
 function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
   const [quizContent, setQuizContent] = useState(null);
+  const location = useLocation();
 
   const [quizLoading, setQuizLoading] = useState(true);
   let navigate = useNavigate();
-
+  const [name, setName] = useState();
+  useEffect(() => {
+    setName(location.state.name);
+  }, [location]);
   const handleClick = () => {
     navigate("/dashboard/course/quiz", {
       state: {
@@ -27,6 +31,7 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
         file: quizContent.file,
         ispreviw: ispreviw,
         ismycoursebol: ismycoursebol,
+        course: name,
       },
     });
   };
