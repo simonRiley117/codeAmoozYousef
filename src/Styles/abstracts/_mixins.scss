@@ -72,10 +72,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	}
 }
 
-@mixin display-flex($justify: '', $align: center) {
+@mixin display-flex($justify: "", $align: center) {
 	display: flex;
 	align-items: $align;
-	@if $justify != '' {
+	@if $justify != "" {
 		justify-content: $justify;
 	}
 }
@@ -91,11 +91,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	font-family: map-get($map: $fonts, $key: $family);
 }
 
-@mixin d-flex-column($justify: '', $align: center) {
+@mixin d-flex-column($justify: "", $align: center) {
 	display: flex;
 	align-items: $align;
 	flex-direction: column;
-	@if $justify != '' {
+	@if $justify != "" {
 		justify-content: $justify;
 	}
 }

@@ -4,16 +4,20 @@ import Button from "@Components/Shared/Buttons/Button";
 import { Link } from "react-router-dom";
 import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Skeleton } from "antd";
 import { useAuth } from "@App/Context/authContext";
 
 function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
   const [quizContent, setQuizContent] = useState(null);
+  const location = useLocation();
 
   const [quizLoading, setQuizLoading] = useState(true);
   let navigate = useNavigate();
-
+  const [name, setName] = useState();
+  useEffect(() => {
+    setName(location.state.name);
+  }, [location]);
   const handleClick = () => {
     navigate("/dashboard/course/quiz", {
       state: {
@@ -27,6 +31,7 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
         file: quizContent.file,
         ispreviw: ispreviw,
         ismycoursebol: ismycoursebol,
+        course: name,
       },
     });
   };
@@ -70,17 +75,10 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
         <div className="Quiz__box">
           <p className="Quiz__title">آزمون درس</p>
           <p className="Quiz__txt">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-            استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
-            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی
-            در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را
-            می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-            الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این
-            صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و
-            شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای
-            اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد
-            استفاده قرار گیرد
+            آزمون بدون زمان میباشد و تا زمانی که نمره 100 دریافت نشده است، پاس
+            نمی شود و شما مجاز هستید تا زمانی که نمره 100 دریافت کنید، آزمون
+            دهید اما زمانی که نمره 100 گرفته شود، نمره های بعدی بدون تاثیر
+            میباشد
           </p>
           <Button
             onClick={handleClick}

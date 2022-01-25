@@ -2,6 +2,8 @@ import React, { useState, useLayoutEffect, useRef } from "react";
 import Tour from "reactour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { useAuth } from "@App/Context/authContext";
+import IconBtn from "@Components/Shared/Buttons/IconBtn";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 
 function WebTour(props) {
   const { setShowGuid, showGuid } = useAuth();
@@ -53,6 +55,12 @@ function WebTour(props) {
       stepInteraction={true}
       closeWithMask={false}
       startAt={0}
+      prevButton={
+        <IconBtn classes=" ml-12" title="قبل" icon={<RightOutlined />} />
+      }
+      nextButton={
+        <IconBtn classes=" mr-12" title="بعد" icon={<LeftOutlined />} />
+      }
 
       // style={{ direction: "rtl" }}
     />

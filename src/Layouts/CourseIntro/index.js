@@ -90,7 +90,7 @@ const CourseIntro = () => {
     <div className="container">
       <BreadCrump name={name} />
       <div className="Course">
-        {windowSize !== "sm"
+        {windowSize !== "ml" && windowSize !== "md-2" && windowSize !== "sm"
           ? data !== "" && (
               <HeaderDiscount data={data} makeCouponExpire={makeCouponExpire} />
             )
@@ -100,11 +100,10 @@ const CourseIntro = () => {
                 makeCouponExpire={makeCouponExpire}
               />
             )}
-
         <div className="grid Course__container relative">
-          {windowSize !== "sm" && (
+          {windowSize !== "ml" && windowSize !== "md-2" && windowSize !== "sm" && (
             <div className="Course__sideBar relative">
-              <TeacherInfo courseId={id} resume={false} isSticky/>
+              <TeacherInfo courseId={id} resume={false} isSticky />
             </div>
           )}
 
@@ -121,32 +120,35 @@ const CourseIntro = () => {
                 )}
               </TabPane>
             </Tabs>
-            {windowSize !== "sm" && pos && (
-              <div className="Course__Comment">
-                <Tabs className="TabBox " type="card">
-                  <TabPane
-                    size={"small"}
-                    tab="نظرات"
-                    key="1"
-                    className="Sarfasl__commentpart"
-                  >
-                    <Comment courseId={id} />
-                  </TabPane>
-                  <TabPane
-                    tab="پرسش و پاسخ"
-                    key="2"
-                    className="Sarfasl__commentpart"
-                  >
-                    <AskAndAnswer
-                      has_user_course={has_user_course}
-                      courseId={id}
-                    />
-                  </TabPane>
-                </Tabs>
-              </div>
-            )}
+            {windowSize !== "ml" &&
+              windowSize !== "md-2" &&
+              windowSize !== "sm" &&
+              pos && (
+                <div className="Course__Comment">
+                  <Tabs className="TabBox " type="card">
+                    <TabPane
+                      size={"small"}
+                      tab="نظرات"
+                      key="1"
+                      className="Sarfasl__commentpart"
+                    >
+                      <Comment courseId={id} />
+                    </TabPane>
+                    <TabPane
+                      tab="پرسش و پاسخ"
+                      key="2"
+                      className="Sarfasl__commentpart"
+                    >
+                      <AskAndAnswer
+                        has_user_course={has_user_course}
+                        courseId={id}
+                      />
+                    </TabPane>
+                  </Tabs>
+                </div>
+              )}
           </div>
-          {windowSize !== "sm" && (
+          {windowSize !== "ml" && windowSize !== "md-2" && windowSize !== "sm" && (
             <div className="Course__sideBar relative">
               <CourseTable
                 liftUpHas_user_course={liftUpHas_user_course}
@@ -157,7 +159,9 @@ const CourseIntro = () => {
             </div>
           )}
 
-          {windowSize === "sm" && (
+          {(windowSize === "ml" ||
+            windowSize === "md-2" ||
+            windowSize === "sm") && (
             <div>
               <div className="Course__sideBar relative">
                 <TeacherInfo courseId={id} liftingUpTags={liftingUpTags} />
@@ -173,7 +177,9 @@ const CourseIntro = () => {
             </div>
           )}
         </div>
-        {windowSize === "sm" && (
+        {(windowSize === "ml" ||
+          windowSize === "md-2" ||
+          windowSize === "sm") && (
           <div className="Course__Comment">
             <Tabs className="TabBox " type="card">
               <TabPane tab="نظرات" key="1" className="Sarfasl__commentpart">
@@ -189,7 +195,9 @@ const CourseIntro = () => {
             </Tabs>
           </div>
         )}
-        {windowSize === "sm" && (
+        {(windowSize === "ml" ||
+          windowSize === "md-2" ||
+          windowSize === "sm") && (
           <div className="TeacherInfo__tags">
             {tags?.map((tag, id) => (
               <Tag key={id}>{tag}</Tag>

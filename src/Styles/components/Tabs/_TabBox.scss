@@ -116,12 +116,17 @@
   & .ant-tabs-tabpane {
     box-shadow: 0 2px 8px rgba($color: #000, $alpha: 0.15);
     background-color: #fff;
-    padding: 2rem 3rem;
+    padding: 2rem 3rem 3.5rem 3rem;
     min-height: 300px;
     transition: none;
-
+    @include respond(laptop) {
+      padding: 2rem 3rem 4.5rem 3rem;
+    }
+    @include respond(sm-laptop) {
+      padding: 2rem 3rem 5rem 3rem;
+    }
     @include respond(tablet) {
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 6rem 1rem;
     }
     &:nth-child(1) {
       border-radius: 1.5rem 0 1.5rem 1.5rem;

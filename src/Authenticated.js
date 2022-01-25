@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import DashboardLayout from "@Components/Shared/Layout/DashboardLayout";
 
 // import News from "@Layouts/News";
@@ -53,36 +53,32 @@ import CourseContent from "@Layouts/CourseContent";
 import ShoppingCard from "@Layouts/ShoppingCard/ShoppingCard";
 import Layout from "@Components/Shared/Layout/Layout";
 
-
 const Authenticated = () => {
-
-    return (
-
-        <Routes>
-            <Route element={<Layout/>}>
-                <Route path="/shopping-card" element={<ShoppingCard/>}/>
-                <Route path="/coursecontent" element={<CourseContent/>}/>
-            </Route>
-            <Route element={<DashboardLayout/>}>
-                <Route path="/dashboard" element={<Dashboard/>}/>
-                <Route path="/dashboard/suggest" element={<NewCourse/>}/>
-                <Route path="/dashboard/wallet" element={<Transaction/>}/>
-                <Route path="/dashboard/setting" element={<Password/>}/>
-                <Route path="/dashboard/topic" element={<CourseTopic/>}/>
-                <Route path="/dashboard/resume" element={<Resume/>}/>
-                <Route path="/dashboard/profile" element={<Profile/>}/>
-                <Route path="/dashboard/my-course" element={<MyCourses/>}/>
-                <Route path="/dashboard/course/example" element={<Example/>}/>
-                <Route path="/dashboard/course/quiz" element={<Quiz/>}/>
-                <Route element={<MyMessages/>}>
-                    <Route path="/dashboard/messages" element={<EmptyChatroom/>}/>
-                    <Route path="/dashboard/messages/:id" element={<ChatroomUser/>}/>
-                </Route>
-                {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
-            </Route>
-        </Routes>
-
-    );
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/shopping-card" element={<ShoppingCard />} />
+        <Route path="/coursecontent" element={<CourseContent />} />
+        <Route path="/dashboard/course/quiz" element={<Quiz />} />
+        <Route path="/dashboard/course/example" element={<Example />} />
+      </Route>
+      <Route element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/suggest" element={<NewCourse />} />
+        <Route path="/dashboard/wallet" element={<Transaction />} />
+        <Route path="/dashboard/setting" element={<Password />} />
+        <Route path="/dashboard/topic" element={<CourseTopic />} />
+        <Route path="/dashboard/resume" element={<Resume />} />
+        <Route path="/dashboard/profile" element={<Profile />} />
+        <Route path="/dashboard/my-course" element={<MyCourses />} />
+        <Route element={<MyMessages />}>
+          <Route path="/dashboard/messages" element={<EmptyChatroom />} />
+          <Route path="/dashboard/messages/:id" element={<ChatroomUser />} />
+        </Route>
+        {/* <Route path='*'>{() => <Redirect to='/dashboard' />}</Route> */}
+      </Route>
+    </Routes>
+  );
 };
 
 export default Authenticated;

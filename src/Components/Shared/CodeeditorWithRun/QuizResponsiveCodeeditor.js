@@ -124,6 +124,16 @@ function QuizResponsiveCodeeditor(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([value], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = `${props.name}.txt`;
+    document.body.appendChild(element);
+    element.click();
+  };
   return (
     <div>
       <div className="CodeeditorWithRun">
@@ -135,7 +145,10 @@ function QuizResponsiveCodeeditor(props) {
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
                     <p>{`مثال 2.${props.lan}`}</p>
                     <div className="d-flex ">
-                      <button className="CodeeditorWithRun__codeeditor-btncopy">
+                      <button
+                        className="CodeeditorWithRun__codeeditor-btncopy"
+                        onClick={handleDownload}
+                      >
                         ذخیره کدها
                       </button>
                       <button
