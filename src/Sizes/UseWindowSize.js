@@ -7,6 +7,8 @@ function getBreakPoint(windowWidth) {
       return "sm";
     } else if (windowWidth < 800) {
       return "md-2";
+    } else if (windowWidth < 1000) {
+      return "ml";
     } else if (windowWidth < 1024) {
       return "md";
     } else if (windowWidth < 1250) {
