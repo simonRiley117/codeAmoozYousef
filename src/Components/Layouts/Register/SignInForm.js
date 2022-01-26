@@ -22,6 +22,7 @@ const override = css`
   display: block;
   margin: 0 auto;
   border-color: #fff;
+  
 `;
 
 const SignInForm = () => {
