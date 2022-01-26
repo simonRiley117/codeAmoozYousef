@@ -11,9 +11,13 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../../../constants";
 import { useAuth } from "../../../Context/authContext";
+import { toast } from "react-toastify";
+import Modal from "@Components/Shared/Modal/Modal";
+import Button from "@Components/Shared/Buttons/Button";
+import { Link } from "react-router-dom";
 
 function QuizCodeeditorWithRun(props) {
-  console.log("PROPS QUIZ: ", props);
+  //  console.log("PROPS QUIZ: ", props);
   languages.map(
     (lang) =>
       lang === props.lan &&
@@ -22,6 +26,7 @@ function QuizCodeeditorWithRun(props) {
   );
   const [value, setValue] = useState(props.value);
   const [test, setTest] = useState("");
+  const [quizeResult, setQuizeResult] = useState();
   const [number, setNumber] = useState(0);
   const [res, setRes] = useState("");
   const [errs, setErrs] = useState("");
@@ -33,6 +38,14 @@ function QuizCodeeditorWithRun(props) {
   const [btn, setBtn] = useState(1);
   const [numberComplit, setNumberComplit] = useState(0);
   const { token } = useAuth();
+  const [modal, setModal] = useState(false);
+  const handleModalVisible = () => {
+    setModal(false);
+  };
+
+  const handleModalShow = (uuid, lock) => {
+    setModal(true);
+  };
   const QuizPlayGround = useAxios({
     url: `${API_URL}/CompilerService/v2/quiz/playground/`,
     method: "POST",
@@ -72,14 +85,17 @@ function QuizCodeeditorWithRun(props) {
       if (res) {
         console.log("QuizSendToServer", res.data);
         // setInfo1(res.data);
-        setNumber(res.data.compile_result);
-        res.data.compiler_stderr ? setBtn(1) : setBtn(2);
-        setRes(res.data.compiler_stdout);
+        setQuizeResult(res.data);
+        handleModalShow();
 
+        setNumber(res.data.compile_result);
+        res.data.compiler_stderr.length > 0 ? setBtn(2) : setBtn(1);
+        setRes(res.data.compiler_stdout);
         res.data.compiler_stderr
           ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
           : setErrs(res.data.compiler_stderr);
         setLoad(false);
+        console.log(res.data.compiler_stderr.length);
 
         if (res.data.compile_result === 100) {
           setNumberComplit(res.data.compile_result);
@@ -127,16 +143,35 @@ function QuizCodeeditorWithRun(props) {
     setLoad(true);
     QuizPlayGround.reFetch();
   };
+  // ismycoursebol
+  // ispreview
   const handleInputSend = () => {
-    setData({
-      submissions: {
-        question_id: props.quizId,
-        source: value,
-        // input: test,
-      },
-    });
-    setLoad(true);
-    QuizSendToServer.reFetch();
+    if (!token) {
+      toast.error("برای پاسخ به آزمون اول به سایت وارد شوید");
+    } else if (props.ispreview && !props.ismycoursebol) {
+      toast.error("برای پاسخ به آزمون در دوره ثبت نام کنید");
+    } else {
+      setData({
+        submissions: {
+          question_id: props.quizId,
+          source: value,
+          // input: test,
+        },
+      });
+      setLoad(true);
+      QuizSendToServer.reFetch();
+    }
+    if (!props.ispreview) {
+      setData({
+        submissions: {
+          question_id: props.quizId,
+          source: value,
+          // input: test,
+        },
+      });
+      setLoad(true);
+      QuizSendToServer.reFetch();
+    }
   };
 
   function onChange(newValue) {
@@ -155,7 +190,16 @@ function QuizCodeeditorWithRun(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
-
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([value], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = `${props.name}.txt`;
+    document.body.appendChild(element);
+    element.click();
+  };
   return (
     <div>
       <div className="CodeeditorWithRun">
@@ -167,7 +211,10 @@ function QuizCodeeditorWithRun(props) {
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
                     <p>{`${props.name}.${props.lan}`}</p>
                     <div className="d-flex ">
-                      <button className="CodeeditorWithRun__codeeditor-btncopy">
+                      <button
+                        className="CodeeditorWithRun__codeeditor-btncopy"
+                        onClick={handleDownload}
+                      >
                         ذخیره کدها
                       </button>
                       <button
@@ -218,7 +265,7 @@ function QuizCodeeditorWithRun(props) {
                     theme="monokai"
                     value={value}
                     onChange={onChange}
-                    width="45vw"
+                    width="100%"
                     height="64.1vh"
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
@@ -226,6 +273,7 @@ function QuizCodeeditorWithRun(props) {
                       enableBasicAutocompletion: true,
                       enableLiveAutocompletion: true,
                       enableSnippets: true,
+                      fontSize: "1.5rem",
                     }}
                   />
                 </div>
@@ -278,7 +326,7 @@ function QuizCodeeditorWithRun(props) {
                       mode={props.lan}
                       theme="monokai"
                       value={btn === 1 ? res : errs}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       readOnly
@@ -290,6 +338,7 @@ function QuizCodeeditorWithRun(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>
@@ -305,7 +354,7 @@ function QuizCodeeditorWithRun(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       editorProps={{ $blockScrolling: true }}
@@ -316,6 +365,7 @@ function QuizCodeeditorWithRun(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>
@@ -331,6 +381,35 @@ function QuizCodeeditorWithRun(props) {
           </>
         )}
       </div>
+      {quizeResult && (
+        <Modal
+          className="ExitModal"
+          visible={modal}
+          onCancel={handleModalVisible}
+        >
+          <div className="ExitModal__back">
+            <h3>{quizeResult.compile_result}</h3>
+            <p className="mb-12">{quizeResult.compiler_stdout}</p>
+            <div className="d-flex-space">
+              <Button>
+                {" "}
+                <Link
+                  to={`/coursecontent`}
+                  state={{
+                    id: props.courseId,
+                  }}
+                  className="flex items-center"
+                >
+                  صفحه ی دوره
+                </Link>
+              </Button>
+              <Button onClick={handleModalVisible} type="primary">
+                برگشت به آزمون
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

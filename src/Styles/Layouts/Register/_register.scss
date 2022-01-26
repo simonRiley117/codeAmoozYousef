@@ -108,6 +108,9 @@
 				justify-content: center;
 				height: 100%;
 			}
+			& .register__form--wrapper {
+				padding: 1.5rem 3rem;
+			}
 		}
 		& > .button__icon {
 			color: $color-error;
@@ -189,10 +192,13 @@
 			& .input__field {
 				border-color: rgba($color: #fff, $alpha: 0.5);
 				background-color: rgba($color: #fff, $alpha: 0.5);
-				padding: 7px 1.5rem;
+				padding: 3px 1.5rem;
 				margin-top: 4px;
 				&.ant-input-affix-wrapper:hover {
 					border-color: rgba($color: #fff, $alpha: 0.5);
+				}
+				& svg {
+					max-width: 20px;
 				}
 			}
 			& .input__label {
@@ -200,7 +206,6 @@
 			}
 			& .ant-input {
 				background-color: transparent;
-				margin-right: 1rem;
 			}
 
 			& .ant-checkbox-inner {

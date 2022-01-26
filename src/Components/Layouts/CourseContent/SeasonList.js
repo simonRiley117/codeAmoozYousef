@@ -5,6 +5,10 @@ import { useLocation } from "react-router";
 import useFetch from "../../../Context/useFetch";
 import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
 import Lock from "@Assets/Icons/lock.svg";
+import { useUserData } from "@App/Context/userContext";
+import { tourguid } from "@App/Recoil/StateRecoil";
+import { useRecoilState } from "recoil";
+
 const SeasonList = ({
   activeContent,
   sidebarList,
@@ -19,13 +23,16 @@ const SeasonList = ({
     if (!openPanels.includes(activeSeasons)) {
       setOpenPanels((before) => [...before, activeSeasons]);
     }
-  }, [,activeSeasons,activeContent]);
+  }, [, activeSeasons, activeContent]);
+  const { userData } = useUserData();
+  const [showguid, setShowguid] = useRecoilState(tourguid);
+
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion
         activeKey={openPanels}
         onChange={setOpenPanels}
-		destroyInactivePanel={true}
+        destroyInactivePanel={true}
       >
         {sidebarList.seasons.map((season, index) => (
           <Panel
@@ -44,6 +51,8 @@ const SeasonList = ({
                 lock={season.lockedOn}
                 id={season.uuid}
                 openPanels={openPanels}
+                userData={userData}
+                showguid={showguid}
               />
             }
             key={season.uuid}
@@ -76,18 +85,22 @@ const SeasonTitle = ({ title, done, index }) => {
           <i className="fas fa-check"></i>
         </span>
       ) : (
-        <div className="Sarfasl__Accordionnumber"><p>{index + 1}</p></div>
+        <div className="Sarfasl__Accordionnumber">
+          <p>{index + 1}</p>
+        </div>
       )}
       <span>{title}</span>
     </span>
   );
 };
-const SeasonHeader = ({ time, lock, FetchContent }) => {
+const SeasonHeader = ({ time, lock, FetchContent, userData, showguid }) => {
+  console.log(`object`, showguid);
   return (
-    <div
-      className="Sarfasl__AccordionItem"
-    >
-      {lock && <img src={Lock} alt={Lock} />}
+    <div className="Sarfasl__AccordionItem">
+      {showguid && <img src={Lock} alt={Lock} data-tut="reactour__lock" />}
+      {lock && (
+        <img src={Lock} alt={Lock} className="Sarfasl__AccordionItem__lock" />
+      )}
       <div className="Sarfasl__AccordionItem--time">
         <time>{time}</time>
         <img src={Clock} alt={Clock} />

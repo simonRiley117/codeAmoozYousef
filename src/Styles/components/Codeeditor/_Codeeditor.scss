@@ -91,6 +91,9 @@
         margin-bottom: 3rem;
         overflow: hidden;
         border-radius: 15px;
+        @include respond(tablet) {
+            grid-template-columns: 1fr;
+        }
         & > *:first-child {
             border-right: 1px solid $color-green-light;
         }
@@ -150,6 +153,7 @@
             justify-content: space-between;
             font-size: 1.2rem;
             padding-right: 10rem;
+         
         }
         &-btncopy {
             background-color: transparent;

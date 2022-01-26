@@ -6,7 +6,11 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
+// -------------------- emoji-mart --------------------
+@import "~emoji-mart/css/emoji-mart.css";
+
 @import "~swiper/swiper-bundle.css";
+
 // -------------------- fonts --------------------
 @import "./base/font";
 
@@ -25,7 +29,6 @@
 @import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Favorites/favorites";
 @import "./components/profile/profileForm";
-@import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Favorites/favorites";
 @import "./Layouts/Rules/rules";
 @import "./components/Layout/layout";
@@ -67,6 +70,8 @@
 @import "./components/MyCourses/MycourseCard.scss";
 @import "./components/ShareModal/ShareModal";
 @import "./components/ChangePass/ChangePassword.scss";
+@import "./components/WebTour/WebTour";
+@import "./components/CourseCoontent/ContentDetail";
 
 //-------------master------------
 @import "./components/Master/WorkWithUs";
@@ -105,7 +110,6 @@
 @import "./Layouts/Example/Example";
 @import "./Layouts/Example/ExampleDetail";
 @import "./Layouts/shoppingCard/shoppingcard";
-@import "./Layouts/Dashboard/dashboard";
 @import "./Layouts/Dashboard/LastCourse";
 @import "./Layouts/Dashboard/Quiz";
 @import "./Layouts/Dashboard/Transaction";

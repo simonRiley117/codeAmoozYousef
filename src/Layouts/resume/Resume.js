@@ -55,11 +55,6 @@ const Resume = ({ readable, teacherId }) => {
 
     return (
         <>
-            {!readable ? (
-                <h3 className="title  mb-10"> رزومه شما</h3>
-            ) : (
-                <h3 className="title  mb-10"> رزومه</h3>
-            )}
             <Accordion half>
                 <Panel header={<span>سوابق کاری</span>}>
                     <WorkExperiencePanel

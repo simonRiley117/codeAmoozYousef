@@ -48,10 +48,10 @@
 
 	.menu_logo {
 		// padding: 0 1rem;
-		z-index: 1051;
+		// z-index: 1051;
 
 		@include respond(big-tablet) {
-			order: 3;
+			order: 2;
 			justify-content: flex-end;
 		}
 
@@ -115,10 +115,12 @@
 			position: fixed;
 			right: -100vw;
 			top: 0;
-			padding-top: 8rem;
+			padding-top: 10rem;
+			padding-right: 0;
 			width: 50vw;
 			height: 100vh;
 			background-color: $color-blue;
+			display: flex;
 			align-items: flex-start;
 			flex-direction: column-reverse;
 			justify-content: flex-end;
@@ -133,7 +135,6 @@
 		}
 
 		&.active {
-			display: flex;
 			right: 0;
 		}
 		&::before {
@@ -240,6 +241,25 @@
 			@include respond(big-tablet) {
 				width: auto;
 			}
+			@include respond(smallest-phone) {
+				flex-basis: auto;
+			}
+		}
+
+		&--backdrop {
+			width: 100vw;
+			height: 100vh;
+			background-color: rgb(0 0 0 / 50%);
+			position: fixed;
+			top: 0;
+			right: -100vw;
+			z-index: 0;
+			opacity: 0;
+			transition: right 0.3s, opacity 0.4 0.2s ease-in-out;
+			&.active {
+				right: 0;
+				opacity: 1;
+			}
 		}
 	}
 	& .Menu-wrapper {
@@ -249,6 +269,7 @@
 		height: 8rem;
 		@include respond(big-tablet) {
 			justify-content: space-between;
+			flex-basis: 11rem;
 		}
 		@include respond(smallest-phone) {
 			column-gap: 0;
@@ -257,18 +278,14 @@
 	& .Menu_actions {
 		@include display-flex;
 		@include respond(big-tablet) {
-			order: 1;
-			flex-direction: row-reverse;
+			order: 3;
+			flex-basis: 11rem;
+			// flex-direction: row-reverse;
 			justify-content: space-between;
 			align-items: flex-start;
-			width: 100%;
-			padding-left: 2rem;
-			margin-bottom: 3rem;
-			background-color: $color-blue-light-1;
-			padding: 2rem 3rem 2rem 0;
 			&--profile {
 				flex-direction: row-reverse;
-				margin-right: 2rem;
+				// margin-right: 2rem;
 				& .profile__image {
 					margin-left: 1rem;
 
@@ -283,10 +300,36 @@
 				font-size: 12px;
 			}
 		}
+		@include respond(smallest-phone) {
+			flex-basis: auto;
+		}
 
 		& > .ant-btn {
-			color: $color-white;
-			margin-left: 1.5rem;
+			margin-left: 1rem;
+			& .ant-badge {
+				color: #fff;
+				transition: all 0.3s 0.1s;
+				@include respond(big-tablet) {
+					color: $color-text;
+				}
+			}
+			// &.dark,
+			// &.activeMenu {
+			// 	& .ant-badge {
+			// 	}
+			// }
+			@include respond(big-tablet) {
+				&.activeMenu {
+					& .ant-badge {
+						color: #fff;
+					}
+				}
+			}
+			&.dark {
+				& .ant-badge {
+					color: #fff;
+				}
+			}
 		}
 	}
 	&--profile {
@@ -328,6 +371,17 @@
 	&__dahsboard {
 		color: #ffffff;
 		font-size: 14px;
+		@include respond(big-tablet) {
+			padding: 0 2rem;
+			min-height: 8.5rem;
+			display: flex;
+			width: 100%;
+			flex-direction: column;
+			justify-content: center;
+		}
+		@include respond(phone) {
+			padding: 0 1rem;
+		}
 		&.sticky {
 			@include respond(tablet) {
 				box-shadow: 0 4px 15px rgba($color: #000000, $alpha: 0.15);
@@ -335,8 +389,8 @@
 		}
 		li.Menu__li {
 			padding: 0 2rem;
-			@include respond(big-tablet) {
-				padding: 0 1.4rem;
+			@include respond(sm-laptop) {
+				padding: 0 1.5rem;
 			}
 			& a {
 				@include set-font(14px, 600, $color-white);
@@ -351,26 +405,33 @@
 		.logo {
 			margin-left: 10px;
 		}
+
+		& .Menu-wrapper {
+			column-gap: 3rem;
+		}
 		& .menu_logo {
-			padding-right: 12rem;
-			flex: 1 0 25%;
+			margin-right: 12rem;
 			justify-content: center;
 			@include respond(big-tablet) {
-				padding-right: 3rem;
-				flex: 1 0 20%;
+				margin-right: 0;
 				order: 2;
 			}
 			@include respond(tablet) {
 				padding-right: 0;
-				padding-left: 2rem;
+				padding-left: 0;
 			}
 			& .logo {
 				width: 5.8rem;
-				height: 5.8rem;
+				height: 5.2rem;
 				border-radius: 50%;
 				padding: 1rem;
 				@include display-flex(center);
 				margin-left: 1.5rem;
+				@include respond(big-tablet) {
+					width: 4.4rem;
+					height: 4.4rem;
+					margin-left: 1rem;
+				}
 				@include respond(tablet) {
 					margin-left: 0.5rem;
 				}
@@ -387,22 +448,28 @@
 					transition: all 300ms;
 				}
 				@include respond(big-tablet) {
-					max-width: 14rem;
+					max-width: 10rem;
 				}
 			}
 		}
 		& .Menu_actions {
 			@include display-flex;
+			margin-left: 12rem;
+			@include respond(sm-laptop) {
+				margin-left: 4rem;
+			}
 			@include respond(big-tablet) {
-				order: 1;
-				flex-direction: row-reverse;
+				order: 3;
+				margin-left: 0;
+
 				justify-content: space-between;
-				width: 100%;
-				padding-left: 2rem;
-				margin-bottom: 3rem;
+
 				&--profile {
 					flex-direction: row-reverse;
 					margin-right: 2rem;
+					@include respond(big-tablet) {
+						margin-right: 1rem;
+					}
 					& .profile__image {
 						margin-left: 1rem;
 
@@ -419,21 +486,75 @@
 			}
 
 			& > .ant-btn {
-				color: $color-white;
-				margin-left: 1.5rem;
+				margin-left: 1rem;
+				@include respond(phone) {
+					margin-left: 0;
+				}
+				& .ant-badge {
+					color: #fff;
+					transition: all 0.3s 0.1s;
+					@include respond(big-tablet) {
+						color: $color-text;
+					}
+				}
+				&.activeMenu {
+					& .ant-badge {
+						color: #fff;
+					}
+				}
 			}
 		}
 
 		.Menu__nav {
+			// overflow: hidden;
+			min-height: 8rem;
+			// width: 100%;
+
+			transition: all 400ms ease-in-out;
+
 			@include respond(big-tablet) {
-				display: none;
+				order: 1;
+				position: fixed;
+				right: -100vw;
+				top: 0;
+				padding-top: 8rem;
+				padding-right: 0;
+				width: 50vw;
+				height: 100vh;
+				background-color: $color-section;
+				align-items: flex-start;
+				flex-direction: column;
+				justify-content: flex-start;
+				&::before {
+					content: none !important;
+				}
 			}
+
+			@include respond(big-phone) {
+				width: 100vw;
+			}
+			&.active {
+				right: 0;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				width: 100vw;
+				height: 100%;
+				z-index: -1;
+				background-color: $color-section;
+				border-bottom-right-radius: 85px;
+			}
+
 			&--btn {
 				flex-direction: column;
 				display: none;
 				z-index: 1051;
 				@include respond(big-tablet) {
 					display: flex;
+					width: auto;
 				}
 				&:focus,
 				&:active {
@@ -455,6 +576,7 @@
 				}
 				&.open {
 					& > span {
+						background-color: #fff;
 						&:nth-child(2) {
 							transform: translateX(2rem);
 							opacity: 0;
@@ -470,22 +592,49 @@
 			}
 
 			&--wrapper {
-				flex: 1 0 75%;
-				// margin-right: 3rem;
-				background-color: $color-section;
-
-				padding: 1rem 5rem 1rem 15rem;
-				border-bottom-right-radius: 85px;
-
-				@include respond(sm-laptop) {
-					padding: 1rem 2rem;
-				}
+				@include display-flex;
+				width: 100%;
 				@include respond(big-tablet) {
-					padding-left: 2rem;
-					padding-right: 3rem;
-					margin-right: 0.5rem;
-					background-color: $color-white;
+					width: auto;
 				}
+				@include respond(smallest-phone) {
+					flex-basis: auto;
+				}
+			}
+
+			&--backdrop {
+				width: 100vw;
+				height: 100vh;
+				background-color: rgb(0 0 0 / 50%);
+				position: fixed;
+				top: 0;
+				right: -100vw;
+				z-index: 0;
+				opacity: 0;
+				transition: right 0.3s, opacity 0.4 0.2s ease-in-out;
+				&.active {
+					right: 0;
+					opacity: 1;
+				}
+			}
+		}
+
+		& .Menu__ul {
+			width: 100%;
+			@include display-flex;
+			@include respond(big-tablet) {
+				flex-direction: column;
+				align-items: flex-start;
+				padding-right: 3rem;
+				margin-right: 0;
+				& .Menu__li {
+					&:not(:last-child) {
+						margin-bottom: 2.5rem;
+					}
+				}
+			}
+			&--sidebar {
+				border-bottom: 1px solid $color-blue-light-1;
 			}
 		}
 
@@ -536,8 +685,8 @@
 		top: auto;
 		left: auto;
 		@include display-flex(center);
-		width: 20px;
-		height: 20px;
+		width: 2rem;
+		height: 2rem;
 		color: $color-text;
 		border-radius: 50%;
 		background-color: $color-white;

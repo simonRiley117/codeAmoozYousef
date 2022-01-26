@@ -19,6 +19,7 @@
 
 	&__title {
 		@include set-font(1.6rem, 600, $color-blue-dark);
+	
 	}
 
 	&__sampleLinkBox {
@@ -116,6 +117,11 @@
 		margin: 0 2rem;
 		&:not(:last-of-type) {
 			margin-bottom: 1.5rem;
+		}
+		&--title{
+			&:hover{
+				color:$color-primary
+			}
 		}
 	}
 

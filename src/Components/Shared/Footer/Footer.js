@@ -33,21 +33,30 @@ const Footer = () => {
 							<Link to='/'>codeamooz</Link>
 						</div>
 						<div className='flex items-center footer__symbols'>
-							<article className='footer__symbols--img'>
-								<a
-									referrerpolicy='origin'
-									target='_blank'
-									href='https://trustseal.enamad.ir/?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
-									rel='noreferrer'
-								>
-									<img
-										referrerpolicy='origin'
-										src='https://Trustseal.eNamad.ir/logo.aspx?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
-										alt='logo-eNamad'
-										// style='cursor:pointer'
-										id='ORS8gimDMkFKmWVzad3T'
-									/>
-								</a>
+							<article
+								className='footer__symbols--img'
+								onClick={() =>
+									window.open(
+										'https://trustseal.enamad.ir/?id=251667&code=ORS8gimDMkFKmWVzad3T',
+										'Popup',
+										'toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30'
+									)
+								}
+							>
+								{/* <a
+                  referrerpolicy="origin"
+                  target="_blank"
+                  href="https://trustseal.enamad.ir/?id=251667&code=ORS8gimDMkFKmWVzad3T" rel="noreferrer" 
+                > */}
+								<img
+									referrerPolicy='origin'
+									src='https://Trustseal.eNamad.ir/logo.aspx?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T'
+									alt=''
+									// style='cursor:pointer'
+									data-no-retina
+									id='ORS8gimDMkFKmWVzad3T'
+								/>
+								{/* </a> */}
 							</article>
 							<article
 								className='footer__symbols--img'

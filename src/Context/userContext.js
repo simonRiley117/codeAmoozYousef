@@ -3,13 +3,44 @@ import { API_URL } from "../constants";
 
 import useAxios from "@use-hooks/axios";
 import { useAuth } from "./authContext";
+import { tourguid } from "@App/Recoil/StateRecoil";
+import { useRecoilState } from "recoil";
 
 const UserDataContext = createContext();
 
 const UserDataProvider = (props) => {
   const [userData, setUserData] = useState(null);
-  const [username, setUsername] = useState();
-  const { token, authDispatch } = useAuth();
+  // const [username, setUsername] = useState();
+  const {
+    token,
+    authDispatch,
+    refreshToken,
+    authRefreshDispatch,
+    setShowGuid,
+  } = useAuth();
+  const [showguid, setShowguid] = useRecoilState(tourguid);
+
+  const refToken = useAxios({
+    url: `${API_URL}/token/refresh/dj`,
+    method: "POST",
+    options: {
+      data: refreshToken,
+      headers: {
+        // Authorization: `JWT ${refreshtoken}`,
+      },
+    },
+    customHandler: (err, res) => {
+      if (res) {
+        console.log("refresh res: ", res.data);
+        authDispatch({ type: "LOGIN", token: res.data.access });
+      }
+      if (err) {
+        console.log("refresh error: ", err.response);
+        authDispatch({ type: "LOGOUT", token });
+        authRefreshDispatch({ type: "LOGOUT", refreshToken });
+      }
+    },
+  });
 
   const getUser = useAxios({
     url: `${API_URL}/user/`,
@@ -21,14 +52,25 @@ const UserDataProvider = (props) => {
     trigger: token ? [] : undefined,
     customHandler: (err, res) => {
       if (res) {
+        console.log("user res: ", res.data);
         setUserData(res.data);
+        if (!res.data.tool_gide) {
+          setShowGuid(!res.data.tool_gide);
+        }
       }
       if (err) {
-        authDispatch({ type: "LOGOUT" });
+        console.log("user err: ", err.response);
+
+        if (refreshToken) {
+          refToken.reFetch();
+        } else {
+          authDispatch({ type: "LOGOUT" });
+          authRefreshDispatch({ type: "LOGOUT", refreshToken });
+        }
       }
     },
   });
-
+  // console.log(`showguid`, showguid);
   return (
     <>
       {token ? (

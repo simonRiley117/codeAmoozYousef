@@ -16,7 +16,6 @@ const Propfile = () => {
 	const { userData } = useUserData();
 	const [modal, setModal] = useState(false);
 
-	const isTablet = useMediaQuery('(max-width: 992px)');
 
 	let navigate = useNavigate();
 	const { authDispatch } = useAuth();
@@ -36,41 +35,21 @@ const Propfile = () => {
 	);
 	return (
 		<>
-			{isTablet ? (
-				<div className='appbar__profile--area'>
-					<div className='flex gap-x-4 '>
-						<div className='appbar__profile'>
-							<Avatar src={userData.cover} alt='name' shape='square'>
-								{userData.name}
-							</Avatar>
-						</div>
-						<div className='flex flex-col'>
-							<h4>{userData.first_name}</h4>
-							<span>{userData.last_name}</span>
-						</div>
-					</div>
-					<div className='appbar__profile--area-menu flex flex-col mt-10 gap-y-8'>
-						<Link to='/dashboard'>داشبورد</Link>
-						<Link to='/fav'>علاقه مندی‌ها</Link>
-						<span onClick={handleModalShow}>خروج از حساب</span>
-					</div>
+			<Dropdown
+				arrow
+				trigger={['click', 'hover']}
+				overlay={<ProfileMenu handleModalShow={handleModalShow} />}
+				getPopupContainer={(triggerNode) => triggerNode.parentNode}
+				destroyPopupOnHide
+			>
+				<div className='appbar__profile'>
+					<Badge count={Icon}>
+						<Avatar src={userData.cover} alt='name' shape='square'>
+							name
+						</Avatar>
+					</Badge>
 				</div>
-			) : (
-				<Dropdown
-					arrow
-					overlay={<ProfileMenu handleModalShow={handleModalShow} />}
-					getPopupContainer={(triggerNode) => triggerNode.parentNode}
-					destroyPopupOnHide
-				>
-					<div className='appbar__profile'>
-						<Badge count={Icon}>
-							<Avatar src={userData.cover} alt='name' shape='square'>
-								name
-							</Avatar>
-						</Badge>
-					</div>
-				</Dropdown>
-			)}
+			</Dropdown>
 			<Modal
 				className='ExitModal'
 				visible={modal}
@@ -90,3 +69,28 @@ const Propfile = () => {
 	);
 };
 export default Propfile;
+
+{
+	/* {isTablet ? (
+				<div className='appbar__profile--area'>
+					<div className='flex gap-x-4 '>
+						<div className='appbar__profile'>
+							<Avatar src={userData.cover} alt='name' shape='square'>
+								{userData.name}
+							</Avatar>
+						</div>
+						<div className='flex flex-col'>
+							<h4>{userData.first_name}</h4>
+							<span>{userData.last_name}</span>
+						</div>
+					</div>
+					<div className='appbar__profile--area-menu flex flex-col mt-10 gap-y-8'>
+						<Link to='/dashboard'>داشبورد</Link>
+						<Link to='/fav'>علاقه مندی‌ها</Link>
+						<span onClick={handleModalShow}>خروج از حساب</span>
+					</div>
+				</div>
+			) : (
+				
+			)} */
+}

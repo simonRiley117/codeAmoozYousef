@@ -6,30 +6,31 @@ import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
 import { Skeleton } from "antd";
 
-function TrainExample({ contentUuid, courseUuid }) {
-  const [content, setContent] = useState(null);
+function TrainExample({ contentUuid, courseUuid ,ispreviw ,context,lang}) {
+  const [content, setContent] = useState(ispreviw ? {context:context}: null);
   const [contentLoading, setContentLoading] = useState(true);
 
   const setData = (data) => {
     setContent(data);
     setContentLoading(false);
   };
-
+ 
   const getContent = useFetch({
     url: `ContentService/${contentUuid}/getContent`,
     method: "GET",
     noHeader: false,
     setter: setData,
+    trigger:!ispreviw 
   });
-
+  
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   // let id = "1";
   return (
     <>
-      {!contentLoading ? (
+      {ispreviw ||!contentLoading ? (
         content.context.map((item, index) => (
-          <div key={index}>
+          <div key={index} className='mt-10'>
             {item?.name ? (
               <div className="Sarfasl__sample flex items-center	justify-between">
                 <p>مثال</p>
@@ -53,7 +54,7 @@ function TrainExample({ contentUuid, courseUuid }) {
             {item?.code?.length > 1 ? (
               <Codeeditor
                 id={item.uuid}
-                lan={content.language === "c" ? "c_cpp" : content.language}
+                lan={!ispreviw ? (content.language === "c" ? "c_cpp" : content.language) : (lang === "c" ? "c_cpp" : lang) }
                 value={item.code}
               />
             ) : null}

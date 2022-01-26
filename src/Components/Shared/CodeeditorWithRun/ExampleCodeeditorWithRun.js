@@ -58,34 +58,34 @@ function ExampleCodeeditorWithRun(props) {
       }
     },
   });
-  const ExampleSendToServer = useAxios({
-    url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
-    method: "POST",
-    options: {
-      data: data,
-      headers: {
-        Authorization: `JWT ${token}`,
-      },
-    },
-    customHandler: (err, res) => {
-      if (res) {
-        console.log("ExampleSendToServer", res.data);
-        // setInfo1(res.data);
-        setNumber(res.data.compile_result);
-        res.data.compiler_stderr ? setBtn(1) : setBtn(2);
-        setRes(res.data.compiler_stdout);
+  // const ExampleSendToServer = useAxios({
+  //   url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
+  //   method: "POST",
+  //   options: {
+  //     data: data,
+  //     headers: {
+  //       Authorization: `JWT ${token}`,
+  //     },
+  //   },
+  //   customHandler: (err, res) => {
+  //     if (res) {
+  //       console.log("ExampleSendToServer", res.data);
+  //       // setInfo1(res.data);
+  //       setNumber(res.data.compile_result);
+  //       res.data.compiler_stderr ? setBtn(1) : setBtn(2);
+  //       setRes(res.data.compiler_stdout);
 
-        res.data.compiler_stderr
-          ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
-          : setErrs(res.data.compiler_stderr);
-        setLoad(false);
-      }
-      if (err) {
-        console.log(err.response);
-        setLoad(false);
-      }
-    },
-  });
+  //       res.data.compiler_stderr
+  //         ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
+  //         : setErrs(res.data.compiler_stderr);
+  //       setLoad(false);
+  //     }
+  //     if (err) {
+  //       console.log(err.response);
+  //       setLoad(false);
+  //     }
+  //   },
+  // });
   const handleSend = () => {
     setData({
       submissions: {
@@ -97,17 +97,17 @@ function ExampleCodeeditorWithRun(props) {
     setLoad(true);
     ExamplePlayGround.reFetch();
   };
-  const handleInputSend = () => {
-    setData({
-      submissions: {
-        example_id: props.id,
-        source: value,
-        // input: test,
-      },
-    });
-    setLoad(true);
-    ExampleSendToServer.reFetch();
-  };
+  // const handleInputSend = () => {
+  //   setData({
+  //     submissions: {
+  //       example_id: props.id,
+  //       source: value,
+  //       // input: test,
+  //     },
+  //   });
+  //   setLoad(true);
+  //   ExampleSendToServer.reFetch();
+  // };
 
   function onChange(newValue) {
     setValue(newValue);
@@ -125,7 +125,16 @@ function ExampleCodeeditorWithRun(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
-
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([value], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = `${props.name}.txt`;
+    document.body.appendChild(element);
+    element.click();
+  };
   return (
     <div className="w-full">
       <div className="CodeeditorWithRun w-full">
@@ -137,7 +146,10 @@ function ExampleCodeeditorWithRun(props) {
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
                     <p>{`${props.name}.${props.lan}`}</p>
                     <div className="d-flex ">
-                      <button className="CodeeditorWithRun__codeeditor-btncopy">
+                      <button
+                        className="CodeeditorWithRun__codeeditor-btncopy"
+                        onClick={handleDownload}
+                      >
                         ذخیره کدها
                       </button>
                       <button
@@ -169,7 +181,7 @@ function ExampleCodeeditorWithRun(props) {
                         <i className="fas fa-play"></i>
                         اجرای کد
                       </button>
-                      <button
+                      {/* <button
                         className={
                           load
                             ? "CodeeditorWithRun__codeeditor-btndonedis"
@@ -180,7 +192,7 @@ function ExampleCodeeditorWithRun(props) {
                       >
                         <i className="fas fa-play"></i>
                         ارسال پاسخ
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                   <AceEditor
@@ -188,7 +200,7 @@ function ExampleCodeeditorWithRun(props) {
                     theme="monokai"
                     value={value}
                     onChange={onChange}
-                    width="45vw"
+                    width="100%"
                     height="64.1vh"
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
@@ -196,6 +208,7 @@ function ExampleCodeeditorWithRun(props) {
                       enableBasicAutocompletion: true,
                       enableLiveAutocompletion: true,
                       enableSnippets: true,
+                      fontSize: "1.5rem",
                     }}
                   />
                 </div>
@@ -231,7 +244,7 @@ function ExampleCodeeditorWithRun(props) {
                       mode={props.lan}
                       theme="monokai"
                       value={btn === 1 ? res : errs}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       readOnly
@@ -243,6 +256,7 @@ function ExampleCodeeditorWithRun(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>
@@ -258,7 +272,7 @@ function ExampleCodeeditorWithRun(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
-                      width="45vw"
+                      width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
                       editorProps={{ $blockScrolling: true }}
@@ -269,6 +283,7 @@ function ExampleCodeeditorWithRun(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>

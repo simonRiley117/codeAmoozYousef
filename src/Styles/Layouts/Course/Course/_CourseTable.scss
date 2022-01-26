@@ -3,7 +3,7 @@
     height: 100%;
     width: 95%;
     margin-top: 1rem;
-    @include respond(tablet) {
+    @include respond(big-tablet) {
         width: 100%;
     }
     margin-right: auto;

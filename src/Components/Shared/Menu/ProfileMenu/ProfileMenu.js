@@ -11,6 +11,8 @@ import { ReactComponent as ExiteIcon } from '@Assets/Icons/quite.svg';
 import { ReactComponent as UserIcon } from '@Assets/Icons/user.svg';
 import { ReactComponent as Heart } from '@Assets/Icons/heart.svg';
 import { ReactComponent as HomeIcon } from '@Assets/Icons/home.svg';
+import { ReactComponent as CourseIcon } from "@Assets/Icons/course.svg";
+
 
 // import { useUserInfo } from "@App/Context/UserInfoContext";
 
@@ -21,10 +23,13 @@ const ProfileMenu = ({ handleModalShow }) => {
 	const handleSelectMenu = ({ key }) => {
 		switch (key) {
 			case 'dashboard':
-				navigate('/dashboard', { replace: true });
+				navigate('/dashboard');
 				return;
 			case 'favorites':
-				navigate('/fav', { replace: true });
+				navigate('/fav');
+				return;
+			case 'myCourse':
+				navigate('/dashboard/my-course');
 				return;
 			case 'exit':
 				handleModalShow();
@@ -49,6 +54,10 @@ const ProfileMenu = ({ handleModalShow }) => {
 			<Menu.Item icon={<ArrowLeftIcon />} key='dashboard'>
 				<HomeIcon />
 				<span>داشبورد</span>
+			</Menu.Item>
+			<Menu.Item icon={<ArrowLeftIcon />} key='myCourse'>
+				<CourseIcon />
+				<span>دوره های من</span>
 			</Menu.Item>
 			<Menu.Item icon={<ArrowLeftIcon />} key='favorites'>
 				<Heart id='favorites' />

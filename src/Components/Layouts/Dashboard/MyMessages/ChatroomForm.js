@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ReactComponent as Arroe } from "@Assets/Icons/Frame 28.svg";
 import { useForm as formBox } from "react-hook-form";
 import { Picker } from "emoji-mart";
-import "emoji-mart/css/emoji-mart.css";
 import Smiley from "@Assets/Pic/Smiley.png";
 import { Input as InputBase } from "antd";
 import classNames from "classnames";

@@ -14,6 +14,7 @@ import Modal from "@Components/Shared/Modal/Modal";
 import Detail from "./Detail";
 import { Tabs, Tag } from "antd";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
+import { Button, Tooltip } from "antd";
 
 const { TabPane } = Tabs;
 
@@ -58,7 +59,7 @@ const Topic = ({ courseId, courseSeasons }) => {
       </div>
     </div>
   );
-
+  console.log(`courseSeasons`, courseSeasons);
   // const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   return (
@@ -81,7 +82,11 @@ const Topic = ({ courseId, courseSeasons }) => {
                 >
                   {season?.contents?.map((content, index) => (
                     <div
-                      className="Sarfasl__content flex justify-between items-center cursor-pointer"
+                      className={
+                        content.lockedOn
+                          ? "Sarfasl__content flex justify-between items-center cursor-not-allowed"
+                          : "Sarfasl__content flex justify-between items-center cursor-pointer"
+                      }
                       key={content.uuid}
                       onClick={() =>
                         handleModalShow(content.uuid, content.lockedOn)
@@ -97,7 +102,20 @@ const Topic = ({ courseId, courseSeasons }) => {
                             {index + 1}
                           </div>
                         )}
-                        <p>{content.title}</p>
+                        {content.lockedOn ? (
+                          <p>{content.title}</p>
+                        ) : (
+                          <Tooltip
+                            title="مشاهده محتوا"
+                            mouseEnterDelay={1}
+                            placement="top"
+                            autoAdjustOverflow
+                          >
+                            <p className="Sarfasl__content--title">
+                              {content.title}
+                            </p>
+                          </Tooltip>
+                        )}
                       </div>
                       {renderSeasonInfo(
                         content.duration_time,
@@ -122,7 +140,10 @@ const Topic = ({ courseId, courseSeasons }) => {
               <Detail contentUuid={contentUuid} />
             </TabPane>
           </Tabs> */}
-          <Detail contentUuid={contentUuid} />
+          <div className="p-10">
+            <h2 className="mb-10 text-center">محتوای جلسه</h2>
+            <Detail ispreviw={true} contentUuid={contentUuid} />
+          </div>
         </Modal>
       )}
     </>

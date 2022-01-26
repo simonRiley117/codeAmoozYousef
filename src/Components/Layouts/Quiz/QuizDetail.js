@@ -14,9 +14,9 @@ function QuizDetail({
   test_cases,
   language,
   file,
+  ispreview,
+  ismycoursebol,
 }) {
-  console.log("language: ", language);
-  console.log("typeof language: ", typeof language);
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
@@ -46,10 +46,18 @@ function QuizDetail({
             </div>
           ))}
         </div>
-        <div className="flex items-center ExampleDetail__downloadBox">
+        <div className="flex items-center ExampleDetail__downloadBox mb-10">
           <div className="flex items-center">
-            <img src={pdf} alt={pdf} />
-            <p className="cursor-pointer">{file}</p>
+            {file && (
+              <>
+                <img src={pdf} alt={pdf} />
+                <p className="cursor-pointer">
+                  <a href={file} download target={"_blank"}>
+                    دانلود فایل
+                  </a>
+                </p>
+              </>
+            )}
           </div>
           <Button
             ico={false}
@@ -71,10 +79,13 @@ function QuizDetail({
       </div>
       <QuizCodeEditor
         name={title}
+        courseId={courseId}
         quizId={quizId}
         contentId={contentId}
         lan={language === `c` ? `c_cpp` : language}
         value=""
+        ispreview={ispreview}
+        ismycoursebol={ismycoursebol}
       />
     </div>
   );

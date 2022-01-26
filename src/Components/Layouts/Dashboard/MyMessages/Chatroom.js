@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "emoji-mart/css/emoji-mart.css";
 import moment from "moment";
 import ChatroomForm from "./ChatroomForm";
 

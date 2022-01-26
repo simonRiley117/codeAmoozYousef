@@ -5,6 +5,7 @@ import { useAuth } from "@App/Context/authContext";
 import { Skeleton } from "antd";
 import { Tabs, Tag } from "antd";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
+import Quiz from "@Components/Layouts/Dashboard/Quiz";
 
 const { TabPane } = Tabs;
 function Detail({
@@ -12,12 +13,29 @@ function Detail({
   setActiveSeason,
   iscontent,
   setSeosononquizeid,
+  ispreviw,
 }) {
   const [content, setContent] = useState(null);
+  const [courselist, setCourselist] = useState([]);
+  const [ismycourse, setIsmycourse] = useState([]);
+  const [ismycoursebol, setIsmycoursebol] = useState(false);
   const { token, authDispatch } = useAuth();
+  const getMyCourses = useFetch({
+    url: "StudentService/myDoingCourses",
+    method: "GET",
+    noHeader: false,
+    argFunc: (res) => setCourselist(res.results),
+    trigger: !token ? false : ispreviw ,
+  });
+  //course
+  //course_id
+
+  const url = ispreviw
+    ? `ContentService/${contentUuid}/getPreviewContent`
+    : `ContentService/${contentUuid}/getContent`;
   const getContent = useFetch({
     // url: `ContentService/${contentUuid}/getModalContent`,
-    url: `ContentService/${contentUuid}/getContent`,
+    url: url,
     method: "GET",
     noHeader: token ? false : true,
     setter: setContent,
@@ -31,7 +49,18 @@ function Detail({
   useEffect(() => {
     getContent.reFetch();
   }, [contentUuid]);
-
+  useEffect(() => {
+    if (courselist.length > 0 && content) {
+      setIsmycourse(courselist.filter((i) => i.course_id === content.course));
+     
+    }
+  
+  }, [courselist, content]);
+  useEffect(()=>{
+    if(ismycourse.length > 0){
+      setIsmycoursebol(true)
+    }
+  },[ismycourse])
   return (
     <>
       <Tabs className="TabBox" type="card">
@@ -53,17 +82,29 @@ function Detail({
           )}
         </TabPane>
         <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
-          {getContent?.response ? <div></div> : <Skeleton />}
-          {/* <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} /> */}
+          {getContent?.response ? (
+            <TrainExample
+              contentUuid={contentUuid}
+              ispreviw={true}
+              context={content?.context}
+              lang={content?.language}
+            />
+          ) : (
+            <Skeleton />
+          )}
         </TabPane>
         <TabPane tab="آزمون" key={`${contentUuid}_3`}>
-          {getContent?.response ? <div></div> : <Skeleton />}
-
-          {/* <Quiz
-                      quizUuid={quizUuid}
-                      contentUuid={contentUuid}
-                      courseUuid={courseUuid}
-                    /> */}
+          {getContent?.response ? (
+            <Quiz
+              ismycoursebol={ismycoursebol}
+              quizUuid={content.quiz_id}
+              ispreviw={ispreviw}
+              contentUuid={contentUuid}
+              // courseUuid={courseUuid}
+            />
+          ) : (
+            <Skeleton />
+          )}
         </TabPane>
         {/* {hasSeasonQuize === "You have not passed quiz season" && (
                     <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>

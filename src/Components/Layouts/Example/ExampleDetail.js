@@ -39,10 +39,16 @@ function ExampleDetail({ example, courseUuid }) {
           ))}
         </div>
         <div className="flex items-center ExampleDetail__downloadBox">
-          <div className="flex items-center">
-            <img src={pdf} alt={pdf} />
-            <p className="cursor-pointer">{example.file}</p>
-          </div>
+          {example.file && (
+            <>
+              <img src={pdf} alt={pdf} />
+              <p className="cursor-pointer">
+                <a href={example.file} download target={"_blank"}>
+                  دانلود فایل
+                </a>
+              </p>
+            </>
+          )}
         </div>
         <Button
           ico={false}

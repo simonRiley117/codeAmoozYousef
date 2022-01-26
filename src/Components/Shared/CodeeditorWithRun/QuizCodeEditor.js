@@ -5,10 +5,10 @@ import UseWindowSize from "@App/Sizes/UseWindowSize";
 import QuizCodeeditorWithRun from "./QuizCodeeditorWithRun";
 
 function QuizCodeEditor(props) {
-    const windowSize = UseWindowSize();
-    return (
-        <div>
-            {windowSize === "sm" || windowSize === "md-2" ? (
+  const windowSize = UseWindowSize();
+  return (
+    <div>
+      {/* {windowSize === "sm" || windowSize === "md-2" ? (
                 <QuizResponsiveCodeeditor
                     name={props.name}
                     quizId={props.quizId}
@@ -22,9 +22,20 @@ function QuizCodeEditor(props) {
                     contentId={props.contentId}
                     lan={props.lan}
                     value={props.value}/>
-            )}
-        </div>
-    );
+            )} */}
+      <QuizCodeeditorWithRun
+        name={props.name}
+        quizId={props.quizId}
+        contentId={props.contentId}
+        lan={props.lan}
+        ispreview={props.ispreview}
+        ismycoursebol={props.ismycoursebol}
+        value={props.value}
+        courseId={props.courseId}
+
+      />
+    </div>
+  );
 }
 
 export default QuizCodeEditor;

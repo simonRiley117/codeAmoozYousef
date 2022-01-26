@@ -1,20 +1,43 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Tabs } from "antd";
-import Detail from "@Components/Layouts/Course/Sarfasl/Detail";
+import ContentDetail from "./ContentDetail";
 import TrainExample from "@Components/Layouts/Dashboard/TrainExample";
 import Quiz from "@Components/Layouts/Dashboard/Quiz";
-const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize,setActiveSeason }) => {
+const ContentTabs = ({
+  contentUuid,
+  quizUuid,
+  courseUuid,
+  hasSeasonQuize,
+  setActiveSeason,
+  setActiveTab,
+  ActiveTab
+}) => {
   const { TabPane } = Tabs;
-  const [seosononquizeid,setSeosononquizeid] = useState()
+  const [seosononquizeid, setSeosononquizeid] = useState();
   return (
-    <Tabs className="TabBox" type="card">
-      <TabPane  tab="ویدیو" key={`${contentUuid}_1`}>
-        <Detail setSeosononquizeid={setSeosononquizeid} iscontent={true} setActiveSeason={setActiveSeason} contentUuid={contentUuid} />
+    <Tabs onChange={setActiveTab} activeKey={ActiveTab} className="TabBox" type="card">
+      <TabPane  tab="ویدیو" key={`tab_1`} className="reactour__video">
+        <ContentDetail
+          setSeosononquizeid={setSeosononquizeid}
+          iscontent={true}
+          setActiveSeason={setActiveSeason}
+          contentUuid={contentUuid}
+        />
+        {/* <div className="ContentDetail__downloadLinkBox text-left">
+          <a
+            href={""}
+            download
+            target={"_blank"}
+            className="ContentDetail__downloadLink"
+          >
+            دانلود ویدیو
+          </a>
+        </div> */}
       </TabPane>
-      <TabPane tab="تمرین و مثال" key={`${contentUuid}_2`}>
+      <TabPane  tab="تمرین و مثال" key={`tab_2`}>
         <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} />
       </TabPane>
-      <TabPane tab="آزمون" key={`${contentUuid}_3`}>
+      <TabPane tab="آزمون" key={`tab_3`}>
         <Quiz
           quizUuid={quizUuid}
           contentUuid={contentUuid}
@@ -22,7 +45,7 @@ const ContentTabs = ({ contentUuid, quizUuid, courseUuid, hasSeasonQuize,setActi
         />
       </TabPane>
       {hasSeasonQuize === "You have not passed quiz season" && (
-        <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
+        <TabPane tab=" آزمون فصل" key={`tab_4`}>
           <Quiz
             quizUuid={seosononquizeid}
             contentUuid={contentUuid}

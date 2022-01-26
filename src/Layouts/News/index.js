@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import NewsItemContainer from '@Components/Layouts/News/NewsItemContainer';
 import Link from '@Components/Shared/Buttons/Link';
 import Pagination from '@Components/Shared/Pagination';
+import Title from '@Components/Shared/Title';
 import BreadCrump from '@Components/Shared/BreadCrump/BreadCrump';
 import useFetch from '@App/Context/useFetch';
 import {NewsItem, LoadingNewsItem} from '@Components/Layouts/News/NewsItem';
@@ -34,7 +35,7 @@ const News = () => {
     return (
         <div className='news container'>
             <BreadCrump/>
-            <h2 className='news-heading '>اخبار</h2>
+            <Title >اخبار</Title>
             <div className='news-grid'>
                 {getNewsList.loading &&
                 _.range(4).map((key) => <LoadingNewsItem key={key}/>)}

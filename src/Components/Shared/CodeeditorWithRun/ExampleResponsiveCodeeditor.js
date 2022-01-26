@@ -8,9 +8,9 @@ import AceEditor from "react-ace";
 // import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
-import {useAuth} from "../../../Context/authContext";
+import { useAuth } from "../../../Context/authContext";
 import useAxios from "@use-hooks/axios";
-import {API_URL} from "../../../constants";
+import { API_URL } from "../../../constants";
 
 function ExampleResponsiveCodeeditor(props) {
   languages.map(
@@ -30,61 +30,61 @@ function ExampleResponsiveCodeeditor(props) {
   const [isCopied, handleCopy] = UseCopyToClipboard(3000);
   const [load, setLoad] = useState(false);
   const [btn, setBtn] = useState(1);
-  const {token} = useAuth();
-    const ExamplePlayGround = useAxios({
-        url: `${API_URL}/CompilerService/v2/example/playground/`,
-        method: "POST",
-        options: {
-            data: data,
-            headers: {
-                Authorization: `JWT ${token}`,
-            },
-        },
-        customHandler: (err, res) => {
-            if (res) {
-                console.log("ExamplePlayGround", res.data);
-                // setInfo(res.data);
-                res.data.compiler_stdout ? setBtn(1) : setBtn(2);
-                setRes(res.data.compiler_stdout);
-                res.data.compiler_stderr
-                    ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
-                    : setErrs(res.data.compiler_stderr);
-                setLoad(false);
-            }
-            if (err) {
-                console.log(err.response);
-                setLoad(false);
-            }
-        },
-    });
-    const ExampleSendToServer = useAxios({
-        url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
-        method: "POST",
-        options: {
-            data: data,
-            headers: {
-                Authorization: `JWT ${token}`,
-            },
-        },
-        customHandler: (err, res) => {
-            if (res) {
-                console.log("ExampleSendToServer", res.data);
-                // setInfo1(res.data);
-                setNumber(res.data.compile_result);
-                res.data.compiler_stderr ? setBtn(1) : setBtn(2);
-                setRes(res.data.compiler_stdout);
+  const { token } = useAuth();
+  const ExamplePlayGround = useAxios({
+    url: `${API_URL}/CompilerService/v2/example/playground/`,
+    method: "POST",
+    options: {
+      data: data,
+      headers: {
+        Authorization: `JWT ${token}`,
+      },
+    },
+    customHandler: (err, res) => {
+      if (res) {
+        console.log("ExamplePlayGround", res.data);
+        // setInfo(res.data);
+        res.data.compiler_stdout ? setBtn(1) : setBtn(2);
+        setRes(res.data.compiler_stdout);
+        res.data.compiler_stderr
+          ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
+          : setErrs(res.data.compiler_stderr);
+        setLoad(false);
+      }
+      if (err) {
+        console.log(err.response);
+        setLoad(false);
+      }
+    },
+  });
+  const ExampleSendToServer = useAxios({
+    url: `${API_URL}/CompilerService/v3/example/send_to_server/`,
+    method: "POST",
+    options: {
+      data: data,
+      headers: {
+        Authorization: `JWT ${token}`,
+      },
+    },
+    customHandler: (err, res) => {
+      if (res) {
+        console.log("ExampleSendToServer", res.data);
+        // setInfo1(res.data);
+        setNumber(res.data.compile_result);
+        res.data.compiler_stderr ? setBtn(1) : setBtn(2);
+        setRes(res.data.compiler_stdout);
 
-                res.data.compiler_stderr
-                    ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
-                    : setErrs(res.data.compiler_stderr);
-                setLoad(false);
-            }
-            if (err) {
-                console.log(err.response);
-                setLoad(false);
-            }
-        },
-    });
+        res.data.compiler_stderr
+          ? setErrs(res.data.compiler_stderr.replace("/n", "<br />"))
+          : setErrs(res.data.compiler_stderr);
+        setLoad(false);
+      }
+      if (err) {
+        console.log(err.response);
+        setLoad(false);
+      }
+    },
+  });
   const handleSend = () => {
     setData({
       submissions: {
@@ -94,7 +94,7 @@ function ExampleResponsiveCodeeditor(props) {
       },
     });
     setLoad(true);
-    ExamplePlayGround.reFetch()
+    ExamplePlayGround.reFetch();
   };
   const handleInputSend = () => {
     setData({
@@ -105,7 +105,7 @@ function ExampleResponsiveCodeeditor(props) {
       },
     });
     setLoad(true);
-    ExampleSendToServer.reFetch()
+    ExampleSendToServer.reFetch();
   };
   function onChange(newValue) {
     setValue(newValue);
@@ -121,6 +121,16 @@ function ExampleResponsiveCodeeditor(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob([value], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = `${props.name}.txt`;
+    document.body.appendChild(element);
+    element.click();
+  };
   return (
     <div>
       <div className="CodeeditorWithRun">
@@ -132,7 +142,10 @@ function ExampleResponsiveCodeeditor(props) {
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
                     <p>{`مثال 2.${props.lan}`}</p>
                     <div className="d-flex ">
-                      <button className="CodeeditorWithRun__codeeditor-btncopy">
+                      <button
+                        className="CodeeditorWithRun__codeeditor-btncopy"
+                        onClick={handleDownload}
+                      >
                         ذخیره کدها
                       </button>
                       <button
@@ -191,6 +204,7 @@ function ExampleResponsiveCodeeditor(props) {
                       enableBasicAutocompletion: true,
                       enableLiveAutocompletion: true,
                       enableSnippets: true,
+                      fontSize: "1.5rem",
                     }}
                   />
                 </div>
@@ -238,6 +252,7 @@ function ExampleResponsiveCodeeditor(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>
@@ -261,6 +276,7 @@ function ExampleResponsiveCodeeditor(props) {
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
                         showLineNumbers: false,
+                        fontSize: "1.5rem",
                       }}
                     />
                   </div>
