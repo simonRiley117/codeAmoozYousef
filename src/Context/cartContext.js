@@ -27,13 +27,12 @@ function CartDataProvider(props) {
             }
             if (err) {
                 console.log('cart err: ', err)
-                // authDispatch({type: "LOGOUT"});
             }
         },
     });
 
     return (
-        <CartDataContext.Provider value={{cartData, getCart,cartData1}} {...props}>
+        <CartDataContext.Provider value={{cartData, getCart, cartData1}} {...props}>
             {props.children}
         </CartDataContext.Provider>
     );

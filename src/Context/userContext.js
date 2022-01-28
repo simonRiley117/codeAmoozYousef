@@ -36,8 +36,10 @@ const UserDataProvider = (props) => {
       }
       if (err) {
         console.log("refresh error: ", err.response);
-        authDispatch({ type: "LOGOUT", token });
-        authRefreshDispatch({ type: "LOGOUT", refreshToken });
+        authDispatch({ type: "LOGOUT" });
+        authRefreshDispatch({ type: "LOGOUT" });
+        // authDispatch({ type: "LOGOUT", token });
+        // authRefreshDispatch({ type: "LOGOUT", refreshToken });
       }
     },
   });
@@ -65,7 +67,8 @@ const UserDataProvider = (props) => {
           refToken.reFetch();
         } else {
           authDispatch({ type: "LOGOUT" });
-          authRefreshDispatch({ type: "LOGOUT", refreshToken });
+          // authRefreshDispatch({ type: "LOGOUT", refreshToken });
+          authRefreshDispatch({ type: "LOGOUT"});
         }
       }
     },
