@@ -265,6 +265,7 @@ function ExampleResponsiveCodeeditor(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
+                      readOnly={load}
                       width="100%"
                       height="30.5vh"
                       name="UNIQUE_ID_OF_DIV"
