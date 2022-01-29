@@ -1,7 +1,6 @@
 
- // export const API_URL = "http://88.218.17.104:9000";
-// export const API_URL = "http://127.0.0.1:8000";
-export const API_URL = "http://localhost:8000";
+export const API_URL = "http://88.218.17.104:9000";
+//export const API_URL = "http://127.0.0.1:8000";
 export const TEAChER_URL = "http://localhost:3001";
 export const USER_URL = "http://localhost:3000";
 export const HOME_URL = "localhost";

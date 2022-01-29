@@ -29,7 +29,7 @@ const SeasonsItem = ({
   });
   useEffect(() => {
     console.log("openPanel", openPanels);
-    if (openPanels.includes(season.uuid) || activeSeasons === season.uuid) {
+    if (openPanels.includes(season.uuid)) {
       getCourseSeasons.reFetch();
     }
   }, [, activeContent, openPanels]);
