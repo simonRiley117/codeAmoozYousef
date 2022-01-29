@@ -11,8 +11,10 @@ import { useAuth } from "@App/Context/authContext";
 function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
   const [quizContent, setQuizContent] = useState(null);
   const location = useLocation();
-
+  
   const [quizLoading, setQuizLoading] = useState(true);
+  const [errorpass, seterrorpass] = useState(false);
+  
   let navigate = useNavigate();
   const [name, setName] = useState();
   useEffect(() => {
@@ -40,9 +42,7 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
     setQuizLoading(false);
   };
   const { token, authDispatch } = useAuth();
-  console.log(token);
-  console.log(ismycoursebol);
-  console.log(token);
+
   const previewUrlCondition =
     !token || !ismycoursebol
       ? `QuizService/${quizUuid}/get_user_quiz_preview`
@@ -56,6 +56,13 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
     noHeader: token ? false : ispreviw,
     trigger: false,
     setter: setData,
+    argErrFunc:(err)=>{
+    if(err.detail){
+        if(err.detail === "You didnt pass former contents"){
+          seterrorpass(true)
+        }
+    }
+    }
   });
 
   useEffect(() => {
@@ -72,7 +79,8 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
           <img src={quiz} alt={quiz} />{" "}
         </div>
       ) : !getQuizContent.loading ? (
-        <div className="Quiz__box">
+      <>
+       {!errorpass ? <div className="Quiz__box">
           <p className="Quiz__title">آزمون درس</p>
           <p className="Quiz__txt">
             آزمون بدون زمان میباشد و تا زمانی که نمره 100 دریافت نشده است، پاس
@@ -88,7 +96,11 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
           >
             شروع
           </Button>
-        </div>
+        </div> :  <div className="Quiz__empty">
+          <p>برای گذراندن آزمون فصل ابتدا آزمون جلسه ی قبل را پاس کنید :)</p>
+          <img src={quiz} alt={quiz} />{" "}
+        </div>} 
+      </>
       ) : (
         <div className="center m-4">
           <Skeleton />
