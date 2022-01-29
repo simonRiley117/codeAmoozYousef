@@ -9,6 +9,7 @@ import _ from 'lodash';
 
 const LatestCourse = () => {
 	const [latestCourse, setLatestCourse] = useState([]);
+    console.log("LatestCourse ~ latestCourse", latestCourse)
 	const { token } = useAuth();
 
 	const setData = (data) => {

@@ -19,6 +19,9 @@
     }
     &__Comment {
         margin-top: 5rem;
+        & .ant-tabs-tabpane{
+            padding-bottom: 2rem;
+        }
     }
     &__sideBar {
         min-height: 100vh;

@@ -9,8 +9,6 @@ import Button from '@Components/Shared/Buttons/Button';
 import NoCommentImage from '../../../../Assets/Images/Pic/empthyChat.svg';
 import CommentInput from './CommentInput';
 
-
-
 function Comment({ courseId }) {
 	const [commentInfo, setCommentInfo] = useState(null);
 	const [commentList, setcommentList] = useState([]);
@@ -56,9 +54,7 @@ function Comment({ courseId }) {
 		noHeader: false,
 		setter: setDraftCommentInfo,
 	});
-useEffect(() => {
-	window.scroll()
-}, [])
+
 	const [commentPostData, setCommentPostData] = useState(null);
 	const postComment = useFetch({
 		url: 'CommentService',
@@ -85,26 +81,29 @@ useEffect(() => {
 		}
 	};
 
-	
 	const handleSetMessage = (data) => {
-			let formData = new FormData();
-			formData.append('text', data.message);
-			formData.append('course_uuid', courseId);
-			setCommentPostData(formData);
-			postComment.reFetch();
+		let formData = new FormData();
+		formData.append('text', data.message);
+		formData.append('course_uuid', courseId);
+		setCommentPostData(formData);
+		postComment.reFetch();
 	};
-	
 
 	const handleMore = () => {
 		setMore(more + draftCommentInfo?.page_size);
 	};
 	return (
-		<div className='AskAndAnswer relative'>
-			<div className={`AskAndAnswer__content Comment ${
-				((draftCommentInfo === null && commentList.length === 0) ||
-				(commentList.length === 0 &&
-					draftCommentInfo.results.length === 0)) && !getCommentInfo.loading ? "flex" : null
-			} `}>
+		<div className='AskAndAnswer flex flex-col relative'>
+			<div
+				className={`AskAndAnswer__content Comment ${
+					((draftCommentInfo === null && commentList.length === 0) ||
+						(commentList.length === 0 &&
+							draftCommentInfo.results.length === 0)) &&
+					!getCommentInfo.loading
+						? 'flex'
+						: null
+				} `}
+			>
 				{getCommentInfo?.response ? (
 					<>
 						{commentList.length !== 0 &&
@@ -205,7 +204,6 @@ useEffect(() => {
 			</div>
 
 			<CommentInput onSetDate={handleSetMessage} {...othersMethod} />
-			
 		</div>
 	);
 }
