@@ -6,7 +6,7 @@ import {useAuth} from "../../Context/authContext";
 import {HOME_URL} from "../../constants";
 
 function SocialAuth(props) {
-    const {Token} = useParams();
+    const {Token, refToken} = useParams();
     console.log('Token: ', Token)
     const {authDispatch} = useAuth();
     const navigate = useNavigate()
@@ -14,7 +14,11 @@ function SocialAuth(props) {
         authDispatch({
             type: "LOGIN",
             token: Token,
-        });
+        })
+        // authRefreshDispatch({
+        //     type: "LOGIN",
+        //     refreshToken: res.refresh_token,
+        // });
         navigate('/', {replace: true})
     }, []);
 

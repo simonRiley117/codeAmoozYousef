@@ -354,6 +354,7 @@ function QuizCodeeditorWithRun(props) {
                       theme="monokai"
                       value={test}
                       onChange={onChange1}
+                      readOnly={load}
                       width="100%"
                       height="100%"
                       name="UNIQUE_ID_OF_DIV"
@@ -387,9 +388,16 @@ function QuizCodeeditorWithRun(props) {
           visible={modal}
           onCancel={handleModalVisible}
         >
-          <div className="ExitModal__back">
-            <h3>{quizeResult.compile_result}</h3>
-            <p className="mb-12">{quizeResult.compiler_stdout}</p>
+          <div className="ExitModal__back ">
+            <div className=" flex items-center justify-center">
+              <h3 className=" ml-6">نمره شما:</h3>
+              <h3>{quizeResult.compile_result}</h3>
+            </div>
+            <p className="mb-12">
+              {quizeResult.compiler_stdout === "Accepted"
+                ? "آزمون پاس شد"
+                : "دوباره تست کنید"}
+            </p>
             <div className="d-flex-space">
               <Button>
                 {" "}
@@ -398,12 +406,16 @@ function QuizCodeeditorWithRun(props) {
                   state={{
                     id: props.courseId,
                   }}
-                  className="flex items-center"
+                  className="flex items-center "
                 >
                   صفحه ی دوره
                 </Link>
               </Button>
-              <Button onClick={handleModalVisible} type="primary">
+              <Button
+                onClick={handleModalVisible}
+                type="primary"
+                classes={"mr-8"}
+              >
                 برگشت به آزمون
               </Button>
             </div>

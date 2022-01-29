@@ -43,7 +43,7 @@ const SignIn = ({
                         <a id="google"
                            type="primary"
                            href={`${API_URL}/social-auth/login/google-oauth2/`}>
-                            ورود با اکانت گوگل <img src={GoogleLogoPic} alt="google"/>
+                            ورود با اکانت گوگل <img src={GoogleLogoPic} alt="google" style={{width:'4rem',height:'4rem'}}/>
                         </a>
 
                         {/*<Link to='http://localhost:8000/social-auth/login/linkedin-oauth2/' type="primary"*/}
