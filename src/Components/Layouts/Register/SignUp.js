@@ -21,36 +21,25 @@ const SignUp = ({onCancel, handleActive}) => {
             <div className="register__form--wrapper signUp">
                 <h2>ثبت نام</h2>
                 <div className="register__form--actions mt-6">
-                    {/*<Link*/}
-                    {/*    id="google"*/}
-                    {/*    type="primary"*/}
-                    {/*    icon={<img src={GoogleLogoPic} alt="google"/>}*/}
-                    {/*    to='/'*/}
-                    {/*>*/}
-                    {/*    ثبت نام با اکانت گوگل*/}
-                    {/*</Link>*/}
+                   
                     <a
                         id="google"
-                        type="primary"
+                        className="link link__primary"
                         href={`${API_URL}/social-auth/login/google-oauth2/`}>
                         ورود با اکانت گوگل <img src={GoogleLogoPic} alt="google"/>
                     </a>
 
 
-                    {/*<Link to='/' type="primary" classes="social">*/}
-                    {/*    <LinkedInIcon/>*/}
-                    {/*</Link>*/}
+                   
                     <a href={`${API_URL}/social-auth/login/linkedin-oauth2/`}
-                       type="primary"
+                       className="link link__primary"
                        className="social">
                         <LinkedInIcon/>
                     </a>
 
-                    {/*<Link to='/' type="primary" classes="social">*/}
-                    {/*    <GithubIcon/>*/}
-                    {/*</Link>*/}
+                    
                     <a href={`${API_URL}/social-auth/login/github/`}
-                       type="primary"
+                       className="link link__primary"
                        className="social">
                         <GithubIcon/>
                     </a>

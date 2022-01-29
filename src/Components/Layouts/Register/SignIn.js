@@ -9,79 +9,70 @@ import Link from '@Components/Shared/Buttons/Link';
 // Assets
 import loginPic from '@Assets/Pic/login.png';
 import GoogleLogoPic from '@Assets/Pic/google_logo.png';
-import {ReactComponent as ExitIcon} from '@Assets/Icons/Exit.svg';
-import {ReactComponent as LinkedInIcon} from '@Assets/Icons/linkedin.svg';
-import {ReactComponent as GithubIcon} from '@Assets/Icons/github.svg';
-import {Divider} from 'antd';
-import {API_URL} from "../../../constants";
-import {useNavigate} from "react-router-dom";
+import { ReactComponent as ExitIcon } from '@Assets/Icons/Exit.svg';
+import { ReactComponent as LinkedInIcon } from '@Assets/Icons/linkedin.svg';
+import { ReactComponent as GithubIcon } from '@Assets/Icons/github.svg';
+import { Divider } from 'antd';
+import { API_URL } from '../../../constants';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = ({
-                    onCancel,
-                    handleForgetPassword,
-                    handleActive,
-                    handleResendEmail,
-                }) => {
-    // const navigate = useNavigate()
-    return (
-        <>
-            <div className='register__form signIn'>
-                <IconBtn title='بستن' icon={<ExitIcon/>} onClick={onCancel}/>
+	onCancel,
+	handleForgetPassword,
+	handleActive,
+	handleResendEmail,
+}) => {
+	// const navigate = useNavigate()
+	return (
+		<>
+			<div className='register__form signIn'>
+				<IconBtn title='بستن' icon={<ExitIcon />} onClick={onCancel} />
 
-                <div className='register__form--wrapper signIn'>
-                    <h2>ورود</h2>
-                    <div className="register__form--actions mt-12">
-                        {/*<Link*/}
-                        {/*    id="google"*/}
-                        {/*    type="primary"*/}
-                        {/*    icon={<img src={GoogleLogoPic} alt="google"/>}*/}
-                        {/*    // to={`${API_URL}/social-auth/login/google-oauth2/`}*/}
-                        {/*    to={() => navigate(`${API_URL}/social-auth/login/google-oauth2/`)}*/}
-                        {/*>*/}
-                        {/*    ورود با اکانت گوگل*/}
-                        {/*</Link>*/}
-                        <a id="google"
-                           type="primary"
-                           href={`${API_URL}/social-auth/login/google-oauth2/`}>
-                            ورود با اکانت گوگل <img src={GoogleLogoPic} alt="google"/>
-                        </a>
+				<div className='register__form--wrapper signIn'>
+					<h2>ورود</h2>
+					<div className='register__form--actions mt-12'>
+						<a
+							id='google'
+							className='link link__primary'
+							href={`${API_URL}/social-auth/login/google-oauth2/`}
+						>
+							ورود با اکانت گوگل <img src={GoogleLogoPic} alt='google' />
+						</a>
 
-                        {/*<Link to='http://localhost:8000/social-auth/login/linkedin-oauth2/' type="primary"*/}
-                        {/*      classes="social">*/}
-                        {/*    <LinkedInIcon/>*/}
-                        {/*</Link>*/}
-                        <a href={`${API_URL}/social-auth/login/linkedin-oauth2/`}
-                           type="primary"
-                           className="social">
-                            <LinkedInIcon/>
-                        </a>
-                        {/*<Link to='http://localhost:8000/social-auth/login/github/' type="primary" classes="social">*/}
-                        {/*    <GithubIcon/>*/}
-                        {/*</Link>*/}
-                        <a href={`${API_URL}/social-auth/login/github/`}
-                           type="primary"
-                           className="social">
-                            <GithubIcon/>
-                        </a>
-                    </div>
-                    <Divider>یا</Divider>
-                    <SignInForm/>
-                    <Button type='text' onClick={handleForgetPassword}>
-                        رمز عبور رو فراموش کردم
-                    </Button>
-                    <Button type='text' onClick={handleResendEmail}>
-                        ارسال دوباره ایمیل
-                    </Button>
-                    <Button
-                        type='text'
-                        onClick={handleActive}
-                        classes='register__form--other'
-                    >
-                        هنوز ثبت نام نکردم
-                    </Button>
-                </div>
-            </div>
-        </>
-    );
+						<a
+							href={`${API_URL}/social-auth/login/linkedin-oauth2/`}
+							className='link link__primary'
+							className='social'
+						>
+							<LinkedInIcon />
+						</a>
+
+						<a
+							href={`${API_URL}/social-auth/login/github/`}
+							className='link link__primary'
+							className='social'
+						>
+							<GithubIcon />
+						</a>
+					</div>
+					<Divider>یا</Divider>
+					<SignInForm />
+					<Button type='text' onClick={handleForgetPassword}>
+						رمز عبور رو فراموش کردم
+					</Button>
+					<Button type='text' onClick={handleResendEmail}>
+						ارسال دوباره ایمیل
+					</Button>
+					<Button
+						type='text'
+						onClick={handleActive}
+						classes='register__form--other'
+					>
+						هنوز ثبت نام نکردم
+					</Button>
+				</div>
+			</div>
+		</>
+	);
 };
 export default SignIn;

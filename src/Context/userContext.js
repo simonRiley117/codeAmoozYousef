@@ -10,6 +10,7 @@ const UserDataContext = createContext();
 
 const UserDataProvider = (props) => {
   const [userData, setUserData] = useState(null);
+  console.log("UserDataProvider ~ userData", userData)
   // const [username, setUsername] = useState();
   const {
     token,
