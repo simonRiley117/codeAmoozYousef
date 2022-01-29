@@ -13,7 +13,7 @@ import {ReactComponent as ExitIcon} from '@Assets/Icons/Exit.svg';
 import {ReactComponent as LinkedInIcon} from '@Assets/Icons/linkedin.svg';
 import {ReactComponent as GithubIcon} from '@Assets/Icons/github.svg';
 import {Divider} from 'antd';
-import {API_URL} from "../../../constants";
+import {API_URL, USER_URL} from "../../../constants";
 import {useNavigate} from "react-router-dom";
 
 const SignIn = ({
@@ -23,6 +23,11 @@ const SignIn = ({
                     handleResendEmail,
                 }) => {
     // const navigate = useNavigate()
+
+    const putUrlInLocalStorage = () => {
+        localStorage.setItem("url", window.location.href);
+    }
+
     return (
         <>
             <div className='register__form signIn'>
@@ -42,8 +47,10 @@ const SignIn = ({
                         {/*</Link>*/}
                         <a id="google"
                            type="primary"
+                           onClick={putUrlInLocalStorage}
                            href={`${API_URL}/social-auth/login/google-oauth2/`}>
-                            ورود با اکانت گوگل <img src={GoogleLogoPic} alt="google" style={{width:'4rem',height:'4rem'}}/>
+                            ورود با اکانت گوگل <img src={GoogleLogoPic} alt="google"
+                                                    style={{width: '4rem', height: '4rem'}}/>
                         </a>
 
                         {/*<Link to='http://localhost:8000/social-auth/login/linkedin-oauth2/' type="primary"*/}
@@ -52,6 +59,7 @@ const SignIn = ({
                         {/*</Link>*/}
                         <a href={`${API_URL}/social-auth/login/linkedin-oauth2/`}
                            type="primary"
+                            onClick={putUrlInLocalStorage}
                            className="social">
                             <LinkedInIcon/>
                         </a>
@@ -60,6 +68,7 @@ const SignIn = ({
                         {/*</Link>*/}
                         <a href={`${API_URL}/social-auth/login/github/`}
                            type="primary"
+                            onClick={putUrlInLocalStorage}
                            className="social">
                             <GithubIcon/>
                         </a>
