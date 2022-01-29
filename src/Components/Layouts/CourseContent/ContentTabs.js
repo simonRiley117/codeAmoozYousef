@@ -14,6 +14,7 @@ const ContentTabs = ({
 }) => {
   const { TabPane } = Tabs;
   const [seosononquizeid, setSeosononquizeid] = useState();
+  console.log(seosononquizeid)
   return (
     <Tabs onChange={setActiveTab} activeKey={ActiveTab} className="TabBox" type="card">
       <TabPane  tab="ویدیو" key={`tab_1`} className="reactour__video">

@@ -19,9 +19,11 @@ function ContentDetail({
     setter: setContent,
     trigger:false,
     argFunc: (res) => {
-      if (iscontent) {
+      if (iscontent === true) {
         setActiveSeason(res.season);
-        setSeosononquizeid(res.season.season_quiz_uuid);
+        console.log(res.season);
+        setSeosononquizeid(res.season_quiz_uuid);
+        console.log("quize uuid",res.season_quiz_uuid)
       }
     },
   });
