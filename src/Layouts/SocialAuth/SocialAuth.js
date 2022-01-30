@@ -21,7 +21,7 @@ function SocialAuth(props) {
         });
         // console.log('window.location.href: ', window.location.href)
         const url = localStorage.getItem("url")
-        url === 'http://localhost:3000/?redirectTeacher' ? (
+        url === `${USER_URL}/?redirectTeacher` ? (
             window.location.href = TEAChER_URL
         ) : (
             window.location.href = USER_URL
