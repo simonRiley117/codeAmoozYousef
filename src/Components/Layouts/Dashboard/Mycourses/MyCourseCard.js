@@ -16,11 +16,15 @@ const MyCourseCard = ({
   setSelectedCourse,
 }) => {
   const [courseData, setCourseData] = useState(null);
+  const [hascorse, setHascorse] = useState(false);
   const [loadingCourseData, setLoadingCourseData] = useState(true);
 
   const setData = (data) => {
     setCourseData(data);
     setLoadingCourseData(false);
+    if (!finishedCourse) {
+      data.length !== 0 && setHascorse(true);
+    }
   };
 
   const getMyCourses = useFetch({
@@ -171,7 +175,11 @@ const MyCourseCard = ({
     ) : (
       <div className="center Card__empthy">
         <img src={NoCommentImage} alt="NoCommentImage" />
-        <p>دوره ای هنوز ثبت نام نشده</p>
+        {hascorse ? (
+          <p>دوره ای هنوز ثبت نام نشده</p>
+        ) : (
+          <p>دوره ای هنوز تمام نشده</p>
+        )}
       </div>
     )
   ) : null;
