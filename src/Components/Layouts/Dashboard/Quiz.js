@@ -21,7 +21,7 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
     setName(location.state.name);
   }, [location]);
   const handleClick = () => {
-    navigate("/dashboard/course/quiz", {
+    navigate("/coursecontent/quiz", {
       state: {
         content_id: contentUuid,
         quiz_id: quizUuid,
