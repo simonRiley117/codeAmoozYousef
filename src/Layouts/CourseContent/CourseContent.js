@@ -153,7 +153,20 @@ function CourseContent() {
                     </div>
                   </div>
                 ) : (
-                  <Skeleton />
+                  <div className="w-full mt-10">
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                </div>
                 )}
               </div>
               <div>
