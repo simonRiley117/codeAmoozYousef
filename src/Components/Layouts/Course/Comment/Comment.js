@@ -11,6 +11,7 @@ import CommentInput from "./CommentInput";
 
 function Comment({ courseId }) {
   const [commentInfo, setCommentInfo] = useState(null);
+  const [edit, setEdit] = useState(false);
   const [commentList, setcommentList] = useState([]);
   const [pageSize, setPageSize] = useState(0);
   const [draftCommentInfo, setDraftCommentInfo] = useState(null);
@@ -44,6 +45,10 @@ function Comment({ courseId }) {
     getCommentInfo.reFetch();
     // getDraftCommentInfo.reFetch();
   }, [pagination]);
+  useEffect(() => {
+    // getCommentInfo.reFetch();
+    getDraftCommentInfo.reFetch();
+  }, [edit]);
 
   const handlePagination = () => {
     setpagination({ ...pagination, current: pagination.current + 1 });
@@ -117,6 +122,7 @@ function Comment({ courseId }) {
             {commentList.length !== 0 &&
               commentList.map((comment, index) => (
                 <CommentBox
+                  setEdits={setEdit}
                   key={comment.uuid + index}
                   uuid={comment.uuid}
                   // index={index}
@@ -184,6 +190,7 @@ function Comment({ courseId }) {
                 (comment, index) =>
                   index < more && (
                     <CommentBox
+                      setEdits={setEdit}
                       key={comment.uuid + index + index}
                       uuid={comment.uuid}
                       draft={true}
