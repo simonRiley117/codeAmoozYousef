@@ -192,9 +192,11 @@ const DahsboardAppbar = () => {
                   <NavLink to={item.url}>{item.text}</NavLink>
                 </li>
               ))}
-              <li className="Menu__li" onClick={handleClose}>
-                خروج از حساب
-              </li>
+              {isTablet && (
+                <li className="Menu__li" onClick={handleClose}>
+                  خروج از حساب
+                </li>
+              )}
             </ul>
           </nav>
         </div>

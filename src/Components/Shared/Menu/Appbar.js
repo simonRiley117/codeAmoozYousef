@@ -23,13 +23,13 @@ import { useEffect } from "react";
 import Propfile from "./ProfileMenu/Propfile";
 import { Badge } from "antd";
 import useMediaQuery from "@App/Hooks/useMediaQuery";
-import { ReactComponent as HomeIcon } from '@Assets/Icons/home.svg';
-import { ReactComponent as UserIcon } from '@Assets/Icons/user.svg';
-import { ReactComponent as ResumeIcon } from '@Assets/Icons/resume.svg';
-import { ReactComponent as CourseIcon } from '@Assets/Icons/course.svg';
-import { ReactComponent as WalletIcon } from '@Assets/Icons/wallet.svg';
-import { ReactComponent as MessageIcon } from '@Assets/Icons/message.svg';
-import { ReactComponent as SettingIcon } from '@Assets/Icons/setting.svg';
+import { ReactComponent as HomeIcon } from "@Assets/Icons/home.svg";
+import { ReactComponent as UserIcon } from "@Assets/Icons/user.svg";
+import { ReactComponent as ResumeIcon } from "@Assets/Icons/resume.svg";
+import { ReactComponent as CourseIcon } from "@Assets/Icons/course.svg";
+import { ReactComponent as WalletIcon } from "@Assets/Icons/wallet.svg";
+import { ReactComponent as MessageIcon } from "@Assets/Icons/message.svg";
+import { ReactComponent as SettingIcon } from "@Assets/Icons/setting.svg";
 const Appbar = () => {
   const { cartData } = useCartData();
   const navigate = useNavigate();
@@ -78,42 +78,42 @@ const Appbar = () => {
     },
   ];
   const sidebarmenuItem = [
-	{
-		text: 'پیشخوان',
-		icon: <HomeIcon />,
-		url: '/dashboard',
-	},
-	{
-		text: 'پروفایل',
-		icon: <UserIcon />,
-		url: 'dashboard/profile',
-	},
-	{
-		text: 'رزومه',
-		icon: <ResumeIcon />,
-		url: 'dashboard/resume',
-	},
-	{
-		text: 'دوره های من',
-		icon: <CourseIcon />,
-		url: 'dashboard/my-course',
-	},
-	{
-		text: 'کیف پول',
-		icon: <WalletIcon />,
-		url: 'dashboard/wallet',
-	},
-	{
-		text: 'پیام ها',
-		icon: <MessageIcon />,
-		url: 'dashboard/messages',
-	},
-	{
-		text: 'تنظیمات',
-		icon: <SettingIcon />,
-		url: 'dashboard/setting',
-	},
-];
+    {
+      text: "پیشخوان",
+      icon: <HomeIcon />,
+      url: "/dashboard",
+    },
+    {
+      text: "پروفایل",
+      icon: <UserIcon />,
+      url: "dashboard/profile",
+    },
+    {
+      text: "رزومه",
+      icon: <ResumeIcon />,
+      url: "dashboard/resume",
+    },
+    {
+      text: "دوره های من",
+      icon: <CourseIcon />,
+      url: "dashboard/my-course",
+    },
+    {
+      text: "کیف پول",
+      icon: <WalletIcon />,
+      url: "dashboard/wallet",
+    },
+    {
+      text: "پیام ها",
+      icon: <MessageIcon />,
+      url: "dashboard/messages",
+    },
+    {
+      text: "تنظیمات",
+      icon: <SettingIcon />,
+      url: "dashboard/setting",
+    },
+  ];
 
   const handleToggleMenu = () => {
     if (isTablet) {
@@ -227,24 +227,27 @@ const Appbar = () => {
                       </li>
                     </NavLink>
                   ))}
-                  {sidebarmenuItem.map((item) => (
-                    <NavLink
-                      to={item.url}
-                      onClick={() => setOpenMenu(false)}
-                      className="Menu__li"
-                    >
-                      <li
-                        key={item.id}
+                  {isTablet &&
+                    sidebarmenuItem.map((item) => (
+                      <NavLink
+                        to={item.url}
+                        onClick={() => setOpenMenu(false)}
                         className="Menu__li"
-                        onClick={() => handleToggleMenu()}
                       >
-                        {item.text}
-                      </li>
-                    </NavLink>
-                  ))}
-                  <li className="Menu__li" onClick={handleClose}>
-                    خروج از حساب
-                  </li>
+                        <li
+                          key={item.id}
+                          className="Menu__li"
+                          onClick={() => handleToggleMenu()}
+                        >
+                          {item.text}
+                        </li>
+                      </NavLink>
+                    ))}
+                  {isTablet && (
+                    <li className="Menu__li" onClick={handleClose}>
+                      خروج از حساب
+                    </li>
+                  )}
                 </ul>
               </nav>
             </div>
