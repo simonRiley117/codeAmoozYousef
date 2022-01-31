@@ -144,7 +144,13 @@ function ExampleCodeeditorWithRun(props) {
               <div className="CodeeditorWithRun__codeeditor">
                 <div>
                   <div className="CodeeditorWithRun__codeeditor-btnBox">
-                    <p>{`${props.name}.${props.lan}`}</p>
+                    <p>{`${props.name}.${
+                      props.lan === "c_cpp" && props.lang === "c"
+                        ? "c"
+                        : props.lan === "c_cpp" && props.lang === "c_cpp"
+                        ? "cpp"
+                        : props.lan
+                    }`}</p>
                     <div className="d-flex ">
                       <button
                         className="CodeeditorWithRun__codeeditor-btncopy"

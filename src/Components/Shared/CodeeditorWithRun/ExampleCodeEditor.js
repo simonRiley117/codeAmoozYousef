@@ -12,6 +12,7 @@ function ExampleCodeEditor(props) {
         id={props.id}
         lan={props.lan}
         value={props.value}
+        lang={props.lang}
       />
     </div>
   );

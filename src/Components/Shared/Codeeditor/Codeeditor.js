@@ -112,7 +112,13 @@ function Codeeditor(props) {
               }
               value={0}
               onClick={() => setBtn(0)}
-            >{`code.${props.lan}`}</button>
+            >{`code.${
+              props.lan === "c_cpp" && props.lang === "c"
+                ? "c"
+                : props.lan === "c_cpp" && props.lang === "c_cpp"
+                ? "cpp"
+                : props.lan
+            }`}</button>
             <button
               className={
                 btn === 1

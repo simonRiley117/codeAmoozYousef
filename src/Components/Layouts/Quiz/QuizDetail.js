@@ -3,15 +3,12 @@ import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
 import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 import Button from "../../Shared/Buttons/Button";
-import { Link } from "react-router-dom";
-import { Skeleton } from "antd";
 import { useNavigate } from "react-router-dom";
 
 function QuizDetail({
   quizId,
   contentId,
   courseId,
-  language,
   ispreview,
   ismycoursebol,
   data,
@@ -81,8 +78,9 @@ function QuizDetail({
           courseId={courseId}
           quizId={quizId}
           contentId={contentId}
-          lan={data.language === `c` ? `c_cpp` : data.language }
+          lan={data.language === `c` ? `c_cpp` : data.language}
           value=""
+          lang={data.language}
           ispreview={ispreview}
           ismycoursebol={ismycoursebol}
         />

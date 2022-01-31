@@ -45,7 +45,7 @@ function Index() {
       {getCourseSeasons?.response ? (
         <>
           <BreadCrump
-            name={title}
+            name={data?.name}
             name1={data?.content?.content_name}
             id={data?.content?.content_id}
           />

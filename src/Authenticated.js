@@ -60,7 +60,7 @@ const Authenticated = () => {
         <Route path="/shopping-card" element={<ShoppingCard />} />
         <Route path="/coursecontent" element={<CourseContent />} />
         <Route path="/coursecontent/quiz" element={<Quiz />} />
-        <Route path="/dashboard/course/example" element={<Example />} />
+        <Route path="/coursecontent/example" element={<Example />} />
       </Route>
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />

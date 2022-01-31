@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 const { Item } = BreadcrumbBase;
 
-const BreadCrump = ({ title, classes, name, name1, id }) => {
+const BreadCrump = ({ title, classes, name, name1, id, intro }) => {
   // { path: '/news/news-info', breadcrumb: title },
   const routes = [
     { path: "/", breadcrumb: "صفحه اصلی" },
@@ -27,6 +27,8 @@ const BreadCrump = ({ title, classes, name, name1, id }) => {
     { path: "/coursecontent/quiz", breadcrumb: name, state: true },
     { path: "/dashboard/course", breadcrumb: name1 },
     { path: "/coursecontent", breadcrumb: name1 },
+    { path: "/coursecontent/example", breadcrumb: name },
+    // { path: "/intro/example", breadcrumb: name },
   ];
   const breadcrumbs = useBreadcrumbs(routes);
   // console.log('breadcrumbs: ', breadcrumbs)
@@ -36,7 +38,7 @@ const BreadCrump = ({ title, classes, name, name1, id }) => {
         {breadcrumbs.map(({ match, breadcrumb, state }) => (
           <Item key={match.pathname}>
             <NavLink
-              to={match.pathname}
+              to={intro ? "/courses/intro" : match.pathname}
               state={{
                 name: name,
                 id: id,

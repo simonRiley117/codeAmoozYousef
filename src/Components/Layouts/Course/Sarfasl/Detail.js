@@ -25,7 +25,7 @@ function Detail({
     method: "GET",
     noHeader: false,
     argFunc: (res) => setCourselist(res.results),
-    trigger: !token ? false : ispreviw ,
+    trigger: !token ? false : ispreviw,
   });
   //course
   //course_id
@@ -52,15 +52,13 @@ function Detail({
   useEffect(() => {
     if (courselist.length > 0 && content) {
       setIsmycourse(courselist.filter((i) => i.course_id === content.course));
-     
     }
-  
   }, [courselist, content]);
-  useEffect(()=>{
-    if(ismycourse.length > 0){
-      setIsmycoursebol(true)
+  useEffect(() => {
+    if (ismycourse.length > 0) {
+      setIsmycoursebol(true);
     }
-  },[ismycourse])
+  }, [ismycourse]);
   return (
     <>
       <Tabs className="TabBox" type="card">
@@ -88,6 +86,7 @@ function Detail({
               ispreviw={true}
               context={content?.context}
               lang={content?.language}
+              intro={true}
             />
           ) : (
             <Skeleton />

@@ -6,41 +6,51 @@ import useFetch from "../../../Context/useFetch";
 import { ClipLoader } from "react-spinners";
 import { Skeleton } from "antd";
 
-function TrainExample({ contentUuid, courseUuid ,ispreviw ,context,lang}) {
-  const [content, setContent] = useState(ispreviw ? {context:context}: null);
+function TrainExample({
+  contentUuid,
+  courseUuid,
+  ispreviw,
+  context,
+  lang,
+  intro,
+}) {
+  const [content, setContent] = useState(
+    ispreviw ? { context: context } : null
+  );
   const [contentLoading, setContentLoading] = useState(true);
 
   const setData = (data) => {
     setContent(data);
     setContentLoading(false);
   };
- 
+
   const getContent = useFetch({
     url: `ContentService/${contentUuid}/getContent`,
     method: "GET",
     noHeader: false,
     setter: setData,
-    trigger:!ispreviw 
+    trigger: !ispreviw,
   });
-  
+
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   // let id = "1";
   return (
     <>
-      {ispreviw ||!contentLoading ? (
+      {ispreviw || !contentLoading ? (
         content.context.map((item, index) => (
-          <div key={index} className='mt-10'>
+          <div key={index} className="mt-10">
             {item?.name ? (
               <div className="Sarfasl__sample flex items-center	justify-between">
                 <p>مثال</p>
                 <div className="Sarfasl__sampleLinkBox flex items-center justify-center ">
                   <Link
-                    to={"/dashboard/course/example"}
+                    to={"/coursecontent/example"}
                     state={{
                       title: item.name,
                       id: item.uuid,
                       courseUuid: courseUuid,
+                      intro: intro,
                     }}
                   >
                     {windowSize === "sm"
@@ -54,7 +64,16 @@ function TrainExample({ contentUuid, courseUuid ,ispreviw ,context,lang}) {
             {item?.code?.length > 1 ? (
               <Codeeditor
                 id={item.uuid}
-                lan={!ispreviw ? (content.language === "c" ? "c_cpp" : content.language) : (lang === "c" ? "c_cpp" : lang) }
+                lan={
+                  !ispreviw
+                    ? content.language === "c"
+                      ? "c_cpp"
+                      : content.language
+                    : lang === "c"
+                    ? "c_cpp"
+                    : lang
+                }
+                lang={content.language}
                 value={item.code}
               />
             ) : null}

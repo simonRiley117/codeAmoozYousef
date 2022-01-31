@@ -10,14 +10,19 @@ const ContentTabs = ({
   hasSeasonQuize,
   setActiveSeason,
   setActiveTab,
-  ActiveTab
+  ActiveTab,
 }) => {
   const { TabPane } = Tabs;
   const [seosononquizeid, setSeosononquizeid] = useState();
-  console.log(seosononquizeid)
+  console.log(seosononquizeid);
   return (
-    <Tabs onChange={setActiveTab} activeKey={ActiveTab} className="TabBox" type="card">
-      <TabPane  tab="ویدیو" key={`tab_1`} className="reactour__video">
+    <Tabs
+      onChange={setActiveTab}
+      activeKey={ActiveTab}
+      className="TabBox"
+      type="card"
+    >
+      <TabPane tab="ویدیو" key={`tab_1`} className="reactour__video">
         <ContentDetail
           setSeosononquizeid={setSeosononquizeid}
           iscontent={true}
@@ -35,8 +40,12 @@ const ContentTabs = ({
           </a>
         </div> */}
       </TabPane>
-      <TabPane  tab="تمرین و مثال" key={`tab_2`}>
-        <TrainExample contentUuid={contentUuid} courseUuid={courseUuid} />
+      <TabPane tab="تمرین و مثال" key={`tab_2`}>
+        <TrainExample
+          contentUuid={contentUuid}
+          courseUuid={courseUuid}
+          intro={false}
+        />
       </TabPane>
       <TabPane tab="آزمون" key={`tab_3`}>
         <Quiz
