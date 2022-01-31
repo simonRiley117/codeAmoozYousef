@@ -5,6 +5,7 @@ import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 import Button from "../../Shared/Buttons/Button";
 import { Link } from "react-router-dom";
 import { Skeleton } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function QuizDetail({
   quizId,
@@ -18,7 +19,8 @@ function QuizDetail({
   ispreview,
   ismycoursebol,
 }) {
-  
+  const navigate = useNavigate();
+
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
@@ -74,17 +76,9 @@ function QuizDetail({
             ico={false}
             type="primary"
             classes="CoWorkers__btn flex items-center "
-            // onClick={handlePassContent}
+            onClick={() => navigate(-1)}
           >
-            <Link
-              to={`/coursecontent`}
-              state={{
-                id: courseId,
-              }}
-              className="flex items-center"
-            >
-              بازگشت
-            </Link>
+            بازگشت
           </Button>
         </div>
       </div>
