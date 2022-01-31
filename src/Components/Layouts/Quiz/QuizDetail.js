@@ -4,6 +4,7 @@ import pdf from "@Assets/Pic/pdf.png";
 import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 import Button from "../../Shared/Buttons/Button";
 import { Link } from "react-router-dom";
+import { Skeleton } from "antd";
 
 function QuizDetail({
   quizId,
@@ -17,11 +18,17 @@ function QuizDetail({
   ispreview,
   ismycoursebol,
 }) {
+  
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
         <p className="ExampleDetail__title font-bold">{title}</p>
-        <p className="ExampleDetail__txt font-normal text-justify	">{text}</p>
+        {text ? (
+          <p className="ExampleDetail__txt font-normal text-justify	">{text}</p>
+        ) : (
+          <Skeleton />
+        )}
+
         <div className="flex items-center">
           <div className="flex flex-col	ExampleDetail__sampleTitleBox">
             <p className="ExampleDetail__sampleTitle font-normal">
@@ -31,20 +38,24 @@ function QuizDetail({
               خروجی نمونه:
             </p>
           </div>
-          {test_cases.map((item, index) => (
-            <div
-              className="flex flex-col	ExampleDetail__sampledataBox mr-6"
-              key={index}
-            >
-              <p className="ExampleDetail__sampledata text-center	">
-                {item.input}
-              </p>
-              <img src={arrowdown} alt={arrowdown} />
-              <p className="ExampleDetail__sampledata text-center	">
-                {item.output}
-              </p>
-            </div>
-          ))}
+          {test_cases ? (
+            test_cases.map((item, index) => (
+              <div
+                className="flex flex-col	ExampleDetail__sampledataBox mr-6"
+                key={index}
+              >
+                <p className="ExampleDetail__sampledata text-center	">
+                  {item.input}
+                </p>
+                <img src={arrowdown} alt={arrowdown} />
+                <p className="ExampleDetail__sampledata text-center	">
+                  {item.output}
+                </p>
+              </div>
+            ))
+          ) : (
+            <Skeleton />
+          )}
         </div>
         <div className="flex items-center ExampleDetail__downloadBox mb-10">
           <div className="flex items-center">

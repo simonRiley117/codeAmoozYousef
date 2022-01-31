@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import { useParams, useLocation } from "react-router-dom";
 import QuizDetail from "@Components/Layouts/Quiz/QuizDetail";
+import useFetch from "@App/Context/useFetch";
 
 function Index() {
   const location = useLocation();
@@ -29,7 +30,13 @@ function Index() {
     setismycoursebol(location.state.ismycoursebol);
     setCourse(location.state.course);
   }, [location]);
-
+  // const getCourseSeasons = useFetch({
+  //   url: `CourseService/${id}/sidebar`,
+  //   method: "GET",
+  //   noHeader: false,
+  //   setter: setSidebarList,
+  //   trigger: false,
+  // });
   return (
     <div className="Example">
       <BreadCrump name={title} name1={course} />
