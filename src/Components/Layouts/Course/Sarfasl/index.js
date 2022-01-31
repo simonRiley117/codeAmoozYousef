@@ -64,7 +64,7 @@ const Topic = ({ courseId, courseSeasons }) => {
   // let url = "https://testui.codeamooz.com/example/4/5";
   return (
     <>
-      {courseSeasons.data.lenght !== 0 && (
+      {courseSeasons.data.length !== 0 && (
         <div className="Sarfasl">
           <div className="Sarfasl__Accordionbox">
             <Accordion>

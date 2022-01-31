@@ -3,6 +3,7 @@ import BreadCrump from "@Components/Shared/BreadCrump/BreadCrump";
 import { useParams, useLocation } from "react-router-dom";
 import QuizDetail from "@Components/Layouts/Quiz/QuizDetail";
 import useFetch from "@App/Context/useFetch";
+import { Skeleton } from "antd";
 
 function Index() {
   const location = useLocation();
@@ -40,26 +41,48 @@ function Index() {
   });
 
   return (
-    <div className="Example">
-      <BreadCrump
-        name={title}
-        name1={data?.content?.content_name}
-        id={data?.content?.content_id}
-      />
-      <div className="Example__container">
-        <QuizDetail
-          quizId={quizId}
-          contentId={contentId}
-          courseId={courseId}
-          title={title}
-          text={text}
-          file={file}
-          language={language}
-          test_cases={test_cases}
-          ispreview={ispreview}
-          ismycoursebol={ismycoursebol}
-        />
-      </div>
+    <div className="Example ">
+      {getCourseSeasons?.response ? (
+        <>
+          <BreadCrump
+            name={title}
+            name1={data?.content?.content_name}
+            id={data?.content?.content_id}
+          />
+          <div className="Example__container">
+            <QuizDetail
+              quizId={quizId}
+              contentId={contentId}
+              courseId={courseId}
+              language={language}
+              ispreview={ispreview}
+              ismycoursebol={ismycoursebol}
+              data={data}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="w-11/12	 m-auto mt-44">
+          <Skeleton.Button block active size="large" />
+          <br />
+          <br />
+          <Skeleton.Button block active size="large" />
+          <br />
+          <br />
+          <Skeleton.Button block active size="large" />
+          <br />
+          <br />
+          <Skeleton.Button block active size="large" />
+          <br />
+          <br />
+          <Skeleton.Button block active size="large" />
+          <br />
+          <br />
+          <Skeleton.Button block active size="large" />
+          <br />
+          <br />
+        </div>
+      )}
     </div>
   );
 }

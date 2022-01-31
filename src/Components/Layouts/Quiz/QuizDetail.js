@@ -11,25 +11,21 @@ function QuizDetail({
   quizId,
   contentId,
   courseId,
-  title,
-  text,
-  test_cases,
   language,
-  file,
   ispreview,
   ismycoursebol,
+  data,
 }) {
   const navigate = useNavigate();
 
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
-        <p className="ExampleDetail__title font-bold">{title}</p>
-        {text ? (
-          <p className="ExampleDetail__txt font-normal text-justify	">{text}</p>
-        ) : (
-          <Skeleton />
-        )}
+        <p className="ExampleDetail__title font-bold">{data.name}</p>
+
+        <p className="ExampleDetail__txt font-normal text-justify	">
+          {data.text}
+        </p>
 
         <div className="flex items-center">
           <div className="flex flex-col	ExampleDetail__sampleTitleBox">
@@ -40,8 +36,8 @@ function QuizDetail({
               خروجی نمونه:
             </p>
           </div>
-          {test_cases ? (
-            test_cases.map((item, index) => (
+          {data.test_cases.length !== 0 &&
+            data.test_cases.map((item, index) => (
               <div
                 className="flex flex-col	ExampleDetail__sampledataBox mr-6"
                 key={index}
@@ -54,18 +50,15 @@ function QuizDetail({
                   {item.output}
                 </p>
               </div>
-            ))
-          ) : (
-            <Skeleton />
-          )}
+            ))}
         </div>
         <div className="flex items-center ExampleDetail__downloadBox mb-10">
           <div className="flex items-center">
-            {file && (
+            {data.file && (
               <>
                 <img src={pdf} alt={pdf} />
                 <p className="cursor-pointer">
-                  <a href={file} download target={"_blank"}>
+                  <a href={data.file} download target={"_blank"}>
                     دانلود فایل
                   </a>
                 </p>
@@ -82,16 +75,18 @@ function QuizDetail({
           </Button>
         </div>
       </div>
-      <QuizCodeEditor
-        name={title}
-        courseId={courseId}
-        quizId={quizId}
-        contentId={contentId}
-        lan={language === `c` ? `c_cpp` : language}
-        value=""
-        ispreview={ispreview}
-        ismycoursebol={ismycoursebol}
-      />
+      {data ? (
+        <QuizCodeEditor
+          name={data.name}
+          courseId={courseId}
+          quizId={quizId}
+          contentId={contentId}
+          lan={data.language === `c` ? `c_cpp` : data.language }
+          value=""
+          ispreview={ispreview}
+          ismycoursebol={ismycoursebol}
+        />
+      ) : null}
     </div>
   );
 }
