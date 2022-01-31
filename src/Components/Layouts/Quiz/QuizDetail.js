@@ -40,7 +40,7 @@ function QuizDetail({
                 key={index}
               >
                 <p className="ExampleDetail__sampledata text-center	">
-                  {item.input}
+                  {item.input.replace(/#$$#/g, ",")}
                 </p>
                 <img src={arrowdown} alt={arrowdown} />
                 <p className="ExampleDetail__sampledata text-center	">

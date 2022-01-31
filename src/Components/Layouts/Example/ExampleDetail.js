@@ -29,7 +29,7 @@ function ExampleDetail({ example, courseUuid }) {
               className="flex flex-col	ExampleDetail__sampledataBox mr-6"
             >
               <p className="ExampleDetail__sampledata text-center	">
-                {item.input}
+                {item.input.replace(/#$$#/g, ",")}
               </p>
               <img src={arrowdown} alt={arrowdown} />
               <p className="ExampleDetail__sampledata text-center	">
