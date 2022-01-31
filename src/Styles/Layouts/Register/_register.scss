@@ -21,7 +21,7 @@
 		}
 	}
 	&__layout {
-		@include display-flex('', stretch);
+		@include display-flex("", stretch);
 	}
 	&__container {
 		padding: 0;
@@ -179,7 +179,7 @@
 			}
 		}
 		&--inner {
-			@include d-flex-column('', stretch);
+			@include d-flex-column("", stretch);
 			width: 100%;
 			margin-bottom: 2rem;
 
@@ -257,7 +257,8 @@
 				height: 40px;
 			}
 
-			& .link {
+			& .link,
+			a {
 				background-color: $color-white;
 				border: 0;
 				filter: none;
@@ -300,8 +301,7 @@
 			right: -100%;
 			height: 100%;
 			width: 200%;
-			background: linear-gradient(180deg, #217480 0%, #43baa4 100%) no-repeat
-				0 0 / cover;
+			background: linear-gradient(180deg, #217480 0%, #43baa4 100%) no-repeat 0 0 / cover;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
