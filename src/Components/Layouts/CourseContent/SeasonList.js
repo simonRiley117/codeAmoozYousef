@@ -4,6 +4,7 @@ import SeasonsItem from "./SeasonsItem";
 import { useLocation } from "react-router";
 import useFetch from "../../../Context/useFetch";
 import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
+import { ReactComponent as QuizeIcon } from "@Assets/Icons/quizeicon.svg";
 import Lock from "@Assets/Icons/lock.svg";
 import { useUserData } from "@App/Context/userContext";
 import { tourguid } from "@App/Recoil/StateRecoil";
@@ -17,6 +18,9 @@ const SeasonList = ({
   getContentName,
   changeContentID,
   setIsContentPass,
+  SeasonsQuizeid,
+  setSeasonsQuizeid,
+  setSeasonsQuizeActive,
 }) => {
   const [openPanels, setOpenPanels] = useState([activeSeasons]);
   useEffect(() => {
@@ -25,8 +29,12 @@ const SeasonList = ({
     }
   }, [, activeSeasons, activeContent]);
   const { userData } = useUserData();
+  const handleSeosonQuize = (id) =>{
+    setSeasonsQuizeActive(true);
+    setSeasonsQuizeid(id)
+  }
   const [showguid, setShowguid] = useRecoilState(tourguid);
-
+  console.log("sidebarList.season_quiz_id", sidebarList);
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion
@@ -68,7 +76,14 @@ const SeasonList = ({
               index={index}
               getContentName={getContentName}
               setIsContentPass={setIsContentPass}
+              setSeasonsQuizeActive={setSeasonsQuizeActive}
             />
+            {season.season_quiz_id && (
+              <div className="px-8 sidebar-quize" onClick={()=>handleSeosonQuize(season.season_quiz_id)}>
+                <QuizeIcon />
+                <p>آزمون فصل</p>
+              </div>
+            )}
           </Panel>
         ))}
       </Accordion>

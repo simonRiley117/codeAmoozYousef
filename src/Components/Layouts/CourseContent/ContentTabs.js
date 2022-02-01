@@ -11,10 +11,10 @@ const ContentTabs = ({
   setActiveSeason,
   setActiveTab,
   ActiveTab,
+  SeasonsQuizeid,
+  setSeasonsQuizeid,SeasonsQuizeActive
 }) => {
   const { TabPane } = Tabs;
-  const [seosononquizeid, setSeosononquizeid] = useState();
-  console.log(seosononquizeid);
   return (
     <Tabs
       onChange={setActiveTab}
@@ -22,47 +22,50 @@ const ContentTabs = ({
       className="TabBox"
       type="card"
     >
-      <TabPane tab="ویدیو" key={`tab_1`} className="reactour__video">
-        <ContentDetail
-          setSeosononquizeid={setSeosononquizeid}
-          iscontent={true}
-          setActiveSeason={setActiveSeason}
-          contentUuid={contentUuid}
-        />
-        {/* <div className="ContentDetail__downloadLinkBox text-left">
-          <a
-            href={""}
-            download
-            target={"_blank"}
-            className="ContentDetail__downloadLink"
-          >
-            دانلود ویدیو
-          </a>
-        </div> */}
-      </TabPane>
-      <TabPane tab="تمرین و مثال" key={`tab_2`}>
-        <TrainExample
-          contentUuid={contentUuid}
-          courseUuid={courseUuid}
-          intro={false}
-        />
-      </TabPane>
-      <TabPane tab="آزمون" key={`tab_3`}>
-        <Quiz
-          quizUuid={quizUuid}
-          contentUuid={contentUuid}
-          courseUuid={courseUuid}
-        />
-      </TabPane>
-      {hasSeasonQuize === "You have not passed quiz season" && (
-        <TabPane tab=" آزمون فصل" key={`tab_4`}>
-          <Quiz
-            quizUuid={seosononquizeid}
-            contentUuid={contentUuid}
-            courseUuid={courseUuid}
-          />
-        </TabPane>
-      )}
+     {!SeasonsQuizeActive  ?
+      <>
+       <TabPane tab="ویدیو" key={`tab_1`} className="reactour__video">
+       <ContentDetail
+         setSeosononquizeid={setSeasonsQuizeid}
+         iscontent={true}
+         setActiveSeason={setActiveSeason}
+         contentUuid={contentUuid}
+       />
+       {/* <div className="ContentDetail__downloadLinkBox text-left">
+         <a
+           href={""}
+           download
+           target={"_blank"}
+           className="ContentDetail__downloadLink"
+         >
+           دانلود ویدیو
+         </a>
+       </div> */}
+     </TabPane>
+     <TabPane tab="تمرین و مثال" key={`tab_2`}>
+       <TrainExample
+         contentUuid={contentUuid}
+         courseUuid={courseUuid}
+         intro={false}
+       />
+     </TabPane>
+     <TabPane tab="آزمون" key={`tab_3`}>
+       <Quiz
+         quizUuid={quizUuid}
+         contentUuid={contentUuid}
+         courseUuid={courseUuid}
+       />
+     </TabPane> 
+      </>: 
+       <TabPane tab=" آزمون فصل" key={`tab_1`}>
+         <Quiz
+           quizUuid={SeasonsQuizeid}
+           contentUuid={contentUuid}
+           courseUuid={courseUuid}
+         />
+       </TabPane>
+      }
+      
     </Tabs>
   );
 };

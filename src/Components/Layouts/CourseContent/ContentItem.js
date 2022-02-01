@@ -13,6 +13,7 @@ const ContentItem = ({
   getContentName,
   changeContentID,
   setIsContentPass,
+  setSeasonsQuizeActive
 }) => {
   useEffect(() => {
     if (activeContent === content.id) {
@@ -23,6 +24,7 @@ const ContentItem = ({
 
   }, [activeContent]);
   const handleClick= ()=>{
+    setSeasonsQuizeActive(false)
     if(!content.lockedOn){
       changeContentID(content.id, content.title)
     }

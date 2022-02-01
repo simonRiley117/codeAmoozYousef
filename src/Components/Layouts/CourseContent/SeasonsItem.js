@@ -17,6 +17,7 @@ const SeasonsItem = ({
   setquizUuid,
   changeContentID,
   setIsContentPass,
+  setSeasonsQuizeActive,
   ...rest
 }) => {
   const [contentList, setcontentList] = useState([]);
@@ -43,6 +44,7 @@ const SeasonsItem = ({
      
        { contentList.map((content, index) => (
           <ContentItem
+          setSeasonsQuizeActive={setSeasonsQuizeActive}
             changeContentID={changeContentID}
             setquizUuid={setquizUuid}
             activeContent={activeContent}
