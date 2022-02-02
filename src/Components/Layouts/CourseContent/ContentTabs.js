@@ -12,7 +12,8 @@ const ContentTabs = ({
   setActiveTab,
   ActiveTab,
   SeasonsQuizeid,
-  setSeasonsQuizeid,SeasonsQuizeActive
+  setSeasonsQuizeid,
+  SeasonsQuizeActive,
 }) => {
   const { TabPane } = Tabs;
   return (
@@ -22,16 +23,16 @@ const ContentTabs = ({
       className="TabBox"
       type="card"
     >
-     {!SeasonsQuizeActive  ?
-      <>
-       <TabPane tab="ویدیو" key={`tab_1`} className="reactour__video">
-       <ContentDetail
-         setSeosononquizeid={setSeasonsQuizeid}
-         iscontent={true}
-         setActiveSeason={setActiveSeason}
-         contentUuid={contentUuid}
-       />
-       {/* <div className="ContentDetail__downloadLinkBox text-left">
+      {!SeasonsQuizeActive ? (
+        <>
+          <TabPane tab="ویدیو" key={`tab_1`} className="reactour__video">
+            <ContentDetail
+              setSeosononquizeid={setSeasonsQuizeid}
+              iscontent={true}
+              setActiveSeason={setActiveSeason}
+              contentUuid={contentUuid}
+            />
+            {/* <div className="ContentDetail__downloadLinkBox text-left">
          <a
            href={""}
            download
@@ -41,31 +42,33 @@ const ContentTabs = ({
            دانلود ویدیو
          </a>
        </div> */}
-     </TabPane>
-     <TabPane tab="تمرین و مثال" key={`tab_2`}>
-       <TrainExample
-         contentUuid={contentUuid}
-         courseUuid={courseUuid}
-         intro={false}
-       />
-     </TabPane>
-     <TabPane tab="آزمون" key={`tab_3`}>
-       <Quiz
-         quizUuid={quizUuid}
-         contentUuid={contentUuid}
-         courseUuid={courseUuid}
-       />
-     </TabPane> 
-      </>: 
-       <TabPane tab=" آزمون فصل" key={`tab_1`}>
-         <Quiz
-           quizUuid={SeasonsQuizeid}
-           contentUuid={contentUuid}
-           courseUuid={courseUuid}
-         />
-       </TabPane>
-      }
-      
+          </TabPane>
+          <TabPane tab="تمرین و مثال" key={`tab_2`}>
+            <TrainExample
+              contentUuid={contentUuid}
+              courseUuid={courseUuid}
+              intro={false}
+            />
+          </TabPane>
+          <TabPane tab="آزمون" key={`tab_3`}>
+            <Quiz
+              quizUuid={quizUuid}
+              contentUuid={contentUuid}
+              courseUuid={courseUuid}
+              intro={false}
+            />
+          </TabPane>
+        </>
+      ) : (
+        <TabPane tab=" آزمون فصل" key={`tab_1`}>
+          <Quiz
+            quizUuid={SeasonsQuizeid}
+            contentUuid={contentUuid}
+            courseUuid={courseUuid}
+            intro={false}
+          />
+        </TabPane>
+      )}
     </Tabs>
   );
 };

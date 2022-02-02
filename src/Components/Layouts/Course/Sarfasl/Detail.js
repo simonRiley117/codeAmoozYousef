@@ -99,6 +99,7 @@ function Detail({
               quizUuid={content.quiz_id}
               ispreviw={ispreviw}
               contentUuid={contentUuid}
+              intro={true}
               // courseUuid={courseUuid}
             />
           ) : (
@@ -111,6 +112,7 @@ function Detail({
                         quizUuid={quizUuid}
                         contentUuid={contentUuid}
                         courseUuid={courseUuid}
+                         intro={true}
                       />
                     </TabPane>
                   )} */}
