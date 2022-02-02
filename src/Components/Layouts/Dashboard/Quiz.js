@@ -8,32 +8,36 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Skeleton } from "antd";
 import { useAuth } from "@App/Context/authContext";
 
-function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
+function Quiz({
+  quizUuid,
+  ismycoursebol,
+  contentUuid,
+  courseUuid,
+  ispreviw,
+  intro,
+}) {
   const [quizContent, setQuizContent] = useState(null);
   const location = useLocation();
-  
+
   const [quizLoading, setQuizLoading] = useState(true);
   const [errorpass, seterrorpass] = useState(false);
-  
+
   let navigate = useNavigate();
   const [name, setName] = useState();
   useEffect(() => {
     setName(location.state.name);
   }, [location]);
   const handleClick = () => {
-    navigate("/coursecontent/quiz", {
+    navigate("/quiz", {
       state: {
         content_id: contentUuid,
         quiz_id: quizUuid,
         courseUuid: courseUuid,
-        title: quizContent?.name,
-        text: quizContent?.text,
-        test_cases: quizContent?.test_cases,
-        language: quizContent?.language,
-        file: quizContent?.file,
+       language: quizContent?.language,
         ispreviw: ispreviw,
         ismycoursebol: ismycoursebol,
         course: name,
+        intro: intro,
       },
     });
   };
@@ -56,13 +60,13 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
     noHeader: token ? false : ispreviw,
     trigger: false,
     setter: setData,
-    argErrFunc:(err)=>{
-    if(err.detail){
-        if(err.detail === "You didnt pass former contents"){
-          seterrorpass(true)
+    argErrFunc: (err) => {
+      if (err.detail) {
+        if (err.detail === "You didnt pass former contents") {
+          seterrorpass(true);
         }
-    }
-    }
+      }
+    },
   });
 
   useEffect(() => {
@@ -79,28 +83,34 @@ function Quiz({ quizUuid, ismycoursebol, contentUuid, courseUuid, ispreviw }) {
           <img src={quiz} alt={quiz} />{" "}
         </div>
       ) : !getQuizContent.loading ? (
-      <>
-       {!errorpass ? <div className="Quiz__box">
-          <p className="Quiz__title">آزمون درس</p>
-          <p className="Quiz__txt">
-            آزمون بدون زمان میباشد و تا زمانی که نمره 100 دریافت نشده است، پاس
-            نمی شود و شما مجاز هستید تا زمانی که نمره 100 دریافت کنید، آزمون
-            دهید اما زمانی که نمره 100 گرفته شود، نمره های بعدی بدون تاثیر
-            میباشد
-          </p>
-          <Button
-            onClick={handleClick}
-            ico={false}
-            type="primary"
-            classes="CoWorkers__btn Quiz__btn"
-          >
-            شروع
-          </Button>
-        </div> :  <div className="Quiz__empty">
-          <p>برای گذراندن آزمون فصل ابتدا آزمون جلسه ی قبل را پاس کنید :)</p>
-          <img src={quiz} alt={quiz} />{" "}
-        </div>} 
-      </>
+        <>
+          {!errorpass ? (
+            <div className="Quiz__box">
+              <p className="Quiz__title">آزمون درس</p>
+              <p className="Quiz__txt">
+                آزمون بدون زمان میباشد و تا زمانی که نمره 100 دریافت نشده است،
+                پاس نمی شود و شما مجاز هستید تا زمانی که نمره 100 دریافت کنید،
+                آزمون دهید اما زمانی که نمره 100 گرفته شود، نمره های بعدی بدون
+                تاثیر میباشد
+              </p>
+              <Button
+                onClick={handleClick}
+                ico={false}
+                type="primary"
+                classes="CoWorkers__btn Quiz__btn"
+              >
+                شروع
+              </Button>
+            </div>
+          ) : (
+            <div className="Quiz__empty">
+              <p>
+                برای گذراندن آزمون فصل ابتدا آزمون جلسه ی قبل را پاس کنید :)
+              </p>
+              <img src={quiz} alt={quiz} />{" "}
+            </div>
+          )}
+        </>
       ) : (
         <div className="center m-4">
           <Skeleton />

@@ -49,7 +49,7 @@ function ContentDetail({
           </p>
         </div>
       ) : (
-        <Skeleton />
+        <Skeleton active />
       )}
     </div>
   );

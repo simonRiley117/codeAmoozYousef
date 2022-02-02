@@ -37,7 +37,6 @@ function Index() {
   useEffect(() => {
     setTitle(location.state.title);
   }, [location]);
-
   return (
     <>
       {!exampleLoading ? (
@@ -47,7 +46,12 @@ function Index() {
             // name1={example?.content?.content_name}
             id={example?.content?.content_id}
           /> */}
-          <BreadCrump name={example?.name} intro={intro} />
+          <BreadCrump
+            name={example?.name}
+            intro={intro}
+            namestate={example?.course_name}
+            id={intro ? example?.course_uuid : example?.course_uuid}
+          />
           <div className="Example__container">
             <ExampleDetail example={example} courseUuid={courseUuid} />
           </div>

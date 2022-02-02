@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 const { Item } = BreadcrumbBase;
 
-const BreadCrump = ({ title, classes, name, name1, id, intro }) => {
+const BreadCrump = ({ title, classes, name, name1, id, intro, namestate }) => {
   // { path: '/news/news-info', breadcrumb: title },
   const routes = [
     { path: "/", breadcrumb: "صفحه اصلی" },
@@ -24,10 +24,10 @@ const BreadCrump = ({ title, classes, name, name1, id, intro }) => {
     { path: "/dashboard/my-course", breadcrumb: "دوره های من " },
     { path: "/dashboard/messages", breadcrumb: "پیام های من" },
     { path: "/courses/intro", breadcrumb: name },
-    { path: "/coursecontent/quiz", breadcrumb: name, state: true },
+    { path: "/quiz", breadcrumb: name, state: true },
     { path: "/dashboard/course", breadcrumb: name1 },
     { path: "/coursecontent", breadcrumb: name1 },
-    { path: "/coursecontent/example", breadcrumb: name },
+    { path: `/example`, breadcrumb: name },
     // { path: "/intro/example", breadcrumb: name },
   ];
   const breadcrumbs = useBreadcrumbs(routes);
@@ -38,13 +38,22 @@ const BreadCrump = ({ title, classes, name, name1, id, intro }) => {
         {breadcrumbs.map(({ match, breadcrumb, state }) => (
           <Item key={match.pathname}>
             <NavLink
-              to={intro ? "/courses/intro" : match.pathname}
+              to={
+                intro
+                  ? "/courses/intro"
+                  : match.pathname === "/example" || match.pathname === "/quiz"
+                  ? "/coursecontent"
+                  : match.pathname
+              }
               state={{
-                name: name,
+                name: namestate,
                 id: id,
               }}
             >
-              {breadcrumb}
+              {match.pathname === "/example" || match.pathname === "/quiz"
+                ? `${namestate} / ${name}`
+                : breadcrumb}
+              {/* {breadcrumb} */}
             </NavLink>
           </Item>
         ))}

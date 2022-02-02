@@ -45,7 +45,7 @@ function TrainExample({
                 <p>مثال</p>
                 <div className="Sarfasl__sampleLinkBox flex items-center justify-center ">
                   <Link
-                    to={"/coursecontent/example"}
+                    to={"/example"}
                     state={{
                       title: item.name,
                       id: item.uuid,

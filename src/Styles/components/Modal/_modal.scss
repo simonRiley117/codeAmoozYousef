@@ -11,6 +11,8 @@
 	padding-bottom: 0;
 	& .ant-modal-content {
 		border-radius: 1.5rem;
+		max-height: 90vh;
+		overflow: auto;
 	}
 	& .ant-modal-body {
 		padding: 0;
@@ -33,5 +35,29 @@
 
 	& .ant-modal-close-x {
 		height: 54px;
+	}
+}
+.ant-modal-content {
+	&::-webkit-scrollbar {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		opacity: 0;
+		border-radius: 1.5rem;
 	}
 }
