@@ -64,19 +64,17 @@ const TeacherResumeIndex = () => {
         // trigger: false,
         setter: setSkillInfo,
     });
-    // const showEdit = () => {
-    //     setEdit((before) => !before);
-    // };
-    // console.log(profession.results?.[0]);
     return (
         <div className="container grid grid-cols-6 mt-60">
             <div>
                 <TeacherInfo courseId={location.state.courseId} resume={true} />
             </div>
-            <div className="col-span-5">
+            <div className="col-span-5 mt-4">
                 <div>
-                    <div className="teacher-resume teacher-resume-profession mb-4">
-                        <h3>سوابق کاری</h3>
+                    <div className="teacher-resume teacher-resume-profession mb-8">
+                        <div className="teacher-resume-title">
+                            <h3>سوابق کاری</h3>
+                        </div>
                         {profession.results?.map((teacherProf) => (
                             <div className=" mb-4">
                                 <ResumeDoneWrapper
@@ -120,8 +118,10 @@ const TeacherResumeIndex = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="teacher-resume teacher-resume-grade mb-4">
-                        <h3>سوابق تحصیلی</h3>
+                    <div className="teacher-resume teacher-resume-grade mb-8">
+                        <div className="teacher-resume-title">
+                            <h3>سوابق تحصیلی</h3>
+                        </div>
                         {grade.results?.map((teacherGr) => (
                             <div className=" mb-4">
                                 <ResumeDoneWrapper
@@ -176,8 +176,10 @@ const TeacherResumeIndex = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="teacher-resume teacher-resume-skill mb-4">
-                        <h3>مهارت‌ها</h3>
+                    <div className="teacher-resume teacher-resume-skill mb-8">
+                        <div className="teacher-resume-title">
+                            <h3>مهارت‌ها</h3>
+                        </div>
                         {skill.results?.map((teacherSk) => (
                             <div className=" mb-4">
                                 <ResumeDoneWrapper
