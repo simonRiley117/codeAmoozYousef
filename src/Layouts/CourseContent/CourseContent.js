@@ -24,6 +24,7 @@ function CourseContent() {
   const [ActiveSeason, setActiveSeason] = useState(null);
   const [ActiveTab, setActiveTab] = useState(null);
   const [SeasonsQuizeid, setSeasonsQuizeid] = useState(null);
+  const [SeasonsQuizeActive, setSeasonsQuizeActive] = useState(false);
   const [isContentPass, setIsContentPass] = useState(false);
   const [quizUuid, setquizUuid] = useState();
   const [sidebarList, setSidebarList] = useState();
@@ -85,7 +86,13 @@ function CourseContent() {
     trigger: false,
     caller: getCurrentCourseState,
     argErrFunc: (err) => handlePassContentError(err),
-    func: () => setCurrentContentid(CurrentcontenStatus.next_content_id),
+    func: () => {
+      if(CurrentcontenStatus.next_content_id === "You have not passed quiz season"){ 
+       setSeasonsQuizeActive(true)
+       console.log("CurrentcontenStatus.next_content_id",CurrentcontenStatus.next_content_id )
+    }else{
+      setCurrentContentid(CurrentcontenStatus.next_content_id)}
+     }
     // setter: setCallBackPassContent
   });
   const handlePassContentError = (err) => {
@@ -111,9 +118,15 @@ function CourseContent() {
   }, [Currentcontentid]);
 
   const handleNextContent = () => {
+  
+ 
     if (!isContentPass) {
       postPassContent.reFetch();
+    
     } else {
+      if(CurrentcontenStatus?.next_content_id === "You have not passed quiz season"){
+        setSeasonsQuizeActive(true)
+      }
       setCurrentContentid(CurrentcontenStatus.next_content_id);
     }
   };
@@ -129,7 +142,7 @@ function CourseContent() {
       <div style={{ height: "100%" }}>
         <div className="LastCourse">
           <div className="container">
-            <BreadCrump name1={name} />
+            <BreadCrump name1={sidebarList?.title} />
             <div className="grid LastCourse__container relative">
               <div className="LastCourse__Box">
                 {sidebarList && !getCourseSeasons.loading ? (
@@ -143,6 +156,9 @@ function CourseContent() {
                         setquizUuid={setquizUuid}
                         changeContentID={changeContentID}
                         setIsContentPass={setIsContentPass}
+                        setSeasonsQuizeActive={setSeasonsQuizeActive}
+                        setSeasonsQuizeid={setSeasonsQuizeid}
+                        SeasonsQuizeid={SeasonsQuizeid}
                       />
                     </div>
                     <div className="flex items-center cursor-pointer LastCourse__guideBox">
@@ -153,14 +169,27 @@ function CourseContent() {
                     </div>
                   </div>
                 ) : (
-                  <Skeleton />
+                  <div className="w-full mt-10">
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                  <Skeleton.Button block={true} active size="large" />
+                  <br />
+                  <br />
+                </div>
                 )}
               </div>
               <div>
                 {CurrentCourseStatus && !getCurrentContentState.loading ? (
                   <CourseStatus details={CurrentCourseStatus} />
                 ) : (
-                  <Skeleton />
+                  <Skeleton.Button block={true} active size="large" />
                 )}
 
                 {!LastCourse ? (
@@ -172,6 +201,9 @@ function CourseContent() {
                     hasSeasonQuize={CurrentcontenStatus?.next_content_id}
                     ActiveTab={ActiveTab}
                     setActiveTab={setActiveTab}
+                    setSeasonsQuizeid={setSeasonsQuizeid}
+                    SeasonsQuizeid={SeasonsQuizeid}
+                    SeasonsQuizeActive={SeasonsQuizeActive}
                   />
                 ) : (
                   <div className="LastCourse__congrats ">
@@ -193,9 +225,7 @@ function CourseContent() {
                                 : handleLastCourse
                             }
                             disabled={
-                              (!isContentPass && quizUuid !== null) ||
-                              CurrentcontenStatus.next_content_id ===
-                                "You have not passed quiz season"
+                              (!isContentPass && quizUuid !== null) 
                             }
                           >
                             مبحث بعدی

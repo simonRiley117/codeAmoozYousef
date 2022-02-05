@@ -18,10 +18,10 @@ const UnAuthenticated = () => {
                 element={<ChangePassword/>}
             />
             <Route element={<Layout/>}>
-                <Route path="/dashboard/course/quiz" element={<Quiz/>}/>
+                <Route path="/quiz" element={<Quiz/>}/>
             </Route>
             <Route>
-                <Route path="/social-confirm/:Token" element={<SocialAuth/>}/>
+                <Route path="/social-confirm/:Token/:refToken" element={<SocialAuth/>}/>
             </Route>
         </Routes>
     );

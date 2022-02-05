@@ -4,7 +4,12 @@ import Codeeditor from "./Codeeditor";
 function index(props) {
   return (
     <div>
-      <Codeeditor id={props.id} lan={props.lan} value={props.value} />
+      <Codeeditor
+        id={props.id}
+        lan={props.lan}
+        value={props.value}
+        lang={props.lang}
+      />
     </div>
   );
 }

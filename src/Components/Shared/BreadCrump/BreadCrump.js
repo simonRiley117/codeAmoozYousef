@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 const { Item } = BreadcrumbBase;
 
-const BreadCrump = ({ title, classes, name, name1 }) => {
+const BreadCrump = ({ title, classes, name, name1, id, intro, namestate }) => {
   // { path: '/news/news-info', breadcrumb: title },
   const routes = [
     { path: "/", breadcrumb: "صفحه اصلی" },
@@ -24,18 +24,37 @@ const BreadCrump = ({ title, classes, name, name1 }) => {
     { path: "/dashboard/my-course", breadcrumb: "دوره های من " },
     { path: "/dashboard/messages", breadcrumb: "پیام های من" },
     { path: "/courses/intro", breadcrumb: name },
-    { path: "/dashboard/course/quiz", breadcrumb: name },
+    { path: "/quiz", breadcrumb: name, state: true },
     { path: "/dashboard/course", breadcrumb: name1 },
     { path: "/coursecontent", breadcrumb: name1 },
+    { path: `/example`, breadcrumb: name },
+    // { path: "/intro/example", breadcrumb: name },
   ];
   const breadcrumbs = useBreadcrumbs(routes);
   // console.log('breadcrumbs: ', breadcrumbs)
   return (
     <div className={classNames("breadcrumbs", [classes])}>
       <BreadcrumbBase className="breadcrumb" separator={<SeparatorIcon />}>
-        {breadcrumbs.map(({ match, breadcrumb }) => (
+        {breadcrumbs.map(({ match, breadcrumb, state }) => (
           <Item key={match.pathname}>
-            <NavLink to={match.pathname}>{breadcrumb}</NavLink>
+            <NavLink
+              to={
+                intro
+                  ? "/courses/intro"
+                  : match.pathname === "/example" || match.pathname === "/quiz"
+                  ? "/coursecontent"
+                  : match.pathname
+              }
+              state={{
+                name: namestate,
+                id: id,
+              }}
+            >
+              {match.pathname === "/example" || match.pathname === "/quiz"
+                ? `${namestate} / ${name}`
+                : breadcrumb}
+              {/* {breadcrumb} */}
+            </NavLink>
           </Item>
         ))}
       </BreadcrumbBase>

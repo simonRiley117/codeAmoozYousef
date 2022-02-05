@@ -17,6 +17,7 @@ const SeasonsItem = ({
   setquizUuid,
   changeContentID,
   setIsContentPass,
+  setSeasonsQuizeActive,
   ...rest
 }) => {
   const [contentList, setcontentList] = useState([]);
@@ -29,7 +30,7 @@ const SeasonsItem = ({
   });
   useEffect(() => {
     console.log("openPanel", openPanels);
-    if (openPanels.includes(season.uuid) || activeSeasons === season.uuid) {
+    if (openPanels.includes(season.uuid)) {
       getCourseSeasons.reFetch();
     }
   }, [, activeContent, openPanels]);
@@ -43,6 +44,7 @@ const SeasonsItem = ({
      
        { contentList.map((content, index) => (
           <ContentItem
+          setSeasonsQuizeActive={setSeasonsQuizeActive}
             changeContentID={changeContentID}
             setquizUuid={setquizUuid}
             activeContent={activeContent}

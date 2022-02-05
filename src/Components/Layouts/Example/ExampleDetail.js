@@ -2,11 +2,11 @@ import React from "react";
 import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
 import ExampleCodeEditor from "../../Shared/CodeeditorWithRun/ExampleCodeEditor";
-import { Link } from "react-router-dom";
 import Button from "../../Shared/Buttons/Button";
+import { useNavigate } from "react-router-dom";
 
 function ExampleDetail({ example, courseUuid }) {
-  console.log("example: ", example);
+  const navigate = useNavigate();
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
@@ -29,7 +29,7 @@ function ExampleDetail({ example, courseUuid }) {
               className="flex flex-col	ExampleDetail__sampledataBox mr-6"
             >
               <p className="ExampleDetail__sampledata text-center	">
-                {item.input}
+                {item.input.replace(/#$$#/g, ",")}
               </p>
               <img src={arrowdown} alt={arrowdown} />
               <p className="ExampleDetail__sampledata text-center	">
@@ -38,39 +38,34 @@ function ExampleDetail({ example, courseUuid }) {
             </div>
           ))}
         </div>
-        <div className="flex items-center ExampleDetail__downloadBox">
-          {example.file && (
-            <>
-              <img src={pdf} alt={pdf} />
-              <p className="cursor-pointer">
-                <a href={example.file} download target={"_blank"}>
-                  دانلود فایل
-                </a>
-              </p>
-            </>
-          )}
-        </div>
-        <Button
-          ico={false}
-          type="primary"
-          classes="CoWorkers__btn flex items-center "
-          // onClick={handlePassContent}
-        >
-          <Link
-            to={`/coursecontent`}
-            state={{
-              id: courseUuid,
-            }}
-            className="flex items-center"
+        <div className="flex items-center ExampleDetail__downloadBox mb-10">
+          <div className="flex items-center">
+            {example.file && (
+              <>
+                <img src={pdf} alt={pdf} />
+                <p className="cursor-pointer">
+                  <a href={example.file} download target={"_blank"}>
+                    دانلود فایل
+                  </a>
+                </p>
+              </>
+            )}
+          </div>
+          <Button
+            ico={false}
+            type="primary"
+            classes="CoWorkers__btn flex items-center "
+            onClick={() => navigate(-1)}
           >
-            بازگشت{" "}
-          </Link>
-        </Button>
+            بازگشت
+          </Button>
+        </div>
       </div>
       <ExampleCodeEditor
         name={example.name}
         id={example.uuid}
         lan={example.language === "c" ? "c_cpp" : example.language}
+        lang={example.lan}
         value={example.code}
       />
     </div>

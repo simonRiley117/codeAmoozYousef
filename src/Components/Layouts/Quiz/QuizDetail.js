@@ -3,25 +3,27 @@ import arrowdown from "@Assets/Icons/arrowdown.svg";
 import pdf from "@Assets/Pic/pdf.png";
 import QuizCodeEditor from "../../Shared/CodeeditorWithRun/QuizCodeEditor";
 import Button from "../../Shared/Buttons/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function QuizDetail({
   quizId,
   contentId,
   courseId,
-  title,
-  text,
-  test_cases,
-  language,
-  file,
   ispreview,
   ismycoursebol,
+  data,
 }) {
+  const navigate = useNavigate();
+
   return (
     <div className="ExampleDetail">
       <div className="ExampleDetail__txtBox">
-        <p className="ExampleDetail__title font-bold">{title}</p>
-        <p className="ExampleDetail__txt font-normal text-justify	">{text}</p>
+        <p className="ExampleDetail__title font-bold">{data.name}</p>
+
+        <p className="ExampleDetail__txt font-normal text-justify	">
+          {data.text}
+        </p>
+
         <div className="flex items-center">
           <div className="flex flex-col	ExampleDetail__sampleTitleBox">
             <p className="ExampleDetail__sampleTitle font-normal">
@@ -31,28 +33,29 @@ function QuizDetail({
               خروجی نمونه:
             </p>
           </div>
-          {test_cases.map((item, index) => (
-            <div
-              className="flex flex-col	ExampleDetail__sampledataBox mr-6"
-              key={index}
-            >
-              <p className="ExampleDetail__sampledata text-center	">
-                {item.input}
-              </p>
-              <img src={arrowdown} alt={arrowdown} />
-              <p className="ExampleDetail__sampledata text-center	">
-                {item.output}
-              </p>
-            </div>
-          ))}
+          {data.test_cases.length !== 0 &&
+            data.test_cases.map((item, index) => (
+              <div
+                className="flex flex-col	ExampleDetail__sampledataBox mr-6"
+                key={index}
+              >
+                <p className="ExampleDetail__sampledata text-center	">
+                  {item.input.replace(/#$$#/g, ",")}
+                </p>
+                <img src={arrowdown} alt={arrowdown} />
+                <p className="ExampleDetail__sampledata text-center	">
+                  {item.output}
+                </p>
+              </div>
+            ))}
         </div>
         <div className="flex items-center ExampleDetail__downloadBox mb-10">
           <div className="flex items-center">
-            {file && (
+            {data.file && (
               <>
                 <img src={pdf} alt={pdf} />
                 <p className="cursor-pointer">
-                  <a href={file} download target={"_blank"}>
+                  <a href={data.file} download target={"_blank"}>
                     دانلود فایل
                   </a>
                 </p>
@@ -63,30 +66,25 @@ function QuizDetail({
             ico={false}
             type="primary"
             classes="CoWorkers__btn flex items-center "
-            // onClick={handlePassContent}
+            onClick={() => navigate(-1)}
           >
-            <Link
-              to={`/coursecontent`}
-              state={{
-                id: courseId,
-              }}
-              className="flex items-center"
-            >
-              بازگشت
-            </Link>
+            بازگشت
           </Button>
         </div>
       </div>
-      <QuizCodeEditor
-        name={title}
-        courseId={courseId}
-        quizId={quizId}
-        contentId={contentId}
-        lan={language === `c` ? `c_cpp` : language}
-        value=""
-        ispreview={ispreview}
-        ismycoursebol={ismycoursebol}
-      />
+      {data ? (
+        <QuizCodeEditor
+          name={data.name}
+          courseId={courseId}
+          quizId={quizId}
+          contentId={contentId}
+          lan={data.language === `c` ? `c_cpp` : data.language}
+          value=""
+          lang={data.language}
+          ispreview={ispreview}
+          ismycoursebol={ismycoursebol}
+        />
+      ) : null}
     </div>
   );
 }
