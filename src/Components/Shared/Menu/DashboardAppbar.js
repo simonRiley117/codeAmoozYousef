@@ -123,7 +123,7 @@ const DahsboardAppbar = () => {
   };
   const renderSideBarItem = () => {
     return sidebarmenuItem.map((item) => (
-      <SidebarMenuItem key={item.url} {...item} setOpenMenu={setOpenMenu} />
+      <SidebarMenuItem key={item.url} {...item} onClick={handleToggleMenu} />
     ));
   };
   const handleClose = () => {

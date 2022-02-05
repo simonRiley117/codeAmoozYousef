@@ -1,11 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const SidebarMenuItem = ({ url, icon, text, setOpenMenu, ...rest }) => {
+const SidebarMenuItem = ({ url, icon, text, ...rest }) => {
   return (
     <li
       className="sidebarMenu__li d-flex-align"
-      onClick={() => setOpenMenu(false)}
       {...rest}
     >
       <NavLink
