@@ -100,7 +100,7 @@ const CourseCardBg = ({ card }) => {
 		<article className='card-bg'>
 			<div
 				className={
-					cost.discountRate !== 0 ? 'card-bg-off-show' : 'card-bg-off-hide'
+					cost?.discountRate !== 0 ? 'card-bg-off-show' : 'card-bg-off-hide'
 				}
 			>
 				{cost.discountRate}%تخفیف
