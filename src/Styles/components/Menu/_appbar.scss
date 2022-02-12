@@ -28,7 +28,7 @@
 	&-dark {
 		background-color: transparent;
 	}
-	li.Menu__li {
+	.Menu__li {
 		padding: 0 2.5rem;
 		cursor: pointer;
 		@include respond(laptop) {
@@ -36,13 +36,13 @@
 		}
 
 		& a {
-			@include set-font(14px, 600, $color-white);
+			// @include set-font(14px, 600, $color-white);
 			&:hover {
 				color: $color-primary-light;
 			}
-			&.active {
-				color: $color-primary-light;
-			}
+		}
+		&.active {
+			color: $color-primary-light;
 		}
 	}
 
@@ -387,19 +387,17 @@
 				box-shadow: 0 4px 15px rgba($color: #000000, $alpha: 0.15);
 			}
 		}
-		li.Menu__li {
+		.Menu__li {
 			padding: 0 2rem;
 			@include respond(sm-laptop) {
 				padding: 0 1.5rem;
 			}
-			& a {
-				@include set-font(14px, 600, $color-white);
-				&:hover {
-					color: $color-primary-light;
-				}
-				&.active {
-					color: $color-primary-light;
-				}
+			@include set-font(14px, 600, $color-white);
+			&:hover {
+				color: $color-primary-light;
+			}
+			&.active {
+				color: $color-primary-light;
 			}
 		}
 		.logo {

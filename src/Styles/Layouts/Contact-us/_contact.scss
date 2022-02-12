@@ -6,6 +6,8 @@
 		column-gap: 1rem;
 		padding-bottom: 5rem;
 		background-color: $color-gray;
+		min-height: 57rem;
+		
 		@include respond(big-desktop) {
 			max-width: 120rem;
 		}

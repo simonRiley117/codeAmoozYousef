@@ -34,11 +34,11 @@ function Index() {
   });
 
   return (
-    <div className="Example ">
+    <div className="Example container">
       {getCourseSeasons?.response ? (
         <>
           <BreadCrump
-            name={data?.name}
+            title={data?.name}
             name1={data?.course_name}
             intro={intro}
             namestate={data?.course_name}

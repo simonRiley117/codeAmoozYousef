@@ -88,7 +88,7 @@ const CourseIntro = () => {
   const url1 = name;
   return (
     <div className="container">
-      <BreadCrump name={name} />
+      <BreadCrump title={name} />
       <div className="Course">
         {windowSize !== "ml" && windowSize !== "md-2" && windowSize !== "sm"
           ? data !== "" && (

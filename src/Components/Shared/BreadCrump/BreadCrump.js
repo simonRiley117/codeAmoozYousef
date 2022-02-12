@@ -8,12 +8,14 @@ import classNames from "classnames";
 
 const { Item } = BreadcrumbBase;
 
-const BreadCrump = ({ title, classes, name, name1, id, intro, namestate }) => {
+const BreadCrump = ({ title, classes, id, intro, namestate }) => {
   // { path: '/news/news-info', breadcrumb: title },
   const routes = [
     { path: "/", breadcrumb: "صفحه اصلی" },
     { path: "/news", breadcrumb: "اخبار" },
-    { path: "/news/news-info", breadcrumb: name },
+    { path: "/contact-us", breadcrumb: "ارتباط با ما" },
+    { path: "/about-me", breadcrumb: "درباره ما" },
+    { path: "/news/news-info", breadcrumb: title },
     { path: "/courses", breadcrumb: " لیست دوره ها" },
     { path: "/coWorkers", breadcrumb: "همکاران واساتید" },
     { path: "/coWorkers/master", breadcrumb: "اساتید" },
@@ -23,12 +25,16 @@ const BreadCrump = ({ title, classes, name, name1, id, intro, namestate }) => {
     { path: "/dashboard/", breadcrumb: "داشبورد " },
     { path: "/dashboard/my-course", breadcrumb: "دوره های من " },
     { path: "/dashboard/messages", breadcrumb: "پیام های من" },
-    { path: "/courses/intro", breadcrumb: name },
-    { path: "/quiz", breadcrumb: name, state: true },
-    { path: "/dashboard/course", breadcrumb: name1 },
-    { path: "/coursecontent", breadcrumb: name1 },
-    { path: `/example`, breadcrumb: name },
-    // { path: "/intro/example", breadcrumb: name },
+    { path: "/courses/intro", breadcrumb: title },
+    { path: "/quiz", breadcrumb: title, state: true },
+    { path: "/dashboard/course", breadcrumb: title },
+    { path: "/coursecontent", breadcrumb: title },
+    { path: "/dashboard/wallet", breadcrumb: 'کیف پول' },
+    { path: "/dashboard/setting", breadcrumb: 'تنظیمات' },
+    { path: "/dashboard/resume", breadcrumb: 'رزومه' },
+    { path: "/dashboard/profile", breadcrumb: 'پروفایل' },
+    { path: `/example`, breadcrumb: title },
+    // { path: "/intro/example", breadcrumb: title },
   ];
   const breadcrumbs = useBreadcrumbs(routes);
   // console.log('breadcrumbs: ', breadcrumbs)
@@ -51,7 +57,7 @@ const BreadCrump = ({ title, classes, name, name1, id, intro, namestate }) => {
               }}
             >
               {match.pathname === "/example" || match.pathname === "/quiz"
-                ? `${namestate} / ${name}`
+                ? `${namestate} / ${title}`
                 : breadcrumb}
               {/* {breadcrumb} */}
             </NavLink>

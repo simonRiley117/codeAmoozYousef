@@ -12,7 +12,7 @@ function Mysendes() {
 
   return (
     <div className="Mysendes">
-      <BreadCrump pathsname="/dash/mysendes" name="ارسال های من" />
+      <BreadCrump pathsname="/dash/mysendes" title="ارسال های من" />
       {step === 1 && <p className="Transaction__Title">ارسال های من</p>}
       <div className="Transaction__box">
         {step === 1 ? (

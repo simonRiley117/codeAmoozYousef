@@ -63,7 +63,7 @@ const NewsDetails = () => {
 
     return (
         <div className='container'>
-            <BreadCrump name={NewsData?.title}/>
+            <BreadCrump title={NewsData?.title}/>
             <h3 className='Title-heading'>{NewsData?.title}</h3>
             <div className='Title'>
                 <div className='Title-column text-color'>

@@ -31,10 +31,8 @@ const SignUp = ({ onCancel, handleActive }) => {
 						href={`${API_URL}/social-auth/login/google-oauth2/`}
 						className='link link__primary'
 					>
-						<div className=' flex items-center'>
-							<p> ورود با اکانت گوگل</p>
-							<img src={GoogleLogoPic} alt='google' />
-						</div>
+						<img src={GoogleLogoPic} alt='google' />
+						<p> ثبت نام با اکانت گوگل</p>
 					</a>
 
 					<a
