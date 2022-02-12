@@ -33,6 +33,7 @@ function ContentDetail({
     }
   }, [contentUuid]);
 
+
   return (
     <div>
       {getContent?.response ? (

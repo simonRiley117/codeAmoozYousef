@@ -19,10 +19,11 @@ const WorkExperinceDone = ({
   }, []);
 
   const [edit, setEdit] = useState(false);
+  const [editid, setEditid] = useState("");
   const showEdit = () => {
     setEdit((before) => !before);
   };
-
+  console.log("editid", editid);
   return !loadingProfession ? (
     profession.results.map((teacherProf) => (
       <>
@@ -33,6 +34,7 @@ const WorkExperinceDone = ({
           caller={getProfessionInfo}
           showEdit={showEdit}
           readable={readable}
+          setEditid={setEditid}
         >
           <div className=" WorkExperinceDone__header  ">
             <p className="WorkExperinceDone__title">
@@ -61,7 +63,7 @@ const WorkExperinceDone = ({
           </p>
         </ResumeDoneWrapper>
 
-        {!readable && edit && (
+        {editid === teacherProf.uuid && !readable && edit && (
           <WorkExperienceForm
             showEdit={showEdit}
             edit
@@ -73,6 +75,7 @@ const WorkExperinceDone = ({
             profession_start_date={teacherProf?.profession_start_date}
             profession_title={teacherProf?.profession_title}
             id={teacherProf?.uuid}
+            editid={editid}
           />
         )}
       </>
