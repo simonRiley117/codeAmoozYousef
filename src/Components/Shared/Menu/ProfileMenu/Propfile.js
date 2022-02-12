@@ -45,7 +45,7 @@ const Propfile = () => {
 				<div className='appbar__profile'>
 					<Badge count={Icon}>
 						<Avatar src={userData.cover} alt='name' shape='square'>
-							name
+							{userData.username}
 						</Avatar>
 					</Badge>
 				</div>

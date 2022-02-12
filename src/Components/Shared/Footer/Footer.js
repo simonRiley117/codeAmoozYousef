@@ -23,9 +23,9 @@ const Footer = () => {
 						</article>
 						<div className='flex flex-col footer__access'>
 							<h2>دسترسی سریع</h2>
-							<Link to='/'>سوالات متداول</Link>
-							<Link to='/'>همکاری با ما</Link>
-							<Link to='/'>دوره ها</Link>
+							<Link to='/faq'>سوالات متداول</Link>
+							<Link to='/coWorkers'>همکاری با ما</Link>
+							<Link to='/courses'>دوره ها</Link>
 						</div>
 						<div className='flex flex-col footer__link '>
 							<Link to='/'>codeamooz</Link>
