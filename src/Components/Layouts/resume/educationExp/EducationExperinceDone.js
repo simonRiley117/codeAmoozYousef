@@ -19,6 +19,8 @@ const EducationExperinceDone = ({
   }, []);
 
   const [edit, setEdit] = useState(false);
+  const [editid, setEditid] = useState("");
+
   const showEdit = () => {
     setEdit((before) => !before);
   };
@@ -41,6 +43,7 @@ const EducationExperinceDone = ({
           caller={getGradeInfo}
           showEdit={showEdit}
           readable={readable}
+          setEditid={setEditid}
         >
           <div className=" WorkExperinceDone__header  ">
             <p className="WorkExperinceDone__title">
@@ -74,7 +77,7 @@ const EducationExperinceDone = ({
           </div>
         </ResumeDoneWrapper>
 
-        {!readable && edit && (
+        {editid === teacherGr.uuid && !readable && edit && (
           <EducationExperienceForm
             showEdit={showEdit}
             edit

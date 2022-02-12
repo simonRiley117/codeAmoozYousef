@@ -19,6 +19,8 @@ const SkillsDone = ({
   }, []);
 
   const [edit, setEdit] = useState(false);
+  const [editid, setEditid] = useState("");
+
   const showEdit = () => {
     setEdit((before) => !before);
   };
@@ -33,8 +35,9 @@ const SkillsDone = ({
           caller={getSkillInfo}
           showEdit={showEdit}
           readable={readable}
+          setEditid={setEditid}
         >
-          <div className=" WorkExperinceDone__header SkillsDone__header  d-flex-space mt-14">
+          <div className=" WorkExperinceDone__header SkillsDone__header flex items-end justify-between mt-14">
             <p className="WorkExperinceDone__title">
               {teacherSk.skill_name
                 ? teacherSk.skill_name
@@ -51,7 +54,7 @@ const SkillsDone = ({
           </div>
         </ResumeDoneWrapper>
 
-        {edit && (
+        {edit && editid === teacherSk.uuid && (
           <SkillsForm
             showEdit={showEdit}
             edit

@@ -23,7 +23,6 @@ const WorkExperinceDone = ({
   const showEdit = () => {
     setEdit((before) => !before);
   };
-  console.log("editid", editid);
   return !loadingProfession ? (
     profession.results.map((teacherProf) => (
       <>

@@ -59,7 +59,7 @@ const SkillsForm = (
                 showEdit={showEdit}
                 edit={edit}
             >
-                <div className="SkillsForm__row d-flex-space d-flex-align-end">
+                <div className="SkillsForm__row flex items-end justify-between d-flex-align-end">
                     <Input
                         label='مهارت شما'
                         register={{
