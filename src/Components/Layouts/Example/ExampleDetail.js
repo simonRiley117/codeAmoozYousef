@@ -65,7 +65,7 @@ function ExampleDetail({ example, courseUuid }) {
         name={example.name}
         id={example.uuid}
         lan={example.language === "c" ? "c_cpp" : example.language}
-        lang={example.lan}
+        lang={example.language}
         value={example.code}
       />
     </div>

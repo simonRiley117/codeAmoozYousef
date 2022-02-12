@@ -34,7 +34,7 @@ const SeasonList = ({
     setSeasonsQuizeid(id)
   }
   const [showguid, setShowguid] = useRecoilState(tourguid);
-  console.log("sidebarList.season_quiz_id", sidebarList);
+  console.log("openPanels", openPanels);
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion

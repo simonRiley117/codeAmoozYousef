@@ -93,6 +93,7 @@ function Codeeditor(props) {
     top: 50%;
     transform: translate(-50%, -50%);
   `;
+
   return (
     <FullScreen handle={handle} enabled={handle}>
       <div key={props.id}>

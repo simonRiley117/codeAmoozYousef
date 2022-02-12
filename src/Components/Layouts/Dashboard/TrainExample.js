@@ -35,6 +35,7 @@ function TrainExample({
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   // let id = "1";
+  console.log('first', content.language)
   return (
     <>
       {ispreviw || !contentLoading ? (
@@ -73,7 +74,7 @@ function TrainExample({
                     ? "c_cpp"
                     : lang
                 }
-                lang={content.language}
+                lang={lang}
                 value={item.code}
               />
             ) : null}

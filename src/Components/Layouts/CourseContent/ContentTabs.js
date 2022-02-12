@@ -16,6 +16,7 @@ const ContentTabs = ({
   SeasonsQuizeActive,
 }) => {
   const { TabPane } = Tabs;
+
   return (
     <Tabs
       onChange={setActiveTab}
