@@ -29,6 +29,10 @@ const BreadCrump = ({ title, classes, id, intro, namestate }) => {
     { path: "/quiz", breadcrumb: title, state: true },
     { path: "/dashboard/course", breadcrumb: title },
     { path: "/coursecontent", breadcrumb: title },
+    { path: "/dashboard/wallet", breadcrumb: 'کیف پول' },
+    { path: "/dashboard/setting", breadcrumb: 'تنظیمات' },
+    { path: "/dashboard/resume", breadcrumb: 'رزومه' },
+    { path: "/dashboard/profile", breadcrumb: 'پروفایل' },
     { path: `/example`, breadcrumb: title },
     // { path: "/intro/example", breadcrumb: title },
   ];
