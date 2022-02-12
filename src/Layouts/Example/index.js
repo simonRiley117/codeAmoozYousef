@@ -47,7 +47,7 @@ function Index() {
             id={example?.content?.content_id}
           /> */}
           <BreadCrump
-            name={example?.name}
+            title={example?.name}
             intro={intro}
             namestate={example?.course_name}
             id={intro ? example?.course_uuid : example?.course_uuid}
