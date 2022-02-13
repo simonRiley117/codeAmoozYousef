@@ -176,6 +176,7 @@
 	&-price {
 		display: flex;
 		flex-direction: column;
+		width: 47%;
 		& .discount {
 			& .ant-statistic-content {
 				font-size: inherit !important;
