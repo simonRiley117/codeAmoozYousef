@@ -56,19 +56,19 @@
         }
     }
     &__RateBox {
-        margin-top: 1.4rem;
+        margin-top: 1rem;
         ul {
             justify-content: right;
         }
     }
     &__DegreeBox {
-        margin-top: 1.6rem;
+        margin-top: 1rem;
     }
     &__DegreeTitle {
         color: $color-error;
         font-size: 1.8rem;
         font-weight: normal;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.4rem;
     }
     .ant-radio-wrapper {
         display: block;
@@ -104,13 +104,13 @@
     }
     &__ShareBox {
         img {
-            width: 2.4rem;
+            width: 2rem;
             height: auto;
             margin-left: 0.7rem;
         }
         p {
             color: $color-text-black-light-2;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 300;
         }
     }
