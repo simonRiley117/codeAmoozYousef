@@ -15,6 +15,7 @@ function Quiz({
   courseUuid,
   ispreviw,
   intro,
+  season,
 }) {
   const [quizContent, setQuizContent] = useState(null);
   const location = useLocation();
@@ -33,7 +34,7 @@ function Quiz({
         content_id: contentUuid,
         quiz_id: quizUuid,
         courseUuid: courseUuid,
-       language: quizContent?.language,
+        language: quizContent?.language,
         ispreviw: ispreviw,
         ismycoursebol: ismycoursebol,
         course: name,
@@ -45,6 +46,7 @@ function Quiz({
     setQuizContent(data);
     setQuizLoading(false);
   };
+  console.log("errorpass", errorpass);
   const { token, authDispatch } = useAuth();
 
   const previewUrlCondition =
@@ -86,7 +88,11 @@ function Quiz({
         <>
           {!errorpass ? (
             <div className="Quiz__box">
-              <p className="Quiz__title">آزمون درس</p>
+              {season ? (
+                <p className="Quiz__title"> آزمون فصل</p>
+              ) : (
+                <p className="Quiz__title"> آزمون درس</p>
+              )}
               <p className="Quiz__txt">
                 آزمون بدون زمان میباشد و تا زمانی که نمره 100 دریافت نشده است،
                 پاس نمی شود و شما مجاز هستید تا زمانی که نمره 100 دریافت کنید،

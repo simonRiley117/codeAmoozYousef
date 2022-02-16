@@ -101,6 +101,7 @@ function Detail({
               ispreviw={ispreviw}
               contentUuid={contentUuid}
               intro={true}
+              season={false}
               // courseUuid={courseUuid}
             />
           ) : (

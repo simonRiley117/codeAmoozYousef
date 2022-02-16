@@ -53,6 +53,7 @@ function Index() {
               ispreview={ispreview}
               ismycoursebol={ismycoursebol}
               data={data}
+              currcourseId={data.uuid}
             />
           </div>
         </>

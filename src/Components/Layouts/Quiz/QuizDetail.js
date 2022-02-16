@@ -12,6 +12,7 @@ function QuizDetail({
   ispreview,
   ismycoursebol,
   data,
+  currcourseId
 }) {
   const navigate = useNavigate();
 
@@ -39,13 +40,33 @@ function QuizDetail({
                 className="flex flex-col	ExampleDetail__sampledataBox mr-6"
                 key={index}
               >
-                <p className="ExampleDetail__sampledata text-center	">
+                {item.input !== "" ? (
+                  <p className="ExampleDetail__sampledata text-center	">
+                    {item.input.replace(/#$$#/g, ",")}
+                  </p>
+                ) : (
+                  <p
+                    className="ExampleDetail__sampledata text-center	"
+                    style={{ opacity: "0" }}
+                  >
+                    {item.input.replace(/#$$#/g, ",")}
+                  </p>
+                )}
+                {item.input !== "" && item.output !== "" && (
+                  <img src={arrowdown} alt={arrowdown} />
+                )}
+                {item.output !== "" && (
+                  <p className="ExampleDetail__sampledata text-center	">
+                    {item.output}
+                  </p>
+                )}
+                {/* <p className="ExampleDetail__sampledata text-center	">
                   {item.input.replace(/#$$#/g, ",")}
                 </p>
                 <img src={arrowdown} alt={arrowdown} />
                 <p className="ExampleDetail__sampledata text-center	">
                   {item.output}
-                </p>
+                </p> */}
               </div>
             ))}
         </div>
@@ -76,6 +97,7 @@ function QuizDetail({
         <QuizCodeEditor
           name={data.name}
           courseId={courseId}
+          currcourseId={currcourseId}
           quizId={quizId}
           contentId={contentId}
           lan={data.language === `c` ? `c_cpp` : data.language}

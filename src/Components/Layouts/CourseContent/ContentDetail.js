@@ -17,22 +17,45 @@ function ContentDetail({
     method: "GET",
     noHeader: token ? false : true,
     setter: setContent,
-    trigger:false,
+    trigger: false,
     argFunc: (res) => {
       if (iscontent === true) {
         setActiveSeason(res.season);
         console.log(res.season);
         setSeosononquizeid(res.season_quiz_uuid);
-        console.log("quize uuid",res.season_quiz_uuid)
+        console.log("quize uuid", res.season_quiz_uuid);
+      }
+    },
+    argErrFunc: (res) => {
+      if (res.detail === "You didnt pass former contents") {
+        getContentbefor.reFetch();
+      }
+    },
+  });
+  const getContentbefor = useFetch({
+    url: `ContentService/${contentUuid}/getModalContent`,
+    method: "GET",
+    noHeader: token ? false : true,
+    setter: setContent,
+    trigger: false,
+    argFunc: (res) => {
+      if (iscontent === true) {
+        setActiveSeason(res.season);
+        console.log(res.season);
+        setSeosononquizeid(res.season_quiz_uuid);
+        console.log("quize uuid", res.season_quiz_uuid);
+      }
+    },
+    argErrFunc: (res) => {
+      if (res.detail === "You didnt pass former contents") {
       }
     },
   });
   useEffect(() => {
-    if(contentUuid !== null){
+    if (contentUuid !== null) {
       getContent.reFetch();
     }
   }, [contentUuid]);
-
 
   return (
     <div>
@@ -44,7 +67,7 @@ function ContentDetail({
           <div className="ContentDetail__videoBox">
             <VideoPlayer src={content.video} />
           </div>
-          
+
           <p className="Detaile__txt leading-loose">
             {content.short_description}
           </p>

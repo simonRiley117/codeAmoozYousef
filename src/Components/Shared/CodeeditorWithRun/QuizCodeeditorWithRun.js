@@ -200,6 +200,7 @@ function QuizCodeeditorWithRun(props) {
     document.body.appendChild(element);
     element.click();
   };
+  console.log("props.courseId", props.courseId);
   return (
     <div>
       <div className="CodeeditorWithRun">
@@ -406,16 +407,27 @@ function QuizCodeeditorWithRun(props) {
             </p>
             <div className="d-flex-space">
               <Button>
-                {" "}
-                <Link
-                  to={`/coursecontent`}
-                  state={{
-                    id: props.courseId,
-                  }}
-                  className="flex items-center "
-                >
-                  صفحه ی دوره
-                </Link>
+                {quizeResult.compile_result === "100" ? (
+                  <Link
+                    to={`/coursecontent`}
+                    state={{
+                      id: props.courseId,
+                    }}
+                    className="flex items-center "
+                  >
+                    صفحه ی دوره
+                  </Link>
+                ) : (
+                  <Link
+                    to={`/coursecontent`}
+                    state={{
+                      id: props.courseId,
+                    }}
+                    className="flex items-center "
+                  >
+                    صفحه ی دوره
+                  </Link>
+                )}
               </Button>
               <Button
                 onClick={handleModalVisible}

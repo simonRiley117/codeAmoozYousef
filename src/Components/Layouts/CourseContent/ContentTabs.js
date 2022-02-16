@@ -57,6 +57,7 @@ const ContentTabs = ({
               contentUuid={contentUuid}
               courseUuid={courseUuid}
               intro={false}
+              season={false}
             />
           </TabPane>
         </>
@@ -67,6 +68,7 @@ const ContentTabs = ({
             contentUuid={contentUuid}
             courseUuid={courseUuid}
             intro={false}
+            season={true}
           />
         </TabPane>
       )}
