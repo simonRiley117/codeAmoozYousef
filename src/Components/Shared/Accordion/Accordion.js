@@ -17,11 +17,11 @@ const ArrowIcon = ({ active }) => (
   </div>
 );
 
-const Accordion = ({ children, half, ...rest }) => {
+const Accordion = ({ children, half, className, ...rest }) => {
   return (
     <Collapse
       {...rest}
-      className={classNames("accordion", {
+      className={classNames("accordion", className, {
         accordion__circle: half,
       })}
       expandIcon={({ isActive }) => <ArrowIcon active={isActive} />}

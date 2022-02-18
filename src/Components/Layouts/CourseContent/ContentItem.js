@@ -13,27 +13,29 @@ const ContentItem = ({
   getContentName,
   changeContentID,
   setIsContentPass,
-  setSeasonsQuizeActive
+  setSeasonsQuizeActive,
 }) => {
   useEffect(() => {
     if (activeContent === content.id) {
       setquizUuid(content.quiz_id);
       setIsContentPass(content.is_content_passed);
-      
     }
-
   }, [activeContent]);
-  const handleClick= ()=>{
-    setSeasonsQuizeActive(false)
-    if(!content.lockedOn){
-      changeContentID(content.id, content.title)
+  const handleClick = () => {
+    setSeasonsQuizeActive(false);
+    if (!content.lockedOn) {
+      changeContentID(content.id, content.title);
     }
-  }
-  return (
-    content ? <div>
+  };
+  return content ? (
+    <div>
       <div
-        className="flex justify-between items-center cursor-pointer px-8"
-        onClick={ handleClick}
+        className={
+          content.lockedOn
+            ? "flex justify-between items-center cursor-not-allowed px-8"
+            : "flex justify-between items-center cursor-pointer px-8"
+        }
+        onClick={handleClick}
       >
         <div className="flex items-center Sarfasl__Accordiontxtbox">
           {content.is_content_passed ? (
@@ -41,7 +43,9 @@ const ContentItem = ({
               <i className="fas fa-check"></i>
             </div>
           ) : (
-            <div className={"Sarfasl__Accordionnumber"}><p>{index + 1}</p> </div>
+            <div className={"Sarfasl__Accordionnumber"}>
+              <p>{index + 1}</p>{" "}
+            </div>
           )}
           <p
             className={`${
@@ -64,9 +68,13 @@ const ContentItem = ({
           <img src={Clock} alt={Clock} className="Sarfasl__Accordionclock" />
           &nbsp;&nbsp;
           <IconBtn
-            classes={classNames("Sarfasl__btn", {
-              lock: !content.lockedOn,
-            })}
+            classes={classNames(
+              "Sarfasl__btn",
+              content.lockedOn ? " cursor-not-allowed " : "cursor-pointer",
+              {
+                lock: !content.lockedOn,
+              }
+            )}
             icon={
               <>
                 <img
@@ -83,7 +91,9 @@ const ContentItem = ({
           />
         </div>
       </div>
-    </div> : <Skeleton />
+    </div>
+  ) : (
+    <Skeleton />
   );
 };
 

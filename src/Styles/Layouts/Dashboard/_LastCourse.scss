@@ -1,5 +1,4 @@
 .LastCourse {
-
   // .ant-collapse-extra {
   //     width: 100% !important;
 
@@ -23,13 +22,18 @@
     align-items: center;
   }
   .CourseStatus {
-    padding: 15px;
+    padding: 1.5rem 1rem;
     border-radius: 1.5rem;
     box-shadow: $box-shadow;
     margin: 5px;
     &__table {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      &-data {
+        font-size: 1.5rem;
+      }
     }
   }
   &__container {
@@ -67,7 +71,7 @@
   }
   &__progresstitle {
     color: $color-text-black-light-2;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   &__guideBox {
     margin-top: 2rem;

@@ -20,7 +20,14 @@
     border-color: transparent;
     box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
   }
-
+  &.ant-collapse-ghost > .ant-collapse-item > .ant-collapse-content {
+    & > * {
+      line-height: 4rem;
+    }
+    div {
+      margin: 0.5rem 0;
+    }
+  }
   & .ant-collapse-header {
     @include display-flex;
     flex-direction: row-reverse;
@@ -73,5 +80,4 @@
   }
   &__faq {
   }
-
 }

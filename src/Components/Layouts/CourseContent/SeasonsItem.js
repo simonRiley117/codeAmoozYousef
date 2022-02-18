@@ -4,7 +4,7 @@ import Clock, { ReactComponent as LockIcon } from "@Assets/Icons/clock.svg";
 import Lock from "@Assets/Icons/lock.svg";
 import ContentItem from "./ContentItem";
 import useFetch from "../../../Context/useFetch";
-import { ReactComponent as Arrow } from "@Assets/Icons/arrow-down.svg";
+import { Skeleton } from "antd";
 
 const SeasonsItem = ({
   openPanels,
@@ -23,7 +23,7 @@ const SeasonsItem = ({
   const [contentList, setcontentList] = useState([]);
   console.log("contentList", contentList);
   const getCourseSeasons = useFetch({
-    url: `SeasonService/${season.uuid}/sidebar`,
+    url: `SeasonService/${parseInt(season.uuid)}/sidebar`,
     method: "GET",
     trigger: false,
     setter: setcontentList,
@@ -34,17 +34,24 @@ const SeasonsItem = ({
       getCourseSeasons.reFetch();
     }
   }, [, activeContent, openPanels]);
+  console.log("openPanelsopenPanels", openPanels);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();
     }
   };
+  useEffect(() => {
+    if (contentList.length === 0 && !season.lockedOn) {
+      getCourseSeasons.reFetch();
+    }
+  }, []);
+
   return (
     <>
-     
-       { contentList.map((content, index) => (
+      {contentList.length !== 0 ? (
+        contentList.map((content, index) => (
           <ContentItem
-          setSeasonsQuizeActive={setSeasonsQuizeActive}
+            setSeasonsQuizeActive={setSeasonsQuizeActive}
             changeContentID={changeContentID}
             setquizUuid={setquizUuid}
             activeContent={activeContent}
@@ -55,7 +62,15 @@ const SeasonsItem = ({
             setIsContentPass={setIsContentPass}
           />
         ))
-       }
+      ) : (
+        <>
+          <Skeleton.Button block={true} active size="large" />
+          <br />
+          <br />
+          <Skeleton.Button block={true} active size="large" />
+         
+        </>
+      )}
     </>
   );
 };

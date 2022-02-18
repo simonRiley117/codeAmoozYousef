@@ -13,6 +13,7 @@ function Index() {
     setId(location.state.id);
     setCourseUuid(location.state.courseUuid);
     setIntro(location.state.intro);
+    setTitle(location.state.title);
     // setTitle(location.state.title);
   }, [location]);
 
@@ -26,7 +27,6 @@ function Index() {
     setExample(data);
     setExampleLoading(false);
   };
-
   const getExample = useFetch({
     url: `ExampleService/${id}/example_get`,
     method: "GET",
@@ -34,9 +34,6 @@ function Index() {
     setter: setData,
   });
 
-  useEffect(() => {
-    setTitle(location.state.title);
-  }, [location]);
   return (
     <>
       {!exampleLoading ? (

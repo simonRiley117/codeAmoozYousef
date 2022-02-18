@@ -22,17 +22,18 @@ const SeasonList = ({
   setSeasonsQuizeid,
   setSeasonsQuizeActive,
 }) => {
-  const [openPanels, setOpenPanels] = useState([activeSeasons]);
+  const [openPanels, setOpenPanels] = useState([parseInt(activeSeasons)]);
   useEffect(() => {
     if (!openPanels.includes(activeSeasons)) {
-      setOpenPanels((before) => [...before, activeSeasons]);
+      setOpenPanels((before) => [...before, parseInt(activeSeasons)]);
     }
   }, [, activeSeasons, activeContent]);
+  console.log("first", openPanels);
   const { userData } = useUserData();
-  const handleSeosonQuize = (id) =>{
+  const handleSeosonQuize = (id) => {
     setSeasonsQuizeActive(true);
-    setSeasonsQuizeid(id)
-  }
+    setSeasonsQuizeid(id);
+  };
   const [showguid, setShowguid] = useRecoilState(tourguid);
   console.log("openPanels", openPanels);
   return (
@@ -46,6 +47,9 @@ const SeasonList = ({
           <Panel
             collapsible={season.lockedOn ? "disabled" : undefined}
             showArrow={!season.lockedOn}
+            className={
+              season.lockedOn ? "cursor-not-allowed" : "cursor-pointer"
+            }
             header={
               <SeasonTitle
                 title={season.title}
@@ -79,7 +83,10 @@ const SeasonList = ({
               setSeasonsQuizeActive={setSeasonsQuizeActive}
             />
             {season.season_quiz_id && (
-              <div className="px-8 sidebar-quize cursor-pointer" onClick={()=>handleSeosonQuize(season.season_quiz_id)}>
+              <div
+                className="px-8 sidebar-quize cursor-pointer"
+                onClick={() => handleSeosonQuize(season.season_quiz_id)}
+              >
                 <QuizeIcon />
                 <p>آزمون فصل</p>
               </div>

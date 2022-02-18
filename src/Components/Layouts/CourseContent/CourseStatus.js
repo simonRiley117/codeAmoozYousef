@@ -15,16 +15,16 @@ const CourseStatus = ({ details, Currentcontentname, loading }) => {
       <div className=" CourseStatus__table mb-8">
         <p>آخرین مبحث گذرانده شده:</p>
         {latest_content_user_passed_name !== null ? (
-          <p className="success text-center">
+          <p className="success text-center CourseStatus__table-data">
             {latest_content_user_passed_name}
           </p>
         ) : (
-          <p className="text-primary"> هنوز مجثی گذرانده نشده</p>
+          <p className="text-primary CourseStatus__table-data"> هنوز مبحثی گذرانده نشده</p>
         )}
         <p>تعداد مبحث های گذرانده شده :</p>
-        <p className="success text-center">{content_passed_numbers}</p>
+        <p className="success text-center CourseStatus__table-data">{content_passed_numbers}</p>
         <p className="LastCourse__progresstitle">پیشرفت شما در دوره:</p>
-        <p className="text-center">{course_progress}%</p>
+        <p className="text-center CourseStatus__table-data">{course_progress}%</p>
       </div>
       <ProgressLine precent={course_progress} />
     </div>
