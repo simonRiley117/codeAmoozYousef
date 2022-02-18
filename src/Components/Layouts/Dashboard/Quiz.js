@@ -76,10 +76,12 @@ function Quiz({
       getQuizContent.reFetch();
     }
   }, [quizUuid]);
-
+  console.log("quizUuid", quizUuid);
   return (
     <div className="Quiz">
-      {!quizUuid ? (
+      {quizUuid === undefined ? (
+        <Skeleton />
+      ) : !quizUuid ? (
         <div className="Quiz__empty">
           <p>این مبحث آزمونی نداره! میتونی بری مبحث بعدی:) </p>
           <img src={quiz} alt={quiz} />{" "}

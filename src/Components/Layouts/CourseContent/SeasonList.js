@@ -79,7 +79,7 @@ const SeasonList = ({
               setSeasonsQuizeActive={setSeasonsQuizeActive}
             />
             {season.season_quiz_id && (
-              <div className="px-8 sidebar-quize" onClick={()=>handleSeosonQuize(season.season_quiz_id)}>
+              <div className="px-8 sidebar-quize cursor-pointer" onClick={()=>handleSeosonQuize(season.season_quiz_id)}>
                 <QuizeIcon />
                 <p>آزمون فصل</p>
               </div>
