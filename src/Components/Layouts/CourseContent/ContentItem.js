@@ -14,6 +14,7 @@ const ContentItem = ({
   changeContentID,
   setIsContentPass,
   setSeasonsQuizeActive,
+  idd,
 }) => {
   useEffect(() => {
     if (activeContent === content.id) {
@@ -23,16 +24,23 @@ const ContentItem = ({
   }, [activeContent]);
   const handleClick = () => {
     setSeasonsQuizeActive(false);
-    if (!content.lockedOn) {
+    if (!content.lockedOn || idd === content.id) {
       changeContentID(content.id, content.title);
     }
   };
+  console.log("idd", idd);
+  console.log("idd", content.id);
+  console.log("idd", idd === content.id);
   return content ? (
     <div>
       <div
         className={
           content.lockedOn
-            ? "flex justify-between items-center cursor-not-allowed px-8"
+            ? activeContent === content.id
+              ? "flex justify-between items-center cursor-pointer px-8"
+              : idd === content.id
+              ? "flex justify-between items-center cursor-pointer px-8"
+              : "flex justify-between items-center cursor-not-allowed px-8"
             : "flex justify-between items-center cursor-pointer px-8"
         }
         onClick={handleClick}

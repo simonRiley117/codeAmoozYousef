@@ -21,6 +21,7 @@ function CourseContent() {
   const [CurrentCourseStatus, setCurrentCourseStatus] = useState();
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
   const [Currentcontentid, setCurrentContentid] = useState(null);
+  const [Currentcontentid1, setCurrentContentid1] = useState(null);
   const [ActiveSeason, setActiveSeason] = useState(null);
   const [ActiveTab, setActiveTab] = useState(null);
   const [SeasonsQuizeid, setSeasonsQuizeid] = useState(null);
@@ -68,6 +69,7 @@ function CourseContent() {
       if (Currentcontentid === null) {
         console.log("getCurrentCourseStateres: ", res);
         setCurrentContentid(res.current_content_id);
+        setCurrentContentid1(res.current_content_id);
       }
     },
   });
@@ -173,6 +175,7 @@ function CourseContent() {
                         setSeasonsQuizeActive={setSeasonsQuizeActive}
                         setSeasonsQuizeid={setSeasonsQuizeid}
                         SeasonsQuizeid={SeasonsQuizeid}
+                        idd={Currentcontentid1}
                       />
                     </div>
                     <div className="flex items-center cursor-pointer LastCourse__guideBox">

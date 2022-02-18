@@ -18,6 +18,7 @@ const SeasonsItem = ({
   changeContentID,
   setIsContentPass,
   setSeasonsQuizeActive,
+  idd,
   ...rest
 }) => {
   const [contentList, setcontentList] = useState([]);
@@ -60,6 +61,7 @@ const SeasonsItem = ({
             content={content}
             getContentName={getContentName}
             setIsContentPass={setIsContentPass}
+            idd={idd}
           />
         ))
       ) : (

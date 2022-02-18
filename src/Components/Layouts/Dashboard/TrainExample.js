@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Codeeditor from "@Components/Shared/Codeeditor";
 import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "../../../Context/useFetch";
-import { ClipLoader } from "react-spinners";
 import { Skeleton } from "antd";
 
 function TrainExample({
@@ -31,6 +30,9 @@ function TrainExample({
     setter: setData,
     trigger: !ispreviw,
   });
+  useEffect(() => {
+    getContent.reFetch();
+  }, [contentUuid]);
 
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";

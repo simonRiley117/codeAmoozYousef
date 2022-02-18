@@ -21,6 +21,7 @@ const SeasonList = ({
   SeasonsQuizeid,
   setSeasonsQuizeid,
   setSeasonsQuizeActive,
+  idd,
 }) => {
   const [openPanels, setOpenPanels] = useState([parseInt(activeSeasons)]);
   useEffect(() => {
@@ -81,6 +82,7 @@ const SeasonList = ({
               getContentName={getContentName}
               setIsContentPass={setIsContentPass}
               setSeasonsQuizeActive={setSeasonsQuizeActive}
+              idd={idd}
             />
             {season.season_quiz_id && (
               <div

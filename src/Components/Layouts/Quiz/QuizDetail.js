@@ -12,7 +12,7 @@ function QuizDetail({
   ispreview,
   ismycoursebol,
   data,
-  currcourseId
+  currcourseId,
 }) {
   const navigate = useNavigate();
 

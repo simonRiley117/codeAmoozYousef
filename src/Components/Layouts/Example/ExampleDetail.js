@@ -25,16 +25,36 @@ function ExampleDetail({ example, courseUuid }) {
           </div>
           {example.test_cases.map((item, index) => (
             <div
-              key={index}
               className="flex flex-col	ExampleDetail__sampledataBox mr-6"
+              key={index}
             >
-              <p className="ExampleDetail__sampledata text-center	">
-                {item.input.replace(/#$$#/g, ",")}
-              </p>
-              <img src={arrowdown} alt={arrowdown} />
-              <p className="ExampleDetail__sampledata text-center	">
-                {item.output}
-              </p>
+              {item.input !== "" ? (
+                <p className="ExampleDetail__sampledata text-center	">
+                  {item.input.replace(/#$$#/g, ",")}
+                </p>
+              ) : (
+                <p
+                  className="ExampleDetail__sampledata text-center	"
+                  style={{ opacity: "0" }}
+                >
+                  {item.input.replace(/#$$#/g, ",")}
+                </p>
+              )}
+              {item.input !== "" && item.output !== "" && (
+                <img src={arrowdown} alt={arrowdown} />
+              )}
+              {item.output !== "" && (
+                <p className="ExampleDetail__sampledata text-center	">
+                  {item.output}
+                </p>
+              )}
+              {/* <p className="ExampleDetail__sampledata text-center	">
+                   {item.input.replace(/#$$#/g, ",")}
+                 </p>
+                 <img src={arrowdown} alt={arrowdown} />
+                 <p className="ExampleDetail__sampledata text-center	">
+                   {item.output}
+                 </p> */}
             </div>
           ))}
         </div>
