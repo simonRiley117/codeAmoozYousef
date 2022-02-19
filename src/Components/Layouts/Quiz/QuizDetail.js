@@ -13,6 +13,7 @@ function QuizDetail({
   ismycoursebol,
   data,
   currcourseId,
+  nextseson,
 }) {
   const navigate = useNavigate();
 
@@ -105,6 +106,7 @@ function QuizDetail({
           lang={data.language}
           ispreview={ispreview}
           ismycoursebol={ismycoursebol}
+          nextseson={nextseson}
         />
       ) : null}
     </div>

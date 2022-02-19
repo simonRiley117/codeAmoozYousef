@@ -16,18 +16,20 @@ function Quiz({
   ispreviw,
   intro,
   season,
+  contentUuid2,
 }) {
   const [quizContent, setQuizContent] = useState(null);
   const location = useLocation();
 
   const [quizLoading, setQuizLoading] = useState(true);
   const [errorpass, seterrorpass] = useState(false);
-
+  console.log("courseUuid", courseUuid);
   let navigate = useNavigate();
   const [name, setName] = useState();
   useEffect(() => {
     setName(location.state.name);
   }, [location]);
+  console.log("contentUuid2", contentUuid2);
   const handleClick = () => {
     navigate("/quiz", {
       state: {
@@ -39,6 +41,7 @@ function Quiz({
         ismycoursebol: ismycoursebol,
         course: name,
         intro: intro,
+        contentUuid2: contentUuid2,
       },
     });
   };
@@ -76,7 +79,7 @@ function Quiz({
       getQuizContent.reFetch();
     }
   }, [quizUuid]);
-  console.log("quizUuid", quizUuid);
+  console.log("errorpass", errorpass);
   return (
     <div className="Quiz">
       {quizUuid === undefined ? (

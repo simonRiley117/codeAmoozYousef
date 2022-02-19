@@ -15,6 +15,7 @@ function Index() {
   const [ismycoursebol, setismycoursebol] = useState();
   const [data, setData] = useState([]);
   const [intro, setIntro] = useState(false);
+  const [nextseson, setNextseson] = useState(false);
 
   useEffect(() => {
     setQuizId(location.state.quiz_id);
@@ -24,7 +25,9 @@ function Index() {
     setispreview(location.state.ispreviw);
     setismycoursebol(location.state.ismycoursebol);
     setIntro(location.state.intro);
+    setNextseson(location.state.contentUuid2);
   }, [location]);
+  console.log('location', location.state.contentUuid2)
   const getCourseSeasons = useFetch({
     url: `QuizService/${quizId}/get_user_quiz`,
     method: "GET",
@@ -54,6 +57,7 @@ function Index() {
               ismycoursebol={ismycoursebol}
               data={data}
               currcourseId={data.uuid}
+              nextseson={nextseson}
             />
           </div>
         </>

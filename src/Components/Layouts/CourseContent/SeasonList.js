@@ -29,14 +29,12 @@ const SeasonList = ({
       setOpenPanels((before) => [...before, parseInt(activeSeasons)]);
     }
   }, [, activeSeasons, activeContent]);
-  console.log("first", openPanels);
   const { userData } = useUserData();
   const handleSeosonQuize = (id) => {
     setSeasonsQuizeActive(true);
     setSeasonsQuizeid(id);
   };
   const [showguid, setShowguid] = useRecoilState(tourguid);
-  console.log("openPanels", openPanels);
   return (
     <div className="Sarfasl__Accordionbox">
       <Accordion

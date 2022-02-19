@@ -34,6 +34,7 @@ function QuizCodeEditor(props) {
         courseId={props.courseId}
         currcourseId={props.currcourseId}
         lang={props.lang}
+        nextseson={props.nextseson}
       />
     </div>
   );

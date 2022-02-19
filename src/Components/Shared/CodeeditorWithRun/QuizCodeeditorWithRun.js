@@ -42,7 +42,7 @@ function QuizCodeeditorWithRun(props) {
   const handleModalVisible = () => {
     setModal(false);
   };
-
+  console.log("props.nextseson", props.nextseson);
   const handleModalShow = (uuid, lock) => {
     setModal(true);
   };

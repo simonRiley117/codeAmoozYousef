@@ -14,9 +14,12 @@ const ContentTabs = ({
   SeasonsQuizeid,
   setSeasonsQuizeid,
   SeasonsQuizeActive,
+  contentUuid2,
 }) => {
   const { TabPane } = Tabs;
-
+  console.log("first1", SeasonsQuizeid);
+  console.log("first1", contentUuid);
+  console.log("first1", courseUuid);
   return (
     <Tabs
       onChange={setActiveTab}
@@ -62,7 +65,7 @@ const ContentTabs = ({
           </TabPane>
         </>
       ) : (
-        <TabPane tab=" آزمون فصل" key={`tab_1`}>
+        <TabPane tab=" آزمون فصل" key={ActiveTab}>
           <Quiz
             quizUuid={SeasonsQuizeid}
             contentUuid={contentUuid}

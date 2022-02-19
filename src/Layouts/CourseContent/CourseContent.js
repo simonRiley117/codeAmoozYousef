@@ -22,6 +22,7 @@ function CourseContent() {
   const [CurrentcontenStatus, setCurrentcontenStatus] = useState();
   const [Currentcontentid, setCurrentContentid] = useState(null);
   const [Currentcontentid1, setCurrentContentid1] = useState(null);
+  const [Currentcontentid2, setCurrentContentid2] = useState(null);
   const [ActiveSeason, setActiveSeason] = useState(null);
   const [ActiveTab, setActiveTab] = useState(null);
   const [SeasonsQuizeid, setSeasonsQuizeid] = useState(null);
@@ -78,11 +79,15 @@ function CourseContent() {
     method: "GET",
     trigger: false,
     setter: setCurrentcontenStatus,
+    argFunc: (res) => {
+      setCurrentContentid2(res.next_content_id);
+    },
   });
   console.log("Currentcontentid", Currentcontentid);
   const changeContentID = (id, name) => {
     setCurrentContentid(id);
   };
+
 
   console.log(
     "CurrentCourseStatus.current_content_id: ",
@@ -221,6 +226,7 @@ function CourseContent() {
                     setSeasonsQuizeid={setSeasonsQuizeid}
                     SeasonsQuizeid={SeasonsQuizeid}
                     SeasonsQuizeActive={SeasonsQuizeActive}
+                    contentUuid2={Currentcontentid2}
                   />
                 ) : (
                   <div className="LastCourse__congrats ">
