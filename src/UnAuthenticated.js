@@ -5,6 +5,7 @@ import EmailVerify from "./Components/Layouts/Register/EmailVerify";
 import ChangePassword from "./Components/Layouts/Register/ChangePassword";
 import Layout from "@Components/Shared/Layout/Layout";
 import SocialAuth from "@Layouts/SocialAuth/SocialAuth";
+import Example from "./Layouts/Example";
 
 const UnAuthenticated = () => {
     return (
@@ -17,9 +18,8 @@ const UnAuthenticated = () => {
                 path="/auth/password/reset/confirm/:uuid/:key/"
                 element={<ChangePassword/>}
             />
-            <Route element={<Layout/>}>
-                <Route path="/quiz" element={<Quiz/>}/>
-            </Route>
+         <Route path="/quiz" element={<Quiz />} />
+        <Route path="example" element={<Example />} />
             <Route>
                 <Route path="/social-confirm/:Token/:refToken" element={<SocialAuth/>}/>
             </Route>

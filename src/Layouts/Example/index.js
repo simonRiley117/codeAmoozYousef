@@ -4,6 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 import ExampleDetail from "@Components/Layouts/Example/ExampleDetail";
 import useFetch from "../../Context/useFetch";
 import { Skeleton } from "antd";
+import { useAuth } from "@App/Context/authContext";
 
 function Index() {
   const location = useLocation();
@@ -15,6 +16,7 @@ function Index() {
     setTitle(location.state.title);
     // setTitle(location.state.title);
   }, [location]);
+  const { token } = useAuth();
 
   const [id, setId] = useState(null);
   const [courseUuid, setCourseUuid] = useState(null);
@@ -29,8 +31,9 @@ function Index() {
   const getExample = useFetch({
     url: `ExampleService/${id}/example_get`,
     method: "GET",
-    noHeader: false,
+    noHeader: token ? false : true,
     setter: setData,
+    trigger: true,
   });
 
   return (

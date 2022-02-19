@@ -4,6 +4,7 @@ import Codeeditor from "@Components/Shared/Codeeditor";
 import UseWindowSize from "@App/Sizes/UseWindowSize";
 import useFetch from "../../../Context/useFetch";
 import { Skeleton } from "antd";
+import { useAuth } from "@App/Context/authContext";
 
 function TrainExample({
   contentUuid,
@@ -17,6 +18,7 @@ function TrainExample({
     ispreviw ? { context: context } : null
   );
   const [contentLoading, setContentLoading] = useState(true);
+  const { token } = useAuth();
 
   const setData = (data) => {
     setContent(data);
@@ -26,14 +28,13 @@ function TrainExample({
   const getContent = useFetch({
     url: `ContentService/${contentUuid}/getContent`,
     method: "GET",
-    noHeader: false,
+    noHeader: token ? false : true,
     setter: setData,
     trigger: !ispreviw,
   });
   useEffect(() => {
     getContent.reFetch();
   }, [contentUuid]);
-
   const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   // let id = "1";

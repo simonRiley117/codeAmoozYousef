@@ -59,7 +59,6 @@ function Detail({
       setIsmycoursebol(true);
     }
   }, [ismycourse]);
-
   return (
     <>
       <Tabs className="TabBox" type="card">
