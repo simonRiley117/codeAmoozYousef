@@ -57,7 +57,6 @@ function CourseTable({courseId, ids, url1, liftUpHas_user_course}) {
         setName(location.state.name);
     }, [location]);
     const setData = (data) => {
-        // console.log('ddd: ', data)
         setLoadingOrderCourse(false);
         setOrderCourse(data);
         setDegree(data.selected_degree ? data.selected_degree : data.costs[0]);

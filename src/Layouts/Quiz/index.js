@@ -27,7 +27,6 @@ function Index() {
     setIntro(location.state.intro);
     setNextseson(location.state.contentUuid2);
   }, [location]);
-  console.log('location', location.state.contentUuid2)
   const getCourseSeasons = useFetch({
     url: `QuizService/${quizId}/get_user_quiz`,
     method: "GET",

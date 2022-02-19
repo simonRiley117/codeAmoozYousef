@@ -35,7 +35,6 @@ const Topic = ({ courseId, courseSeasons }) => {
   //   });
 
   // useEffect(() => {
-  //     console.log('location.state.id: ', location.state.id);
   //     setId(location.state.id);
   // }, [location]);
 
@@ -59,7 +58,6 @@ const Topic = ({ courseId, courseSeasons }) => {
       </div>
     </div>
   );
-  console.log(`courseSeasons`, courseSeasons);
   // const windowSize = UseWindowSize();
   // let url = "https://testui.codeamooz.com/example/4/5";
   return (

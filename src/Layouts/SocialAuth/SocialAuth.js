@@ -7,7 +7,6 @@ import {HOME_URL, TEAChER_URL, USER_URL} from "../../constants";
 
 function SocialAuth(props) {
     const {Token, refToken} = useParams();
-    console.log('Token: ', Token)
     const {authDispatch, authRefreshDispatch} = useAuth();
     const navigate = useNavigate()
     useEffect(() => {
@@ -19,7 +18,6 @@ function SocialAuth(props) {
             type: "LOGIN",
             refreshToken: refToken,
         });
-        // console.log('window.location.href: ', window.location.href)
         const url = localStorage.getItem("url")
         url === `${USER_URL}/?redirectTeacher` ? (
             window.location.href = TEAChER_URL

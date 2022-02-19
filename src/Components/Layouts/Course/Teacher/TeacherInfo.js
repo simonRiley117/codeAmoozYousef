@@ -22,7 +22,6 @@ const override = {
 };
 
 function TeacherInfo({ courseId, resume, liftingUpTags, isSticky }) {
-    console.log("courseId: ", courseId);
     const [isCopied, handleCopy] = UseCopyToClipboard(3000);
     const [socialId, setSocialId] = useState(-1);
     const [teacherProfileInfo, setTeacherProfileInfo] = useState(null);

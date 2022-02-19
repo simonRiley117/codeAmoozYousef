@@ -40,21 +40,18 @@ function Codeeditor(props) {
     },
     customHandler: (err, res) => {
       if (res) {
-        console.log(res.data);
         res.data.compiler_stdout === null ? setBtn(2) : setBtn(1);
         setInfo(res.data.compiler_stdout);
         setErrs(res.data.compiler_stderr);
         setLoad(false);
       }
       if (err) {
-        console.log(err.response);
         setLoad(false);
       }
     },
   });
 
   const handleSend = () => {
-    console.log("props.id: ", props);
     setData({
       submissions: {
         code_id: props.id,

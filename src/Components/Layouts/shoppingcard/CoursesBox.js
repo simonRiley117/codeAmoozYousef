@@ -6,10 +6,6 @@ import {useNavigate} from "react-router-dom";
 
 const CoursesBox = ({orderCard, getPayment, getorderSummary}) => {
     const navigate = useNavigate();
-    // console.log('orderCard: ', orderCard)
-    // console.log('orderCard.results: ', orderCard?.results)
-    // console.log('orderCard.results.length: ', orderCard?.results?.length)
-
     return (
         <div className="primary-box CoursesBox">
             {orderCard?.results?.map((i) => (

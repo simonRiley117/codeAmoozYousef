@@ -288,7 +288,6 @@ export default Comment;
 //         value={message}
 //         onKeyPress={(e) => {
 //           if (e.key !== "Enter") return;
-//           console.log(message);
 //         }}
 //         onChange={(e) => setMessageForm(e.target.value)}
 //       />

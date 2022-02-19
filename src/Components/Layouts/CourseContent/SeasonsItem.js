@@ -22,7 +22,6 @@ const SeasonsItem = ({
   ...rest
 }) => {
   const [contentList, setcontentList] = useState([]);
-  console.log("contentList", contentList);
   const getCourseSeasons = useFetch({
     url: `SeasonService/${parseInt(season.uuid)}/sidebar`,
     method: "GET",
@@ -30,12 +29,10 @@ const SeasonsItem = ({
     setter: setcontentList,
   });
   useEffect(() => {
-    console.log("openPanel", openPanels);
     if (openPanels.includes(season.uuid)) {
       getCourseSeasons.reFetch();
     }
   }, [, activeContent, openPanels]);
-  console.log("openPanelsopenPanels", openPanels);
   const FetchContent = () => {
     if (contentList.length === 0 && !season.lockedOn) {
       getCourseSeasons.reFetch();

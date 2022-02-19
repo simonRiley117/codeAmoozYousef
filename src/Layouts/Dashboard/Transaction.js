@@ -54,7 +54,6 @@ function Transaction() {
 			...item,
 			column: ++index,
 		}));
-		console.log('new_data: ', new_data);
 		setTransactionData(new_data);
 		setTransactionLoading(false);
 	};
@@ -67,7 +66,6 @@ function Transaction() {
 		setter: setData,
 	});
 
-	console.log('transactionData: ', transactionData);
 	return !transactionLoading ? (
 		<div className='Transaction'>
 			<p className='Transaction__Title'>تراکنش ها</p>

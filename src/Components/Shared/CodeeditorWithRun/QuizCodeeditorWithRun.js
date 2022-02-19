@@ -17,7 +17,6 @@ import Button from "@Components/Shared/Buttons/Button";
 import { Link } from "react-router-dom";
 
 function QuizCodeeditorWithRun(props) {
-  //  console.log("PROPS QUIZ: ", props);
   languages.map(
     (lang) =>
       lang === props.lan &&

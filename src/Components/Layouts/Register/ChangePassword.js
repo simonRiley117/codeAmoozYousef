@@ -47,7 +47,6 @@ const ChangePassword = () => {
       navigate("/");
     },
     argErrFunc: (mess) => {
-      console.log(mess);
 
       if ("new_password1" in mess)
         if (

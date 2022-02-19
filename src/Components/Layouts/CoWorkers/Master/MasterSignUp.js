@@ -38,7 +38,6 @@ function MasterSignUp() {
 
     const onSubmit = (data) => {
         let formData = new FormData();
-        console.log("data: ", data);
         if (data.resume.length !== 0) {
             formData.append("resume", data.resume[0], data.resume[0].name);
         }

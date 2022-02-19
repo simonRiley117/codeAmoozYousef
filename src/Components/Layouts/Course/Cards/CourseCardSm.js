@@ -45,11 +45,6 @@ const Coursecardsm = ({ card }) => {
   } = useCourseListIcons();
 
   const { token } = useAuth();
-  // console.log('cartCourseListIcons: ', cartCourseListIcons)
-  // console.log('favoriteCourseListIcons: ', favoriteCourseListIcons)
-  // console.log('find course fav: ', favoriteCourseListIcons.find(element => element === uuid))
-  // console.log('find course cart: ', cartCourseListIcons.find(element => element === uuid))
-
   const [isFav, setIsFav] = useState(
     favoriteCourseListIcons.find((element) => element === uuid)
   );

@@ -16,8 +16,6 @@ function Index({ courseId }) {
     setter: setCourseInfo,
   });
 
-  // console.log('getAboutCourse.loading: ', getAboutCourse.loading)
-  // console.log('getAboutCourse: ', getAboutCourse)
   const {
     title,
     intro,

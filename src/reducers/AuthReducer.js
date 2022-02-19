@@ -2,8 +2,6 @@ import {HOME_URL} from "@App/constants";
 import Cookies from "js-cookie";
 
 export const authReducer = (state, action) => {
-    // console.log('state in authReducer: ', state)
-    // console.log('action in authReducer: ', action)
     switch (action.type) {
         case "LOGIN":
             // localStorage.setItem("token", action.token);

@@ -21,9 +21,7 @@ function ContentDetail({
     argFunc: (res) => {
       if (iscontent === true) {
         setActiveSeason(res.season);
-        console.log(res.season);
         setSeosononquizeid(res.season_quiz_uuid);
-        console.log("quize uuid", res.season_quiz_uuid);
       }
     },
     argErrFunc: (res) => {
@@ -41,9 +39,7 @@ function ContentDetail({
     argFunc: (res) => {
       if (iscontent === true) {
         setActiveSeason(res.season);
-        console.log(res.season);
         setSeosononquizeid(res.season_quiz_uuid);
-        console.log("quize uuid", res.season_quiz_uuid);
       }
     },
     argErrFunc: (res) => {

@@ -116,7 +116,6 @@ const SeasonTitle = ({ title, done, index }) => {
   );
 };
 const SeasonHeader = ({ time, lock, FetchContent, userData, showguid }) => {
-  console.log(`object`, showguid);
   return (
     <div className="Sarfasl__AccordionItem">
       {showguid && <img src={Lock} alt={Lock} data-tut="reactour__lock" />}

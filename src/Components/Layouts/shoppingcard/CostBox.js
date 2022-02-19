@@ -10,8 +10,6 @@ import {ClipLoader} from "react-spinners";
 
 const TipButton = ({orderCard, getPayment}) => {
     const [coupon_number, setCoupounNum] = useState();
-    console.log('orderCard?.results?.length: ', orderCard?.results?.length)
-    console.log('getPayment: ', getPayment)
     const {
         handleSubmit,
         control,
@@ -58,9 +56,7 @@ const TipButton = ({orderCard, getPayment}) => {
     };
 
     const onSubmit = (data) => {
-        console.log(data);
         setCoupounNum(data);
-        console.log(coupon_number);
         postCoupone.reFetch();
     };
     return (

@@ -42,7 +42,6 @@ function ExampleResponsiveCodeeditor(props) {
     },
     customHandler: (err, res) => {
       if (res) {
-        console.log("ExamplePlayGround", res.data);
         // setInfo(res.data);
         res.data.compiler_stdout ? setBtn(1) : setBtn(2);
         setRes(res.data.compiler_stdout);
@@ -52,7 +51,6 @@ function ExampleResponsiveCodeeditor(props) {
         setLoad(false);
       }
       if (err) {
-        console.log(err.response);
         setLoad(false);
       }
     },
@@ -68,7 +66,6 @@ function ExampleResponsiveCodeeditor(props) {
     },
     customHandler: (err, res) => {
       if (res) {
-        console.log("ExampleSendToServer", res.data);
         // setInfo1(res.data);
         setNumber(res.data.compile_result);
         res.data.compiler_stderr ? setBtn(1) : setBtn(2);
@@ -80,7 +77,6 @@ function ExampleResponsiveCodeeditor(props) {
         setLoad(false);
       }
       if (err) {
-        console.log(err.response);
         setLoad(false);
       }
     },

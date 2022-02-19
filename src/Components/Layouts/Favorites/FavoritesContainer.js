@@ -11,7 +11,6 @@ const Favoritescontainer = () => {
   const showFavorites = (data) => {
     setFavoritesData(data.results);
     setHasFav(true);
-    console.log(data.results);
   };
 
   const getFavoritesData = useFetch({

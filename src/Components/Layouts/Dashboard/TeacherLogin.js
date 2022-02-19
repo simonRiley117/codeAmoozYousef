@@ -5,7 +5,6 @@ import { useUserData } from '@App/Context/userContext';
 
 const TeacherLogin = () => {
 	const { userData } = useUserData();
-	// console.log('userData: ', userData)
 	return (
 		<div className='dashboard__login flex flex-col items-center justify-center gap-y-6'>
 			<h2>ورود به بخش اساتید</h2>

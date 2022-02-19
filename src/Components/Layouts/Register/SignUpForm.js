@@ -80,7 +80,6 @@ const SignUpForm = ({ handleActive }) => {
 		trigger: false,
 		noHeader: true,
 		argFunc: (res) => {
-			console.log('SignUpForm ~ res', res);
 			setLoading(false);
 			if (res.detail === 'Verification e-mail sent.') {
 				handleActive();

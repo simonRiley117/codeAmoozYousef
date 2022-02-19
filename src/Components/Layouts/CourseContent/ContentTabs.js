@@ -17,9 +17,7 @@ const ContentTabs = ({
   contentUuid2,
 }) => {
   const { TabPane } = Tabs;
-  console.log("first1", SeasonsQuizeid);
-  console.log("first1", contentUuid);
-  console.log("first1", courseUuid);
+
   return (
     <Tabs
       onChange={setActiveTab}

@@ -8,7 +8,6 @@ import { Skeleton } from "antd";
 function Index() {
   const location = useLocation();
   const [intro, setIntro] = useState(false);
-  console.log("LOCATION: ", location);
   useEffect(() => {
     setId(location.state.id);
     setCourseUuid(location.state.courseUuid);

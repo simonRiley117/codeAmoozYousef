@@ -28,9 +28,6 @@ const ContentItem = ({
       changeContentID(content.id, content.title);
     }
   };
-  console.log("idd", idd);
-  console.log("idd", content.id);
-  console.log("idd", idd === content.id);
   return content ? (
     <div>
       <div

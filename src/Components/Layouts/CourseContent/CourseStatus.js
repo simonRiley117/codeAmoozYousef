@@ -9,7 +9,6 @@ const CourseStatus = ({ details, Currentcontentname, loading }) => {
     current_content_name,
     latest_content_user_passed_name,
   } = details;
-  console.log(Currentcontentname);
   return (
     <div className="CourseStatus" data-tut="reactour__status">
       <div className=" CourseStatus__table mb-8">

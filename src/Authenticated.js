@@ -34,7 +34,6 @@ import DashboardLayout from "@Components/Shared/Layout/DashboardLayout";
 // import TeacherResume from "./Layouts/Teacher Resume/TeacherResume";
 // const Authenticated = () => {
 //   const history = useHistory();
-//   console.log("Authenticated ~ history", history);
 import Example from "./Layouts/Example";
 import Quiz from "./Layouts/Quiz";
 import MyCourses from "@Layouts/Dashboard/MyCourses";

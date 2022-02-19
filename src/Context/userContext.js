@@ -10,7 +10,6 @@ const UserDataContext = createContext();
 
 const UserDataProvider = (props) => {
   const [userData, setUserData] = useState(null);
-  console.log("UserDataProvider ~ userData", userData)
   // const [username, setUsername] = useState();
   const {
     token,
@@ -32,11 +31,9 @@ const UserDataProvider = (props) => {
     },
     customHandler: (err, res) => {
       if (res) {
-        console.log("refresh res: ", res.data);
         authDispatch({ type: "LOGIN", token: res.data.access });
       }
       if (err) {
-        console.log("refresh error: ", err.response);
         authDispatch({ type: "LOGOUT" });
         authRefreshDispatch({ type: "LOGOUT" });
         // authDispatch({ type: "LOGOUT", token });
@@ -55,14 +52,12 @@ const UserDataProvider = (props) => {
     trigger: token ? [] : undefined,
     customHandler: (err, res) => {
       if (res) {
-        console.log("user res: ", res.data);
         setUserData(res.data);
         if (!res.data.tool_gide) {
           setShowGuid(!res.data.tool_gide);
         }
       }
       if (err) {
-        console.log("user err: ", err.response);
 
         if (refreshToken) {
           refToken.reFetch();

@@ -25,7 +25,6 @@ const ResumeDoneWrapper = ({
     trigger: false,
     caller: caller,
   });
-  console.log("id", id);
   return (
     <div className={`resume__bg ResumeDoneWrapper relative ${className}`}>
       <div className="flex IconBox-ab">

@@ -12,7 +12,6 @@ function AskAndAnswer({ courseId, has_user_course }) {
 	const [messageInfo, setMessageInfo] = useState({});
 	const [messagePostData, setMessagePostData] = useState(null);
 	const setMessageData = (data) => {
-		console.log('setMessageData ~ data', data.messages);
 		setMessageInfo(data.messages);
 	};
 	const { reset, ...othersMethod } = useForm();
@@ -32,7 +31,6 @@ function AskAndAnswer({ courseId, has_user_course }) {
 		noHeader: false,
 		setter: setMessageData,
 	});
-	// console.log("messageInfo: ", messageInfo);
 
 	const postMessage = useFetch({
 		url: 'QuestionMessageService/user_create',

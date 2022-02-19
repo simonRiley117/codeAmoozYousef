@@ -10,7 +10,6 @@ import ProgressLine from '@Components/Shared/Progress/ProgressLine';
 import profile from '@Assets/Pic/course-profile.png';
 const Courses = ({ course }) => {
 	const { userData } = useUserData();
-	// console.log('course: ', course)
 	const renderCourseEmpty = () => (
 		<div className='dashboard__course--empty'>
 			<CourseEmptyIcon />

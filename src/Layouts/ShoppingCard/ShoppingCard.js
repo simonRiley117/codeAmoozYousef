@@ -7,8 +7,6 @@ import CoursesBox from "@Components/Layouts/shoppingcard/CoursesBox";
 const ShoppingCard = () => {
     // const {getCart} = useCartData()
     const [orderCard, setOrderCard] = useState({results: []});
-    // console.log('orderCardXXX.results: ', orderCard.results)
-    // console.log('orderCardXXX.results.length: ', orderCard?.results?.length)
     const [payment, setPayment] = useState([]);
 
     const getorderSummary = useFetch({

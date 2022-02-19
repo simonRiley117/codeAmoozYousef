@@ -24,8 +24,6 @@ function Search() {
         getallCourseList.reFetch()
     }, [searchParams]);
 
-    // console.log('allcourse: ', allcourse)
-    // console.log('searchParams: ', searchParams.get('s'))
     const PageSize = 11;
     const [currentPage, setCurrentPage] = useState(1);
     return (
