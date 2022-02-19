@@ -11,6 +11,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import { useAuth } from "../../../Context/authContext";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../../../constants";
+import { toast } from "react-toastify";
 
 function ExampleResponsiveCodeeditor(props) {
   languages.map(
@@ -82,15 +83,19 @@ function ExampleResponsiveCodeeditor(props) {
     },
   });
   const handleSend = () => {
-    setData({
-      submissions: {
-        example_id: props.id,
-        input: test,
-        source: value,
-      },
-    });
-    setLoad(true);
-    ExamplePlayGround.reFetch();
+    if (token) {
+      setData({
+        submissions: {
+          example_id: props.id,
+          input: test,
+          source: value,
+        },
+      });
+      setLoad(true);
+      ExamplePlayGround.reFetch();
+    }else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   const handleInputSend = () => {
     setData({

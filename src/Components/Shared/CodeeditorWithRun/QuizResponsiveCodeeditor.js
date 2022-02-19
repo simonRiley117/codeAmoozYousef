@@ -11,6 +11,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../../../constants";
 import { useAuth } from "../../../Context/authContext";
+import { toast } from "react-toastify";
 
 function QuizResponsiveCodeeditor(props) {
   languages.map(
@@ -86,15 +87,19 @@ function QuizResponsiveCodeeditor(props) {
     },
   });
   const handleSend = () => {
-    setData({
-      submissions: {
-        question_id: props.id,
-        input: test,
-        source: value,
-      },
-    });
-    setLoad(true);
-    QuizPlayGround.reFetch();
+    if (token) {
+      setData({
+        submissions: {
+          question_id: props.id,
+          input: test,
+          source: value,
+        },
+      });
+      setLoad(true);
+      QuizPlayGround.reFetch();
+    }else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   const handleInputSend = () => {
     setData({

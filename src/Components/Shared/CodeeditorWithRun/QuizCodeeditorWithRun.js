@@ -132,15 +132,19 @@ function QuizCodeeditorWithRun(props) {
     },
   });
   const handleSend = () => {
-    setData({
-      submissions: {
-        question_id: props.quizId,
-        input: test,
-        source: value,
-      },
-    });
-    setLoad(true);
-    QuizPlayGround.reFetch();
+    if (token) {
+      setData({
+        submissions: {
+          question_id: props.quizId,
+          input: test,
+          source: value,
+        },
+      });
+      setLoad(true);
+      QuizPlayGround.reFetch();
+    }else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   // ismycoursebol
   // ispreview

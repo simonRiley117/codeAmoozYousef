@@ -12,6 +12,7 @@ import { useAuth } from "../../../Context/authContext";
 import useFetch from "../../../Context/useFetch";
 import useAxios from "@use-hooks/axios";
 import { API_URL } from "../../../constants";
+import { toast } from "react-toastify";
 
 function Codeeditor(props) {
   languages.map(
@@ -20,6 +21,7 @@ function Codeeditor(props) {
       require(`ace-builds/src-noconflict/mode-${lang}`) &&
       require(`ace-builds/src-noconflict/snippets/${lang}`)
   );
+
   const [value, setValue] = useState(props.value);
   const [btn, setBtn] = useState(0);
   const [data, setData] = useState("");
@@ -52,15 +54,19 @@ function Codeeditor(props) {
   });
 
   const handleSend = () => {
-    setData({
-      submissions: {
-        code_id: props.id,
-        source: value,
-        input: "",
-      },
-    });
-    setLoad(true);
-    codeCompiler.reFetch();
+    if (token) {
+      setData({
+        submissions: {
+          code_id: props.id,
+          source: value,
+          input: "",
+        },
+      });
+      setLoad(true);
+      codeCompiler.reFetch();
+    } else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   const copyHandle = () => {
     btn === 0
