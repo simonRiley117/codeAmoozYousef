@@ -93,20 +93,24 @@ function ExampleResponsiveCodeeditor(props) {
       });
       setLoad(true);
       ExamplePlayGround.reFetch();
-    }else {
+    } else {
       toast.error("ابتدا وارد سایت شوید");
     }
   };
   const handleInputSend = () => {
-    setData({
-      submissions: {
-        example_id: props.id,
-        source: value,
-        // input: test,
-      },
-    });
-    setLoad(true);
-    ExampleSendToServer.reFetch();
+    if (token) {
+      setData({
+        submissions: {
+          example_id: props.id,
+          source: value,
+          // input: test,
+        },
+      });
+      setLoad(true);
+      ExampleSendToServer.reFetch();
+    } else {
+      toast.error("ابتدا وارد سایت شوید");
+    }
   };
   function onChange(newValue) {
     setValue(newValue);

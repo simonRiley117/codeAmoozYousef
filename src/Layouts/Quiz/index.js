@@ -4,6 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 import QuizDetail from "@Components/Layouts/Quiz/QuizDetail";
 import useFetch from "@App/Context/useFetch";
 import { Skeleton } from "antd";
+import { useAuth } from "@App/Context/authContext";
 
 function Index() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function Index() {
   const [data, setData] = useState([]);
   const [intro, setIntro] = useState(false);
   const [nextseson, setNextseson] = useState(false);
+  const { token } = useAuth();
 
   useEffect(() => {
     setQuizId(location.state.quiz_id);
@@ -28,9 +30,11 @@ function Index() {
     setNextseson(location.state.contentUuid2);
   }, [location]);
   const getCourseSeasons = useFetch({
-    url: `QuizService/${quizId}/get_user_quiz`,
+    url: token
+      ? `QuizService/${quizId}/get_user_quiz`
+      : `QuizService/${quizId}/get_user_quiz_preview`,
     method: "GET",
-    noHeader: false,
+    noHeader: token ? false : true,
     setter: setData,
     trigger: true,
   });

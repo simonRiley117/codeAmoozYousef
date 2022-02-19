@@ -97,20 +97,24 @@ function QuizResponsiveCodeeditor(props) {
       });
       setLoad(true);
       QuizPlayGround.reFetch();
-    }else {
+    } else {
       toast.error("ابتدا وارد سایت شوید");
     }
   };
   const handleInputSend = () => {
-    setData({
-      submissions: {
-        question_id: props.id,
-        source: value,
-        // input: test,
-      },
-    });
-    setLoad(true);
-    QuizSendToServer.reFetch();
+    if (token) {
+      setData({
+        submissions: {
+          question_id: props.id,
+          source: value,
+          // input: test,
+        },
+      });
+      setLoad(true);
+      QuizSendToServer.reFetch();
+    } else {
+      toast.error("برای پاسخ به آزمون اول به سایت وارد شوید");
+    }
   };
 
   function onChange(newValue) {
