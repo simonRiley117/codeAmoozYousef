@@ -44,17 +44,13 @@ function ExampleDetail({ example, courseUuid }) {
                 <img src={arrowdown} alt={arrowdown} />
               )}
               {item.output !== "" && (
-                <p className="ExampleDetail__sampledata text-center	">
-                  {item.output}
-                </p>
+                <textarea
+                  className="ExampleDetail__sampledata text-center	"
+                  name="text"
+                  value={item.output}
+                  readOnly
+                />
               )}
-              {/* <p className="ExampleDetail__sampledata text-center	">
-                   {item.input.replace(/#$$#/g, ",")}
-                 </p>
-                 <img src={arrowdown} alt={arrowdown} />
-                 <p className="ExampleDetail__sampledata text-center	">
-                   {item.output}
-                 </p> */}
             </div>
           ))}
         </div>
