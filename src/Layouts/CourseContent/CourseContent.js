@@ -255,19 +255,21 @@ function CourseContent() {
                           </Button>
                         </div>
                       )}
-                      <div data-tut="reactour__end">
-                        <Button
-                          type="primary"
-                          classes=" CoWorkers__btn flex items-center "
-                          {...(CurrentcontenStatus.has_prev_content && {
-                            onClick: handlePrevContent,
-                          })}
-                          disabled={!CurrentcontenStatus.has_prev_content}
-                        >
-                          <i className="fas fa-chevron-left"></i>
-                          مبحث قبلی
-                        </Button>
-                      </div>
+                      {!LastCourse ? (
+                        <div data-tut="reactour__end">
+                          <Button
+                            type="primary"
+                            classes=" CoWorkers__btn flex items-center "
+                            {...(CurrentcontenStatus.has_prev_content && {
+                              onClick: handlePrevContent,
+                            })}
+                            disabled={!CurrentcontenStatus.has_prev_content}
+                          >
+                            <i className="fas fa-chevron-left"></i>
+                            مبحث قبلی
+                          </Button>
+                        </div>
+                      ) : null}
                     </div>
                   )}
                 </div>
