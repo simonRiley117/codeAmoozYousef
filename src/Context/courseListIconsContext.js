@@ -3,6 +3,7 @@ import { useAuth } from "./authContext";
 import useFetch from "./useFetch";
 import { toast } from "react-toastify";
 import { useCartData } from "@App/Context/cartContext";
+import { useNavigate } from "react-router";
 
 const CourseListIconsContext = createContext();
 
@@ -41,7 +42,7 @@ function CourseListIconsProvider(props) {
     noHeader: token ? false : true,
     setter: setData,
   });
-
+  const navigate = useNavigate();
   const Addtocard = useFetch({
     url: `CartService/addToCart`,
     method: "POST",
@@ -51,7 +52,7 @@ function CourseListIconsProvider(props) {
       toast.success("دوره با موفقیت به سبد کالا اضافه شد");
       getCart.reFetch();
       getCourseListIcons.reFetch();
-      // setisCourseinCart(true);
+      navigate("/shopping-card");
     },
   });
   const Removefromcard = useFetch({
@@ -103,7 +104,7 @@ function CourseListIconsProvider(props) {
         getAddToWishData,
         cartCourseListIcons,
         favoriteCourseListIcons,
-        Removefromcard
+        Removefromcard,
       }}
       {...props}
     >

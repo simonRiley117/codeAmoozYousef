@@ -20,6 +20,7 @@ import ShareModal from "@Components/Shared/Sharemodal/ShareModal";
 import {useHistory, useLocation, useParams} from "react-router-dom";
 import {Skeleton} from "antd";
 import {useCartData} from '@App/Context/cartContext';
+import {useNavigate} from "react-router";
 
 const override = {
     display: "block",
@@ -104,7 +105,7 @@ function CourseTable({courseId, ids, url1, liftUpHas_user_course}) {
     //     costs,
     //     has_user_course,
     // } = orderCourse;
-
+    const navigate = useNavigate()
     const addToCart = useFetch({
         url: `CartService/addToCart`,
         method: "POST",
@@ -116,6 +117,7 @@ function CourseTable({courseId, ids, url1, liftUpHas_user_course}) {
             toast.success("سفارش با موفقیت ثبت شد");
             // getUser.reFetch();
             getCart.reFetch();
+            navigate('/shopping-card')
         },
         argErrFunc: (err) => handleError(err),
     });
