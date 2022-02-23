@@ -173,9 +173,59 @@
 .ant-comment-inner {
 	padding: 0.9rem 0 !important;
 }
-.ant-skeleton{
+.ant-skeleton {
 	width: 100% !important;
 }
 .ant-skeleton-element .ant-skeleton-button-lg {
 	width: 100%;
+}
+.ace_scrollbar-v {
+	&::-webkit-scrollbar {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+}
+.ace_editor {
+	overflow: auto !important;
+	// max-height: 52.5rem !important;
+	&::-webkit-scrollbar {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		opacity: 0;
+		border-radius: 1.5rem;
+	}
 }

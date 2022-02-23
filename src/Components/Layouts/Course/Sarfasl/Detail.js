@@ -92,7 +92,7 @@ function Detail({
             <Skeleton />
           )}
         </TabPane>
-        <TabPane tab="آزمون" key={`${contentUuid}_3`}>
+        {/* <TabPane tab="آزمون" key={`${contentUuid}_3`}>
           {getContent?.response ? (
             <Quiz
               ismycoursebol={ismycoursebol}
@@ -106,7 +106,7 @@ function Detail({
           ) : (
             <Skeleton />
           )}
-        </TabPane>
+        </TabPane> */}
         {/* {hasSeasonQuize === "You have not passed quiz season" && (
                     <TabPane tab=" آزمون فصل" key={`${contentUuid}_4`}>
                       <Quiz
