@@ -131,7 +131,7 @@ function ExampleCodeeditorWithRun(props) {
       type: "text/plain",
     });
     element.href = URL.createObjectURL(file);
-    element.download = `${props.name}.txt`;
+    element.download = `${props.name}.${props.lang}`;
     document.body.appendChild(element);
     element.click();
   };

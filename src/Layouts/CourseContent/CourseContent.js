@@ -88,7 +88,6 @@ function CourseContent() {
     setCurrentContentid(id);
   };
 
-
   console.log(
     "CurrentCourseStatus.current_content_id: ",
     CurrentCourseStatus?.current_content_id
@@ -249,7 +248,9 @@ function CourseContent() {
                             }
                             disabled={!isContentPass && quizUuid !== null}
                           >
-                            مبحث بعدی
+                            {Currentcontentid2 === null
+                              ? "اتمام آزمون"
+                              : "مبحث بعدی"}
                             <i className="fas fa-chevron-right"></i>
                           </Button>
                         </div>
