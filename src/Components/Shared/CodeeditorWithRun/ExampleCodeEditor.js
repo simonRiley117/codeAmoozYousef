@@ -1,6 +1,5 @@
 import React from "react";
 import ExampleCodeeditorWithRun from "./ExampleCodeeditorWithRun";
-import ExampleResponsiveCodeeditor from "./ExampleResponsiveCodeeditor";
 import UseWindowSize from "@App/Sizes/UseWindowSize";
 
 function ExampleCodeEditor(props) {

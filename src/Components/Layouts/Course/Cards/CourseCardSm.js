@@ -51,6 +51,9 @@ const Coursecardsm = ({ card }) => {
   const [isInCart, setIsInCart] = useState(
     cartCourseListIcons.find((element) => element === uuid)
   );
+  const [isDes, setIsDes] = useState(
+    Number.isInteger(mean_of_participant_points.grade)
+  );
   useEffect(() => {
     setIsFav(favoriteCourseListIcons.find((element) => element === uuid));
   }, [favoriteCourseListIcons, uuid]);
@@ -106,7 +109,7 @@ const Coursecardsm = ({ card }) => {
       toast.error("ابتدا وارد سایت شوید");
     }
   };
- 
+
   return (
     <div className="card-sm">
       <p
@@ -188,14 +191,23 @@ const Coursecardsm = ({ card }) => {
                   }}
                 />
               </div>
-
-              <p className="card-sm-content-time">
-                {mean_of_participant_points.grade.toFixed(1)
-                  ? mean_of_participant_points.grade.toFixed(1)
-                  : "0"}
-                <span>({nums_of_voter})</span>
-                نفر
-              </p>
+              {!isDes ? (
+                <p className="card-sm-content-time">
+                  {mean_of_participant_points.grade.toFixed(1)
+                    ? mean_of_participant_points.grade.toFixed(1)
+                    : "0"}
+                  <span>({nums_of_voter})</span>
+                  نفر
+                </p>
+              ) : (
+                <p className="card-sm-content-time">
+                  {mean_of_participant_points.grade
+                    ? mean_of_participant_points.grade
+                    : "0"}
+                  <span>({nums_of_voter})</span>
+                  نفر
+                </p>
+              )}
             </div>
             <div className="d-flex-align card-sm-info-row-time">
               <ClockIcon />

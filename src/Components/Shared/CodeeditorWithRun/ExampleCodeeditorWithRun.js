@@ -27,6 +27,7 @@ function ExampleCodeeditorWithRun(props) {
   const [errs, setErrs] = useState("");
   // const [info, setInfo] = useState();
   // const [info1, setInfo1] = useState("");
+  const handle = useFullScreenHandle();
   const [data, setData] = useState("");
   const [isCopied, handleCopy] = UseCopyToClipboard(3000);
   const [load, setLoad] = useState(false);
@@ -136,58 +137,93 @@ function ExampleCodeeditorWithRun(props) {
     element.click();
   };
   return (
-    <div className="w-full">
-      <div className="CodeeditorWithRun w-full">
-        {props.lan && (
-          <>
-            <div className="w-full" style={{ position: "relative " }}>
-              <div className="CodeeditorWithRun__codeeditor">
-                <div>
-                  <div className="CodeeditorWithRun__codeeditor-btnBox">
-                    <p>{`${props.name}.${
-                      props.lan === "c_cpp" && props.lang === "c"
-                        ? "c"
-                        : props.lan === "c_cpp" && props.lang === "c_cpp"
-                        ? "cpp"
-                        : props.lan
-                    }`}</p>
-                    <div className="d-flex ">
-                      <button
-                        className="CodeeditorWithRun__codeeditor-btncopy"
-                        onClick={handleDownload}
-                      >
-                        ذخیره کدها
-                      </button>
-                      <button
-                        className="CodeeditorWithRun__codeeditor-btncopy"
-                        onClick={() => handleCopy(value)}
-                      >
-                        {isCopied ? (
-                          <div className="d-flex">
-                            <i className="fas fa-check"></i>
-                            کپی شد
-                          </div>
+    <FullScreen handle={handle} enabled={handle}>
+      <div
+        className={handle.active ? " w-full h-full" : "container"}
+        style={{ position: "relative " }}
+      >
+        <div
+          className={
+            handle.active
+              ? " CodeeditorWithRun w-full h-full"
+              : "CodeeditorWithRun w-full"
+          }
+        >
+          {props.lan && (
+            <>
+              <div
+                className={handle.active ? " w-full h-full" : "container"}
+                style={{ position: "relative " }}
+              >
+                <div
+                  className={
+                    handle.active
+                      ? " CodeeditorWithRun__codeeditor  h-full"
+                      : "CodeeditorWithRun__codeeditor"
+                  }
+                >
+                  <div>
+                    <div
+                      className="CodeeditorWithRun__codeeditor-btnBox"
+                      style={
+                        handle.active ? { padding: "1rem 0" } : { padding: "0" }
+                      }
+                    >
+                      <p>{`${props.name}.${
+                        props.lan === "c_cpp" && props.lang === "c"
+                          ? "c"
+                          : props.lan === "c_cpp" && props.lang === "c_cpp"
+                          ? "cpp"
+                          : props.lan
+                      }`}</p>
+                      <div className="d-flex ">
+                        {handle.active ? (
+                          <button
+                            className="codeeditorBox__fulScreen"
+                            onClick={handle.exit}
+                          ></button>
                         ) : (
-                          <div className="d-flex">
-                            {" "}
-                            <i className="far fa-copy"></i>
-                            کپی
-                          </div>
+                          <button
+                            className="codeeditorBox__fulScreen"
+                            onClick={handle.enter}
+                          ></button>
                         )}
-                      </button>
-                      <button
-                        className={
-                          load
-                            ? "CodeeditorWithRun__codeeditor-btndonedis"
-                            : "CodeeditorWithRun__codeeditor-btndone"
-                        }
-                        onClick={handleSend}
-                        disabled={load}
-                      >
-                        <i className="fas fa-play"></i>
-                        اجرای کد
-                      </button>
-                      {/* <button
+                        <button
+                          className="CodeeditorWithRun__codeeditor-btncopy"
+                          onClick={handleDownload}
+                        >
+                          ذخیره کدها
+                        </button>
+                        <button
+                          className="CodeeditorWithRun__codeeditor-btncopy"
+                          onClick={() => handleCopy(value)}
+                        >
+                          {isCopied ? (
+                            <div className="d-flex">
+                              <i className="fas fa-check"></i>
+                              کپی شد
+                            </div>
+                          ) : (
+                            <div className="d-flex">
+                              {" "}
+                              <i className="far fa-copy"></i>
+                              کپی
+                            </div>
+                          )}
+                        </button>
+                        <button
+                          className={
+                            load
+                              ? "CodeeditorWithRun__codeeditor-btndonedis"
+                              : "CodeeditorWithRun__codeeditor-btndone"
+                          }
+                          onClick={handleSend}
+                          disabled={load}
+                        >
+                          <i className="fas fa-play"></i>
+                          اجرای کد
+                        </button>
+                        {/* <button
                         className={
                           load
                             ? "CodeeditorWithRun__codeeditor-btndonedis"
@@ -199,114 +235,129 @@ function ExampleCodeeditorWithRun(props) {
                         <i className="fas fa-play"></i>
                         ارسال پاسخ
                       </button> */}
+                      </div>
                     </div>
-                  </div>
-                  <AceEditor
-                    mode={props.lan}
-                    theme="monokai"
-                    value={value}
-                    onChange={onChange}
-                    width="100%"
-                    height="64.1vh"
-                    name="UNIQUE_ID_OF_DIV"
-                    editorProps={{ $blockScrolling: true }}
-                    setOptions={{
-                      enableBasicAutocompletion: true,
-                      enableLiveAutocompletion: true,
-                      enableSnippets: true,
-                      fontSize: "1.5rem",
-                    }}
-                  />
-                </div>
-                <div style={{ height: "64.1vh" }}>
-                  <div className="CodeeditorWithRun__codeeditor-btnBox2">
-                    <div className="d-flex">
-                      <button
-                        className={
-                          btn === 1
-                            ? "CodeeditorWithRun__activbtn"
-                            : "CodeeditorWithRun__disactivbtn1"
-                        }
-                        value={1}
-                        onClick={() => setBtn(1)}
-                      >
-                        Result
-                      </button>
-                      <button
-                        className={
-                          btn === 2
-                            ? "CodeeditorWithRun__activbtn"
-                            : "CodeeditorWithRun__disactivbtn1"
-                        }
-                        value={2}
-                        onClick={() => setBtn(2)}
-                      >
-                        Errors
-                      </button>
-                    </div>
-                  </div>
-                  <div className="result-codeeditor" style={{ height: "50%" }}>
                     <AceEditor
                       mode={props.lan}
                       theme="monokai"
-                      value={btn === 1 ? res : errs}
+                      value={value}
+                      onChange={onChange}
+                      height={handle.active ? "100%" : "64.1vh"}
                       width="100%"
-                      height="100%"
                       name="UNIQUE_ID_OF_DIV"
-                      readOnly
                       editorProps={{ $blockScrolling: true }}
-                      highlightActiveLine={false}
-                      showGutter={false}
                       setOptions={{
                         enableBasicAutocompletion: true,
                         enableLiveAutocompletion: true,
                         enableSnippets: true,
-                        showLineNumbers: false,
                         fontSize: "1.5rem",
                       }}
                     />
                   </div>
                   <div
-                    className="CodeeditorWithRun__TestBox"
-                    style={{ height: "50%" }}
+                    style={
+                      handle.active ? { height: "100%" } : { height: "64.1vh" }
+                    }
                   >
-                    <div className="CodeeditorWithRun__codeeditor-btnBox1">
-                      <p>Test</p>
-                    </div>{" "}
-                    <AceEditor
-                      mode={props.lan}
-                      theme="monokai"
-                      value={test}
-                      onChange={onChange1}
-                      readOnly={load}
-                      width="100%"
-                      height="100%"
-                      name="UNIQUE_ID_OF_DIV"
-                      editorProps={{ $blockScrolling: true }}
-                      highlightActiveLine={false}
-                      showGutter={false}
-                      setOptions={{
-                        enableBasicAutocompletion: true,
-                        enableLiveAutocompletion: true,
-                        enableSnippets: true,
-                        showLineNumbers: false,
-                        fontSize: "1.5rem",
-                      }}
-                    />
+                    <div
+                      className="CodeeditorWithRun__codeeditor-btnBox2"
+                      style={
+                        handle.active
+                          ? { padding: "2.2rem 0 0 0" }
+                          : { padding: "0.35rem 0 0 0" }
+                      }
+                    >
+                      <div className="d-flex">
+                        <button
+                          className={
+                            btn === 1
+                              ? "CodeeditorWithRun__activbtn"
+                              : "CodeeditorWithRun__disactivbtn1"
+                          }
+                          value={1}
+                          onClick={() => setBtn(1)}
+                        >
+                          Result
+                        </button>
+                        <button
+                          className={
+                            btn === 2
+                              ? "CodeeditorWithRun__activbtn"
+                              : "CodeeditorWithRun__disactivbtn1"
+                          }
+                          value={2}
+                          onClick={() => setBtn(2)}
+                        >
+                          Errors
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      className="result-codeeditor"
+                      style={{ height: "50%" }}
+                    >
+                      <AceEditor
+                        mode={props.lan}
+                        theme="monokai"
+                        value={btn === 1 ? res : errs}
+                        height={handle.active ? "100%" : "100%"}
+                        width="100%"
+                        name="UNIQUE_ID_OF_DIV"
+                        readOnly
+                        editorProps={{ $blockScrolling: true }}
+                        highlightActiveLine={false}
+                        showGutter={false}
+                        setOptions={{
+                          enableBasicAutocompletion: true,
+                          enableLiveAutocompletion: true,
+                          enableSnippets: true,
+                          showLineNumbers: false,
+                          fontSize: "1.5rem",
+                        }}
+                      />
+                    </div>
+                    <div
+                      className="CodeeditorWithRun__TestBox"
+                      style={{ height: "50%" }}
+                    >
+                      <div className="CodeeditorWithRun__codeeditor-btnBox1">
+                        <p>Test</p>
+                      </div>{" "}
+                      <AceEditor
+                        mode={props.lan}
+                        theme="monokai"
+                        value={test}
+                        onChange={onChange1}
+                        readOnly={load}
+                        width="100%"
+                        height={handle.active ? "100%" : "100%"}
+                        name="UNIQUE_ID_OF_DIV"
+                        editorProps={{ $blockScrolling: true }}
+                        highlightActiveLine={false}
+                        showGutter={false}
+                        setOptions={{
+                          enableBasicAutocompletion: true,
+                          enableLiveAutocompletion: true,
+                          enableSnippets: true,
+                          showLineNumbers: false,
+                          fontSize: "1.5rem",
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
+                <RiseLoader
+                  color="#0dca78"
+                  loading={load}
+                  size={30}
+                  css={override}
+                />
               </div>
-              <RiseLoader
-                color="#0dca78"
-                loading={load}
-                size={30}
-                css={override}
-              />
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </FullScreen>
   );
 }
 

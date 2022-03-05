@@ -38,6 +38,8 @@ function QuizCodeeditorWithRun(props) {
   const [numberComplit, setNumberComplit] = useState(0);
   const { token } = useAuth();
   const [modal, setModal] = useState(false);
+  const handle = useFullScreenHandle();
+
   const handleModalVisible = () => {
     setModal(false);
   };
@@ -142,7 +144,7 @@ function QuizCodeeditorWithRun(props) {
       });
       setLoad(true);
       QuizPlayGround.reFetch();
-    }else {
+    } else {
       toast.error("ابتدا وارد سایت شوید");
     }
   };
@@ -205,14 +207,34 @@ function QuizCodeeditorWithRun(props) {
   };
   console.log("props.courseId", props.courseId);
   return (
-    <div>
-      <div className="CodeeditorWithRun">
+    <FullScreen handle={handle} enabled={handle}>
+      <div
+        className={
+          handle.active
+            ? " CodeeditorWithRun w-full h-full"
+            : "CodeeditorWithRun w-full"
+        }
+      >
         {props.lan && (
           <>
-            <div className="container" style={{ position: "relative " }}>
-              <div className="CodeeditorWithRun__codeeditor">
+            <div
+              className={handle.active ? " w-full h-full" : "container"}
+              style={{ position: "relative " }}
+            >
+              <div
+                className={
+                  handle.active
+                    ? " CodeeditorWithRun__codeeditor  h-full"
+                    : "CodeeditorWithRun__codeeditor"
+                }
+              >
                 <div>
-                  <div className="CodeeditorWithRun__codeeditor-btnBox">
+                  <div
+                    className="CodeeditorWithRun__codeeditor-btnBox"
+                    style={
+                      handle.active ? { padding: "1rem 0" } : { padding: "0" }
+                    }
+                  >
                     <p>{`${props.name}.${
                       props.lan === "c_cpp" && props.lang === "c"
                         ? "c"
@@ -221,6 +243,17 @@ function QuizCodeeditorWithRun(props) {
                         : props.lan
                     }`}</p>
                     <div className="d-flex ">
+                      {handle.active ? (
+                        <button
+                          className="codeeditorBox__fulScreen"
+                          onClick={handle.exit}
+                        ></button>
+                      ) : (
+                        <button
+                          className="codeeditorBox__fulScreen"
+                          onClick={handle.enter}
+                        ></button>
+                      )}
                       <button
                         className="CodeeditorWithRun__codeeditor-btncopy"
                         onClick={handleDownload}
@@ -276,7 +309,7 @@ function QuizCodeeditorWithRun(props) {
                     value={value}
                     onChange={onChange}
                     width="100%"
-                    height="64.1vh"
+                    height={handle.active ? "100%" : "64.1vh"}
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
                     setOptions={{
@@ -287,8 +320,14 @@ function QuizCodeeditorWithRun(props) {
                     }}
                   />
                 </div>
-                <div style={{ height: "64.1vh" }}>
-                  <div className="CodeeditorWithRun__codeeditor-btnBox2">
+                <div   style={
+                      handle.active ? { height: "100%" } : { height: "64.1vh" }
+                    }>
+                  <div className="CodeeditorWithRun__codeeditor-btnBox2"    style={
+                        handle.active
+                          ? { padding: "2.2rem 0 0 0" }
+                          : { padding: "0.35rem 0 0 0" }
+                      }>
                     <div className="d-flex">
                       <button
                         className={
@@ -443,7 +482,7 @@ function QuizCodeeditorWithRun(props) {
           </div>
         </Modal>
       )}
-    </div>
+    </FullScreen>
   );
 }
 
