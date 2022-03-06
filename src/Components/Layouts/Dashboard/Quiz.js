@@ -29,6 +29,8 @@ function Quiz({
   useEffect(() => {
     setName(location.state.name);
   }, [location]);
+  console.log("contentUuidXXX: ", contentUuid);
+  console.log("contentUuid2XXX: ", contentUuid2);
   const handleClick = () => {
     navigate("/quiz", {
       state: {
@@ -104,7 +106,6 @@ function Quiz({
                 آزمون دهید اما زمانی که نمره 100 گرفته شود، نمره های بعدی بدون
                 تاثیر میباشد
               </p>
-
               <Button
                 onClick={handleClick}
                 ico={false}

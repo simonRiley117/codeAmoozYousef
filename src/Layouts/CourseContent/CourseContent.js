@@ -38,17 +38,6 @@ function CourseContent() {
 
   const handleLastCourse = () => {
     setLastCourse(true);
-    if (!isContentPass) {
-      postPassContent.reFetch();
-    } else {
-      if (
-        CurrentcontenStatus?.next_content_id ===
-        "You have not passed quiz season"
-      ) {
-        setSeasonsQuizeActive(true);
-      }
-      setCurrentContentid(CurrentcontenStatus.next_content_id);
-    }
   };
   const disableBody = (target) => disableBodyScroll(target);
   const enableBody = (target) => enableBodyScroll(target);
@@ -86,7 +75,11 @@ function CourseContent() {
     },
   });
   const getCurrentContentState = useFetch({
-    url: `ContentService/${Currentcontentid}/currentContentState`,
+    url: `ContentService/${
+      Currentcontentid != "You have not passed quiz season"
+        ? Currentcontentid
+        : CurrentCourseStatus.latest_content_in_season
+    }/currentContentState`,
     method: "GET",
     trigger: false,
     setter: setCurrentcontenStatus,
@@ -104,6 +97,7 @@ function CourseContent() {
     CurrentCourseStatus?.current_content_id
   );
   console.log("Currentcontentid: ", Currentcontentid);
+  console.log("CurrentCourseStatus: ", CurrentCourseStatus);
   const postPassContent = useFetch({
     url: `PassService/${Currentcontentid}`,
     method: "POST",
@@ -160,6 +154,21 @@ function CourseContent() {
       }
       setCurrentContentid(CurrentcontenStatus.next_content_id);
     }
+  };
+
+  const handleLastNextContent = () => {
+    if (!isContentPass) {
+      postPassContent.reFetch();
+    } else {
+      if (
+        CurrentcontenStatus?.next_content_id ===
+        "You have not passed quiz season"
+      ) {
+        setSeasonsQuizeActive(true);
+      }
+      setCurrentContentid(CurrentcontenStatus.next_content_id);
+    }
+    getCurrentCourseState.reFetch();
   };
 
   const handlePrevContent = () => {
@@ -226,7 +235,11 @@ function CourseContent() {
 
                 {!LastCourse ? (
                   <ContentTab
-                    contentUuid={Currentcontentid}
+                    contentUuid={
+                      Currentcontentid != "You have not passed quiz season"
+                        ? Currentcontentid
+                        : CurrentCourseStatus.latest_content_in_season
+                    }
                     quizUuid={quizUuid}
                     courseUuid={id}
                     setActiveSeason={setActiveSeason}
@@ -256,6 +269,8 @@ function CourseContent() {
                             onClick={
                               CurrentcontenStatus.next_content_id !== null
                                 ? handleNextContent
+                                : CurrentCourseStatus.course_progress !== 100
+                                ? handleLastNextContent
                                 : handleLastCourse
                             }
                             disabled={!isContentPass && quizUuid !== null}

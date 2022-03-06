@@ -82,6 +82,9 @@ function QuizResponsiveCodeeditor(props) {
       }
       if (err) {
         console.log(err.response);
+        if (err.response.status==500){
+          toast.error("خطایی رخ داد. دوباره امتحان کنید");
+        }
         setLoad(false);
       }
     },
