@@ -26,7 +26,7 @@ import Favorites from "@Layouts/Favorites/Favorites";
 import Rules from "@Layouts/Rules/Rules";
 import Example from "@Layouts/Example";
 import TeacherResume from "@Layouts/Teacher Resume/TeacherResume";
-
+import { CourseListIconsProvider } from "@App/Context/courseListIconsContext";
 import Search from "@Layouts/Search/Search";
 import Coursetopic from "@Layouts/CourseTopic/CourseTopic";
 const CoWorkers = lazy(() => import("@Layouts/CoWorkers"));
@@ -63,7 +63,14 @@ const Router = () => {
           <Route path="/rules" element={<Rules />} />
           <Route path="/fav" element={<Favorites />} />
 
-          <Route path="/search" element={<Search />} />
+          <Route
+            path="/search"
+            element={
+              <CourseListIconsProvider>
+                <Search />{" "}
+              </CourseListIconsProvider>
+            }
+          />
         </Route>
       </Routes>
       {token ? <Authenticated /> : <UnAuthenticated />}

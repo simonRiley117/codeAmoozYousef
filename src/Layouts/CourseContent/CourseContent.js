@@ -38,6 +38,17 @@ function CourseContent() {
 
   const handleLastCourse = () => {
     setLastCourse(true);
+    if (!isContentPass) {
+      postPassContent.reFetch();
+    } else {
+      if (
+        CurrentcontenStatus?.next_content_id ===
+        "You have not passed quiz season"
+      ) {
+        setSeasonsQuizeActive(true);
+      }
+      setCurrentContentid(CurrentcontenStatus.next_content_id);
+    }
   };
   const disableBody = (target) => disableBodyScroll(target);
   const enableBody = (target) => enableBodyScroll(target);

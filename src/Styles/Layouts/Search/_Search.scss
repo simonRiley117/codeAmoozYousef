@@ -5,6 +5,7 @@
         position: -webkit-sticky;
         position: sticky;
         top: 10rem;
+        z-index: 10000;
     }
     &__boxDisplay {
         background-color: $color-white;
