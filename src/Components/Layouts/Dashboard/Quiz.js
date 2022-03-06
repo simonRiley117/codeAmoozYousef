@@ -17,6 +17,7 @@ function Quiz({
   intro,
   season,
   contentUuid2,
+  isContentPass,
 }) {
   const [quizContent, setQuizContent] = useState(null);
   const location = useLocation();
@@ -95,11 +96,15 @@ function Quiz({
                 <p className="Quiz__title"> آزمون درس</p>
               )}
               <p className="Quiz__txt">
+                {isContentPass ? "آزمون پاس شده است." : ""}
+              </p>
+              <p className="Quiz__txt">
                 آزمون بدون زمان میباشد و تا زمانی که نمره 100 دریافت نشده است،
                 پاس نمی شود و شما مجاز هستید تا زمانی که نمره 100 دریافت کنید،
                 آزمون دهید اما زمانی که نمره 100 گرفته شود، نمره های بعدی بدون
                 تاثیر میباشد
               </p>
+
               <Button
                 onClick={handleClick}
                 ico={false}

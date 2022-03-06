@@ -226,6 +226,7 @@ function CourseContent() {
                     SeasonsQuizeid={SeasonsQuizeid}
                     SeasonsQuizeActive={SeasonsQuizeActive}
                     contentUuid2={Currentcontentid2}
+                    isContentPass={isContentPass}
                   />
                 ) : (
                   <div className="LastCourse__congrats ">

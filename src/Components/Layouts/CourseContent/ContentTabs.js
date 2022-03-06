@@ -15,6 +15,7 @@ const ContentTabs = ({
   setSeasonsQuizeid,
   SeasonsQuizeActive,
   contentUuid2,
+  isContentPass,
 }) => {
   const { TabPane } = Tabs;
 
@@ -59,6 +60,7 @@ const ContentTabs = ({
               courseUuid={courseUuid}
               intro={false}
               season={false}
+              isContentPass={isContentPass}
             />
           </TabPane>
         </>
@@ -70,6 +72,7 @@ const ContentTabs = ({
             courseUuid={courseUuid}
             intro={false}
             season={true}
+            isContentPass={isContentPass}
           />
         </TabPane>
       )}
