@@ -57,7 +57,7 @@ const sidebarmenuItem = [
 
 const SidebarMenu = () => {
   const [modal, setModal] = useState(false);
-  const {  authDispatch } = useAuth();
+  const { authDispatch } = useAuth();
 
   const [expand, setExpand] = useState(false);
 
@@ -97,24 +97,38 @@ const SidebarMenu = () => {
       <ul className="sidebarMenu__ul list">
         <ul>
           {sidebarmenuItem.map((item) => (
-            <SidebarMenuItem key={item.url} {...item} />
+            <SidebarMenuItem key={item.url} {...item} expand={expand} />
           ))}
         </ul>
         <ul className="sidebarMenu__nestedul">
           <li className="sidebarMenu__li d-flex-align close" onClick={closeNav}>
-            <div className="menuIcon">
+            {!expand ? (
+              <>
+                {" "}
+                <div className="menuIcon">
+                  <CloseIcon />
+                </div>
+                <p>بستن</p>
+              </>
+            ) : (
               <CloseIcon />
-            </div>
-            <p>بستن</p>
+            )}
           </li>
           <li
             className="sidebarMenu__li d-flex-align exit"
             onClick={handleModalShow}
           >
-            <div className="menuIcon">
+            {!expand ? (
+              <>
+                {" "}
+                <div className="menuIcon">
+                  <ExiteIcon />
+                </div>
+                <p>خروج</p>
+              </>
+            ) : (
               <ExiteIcon />
-            </div>
-            <p>خروج</p>
+            )}
           </li>
         </ul>
       </ul>
