@@ -43,14 +43,14 @@ function QuizDetail({
               >
                 {item.input !== "" ? (
                   <p className="ExampleDetail__sampledata text-center	">
-                    {item.input.replace(/#$$#/g, ",")}
+                    {item.input.replace("#$$#", ",")}
                   </p>
                 ) : (
                   <p
                     className="ExampleDetail__sampledata text-center	"
                     style={{ opacity: "0" }}
                   >
-                    {item.input.replace(/#$$#/g, ",")}
+                    {item.input.replace("#$$#", ",")}
                   </p>
                 )}
                 {item.input !== "" && item.output !== "" && (

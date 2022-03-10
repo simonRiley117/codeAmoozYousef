@@ -109,7 +109,7 @@ const Coursecardsm = ({ card }) => {
       toast.error("ابتدا وارد سایت شوید");
     }
   };
-
+console.log('mean_of_participant_points.grade', mean_of_participant_points.grade)
   return (
     <div className="card-sm">
       <p
@@ -193,8 +193,8 @@ const Coursecardsm = ({ card }) => {
               </div>
               {!isDes ? (
                 <p className="card-sm-content-time">
-                  {mean_of_participant_points.grade.toFixed(1)
-                    ? mean_of_participant_points.grade.toFixed(1)
+                  {mean_of_participant_points.grade?.toFixed(1)
+                    ? mean_of_participant_points.grade?.toFixed(1)
                     : "0"}
                   <span>({nums_of_voter})</span>
                   نفر
