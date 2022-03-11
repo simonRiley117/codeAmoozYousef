@@ -36,7 +36,7 @@ const ChangePassword = () => {
   const { uuid, key } = useParams();
   const navigate = useNavigate();
   const ChangepassRequest = useFetch({
-    url: `auth/password/reset/confirm/z/${key}`,
+    url: `auth/password/reset/confirm/${uuid}/${key}`,
     method: "POST",
     trigger: false,
     data: passData,
