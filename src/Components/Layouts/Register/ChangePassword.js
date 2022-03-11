@@ -73,7 +73,7 @@ const ChangePassword = () => {
   });
   const onSubmit = (data) => {
     if (data.new_password1 === data.new_password2) {
-      setPassData({ uid: 'z', token: key, ...data });
+      setPassData({ uid: uuid, token: key, ...data });
       setLoading(true);
       ChangepassRequest.reFetch();
     } else {
