@@ -11,7 +11,7 @@ const UnAuthenticated = () => {
     return (
         <Routes>
             <Route
-                path="/account-confirm-email/:confirmedkey"
+                path="/auth/account-confirm-email/:confirmedkey"
                 element={<EmailVerify/>}
             />
             <Route
