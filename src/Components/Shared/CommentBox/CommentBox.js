@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import moment from "moment";
 import { Comment as Comments } from "antd";
 import { Tooltip, Avatar } from "antd";
@@ -56,6 +56,7 @@ function CommentBox({
   const { token } = useAuth();
   const [openReply, setOpenReply] = useState(false);
   const [edit, setEdit] = useState("");
+  const [showedit, setShowEdit] = useState(false);
   const handleToggleReply = () => {
     setOpenReply((prevState) => !prevState);
   };
@@ -66,8 +67,11 @@ function CommentBox({
     reset,
     formState: { errors, isSubmitted },
   } = useForm({
-    defaultValues: {},
+    defaultValues: {
+      test: txt,
+    },
   });
+
   const [commentPostData, setCommentPostData] = useState(null);
 
   const onSubmit = (data) => {
@@ -114,6 +118,7 @@ function CommentBox({
   //     setReplyState((prevState) => !prevState)
   // }, [replayState]);
   const handleEdit = (idd) => {
+    setShowEdit((perv) => !perv);
     setEdit(idd);
   };
   const {
@@ -122,7 +127,7 @@ function CommentBox({
     name: "message",
     control,
     rules: { required: true },
-    defaultValue: "",
+    defaultValue: txt,
   });
   const onEmojiClick = ({ native }) => {
     const message = watch("message");
@@ -192,7 +197,7 @@ function CommentBox({
         avatar={img}
         datetime={<span>{moment(date).format("YYYY/MM/DD ")}</span>}
         content={
-          edit === uuid ? (
+          edit === uuid && showedit ? (
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="AskAndAnswer__form"
@@ -206,7 +211,7 @@ function CommentBox({
                   />
                 </div>
                 <Input.TextArea
-                  placeholder="پیام خود را بنویسید..."
+                  // placeholder="پیام خود را بنویسید..."
                   autoSize={{ minRows: 1, maxRows: 1 }}
                   allowClear
                   bordered={false}
@@ -214,9 +219,9 @@ function CommentBox({
                     messageRef.current = e;
                     return ref(e);
                   }}
+                  // defaultValue={txt}
                   {...restField}
                 />
-
                 <div className="AskAndAnswer__form--action">
                   <Dropdown
                     overlay={renderEmojiPanel}

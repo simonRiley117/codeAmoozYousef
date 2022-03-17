@@ -31,6 +31,7 @@
 	.Menu__li {
 		padding: 0 2.5rem;
 		cursor: pointer;
+		color: $color-white !important;
 		@include respond(laptop) {
 			padding: 0 1.8rem;
 		}
@@ -38,11 +39,11 @@
 		& a {
 			// @include set-font(14px, 600, $color-white);
 			&:hover {
-				color: $color-primary-light;
+				color: $color-primary-light !important;
 			}
 		}
 		&.active {
-			color: $color-primary-light;
+			color: $color-primary-light !important;
 		}
 	}
 
@@ -138,7 +139,7 @@
 			right: 0;
 		}
 		&::before {
-			content: '';
+			content: "";
 			position: absolute;
 			right: 0;
 			top: 0;
@@ -536,7 +537,7 @@
 			}
 
 			&::before {
-				content: '';
+				content: "";
 				position: absolute;
 				top: 0;
 				width: 100vw;
