@@ -28,7 +28,7 @@ function Search() {
   const PageSize = 11;
   const [currentPage, setCurrentPage] = useState(1);
   return (
-    <div className="Search container">
+    <div className="Search ">
       {getallCourseList.response?.data ? (
         <div
           className="courses Search__box flex-column"
@@ -37,7 +37,7 @@ function Search() {
           <div className="Search__input">
             <Searchxx />
           </div>
-          <p className="Courses__searchTitle font-bold flex-column">
+          <p className="Courses__searchTitle font-bold flex-column container">
             {allcourse?.results.length > 0 ? (
               <> نتیجه جستجو شما برای "{searchParams.get("s")}":</>
             ) : (
@@ -54,19 +54,19 @@ function Search() {
             )}
           </p>
           {allcourse?.length !== 0 ? (
-            <div className=" courses__grid grid grid-cols-4 gap-x-6 gap-y-8  ">
+            <div className=" courses__grid grid grid-cols-4 gap-x-6 gap-y-8  container">
               {allcourse?.results.map((card) => {
                 return <Coursecardsm key={card.uuid} card={card} />;
               })}
             </div>
           ) : (
-            <div className="Courses__imgBox flex justify-center items-center">
+            <div className="Courses__imgBox flex justify-center items-center container">
               <img src={searchic} alt={searchic} className="Courses__img" />
             </div>
           )}
         </div>
       ) : (
-        <div className="w-11/12	 m-auto mt-44">
+        <div className="w-11/12	 m-auto mt-44 container">
           <Skeleton.Button block active size="large" />
           <br />
           <br />
@@ -88,7 +88,7 @@ function Search() {
         </div>
       )}
 
-      <div className="Title-paging">
+      <div className="Title-paging container">
         <Pagination
           className="pagination-bar"
           currentPage={currentPage}
