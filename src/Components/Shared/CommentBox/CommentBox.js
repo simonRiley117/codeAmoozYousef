@@ -79,6 +79,7 @@ function CommentBox({
     formData.append("text", data.message);
     // formData.append("uuid", uuid);
     setCommentPostData(formData);
+    console.log('message', uuid)
     postComment.reFetch();
   };
   const postComment = useFetch({

@@ -22,6 +22,7 @@ function Comment({ courseId }) {
   const setComment = (data) => {
     setcommentList((currentArray) => [...currentArray, ...data.results]);
   };
+
   const getCommentInfo = useFetch({
     url: `CommentService`,
     params: { course_uuid: courseId },
