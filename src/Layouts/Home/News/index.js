@@ -28,6 +28,7 @@ const News = () => {
   });
 
   const renderNewsItem = () =>
+    newsList.length !== 0 &&
     newsList.map((info, key) => (
       <SwiperSlide key={key}>
         <NewsItem {...info} />
