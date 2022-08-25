@@ -9,12 +9,13 @@ $color-primary-dark-1: #ff9900;
 $color-primary-dark-2: #ef8019;
 $color-white: #fff;
 $color-white-light: rgba(243, 243, 243, 0.7);
+$color-white-1: #f5fbff;
 
 // ------------ Background ------------
 $color-blue: #022f47;
 $color-blue-dark: #012f47;
 $color-blue-light: #042f47;
-$color-blue-light-1: #0F485C;
+$color-blue-light-1: #0f485c;
 $color-progress: rgba(229, 229, 229, 0.7);
 //------------blue----------
 $color-blue-1: #002977;
@@ -70,8 +71,16 @@ $color-success: #329c00;
 $color-success-light: #b5d335;
 $color-error: #ff5a67;
 
-$color-gradient: linear-gradient(140deg, rgba(239, 128, 25, 1) 30%, rgba(249, 168, 37, 1) 67%);
-$color-gradient-discount: linear-gradient(180deg, #20c086 -12.08%, rgba(32, 192, 134, 0) 117.94%);
+$color-gradient: linear-gradient(
+	140deg,
+	rgba(239, 128, 25, 1) 30%,
+	rgba(249, 168, 37, 1) 67%
+);
+$color-gradient-discount: linear-gradient(
+	180deg,
+	#20c086 -12.08%,
+	rgba(32, 192, 134, 0) 117.94%
+);
 //------------------------
 $shadow-button: drop-shadow(
 	0 4px 6px
@@ -101,9 +110,9 @@ $color-ppoup-backgroud: rgba(246, 133, 33, 0.5);
 $color-editor-back: #272822;
 // Fonts
 
-$font-primary: "vazir";
-$font-primary-medium: "vazir-medium";
-$font-primary-bold: "vazir-bold";
+$font-primary: 'vazir';
+$font-primary-medium: 'vazir-medium';
+$font-primary-bold: 'vazir-bold';
 
 $fonts: (
 	regular: $font-primary,
