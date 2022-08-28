@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Components
-import Link from '@Components/Shared/Buttons/Link';
 import SearchBox from '@Components/Layouts/Home/SearchBox';
+import LinkBox from '@Components/Layouts/Home/LinkBox';
 
 // Assets
 import { ReactComponent as HeaderPic } from '@Assets/Icons/home-header.svg';
@@ -22,12 +22,7 @@ const Header = () => {
 								<strong>کاملاً آنلاین</strong> برنامه‌نویسی زیر نظر
 								برترین اساتید
 							</p>
-							<div className='flex items-center home__header--action gap-x-10 '>
-								<Link to='/courses' type='primary'>
-									همه دوره ها
-								</Link>
-								<Link to='/'>همکاران و اساتید</Link>
-							</div>
+							<LinkBox dark/>
 						</section>
 						<div className='home__header--pic'>
 							<HeaderPic />

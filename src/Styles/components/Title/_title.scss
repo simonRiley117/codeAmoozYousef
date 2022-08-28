@@ -1,10 +1,10 @@
 .title__box {
-	@include d-flex-column(center);
-	padding: 1rem;
-	width: 100%;
+	
+	// padding: 1rem;
+	// width: 100%;
 
 	& h2 {
-		@include set-font(3rem, bold, $color-blue);
+		@include set-font(2.4rem, 700, $color-blue-dark);
 		position: relative;
 		@include respond(phone) {
 			font-size: 16px;
@@ -12,18 +12,18 @@
 
 		&::after {
 			content: '';
-			width: calc(100% - 1.5rem);
-			height: 1rem;
+			width: 8rem;
+			height: 8px;
 			border-radius: 1rem;
 			background-color: $color-success-light;
-			margin-top: 1rem;
+			margin-top: 2px;
 			position: relative;
-			right: -25%;
+			right: 0;
 			display: block;
 			@include respond(phone) {
-				width: 11rem;
-				height: 0.5rem;
-				right: -4rem;
+				// width: 11rem;
+				// height: 0.5rem;
+				// right: -4rem;
 			}
 		}
 	}
