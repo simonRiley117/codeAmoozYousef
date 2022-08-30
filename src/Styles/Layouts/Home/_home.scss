@@ -157,8 +157,6 @@
 				@include respond(big-phone) {
 					padding: 1rem;
 				}
-
-				
 			}
 		}
 	}
@@ -452,6 +450,106 @@
 
 			& .link {
 				height: 5.8rem;
+			}
+		}
+	}
+
+	&__courses {
+		&--slider {
+			width: 100%;
+			margin-top: 7rem;
+			height: 30rem;
+			margin-bottom: 5rem;
+			@include respond(tablet) {
+				width: 100vw;
+				height: auto;
+
+			}
+			& .swiper-slide {
+				&:nth-of-type(even) .home__courses--item {
+					&::before {
+						background-color: #fea219;
+						left: 3rem;
+						right: auto;
+					}
+				}
+				&:nth-of-type(5n + 1) .home__courses--item {
+					&::before {
+						background-color: #45bda6;
+						right: 3rem;
+					}
+				}
+				&:nth-of-type(3n + 3) .home__courses--item {
+					&::before {
+						background-color: #b5d336;
+					}
+				}
+				&:nth-of-type(5n + 5) .home__courses--item {
+					&::before {
+						background-color: #044d66;
+					}
+				}
+			}
+
+			& .swiper-container {
+				height: 100%;
+			}
+
+			& .swiper-button-prev,
+			& .swiper-button-next {
+				color: rgba($color: #000000, $alpha: 0.7);
+			}
+
+			& .swiper-slide-active .home__courses--item {
+				transform: translateY(8rem);
+				@include respond(tablet) {
+					transform: none;
+				}
+			}
+			& .swiper-slide-prev,
+			& .swiper-slide-next {
+				& .home__courses--item {
+					transform: translateY(4rem);
+					@include respond(tablet) {
+						transform: none;
+					}
+				}
+			}
+		}
+		&--item {
+			background-color: $color-blue;
+			border-radius: 2.5rem;
+			padding: 1.5rem 3rem;
+			position: relative;
+			overflow: hidden;
+			transition: all 500ms ease-in-out;
+			margin: 0 3vw;
+			&::before {
+				content: '';
+				position: absolute;
+				top: -68%;
+				width: 24rem;
+				height: 24rem;
+				border-radius: 50%;
+				z-index: 1;
+				background-color: #45bda6;
+				right: 3rem;
+			}
+
+			& img {
+				width: 100%;
+				height: 100%;
+				max-width: 9rem;
+				margin-bottom: 1.5rem;
+				z-index: 10;
+			}
+
+			& h4,
+			& span {
+				font-size: 16px;
+				color: $color-white-1;
+				font-weight: 700;
+				line-height: 1.8;
 			}
 		}
 	}

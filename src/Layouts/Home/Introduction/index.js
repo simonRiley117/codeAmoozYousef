@@ -2,13 +2,12 @@ import React from 'react';
 
 // Components
 import Title from '@Components/Shared/Title';
+import LinkBox from '@Components/Layouts/Home/LinkBox';
 
 // Assets
 import imageSrc from '@Assets/Pic/introduction.png';
 import { ReactComponent as ControlIcon } from '@Assets/Icons/introduction-1.svg';
 import { ReactComponent as GrandIcon } from '@Assets/Icons/introduction-2.svg';
-import Link from '@Components/Shared/Buttons/Link';
-import LinkBox from '@Components/Layouts/Home/LinkBox';
 
 const Introduction = () => {
 	return (
