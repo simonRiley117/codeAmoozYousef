@@ -158,10 +158,7 @@
 					padding: 1rem;
 				}
 
-				& svg {
-					width: 100%;
-					height: 100%;
-				}
+				
 			}
 		}
 	}
@@ -341,6 +338,120 @@
 			& p {
 				color: $color-blue-dark;
 				line-height: 1.8;
+			}
+		}
+	}
+
+	&__process {
+		background-color: $color-blue;
+		padding: 5.5rem 0;
+		position: relative;
+
+		& .title__box h2 {
+			color: $color-white-1;
+		}
+		& .wave-up {
+			position: absolute;
+			top: -4px;
+			right: 10rem;
+			@include respond(sm-laptop) {
+				display: none;
+				visibility: hidden;
+			}
+		}
+
+		&--steps {
+			margin-top: 8rem;
+			width: 100%;
+			max-width: 830px;
+
+			& #dash {
+				align-self: center;
+				z-index: 1;
+				&:nth-of-type(even) {
+					transform: rotateY(180deg);
+				}
+
+				@include respond(big-phone) {
+					transform: rotateY(50deg);
+					&:nth-of-type(even) {
+						transform: rotateY(230deg);
+					}
+				}
+			}
+
+			& #dash-large {
+				align-self: center;
+				transform: rotateY(180deg);
+
+				@include respond(big-phone) {
+					height: 100%;
+					width: 100%;
+					max-width: 285px;
+				}
+			}
+		}
+
+		&--item {
+			background-color: $color-green;
+			border-radius: 2.5rem;
+			color: $color-blue;
+			max-width: 430px;
+			padding: 5px 0 5px 3.5rem;
+			position: relative;
+			z-index: 10;
+
+			&::after {
+				content: attr(data-count);
+				position: absolute;
+				bottom: -2rem;
+				right: calc(50% - 2rem);
+				width: 4rem;
+				height: 4rem;
+				border-radius: 50%;
+				@include display-flex(center);
+				font-size: 2.4rem;
+				font-weight: 900;
+				color: $color-white-1;
+				background-color: $color-primary;
+			}
+
+			&:nth-of-type(even) {
+				align-self: flex-end;
+			}
+
+			& span {
+				flex: 1 0 40%;
+				border: 0.8rem solid $color-blue;
+				border-radius: 2.5rem;
+				transform: translateY(-30px);
+
+				& svg {
+					width: 100%;
+					height: 100%;
+				}
+				@include respond(big-phone) {
+					// flex: 30%;
+				}
+			}
+
+			& h4 {
+				color: $color-blue;
+				font-weight: 700;
+				margin-bottom: 1rem;
+			}
+			& p {
+				font-size: 12px;
+			}
+		}
+
+		&--action {
+			align-self: center;
+			width: 100%;
+			max-width: 60rem;
+
+			& .link {
+				height: 5.8rem;
 			}
 		}
 	}
