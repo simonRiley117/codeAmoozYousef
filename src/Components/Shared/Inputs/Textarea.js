@@ -10,6 +10,7 @@ const Textarea = ({
 	register,
 	id,
 	minRows,
+	maxRows,
 	label,
 	...rest
 }) => {
@@ -30,10 +31,9 @@ const Textarea = ({
 				className={classNames('input__field', {
 					input__error: error,
 				})}
-				autoSize={{ minRows: minRows || 4, maxRows: 5 }}
+				autoSize={{ minRows: minRows || 4, maxRows: maxRows || 5 }}
 				{...field}
 				{...rest}
-				
 			/>
 			{error && <span className='input__message'>{error.message}</span>}
 		</div>
