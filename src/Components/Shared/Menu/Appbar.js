@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Badge } from 'antd';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Components
 import Register from '@Components/Layouts/Register/Register';
@@ -15,6 +17,8 @@ import UseScrollAppbar from './UseScrollAppbar';
 import logo from '@Assets/Logo/logo.svg';
 import { ReactComponent as ShoppingCartIcon } from '@Assets/Icons/Buy.svg';
 import useMediaQuery from '@App/Hooks/useMediaQuery';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // constants
 const menuList = [
@@ -47,6 +51,16 @@ const Appbar = () => {
 	const handleModalVisible = () => {
 		setModalVisible((prev) => !prev);
 	};
+
+	useEffect(() => {
+		ScrollTrigger.create({
+			trigger: '.appbar',
+			toggleClass: 'appbar-scrolled',
+			start: 'top -100',
+			end: 99999,
+			// end: () => 'bottom+=' + document.querySelector('.footer').offsetTop,
+		});
+	}, []);
 
 	const handleToggleMenu = () => {
 		if (isTablet) {

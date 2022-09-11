@@ -819,6 +819,11 @@
 	z-index: 1100;
 	background-color: $color-blue;
 	padding: 3.5rem 0;
+	transition: ease 0.4s;
+
+	&-scrolled {
+		padding: 1rem 0;
+	}
 	&__container {
 		@include respond(tablet) {
 			flex-direction: row-reverse;

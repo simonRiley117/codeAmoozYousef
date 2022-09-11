@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 	return (
 		<>
 			{/*<CartDataProvider>*/}
-			{/* <Appbar /> */}
+			<Appbar />
 
 			<main id='target' reference='target' className='main'>
 				<Outlet />

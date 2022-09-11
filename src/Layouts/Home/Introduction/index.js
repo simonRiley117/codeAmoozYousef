@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import Scrollbar from 'smooth-scrollbar';
 
 // Components
 import Title from '@Components/Shared/Title';
@@ -16,8 +15,6 @@ import { ReactComponent as GrandIcon } from '@Assets/Icons/introduction-2.svg';
 gsap.registerPlugin(ScrollTrigger);
 
 const Introduction = () => {
-	// const [first, setfirst] = useState(second)
-	let currentIcon;
 	useEffect(() => {
 		let texts = gsap.utils.toArray('.panel-text');
 		texts.forEach((text, i) => {
