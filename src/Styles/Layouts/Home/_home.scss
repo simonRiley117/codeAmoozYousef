@@ -157,10 +157,14 @@
 	}
 
 	&__introduction {
-		position: relative;
+		position: sticky;
+		top: 60px;
 		overflow: hidden;
-		// min-height: 300vh;
+		height: 400vh;
 		// height: 600vh;
+		@include respond(big-tablet) {
+			height: 250vh;
+		}
 		@include respond(tablet) {
 			overflow: visible;
 		}

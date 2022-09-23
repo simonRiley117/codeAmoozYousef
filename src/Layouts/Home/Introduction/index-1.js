@@ -1,6 +1,10 @@
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef } from 'react';
+import {
+	useScroll,
+	motion,
+	useSpring,
+	useMotionValue,
+} from 'framer-motion/dist/framer-motion';
 
 // Components
 import Title from '@Components/Shared/Title';
@@ -11,80 +15,23 @@ import imageSrc from '@Assets/Pic/introduction.png';
 import { ReactComponent as ControlIcon } from '@Assets/Icons/introduction-1.svg';
 import { ReactComponent as GrandIcon } from '@Assets/Icons/introduction-2.svg';
 
-// gsap.registerPlugin(ScrollTrigger);
-
 const Introduction = () => {
 	const introRef = useRef(null);
 	const contentRef = useRef(null);
-	useEffect(() => {
-		let tl,
-			texts = gsap.utils.toArray('.panel-text');
 
-		texts.forEach((text, i) => {
-			tl = gsap.timeline({
-				scrollTrigger: {
-					// trigger: '.home__process',
-					start: () => 'top -' + window.innerHeight * i,
-					end: () => '+=' + window.innerHeight,
-					onToggle: (self) => {
-						setActiveContent(text, self.isActive);
-
-						secActiveIcons(text, self.direction);
-					},
-				},
-			});
-		});
-
-		// ScrollTrigger.create({
-		// 	trigger: introRef.current,
-		// 	pin: true,
-		// 	start: 'top 120',
-		// 	end: () => 3 * window.innerHeight,
-		// });
-
-		return () => {
-			tl.kill();
-			// ScrollTrigger.killAll( ) ;
-		};
-	}, []);
-
-	
-
-	const secActiveIcons = (text, direction) => {
-		let matchMedia = gsap.matchMedia();
-		let activeIcon = '.icon.' + text.classList[1];
-		console.log("secActiveIcons ~ activeIcon", activeIcon)
-		matchMedia.add('(min-width: 992px)', () => {
-			if (direction === 1) {
-				gsap.to('.circle', { rotate: '+=44' });
-			} else {
-				gsap.to('.circle', { rotate: '-=45' });
-				// gsap.to('.home__introduction--icons-item', { rotate: '+=45' });
-			}
-		});
-		let icons = gsap.utils.toArray('.home__introduction--icons-item');
-		icons.forEach((icon) => {
-			icon.classList.remove('active');
-		});
-			document.querySelector(activeIcon)?.classList.add('active');
-	};
-
-	const setActiveContent = (content, isActive) => {
-		isActive
-			? gsap.to(content, {
-					x: 0,
-					autoAlpha: 1,
-					duration: 0.6,
-					ease: 'expo.out',
-			  })
-			: gsap.to(content, { x: '-100%', autoAlpha: 0 });
-	};
-
+	const x = useMotionValue(0);
+	const spring = useSpring(x);
+	console.log('Introduction ~ scrollYProgress', spring);
 	return (
 		<section className='home__introduction py-24 ' ref={introRef}>
 			<div className='home__introduction--shape'></div>
 			<div className='container'>
-				<div className='grid home__introduction--wrapper'>
+				<motion.div
+					initial={{ opacity: 0, scale: 0.5 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{ duration: 0.5 }}
+					className='grid home__introduction--wrapper'
+				>
 					<Title> آنچه کدآموز را خاص می‌کند </Title>
 					<div className='home__introduction--assets'>
 						<div className='home__introduction--assets-pic'>
@@ -150,7 +97,7 @@ const Introduction = () => {
 							<LinkBox />
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
