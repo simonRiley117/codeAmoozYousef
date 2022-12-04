@@ -48,12 +48,10 @@ const Introduction = () => {
 		};
 	}, []);
 
-	
-
 	const secActiveIcons = (text, direction) => {
 		let matchMedia = gsap.matchMedia();
 		let activeIcon = '.icon.' + text.classList[1];
-		console.log("secActiveIcons ~ activeIcon", activeIcon)
+		console.log('secActiveIcons ~ activeIcon', activeIcon);
 		matchMedia.add('(min-width: 992px)', () => {
 			if (direction === 1) {
 				gsap.to('.circle', { rotate: '+=44' });
@@ -66,7 +64,7 @@ const Introduction = () => {
 		icons.forEach((icon) => {
 			icon.classList.remove('active');
 		});
-			document.querySelector(activeIcon)?.classList.add('active');
+		document.querySelector(activeIcon)?.classList.add('active');
 	};
 
 	const setActiveContent = (content, isActive) => {
@@ -80,8 +78,16 @@ const Introduction = () => {
 			: gsap.to(content, { x: '-100%', autoAlpha: 0 });
 	};
 
+	const handleSkip = () => {
+		const top = document.querySelector('.home__process').offsetTop;
+		// document.h.scrollTo({
+		// 	behavior: 'smooth',
+		// 	top,
+		// });
+	};
+
 	return (
-		<section className='home__introduction py-24 ' ref={introRef}>
+		<section className='py-24 home__introduction ' ref={introRef}>
 			<div className='home__introduction--shape'></div>
 			<div className='container'>
 				<div className='grid home__introduction--wrapper'>
@@ -151,6 +157,11 @@ const Introduction = () => {
 						</div>
 					</div>
 				</div>
+				<span
+					className='home__introduction--skip'
+					title='ردشدن'
+					onClick={() => handleSkip()}
+				></span>
 			</div>
 		</section>
 	);

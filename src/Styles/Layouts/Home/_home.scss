@@ -160,7 +160,7 @@
 		position: sticky;
 		top: 60px;
 		overflow: hidden;
-		height: 400vh;
+		height: 300vh;
 		// height: 600vh;
 		@include respond(big-tablet) {
 			height: 250vh;
@@ -202,6 +202,41 @@
 
 			@include respond(small-tablet) {
 				grid-template-columns: 1fr;
+			}
+		}
+		&--skip {
+			position: relative;
+			bottom: 12vh;
+			right: calc(100% - 5rem);
+			background-color: #42a789;
+			width: 6rem;
+			height: 6rem;
+			border-radius: 50%;
+			display: block;
+			cursor: pointer;
+			transition: all 0.3s;
+			&:hover {
+				transform: scale(0.96);
+			}
+
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				width: 3.2rem;
+				height: 6px;
+				background-color: #fff;
+				border-radius: 10px;
+				top: 50%;
+			}
+
+			&::before{
+				left: 4px;
+				transform: rotate(44deg);
+			}
+			&::after{
+				right: 4px;
+				transform: rotate(-44deg);
 			}
 		}
 
