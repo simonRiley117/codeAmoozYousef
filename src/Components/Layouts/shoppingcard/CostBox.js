@@ -76,20 +76,21 @@ const TipButton = ({orderCard, getPayment}) => {
             {/* <p className="success"> کد تخفیف شما اعمال شد</p> */}
         </form>
     );
-};
+}; 
 const CostBox = ({orderCard, payment, getPayment}) => {
     const {final_amount, discounted_cost, discount_amount} = payment;
     const navigate = useNavigate();
     const {getCart} = useCartData();
 
     const Payment = useFetch({
-        url: `CartService/makePaymentCompleted`,
+        url: `CartService/sendTransactionToPGI`,
         method: "POST",
         trigger: false,
         argFunc: (res) => {
-            toast.success("دوره ها با موفقیت پرداخت شد");
-            getCart.reFetch();
-            navigate("/dashboard/my-course");
+            // toast.success("دوره ها با موفقیت پرداخت شد");
+            // getCart.reFetch();
+            window.location.replace(res.payment_url)
+         //   navigate("/dashboard/my-course");
         },
     });
     const buyCourse = () => {

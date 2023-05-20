@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAuth } from "@App/Context/authContext";
 
-import Authenticated from "@App/Authenticated";
 import UnAuthenticated from "@App/UnAuthenticated";
 
 // ----------------- Pages -----------------
@@ -29,6 +28,7 @@ import TeacherResume from "@Layouts/Teacher Resume/TeacherResume";
 import { CourseListIconsProvider } from "@App/Context/courseListIconsContext";
 import Search from "@Layouts/Search/Search";
 import Coursetopic from "@Layouts/CourseTopic/CourseTopic";
+import Authenticated from "@App/Authenticated";
 const CoWorkers = lazy(() => import("@Layouts/CoWorkers"));
 
 const Router = () => {
