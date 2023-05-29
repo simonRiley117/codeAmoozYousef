@@ -1,6 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAuth } from "@App/Context/authContext";
+import { useNavigate,useLocation } from "react-router-dom";
 
 import UnAuthenticated from "@App/UnAuthenticated";
 
@@ -20,6 +21,7 @@ import Faq from "@Layouts/Faq";
 import Contact from "@Layouts/Contact us";
 import AboutUs from "@Layouts/About us";
 import Courses from "@Layouts/Courses";
+import CommingSoon from "@Layouts/CommingSoon";
 import CourseIntro from "@Layouts/CourseIntro";
 import Favorites from "@Layouts/Favorites/Favorites";
 import Rules from "@Layouts/Rules/Rules";
@@ -30,48 +32,70 @@ import Search from "@Layouts/Search/Search";
 import Coursetopic from "@Layouts/CourseTopic/CourseTopic";
 import Authenticated from "@App/Authenticated";
 const CoWorkers = lazy(() => import("@Layouts/CoWorkers"));
+  
+
 
 const Router = () => {
   const { token } = useAuth();
+  const commingSoon = true;
+  let navigate = useNavigate();
+  let location = useLocation();
+console.log(location)
+  useEffect(() => {
+    if(commingSoon && location.path === "/" ){
+
+      navigate("/comming-soon")
+    }
+  }, [])
+  
   return (
     <Suspense fallback={"Loading demo, hang on..."}>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />}>
-            <Route index path="/:redirectTeacher?" element={<Home />} />
-          </Route>
-          <Route path="/coWorkers" element={<CoWorkers />} />
-          <Route path="coWorkers/master" element={<Master />} />
-          <Route path="coWorkers/technicalteam" element={<TechnicalTeam />} />
-          <Route
-            path="coWorkers/technicalteam/information"
-            element={<TechnicalTeams />}
-          />
-          <Route path="coWorkers/employer" element={<Employer />} />
-          <Route path="/news" index element={<News />} />
-          <Route path="/news/news-info" element={<NewsDetails />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/about-me" element={<AboutUs />} />
+      <Route path="/comming-soon" element={<CommingSoon />} />
 
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/intro" element={<CourseIntro />} />
-          <Route path="/courses/teacher" element={<TeacherResume />} />
-          <Route path="/courses/example" element={<Example />} />
-          <Route path="/courses/topic" element={<Coursetopic />} />
+          <Route element={<Layout />}>
 
-          <Route path="/rules" element={<Rules />} />
-          <Route path="/fav" element={<Favorites />} />
+              <Route path="/" element={<Home />}>
+                <Route index path="/:redirectTeacher?" element={<Home />} />
+              </Route>
+              <Route path="/home" element={<Home />}>
+                <Route index path="/home/:redirectTeacher?" element={<Home />} />
+              </Route>
+              <Route path="/coWorkers" element={<CoWorkers />} />
+              <Route path="coWorkers/master" element={<Master />} />
+              <Route
+                path="coWorkers/technicalteam"
+                element={<TechnicalTeam />}
+              />
+              <Route
+                path="coWorkers/technicalteam/information"
+                element={<TechnicalTeams />}
+              />
+              <Route path="coWorkers/employer" element={<Employer />} />
+              <Route path="/news" index element={<News />} />
+              <Route path="/news/news-info" element={<NewsDetails />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/contact-us" element={<Contact />} />
+              <Route path="/about-me" element={<AboutUs />} />
 
-          <Route
-            path="/search"
-            element={
-              <CourseListIconsProvider>
-                <Search />{" "}
-              </CourseListIconsProvider>
-            }
-          />
-        </Route>
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/intro" element={<CourseIntro />} />
+              <Route path="/courses/teacher" element={<TeacherResume />} />
+              <Route path="/courses/example" element={<Example />} />
+              <Route path="/courses/topic" element={<Coursetopic />} />
+
+              <Route path="/rules" element={<Rules />} />
+              <Route path="/fav" element={<Favorites />} />
+
+              <Route
+                path="/search"
+                element={
+                  <CourseListIconsProvider>
+                    <Search />{" "}
+                  </CourseListIconsProvider>
+                }
+              />
+            </Route>
       </Routes>
       {token ? <Authenticated /> : <UnAuthenticated />}
     </Suspense>

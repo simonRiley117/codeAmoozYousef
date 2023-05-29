@@ -7,6 +7,7 @@ import Button from "../../Buttons/Button";
 import { useAuth } from "@App/Context/authContext";
 import useMediaQuery from "@App/Hooks/useMediaQuery";
 import { Link, useNavigate } from "react-router-dom";
+import Defaultprofile from '@Assets/Pic/default-profile.png';
 
 // image
 import { ReactComponent as ArrowDownIcon } from "@Assets/Icons/arrow-down.svg";
@@ -43,9 +44,14 @@ const Propfile = () => {
       >
         <div className="appbar__profile">
           <Badge count={Icon}>
-            <Avatar src={userData.cover} alt="name" shape="square">
+           { userData.cover ?<Avatar src={userData.cover} alt="name" shape="square">
               {userData.username}
+            </Avatar> :
+            <Avatar src={Defaultprofile}  alt="name" shape="square">
+              {userData.username}
+
             </Avatar>
+            }
           </Badge>
         </div>
       </Dropdown>

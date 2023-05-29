@@ -675,6 +675,7 @@
 		border-radius: $br-item;
 		width: 100%;
 		height: 100%;
+		background-color: #fff;
 	}
 
 	& .ant-badge-rtl .ant-scroll-number-custom-component {
@@ -974,4 +975,11 @@
 			}
 		}
 	}
+}
+///new css
+.Menu_actions--profile {
+    // width: 56px;
+    // height: 56px;
+    // border-radius: 50%;
+    // background: red;
 }

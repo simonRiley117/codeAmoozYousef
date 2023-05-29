@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Badge } from 'antd';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Propfile from './ProfileMenu/Propfile';
 
 // Components
 import Register from '@Components/Layouts/Register/Register';
@@ -17,6 +18,8 @@ import UseScrollAppbar from './UseScrollAppbar';
 import logo from '@Assets/Logo/logo.svg';
 import { ReactComponent as ShoppingCartIcon } from '@Assets/Icons/Buy.svg';
 import useMediaQuery from '@App/Hooks/useMediaQuery';
+import { useAuth } from '@App/Context/authContext';
+import Modal from '@Components/Shared/Modal/Modal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +54,20 @@ const Appbar = () => {
 	const handleModalVisible = () => {
 		setModalVisible((prev) => !prev);
 	};
+	const [modal, setModal] = useState(false);
+	const handleModalShow = () => {
+		setModal((prev) => !prev);
+	};
+	const handleClose = () => {
+		setOpenMenu(false);
+		setModal(true);
+		// handleModalShow();
+	};
 
+	const logout = () => {
+		authDispatch({ type: 'LOGOUT' });
+		navigate('/', { replace: true });
+	};
 	useEffect(() => {
 		ScrollTrigger.create({
 			trigger: '.appbar',
@@ -61,7 +77,6 @@ const Appbar = () => {
 			// end: () => 'bottom+=' + document.querySelector('.footer').offsetTop,
 		});
 	}, []);
-
 	const handleToggleMenu = () => {
 		if (isTablet) {
 			setOpenMenu((prev) => !prev);
@@ -70,6 +85,7 @@ const Appbar = () => {
 				: document.body.classList.add('scrolling-effect');
 		}
 	};
+	const { token, authDispatch } = useAuth();
 
 	return (
 		<>
@@ -101,7 +117,7 @@ const Appbar = () => {
 							))}
 						</nav>
 						<div className='appbar__action d-flex gap-x-7'>
-							<div className=''>
+							{token && <div className=''>
 								<IconBtn
 									title='سبد خرید'
 									classes='appbar__action--cart'
@@ -116,12 +132,18 @@ const Appbar = () => {
 									}
 									onClick={() => navigate('/shopping-card')}
 								/>
-							</div>
-							<div className='appbar__action--login'>
+							</div>}
+							{token ? (
+								<div className='d-flex-align Menu_actions--profile'>
+									<div className={classNames('profile__image')}>
+										<Propfile />
+									</div>
+								</div>
+							) : (
 								<Button type='primary' onClick={handleModalVisible}>
 									ورود / ثبت نام
 								</Button>
-							</div>
+							)}
 						</div>
 					</div>
 					<IconBtn
@@ -139,6 +161,26 @@ const Appbar = () => {
 					/>
 				</div>
 			</div>
+			{modal && (
+								<Modal
+									className='ExitModal'
+									visible={modal}
+									onCancel={handleModalShow}
+								>
+									<div className='ExitModal__back'>
+										<p className='mb-12'>آیا از خروج مطمئن هستید؟</p>
+										<div className='d-flex-space'>
+											<Button onClick={logout}>بله</Button>
+											<Button
+												onClick={handleModalShow}
+												type='primary'
+											>
+												خیر
+											</Button>
+										</div>
+									</div>
+								</Modal>
+							)}
 			<Register visible={isModalVisible} onCancel={handleModalVisible} />
 		</>
 	);

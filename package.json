@@ -63,7 +63,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "craco --openssl-legacy-provider start",
+    "start": "craco start",
     "parisa" : "craco start", 
     "build": "craco build",
     "test": "craco test",
