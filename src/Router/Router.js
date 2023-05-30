@@ -40,7 +40,6 @@ const Router = () => {
   const commingSoon = true;
   let navigate = useNavigate();
   let location = useLocation();
-console.log(location)
   useEffect(() => {
     if(commingSoon && location.pathname === "/" ){
 
