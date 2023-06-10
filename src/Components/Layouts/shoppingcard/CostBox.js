@@ -86,6 +86,7 @@ const CostBox = ({orderCard, payment, getPayment}) => {
         url: `CartService/sendTransactionToPGI`,
         method: "POST",
         trigger: false,
+        data:{amount:final_amount},
         argFunc: (res) => {
             // toast.success("دوره ها با موفقیت پرداخت شد");
             // getCart.reFetch();
