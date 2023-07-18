@@ -61,7 +61,6 @@ const Footer = () => {
                         referrerPolicy="origin"
                         target="_blank"
                         href="https://trustseal.enamad.ir/?id=251667&amp;Code=ORS8gimDMkFKmWVzad3T"
-                        rel="noreferrer"
                     >
                         <img
                             className="h-40"
