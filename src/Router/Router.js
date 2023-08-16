@@ -37,7 +37,7 @@ const CoWorkers = lazy(() => import("@Layouts/CoWorkers"));
 
 const Router = () => {
   const { token } = useAuth();
-  const commingSoon = true;
+  const commingSoon = false;
   let navigate = useNavigate();
   let location = useLocation();
   useEffect(() => {
