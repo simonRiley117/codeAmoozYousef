@@ -52,9 +52,9 @@ const Footer = () => {
               </div>
             </Link>
             <p>
-              جامع آموزشی به زبان فارسی دوره های جامع آموزشی به زبان فارسی لورم
-              ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-              از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه
+            سامانه «کدآموز» در زمینه توسعه نرم‌افزار و برنامه‌نویسی، به عنوان یک پلتفرم تخصصی، خدمات گسترده‌ای ارائه می‌دهد که شامل آموزش و ارزیابی تعاملی می‌شود. این دوره‌ها و منابع آموزشی توسط اساتید و متخصصان با تجربه ارائه می‌شود و داشتن امکان ارزیابی تعاملی، این امکان را به دانشجویان و علاقمندان می‌دهد بتوانند در قالب آزمون و یا پروژه‌های عملی، مهارت‌های خود را محک بزنند.  
+
+
             </p>
             <div className="flex gap-5 footer__info--symbols mt-6">
 			<a
@@ -83,12 +83,17 @@ const Footer = () => {
           <section className="footer__about ">
             <h3 className="footer__title">تماس با ما</h3>
             <p className="mb-4">
-              آدرس دفتر: اصفهان – بلوار دانشگاه صنعتی اصفهان – شهرک علمی و
-              تحقیقاتی اصفهان ساختمان ابوریحان – واحد 135
+            آدرس دفتر: اصفهان – بلوار دانشگاه صنعتی اصفهان – شهرک علمی و تحقیقاتی اصفهان ساختمان ابوریحان – واحد 135
+
             </p>
             <div className="flex items-center justify-between mb-4">
+              <span>ساعات تماس:</span>
+              <span>شنبه تا چهارشنبه از ساعت 9 الی 18
+</span>
+            </div>
+            <div className="flex items-center justify-between mb-4">
               <span>تلفن:</span>
-              <span>33932242-031</span>
+              <span>031-33932242</span>
             </div>
             <div className="flex items-center justify-between mb-4">
               <span>کد پستی :</span>
@@ -101,10 +106,10 @@ const Footer = () => {
           </section>
           <section className="footer__link ">
             <h3 className="footer__title">درباره ما</h3>
-            <Link to="/">درباره ما</Link>
-            <Link to="/">تماس با ما</Link>
+            <Link to="/about-me">درباره ما</Link>
+            <Link to="/contact-us">تماس با ما</Link>
             <Link to="/">قوانین و مقررات</Link>
-            <Link to="/">باشگاه مشتریان</Link>
+           
             <Link to="/">سوالات متداول</Link>
           </section>
           <section className="footer__contact  flex items-center justify-center flex-col">

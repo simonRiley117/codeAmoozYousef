@@ -23,7 +23,7 @@ const index = () => {
 					</span>
 					<div className='home__process--steps flex flex-col'>
 						<ProcessItem
-							title='ثبت نام و انتخاب دوره'
+							title=' ثبت نام و ایجاد حساب کاربری'
 							Icon={imageProcess1}
 							data-count='1'
 						>
@@ -32,7 +32,7 @@ const index = () => {
 						</ProcessItem>
 						<WaveDashed />
 						<ProcessItem
-							title='ثبت نام و انتخاب دوره'
+							title='خرید دوره آموزشی و سپری کردن کلاس‌ها'
 							Icon={imageProcess2}
 							data-count='2'
 						>
@@ -41,7 +41,7 @@ const index = () => {
 						</ProcessItem>
 						<WaveDashed />
 						<ProcessItem
-							title='ثبت نام و انتخاب دوره'
+							title='انجام پروژه‌ها، ارزیابی مهارت‌ها و رفع ایرادات'
 							Icon={imageProcess3}
 							data-count='3'
 						>
@@ -50,7 +50,7 @@ const index = () => {
 						</ProcessItem>
 						<WaveDashed />
 						<ProcessItem
-							title='ثبت نام و انتخاب دوره'
+							title='ارزیابی پایانی و کسب گواهی پایان دوره'
 							Icon={imageProcess1}
 							data-count='4'
 						>
