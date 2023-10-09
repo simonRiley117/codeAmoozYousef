@@ -7,7 +7,6 @@ import SwiperCore, { EffectCoverflow, Navigation } from 'swiper';
 import Title from '@Components/Shared/Title';
 import LinkBox from '@Components/Layouts/Home/LinkBox';
 import CoursesBox from './CourseBox';
-
 // Assets
 import pythonLogo from '@Assets/Pic/python-logo.png';
 
@@ -16,44 +15,62 @@ SwiperCore.use([EffectCoverflow, Navigation]);
 // constants
 const courseList = [
 	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
+		title: 'سی شارپ',
+		subtitle: 'c sharp',
+		icon: 
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+	  ,
+	},
+	{
+		title: ' سی پلاس پلاس',
+		subtitle: 'c++',
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+          
+	  ,
+	},
+	
+	{
+		title: 'سی',
+		subtitle: 'c',
+		icon: 
+	
+	"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+          
+	  ,
+	},
+	{
+		title: 'نود جی اس',
+		subtitle: 'nodejs',
+		icon:"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+	  ,
 	},
 	{
 		title: 'پایتون',
 		subtitle: 'Python',
-		icon: pythonLogo,
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+	  ,
 	},
 	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
+		title: 'چنگو',
+		subtitle: 'django',
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+
+	  ,
+	},
+
+	{
+		title: 'لاراول',
+		subtitle: 'laravel',
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg"
+		,
 	},
 	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
-	},
-	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
-	},
-	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
-	},
-	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
-	},
-	{
-		title: 'پایتون',
-		subtitle: 'Python',
-		icon: pythonLogo,
+		title: 'اکسپرس',
+		subtitle: 'express',
+	
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+
+		,
 	},
 ];
 
