@@ -105,7 +105,7 @@ const Footer = () => {
             </div>
           </section>
           <section className="footer__link ">
-            <h3 className="footer__title">درباره ما</h3>
+            <h3 className="footer__title"></h3>
             <Link to="/about-me">درباره ما</Link>
             <Link to="/contact-us">تماس با ما</Link>
             <Link to="/">قوانین و مقررات</Link>
