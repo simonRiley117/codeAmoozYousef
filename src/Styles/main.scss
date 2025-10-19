@@ -1,3 +1,6 @@
+// -------------------- abstracts --------------------
+@use "./abstracts/animations";
+
 // -------------------- tailwindcss --------------------
 @import "~tailwindcss/tailwind.css";
 // -------------------- react-toastify --------------------
@@ -8,7 +11,6 @@
 
 // -------------------- emoji-mart --------------------
 @import "~emoji-mart/css/emoji-mart.css";
-
 @import "~swiper/swiper-bundle.css";
 
 // -------------------- fonts --------------------
@@ -18,7 +20,6 @@
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
 @import "./abstracts/functions";
-@import "./abstracts/animations";
 
 // -------------------- base --------------------
 @import "./base/base";

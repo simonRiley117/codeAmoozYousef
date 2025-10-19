@@ -34,11 +34,11 @@
     "react-ace": "^9.5.0",
     "react-date-object": "^2.1.5",
     "react-datepicker": "^4.3.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^18.20.8",
     "react-full-screen": "^1.1.0",
     "react-hook-form": "^7.17.4",
     "react-image-crop": "^9.0.5",
-    "react-intersection-observer": "^9.4.0",
+    "react-intersection-observer": "^8.32.0",
     "react-multi-date-picker": "^3.2.0",
     "react-query": "^3.34.5",
     "react-router": "^6.0.2",
@@ -63,8 +63,9 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "craco --openssl-legacy-provider start",
-    "parisa" : "craco start", 
+
+    "start":"craco start",
+    "parisa": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -86,6 +87,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }
